@@ -43,6 +43,9 @@ und pixelweise (pixelmatch). Ergebnis überall: **0 abweichende Pixel**.
 Seitenhöhen identisch: 3404 px (Start @1440), 4749 px (Start @375),
 1161 px (Impressum @1440), 6772 px (Datenschutz @1440).
 
+Die Rechtsseiten wurden nach dem Abgleich auf Wunsch linksbündig gestellt (siehe
+Punkt 3 unten). Der Nachweis oben bezieht sich auf den Stand davor.
+
 ## Bewusste Abweichungen
 
 1. **Burger-Icon**: Original ist eine Lottie-Animation (lottie-web + JSON-Datei).
@@ -50,19 +53,25 @@ Seitenhöhen identisch: 3404 px (Start @1440), 4749 px (Start @375),
    Originals (Linienbreite, Stärke, Abstand, Farbe `#1d1d1d`).
 2. **Burger wird auf allen Seiten zum X.** Im Original ist die Öffnen-Animation
    nur an die Startseite gebunden, auf Impressum und Datenschutz bleiben die drei
-   Striche stehen, obwohl das Menü offen ist. Das ist die einzige Stelle, an der
-   der Nachbau bewusst vom Original abweicht (192 Pixel im geöffneten Menü).
-3. **Seitentitel Impressum**: im Original steht dort `<title>Datenschutz</title>`.
+   Striche stehen, obwohl das Menü offen ist. Hier wird der Burger überall zum X
+   (betrifft 192 Pixel im geöffneten Menü der beiden Rechtsseiten).
+3. **Impressum und Datenschutz linksbündig.** Im Original sitzt der Textblock
+   mittig auf der Seite, mit großer Leerfläche rechts. Hier steht er auf derselben
+   linken Kante wie Logo und Footer (x = 80 px bei 1440, x = 40 px ab 991, x = 20 px
+   ab 767). Die Textbreite bleibt bei 48 rem, damit alle Zeilenumbrüche des
+   Originals erhalten bleiben. Unterhalb von 768 px ändert sich nichts, dort war
+   der Block ohnehin randbündig.
+4. **Seitentitel Impressum**: im Original steht dort `<title>Datenschutz</title>`.
    Hier korrigiert zu "Impressum".
-4. **Kein jQuery, kein Webflow-Runtime**: die drei Interaktionen sind rund
+5. **Kein jQuery, kein Webflow-Runtime**: die drei Interaktionen sind rund
    90 Zeilen Vanilla-JS und ersetzen etwa 700 KB JavaScript.
-5. **Fonts lokal** statt vom Webflow-CDN.
-6. **Zugänglichkeit ergänzt**: `<button>` statt `<div>` für Menü und
+6. **Fonts lokal** statt vom Webflow-CDN.
+7. **Zugänglichkeit ergänzt**: `<button>` statt `<div>` für Menü und
    Schließen-Icon, `aria-expanded`, `role="dialog"`, Modal per Escape schließbar,
    "Mehr anzeigen" per Tastatur bedienbar, Fokus kehrt nach dem Schließen zurück.
    Fokusringe erscheinen nur bei Tastaturbedienung (`:focus-visible`), damit sich
    am Mausverhalten optisch nichts ändert.
-7. **Semantisches Markup**: `<header>`, `<main>`, `<section>`, `<article>`,
+8. **Semantisches Markup**: `<header>`, `<main>`, `<section>`, `<article>`,
    `<footer>` statt durchgehender `<div>`-Verschachtelung.
-8. **Interne Links relativ** (`index.html`, `impressum.html`), damit die Seite
+9. **Interne Links relativ** (`index.html`, `impressum.html`), damit die Seite
    auch in einem Unterordner läuft, etwa unter GitHub Pages.
