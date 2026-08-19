@@ -399,8 +399,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .footer-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .footer-name { font-family: Lora, "Times New Roman", serif; }
-.footer-links { display: flex; gap: 1rem; }
-.footer-link { color: #000; text-decoration: none; transition: opacity .2s; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+.footer-link {
+  white-space: nowrap;
+  font-family: Poppins, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity .2s;
+}
 .footer-link:hover { opacity: .5; }
 
 /* ---------- Modals ---------- */

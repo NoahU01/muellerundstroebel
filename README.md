@@ -10,8 +10,11 @@ Kein Framework, kein Build-Schritt, keine externen Requests.
 ├── vercel.json         cleanUrls: /impressum statt /impressum.html
 ├── impressum.html      Impressum
 ├── datenschutz.html    Datenschutzerklärung
+├── robots.txt          Freigabe inkl. KI-Crawler, Sitemap-Verweis
+├── sitemap.xml         die drei kanonischen URLs
 ├── styles.css          gesamtes Styling inkl. Breakpoints 991 / 767 / 479
 ├── script.js           Nav-Linie beim Scrollen, Mobile-Menü, Modals
+├── tracking.js         GA4-Events, Modul-Tracking, Cookie-Einstellungen
 ├── assets/             Logo, Portraits, Icons, "&"-Zeichen, Favicon
 └── fonts/              Poppins (300–700) + Lora (variabel), beide SIL Open Font License
 ```
@@ -62,6 +65,28 @@ Seitenhöhen identisch: 3404 px (Start @1440), 4749 px (Start @375),
 
 Die Rechtsseiten wurden nach dem Abgleich auf Wunsch linksbündig gestellt (siehe
 Punkt 3 unten). Der Nachweis oben bezieht sich auf den Stand davor.
+
+## Tracking
+
+Cookiebot als erstes Script im `<head>`, danach Consent Mode v2 mit allen
+Kategorien auf `denied`, erst dann `gtag.js`. Google-Tag und eigene Skripte
+tragen `data-cookieconsent="ignore"`, sonst blockiert Cookiebots Auto-Blocking
+den Tag und der Consent Mode läuft nie an.
+
+Vor der Einwilligung: `/g/collect` antwortet **204**, `page.cookies()` ist leer.
+
+| Event | löst aus bei | Parameter |
+|---|---|---|
+| `kontakt_email` | Klick auf eine E-Mail-Adresse | `person`, `ziel` |
+| `kontakt_telefon` | Klick auf eine Telefonnummer | `person`, `ziel` |
+| `kontakt_linkedin` | Klick auf ein LinkedIn-Profil | `person`, `ziel` |
+| `cta_klick` | Klick auf einen Button | `cta_label`, `cta_bereich` |
+| `einsatzgebiet_geoeffnet` | Öffnen eines Modals | `thema` |
+| `section_view_<id>` | Abschnitt wird sichtbar | keine |
+
+Die Seite hat kein Formular. Echte Conversions sind die Kontaktklicks, alles
+andere sind Interessens-Signale. Die Sektion steckt im Event-Namen, das erspart
+in GA4 die Anlage einer Custom Dimension.
 
 ## Bewusste Abweichungen
 
