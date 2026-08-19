@@ -41,8 +41,11 @@
     var card = a.closest('.contact-card');
     var person = card ? textOf(card.querySelector('h3')) : '';
 
+    // Kein "ziel"-Parameter mit der Adresse: GA4 erkennt E-Mail-Adressen als
+    // personenbezogen und ersetzt sie durch "(redacted)". Wer kontaktiert wurde,
+    // steht in "person", wie kontaktiert wurde im Event-Namen.
     a.addEventListener('click', function () {
-      track(name, { person: person, ziel: textOf(a.querySelector('div:last-child')) });
+      track(name, { person: person });
     });
   });
 
