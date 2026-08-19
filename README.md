@@ -66,6 +66,16 @@ Seitenhöhen identisch: 3404 px (Start @1440), 4749 px (Start @375),
 Die Rechtsseiten wurden nach dem Abgleich auf Wunsch linksbündig gestellt (siehe
 Punkt 3 unten). Der Nachweis oben bezieht sich auf den Stand davor.
 
+## Ankernavigation
+
+Klicks auf die Navigation und die CTA-Buttons gleiten zum Ziel statt zu
+springen (`scroll-behavior: smooth`). Unter `prefers-reduced-motion: reduce`
+bleibt der harte Sprung.
+
+`section[id]` trägt ein `scroll-margin-top` in Höhe der fixen Navigation
+(92 px, ab 991 px dann 80 px). Ohne das schnitt die Navigation auf 375 px die
+Zielüberschrift um 16 px an.
+
 ## Tracking
 
 Cookiebot als erstes Script im `<head>`, danach Consent Mode v2 mit allen

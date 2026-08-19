@@ -16,6 +16,16 @@
 
 html { height: 100%; -webkit-text-size-adjust: 100%; }
 
+/* Ankersprünge gleiten statt zu springen. Wer im Betriebssystem "Bewegung
+   reduzieren" aktiviert hat, bekommt weiterhin den harten Sprung. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Die Navigation liegt fix über der Seite und würde das Sprungziel sonst
+   anschneiden: auf 375 px um 16 px. scroll-margin-top hält den Abstand frei. */
+section[id] { scroll-margin-top: 92px; }
+
 body {
   margin: 0;
   min-height: 100%;
@@ -469,6 +479,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
    Tablet  ≤ 991px
    ========================================================================== */
 @media screen and (max-width: 991px) {
+  section[id] { scroll-margin-top: 80px; }
+
   .padding-section-large  { padding-top: 6rem; padding-bottom: 6rem; }
   .padding-section-medium { padding-top: 4rem; padding-bottom: 4rem; }
 
