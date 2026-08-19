@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# KI-Crawler ausdruecklich erlaubt: sie sind der Kanal, ueber den die Seite
+# in ChatGPT, Claude, Perplexity und Gemini auftaucht.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.muellerundstroebel.de/sitemap.xml
