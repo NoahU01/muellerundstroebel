@@ -7,6 +7,7 @@ Kein Framework, kein Build-Schritt, keine externen Requests.
 
 ```
 ├── index.html          Startseite (Nav, Hero, Einsatzgebiete, Ergebnis, Kontakt, Footer, 6 Modals)
+├── vercel.json         cleanUrls: /impressum statt /impressum.html
 ├── impressum.html      Impressum
 ├── datenschutz.html    Datenschutzerklärung
 ├── styles.css          gesamtes Styling inkl. Breakpoints 991 / 767 / 479
@@ -19,14 +20,30 @@ Alle drei Seiten teilen sich `styles.css` und `script.js`. Die Startseite trägt
 `<body class="body">` (Poppins auf Schwarz), die Rechtsseiten laufen auf der
 Webflow-Basis (Arial, `#333`), genau wie im Original.
 
+## URLs
+
+`vercel.json` setzt `cleanUrls`, damit die Adressen die der alten Webflow-Seite
+bleiben:
+
+| URL | liefert |
+|---|---|
+| `/` | Startseite |
+| `/impressum` | Impressum |
+| `/datenschutz` | Datenschutz |
+
+`/impressum.html` leitet per 308 auf `/impressum` um. Interne Links und
+Asset-Pfade sind absolut (`/styles.css`, `/assets/…`), damit sie unter jeder
+dieser Adressen stimmen.
+
 ## Lokal ansehen
 
 ```bash
-python3 -m http.server 8899
-# → http://localhost:8899/index.html
+npx serve .          # kennt cleanUrls, verhält sich wie Vercel
+# → http://localhost:3000
 ```
 
-Für GitHub Pages: Settings → Pages → Branch `main`, Ordner `/ (root)`.
+`python3 -m http.server` funktioniert auch, dort sind die Rechtsseiten aber nur
+unter `/impressum.html` erreichbar.
 
 ## Abgleich mit dem Original (Stand 18.08.2026)
 
@@ -73,5 +90,5 @@ Punkt 3 unten). Der Nachweis oben bezieht sich auf den Stand davor.
    am Mausverhalten optisch nichts ändert.
 8. **Semantisches Markup**: `<header>`, `<main>`, `<section>`, `<article>`,
    `<footer>` statt durchgehender `<div>`-Verschachtelung.
-9. **Interne Links relativ** (`index.html`, `impressum.html`), damit die Seite
-   auch in einem Unterordner läuft, etwa unter GitHub Pages.
+9. **URL-Struktur wie im Original** (`/impressum` statt `/impressum.html`),
+   damit bereits indexierte Links und Lesezeichen weiter funktionieren.
