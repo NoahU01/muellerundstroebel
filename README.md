@@ -12,11 +12,15 @@ Kein Framework, kein Build-Schritt, keine externen Requests.
 ├── datenschutz.html    Datenschutzerklärung
 ├── robots.txt          Freigabe inkl. KI-Crawler, Sitemap-Verweis
 ├── sitemap.xml         die drei kanonischen URLs
+├── llms.txt            Positionierung in Klartext für KI-Systeme
 ├── styles.css          gesamtes Styling inkl. Breakpoints 991 / 767 / 479
 ├── script.js           Nav-Linie beim Scrollen, Mobile-Menü, Modals
 ├── tracking.js         GA4-Events, Modul-Tracking, Cookie-Einstellungen
 ├── assets/             Logo, Portraits, Icons, "&"-Zeichen, Favicon
 └── fonts/              Poppins (300–700) + Lora (variabel), beide SIL Open Font License
+
+Portraits liegen als WebP vor (493 KB als PNG, 38 KB als WebP). Das og-image
+bleibt bewusst PNG, weil Social-Media-Crawler bei WebP unzuverlässig sind.
 ```
 
 Alle drei Seiten teilen sich `styles.css` und `script.js`. Die Startseite trägt
