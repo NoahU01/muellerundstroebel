@@ -96,11 +96,18 @@ Vor der Einwilligung: `/g/collect` antwortet **204**, `page.cookies()` ist leer.
 | `kontakt_linkedin` | Klick auf ein LinkedIn-Profil | `person`, `ziel` |
 | `cta_klick` | Klick auf einen Button | `cta_label`, `cta_bereich` |
 | `einsatzgebiet_geoeffnet` | Öffnen eines Modals | `thema` |
-| `section_view_<id>` | Abschnitt wird sichtbar | keine |
+| `section_view_<id>` | Abschnitt wird sichtbar | `page`, `page_location` |
+| `section_time_<id>` | Verweildauer je Abschnitt in Sekunden, gesendet bei Tab-Wechsel und Verlassen | `value`, `page`, `page_location` |
 
 Die Seite hat kein Formular. Echte Conversions sind die Kontaktklicks, alles
 andere sind Interessens-Signale. Die Sektion steckt im Event-Namen, das erspart
 in GA4 die Anlage einer Custom Dimension.
+
+Verweildauer: GA4 summiert `value` in der Metrik `eventValue`. Durchschnitt je
+Sektion = `eventValue` geteilt durch die Anzahl der `section_view`-Events. Die
+Uhr läuft nur bei sichtbarem Tab, Deckel 600 s, unter 1 s wird nichts gesendet.
+Event-Namen und Parameter sind identisch mit admemory.de, damit dessen
+Report-Skript ohne Umbau auch hier läuft.
 
 ## Bewusste Abweichungen
 

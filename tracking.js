@@ -70,26 +70,104 @@
     });
   });
 
-  /* ---------------- 4. Modul-Tracking: wo wird abgesprungen? --------------
-     Sektion steckt im Event-NAMEN, nicht im Parameter. Erspart in GA4 die
-     Anlage einer Custom Dimension.
-     Ausgelöst bei 15 % Sichtbarkeit ODER wenn die Sektion mehr als 30 % des
-     Viewports füllt: sehr hohe Sektionen erreichen hohe Ratios nie.          */
+  /* ---------------- 4. Modul-Tracking: Reichweite und Verweildauer --------
+     Port der SectionTracker-Komponente von admemory.de, gleiche Event-Namen
+     und Parameter, damit der Report dort ohne Umbau auch hier läuft.
+
+     section_view_<id>  einmal pro Seitenaufruf, sobald die Sektion sichtbar
+                        war. Reichweite: bis wohin wird gescrollt.
+     section_time_<id>  im Viewport verbrachte Sekunden als `value`. GA4
+                        summiert das in eventValue; Durchschnitt = eventValue
+                        geteilt durch die Anzahl der section_view-Events.
+
+     Sichtbar heißt: 15 % der Sektion im Viewport ODER die Sektion füllt mehr
+     als 30 % des Viewports. Sehr hohe Sektionen erreichen hohe Ratios nie.
+     Die Uhr läuft nur, solange der Tab im Vordergrund ist. Gesendet wird beim
+     Tab-Wechsel und beim Verlassen der Seite, per Beacon, damit der Request
+     das Entladen überlebt.                                                 */
   if ('IntersectionObserver' in window) {
-    var gesehen = {};
-    var obs = new IntersectionObserver(function (eintraege) {
-      eintraege.forEach(function (e) {
+    var VISIBLE_RATIO = 0.15;
+    var VIEWPORT_FILL = 0.3;
+    var MAX_SECONDS = 600;   // Deckel gegen Tabs, die stundenlang offen liegen
+    var MIN_SECONDS = 1;     // darunter ist es Durchscrollen, keine Aufmerksamkeit
+
+    var page = window.location.pathname;
+    var pageLocation = window.location.href;
+    var seen = {};      // id -> true, section_view schon gesendet
+    var visible = {};   // id -> true, gerade im Viewport
+    var since = {};     // id -> performance.now() beim Sichtbarwerden
+    var totals = {};    // id -> aufgelaufene Millisekunden
+
+    function now() { return performance.now(); }
+
+    // Laufende Uhren stoppen und aufaddieren (Tab-Wechsel, Seitenwechsel).
+    function pauseAll() {
+      for (var id in since) totals[id] = (totals[id] || 0) + (now() - since[id]);
+      since = {};
+    }
+    // Uhren für alles wieder starten, was gerade sichtbar ist. Nur wenn der Tab
+    // vorn ist: send() ruft das auch beim Wechsel in den Hintergrund auf, und
+    // ohne diese Prüfung liefe die Uhr dort weiter und zählte beim nächsten
+    // Vordergrund die gesamte Hintergrundzeit mit.
+    function resumeAll() {
+      if (document.visibilityState !== 'visible') return;
+      for (var id in visible) if (!(id in since)) since[id] = now();
+    }
+
+    function send() {
+      pauseAll();
+      for (var id in totals) {
+        var seconds = Math.round(totals[id] / 1000);
+        if (seconds < MIN_SECONDS) continue;
+        track('section_time_' + id, {
+          value: Math.min(seconds, MAX_SECONDS),
+          page: page,
+          page_location: pageLocation,
+          transport_type: 'beacon'
+        });
+      }
+      totals = {};
+      resumeAll(); // Sichtbares läuft weiter, falls der Nutzer zurückkommt
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
         var id = e.target.id;
-        if (gesehen[id]) return;
-        var fuelltViewport = e.intersectionRect.height / window.innerHeight > 0.3;
-        if (e.intersectionRatio >= 0.15 || (e.isIntersecting && fuelltViewport)) {
-          gesehen[id] = true;
-          track('section_view_' + id);
+        if (!id) return;
+        var isVisible = e.isIntersecting &&
+          (e.intersectionRatio >= VISIBLE_RATIO ||
+           e.intersectionRect.height > window.innerHeight * VIEWPORT_FILL);
+
+        if (isVisible) {
+          if (!seen[id]) {
+            seen[id] = true;
+            track('section_view_' + id, { page: page, page_location: pageLocation });
+          }
+          visible[id] = true;
+          if (document.visibilityState === 'visible' && !(id in since)) since[id] = now();
+        } else {
+          delete visible[id];
+          if (id in since) {
+            totals[id] = (totals[id] || 0) + (now() - since[id]);
+            delete since[id];
+          }
         }
       });
-    }, { threshold: [0, 0.15, 0.3, 0.5] });
+    }, { threshold: [0, VISIBLE_RATIO, 0.5] });
 
-    document.querySelectorAll('section[id]').forEach(function (s) { obs.observe(s); });
+    // Sofort anhängen, dann nochmal für spät gerenderte Sektionen.
+    // observe() auf ein bereits beobachtetes Element ist folgenlos.
+    function attach() {
+      document.querySelectorAll('section[id]').forEach(function (s) { obs.observe(s); });
+    }
+    attach();
+    setTimeout(attach, 400);
+    setTimeout(attach, 1200);
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') send(); else resumeAll();
+    });
+    window.addEventListener('pagehide', send);
   }
 })();
 
