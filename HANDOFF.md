@@ -1,6 +1,6 @@
 # Handoff: muellerundstroebel.de
 
-Stand 19.08.2026. Die Seite ist live, das Tracking läuft, die Rechtstexte sind
+Stand 12.09.2026. Die Seite ist live, das Tracking läuft, die Rechtstexte sind
 aktualisiert. Dieses Dokument beschreibt den Stand, die offenen Punkte und die
 Fallen, die schon Zeit gekostet haben.
 
@@ -9,8 +9,8 @@ Fallen, die schon Zeit gekostet haben.
 | | |
 |---|---|
 | Live | https://www.muellerundstroebel.de (kanonisch mit `www`, Apex leitet per 308) |
-| Repo | https://github.com/NoahU01/muellerundstroebel (privat), Branch `main` |
-| Hosting | Vercel, Deployment automatisch bei jedem Push auf `main` |
+| Repo | https://github.com/NoahU01/muellerundstroebel (public, seit 12.09.), Branch `main` |
+| Hosting | Vercel, Team `empiria-gmb-h` (Hobby), Deployment automatisch bei jedem Push auf `main` |
 | DNS | IONOS. Apex A auf Vercel, `www` CNAME auf Vercel |
 | GA4 | `G-KSWHNGZS3P` |
 | Cookiebot | `8870d24b-eae6-4dd4-8406-28c7c01e48b1` |
@@ -24,9 +24,10 @@ stehen in der `README.md`.
 
 **Tracking** läuft mit Consent Mode v2. Vor der Einwilligung 0 Cookies, danach
 `_ga`, `_ga_KSWHNGZS3P` und `CookieConsent`. Events: `kontakt_email`,
-`kontakt_telefon`, `kontakt_linkedin`, `cta_klick`, `einsatzgebiet_geoeffnet`
-und `section_view_<id>` für den Scroll-Funnel. Alle live im `/g/collect`-Payload
-nachgewiesen.
+`kontakt_telefon`, `kontakt_linkedin`, `cta_klick`, `einsatzgebiet_geoeffnet`,
+`section_view_<id>` für den Scroll-Funnel und seit 12.09. `section_time_<id>`
+für die Verweildauer je Sektion (Sekunden als `value`, identisch mit admemory.de,
+damit dessen Report hier läuft). Alle live im `/g/collect`-Payload nachgewiesen.
 
 **SEO** steht: robots.txt mit ausdrücklicher Freigabe für GPTBot, OAI-SearchBot,
 ChatGPT-User, ClaudeBot, PerplexityBot und Google-Extended. Sitemap, canonical,
@@ -80,6 +81,21 @@ for p in / /impressum /datenschutz /robots.txt /sitemap.xml /llms.txt; do
   curl -s -o /dev/null -w "%{http_code}\n" "https://www.muellerundstroebel.de$p"
 done
 ```
+
+**Vercel blockiert Pushes von Fremden im Hobby-Plan.** Das Projekt liegt im
+Team des Kunden. Solange das Repo privat war, wies Vercel jeden Commit von
+`NoahU01` mit „Deployment was blocked" ab, weil im Hobby-Plan nur der
+Kontoinhaber deployen darf. Seit das Repo public ist, geht es durch. Wird es
+wieder privat, kommt das Problem zurück; dann hilft nur Pro oder der
+Redeploy-Knopf im Dashboard.
+
+**Security Checkpoint auf der Custom Domain.** Seit 11.09. beantwortet
+`www.muellerundstroebel.de` Requests ohne JavaScript mit 403
+(`x-vercel-mitigated: challenge`). Am 12.09. blockte es auch Googlebot-UA und
+sichtbaren Chrome von der Test-IP. Für andere Besucher unklar. Prüfen unter
+Projekt → Firewall → Attack Challenge Mode und ausschalten, wenn niemand ihn
+bewusst gesetzt hat. Bis dahin für Tests die Vercel-Domain nehmen:
+`muellerundstroebel-git-main-empiria-gmb-h.vercel.app`.
 
 ## Fallen, die schon Zeit gekostet haben
 
