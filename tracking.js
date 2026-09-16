@@ -30,7 +30,7 @@
   }
 
   /* ---------------- 1. Kontaktklicks: die eigentlichen Conversions --------- */
-  document.querySelectorAll('.contact-bullet').forEach(function (a) {
+  document.querySelectorAll('.contact-bullet, .ms-contact-link').forEach(function (a) {
     var href = a.getAttribute('href') || '';
     var name = href.indexOf('mailto:') === 0 ? 'kontakt_email'
              : href.indexOf('tel:') === 0    ? 'kontakt_telefon'
@@ -38,7 +38,7 @@
              : null;
     if (!name) return;
 
-    var card = a.closest('.contact-card');
+    var card = a.closest('.contact-card, .ms-person');
     var person = card ? textOf(card.querySelector('h3')) : '';
 
     // Kein "ziel"-Parameter mit der Adresse: GA4 erkennt E-Mail-Adressen als
@@ -50,11 +50,12 @@
   });
 
   /* ---------------- 2. CTA-Klicks: Interesse, keine Conversion ------------- */
-  document.querySelectorAll('.primary-button').forEach(function (a) {
-    var label = textOf(a.querySelector('.button-text'));
+  document.querySelectorAll('.primary-button, .ms-cta').forEach(function (a) {
+    var label = textOf(a.querySelector('.button-text') || a);
     var bereich = a.closest('.nav-bar')        ? 'navigation'
-                : a.closest('.section-hero')   ? 'hero'
+                : a.closest('.section-hero, #hero') ? 'hero'
                 : a.closest('.section-ergebnis') ? 'ergebnis'
+                : a.closest('section[id]')     ? a.closest('section[id]').id
                 : 'sonstige';
     a.addEventListener('click', function () {
       track('cta_klick', { cta_label: label, cta_bereich: bereich });
@@ -62,8 +63,8 @@
   });
 
   /* ---------------- 3. Einsatzgebiete: welches Thema zieht? ---------------- */
-  document.querySelectorAll('.show-more-button').forEach(function (btn) {
-    var card = btn.closest('.card-1');
+  document.querySelectorAll('.show-more-button, [data-einsatz]').forEach(function (btn) {
+    var card = btn.closest('.card-1') || btn;
     var thema = card ? textOf(card.querySelector('h3')) : '';
     btn.addEventListener('click', function () {
       track('einsatzgebiet_geoeffnet', { thema: thema });
