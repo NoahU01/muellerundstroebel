@@ -1,7 +1,6 @@
 /* ==========================================================================
-   Müller & Ströbel – Startseite
-   Gestaltungssystem aus dem Darstellungsportfolio (Sandbox: entwicklung/varianten.css).
-   Ergänzt styles.css (Fonts, Navigation, Footer).
+   Müller & Ströbel – Entwicklungs-Varianten (nur Sandbox)
+   Baut auf ../styles.css auf (Fonts, Navigation, Buttons).
    ========================================================================== */
 :root {
   --blue: #185e8a;
@@ -78,7 +77,17 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
 .v-rv.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .v-rv { opacity: 1; transform: none; transition: none; } }
 
+/* ---------- Section-Labels (für Feedback) ---------- */
+.v-label { position: absolute; top: 1.1rem; left: 1.1rem; z-index: 3; font: 600 11px/1 var(--sans); letter-spacing: .06em; padding: .38rem .55rem; border-radius: .4rem; background: rgba(24,94,138,.1); color: var(--blue); }
+.v-navy .v-label { background: rgba(255,255,255,.12); color: #cfe3ef; }
+.hide-labels .v-label { display: none; }
 
+/* ---------- Varianten-Umschalter ---------- */
+.v-switch { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 50; display: flex; align-items: center; gap: .3rem; padding: .35rem; border-radius: 999px; background: rgba(8,38,56,.92); backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,.2); font: 500 12px/1 var(--sans); }
+.v-switch a, .v-switch button { color: #fff; padding: .55rem .75rem; border-radius: 999px; opacity: .75; }
+.v-switch a:hover, .v-switch button:hover { opacity: 1; background: rgba(255,255,255,.1); }
+.v-switch a.is-current { background: #fff; color: var(--navy); opacity: 1; font-weight: 600; }
+.v-switch span { width: 1px; height: 1rem; background: rgba(255,255,255,.2); margin: 0 .2rem; }
 
 /* ---------- Karten ---------- */
 .v-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 2rem; transition: border-color .25s, transform .25s, box-shadow .25s; }
@@ -313,10 +322,13 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
   .v-person-media { height: 14rem; }
   .v-person-media img { height: 13rem; }
   .v-modal-box { padding: 2rem 1.5rem; }
+  .v-switch { left: 50%; right: auto; transform: translateX(-50%); }
+  .v-label { top: .6rem; left: .6rem; }
 }
 
 /* ---------- Laufband (Variante C) ---------- */
 .v-marquee { position: relative; overflow: hidden; background: var(--navy-deep); color: #fff; padding: 1.3rem 0; }
+.v-marquee .v-label { top: 50%; transform: translateY(-50%); }
 .v-marquee-track { display: flex; align-items: center; gap: 2rem; width: max-content; animation: vmarq 38s linear infinite; }
 .v-marquee-track span { font-family: var(--serif); font-size: 1.7rem; font-weight: 500; white-space: nowrap; }
 .v-marquee-track i { font-style: normal; font-family: var(--serif); font-size: 1.5rem; color: var(--taupe); }
@@ -336,6 +348,8 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
   .v-hero-c .v-split { grid-template-columns: 1fr 1fr; gap: 3.5rem; }
 }
 @media (max-width: 767px) { .v-mark { white-space: normal; } }
+.v-switch a, .v-switch button { white-space: nowrap; }
+.v-marquee .v-label { display: none; }
 
 /* ==========================================================================
    Runde 2 – Feedback Daniel
@@ -580,324 +594,3 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
 .v-modal-box:has(.v-cv) { max-width: 44rem; }
 .v-stats--line { margin-top: 4.5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,.14); text-align: left; }
 .v-stats--line strong { font-size: 2.2rem; }
-
-
-/* ==========================================================================
-   Startseite – Leistungen
-   ========================================================================== */
-.ms-home .main-wrapper { overflow: hidden; }
-.ms-offers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; margin-top: 3.5rem; }
-.ms-offer { display: flex; flex-direction: column; background: #fff; border-radius: 1.4rem; overflow: hidden; cursor: pointer; transition: transform .25s, box-shadow .25s; }
-.ms-offer:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(6,55,85,.10); }
-.ms-offer-media { height: 13.5rem; padding: 1.4rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, #fbf9f7, #f1ece6); overflow: hidden; }
-.ms-offer-media .v-svg { width: 100%; height: 100%; object-fit: contain; }
-.ms-offer:nth-child(2) .ms-offer-media { align-items: flex-start; padding-bottom: 0; }
-.ms-offer:nth-child(2) .ms-offer-media .v-svg { height: auto; width: 118%; max-width: none; }
-.ms-offer-body { padding: 1.8rem 1.8rem 1.9rem; display: flex; flex-direction: column; flex: 1; }
-.ms-offer-body h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; line-height: 1.2; }
-.ms-offer-teaser { margin-top: .6rem; color: var(--muted); font-size: .92rem; }
-.ms-offer-body .v-checks { margin: 1.2rem 0 1.4rem; }
-.ms-offer-body .v-checks li { font-size: .9rem; }
-.ms-offer-body .v-link { margin-top: auto; }
-.ms-home .v-sec[id], .ms-home .v-hero[id] { scroll-margin-top: 80px; }
-.ms-home .footer { background: #fff; }
-@media (max-width: 991px) { .ms-offers { grid-template-columns: 1fr; max-width: 34rem; margin-left: auto; margin-right: auto; } }
-
-/* Startseite – Aufsichtsratsschulungen */
-.ms-ar-sketch .v-svg { max-width: 32rem; margin: 0 auto; }
-.ms-ar-formats { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2.2rem; }
-.ms-ar-format { border-top: 2px solid var(--blue); padding-top: 1.2rem; }
-.ms-ar-format + .ms-ar-format { border-top-color: var(--taupe); }
-.ms-ar-format h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; margin-bottom: .5rem; }
-.ms-ar-format p { color: var(--ink-2); font-size: .95rem; margin-bottom: 1rem; }
-.ms-ar-format .v-usp3-no { margin-bottom: .6rem; }
-
-/* ==========================================================================
-   Navigation: Dropdown „Lösungen“
-   ========================================================================== */
-.ms-dd { position: relative; display: inline-block; }
-.ms-dd-toggle { display: inline-flex; align-items: center; gap: .35rem; font-family: Poppins, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #222; cursor: pointer; }
-.ms-dd-chev { width: 12px; height: 12px; transition: transform .2s; }
-.ms-dd.is-open .ms-dd-chev { transform: rotate(180deg); }
-.ms-dd-panel { position: absolute; top: calc(100% + .25rem); left: 50%; transform: translate(-50%, 6px); width: 360px; padding: .6rem; background: #fff; border: 1px solid #e5ddd4; border-radius: .9rem; box-shadow: 0 18px 40px rgba(6,55,85,.12); opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s; z-index: 20; }
-.ms-dd.is-open .ms-dd-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.ms-dd-link { display: block; padding: .75rem .8rem; border-radius: .6rem; color: #1d1d1b; text-decoration: none; transition: background .15s; }
-.ms-dd-link:hover { background: #f4f1ee; }
-.ms-dd-link b { display: block; font-family: Lora, Georgia, serif; font-weight: 600; font-size: 15px; line-height: 1.3; }
-.ms-dd-link small { display: block; margin-top: .2rem; font-size: 12px; line-height: 1.4; color: #6b635b; }
-@media screen and (max-width: 991px) {
-  .ms-dd { display: block; }
-  .ms-dd-toggle { display: flex; width: 100%; justify-content: space-between; padding: .75rem 0; }
-  .ms-dd-panel { position: static; transform: none; width: auto; box-shadow: none; border: 0; border-left: 2px solid #e5ddd4; border-radius: 0; padding: 0 0 .5rem .75rem; display: none; opacity: 1; visibility: visible; }
-  .ms-dd.is-open .ms-dd-panel { display: block; transform: none; }
-  .ms-dd-link small { display: none; }
-}
-
-/* Footer: keine zusätzliche Linie unter dem Kontakt */
-.ms-home .footer-line-wrapper { display: none; }
-
-/* ==========================================================================
-   Unterseiten
-   ========================================================================== */
-.ms-sub-hero { padding-top: 10rem; padding-bottom: 5.5rem; }
-.ms-sub-h1 { font-size: clamp(2.3rem, 4.2vw, 3.7rem); line-height: 1.1; }
-.ms-sub-sketch .v-svg, .ms-deep-sketch .v-svg { max-width: 36rem; margin: 0 auto; }
-.ms-sub-sketch { background: var(--sand); border-radius: 1.6rem; padding: 1.6rem; }
-.ms-blocks4 { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 2rem; }
-.ms-blocks4 .v-usp3-item h3 { font-size: 1.35rem; }
-.ms-blocks4 .v-usp3-item:nth-child(4) { border-top-color: var(--navy); }
-.ms-results { text-align: left; margin-top: 3.5rem; }
-.ms-results strong { font-size: 2.2rem; }
-.ms-results span { font-size: .95rem; }
-.ms-ar-cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.2rem; margin-top: 3.5rem; }
-.ms-ar-card { background: var(--sand); border-radius: 1.4rem; padding: 2.4rem; }
-.ms-ar-card h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; }
-.ms-ar-sub { color: var(--taupe-dark); font-size: .9rem; margin: .3rem 0 1.1rem; }
-.ms-ar-card > p:not(.ms-ar-sub) { color: var(--ink-2); }
-.ms-ar-card h4 { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-dark); margin: 1.6rem 0 .2rem; }
-.ms-ar-card .v-checks { margin-bottom: 1.4rem; }
-.ms-ar-card .v-pills-row span { background: #fff; }
-.ms-more-grid { margin-top: 3rem; gap: 1.1rem; }
-.ms-more { display: flex; flex-direction: column; }
-.ms-more .v-kicker { font-size: .7rem; margin-bottom: .8rem; }
-.ms-more h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; line-height: 1.25; margin-bottom: .6rem; color: var(--ink); }
-.ms-more .v-small { margin-bottom: 1.2rem; }
-.ms-more .v-link { margin-top: auto; }
-.ms-sub .u1-viz { background: none; }
-a.ms-offer { color: inherit; text-decoration: none; }
-@media (max-width: 991px) {
-  .ms-blocks4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .ms-ar-cards { grid-template-columns: 1fr; }
-  .ms-sub-hero { padding-top: 8rem; }
-}
-@media (max-width: 767px) {
-  .ms-blocks4 { grid-template-columns: 1fr; }
-  .ms-ar-card { padding: 1.8rem; }
-  .ms-sub-sketch { padding: 1rem; }
-}
-
-/* Footer dunkel (wie in den Entwicklungs-Varianten) */
-.footer { background: #082638 !important; color: rgba(255,255,255,.75); }
-.footer .padding-section-medium { padding-top: 1.6rem; padding-bottom: 1.6rem; }
-.footer-name { color: rgba(255,255,255,.75); font-family: Poppins, Arial, sans-serif; font-size: .85rem; }
-.footer .footer-link { color: rgba(255,255,255,.75); font-size: .85rem; }
-.footer .footer-link:hover { color: #fff; opacity: 1; }
-.footer-line-wrapper { display: none; }
-.ms-dd-link--ar { margin-top: .35rem; border-top: 1px solid #efe9e3; border-radius: 0 0 .6rem .6rem; padding-top: .9rem; }
-
-/* Aufsichtsrat: PDF-Button in den Formatkarten */
-.ms-ar-cta { margin-top: 1.6rem; }
-.ms-ar-card { display: flex; flex-direction: column; }
-.ms-ar-card .ms-ar-cta { margin-top: auto; padding-top: 1.6rem; }
-
-/* ==========================================================================
-   Weitere Leistungen: dunkel, kompakt, Hover-Ebene (schließt an den Footer an)
-   ========================================================================== */
-.ms-rel-sec { background: #082638; color: #fff; padding: 4.5rem 0 3.5rem; }
-.ms-rel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
-.ms-rel-head .v-kicker { color: #cbbcae; margin: 0; order: 2; }
-.ms-rel-head h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: #fff; margin: 0; }
-.ms-rel-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
-.ms-rel { position: relative; display: block; overflow: hidden; min-height: 9.5rem; padding: 1.5rem 1.6rem; border-radius: 1rem; border: 1.5px solid rgba(255,255,255,.22); color: #fff; text-decoration: none; transition: border-color .2s; }
-.ms-rel:hover, .ms-rel:focus-visible { border-color: transparent; }
-.ms-rel-face .v-kicker { font-size: .68rem; color: #cbbcae; margin-bottom: .7rem; }
-.ms-rel-face .v-kicker::before { width: 1.2rem; }
-.ms-rel-face h3 { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; line-height: 1.28; color: #fff; margin: 0; }
-.ms-rel-hover { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; gap: .8rem; padding: 1.5rem 1.6rem; background: #185e8a; transform: translateY(101%); transition: transform .32s ease; }
-.ms-rel-hover p { margin: 0; font-size: .92rem; line-height: 1.55; color: #fff; }
-.ms-rel-more { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; font-weight: 600; color: #fff; }
-.ms-rel-more svg { width: .9rem; height: .9rem; }
-.ms-rel:hover .ms-rel-hover, .ms-rel:focus-visible .ms-rel-hover { transform: translateY(0); }
-.ms-rel-sec + * { border-top: 0; }
-.ms-sub .footer { border-top: 1px solid rgba(255,255,255,.08); }
-@media (hover: none) {
-  .ms-rel { min-height: 0; }
-  .ms-rel-hover { position: static; transform: none; background: transparent; padding: .8rem 0 0; }
-  .ms-rel-hover p { color: rgba(255,255,255,.75); font-size: .88rem; }
-}
-@media (max-width: 991px) {
-  .ms-rel-grid { grid-template-columns: 1fr; }
-  .ms-rel-head { flex-direction: column; gap: .4rem; }
-  .ms-rel-head .v-kicker { order: 0; }
-}
-
-/* ==========================================================================
-   MOBIL-OPTIMIERUNG
-   ========================================================================== */
-
-/* ---------- Burger-Menü (Tablet + Handy) ---------- */
-@media screen and (max-width: 991px) {
-  .navigation-wrapper { padding: .25rem 1.5rem 1.5rem; max-height: calc(100vh - 5rem); overflow-y: auto; box-shadow: 0 24px 40px rgba(8,38,56,.12); }
-  .nav-open .navigation-wrapper { display: flex; flex-direction: column; }
-  /* Ebene 1: Hauptpunkte */
-  .navigation-wrapper > .menu-text,
-  .navigation-wrapper > .ms-dd > .ms-dd-toggle {
-    display: flex; align-items: center; justify-content: space-between; width: 100%;
-    padding: 1rem 0; border-bottom: 1px solid #efe9e3;
-    font-family: Poppins, Arial, sans-serif; font-size: 1.12rem; font-weight: 500; line-height: 1.3; color: #1d1d1b; opacity: 1;
-  }
-  .navigation-wrapper > .menu-text:hover, .ms-dd-toggle:hover { opacity: 1; color: #185e8a; }
-  .ms-dd-chev { width: 16px; height: 16px; }
-  .ms-dd.is-open > .ms-dd-toggle { color: #185e8a; border-bottom-color: transparent; }
-  /* Ebene 2: Leistungen */
-  .ms-dd-panel { border-left: 2px solid #185e8a; margin: 0 0 .6rem; padding: .15rem 0 .15rem 1rem; }
-  .ms-dd-link { padding: .6rem 0; border-radius: 0; }
-  .ms-dd-link:hover { background: none; }
-  .ms-dd-link b { font-family: Poppins, Arial, sans-serif; font-size: .95rem; font-weight: 400; line-height: 1.35; color: #3c3b3a; }
-  .ms-dd-link--ar { margin-top: 0; border-top: 0; padding-top: .6rem; }
-  .ms-dd.is-open { border-bottom: 1px solid #efe9e3; }
-  /* Entwicklungs-Menü (nur Sandbox) dezent */
-  .navigation-wrapper .dev-dd-toggle { font-size: .82rem; color: #8a8783; padding: .9rem 0 .4rem; }
-  /* Kontakt-Button volle Breite */
-  .navigation-wrapper > .primary-button.navigation { display: block; width: 100%; margin: 1.25rem 0 0; padding: 1rem 1.25rem; border-radius: 999px; text-align: center; }
-  .navigation-wrapper > .primary-button.navigation .button-text { font-size: .95rem; }
-}
-
-/* ---------- Inhalte (Handy) ---------- */
-@media screen and (max-width: 767px) {
-  body.v-page { font-size: 14.5px; }
-  .v-wrap { padding: 0 1.25rem; }
-  .v-sec { padding: 3.75rem 0; }
-  .v-hero, .v-hero-d2, .ms-sub-hero { padding: 7rem 0 3.25rem; }
-
-  /* Typografie */
-  .v-kicker { font-size: .7rem; margin-bottom: .75rem; }
-  .v-kicker::before { width: 1.2rem; }
-  .v-h1, .v-hero-a .v-h1, .v-hero-d2 .v-h1 { font-size: 2.15rem; line-height: 1.1; }
-  .ms-sub-h1, .v-h1--about { font-size: 1.95rem; line-height: 1.12; }
-  .v-h2 { font-size: 1.65rem; line-height: 1.18; }
-  .v-h2--xl { font-size: 1.9rem; }
-  .v-lead { font-size: 1rem; line-height: 1.6; }
-  .v-lead[style*="margin-top"] { margin-top: .9rem !important; }
-  .v-small { font-size: .88rem; }
-  .v-checks li { font-size: .9rem; padding-left: 1.6rem; }
-
-  /* Buttons + Pills */
-  .v-btns { flex-direction: column; align-items: stretch; gap: .6rem; }
-  .v-btns[style*="margin-top"] { margin-top: 1.75rem !important; }
-  .v-btn { justify-content: center; padding: .95rem 1.25rem; font-size: .92rem; }
-  .v-pills-row { gap: .4rem; }
-  .v-pills-row span { font-size: .76rem; padding: .35rem .75rem; }
-  .v-pills-row--sm span { font-size: .74rem; padding: .3rem .65rem; }
-
-  /* Hero */
-  .v-split { gap: 2.25rem; }
-  .d2-amp .v-svg { max-width: 15rem; }
-  .ms-sub-sketch { padding: .9rem; border-radius: 1.1rem; }
-
-  /* Ausgangslage */
-  .v-problem-head { text-align: left; }
-  .v-darkcard { padding: 1.5rem 1.4rem; border-radius: 1.1rem; font-size: .92rem; }
-
-  /* Drei/vier Spalten */
-  .v-usp3 { gap: 1.75rem; margin-top: 2.25rem; }
-  .v-usp3-item { padding-top: 1rem; }
-  .v-usp3-item h3, .ms-blocks4 .v-usp3-item h3 { font-size: 1.25rem; margin-bottom: .45rem; }
-  .v-usp3-item p { font-size: .92rem; }
-
-  /* Lösungen-Karten */
-  .ms-offers { margin-top: 2.25rem; gap: 1rem; }
-  .ms-offer-media { height: 10.5rem; padding: 1rem; }
-  .ms-offer-body { padding: 1.4rem 1.35rem 1.5rem; }
-  .ms-offer-body h3 { font-size: 1.25rem; }
-  .ms-offer-body .v-checks { margin: 1rem 0 1.1rem; }
-
-  /* Grafiken immer nach dem Text */
-  .ms-ar-sketch, .ms-deep-sketch { order: 2; }
-  #aufsichtsrat .ms-ar-sketch .v-svg { max-width: 100%; }
-  .ms-ar-formats { gap: 1.4rem; margin-top: 1.6rem; }
-  .ms-ar-format h3 { font-size: 1.25rem; }
-  .ms-ar-format p { font-size: .92rem; }
-
-  /* Vorgehen: Punkt links, Text rechts */
-  .v-steps { gap: 1.4rem; margin-top: 2.25rem; }
-  .v-step { display: grid; grid-template-columns: 2.5rem 1fr; column-gap: 1rem; padding-right: 0; }
-  .v-step-dot { grid-row: span 2; width: 2.5rem; height: 2.5rem; margin: 0; font-size: .8rem; }
-  .v-step h3 { margin: .35rem 0 .25rem; }
-  .v-step p { font-size: .88rem; }
-  .v-stats, .v-stats--line, .ms-results { gap: 1.25rem; margin-top: 2.5rem; padding-top: 2rem; }
-  .v-stats strong, .v-stats--line strong, .ms-results strong { font-size: 1.65rem; }
-  .v-stats span { font-size: .86rem; margin-top: .25rem; }
-
-  /* Umsetzungsplan-Mockup */
-  .v-doc-body { padding: 1.1rem 1.1rem 1.2rem; }
-  .v-doc-row { font-size: .8rem; gap: .6rem; padding: .6rem 0; }
-  .v-doc-row b { white-space: nowrap; font-size: 9px; padding: .3rem .4rem; }
-  .v-doc-bar span { font-size: .7rem; }
-
-  /* Akkordeon */
-  .v-acc-btn { padding: 1rem 1.1rem; font-size: .92rem; gap: .75rem; }
-  .v-acc-body p { padding: 0 1.1rem 1.1rem; font-size: .9rem; }
-
-  /* Kontakt: Portrait links, Daten rechts */
-  .v-kontakt-note { font-size: .88rem; }
-  .v-kpersons { gap: 1.5rem; }
-  .v-kperson { display: grid; grid-template-columns: 5.5rem 1fr; column-gap: 1.1rem; align-items: center; text-align: left; }
-  .v-kperson .v-circle { width: 5.5rem; height: 5.5rem; border-width: 3px; grid-row: span 3; align-self: start; }
-  .v-kperson h3 { margin-top: 0; font-size: 1.15rem; }
-  .v-kperson .v-krole { font-size: .8rem; margin: .1rem 0 .1rem; }
-  .v-kperson .v-clines { align-items: flex-start; margin-top: .5rem; gap: .3rem; font-size: .84rem; }
-
-  /* Aufsichtsrat-Formate */
-  .ms-ar-cards { margin-top: 2.25rem; gap: 1rem; }
-  .ms-ar-card { padding: 1.5rem 1.35rem; border-radius: 1.1rem; }
-  .ms-ar-card h3 { font-size: 1.45rem; }
-  .ms-ar-card > p:not(.ms-ar-sub) { font-size: .92rem; }
-  .ms-ar-card h4 { margin-top: 1.2rem; }
-
-  /* Über uns */
-  .u2b-row, .u2b-row.is-flip { padding: 2.5rem 0; gap: 1.5rem; }
-  .u2b-media { justify-content: flex-start; }
-  .v-circle--xxl { width: 8.5rem; height: 8.5rem; border-width: 4px; }
-  .u2b-role { font-size: .9rem; margin: .2rem 0 1.25rem; }
-  .u2b-cols { gap: 1.25rem; }
-  .v-bio { font-size: .9rem; }
-  .u1-viz .v-svg { max-width: 22rem; }
-
-  /* Pop-ups */
-  .v-modal { padding: .75rem; align-items: flex-end; }
-  .v-modal-box { padding: 1.75rem 1.25rem 1.5rem; max-height: 88vh; border-radius: 1.2rem 1.2rem .8rem .8rem; }
-  .v-modal-box h3 { font-size: 1.45rem; }
-  .v-modal-box p, .v-modal-box li { font-size: .9rem; }
-
-  /* Footer */
-  .footer .footer-content { gap: .9rem; }
-}
-@media screen and (max-width: 991px) {
-  .nav-open .navigation-wrapper { align-items: stretch; }
-  .navigation-wrapper > .ms-dd, .navigation-wrapper > .dev-dd { display: block; width: 100%; }
-  .navigation-wrapper .dev-dd-toggle { justify-content: space-between; width: 100%; }
-}
-
-/* ===== Leistungen Startseite: vier Themen mit Skizze ===== */
-.ms-lcards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.5rem; margin-top: 3.5rem; }
-.ms-lcard { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); background: var(--sand); border-radius: 1.2rem; overflow: hidden; color: var(--ink); transition: transform .25s, box-shadow .25s; }
-.ms-lcard:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(6,55,85,.10); }
-.ms-lcard-media { min-height: 16rem; padding: 1.6rem 1rem 1.6rem 1.6rem; display: flex; align-items: center; justify-content: center; }
-.ms-lcard-media .v-svg { width: 100%; height: 100%; max-height: 15rem; }
-.ms-lcard-body { display: flex; flex-direction: column; justify-content: center; padding: 1.8rem 1.8rem 1.8rem .8rem; }
-.ms-lcard-body h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.25; margin-bottom: .6rem; hyphens: auto; }
-.ms-lcard-body p { font-size: .9rem; color: var(--ink-2); margin-bottom: 1.1rem; }
-.ms-lcard:hover .v-link { color: var(--blue); }
-@media (max-width: 1199px) { .ms-lcards { grid-template-columns: 1fr; max-width: 44rem; margin-left: auto; margin-right: auto; } }
-@media (max-width: 767px) { .ms-lcards { margin-top: 2.5rem; gap: 1.1rem; } .ms-lcard { grid-template-columns: 1fr; } .ms-lcard-media { min-height: 0; height: 12rem; padding: 1.4rem 1.4rem .2rem; } .ms-lcard-body { padding: 1.1rem 1.4rem 1.5rem; } }
-
-/* ===== Download-Karte (Lösungsseiten) ===== */
-.ms-dl { margin-top: clamp(3.5rem, 6vw, 5.5rem); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; background: var(--navy-deep); color: #fff; border-radius: 1.4rem; padding: clamp(2.2rem, 4.5vw, 3.8rem) clamp(1.6rem, 5vw, 4.5rem); position: relative; overflow: hidden; }
-.ms-dl::before { content: ""; position: absolute; inset: 0; background: radial-gradient(28rem 22rem at 18% 50%, rgba(24,94,138,.55), transparent 70%); pointer-events: none; }
-.ms-dl > * { position: relative; }
-.ms-dl-visual { position: relative; height: clamp(17rem, 30vw, 22rem); }
-.ms-dl-page { position: absolute; top: 50%; left: 50%; height: 100%; width: auto; aspect-ratio: 210 / 297; object-fit: cover; border-radius: .35rem; box-shadow: 0 24px 50px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.14); transition: transform .35s ease; }
-.ms-dl-page--back { transform: translate(-28%, -50%) rotate(6deg); opacity: .96; }
-.ms-dl-page--front { transform: translate(-72%, -50%) rotate(-3deg); }
-.ms-dl:hover .ms-dl-page--back { transform: translate(-18%, -52%) rotate(8deg); }
-.ms-dl:hover .ms-dl-page--front { transform: translate(-80%, -51%) rotate(-5deg); }
-.ms-dl .v-kicker { color: #cbbcae; }
-.ms-dl-h { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 600; line-height: 1.15; margin: .8rem 0 1rem; }
-.ms-dl-lead { color: rgba(255,255,255,.8); font-size: 1rem; margin-top: 1.2rem; max-width: 34rem; }
-.ms-dl-lead b { color: #fff; font-weight: 500; }
-.ms-dl-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 1.8rem; }
-.ms-dl-meta span { border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: .35rem .85rem; font-size: .8rem; color: rgba(255,255,255,.85); }
-.ms-dl .v-btn svg { transform: none; }
-@media (max-width: 991px) { .ms-dl { grid-template-columns: 1fr; } .ms-dl-visual { height: 16rem; } }
-@media (max-width: 767px) { .ms-dl { padding: 2rem 1.4rem; border-radius: 1.1rem; } .ms-dl-visual { height: 13rem; } .ms-dl-h { font-size: 1.65rem; } .ms-dl .v-btn { width: 100%; } }

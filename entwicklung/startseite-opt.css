@@ -1,0 +1,107 @@
+/* Startseite optimieren – Varianten A/B/C (nur Entwicklung) */
+.ms-optbar { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 70; display: flex; align-items: center; gap: .35rem; padding: .4rem .45rem .4rem 1rem; background: var(--navy-deep); color: #fff; border-radius: 999px; font: 500 .78rem/1 var(--sans); box-shadow: 0 12px 30px rgba(8,38,56,.3); border: 1px solid rgba(255,255,255,.25); white-space: nowrap; }
+.ms-optbar span { margin-right: .5rem; opacity: .8; }
+.ms-optbar a { padding: .45rem .7rem; border-radius: 999px; color: #fff; }
+.ms-optbar a:hover { background: rgba(255,255,255,.12); }
+.ms-optbar a.is-cur { background: #fff; color: var(--navy); }
+
+.ms-more-link { margin-top: 1.8rem; }
+
+/* ---------- A: Tabs */
+.ms-tabs { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+.ms-tablist { display: flex; flex-direction: column; margin-top: 2.2rem; border-top: 1px solid var(--line); }
+.ms-tab { display: flex; gap: 1.1rem; text-align: left; width: 100%; padding: 1.15rem 0; border-bottom: 1px solid var(--line); background: none; cursor: pointer; font: inherit; color: var(--ink); }
+.ms-tab-no { font-family: var(--serif); font-size: .95rem; color: var(--taupe); padding-top: .15rem; min-width: 1.6rem; }
+.ms-tab-body b { display: block; font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--muted); transition: color .2s; }
+.ms-tab-body span { display: block; max-height: 0; overflow: hidden; opacity: 0; font-size: .93rem; color: var(--ink-2); transition: max-height .35s ease, opacity .3s, margin .3s; }
+.ms-tab:hover .ms-tab-body b { color: var(--ink); }
+.ms-tab.is-active .ms-tab-body b { color: var(--ink); }
+.ms-tab.is-active .ms-tab-no { color: var(--blue); }
+.ms-tab.is-active .ms-tab-body span { max-height: 8rem; opacity: 1; margin-top: .45rem; }
+.ms-tabs-visual { display: grid; }
+.ms-tabpanel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .35s, transform .35s, visibility .35s; }
+.ms-tabpanel.is-active { opacity: 1; visibility: visible; transform: none; }
+.ms-tabvisual { display: flex; align-items: center; justify-content: center; min-height: 26rem; }
+.ms-tabvisual .v-svg { width: 100%; max-width: 30rem; height: auto; }
+.ms-tabvisual--doc .v-doc { width: 100%; max-width: 30rem; }
+.ms-tabvisual--navy { flex-direction: column; align-items: stretch; justify-content: center; gap: 2rem; background: var(--navy-deep); color: #fff; border-radius: 1.2rem; padding: 2.6rem; }
+.ms-bigstats { display: grid; gap: 1.4rem; }
+.ms-bigstats div { display: flex; align-items: baseline; gap: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.14); }
+.ms-bigstats strong { font-family: var(--serif); font-size: 2.2rem; font-weight: 500; min-width: 9.5rem; white-space: nowrap; line-height: 1.1; }
+.ms-bigstats span { font-size: .9rem; color: rgba(255,255,255,.72); }
+.ms-quote { font-family: var(--serif); font-size: 1.3rem; font-style: italic; line-height: 1.4; color: #fff; }
+.ms-tabcap { margin-top: 1rem; text-align: center; font-size: .88rem; color: var(--muted); }
+
+/* ---------- B: USP-Liste + Landkarte + Beleg-Leiste */
+.ms-split-b { align-items: center; }
+.ms-uspstack { margin-top: 2.2rem; display: grid; gap: 1.6rem; }
+.ms-uspstack-item { display: grid; grid-template-columns: 2rem 1fr; column-gap: 1rem; }
+.ms-uspstack-item .v-usp3-no { grid-row: span 2; font-family: var(--serif); color: var(--taupe); padding-top: .2rem; }
+.ms-uspstack-item h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: .3rem; }
+.ms-uspstack-item p { color: var(--ink-2); font-size: .95rem; }
+.ms-mapcard .v-svg { width: 100%; height: auto; }
+.ms-mapcard--light { background: var(--sand); border-radius: 1.2rem; padding: 1.5rem; }
+.ms-proofbar { margin-top: 4.5rem; display: flex; align-items: center; gap: 2.5rem; background: var(--navy-deep); color: #fff; border-radius: 1.2rem; padding: 2rem 2.6rem; }
+.ms-proofbar-stats { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2rem; }
+.ms-proofbar-stats strong { display: block; font-family: var(--serif); font-size: 1.9rem; font-weight: 500; line-height: 1.1; }
+.ms-proofbar-stats span { display: block; margin-top: .35rem; font-size: .85rem; color: rgba(255,255,255,.7); }
+.ms-proofbar .v-btn { flex-shrink: 0; }
+
+/* ---------- C */
+.ms-usp3-links .v-link { margin-top: 1rem; }
+.ms-split-c { margin-top: 3.5rem; align-items: center; }
+.ms-navysteps { list-style: none; display: grid; gap: 0; padding: 0; margin: 0; }
+.ms-navysteps li { display: flex; gap: 1.2rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.ms-navysteps li:first-child { padding-top: 0; }
+.ms-navysteps span { font-family: var(--serif); color: #8fc1e0; font-size: 1rem; min-width: 1.8rem; padding-top: .1rem; }
+.ms-navysteps li:last-child span { color: #cbbcae; }
+.ms-navysteps b { display: block; font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: .25rem; }
+.ms-navysteps p { font-size: .92rem; color: rgba(255,255,255,.68); }
+.ms-cstats { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.14); }
+
+/* ---------- Pop-up-Inhalte */
+.ms-mstep { list-style: none; padding: 0; margin: 1.4rem 0; }
+.ms-mstep li { display: flex; gap: 1rem; padding: .9rem 0; border-top: 1px solid var(--line); }
+.ms-mstep span { font-family: var(--serif); color: var(--blue); min-width: 1.6rem; }
+.ms-mstep b { display: block; font-weight: 600; margin-bottom: .15rem; }
+.v-modal-box .ms-mstep p { margin: 0; font-size: .92rem; }
+.ms-mstats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; background: var(--navy-deep); color: #fff; border-radius: 1rem; padding: 1.4rem; margin: 1.4rem 0; }
+.ms-mstats strong { display: block; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; }
+.ms-mstats span { display: block; font-size: .75rem; color: rgba(255,255,255,.7); margin-top: .2rem; line-height: 1.35; }
+.v-modal-sketch .v-svg { width: 100%; height: auto; }
+
+@media (max-width: 991px) {
+  .ms-tabs { grid-template-columns: 1fr; gap: 2rem; }
+  .ms-tabvisual { min-height: 0; }
+  .ms-proofbar { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
+}
+@media (max-width: 767px) {
+  .ms-optbar span { display: none; }
+  .ms-tab-body b { font-size: 1.15rem; }
+  .ms-tabvisual--navy { padding: 1.8rem; }
+  .ms-bigstats strong { font-size: 1.7rem; min-width: 5.5rem; }
+  .ms-proofbar { padding: 1.8rem; margin-top: 3rem; }
+  .ms-proofbar-stats { grid-template-columns: 1fr; gap: 1.1rem; }
+  .ms-mstats { grid-template-columns: 1fr; }
+  .ms-split-c { margin-top: 2.5rem; }
+}
+
+/* Header mit Landkarte (B, C) */
+.ms-hero-map { display: flex; justify-content: center; }
+.ms-hero-map .v-svg { width: 100%; max-width: 34rem; height: auto; }
+.ms-doccard .v-doc { max-width: 32rem; margin: 0 auto; }
+.v-navy .ms-doccard .v-doc { color: var(--ink); }
+@media (max-width: 767px) { .ms-hero-map .v-svg { max-width: 22rem; } }
+.ms-hero-map .v-svg { width: 85%; max-width: 28.9rem; }
+.ms-ampcard { display: flex; justify-content: center; }
+.ms-ampcard svg { width: 100%; max-width: 32rem; height: auto; }
+@media (max-width: 767px) { .ms-hero-map .v-svg { max-width: 18.7rem; } }
+
+/* B: Band „Wir müssen nicht abgeholt werden“ */
+.ms-wege { margin-top: 4.5rem; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; background: var(--navy-deep); color: #fff; border-radius: 1.2rem; padding: clamp(2rem, 4vw, 3.2rem); }
+.ms-wege .v-kicker { color: #cbbcae; }
+.ms-wege-h { font-family: var(--serif); font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 600; line-height: 1.2; margin: .8rem 0 1rem; }
+.ms-wege-text p:last-child { color: rgba(255,255,255,.78); }
+.ms-wege .v-checks { margin: 0 0 1.8rem; }
+.ms-wege .v-checks li::before { background-color: var(--taupe); }
+@media (max-width: 991px) { .ms-wege { grid-template-columns: 1fr; margin-top: 3rem; } }
