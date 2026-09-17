@@ -348,7 +348,9 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
 .v-btn--pill { border-radius: 999px; padding: 1rem 1.7rem; }
 
 /* Pills statt Schrägstriche */
-.v-pills-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+/* align-content: Pills behalten ihre Höhe, auch wenn der Container höher ist
+   als die Zeilen brauchen (in den Karten durch die geteilten subgrid-Zeilen). */
+.v-pills-row { display: flex; flex-wrap: wrap; align-content: flex-start; gap: .5rem; }
 .v-pills-row span { display: inline-flex; align-items: center; padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--line); background: #fff; font-size: .85rem; font-weight: 500; color: var(--ink-2); }
 .v-pills-row--sm span { padding: .35rem .8rem; font-size: .8rem; }
 
