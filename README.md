@@ -89,6 +89,13 @@ den Tag und der Consent Mode läuft nie an.
 
 Vor der Einwilligung: `/g/collect` antwortet **204**, `page.cookies()` ist leer.
 
+**Interner Traffic** wird am Gerät markiert, nicht an der IP: einmal
+`?internal=1` aufrufen, dann sendet dieser Browser dauerhaft
+`traffic_type: internal`, `?internal=0` hebt es auf. Der GA4-Datenfilter
+„Internal Traffic" muss auf Aktiv stehen. `gtag('config')` läuft außerdem nur
+auf `(www.)muellerundstroebel.de`, damit Vercel-Previews und lokale Tests
+nichts in die Property schicken.
+
 | Event | löst aus bei | Parameter |
 |---|---|---|
 | `kontakt_email` | Klick auf eine E-Mail-Adresse | `person`, `ziel` |
