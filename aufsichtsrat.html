@@ -19,8 +19,48 @@
   });
   gtag('set', 'ads_data_redaction', true);
   gtag('set', 'url_passthrough', true);
+
+  /* Interner Traffic wird am GERÄT markiert, nicht an der IP: wer aus
+     wechselnden Netzen arbeitet, müsste sonst jedes Netz nachtragen. Einmal
+     ?internal=1 aufrufen, und dieser Browser zählt dauerhaft als intern;
+     ?internal=0 hebt es auf. Der GA4-Datenfilter "Internal Traffic" schließt
+     Ereignisse mit traffic_type=internal aus, er muss auf AKTIV stehen. */
+  var msSchalter = null;
+  try {
+    var msWert = new URLSearchParams(location.search).get('internal');
+    if (msWert === '1') { localStorage.setItem('ms_internal', '1'); msSchalter = 'an'; }
+    if (msWert === '0') { localStorage.removeItem('ms_internal'); msSchalter = 'aus'; }
+  } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+  var msIntern = false;
+  try { msIntern = localStorage.getItem('ms_internal') === '1'; } catch (e) {}
+  if (msIntern) gtag('set', { traffic_type: 'internal' });
+
   gtag('js', new Date());
-  gtag('config', 'G-KSWHNGZS3P');
+
+  /* GA4 nur auf der Produktionsdomain. Ohne diese Sperre schicken die
+     Vercel-Previews (*.vercel.app) und lokale Tests ihre Aufrufe in dieselbe
+     Property und verfälschen die Zahlen dauerhaft. */
+  if (/^(www\.)?muellerundstroebel\.de$/.test(location.hostname)) {
+    gtag('config', 'G-KSWHNGZS3P');
+  }
+
+  if (msSchalter) {
+    var msZeigen = function () {
+      var el = document.createElement('div');
+      el.textContent = msSchalter === 'an'
+        ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+        : 'Markierung entfernt, dieses Gerät zählt wieder mit';
+      el.setAttribute('role', 'status');
+      el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;'
+        + 'background:#185e8a;color:#fff;border-radius:.75rem;padding:12px 20px;'
+        + 'font:14px/1.4 Poppins,system-ui,sans-serif;max-width:90vw;text-align:center;'
+        + 'box-shadow:0 8px 28px rgba(6,55,85,.35)';
+      document.body.appendChild(el);
+      setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+      setTimeout(function () { el.remove(); }, 4600);
+    };
+    if (document.body) msZeigen(); else document.addEventListener('DOMContentLoaded', msZeigen);
+  }
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHNGZS3P" data-cookieconsent="ignore"></script>
 <title>Schulungen f&uuml;r Aufsichtsr&auml;te | M&uuml;ller &amp; Str&ouml;bel</title>
