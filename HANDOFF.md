@@ -1,15 +1,40 @@
 # Handoff: muellerundstroebel.de
 
-Stand 12.09.2026. Die Seite ist live, das Tracking läuft, die Rechtstexte sind
-aktualisiert. Dieses Dokument beschreibt den Stand, die offenen Punkte und die
-Fallen, die schon Zeit gekostet haben.
+Stand 12.09.2026 (Branch-Regel ergänzt 17.09.2026). Die Seite ist live, das
+Tracking läuft, die Rechtstexte sind aktualisiert. Dieses Dokument beschreibt
+den Stand, die offenen Punkte und die Fallen, die schon Zeit gekostet haben.
+
+## Branch-Regel: `daniel` = Entwicklung, `main` = live
+
+`daniel` ist der dauerhafte Entwicklungsbranch (ersetzt die frühere lokale
+Sandbox `cowork-vorschau/`, die entfällt). Alles, was Daniel dort mit Claude
+erarbeitet, landet zunächst auf `daniel` und ist über die Vercel-Preview
+`muellerundstroebel-git-daniel-empiria-gmb-h.vercel.app` sichtbar – ohne
+Wirkung auf die Live-Seite.
+
+**Regel, die IMMER gilt, unabhängig vom sonstigen Vorgehen:** Alle Seiten und
+Dateien, die im Navigationspunkt „/ Entwicklung /" (Dropdown im Header,
+sichtbar nur auf `daniel`) verlinkt sind, werden **niemals** nach `main`
+übernommen. Das betrifft konkret:
+
+- den kompletten Ordner `entwicklung/` (Varianten A–D, Unterseiten-Entwürfe)
+- den kompletten Ordner `archiv/` (alte Startseiten-Stände)
+- den `<!-- ENTWICKLUNG:START -->` … `<!-- ENTWICKLUNG:END -->`-Block selbst,
+  der das Dropdown auf allen Seiten einbindet
+
+Wenn Daniel eine fertige Änderung freigibt („das will ich jetzt auf main
+pushen"), wird **nur diese konkrete Änderung** nach `main` übernommen (z. B.
+eine überarbeitete Unterseite) – der Entwicklungs-Block und die Ordner
+`entwicklung/`/`archiv/` bleiben dabei immer außen vor, auch wenn sie
+technisch im selben Commit auf `daniel` stehen. Im Zweifel: Diff vor dem Merge
+auf `main` gegenprüfen, dass keine dieser drei Dinge mitkommt.
 
 ## Wo liegt was
 
 | | |
 |---|---|
 | Live | https://www.muellerundstroebel.de (kanonisch mit `www`, Apex leitet per 308) |
-| Repo | https://github.com/NoahU01/muellerundstroebel (public, seit 12.09.), Branch `main` |
+| Repo | https://github.com/NoahU01/muellerundstroebel (public, seit 12.09.), `main` = live, `daniel` = Entwicklung |
 | Hosting | Vercel, Team `empiria-gmb-h` (Hobby), Deployment automatisch bei jedem Push auf `main` |
 | DNS | IONOS. Apex A auf Vercel, `www` CNAME auf Vercel |
 | GA4 | `G-KSWHNGZS3P` |
