@@ -16,10 +16,45 @@ def apply(m, x, y):
 
 
 def load(path):
+    """Objekte des PDFs. Folgt der xref-Kette, damit bei inkrementell
+    aktualisierten Dateien die neueste Fassung eines Objekts gilt."""
     data = open(path, "rb").read()
     objs = {}
     for m in re.finditer(rb"(\d+)\s+0\s+obj(.*?)endobj", data, re.S):
         objs[int(m.group(1))] = m.group(2)
+
+    try:
+        pos = int(re.findall(rb"startxref\s+(\d+)", data)[-1])
+    except IndexError:
+        return objs
+    gesehen = set()
+    aktuell = {}
+    while pos and pos not in gesehen:
+        gesehen.add(pos)
+        if data[pos:pos + 4] != b"xref":
+            break
+        i = pos + 4
+        while True:
+            m = re.match(rb"\s*(\d+)\s+(\d+)\s*\n", data[i:i + 40])
+            if not m:
+                break
+            start, anzahl = int(m.group(1)), int(m.group(2))
+            i += m.end()
+            for k in range(anzahl):
+                em = re.match(rb"(\d{10}) (\d{5}) ([nf])", data[i:i + 20])
+                i += 20
+                if em and em.group(3) == b"n":
+                    aktuell.setdefault(start + k, int(em.group(1)))
+        tm = re.search(rb"trailer\s*<<(.*?)>>", data[i:i + 2000], re.S)
+        prev = re.search(rb"/Prev\s+(\d+)", tm.group(1)) if tm else None
+        pos = int(prev.group(1)) if prev else None
+
+    for num, off in aktuell.items():
+        m = re.match(rb"\s*\d+\s+0\s+obj", data[off:off + 40])
+        if m:
+            ende = data.find(b"endobj", off)
+            if ende > off:
+                objs[num] = data[off + m.end():ende]
     return objs
 
 
@@ -143,8 +178,8 @@ def parse_page(objs, fonts, page_obj, page_height=842.0):
                 offen["farbe"] = fill
                 offen["art"] = "fuellung"
                 rects.append(offen); offen = None
-            elif op in ("W", "W*"):
-                offen = None   # Clip-Pfad, keine sichtbare Flaeche
+            elif op in ("W", "W*", "n", "S", "s"):
+                offen = None   # Clip-Pfad, verworfen oder nur Kontur: keine Flaeche
             elif op == "Do" and pending:
                 px, py = apply(ctm, 0, 0)
                 sx, sy = apply(ctm, 1, 1)
