@@ -68,9 +68,6 @@ body {
                text-transform: uppercase; line-height: 1; }
 .seite--navy .kopf__marke { color: #fff; top: 14.8pt; letter-spacing: .18em; }
 
-.kopf-linie { position: absolute; left: var(--rand); top: 95.7pt;
-              width: var(--satzbreite); height: .8pt; background: var(--linie); }
-
 /* ---------- Kicker mit Strich ---------- */
 .kicker { font-size: 8pt; font-weight: 600; letter-spacing: .18em;
           text-transform: uppercase; color: var(--taupe-dunkel);
