@@ -263,16 +263,17 @@ body {
 /* ---------- Ablauf (nummerierte Schritte im Rahmen) ----------
    Masse aus dem Original: Rahmen 273,7 pt breit, Kreise 22,4 pt,
    Schrittabstand 44 pt, Verbindungslinie 1,7 pt. */
-.ablauf { margin-top: 26pt; width: 273.7pt; border: .8pt solid var(--linie);
-          border-radius: 8pt; padding: 16pt 0 14pt; position: relative; }
-.ablauf__dauer { padding-left: 24.9pt; font-size: 6.6pt; font-weight: 600;
+.ablauf { position: absolute; width: 273.7pt; height: 251.2pt;
+          border: .8pt solid var(--linie); border-radius: 8pt;
+          padding: 22.1pt 0 0; }
+.ablauf__dauer { padding-left: 24.2pt; font-size: 6.6pt; font-weight: 600;
                  letter-spacing: .12em; text-transform: uppercase;
                  color: var(--taupe-dunkel); line-height: 1; }
 .ablauf__schritte { margin-top: 13pt; position: relative; }
-.ablauf__schritte::before { content: ""; position: absolute; left: 36.7pt; top: 11.2pt;
+.ablauf__schritte::before { content: ""; position: absolute; left: 36pt; top: 11.2pt;
                             bottom: 11.2pt; width: 1.7pt; background: var(--blau); }
 .schritt { display: flex; align-items: flex-start; gap: 10.4pt;
-           padding-left: 26.3pt; height: 44pt; }
+           padding-left: 25.6pt; height: 44pt; }
 .schritt__nr { flex: none; width: 22.4pt; height: 22.4pt; border-radius: 50%;
                border: 1.2pt solid var(--blau); background: #fff; color: var(--blau);
                font-size: 7.9pt; font-weight: 600; display: flex;
@@ -283,7 +284,7 @@ body {
                    font-weight: 400; line-height: 1.2; color: var(--navy); }
 .schritt__text small { display: block; margin-top: 2pt; font-size: 7.6pt;
                        line-height: 1.3; color: var(--grau); }
-.ablauf__hinweis { margin-top: 0; padding: 0 14pt 0 11.5pt;
+.ablauf__hinweis { margin-top: 0; padding: 0 14pt 0 10.8pt;
                    font-size: 8.2pt; line-height: 1.46; color: var(--grau); }
 
 /* ==========================================================================
