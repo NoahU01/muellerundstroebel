@@ -65,10 +65,15 @@ class Sammler:
         return self.gs[num]
 
     def drin(self, punkte):
+        """Pfad gehoert zum Ausschnitt, wenn sein Mittelpunkt darin liegt - und er
+        nicht wesentlich groesser ist als der Ausschnitt selbst. Ohne die zweite
+        Bedingung rutscht die Hintergrundflaeche der Seite mit hinein."""
         x, y, w, h = self.bereich
         xs = [p[0] for p in punkte]; ys = [self.h - p[1] for p in punkte]
         cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
-        return x <= cx <= x + w and y <= cy <= y + h
+        if not (x <= cx <= x + w and y <= cy <= y + h):
+            return False
+        return (max(xs) - min(xs)) <= w * 1.08 and (max(ys) - min(ys)) <= h * 1.08
 
     def lauf(self, stream, body, ctm, st, tiefe=0):
         if tiefe > 6:
