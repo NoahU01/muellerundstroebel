@@ -26,6 +26,9 @@ PORT = 8799
 DOKUMENTE = {
     "aufsichtsrat-fit-and-proper.html": "aufsichtsrat-fit-and-proper.pdf",
     "aufsichtsrat-strategie.html": "aufsichtsrat-strategie.pdf",
+    "geschaeftsmodell.html": "geschaeftsmodell.pdf",
+    "komplexe-themen.html": "komplexe-themen.pdf",
+    "strategie-verankern.html": "strategie-verankern.pdf",
 }
 
 CHROME_PFADE = [

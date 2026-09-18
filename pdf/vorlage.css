@@ -173,14 +173,15 @@ body {
            line-height: 1.2; color: var(--tinte); }
 .drei p { margin-top: 5.2pt; font-size: 8.6pt; line-height: 2.174; color: var(--tinte-2); }
 
-.aufruf { display: flex; align-items: center; gap: 39.7pt; margin-top: 30.8pt; }
-.aufruf__knopf { background: var(--navy); color: #fff; border-radius: 9pt;
-                 padding: 17pt 22.7pt 19pt; width: 200pt; }
+.aufruf { display: flex; align-items: center; gap: 20pt; margin-top: 30.8pt; }
+.aufruf__knopf { flex: 1; background: var(--navy); color: #fff; border-radius: 9pt;
+                 padding: 17pt 22.7pt 19pt; }
 .aufruf__knopf b { font-family: Lora, Georgia, serif; font-size: 16pt; font-weight: 600;
                    line-height: 1.2; display: block; }
 .aufruf__knopf span { display: block; margin-top: 7pt; font-size: 9.2pt;
                       line-height: 1.467; color: rgba(255,255,255,.85); }
-.aufruf__url { font-size: 9pt; font-weight: 600; color: var(--navy); }
+.aufruf__url { margin-right: 45pt; white-space: nowrap; font-size: 9pt;
+               font-weight: 600; color: var(--navy); }
 
 .impressum-linie { position: absolute; left: var(--rand); top: 701.3pt;
                    width: var(--satzbreite); height: .8pt; background: var(--linie); }
@@ -252,3 +253,96 @@ body {
                        line-height: 1.3; color: var(--grau); }
 .ablauf__hinweis { margin-top: 0; padding: 0 14pt 0 11.5pt;
                    font-size: 8.2pt; line-height: 1.46; color: var(--grau); }
+
+/* ==========================================================================
+   Themenüberblick (fünfseitige Dokumente)
+   ========================================================================== */
+
+/* Eigene Breite: die Zeilenumbrueche stehen im HTML, der Titel soll nicht
+   zusaetzlich an der Textbreite brechen. */
+.titel--thema { width: 430pt; font-size: 40pt; line-height: 1.05;
+                letter-spacing: -.01em; color: #fff; }
+
+/* Skizzen: liegen als SVG an fester Position, die viewBox entspricht dem
+   Ausschnitt der Originalseite. */
+.skizze { position: absolute; }
+.skizze img { width: 100%; height: 100%; display: block; }
+
+/* Anreißer unter der Überschrift */
+.anreisser { margin-top: 19.5pt; width: 258pt; font-family: Lora, Georgia, serif;
+             font-size: 13pt; line-height: 1.41; color: var(--navy); }
+
+/* Aufzählung mit Strich statt Haken */
+.striche { list-style: none; margin-top: 10.5pt; width: 258pt; }
+.striche li { position: relative; padding-left: 14.1pt; font-size: 9.6pt;
+              line-height: 1.48; color: var(--tinte); margin-top: 4.6pt; }
+.striche li:first-child { margin-top: 0; }
+.striche li::before { content: ""; position: absolute; left: 0; top: 5.2pt;
+                      width: 6.8pt; height: 1.5pt; background: var(--taupe); }
+
+.betont { margin-top: 9.2pt; width: 258pt; font-size: 9.4pt; font-weight: 600;
+          line-height: 1.52; color: var(--navy); }
+
+.fliesstext { font-size: 9.4pt; line-height: 1.596; color: var(--tinte-2); }
+
+/* Vorgehen: vier Schritte in zwei Spalten, jeweils mit Linie darüber */
+.schritte-raster { display: grid; grid-template-columns: 229.5pt 229.5pt;
+                   column-gap: 22.5pt; row-gap: 0; margin-top: 4.4pt; }
+.raster-schritt { padding-top: 14.5pt; border-top: .8pt solid var(--linie);
+                  padding-bottom: 5pt; position: relative; padding-left: 32.6pt; }
+.raster-schritt__nr { position: absolute; left: 4.2pt; top: 18.3pt; width: 14pt; height: 14pt;
+                      border-radius: 50%; border: 1pt solid var(--blau); color: var(--blau);
+                      font-size: 8pt; font-weight: 600; display: flex;
+                      align-items: center; justify-content: center; }
+.raster-schritt:last-child .raster-schritt__nr { background: var(--blau); color: #fff;
+                                                 border-color: var(--blau); }
+.raster-schritt h3 { font-family: Lora, Georgia, serif; font-size: 11.5pt; font-weight: 400;
+                     line-height: 1.2; color: var(--tinte); }
+.raster-schritt p { margin-top: 4.8pt; font-size: 8.6pt; line-height: 2.18;
+                    color: var(--tinte-2); }
+
+/* Ergebnis: dunkler Block über die volle Breite, drei Spalten */
+.ergebnis { position: absolute; left: var(--rand); top: 415.5pt; width: var(--satzbreite);
+            background: var(--navy); color: #fff; border-radius: 10pt;
+            padding: 19.5pt 19.5pt 26pt; }
+.ergebnis .kicker { color: var(--taupe-hell); }
+.ergebnis .kicker::before { height: 1.5pt; }
+.ergebnis__titel { margin-top: 10.2pt; font-family: Lora, Georgia, serif; font-size: 15pt;
+                   font-weight: 400; line-height: 1.2; color: #fff; }
+.ergebnis__spalten { display: grid; grid-template-columns: repeat(3, 136.2pt);
+                     column-gap: 16.8pt; margin-top: 4.8pt; }
+.ergebnis__spalten > div { border-top: 1.5pt solid #8fc1df; padding-top: 16.5pt; }
+.ergebnis__spalten h3 { font-family: Lora, Georgia, serif; font-size: 11.5pt;
+                        font-weight: 400; line-height: 1.2; color: #fff; }
+.ergebnis__spalten p { margin-top: 6pt; font-size: 8.6pt; line-height: 2.18;
+                       color: rgba(255,255,255,.88); }
+
+/* Typische Themen: vier Blöcke in zwei Spalten */
+.themen-raster { display: grid; grid-template-columns: 226.5pt 226.5pt;
+                 column-gap: 28.6pt; row-gap: 13.2pt; margin-top: 18.5pt; }
+.themen-raster > div { border-top: 1.5pt solid var(--taupe); padding-top: 17.2pt; }
+.themen-raster h3 { font-family: Lora, Georgia, serif; font-size: 13pt; font-weight: 400;
+                    line-height: 1.2; color: var(--tinte); }
+.themen-raster p { margin-top: 7.7pt; font-size: 9.4pt; line-height: 1.99;
+                   color: var(--tinte-2); }
+
+/* Themenseiten: Inhalt beginnt etwas hoeher als bei den Seminaren */
+.inhalt--thema { top: 122.2pt; }
+.inhalt--thema .titel { margin-top: 11pt; }
+.titel--mittel { font-size: 19pt; line-height: 1.15; }
+.inhalt--thema .titel--mittel { margin-top: 9.5pt; }
+.titel--breit { font-size: 20pt; line-height: 1.15; }
+.deckblatt__text--breit { width: 360pt; }
+.detail-spalte { margin-top: 12.8pt; width: 215pt; }
+.inhalt--thema .haken { width: 230pt; }
+
+/* Abschlussblock unten auf der Themenseite */
+.schluss { position: absolute; left: var(--rand); top: 644pt; width: var(--satzbreite);
+           display: flex; gap: 22pt; }
+.schluss__links { width: 230pt; }
+.schluss__titel { margin-top: 20pt; padding-left: 19.8pt; font-family: Lora, Georgia, serif; font-size: 15pt;
+                  line-height: 1.25; color: var(--tinte); }
+.schluss__text { width: 229.5pt; padding-top: 16pt; font-size: 9pt; line-height: 1.58;
+                 color: var(--tinte-2); }
+.schluss .kicker { padding-left: 51.1pt; line-height: 1.5; }
+.schluss .kicker::before { width: 22.5pt; height: 1.5pt; left: 28.1pt; top: .25em; }

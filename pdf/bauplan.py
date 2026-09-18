@@ -108,7 +108,7 @@ TOKEN = re.compile(rb"""
 """, re.X)
 
 
-def parse_page(objs, fonts, page_obj, page_height=842.0):
+def parse_page(objs, fonts, page_obj, page_height=842.0, mit_glyphen=False):
     body = objs[page_obj]
     res = {n.decode(): int(r) for n, r in re.findall(rb"/(F\d+)\s+(\d+)\s+0\s+R", body)}
     xobj = {n.decode(): int(r) for n, r in re.findall(rb"/(X\d+)\s+(\d+)\s+0\s+R", body)}
@@ -237,6 +237,8 @@ def parse_page(objs, fonts, page_obj, page_height=842.0):
                         "size": size, "font": font, "farbe": farbe,
                         "text": re.sub(r"\s+", " ", text).strip()})
     out.sort(key=lambda r: (r["y_top"], r["x"]))
+    if mit_glyphen:
+        return out, rects, images, glyphs
     return out, rects, images
 
 
