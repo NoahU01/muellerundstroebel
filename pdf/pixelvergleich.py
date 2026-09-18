@@ -193,12 +193,25 @@ def main():
 
         rgb = bytearray(bw * bh * 3)
         anders = 0
+        strukturell = 0
         minx, miny, maxx, maxy = bw, bh, -1, -1
         for i in range(bw * bh):
             d = ga[i] - gb[i]
             if d < 0: d = -d
             if d > TOLERANZ:
                 anders += 1
+                # strukturell nur, wenn auch die Nachbarschaft nicht passt: so
+                # zaehlen Haarlinien-Versaetze eines Buchstabens nicht mit
+                x, y = i % bw, i // bw
+                treffer = False
+                for ny in range(max(0, y-1), min(bh, y+2)):
+                    for nx in range(max(0, x-1), min(bw, x+2)):
+                        e = ga[i] - gb[ny*bw+nx]
+                        if -TOLERANZ <= e <= TOLERANZ:
+                            treffer = True; break
+                    if treffer: break
+                if not treffer:
+                    strukturell += 1
                 rgb[i*3] = 220; rgb[i*3+1] = 30; rgb[i*3+2] = 40
                 x, y = i % bw, i // bw
                 if x < minx: minx = x
@@ -209,10 +222,12 @@ def main():
                 hell = 200 + ga[i] // 5
                 rgb[i*3] = rgb[i*3+1] = rgb[i*3+2] = min(255, hell)
         anteil = anders * 100.0 / (bw * bh)
+        anteil_s = strukturell * 100.0 / (bw * bh)
         gesamt.append(anteil)
         png_schreiben(ausgabe / f"seite{seite}.png", bw, bh, rgb)
         ort = (f"  Bereich x {minx}-{maxx}, y {miny}-{maxy}" if maxx >= 0 else "")
-        print(f"  Seite {seite}: {anteil:6.3f} % abweichende Pixel{ort}")
+        print(f"  Seite {seite}: {anteil:6.3f} % abweichend, davon {anteil_s:6.3f} % "
+              f"strukturell{ort}")
 
     if gesamt:
         print(f"\n  Schnitt: {sum(gesamt)/len(gesamt):.3f} %  |  "

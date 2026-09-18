@@ -90,8 +90,9 @@ body {
 .seite--navy .vorspann { font-size: 13pt; line-height: 1.44; color: #fff; }
 
 /* ---------- Deckblatt ---------- */
-.deckblatt__grafik { position: absolute; left: 192pt; top: 112.6pt;
-                     width: 403pt; height: 400pt; }
+/* Deckungsgleich mit der viewBox der Zeichnung (192 112 403 401). */
+.deckblatt__grafik { position: absolute; left: 192pt; top: 112pt;
+                     width: 403pt; height: 401pt; }
 .deckblatt__grafik img { width: 100%; height: 100%; }
 /* Unten verankert: die Pills sitzen immer auf derselben Hoehe, egal ob der
    Titel ein- oder zweizeilig ist. */
@@ -100,7 +101,7 @@ body {
 .deckblatt__text .titel--gross { margin-top: 19.6pt; }
 .deckblatt__text .vorspann { margin-top: 14.3pt; }
 
-.marken { display: flex; gap: 12.5pt; margin-top: 27pt; width: 430pt; }
+.marken { position: absolute; display: flex; gap: 9.7pt; }
 .marke { display: flex; align-items: center; justify-content: center;
          height: 27pt; border: .8pt solid rgba(255,255,255,.45);
          border-radius: 999pt; padding: 0 14.6pt; font-size: 9pt;
@@ -125,15 +126,18 @@ body {
 /* Randspalte: die Felder liegen auf einer sandfarbenen Flaeche (357 pt breit
    bis zum rechten Rand), der dunkle Kasten sitzt darunter. */
 .spalte--rand { width: 181.5pt; margin-left: -17.2pt; }
-.feldpanel { position: absolute; width: 181.5pt; background: var(--sand);
-             border-radius: 8pt; padding: 19.5pt 17.2pt 17pt; }
+.feldpanel { position: absolute; width: 181.5pt; height: 315pt;
+             background: var(--sand); border-radius: 8pt; }
+.feldlinie { position: absolute; left: 374.2pt; width: 147pt; height: .8pt;
+             background: var(--linie); }
+.wert { font-size: 9.6pt; line-height: 1.406; color: var(--tinte); }
 
 .label { font-size: 7.8pt; font-weight: 600; letter-spacing: .16em;
          text-transform: uppercase; color: var(--taupe-dunkel); line-height: 1; }
 .label--klein { font-size: 7.4pt; }
 
 /* Zitat mit blauem Balken */
-.aussage { margin-top: 14.5pt; width: 278pt; padding-left: 11.4pt; border-left: 2.2pt solid var(--blau);
+.aussage { margin-top: 14.5pt; width: 278pt; padding-left: 12.1pt; border-left: 2.2pt solid var(--blau);
            font-family: Lora, Georgia, serif; font-size: 12.5pt; line-height: 1.44;
            color: var(--navy); }
 
@@ -158,10 +162,11 @@ body {
 .liste li { font-size: 9.6pt; line-height: 1.406; color: var(--tinte); }
 
 /* Navy-Kasten in der Randspalte */
-.kasten { position: absolute; width: 181.5pt; background: var(--navy); color: #fff;
-          border-radius: 8pt; padding: 9pt 14.3pt 12pt; }
-.kasten .kasten__titel { font-family: Lora, Georgia, serif; font-size: 11pt;
-                         line-height: 1.2; color: #fff; }
+.kasten { position: absolute; width: 181.5pt; height: 114.7pt;
+          background: var(--navy); border-radius: 8pt; }
+.kastentext { font-size: 8.8pt; line-height: 1.49; color: rgba(255,255,255,.85); }
+.kasten__titel { font-family: Lora, Georgia, serif; font-size: 11pt;
+                 line-height: 1.2; color: #fff; }
 .kasten p { margin-top: 6.5pt; font-size: 8.8pt; line-height: 1.49; color: rgba(255,255,255,.85); }
 
 /* Bildunterschrift */
@@ -172,7 +177,7 @@ body {
 /* Personen sitzen auf sandfarbenen Karten (229,5 × 90,7 pt), der Kreis
    liegt 14,6 pt vom Kartenrand, der Text beginnt bei 144,5 pt. */
 .personen { position: absolute; left: var(--rand); top: 242.2pt;
-            display: flex; gap: 22.5pt; }
+            display: flex; gap: 23.1pt; }
 .person { display: flex; gap: 12.9pt; align-items: center; width: 229.5pt;
           height: 90.7pt; padding-left: 14.6pt; background: var(--sand);
           border-radius: 8pt; }
@@ -192,25 +197,26 @@ body {
 .drei > div:nth-child(3) { border-top-color: var(--navy); }
 .drei h3 { font-family: Lora, Georgia, serif; font-size: 11.5pt; font-weight: 600;
            line-height: 1.2; color: var(--tinte); }
-.drei p { margin-top: 5.7pt; font-size: 8.6pt; line-height: 2.174; color: var(--tinte-2); }
+.drei p { margin-top: 6.4pt; font-size: 8.6pt; line-height: 2.174; color: var(--tinte-2); }
 
 .aufruf { position: absolute; left: var(--rand); top: 471.7pt;
           width: var(--satzbreite); height: 99pt; background: var(--navy);
           border-radius: 9pt; }
 .aufruf__knopf { position: absolute; left: 22.4pt; top: 23.2pt; }
 .aufruf__knopf b { font-family: Lora, Georgia, serif; font-size: 16pt; font-weight: 600;
-                   line-height: 1.2; display: block; }
-.aufruf__knopf span { display: block; margin-top: 6.2pt; font-size: 9.2pt;
-                      line-height: 1.467; color: rgba(255,255,255,.85); }
+                   line-height: 1.2; display: block; color: #fff; }
+.aufruf__knopf span { display: block; width: 135pt; margin-top: 6.2pt;
+                      font-size: 9.2pt; line-height: 1.467;
+                      color: rgba(255,255,255,.85); }
 .aufruf__url { position: absolute; left: 222.7pt; top: 34.5pt;
                width: 236.3pt; height: 30pt; display: flex;
-               align-items: center; justify-content: center;
+               align-items: center; justify-content: center; padding-right: 12.6pt;
                background: #fff; border-radius: 999pt; white-space: nowrap;
                font-size: 9pt; font-weight: 600; color: var(--navy); }
 
 .impressum-linie { position: absolute; left: var(--rand); top: 701.3pt;
                    width: var(--satzbreite); height: .8pt; background: var(--linie); }
-.impressum { position: absolute; left: var(--rand); top: 724pt;
+.impressum { position: absolute; left: var(--rand); top: 722.5pt;
              width: var(--satzbreite); display: flex; gap: 23.2pt; }
 .impressum > div { width: 145pt; }
 .impressum p { margin-top: 8.1pt; font-size: 8.2pt; line-height: 1.6; color: var(--tinte-2); }
@@ -225,8 +231,8 @@ body {
 .profil__panel { background: #fff; border: .8pt solid var(--linie); border-radius: 6pt;
                  width: 242.4pt; height: 167.2pt; padding-top: 7.2pt; }
 .profil__titel { font-size: 4.6pt; color: var(--grau); letter-spacing: .04em;
-                 padding-left: 29.9pt; line-height: 1; }
-.profil__raster { margin-top: 12pt; }
+                 padding-left: 28.4pt; line-height: 1; }
+.profil__raster { margin-top: 7.8pt; }
 .profil__kopf, .profil__zeile {
   display: grid; grid-template-columns: 89.4pt repeat(5, 18.8pt) 19pt 44.8pt;
   align-items: center;
@@ -238,7 +244,7 @@ body {
 .profil__kopf .ist-gremium { color: var(--navy); }
 .profil__zeile { height: 19.2pt; }
 .profil__zeile em { font-size: 4.6pt; font-style: normal; color: var(--tinte);
-                    padding-left: 9pt; line-height: 1.2; }
+                    padding-left: 7.5pt; line-height: 1.2; }
 .profil i { justify-self: center; width: 6.7pt; height: 6.7pt; border-radius: 50%;
             display: block; position: relative; }
 .profil i.voll  { background: var(--navy); }
@@ -393,3 +399,19 @@ body {
    ========================================================================== */
 .blk { position: absolute; }
 .blk > *:first-child { margin-top: 0; }
+
+/* ==========================================================================
+   Laufweiten-Feinabgleich
+   Die Zeilen sitzen auf der richtigen Höhe, liefen innen aber minimal anders
+   aus als im Original. Die Werte sind aus dem gemessenen Breitenunterschied
+   je Schriftgrad gerechnet (Differenz geteilt durch Zeichenzahl).
+   ========================================================================== */
+.haken li, .liste li, .wert            { letter-spacing: .009em; }
+.drei p                                 { letter-spacing: .016em; }
+.kastentext                             { letter-spacing: .007em; }
+.person__name, .seite--navy .vorspann   { letter-spacing: .010em; }
+.aufruf__knopf span, .aufruf__url       { letter-spacing: .019em; }
+.fuss                                   { letter-spacing: .032em; }
+.person__rolle                          { letter-spacing: .007em; }
+.profil__zeile em                       { letter-spacing: -.046em; }
+.label--klein                           { letter-spacing: .14em; }
