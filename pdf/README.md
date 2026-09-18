@@ -24,6 +24,7 @@ Das Ergebnis landet direkt in `assets/downloads/`.
 | `bausteine/` | Grafiken, die nur in den PDFs vorkommen |
 | `bauen.py` | Druckskript, enthält die Liste der Dokumente |
 | `bauplan.py` | Prüfwerkzeug, siehe unten |
+| `vorschau.py` | erzeugt die Vorschaubilder für den Download-Kasten |
 
 Maße stehen in Punkt (pt), weil das PDF darin rechnet: A4 ist 595,28 × 841,89 pt,
 der Satzspiegel hat 20 mm Rand (56,7 pt). Schriften (`fonts/`), Farben und das
@@ -40,6 +41,18 @@ damit automatisch auch in den PDFs.
 Ein Dokument besteht aus drei Seiten: Deckblatt (`seite--navy`), Innenseite
 (zwei Spalten) und Kontaktseite. Die Bausteine dafür stehen in `vorlage.css`
 und sind kommentiert.
+
+## Vorschaubilder
+
+Die Download-Kästen auf den Themenseiten zeigen Seite 1 und 2 des PDFs:
+
+```bash
+python3 pdf/vorschau.py                 # alle
+python3 pdf/vorschau.py geschaeftsmodell # einzeln
+```
+
+Nach jeder inhaltlichen Änderung an einem dieser PDFs neu erzeugen,
+sonst zeigt der Kasten den alten Stand.
 
 ## Prüfen gegen ein bestehendes PDF
 
@@ -58,4 +71,8 @@ liegen innerhalb von 1,5 pt, die übrigen sind die bewusste Inhaltsänderung
 
 1. **Dauer Fit & Proper**: „Halber Tag · ca. 3 Stunden" → „1 Tag" (Deckblatt und
    Feld „Dauer").
-2. **Graue Linie unter dem Logo** auf den Innenseiten entfernt.
+2. **Graue Linie unter dem Logo** auf den Innenseiten entfernt – in allen fünf
+   PDFs. Bei den vier noch nicht nachgebauten Dokumenten wurde sie direkt in
+   der Datei entfernt (der Füll-Operator der Linie wurde stillgelegt, als
+   inkrementelles Update); alles andere blieb unverändert. Die Linie über dem
+   Impressum auf der Kontaktseite bleibt bestehen.
