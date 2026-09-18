@@ -79,7 +79,11 @@ def main():
     print("Baue PDFs nach assets/downloads/:")
     try:
         for quelle, ziel in DOKUMENTE.items():
-            if filter_ and filter_ not in quelle:
+            # Genauer Name oder eindeutiger Anfang - "strategie" traf sonst auch
+            # strategie-verankern und hat dessen PDF überschrieben.
+            if filter_ and not (quelle == filter_ or quelle == filter_ + ".html"
+                                or quelle.startswith(filter_ + "-")
+                                or quelle.startswith(filter_ + ".")):
                 continue
             bauen(quelle, ziel, browser)
     finally:
