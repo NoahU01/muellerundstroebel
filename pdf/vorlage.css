@@ -1,0 +1,225 @@
+/* ==========================================================================
+   Müller & Ströbel – PDF-Vorlage
+   Gemeinsames Layout für alle Dokumente. Werte in pt, damit sie direkt den
+   Maßen im gedruckten PDF entsprechen (A4 = 595,28 × 841,89 pt, Rand 20 mm).
+   Farben und Schriften sind dieselben wie auf der Website.
+   ========================================================================== */
+
+@font-face { font-family: Poppins; font-weight: 400; src: url("../fonts/Poppins-Regular.ttf") format("truetype"); }
+@font-face { font-family: Poppins; font-weight: 500; src: url("../fonts/Poppins-Medium.ttf") format("truetype"); }
+@font-face { font-family: Poppins; font-weight: 600; src: url("../fonts/Poppins-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: Lora; font-weight: 400 700; src: url("../fonts/Lora-VariableFont_wght.ttf") format("truetype"); }
+
+:root {
+  --navy: #082638;
+  --blau: #185e8a;
+  --taupe: #998675;
+  --taupe-hell: #cbbcae;
+  --taupe-dunkel: #7a6757;
+  --linie: #e5ddd4;
+  --tinte: #1d1d1b;
+  --tinte-2: #3c3b3a;
+  --grau: #6b635b;
+  --fussnote: #8a8682;
+
+  --rand: 56.7pt;          /* 20 mm */
+  --satzbreite: 481.9pt;   /* 595,28 − 2 × 56,7 */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@page { size: A4; margin: 0; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: Poppins, Arial, sans-serif;
+  color: var(--tinte-2);
+  font-size: 10.2pt;
+  line-height: 1.618;
+}
+
+.seite {
+  position: relative;
+  width: 595.28pt;
+  height: 841.89pt;
+  overflow: hidden;
+  background: #fff;
+  page-break-after: always;
+}
+.seite:last-child { page-break-after: auto; }
+.seite--navy { background: var(--navy); color: #fff; }
+
+/* ---------- Kopf ---------- */
+.kopf { position: absolute; left: var(--rand); top: 51.1pt;
+        width: var(--satzbreite); display: flex; align-items: flex-start;
+        justify-content: space-between; }
+.kopf__logo { width: 149.2pt; height: 28.5pt; }
+.seite--navy .kopf__logo { width: 194.2pt; height: 36.8pt; }
+.kopf__logo img { width: 100%; height: 100%; object-fit: contain; object-position: left top; }
+.kopf__marke { position: absolute; left: 0; right: 0; top: 10.3pt; text-align: right;
+               font-size: 8pt; letter-spacing: .088em; color: var(--grau);
+               text-transform: uppercase; line-height: 1; }
+.seite--navy .kopf__marke { color: #fff; top: 14.8pt; letter-spacing: .18em; }
+
+/* ---------- Kicker mit Strich ---------- */
+.kicker { font-size: 8pt; font-weight: 600; letter-spacing: .18em;
+          text-transform: uppercase; color: var(--taupe-dunkel);
+          line-height: 1; position: relative; padding-left: 34pt; }
+.kicker::before { content: ""; position: absolute; left: 0; top: .3em;
+                  width: 25.5pt; height: 2.2pt; background: var(--taupe); }
+.seite--navy .kicker { color: var(--taupe-hell); }
+.seite--navy .kicker::before { height: 1.5pt; }
+
+/* ---------- Überschriften ---------- */
+.titel { font-family: Lora, Georgia, serif; font-weight: 600; color: var(--tinte);
+         font-size: 25pt; line-height: 1.1; }
+.titel--gross { font-size: 50pt; line-height: 1.05; letter-spacing: -.01em; color: #fff; }
+.punkt { color: var(--taupe); }
+
+.vorspann { font-size: 10.2pt; line-height: 1.618; color: var(--tinte-2); }
+.seite--navy .vorspann { font-size: 13pt; line-height: 1.44; color: #fff; }
+
+/* ---------- Deckblatt ---------- */
+.deckblatt__grafik { position: absolute; left: 192pt; top: 112.6pt;
+                     width: 403pt; height: 400pt; }
+.deckblatt__grafik img { width: 100%; height: 100%; }
+.deckblatt__text { position: absolute; left: var(--rand); top: 527.2pt;
+                   width: 300pt; }
+.deckblatt__text .titel--gross { margin-top: 18.8pt; }
+.deckblatt__text .vorspann { margin-top: 14.3pt; }
+
+.marken { display: flex; gap: 12.5pt; margin-top: 27pt; }
+.marke { border: .8pt solid rgba(255,255,255,.45); border-radius: 999pt;
+         padding: 6.5pt 14.6pt; font-size: 9pt; line-height: 1.2; color: #fff; }
+
+/* ---------- Fuß ---------- */
+.fuss-linie { position: absolute; left: var(--rand); top: 768.8pt;
+              width: var(--satzbreite); height: .8pt; background: var(--linie); }
+.seite--navy .fuss-linie { background: rgba(255,255,255,.28); }
+.fuss { position: absolute; left: var(--rand); top: 803.8pt; width: var(--satzbreite);
+        display: flex; justify-content: space-between;
+        font-size: 7.5pt; color: var(--fussnote); line-height: 1; }
+.seite--navy .fuss { top: 785.5pt; font-size: 8.5pt; color: #fff; }
+
+/* ---------- Innenseiten: Aufbau ---------- */
+.inhalt { position: absolute; left: var(--rand); top: 125.2pt; width: var(--satzbreite); }
+.inhalt .titel { margin-top: 10.6pt; }
+.inhalt .vorspann { margin-top: 11.2pt; }
+
+.spalten { display: flex; gap: 50.5pt; margin-top: 23.7pt; }
+.spalte--haupt { width: 267pt; }
+.spalte--rand { width: 147pt; padding-top: 12pt; }
+
+.label { font-size: 7.8pt; font-weight: 600; letter-spacing: .16em;
+         text-transform: uppercase; color: var(--taupe-dunkel); line-height: 1; }
+.label--klein { font-size: 7.4pt; }
+
+/* Zitat mit blauem Balken */
+.aussage { margin-top: 14.5pt; width: 278pt; padding-left: 11.4pt; border-left: 2.2pt solid var(--blau);
+           font-family: Lora, Georgia, serif; font-size: 12.5pt; line-height: 1.44;
+           color: var(--navy); }
+
+/* Aufzählung mit Haken */
+.haken { list-style: none; margin-top: 10.5pt; }
+.haken li { position: relative; padding-left: 19.8pt; font-size: 9.6pt;
+            line-height: 1.48; color: var(--tinte); margin-top: 6.5pt; }
+.haken li:first-child { margin-top: 0; }
+.haken li::before { content: ""; position: absolute; left: 0; top: 3.4pt;
+                    width: 9pt; height: 9pt; border-radius: 50%;
+                    background: var(--blau); }
+.haken li::after { content: ""; position: absolute; left: 2.6pt; top: 6.2pt;
+                   width: 3.6pt; height: 1.9pt; border-left: 1.1pt solid #fff;
+                   border-bottom: 1.1pt solid #fff; transform: rotate(-45deg); }
+
+/* Randspalte: Feldliste */
+.felder { margin-top: 4.8pt; }
+.feld { padding-bottom: 8.2pt; margin-bottom: 8.8pt; border-bottom: .8pt solid var(--linie); }
+.feld:last-child { border-bottom: 0; }
+.feld__wert { margin-top: 3.1pt; font-size: 9.6pt; line-height: 1.406; color: var(--tinte); }
+.liste { list-style: none; }
+.liste li { font-size: 9.6pt; line-height: 1.406; color: var(--tinte); }
+
+/* Navy-Kasten in der Randspalte */
+.kasten { margin: 25.6pt 0 0 -17.9pt; width: 182pt; background: var(--navy); color: #fff;
+          border-radius: 7pt; padding: 14pt 15pt 16pt; }
+.kasten .kasten__titel { font-family: Lora, Georgia, serif; font-size: 11pt;
+                         line-height: 1.2; color: #fff; }
+.kasten p { margin-top: 6.5pt; font-size: 8.8pt; line-height: 1.49; color: rgba(255,255,255,.85); }
+
+/* Bildunterschrift */
+.bildtext { margin-top: 18.7pt; padding-left: 12.1pt; width: 253pt;
+            font-size: 8.2pt; line-height: 1.46; color: var(--grau); }
+
+/* ---------- Kontaktseite ---------- */
+.personen { display: flex; gap: 20.1pt; margin-top: 40pt; }
+.person { display: flex; gap: 13.8pt; align-items: flex-start; width: 240pt; }
+.person__kreis { width: 74pt; height: 74pt; border-radius: 50%; overflow: hidden;
+                 background: var(--linie); flex: none; }
+.person__kreis img { width: 100%; height: 100%; object-fit: cover; }
+.person__name { font-family: Lora, Georgia, serif; font-size: 13pt; line-height: 1.2;
+                color: var(--tinte); }
+.person__rolle { margin-top: 2.5pt; font-size: 8.4pt; color: var(--taupe-dunkel); line-height: 1.3; }
+.person__zeile { margin-top: 6.5pt; font-size: 8pt; line-height: 1.6; color: var(--tinte); }
+
+.drei { display: flex; gap: 17.1pt; margin-top: 24.8pt; }
+.drei > div { width: 149.2pt; border-top: 1.5pt solid var(--blau); padding-top: 16.5pt; }
+.drei > div:nth-child(2) { border-top-color: var(--taupe); }
+.drei > div:nth-child(3) { border-top-color: var(--navy); }
+.drei h3 { font-family: Lora, Georgia, serif; font-size: 11.5pt; font-weight: 600;
+           line-height: 1.2; color: var(--tinte); }
+.drei p { margin-top: 5.2pt; font-size: 8.6pt; line-height: 2.174; color: var(--tinte-2); }
+
+.aufruf { display: flex; align-items: center; gap: 39.7pt; margin-top: 30.8pt; }
+.aufruf__knopf { background: var(--navy); color: #fff; border-radius: 9pt;
+                 padding: 17pt 22.7pt 19pt; width: 200pt; }
+.aufruf__knopf b { font-family: Lora, Georgia, serif; font-size: 16pt; font-weight: 600;
+                   line-height: 1.2; display: block; }
+.aufruf__knopf span { display: block; margin-top: 7pt; font-size: 9.2pt;
+                      line-height: 1.467; color: rgba(255,255,255,.85); }
+.aufruf__url { font-size: 9pt; font-weight: 600; color: var(--navy); }
+
+.impressum-linie { position: absolute; left: var(--rand); top: 701.3pt;
+                   width: var(--satzbreite); height: .8pt; background: var(--linie); }
+.impressum { position: absolute; left: var(--rand); top: 722.5pt;
+             width: var(--satzbreite); display: flex; gap: 23.2pt; }
+.impressum > div { width: 145pt; }
+.impressum p { margin-top: 5pt; font-size: 8.2pt; line-height: 1.6; color: var(--tinte-2); }
+.impressum p.label { margin-top: 0; font-size: 7.8pt; color: var(--taupe-dunkel); }
+
+/* ---------- Kompetenzprofil (Raster mit Markierungen) ----------
+   Masse aus dem Original: Kasten 250,5 × 196,5 pt, Markierungen 6,7 pt,
+   Spalte "Gremium" 8,4 pt, Zeilenabstand 19,2 pt. */
+.profil { margin-top: 42.9pt; width: 250.5pt; }
+.profil__titel { font-size: 4.6pt; color: var(--grau); letter-spacing: .04em;
+                 padding-left: 45.7pt; line-height: 1; }
+.profil__raster { margin-top: 12pt; }
+.profil__kopf, .profil__zeile {
+  display: grid; grid-template-columns: 105.9pt repeat(5, 18.8pt) 19pt 44.8pt;
+  align-items: center;
+}
+.profil__kopf { height: 12pt; }
+.profil__kopf span { font-size: 4.2pt; font-weight: 600; color: var(--grau);
+                     text-align: center; line-height: 1; }
+.profil__kopf .ist-neu { color: var(--blau); }
+.profil__kopf .ist-gremium { color: var(--navy); }
+.profil__zeile { height: 18.7pt; }
+.profil__zeile em { font-size: 4.6pt; font-style: normal; color: var(--tinte);
+                    padding-left: 24.8pt; line-height: 1.2; }
+.profil i { justify-self: center; width: 6.7pt; height: 6.7pt; border-radius: 50%;
+            display: block; position: relative; }
+.profil i.voll  { background: var(--navy); }
+.profil i.grund { background: #fff; border: .5pt solid var(--taupe); }
+.profil i.grund::after { content: ""; position: absolute; left: 50%; top: 50%;
+                         width: 3.3pt; height: 3.3pt; margin: -1.65pt 0 0 -1.65pt;
+                         border-radius: 50%; background: var(--taupe); }
+.profil i.offen { background: #fff; border: .5pt solid #d6cec3; }
+.profil i.blau  { background: var(--blau); }
+.profil i.haken { width: 8.4pt; height: 8.4pt; background: var(--blau); }
+.profil i.haken::after { content: ""; position: absolute; left: 2.4pt; top: 2.7pt;
+                         width: 3.4pt; height: 1.8pt;
+                         border-left: .7pt solid #fff; border-bottom: .7pt solid #fff;
+                         transform: rotate(-45deg); }
+.profil__legende { display: flex; gap: 9pt; margin-top: 24pt; padding-left: 19.1pt; }
+.profil__legende span { display: flex; align-items: center; gap: 4pt;
+                        font-size: 4.2pt; color: var(--grau); line-height: 1; }
