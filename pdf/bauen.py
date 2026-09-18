@@ -25,6 +25,7 @@ PORT = 8799
 # Quelldatei -> fertiges PDF
 DOKUMENTE = {
     "aufsichtsrat-fit-and-proper.html": "aufsichtsrat-fit-and-proper.pdf",
+    "aufsichtsrat-strategie.html": "aufsichtsrat-strategie.pdf",
 }
 
 CHROME_PFADE = [

@@ -84,14 +84,17 @@ body {
 .deckblatt__grafik { position: absolute; left: 192pt; top: 112.6pt;
                      width: 403pt; height: 400pt; }
 .deckblatt__grafik img { width: 100%; height: 100%; }
-.deckblatt__text { position: absolute; left: var(--rand); top: 527.2pt;
+/* Unten verankert: die Pills sitzen immer auf derselben Hoehe, egal ob der
+   Titel ein- oder zweizeilig ist. */
+.deckblatt__text { position: absolute; left: var(--rand); bottom: 131.5pt;
                    width: 300pt; }
 .deckblatt__text .titel--gross { margin-top: 18.8pt; }
 .deckblatt__text .vorspann { margin-top: 14.3pt; }
 
-.marken { display: flex; gap: 12.5pt; margin-top: 27pt; }
+.marken { display: flex; gap: 12.5pt; margin-top: 27pt; width: 430pt; }
 .marke { border: .8pt solid rgba(255,255,255,.45); border-radius: 999pt;
-         padding: 6.5pt 14.6pt; font-size: 9pt; line-height: 1.2; color: #fff; }
+         padding: 6.5pt 14.6pt; font-size: 9pt; line-height: 1.2; color: #fff;
+         white-space: nowrap; }
 
 /* ---------- Fuß ---------- */
 .fuss-linie { position: absolute; left: var(--rand); top: 768.8pt;
@@ -223,3 +226,29 @@ body {
 .profil__legende { display: flex; gap: 9pt; margin-top: 24pt; padding-left: 19.1pt; }
 .profil__legende span { display: flex; align-items: center; gap: 4pt;
                         font-size: 4.2pt; color: var(--grau); line-height: 1; }
+
+/* ---------- Ablauf (nummerierte Schritte im Rahmen) ----------
+   Masse aus dem Original: Rahmen 273,7 pt breit, Kreise 22,4 pt,
+   Schrittabstand 44 pt, Verbindungslinie 1,7 pt. */
+.ablauf { margin-top: 26pt; width: 273.7pt; border: .8pt solid var(--linie);
+          border-radius: 8pt; padding: 16pt 0 14pt; position: relative; }
+.ablauf__dauer { padding-left: 24.9pt; font-size: 6.6pt; font-weight: 600;
+                 letter-spacing: .12em; text-transform: uppercase;
+                 color: var(--taupe-dunkel); line-height: 1; }
+.ablauf__schritte { margin-top: 13pt; position: relative; }
+.ablauf__schritte::before { content: ""; position: absolute; left: 36.7pt; top: 11.2pt;
+                            bottom: 11.2pt; width: 1.7pt; background: var(--blau); }
+.schritt { display: flex; align-items: flex-start; gap: 10.4pt;
+           padding-left: 26.3pt; height: 44pt; }
+.schritt__nr { flex: none; width: 22.4pt; height: 22.4pt; border-radius: 50%;
+               border: 1.2pt solid var(--blau); background: #fff; color: var(--blau);
+               font-size: 7.9pt; font-weight: 600; display: flex;
+               align-items: center; justify-content: center; position: relative; z-index: 1; }
+.schritt:last-child .schritt__nr { background: var(--blau); color: #fff; }
+.schritt__text { margin-top: -2.5pt; }
+.schritt__text b { display: block; font-family: Lora, Georgia, serif; font-size: 11.9pt;
+                   font-weight: 400; line-height: 1.2; color: var(--navy); }
+.schritt__text small { display: block; margin-top: 2pt; font-size: 7.6pt;
+                       line-height: 1.3; color: var(--grau); }
+.ablauf__hinweis { margin-top: 0; padding: 0 14pt 0 11.5pt;
+                   font-size: 8.2pt; line-height: 1.46; color: var(--grau); }
