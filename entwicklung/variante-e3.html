@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Variante E3 – Diagnose · Müller &amp; Ströbel (Entwicklung)</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../startseite.css">
+<link rel="stylesheet" href="variante-e.css">
+</head>
+<body class="body v-page" data-variante="e3">
+<div class="nav-wrapper" id="nav-wrapper">
+<header class="nav-bar padding-global">
+<div class="navigation-line" id="navigation-line"></div>
+<div class="container-large navigation">
+<a href="../index.html" class="brand" aria-label="Müller &amp; Ströbel – Startseite"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel" class="logo"></a>
+<nav class="navigation-wrapper" id="mobile-menu">
+<a href="#leistung" class="menu-text">Unser Einsatzgebiet</a>
+<a href="#ergebnis" class="menu-text">Ihr Ergebnis</a>
+<a href="ueber-uns.html" class="menu-text">Über uns</a>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird von vorschau.py github entfernt) -->
+<div class="dev-dd" id="dev-dd">
+<button class="menu-text dev-dd-toggle" type="button" aria-expanded="false" aria-controls="dev-dd-panel">/ Entwicklung /<svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel" id="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Varianten Startseite</p>
+<a href="../entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
+<a href="../entwicklung/variante-e1.html" class="dev-dd-link" data-v="e1"><span class="dev-dd-tag dev-dd-tag--new">E1</span><span class="dev-dd-txt"><b>Fallakte</b><small>Alle vier F&auml;lle offen, einer je Zeile</small></span></a>
+<a href="../entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Sechs K&auml;sten oben, Fall darunter &ndash; ohne Pop-up</small></span></a>
+<a href="../entwicklung/variante-e3.html" class="dev-dd-link" data-v="e3"><span class="dev-dd-tag dev-dd-tag--new">E3</span><span class="dev-dd-txt"><b>Diagnose</b><small>Einstieg &uuml;ber das Symptom statt die Kategorie</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Unterseiten</p>
+<a href="../entwicklung/ueber-uns.html" class="dev-dd-link" data-v="ueber"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Über uns (Entwurf)</b><small>Tobias &amp; Daniel, Schwerpunkte, Gemeinsames</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<a href="../archiv/startseite-umfassend-2026-09-17.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv-0917"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite umfassend – 17.09.2026</b><small>Stand vor der Optimierung</small></span></a>
+<a href="../archiv/startseite-live-2026-09.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – Live-Stand Sept. 2026</b><small>So ist die Seite heute online</small></span></a>
+</div>
+</div>
+<style>
+.dev-dd{position:relative;display:inline-block}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:Poppins,Arial,sans-serif;font-size:14px;line-height:20px;color:#222;cursor:pointer}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{max-height:80vh;overflow:auto;position:absolute;top:calc(100% + .25rem);left:50%;transform:translate(-50%,6px);min-width:360px;padding:.75rem;background:#fff;border:1px solid #e5ddd4;border-radius:.75rem;box-shadow:0 18px 40px rgba(6,55,85,.12);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s;z-index:20}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.dev-dd-note{margin:0 0 .9rem;padding:.7rem .85rem;background:#082638;color:#fff;border-radius:.5rem;font-size:12px;line-height:1.4}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:.15rem}
+.dev-dd-group{margin:.25rem .5rem .6rem;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#998675;font-weight:600}
+.dev-dd-link{display:flex;align-items:center;gap:.75rem;padding:.6rem .5rem;border-radius:.5rem;color:#1d1d1b;text-decoration:none;transition:background .15s}
+.dev-dd-link:hover,.dev-dd-link.is-current{background:#f4f1ee}
+.dev-dd-tag{flex:0 0 2rem;height:2rem;display:flex;align-items:center;justify-content:center;border-radius:.5rem;background:#185e8a;color:#fff;font-weight:600;font-size:13px}
+.dev-dd-tag--new{background:#998675}
+.dev-dd-group--sub{margin-top:.9rem;padding-top:.8rem;border-top:1px solid #efe9e3}
+.dev-dd-link--muted .dev-dd-tag{background:#f4f1ee;color:#7a6757}
+.dev-dd-link--muted{}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3}
+.dev-dd-txt b{font-weight:600;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:#7a6757}
+@media screen and (max-width:991px){
+.dev-dd{display:block}
+.dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:.75rem 0}
+.dev-dd-panel{position:static;transform:none;min-width:0;box-shadow:none;border:0;border-left:2px solid #e5ddd4;border-radius:0;padding:0 0 .5rem .75rem;display:none;opacity:1;visibility:visible}
+.dev-dd.is-open .dev-dd-panel{display:block;transform:none}
+}
+</style>
+<script>
+(function(){var d=document.getElementById('dev-dd');if(!d)return;var b=d.querySelector('.dev-dd-toggle');
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();if(window.innerWidth>991&&d.matches(':hover')){set(true);}else{set(!d.classList.contains('is-open'));}});
+var t;d.addEventListener('mouseenter',function(){if(window.innerWidth>991){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(window.innerWidth>991){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.getAttribute('data-v')===cur)a.classList.add('is-current');});
+})();
+</script>
+<!-- ENTWICKLUNG:END -->
+<a href="#kontakt" class="primary-button navigation"><p class="button-text">Kontakt aufnehmen</p><div class="button-gradient"></div></a>
+</nav>
+<button class="menu-button" id="menu-button" type="button" aria-label="Menü" aria-expanded="false" aria-controls="mobile-menu">
+<svg class="burger-menu" viewBox="0 0 24 24" aria-hidden="true"><rect class="burger-line burger-line-1" x="5.4" y="6.9" width="13.2" height="1.2"></rect><rect class="burger-line burger-line-2" x="5.4" y="11.4" width="13.2" height="1.2"></rect><rect class="burger-line burger-line-3" x="5.4" y="15.9" width="13.2" height="1.2"></rect></svg>
+</button>
+</div>
+</header>
+
+<main>
+<section class="e-hero" id="hero">
+<div class="v-wrap v-split">
+<div class="v-rv"><p class="v-kicker">Für Versicherungsunternehmen</p>
+<h1 class="v-h1">Komplexe Situationen<br><span class="v-blue">entscheidbar</span> machen<span class="v-dot">.</span></h1>
+<p class="v-lead" style="margin-top:1.5rem">Wir unterstützen Führungskräfte in Versicherungsunternehmen bei komplexen Fragestellungen — dort, wo Zusammenhänge unklar sind und ein Thema deshalb nicht vorankommt.</p>
+<div style="margin-top:2rem"><div class="v-pills-row"><span>Orientierung</span><span>Entscheidbarkeit</span><span>Übersetzung</span><span>Wachstum</span><span>KI</span><span>Resilienz</span></div></div>
+<div class="v-btns" style="margin-top:2.5rem"><a class="v-btn v-btn--pill ms-cta" href="#einsatzgebiete">Woran hängt es? <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="v-btn v-btn--ghost v-btn--pill ms-cta" href="#kontakt">Kontakt aufnehmen</a></div></div>
+<div class="v-rv e-portraits">
+<svg class="e-portraits__grid" viewBox="0 0 420 420" preserveAspectRatio="none" aria-hidden="true"><defs><radialGradient id="eg" cx="50%" cy="50%" r="58%"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><mask id="em"><rect width="420" height="420" fill="url(#eg)"/></mask></defs><g mask="url(#em)" stroke="#ece5dd" stroke-width="1"><line x1="0" y1="0" x2="0" y2="420"/><line x1="30" y1="0" x2="30" y2="420"/><line x1="60" y1="0" x2="60" y2="420"/><line x1="90" y1="0" x2="90" y2="420"/><line x1="120" y1="0" x2="120" y2="420"/><line x1="150" y1="0" x2="150" y2="420"/><line x1="180" y1="0" x2="180" y2="420"/><line x1="210" y1="0" x2="210" y2="420"/><line x1="240" y1="0" x2="240" y2="420"/><line x1="270" y1="0" x2="270" y2="420"/><line x1="300" y1="0" x2="300" y2="420"/><line x1="330" y1="0" x2="330" y2="420"/><line x1="360" y1="0" x2="360" y2="420"/><line x1="390" y1="0" x2="390" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/><line x1="0" y1="0" x2="420" y2="0"/><line x1="0" y1="30" x2="420" y2="30"/><line x1="0" y1="60" x2="420" y2="60"/><line x1="0" y1="90" x2="420" y2="90"/><line x1="0" y1="120" x2="420" y2="120"/><line x1="0" y1="150" x2="420" y2="150"/><line x1="0" y1="180" x2="420" y2="180"/><line x1="0" y1="210" x2="420" y2="210"/><line x1="0" y1="240" x2="420" y2="240"/><line x1="0" y1="270" x2="420" y2="270"/><line x1="0" y1="300" x2="420" y2="300"/><line x1="0" y1="330" x2="420" y2="330"/><line x1="0" y1="360" x2="420" y2="360"/><line x1="0" y1="390" x2="420" y2="390"/><line x1="0" y1="420" x2="420" y2="420"/></g></svg>
+<div class="e-portraits__amp" aria-hidden="true">&amp;</div>
+<div>
+<div class="e-faces">
+<div class="e-face"><img src="../assets/tobias-kreis.webp" alt="Tobias Müller"></div>
+<div class="e-face e-face--2"><img src="../assets/daniel-kreis.webp" alt="Daniel Ströbel"></div>
+</div>
+<div class="e-names">
+<div class="e-name"><b>Tobias Müller</b><span>Governance, Gremien &amp; Risiko</span></div>
+<div class="e-name"><b>Daniel Ströbel</b><span>Strategie, Führung &amp; Vertrieb</span></div>
+</div></div></div>
+</div></section>
+<section class="v-sec v-sand" id="einsatzgebiete">
+<div class="v-wrap"><div class="v-rv" style="max-width:46rem"><p class="v-kicker">Woran hängt es gerade?</p>
+<h2 class="v-h2">Sagen Sie uns, was Sie wiedererkennen<span class="v-dot">.</span></h2>
+<p class="v-lead" style="margin-top:1.2rem">Statt Einsatzgebieten, die erst übersetzt werden müssen: vier Sätze, wie sie in Vorstandssitzungen tatsächlich fallen. Wählen Sie den, der passt.</p>
+<p class="e-ph-hint">Gelb markierte Stellen sind Platzhalter und müssen durch echte Projektangaben ersetzt werden.</p></div>
+<div class="e-diag v-rv"><button class="e-sym is-on" type="button" data-fall="orientierung"><span class="e-sym__q" aria-hidden="true">?</span><span class="e-sym__t"><b>Wir diskutieren zu viel auf einmal.</b><span>Mehrere große Vorhaben laufen parallel, und keiner kann sagen, was zuerst fertig sein muss.</span></span></button>
+<button class="e-sym" type="button" data-fall="entscheidbarkeit"><span class="e-sym__q" aria-hidden="true">?</span><span class="e-sym__t"><b>Entschieden wird nicht.</b><span>Das Thema steht auf jeder Agenda und wird jedes Mal vertagt.</span></span></button>
+<button class="e-sym" type="button" data-fall="wachstum"><span class="e-sym__q" aria-hidden="true">?</span><span class="e-sym__t"><b>Wir sind austauschbar geworden.</b><span>Der Vertrieb arbeitet hart, aber das Angebot unterscheidet sich kaum vom Wettbewerb.</span></span></button>
+<button class="e-sym" type="button" data-fall="ki"><span class="e-sym__q" aria-hidden="true">?</span><span class="e-sym__t"><b>Bei KI machen wir viel – aber wohin?</b><span>Es laufen mehrere Initiativen, nur ist die Rolle im Geschäftsmodell nicht geklärt.</span></span></button>
+</div>
+<div class="v-rv"><div class="e-antwort" data-panel="orientierung"><div class="e-antwort__kopf"><p class="v-kicker">Fall 01 · Orientierung</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: aus ungeordneten Themen wird eine Rangfolge">
+<g font-family="Poppins, sans-serif">
+<text x="20" y="26" font-size="10" fill="#998675" letter-spacing="1">VORHER</text>
+<g fill="#fff" stroke="#e5ddd4">
+<rect x="18" y="44" width="120" height="30" rx="15" transform="rotate(-5 78 59)"/>
+<rect x="52" y="88" width="142" height="30" rx="15" transform="rotate(3 123 103)"/>
+<rect x="10" y="134" width="132" height="30" rx="15" transform="rotate(-2 76 149)"/>
+<rect x="48" y="180" width="152" height="30" rx="15" transform="rotate(4 124 195)"/>
+<rect x="22" y="228" width="124" height="30" rx="15" transform="rotate(-3 84 243)"/>
+</g>
+<g font-size="10.5" fill="#6b635b">
+<text x="34" y="63" transform="rotate(-5 78 59)">Vertriebsoffensive</text>
+<text x="68" y="107" transform="rotate(3 123 103)">KI-Pilot Schaden</text>
+<text x="26" y="153" transform="rotate(-2 76 149)">Zielbild 2030</text>
+<text x="64" y="199" transform="rotate(4 124 195)">Bestandsmigration</text>
+<text x="38" y="247" transform="rotate(-3 84 243)">Neue Tarifwelt</text>
+</g>
+<path d="M214 150 h74" stroke="#998675" stroke-width="2" stroke-dasharray="5 6" fill="none"/>
+<path d="M282 144 l8 6 -8 6" fill="none" stroke="#998675" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="306" y="26" font-size="10" fill="#185e8a" letter-spacing="1">NACHHER</text>
+<rect x="304" y="40" width="200" height="252" rx="14" fill="#fff" stroke="#e5ddd4"/>
+<g font-size="11" fill="#1d1d1b">
+<circle cx="328" cy="72" r="11" fill="#185e8a"/><text x="324" y="76" font-size="9" fill="#fff">1</text>
+<text x="350" y="76">Zielbild 2030</text>
+<rect x="324" y="92" width="160" height="1" fill="#f0eae3"/>
+<circle cx="328" cy="120" r="11" fill="#185e8a"/><text x="324" y="124" font-size="9" fill="#fff">2</text>
+<text x="350" y="124">Bestandsmigration</text>
+<rect x="324" y="140" width="160" height="1" fill="#f0eae3"/>
+<circle cx="328" cy="168" r="11" fill="#185e8a"/><text x="324" y="172" font-size="9" fill="#fff">3</text>
+<text x="350" y="172">Neue Tarifwelt</text>
+<rect x="324" y="188" width="160" height="1" fill="#f0eae3"/>
+<circle cx="328" cy="216" r="11" fill="#fff" stroke="#998675" stroke-width="1.5"/><text x="324" y="220" font-size="9" fill="#7a6757">4</text>
+<text x="350" y="220" fill="#6b635b">KI-Pilot Schaden</text>
+<rect x="324" y="236" width="160" height="1" fill="#f0eae3"/>
+<circle cx="328" cy="264" r="11" fill="#fff" stroke="#998675" stroke-width="1.5"/><text x="324" y="268" font-size="9" fill="#7a6757">5</text>
+<text x="350" y="268" fill="#6b635b">Vertriebsoffensive</text>
+</g>
+<text x="306" y="312" font-size="9.5" fill="#998675">Rangfolge statt Gleichzeitigkeit</text>
+</g></svg></div><div><h3>Orientierung</h3><p class="e-case__claim">Wenn komplexe Themen nicht mehr klar einzuordnen sind.</p><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Ein Haus hatte <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> groß angelegte Vorhaben gleichzeitig in Arbeit — Zielbild, Bestandsmigration, Tarifwelt, ein KI-Pilot und eine Vertriebsoffensive. Jedes einzelne war begründet. Zusammen beanspruchten sie dieselben Köpfe, und keiner im Vorstand konnte sagen, welches zuerst fertig sein musste.</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben mit <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">elf</mark> Führungskräften gesprochen und die Vorhaben in einem Strukturierungs-Workshop gegeneinander gestellt: Was zahlt worauf ein, was blockiert was, was kann warten. Das Ergebnis war kein Katalog, sondern eine Rangfolge.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Nach <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">sieben Wochen</mark> lag eine Reihenfolge vor, die der Vorstand mitträgt. Zwei Vorhaben wurden bewusst vertagt — und damit zum ersten Mal ehrlich benannt, statt weiter nebenher zu laufen.</p></div>
+</div>
+<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Komposit-Versicherer, rund 900 Mitarbeitende</mark></p></div></div></div>
+<div class="e-antwort" data-panel="entscheidbarkeit" hidden><div class="e-antwort__kopf"><p class="v-kicker">Fall 02 · Entscheidbarkeit</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: aus drei Sichtweisen wird eine Entscheidung">
+<g font-family="Poppins, sans-serif">
+<g font-size="10.5">
+<circle cx="78" cy="62" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/>
+<text x="78" y="66" text-anchor="middle" fill="#185e8a" font-size="10">Vorstand</text>
+<circle cx="78" cy="162" r="30" fill="#fff" stroke="#998675" stroke-width="2"/>
+<text x="78" y="166" text-anchor="middle" fill="#7a6757" font-size="10">Fachbereich</text>
+<circle cx="78" cy="262" r="30" fill="#fff" stroke="#998675" stroke-width="2"/>
+<text x="78" y="266" text-anchor="middle" fill="#7a6757" font-size="10">Risiko</text>
+</g>
+<g fill="none" stroke="#cbbcae" stroke-width="1.6" stroke-dasharray="4 5">
+<path d="M108 62 C 160 62, 150 150, 196 158"/>
+<path d="M108 162 h88"/>
+<path d="M108 262 C 160 262, 150 174, 196 166"/>
+</g>
+<text x="118" y="112" font-size="9.5" fill="#b3a08c">Risiko hoch</text>
+<text x="118" y="216" font-size="9.5" fill="#b3a08c">Risiko tragbar</text>
+<rect x="198" y="118" width="104" height="92" rx="12" fill="#f4f1ee" stroke="#e5ddd4"/>
+<text x="250" y="146" text-anchor="middle" font-size="9.5" fill="#998675" letter-spacing="1">VERDICHTUNG</text>
+<g stroke="#998675" stroke-width="2" stroke-linecap="round">
+<path d="M220 166 h60"/><path d="M220 180 h42"/><path d="M220 194 h52"/>
+</g>
+<path d="M304 164 h40" stroke="#185e8a" stroke-width="2" fill="none"/>
+<path d="M338 158 l8 6 -8 6" fill="none" stroke="#185e8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="352" y="88" width="150" height="152" rx="14" fill="#082638"/>
+<text x="372" y="118" font-size="9.5" fill="#cbbcae" letter-spacing="1">ENTSCHEIDUNG</text>
+<g font-size="11" fill="#fff">
+<circle cx="378" cy="146" r="9" fill="#185e8a"/><path d="m374 146 3 3 5-6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="396" y="150">Option B</text>
+<text x="372" y="178" font-size="9.5" fill="#8fc1e0">zwei Alternativen</text>
+<text x="372" y="196" font-size="9.5" fill="#8fc1e0">bewertet und verworfen</text>
+</g>
+<rect x="372" y="210" width="110" height="12" rx="6" fill="rgba(255,255,255,.14)"/>
+<rect x="372" y="210" width="110" height="12" rx="6" fill="#185e8a"/>
+<text x="352" y="268" font-size="9.5" fill="#998675">Beschlussreif für das Gremium</text>
+</g></svg></div><div><h3>Entscheidbarkeit</h3><p class="e-case__claim">Wenn Themen bekannt sind – aber niemand wirklich entscheiden kann.</p><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Ein Vorhaben stand seit <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">über einem Jahr</mark> auf jeder Vorstandsagenda und kam nicht vom Fleck. Vorstand, Fachbereich und Risikomanagement bewerteten dasselbe Risiko unterschiedlich — ohne dass dieser Unterschied je ausgesprochen wurde.</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben die Beteiligten einzeln befragt, die auseinanderliegenden Bewertungen nebeneinandergelegt und daraus drei entscheidbare Optionen gemacht. Die kritische Abstimmung haben wir moderiert, die Vorlage für das Gremium haben wir geschrieben.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Die Entscheidung fiel in der <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">übernächsten</mark> Sitzung. Zwei Folgeprojekte, die daran hingen, konnten starten.</p></div>
+</div>
+<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Lebensversicherer, Vorstandsressort Betrieb</mark></p></div></div></div>
+<div class="e-antwort" data-panel="wachstum" hidden><div class="e-antwort__kopf"><p class="v-kicker">Fall 03 · Wachstum</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: vom austauschbaren Angebot zur klaren Position">
+<g font-family="Poppins, sans-serif">
+<text x="20" y="26" font-size="10" fill="#998675" letter-spacing="1">AUSTAUSCHBAR</text>
+<g fill="#fff" stroke="#e5ddd4">
+<rect x="18" y="44" width="86" height="56" rx="12"/><rect x="112" y="44" width="86" height="56" rx="12"/>
+<rect x="18" y="110" width="86" height="56" rx="12"/><rect x="112" y="110" width="86" height="56" rx="12"/>
+</g>
+<g stroke="#eae4dd" stroke-width="5" stroke-linecap="round">
+<path d="M34 68 h54"/><path d="M34 82 h34"/><path d="M128 68 h54"/><path d="M128 82 h34"/>
+<path d="M34 134 h54"/><path d="M34 148 h34"/><path d="M128 134 h54"/><path d="M128 148 h34"/>
+</g>
+<text x="20" y="196" font-size="9.5" fill="#b3a08c">Vier Anbieter, vier gleiche Versprechen</text>
+<path d="M214 104 h74" stroke="#998675" stroke-width="2" stroke-dasharray="5 6" fill="none"/>
+<path d="M282 98 l8 6 -8 6" fill="none" stroke="#998675" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="306" y="26" font-size="10" fill="#185e8a" letter-spacing="1">GESCHÄRFT</text>
+<rect x="304" y="40" width="200" height="126" rx="14" fill="#082638"/>
+<text x="324" y="70" font-family="Lora, serif" font-size="15" font-weight="600" fill="#fff">Für wen genau</text>
+<text x="324" y="92" font-family="Lora, serif" font-size="15" font-weight="600" fill="#8fc1e0">und wofür.</text>
+<g stroke="#185e8a" stroke-width="5" stroke-linecap="round"><path d="M324 116 h84"/></g>
+<g stroke="rgba(255,255,255,.22)" stroke-width="5" stroke-linecap="round"><path d="M324 134 h148"/></g>
+<text x="20" y="246" font-size="10" fill="#998675" letter-spacing="1">WIRKUNG IM MARKT</text>
+<rect x="18" y="258" width="486" height="56" rx="12" fill="#fff" stroke="#e5ddd4"/>
+<path d="M40 300 L 118 290 L 196 292 L 274 278 L 352 272 L 430 252 L 482 244"
+      fill="none" stroke="#185e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="482" cy="244" r="5" fill="#185e8a"/>
+<text x="40" y="282" font-size="9.5" fill="#998675">Anfragen aus der Zielgruppe</text>
+</g></svg></div><div><h3>Wachstum</h3><p class="e-case__claim">Wenn Vertrieb, Positionierung oder Geschäftsmodell weiterentwickelt werden sollen.</p><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Der Vertrieb lieferte, was er konnte — aber das Leistungsversprechen war von dem der Wettbewerber kaum zu unterscheiden. Mehr Vertriebsdruck hätte daran nichts geändert.</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben Zielgruppen und Stakeholder analysiert und das Leistungsversprechen so lange geschärft, bis es eine Gruppe klar ansprach und andere bewusst nicht. Daraus haben wir mit Vertrieb und Kommunikation eine gemeinsame Argumentationslogik gebaut.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Innerhalb von <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">zwei Quartalen</mark> verschob sich die Herkunft der Anfragen spürbar in Richtung der definierten Zielgruppe. <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Kennzahl ergänzen</mark></p></div>
+</div>
+<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Spezialversicherer, Firmenkundengeschäft</mark></p></div></div></div>
+<div class="e-antwort" data-panel="ki" hidden><div class="e-antwort__kopf"><p class="v-kicker">Fall 04 · KI-Transformation</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: von einzelnen Pilotprojekten zur Rolle im Geschaeftsmodell">
+<g font-family="Poppins, sans-serif">
+<text x="20" y="26" font-size="10" fill="#998675" letter-spacing="1">PUNKTUELL</text>
+<rect x="18" y="40" width="186" height="252" rx="14" fill="#fff" stroke="#e5ddd4"/>
+<g font-size="10" fill="#6b635b">
+<circle cx="46" cy="76" r="7" fill="#eae4dd"/><text x="62" y="80">Chatbot Service</text>
+<circle cx="46" cy="118" r="7" fill="#eae4dd"/><text x="62" y="122">OCR im Schaden</text>
+<circle cx="46" cy="160" r="7" fill="#eae4dd"/><text x="62" y="164">Textassistent</text>
+<circle cx="46" cy="202" r="7" fill="#eae4dd"/><text x="62" y="206">Tarif-Analytik</text>
+<circle cx="46" cy="244" r="7" fill="#eae4dd"/><text x="62" y="248">Pilot Vertrieb</text>
+</g>
+<text x="32" y="278" font-size="9.5" fill="#b3a08c">fünf Initiativen, keine Rolle geklärt</text>
+<path d="M216 166 h74" stroke="#998675" stroke-width="2" stroke-dasharray="5 6" fill="none"/>
+<path d="M284 160 l8 6 -8 6" fill="none" stroke="#998675" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="308" y="26" font-size="10" fill="#185e8a" letter-spacing="1">STRUKTURELL</text>
+<rect x="306" y="40" width="198" height="60" rx="12" fill="#fff" stroke="#e5ddd4"/>
+<text x="326" y="66" font-size="10" fill="#998675" letter-spacing="1">GESCHÄFTSMODELL</text>
+<text x="326" y="86" font-size="11.5" fill="#1d1d1b">Wo verdienen wir künftig?</text>
+<rect x="306" y="110" width="198" height="60" rx="12" fill="#fff" stroke="#e5ddd4"/>
+<text x="326" y="136" font-size="10" fill="#998675" letter-spacing="1">PROZESSE</text>
+<text x="326" y="156" font-size="11.5" fill="#1d1d1b">Was läuft künftig anders?</text>
+<rect x="306" y="180" width="198" height="60" rx="12" fill="#fff" stroke="#e5ddd4"/>
+<text x="326" y="206" font-size="10" fill="#998675" letter-spacing="1">ORGANISATION</text>
+<text x="326" y="226" font-size="11.5" fill="#1d1d1b">Wer verantwortet was?</text>
+<rect x="286" y="46" width="10" height="194" rx="5" fill="#185e8a"/>
+<text x="268" y="268" font-size="9.5" fill="#185e8a" letter-spacing="1">KI</text>
+<rect x="306" y="256" width="198" height="36" rx="10" fill="#082638"/>
+<text x="326" y="279" font-size="10.5" fill="#fff">Zielbild · drei Prioritäten</text>
+</g></svg></div><div><h3>KI-Transformation</h3><p class="e-case__claim">Wenn KI nicht nur Prozesse verändern soll, sondern das Geschäftsmodell.</p><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Es gab <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> KI-Initiativen im Haus, alle technisch solide. Was fehlte, war die Antwort auf die Frage davor: Welche Rolle soll KI im eigenen Geschäftsmodell überhaupt spielen?</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben den Reifegrad bestimmt und in Workshops mit dem Vorstand ein Zielbild entwickelt — getrennt nach dem, was Prozesse verbessert, und dem, was das Geschäftsmodell verändert. Die Prioritäten haben wir anschließend in die Fachbereiche übersetzt.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Aus <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> Initiativen wurden <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">drei</mark> Prioritäten mit benannten Verantwortlichen. <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Zwei</mark> Piloten wurden eingestellt, weil sie auf keine davon einzahlten.</p></div>
+</div><div class="e-grenze">Wir entwickeln keine Software und übernehmen kein technisches IT-Projektmanagement. Unser Fokus liegt auf Strategie, Entscheidbarkeit und organisatorischer Übersetzung.</div>
+<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Erstversicherer, Vorstandsebene</mark></p></div></div></div>
+</div>
+<div class="v-rv" style="margin-top:4.5rem"><p class="v-kicker">Außerdem</p>
+<h3 class="v-h3" style="font-size:1.25rem">Zwei weitere Einsatzgebiete<span class="v-dot">.</span></h3></div>
+<div class="e-short v-rv"><div><h3>Übersetzung</h3><p class="e-case__claim" style="margin-bottom:.6rem">Wenn Strategie, Fachlichkeit und Umsetzung nicht zusammenfinden.</p><p>Veränderungsvorhaben scheitern selten an der Idee, sondern an der fehlenden Übersetzung zwischen den Ebenen. Wir führen die Perspektiven zusammen und machen Veränderung für die Organisation anschlussfähig. Als klassische Projektmanager verstehen wir uns dabei nicht.</p></div><div><h3>Resilienz</h3><p class="e-case__claim" style="margin-bottom:.6rem">Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</p><p>Geopolitik, Digitalisierung, Klimarisiken: Resilienz heißt, unter veränderten Bedingungen handlungsfähig zu bleiben. Wir ordnen Risiken strategisch ein und verbinden dabei Geschäftsmodellverständnis mit Risiko- und Governance-Perspektive.</p></div></div>
+</div></section>
+<section class="v-sec v-navy" id="ergebnis">
+<div class="v-wrap"><div class="v-rv" style="max-width:46rem"><p class="v-kicker">Ihr Ergebnis</p>
+<h2 class="v-h2">Nur das Ergebnis zählt<span class="v-dot">.</span></h2>
+<p class="v-lead" style="margin-top:1.2rem;color:rgba(255,255,255,.85)">Wir kennen das Geschäftsmodell Versicherung über alle Ebenen hinweg — und steigen deshalb ohne Einarbeitungszeit ein.</p></div>
+<div class="e-drei v-rv">
+<div><p class="e-drei__k">Struktur</p><h3>Unser Handwerk</h3><p>Wir unterstützen Führungskräfte, komplexe Themen zu strukturieren und entscheidbar zu machen.</p></div>
+<div><p class="e-drei__k">Klarheit</p><h3>Ihr Erfolg</h3><p>Durch Fokus auf die Interessen der beteiligten Stakeholder erzeugen wir Klarheit und Entscheidbarkeit.</p></div>
+<div><p class="e-drei__k">Umsetzung</p><h3>Ihr Ergebnis</h3><p>Um das gewünschte Ergebnis sicherzustellen, stehen wir für die anschließende Umsetzung bereit.</p></div>
+</div></div></section>
+<section class="v-sec v-sand v-kontakt-c" id="kontakt">
+<div class="v-wrap v-split">
+<div class="v-rv"><p class="v-kicker">Nächster Schritt</p><h2 class="v-h2 v-h2--xl">Sprechen wir über Ihre Situation<span class="v-dot">.</span></h2>
+<p class="v-lead" style="margin-top:1.3rem">Erzählen Sie uns, was ansteht. Wir sagen Ihnen offen, ob und wie wir es gemeinsam mit Ihnen lösen.</p>
+<p class="v-kontakt-note">Direkt mit uns beiden &ndash; ohne Vertriebsschleife.</p>
+<div class="v-btns" style="margin-top:2rem"><a class="v-btn v-btn--pill ms-cta" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de">Gespräch anfragen <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+<div class="v-kpersons">
+<article class="v-kperson ms-person v-rv"><div class="v-circle"><img src="../assets/tobias-kreis.webp" alt="Tobias Müller"></div><h3>Tobias Müller</h3><p class="v-krole">Governance, Gremien &amp; Risiko</p>
+<div class="v-clines">
+<a class="ms-contact-link" href="mailto:tobias@muellerundstroebel.de"><span>tobias@muellerundstroebel.de</span></a>
+<a class="ms-contact-link" href="tel:+4917621529798"><span>+49 176 2152 9798</span></a>
+<a class="ms-contact-link" href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener"><span>LinkedIn</span></a></div></article>
+<article class="v-kperson ms-person v-rv"><div class="v-circle"><img src="../assets/daniel-kreis.webp" alt="Daniel Ströbel"></div><h3>Daniel Ströbel</h3><p class="v-krole">Strategie, Führung &amp; Vertrieb</p>
+<div class="v-clines">
+<a class="ms-contact-link" href="mailto:daniel@muellerundstroebel.de"><span>daniel@muellerundstroebel.de</span></a>
+<a class="ms-contact-link" href="tel:+4917631347217"><span>+49 176 3134 7217</span></a>
+<a class="ms-contact-link" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener"><span>LinkedIn</span></a></div></article>
+</div></div></section>
+</main>
+<footer class="v-footer"><div class="v-wrap"><span>© Müller &amp; Ströbel 2026 · Entwicklungsstand Variante E3 – Diagnose</span><span><a href="../impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="../datenschutz.html">Datenschutz</a></span></div></footer>
+<template id="m-cv-tobias"><p class="v-kicker">Stationen</p><h3>Tobias Müller</h3><p>Governance, Gremien &amp; Risiko</p><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2021</span><div><b>Mitglied des Aufsichtsrats</b><span>Gartenbau-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2020 – 2024</span><div><b>Geschäftsführer</b><span>Haftpflichtverband öffentlicher Verkehrsbetriebe (HÖV)</span><em>Deckungs- und Schadenmanagement für kommunale Verkehrsunternehmen</em></div></li><li><span class="v-cv-year">seit 2020</span><div><b>Mitglied des Aufsichtsrats</b><span>Grundeigentümer-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2018 – 2019</span><div><b>Stellv. Vorsitzender des Aufsichtsrats</b><span>SHB Allgemeine Versicherung VVaG</span></div></li><li><span class="v-cv-year">2013 – 2025</span><div><b>Geschäftsführer</b><span>Müller Unternehmensberatung GmbH</span><em>Outsourcing und Beratung für Versicherer und Rückversicherer in Deutschland und Europa</em></div></li><li><span class="v-cv-year">2009 – 2013</span><div><b>Underwriter</b><span>Hannover Re</span><em>Treaty Underwriting, u. a. US-Casualty und strukturierte Rückversicherung</em></div></li><li><span class="v-cv-year">2008 – 2009</span><div><b>Research Assistant</b><span>Maastricht University</span></div></li><li><span class="v-cv-year">2002 – 2005</span><div><b>Trainee</b><span>SCOR (ehem. Converium)</span></div></li><li><span class="v-cv-year">2001 – 2003</span><div><b>Praktika in der Rückversicherung</b><span>Aon Benfield (London, Hamburg), Milli Re (Istanbul)</span></div></li></ol></template>
+<template id="m-cv-daniel"><p class="v-kicker">Stationen</p><h3>Daniel Ströbel</h3><p>Strategie, Führung &amp; Vertrieb</p><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2012</span><div><b>Geschäftsführer</b><span>empiria GmbH</span><em>Strategie, Struktur und Kommunikation in der Versicherungsbranche – über 300 Projekte</em></div></li><li><span class="v-cv-year">2010 – 2011</span><div><b>Leiter der Abteilung Leben Grundsatz / Geschäftsprozesse / Technik</b><span>SV SparkassenVersicherung</span><em>Führung von rund 40 Mitarbeitenden an zwei Standorten</em></div></li><li><span class="v-cv-year">2009 – 2011</span><div><b>Leiter Inhouse-Consulting Leben</b><span>SV SparkassenVersicherung</span><em>Neuausrichtung des Geschäftsmodells Leben im Ressort des Vorstands</em></div></li><li><span class="v-cv-year">2006 – 2008</span><div><b>Konzernstrategie, Konzernsteuerung und Risikomanagement</b><span>SV SparkassenVersicherung</span><em>Vorstandsklausuren, Strategieentwicklung und Risikomanagement nach Solvency II</em></div></li><li><span class="v-cv-year">2000 – 2001</span><div><b>Praktikum Reinsurance, Insurance, Accounting</b><span>Great Lakes Reinsurance (UK) PLC, Munich Re Group, London</span></div></li></ol></template>
+<script src="../script.js"></script>
+<script src="../startseite.js"></script>
+<script src="variante-e.js"></script>
+</body>
+</html>

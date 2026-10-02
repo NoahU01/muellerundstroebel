@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Variante E – Live-Inhalte im Gestaltungssystem des Daniel-Branches
+   Ergaenzt startseite.css. Gemeinsame Bausteine fuer E1, E2 und E3.
+   ========================================================================== */
+
+/* ---------- Platzhalter ----------
+   Alles, was aus einem echten Projekt stammen muss und noch nicht belegt ist.
+   Bewusst auffaellig: diese Stellen duerfen so nicht live gehen. */
+.e-ph { background: #fff6d6; border-bottom: 2px dashed #d8a800; color: #6b5200;
+        padding: 0 .15em; border-radius: 2px; font-style: normal; }
+.e-ph-hint { display: inline-flex; align-items: center; gap: .4rem; margin-bottom: 1.2rem;
+             padding: .45rem .8rem; border-radius: 999px; background: #fff6d6;
+             border: 1px solid #e9cf7a; color: #6b5200; font-size: .76rem; font-weight: 600; }
+.e-ph-hint::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: #d8a800; }
+
+/* ---------- Hero mit beiden Personen ----------
+   Die Live-Seite stellt die Portraits nebeneinander. Hier sitzen sie
+   ueberlappend auf dem Konstruktionsraster, das Ampersand liegt als
+   Wasserzeichen dahinter. */
+.e-hero { padding: 9rem 0 6rem; background: #fff; position: relative; overflow: hidden; }
+.e-hero .v-split { align-items: center; }
+.e-portraits { position: relative; min-height: 26rem; display: flex;
+               align-items: center; justify-content: center; }
+.e-portraits__grid { position: absolute; inset: 0; z-index: 0; }
+.e-portraits__amp { position: absolute; z-index: 1; left: 50%; top: 50%;
+                    transform: translate(-50%, -54%); font-family: var(--serif);
+                    font-weight: 600; font-size: 22rem; line-height: 1; color: var(--navy-deep);
+                    opacity: .07; pointer-events: none; user-select: none; }
+.e-faces { position: relative; z-index: 2; display: flex; align-items: center; }
+.e-face { width: 13.5rem; height: 13.5rem; border-radius: 50%; overflow: hidden;
+          background: var(--sand-2); box-shadow: 0 1.5rem 3rem rgba(6,55,85,.18);
+          border: .45rem solid #fff; }
+.e-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.e-face--2 { margin-left: -3.2rem; }
+.e-names { position: relative; z-index: 2; display: flex; gap: 3.4rem;
+           margin-top: 1.6rem; justify-content: center; }
+.e-name { text-align: center; }
+.e-name b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+.e-name span { display: block; font-size: .78rem; color: var(--taupe-dark); margin-top: .1rem; }
+
+/* ---------- Einsatzgebiete: kompakte Kaesten ----------
+   Die Kaesten der Live-Seite bleiben, nur ohne Pop-up dahinter. */
+.e-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.1rem; margin-top: 3rem; }
+.e-field { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+           padding: 1.6rem 1.5rem; display: flex; flex-direction: column; gap: .55rem;
+           transition: border-color .18s, box-shadow .18s, transform .18s; }
+.e-field h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; line-height: 1.25; }
+.e-field p { font-size: .9rem; color: var(--ink-2); margin: 0; }
+.e-field__tag { margin-top: auto; padding-top: .9rem; font-size: .72rem; font-weight: 600;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--taupe-dark); }
+.e-field--case { border-color: #cfe0ec; }
+.e-field--case .e-field__tag { color: var(--blue); }
+
+/* ---------- Der Fall: drei Takte ----------
+   Situation, Vorgehen, Ergebnis. Immer dieselbe Abfolge, nie eine Liste. */
+.e-beats { display: grid; gap: 0; margin-top: 1.6rem; }
+.e-beat { position: relative; padding: 1.15rem 0 1.15rem 3.3rem; border-top: 1px solid var(--line); }
+.e-beat:first-child { border-top: 0; padding-top: .3rem; }
+.e-beat__no { position: absolute; left: 0; top: 1.25rem; width: 2.1rem; height: 2.1rem;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-size: .74rem; font-weight: 600; background: var(--sand);
+              color: var(--taupe-dark); }
+.e-beat:first-child .e-beat__no { top: .4rem; }
+.e-beat--erg .e-beat__no { background: var(--blue); color: #fff; }
+.e-beat h4 { margin: 0 0 .3rem; font-size: .74rem; font-weight: 600; letter-spacing: .1em;
+             text-transform: uppercase; color: var(--taupe-dark); }
+.e-beat p { margin: 0; font-size: .97rem; line-height: 1.65; color: var(--ink-2); }
+.e-beat--erg p { color: var(--ink); font-weight: 500; }
+
+/* Herkunft des Falls, bewusst ohne Kundennamen */
+.e-herkunft { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.4rem;
+              padding: .4rem .85rem; border-radius: 999px; background: var(--sand);
+              font-size: .78rem; color: var(--taupe-dark); }
+.e-herkunft::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%;
+                      background: var(--taupe); }
+.v-navy .e-herkunft { background: rgba(255,255,255,.1); color: #cbbcae; }
+
+/* Abgrenzung – was wir ausdruecklich nicht tun */
+.e-grenze { margin-top: 1.3rem; padding: .85rem 1.1rem; border-left: 3px solid var(--taupe);
+            background: var(--sand); border-radius: 0 var(--r) var(--r) 0;
+            font-size: .88rem; color: var(--ink-2); }
+
+/* ---------- E1: Fallakte, ein Fall je Zeile ---------- */
+.e-case { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+          gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding: 4.5rem 0;
+          border-top: 1px solid var(--line); }
+.e-case:first-of-type { border-top: 0; padding-top: 1rem; }
+.e-case:nth-child(even) .e-case__media { order: 2; }
+.e-case__media { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+                 padding: 1.3rem; }
+.v-sand .e-case__media { background: #fff; }
+.e-case__media svg { width: 100%; height: auto; display: block; }
+.e-case__nr { font-family: var(--serif); font-size: .95rem; font-weight: 600; color: var(--taupe);
+              letter-spacing: .06em; }
+.e-case h3 { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+             font-weight: 600; line-height: 1.2; margin: .35rem 0 .5rem; }
+.e-case__claim { font-size: 1.02rem; color: var(--taupe-dark); }
+
+/* ---------- E2: Auswahl oben, Fall darunter ---------- */
+.e-picker { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .8rem;
+            margin-top: 2.6rem; }
+.e-pick { text-align: left; background: #fff; border: 1px solid var(--line);
+          border-radius: var(--r-lg); padding: 1.1rem 1.2rem; cursor: pointer;
+          transition: border-color .18s, box-shadow .18s, background .18s; font: inherit; }
+.e-pick b { display: block; font-family: var(--serif); font-size: 1.08rem; font-weight: 600;
+            color: var(--ink); }
+.e-pick span { display: block; margin-top: .25rem; font-size: .84rem; color: var(--ink-2); }
+.e-pick:hover { border-color: var(--blue); }
+.e-pick.is-on { background: var(--navy-deep); border-color: var(--navy-deep);
+                box-shadow: 0 .9rem 2rem rgba(6,55,85,.22); }
+.e-pick.is-on b { color: #fff; }
+.e-pick.is-on span { color: rgba(255,255,255,.8); }
+.e-pick[disabled] { opacity: .55; cursor: default; }
+.e-pick[disabled]:hover { border-color: var(--line); }
+
+.e-panel { margin-top: 2.2rem; background: #fff; border: 1px solid var(--line);
+           border-radius: var(--r-lg); padding: clamp(1.6rem, 3.5vw, 2.8rem);
+           display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+           gap: clamp(1.8rem, 4vw, 3.4rem); align-items: center; }
+.e-panel[hidden] { display: none; }
+.e-panel__media svg { width: 100%; height: auto; display: block; }
+.e-panel h3 { font-family: var(--serif); font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+              font-weight: 600; line-height: 1.2; margin: .3rem 0 .45rem; }
+.e-fade { animation: e-fade .32s ease both; }
+@keyframes e-fade { from { opacity: 0; transform: translateY(.5rem); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .e-fade { animation: none; } }
+
+/* ---------- E3: Einstieg ueber das Symptom ---------- */
+.e-diag { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem;
+          margin-top: 2.8rem; }
+.e-sym { display: flex; gap: 1.1rem; align-items: flex-start; text-align: left;
+         background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+         padding: 1.5rem 1.6rem; cursor: pointer; font: inherit; width: 100%;
+         transition: border-color .18s, box-shadow .18s, transform .18s; }
+.e-sym:hover { border-color: var(--blue); box-shadow: 0 .8rem 1.8rem rgba(6,55,85,.1);
+               transform: translateY(-2px); }
+.e-sym__q { flex: 0 0 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--sand);
+            color: var(--taupe-dark); display: flex; align-items: center; justify-content: center;
+            font-family: var(--serif); font-size: 1.1rem; font-weight: 600; }
+.e-sym.is-on { border-color: var(--navy-deep); box-shadow: 0 .9rem 2rem rgba(6,55,85,.18); }
+.e-sym.is-on .e-sym__q { background: var(--blue); color: #fff; }
+/* Nur den Textteil ansprechen - ein allgemeines .e-sym span wuerde auch den
+   Kreis mit dem Fragezeichen treffen und ihn aus der Mitte schieben. */
+.e-sym__t b { display: block; font-family: var(--serif); font-size: 1.15rem; font-weight: 600;
+              line-height: 1.3; color: var(--ink); }
+.e-sym__t > span { display: block; margin-top: .3rem; font-size: .88rem; color: var(--ink-2); }
+.e-antwort { margin-top: 2.2rem; }
+.e-antwort[hidden] { display: none; }
+.e-antwort__kopf { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+                   margin-bottom: 1.2rem; }
+.e-antwort__kopf .v-kicker { margin-bottom: 0; }
+
+/* ---------- Kurzkaesten fuer die beiden Gebiete ohne Fall ---------- */
+.e-short { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.1rem;
+           margin-top: 2.4rem; }
+.e-short > div { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+                 padding: 1.7rem 1.7rem 1.8rem; }
+.v-sand .e-short > div { background: #fff; }
+.e-short h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: .5rem; }
+.e-short p { font-size: .92rem; color: var(--ink-2); margin: 0; }
+
+/* ---------- Ergebnis-Dreiklang (von der Live-Seite) ---------- */
+.e-drei { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.6rem;
+          margin-top: 3rem; }
+.e-drei > div { border-top: 2px solid var(--blue); padding-top: 1.3rem; }
+.e-drei > div:nth-child(2) { border-top-color: var(--taupe); }
+.e-drei > div:nth-child(3) { border-top-color: var(--navy-deep); }
+.v-navy .e-drei > div { border-top-color: #8fc1e0; }
+.v-navy .e-drei > div:nth-child(2) { border-top-color: var(--taupe); }
+.v-navy .e-drei > div:nth-child(3) { border-top-color: rgba(255,255,255,.5); }
+.e-drei__k { font-size: .73rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+             color: var(--taupe-dark); }
+.v-navy .e-drei__k { color: #cbbcae; }
+.e-drei h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin: .35rem 0 .5rem; }
+.e-drei p { font-size: .93rem; color: var(--ink-2); margin: 0; }
+.v-navy .e-drei p { color: rgba(255,255,255,.85); }
+
+/* ---------- Schmale Fenster ---------- */
+@media (max-width: 991px) {
+  .e-hero { padding: 7rem 0 4rem; }
+  .e-fields, .e-picker, .e-diag { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .e-case, .e-panel { grid-template-columns: 1fr; }
+  .e-case:nth-child(even) .e-case__media { order: 0; }
+  .e-portraits { min-height: 20rem; }
+  .e-face { width: 11rem; height: 11rem; }
+}
+@media (max-width: 767px) {
+  .e-fields, .e-picker, .e-diag, .e-short, .e-drei { grid-template-columns: 1fr; }
+  .e-face { width: 9.5rem; height: 9.5rem; border-width: .35rem; }
+  .e-face--2 { margin-left: -2.2rem; }
+  .e-names { gap: 2rem; }
+  .e-case { padding: 3rem 0; }
+  .e-beat { padding-left: 2.9rem; }
+}
+
+/* Gebiete ohne ausgearbeiteten Fall: einspaltig, kein Platz fuer eine Skizze */
+.e-panel--kurz { grid-template-columns: 1fr; }
