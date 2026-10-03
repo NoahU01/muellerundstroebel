@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Über uns 2.0 – nur für diese Entwicklungsseite.
+   Ergänzt startseite.css, ändert dort nichts.
+   ========================================================================== */
+
+/* Kopfteil: Text links, Kreisgrafik rechts. Die Grafik soll nicht breiter
+   werden als noetig, der Text bekommt den groesseren Anteil. */
+.u2-kopf { grid-template-columns: 1.08fr .92fr; align-items: center; }
+.u2-kopf .v-svg { width: 100%; height: auto; display: block; }
+
+/* Die drei Punkte als Karten statt als blosse Linien: so tragen sie neben
+   der Grafik genug Gewicht. */
+.u2-verbindet { gap: 1.3rem; margin-top: 4rem; }
+.u2-verbindet .v-usp3-item {
+  background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--ink);
+  border-radius: var(--r-lg); padding: 1.5rem 1.6rem 1.7rem; }
+.u2-verbindet .v-usp3-item:nth-child(2) { border-top-color: var(--blue); }
+
+/* 03 ist die Aussage, die haengen bleiben soll: dunkel abgesetzt. */
+.u2-verbindet .v-usp3-item--stark {
+  background: var(--navy-deep); border-color: var(--navy-deep);
+  border-top-color: var(--taupe); color: #fff;
+  box-shadow: 0 1rem 2.4rem rgba(6,55,85,.22); }
+.u2-verbindet .v-usp3-item--stark .v-usp3-no { color: #cbbcae; }
+.u2-verbindet .v-usp3-item--stark h3 { color: #fff; }
+.u2-verbindet .v-usp3-item--stark p { color: rgba(255,255,255,.85); }
+
+@media (max-width: 991px) {
+  .u2-kopf { grid-template-columns: 1fr; }
+  .u2-verbindet { grid-template-columns: 1fr; margin-top: 3rem; }
+}
