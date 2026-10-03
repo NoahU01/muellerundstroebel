@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Variante B2 – wie B, aber mit hellem Kopf und beiden Personen darin.
+   Ergänzt varianten.css, ändert dort nichts.
+   ========================================================================== */
+
+/* ---------- Kopf von dunkel auf hell ---------- */
+.v-hero-b2 { background: #fff; color: var(--ink); }
+.v-hero-b2::after { display: none; }              /* der dunkle Lichtschein entfaellt */
+.v-hero-b2 .v-lead { color: var(--ink-2); }
+/* Das Und-Zeichen traegt sein Weiss als Attribut im Pfad - CSS sticht das. */
+.v-hero-b2 .v-amp { opacity: 1; }
+.v-hero-b2 .v-amp path { fill: #efeae4; }
+.v-hero-b2 .v-proof { border-top-color: var(--line); }
+.v-hero-b2 .v-proof strong { color: var(--ink); }
+.v-hero-b2 .v-proof span { color: var(--muted); }
+
+/* Text links, die beiden Personen rechts */
+.b2-kopf { display: grid; grid-template-columns: 1.1fr .9fr;
+           gap: clamp(2.5rem, 5vw, 5rem); align-items: center; }
+.b2-portraits { display: flex; flex-direction: column; align-items: center; }
+.b2-faces { display: flex; align-items: center; }
+.b2-face { width: 12.5rem; height: 12.5rem; border-radius: 50%; overflow: hidden;
+           background: var(--sand-2); border: .45rem solid #fff;
+           box-shadow: 0 1.5rem 3rem rgba(6,55,85,.18); }
+.b2-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.b2-face--2 { margin-left: -3rem; }
+.b2-names { display: flex; gap: 3rem; margin-top: 1.4rem; justify-content: center; }
+.b2-name { text-align: center; }
+.b2-name b { display: block; font-family: var(--serif); font-size: 1.02rem; font-weight: 600; color: var(--ink); }
+.b2-name span { display: block; margin-top: .1rem; font-size: .76rem; color: var(--taupe-dark); }
+
+/* ---------- Ergebnis-Streifen, hell ---------- */
+.b2-drei { display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+           gap: 1.8rem; margin-top: 3rem; }
+.b2-drei > div { border-top: 2px solid var(--blue); padding-top: 1.3rem; }
+.b2-drei > div:nth-child(2) { border-top-color: var(--taupe); }
+.b2-drei > div:nth-child(3) { border-top-color: var(--navy-deep); }
+.b2-drei__k { font-size: .73rem; font-weight: 600; letter-spacing: .1em;
+              text-transform: uppercase; color: var(--taupe-dark); }
+.b2-drei h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin: .35rem 0 .5rem; }
+.b2-drei p { font-size: .93rem; color: var(--ink-2); margin: 0; }
+
+@media (max-width: 991px) {
+  .b2-kopf { grid-template-columns: 1fr; gap: 3rem; }
+  .b2-drei { grid-template-columns: 1fr; }
+  .b2-face { width: 10rem; height: 10rem; }
+  .b2-face--2 { margin-left: -2.2rem; }
+  .b2-names { gap: 2rem; }
+}

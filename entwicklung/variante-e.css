@@ -17,14 +17,12 @@
    Ein einziges grosses Und-Zeichen im Hintergrund statt Raster plus kleinem
    Zeichen hinter den Gesichtern: ruhiger, und die Form ist als Ganzes zu sehen.
    Die Schlagzeile laeuft durchgehend schwarz, nur der Schlusspunkt ist taupe. */
-.e-hero { padding: 9rem 0 6rem; background: #fff; position: relative; overflow: hidden; }
+.e-hero { padding: 9rem 0 6rem; background: #fff; position: relative; }
 .e-hero .v-split { align-items: center; grid-template-columns: 1.14fr .86fr; }
 .e-hero .v-h1 { font-size: clamp(2.3rem, 3.7vw, 3.5rem); line-height: 1.1; color: var(--ink); }
 .e-hero .v-h1 .v-dot { color: var(--taupe); }
 
-.e-amp { position: absolute; z-index: 0; pointer-events: none; user-select: none;
-         right: 1rem; top: 50%; transform: translateY(-50%);
-         width: 34rem; height: auto; color: var(--navy-deep); opacity: .055; }
+
 
 .e-portraits { position: relative; z-index: 1; display: flex;
                align-items: center; justify-content: center; }
@@ -225,31 +223,52 @@
 /* Gebiete ohne ausgearbeiteten Fall: einspaltig, kein Platz fuer eine Skizze */
 .e-panel--kurz { grid-template-columns: 1fr; }
 
-/* ---------- Vorgehen: drei Schritte, der erste traegt den CTA ---------- */
-.e-schritte { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
-/* Die Linie beginnt hinter der hervorgehobenen Karte, sonst laeuft sie
-   unsichtbar hinter deren Flaeche. */
-.e-schritte::before { left: 36%; right: 24%; }
-.e-schritt--stark { background: var(--sand); border-radius: var(--r-lg);
-                    padding: 1.5rem 1.6rem 1.7rem; margin: -1.5rem -0.4rem 0; }
-.e-schritt--stark .v-step-dot { background: var(--blue); border-color: var(--blue); color: #fff; }
-.e-schritte .v-step:last-child .v-step-dot { background: #fff; border-color: var(--blue); color: var(--blue); }
-.e-schritt__cta { margin-top: 1.2rem; }
+
+/* ---------- Grosses Und-Zeichen am Uebergang ----------
+   Es sitzt in der Sektion "Einsatzgebiete" und ragt nach oben in den Kopf.
+   Dadurch liegt es ueber deren Hintergrund, aber unter deren Inhalt - der
+   .v-wrap der Vorlage hat bereits z-index 1. Waagerecht wird geschnitten,
+   damit der Ueberstand rechts keine Seitenbreite erzeugt. */
+.e-sek { overflow-x: clip; overflow-y: visible; }
+.e-amp { position: absolute; z-index: 0; pointer-events: none; user-select: none;
+         right: -6rem; top: -19rem; width: 46rem; height: auto; color: #eae5df; }
+
+/* ---------- Vorgehen: Stationen mit Kreisen, CTA zentriert darunter ----------
+   Aufbau nach dem Vorbild der MSP-Sektion "So starten wir". */
+.e-ablauf { position: relative; list-style: none; margin: 3.5rem 0 0; padding: 3rem 2.5rem 3.2rem;
+            background: var(--sand); border-radius: 2rem;
+            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+/* Die Linie liegt auf der Mitte der Kreise: Innenabstand 3rem plus halber Kreis. */
+.e-ablauf__linie { position: absolute; left: 19%; right: 19%; top: 5.5rem;
+                   height: 2px; background: var(--blue); opacity: .28; }
+.e-stufe { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.e-stufe__kreis { position: relative; z-index: 1; width: 5rem; height: 5rem; border-radius: 50%;
+                  display: flex; align-items: center; justify-content: center; flex: none;
+                  background: #fff; color: var(--navy-deep);
+                  box-shadow: 0 .75rem 1.9rem rgba(6,55,85,.12); }
+.e-stufe__kreis svg { width: 2.1rem; height: 2.1rem; display: block; }
+.e-stufe--jetzt .e-stufe__kreis { background: var(--blue); color: #fff;
+                  box-shadow: 0 .9rem 2.2rem rgba(24,94,138,.35), 0 0 0 .55rem rgba(24,94,138,.12); }
+.e-stufe__label { margin-top: 1.6rem; font-size: .76rem; font-weight: 600; letter-spacing: .12em;
+                  text-transform: uppercase; color: var(--blue); line-height: 1; }
+.e-stufe--jetzt .e-stufe__label { color: var(--blue); }
+.e-stufe__titel { margin-top: .55rem; font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
+                  line-height: 1.25; color: var(--ink); }
+.e-stufe__text { margin-top: .45rem; font-size: .95rem; line-height: 1.55; color: var(--muted); }
+.e-ablauf__cta { margin-top: 2.2rem; text-align: center; }
 
 @media (max-width: 991px) {
-  .e-schritte { grid-template-columns: 1fr; gap: 2rem; }
-  .e-schritte::before { display: none; }
-  .e-schritt--stark { margin: 0; }
-  .e-amp { width: 24rem; right: -4rem; opacity: .045; }
+  .e-ablauf { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.2rem 1.6rem 2.4rem; }
+  .e-ablauf__linie { display: none; }
+  .e-amp { width: 26rem; right: -5rem; top: -11rem; }
 }
 
-/* Die Vorlage richtet die Schritte ueber ein Subgrid aus, damit Ueberschrift
-   und Text in allen Spalten auf gleicher Hoehe beginnen - festgelegt auf drei
-   Reihen (Punkt, Ueberschrift, Text). Der Knopf ist ein viertes Kind und
-   wuerde sonst in der Textreihe landen. Also vier Reihen statt drei. */
+/* Kreis, Beschriftung, Titel und Zeile sollen in allen drei Stationen auf
+   gleicher Hoehe beginnen - auch wenn ein Titel zweizeilig laeuft. */
 @supports (grid-template-rows: subgrid) {
   @media screen and (min-width: 992px) {
-    .e-schritte { grid-template-rows: repeat(4, auto); }
-    .e-schritte .v-step { grid-row: span 4; }
+    .e-ablauf { grid-template-rows: repeat(4, auto); row-gap: 0; }
+    .e-stufe { grid-row: span 4; display: grid; grid-template-rows: subgrid;
+               justify-items: center; }
   }
 }
