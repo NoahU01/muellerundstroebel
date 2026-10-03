@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Variante B3 – wie B2 im Aufbau, aber mit dem dunklen Kopf aus B.
+   Lädt zusätzlich variante-b2.css: von dort kommen die Rasterklassen für
+   Kopfaufteilung, Porträts und Ergebnis-Streifen. Hier stehen nur die
+   Werte, die auf dunklem Grund anders sein müssen.
+   ========================================================================== */
+
+/* Namen und Rollen unter den Porträts auf Navy */
+.v-hero-b3 .b2-name b { color: #fff; }
+.v-hero-b3 .b2-name span { color: rgba(255,255,255,.62); }
+/* Der weisse Ring um die Kreise ist auf dunklem Grund zu hart. */
+.v-hero-b3 .b2-face { border-color: rgba(255,255,255,.16);
+                      box-shadow: 0 1.5rem 3rem rgba(0,0,0,.35); }
