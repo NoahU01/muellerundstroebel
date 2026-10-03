@@ -18,7 +18,11 @@
    ueberlappend auf dem Konstruktionsraster, das Ampersand liegt als
    Wasserzeichen dahinter. */
 .e-hero { padding: 9rem 0 6rem; background: #fff; position: relative; overflow: hidden; }
-.e-hero .v-split { align-items: center; }
+/* Die Schlagzeile traegt jetzt zwei Aussagen und braucht mehr Breite als die
+   Portraits. Dazu ein eigener Schriftgrad: der Standard (bis 5,2rem) wuerde
+   in dieser Spalte in sechs Zeilen zerfallen. */
+.e-hero .v-split { align-items: center; grid-template-columns: 1.12fr .88fr; }
+.e-hero .v-h1 { font-size: clamp(2.2rem, 3.4vw, 3.2rem); line-height: 1.1; }
 .e-portraits { position: relative; min-height: 26rem; display: flex;
                align-items: center; justify-content: center; }
 .e-portraits__grid { position: absolute; inset: 0; z-index: 0; }
@@ -55,9 +59,9 @@
 /* ---------- Der Fall: drei Takte ----------
    Situation, Vorgehen, Ergebnis. Immer dieselbe Abfolge, nie eine Liste. */
 .e-beats { display: grid; gap: 0; margin-top: 1.6rem; }
-.e-beat { position: relative; padding: 1.15rem 0 1.15rem 3.3rem; border-top: 1px solid var(--line); }
+.e-beat { position: relative; padding: .85rem 0 .85rem 3.1rem; border-top: 1px solid var(--line); }
 .e-beat:first-child { border-top: 0; padding-top: .3rem; }
-.e-beat__no { position: absolute; left: 0; top: 1.25rem; width: 2.1rem; height: 2.1rem;
+.e-beat__no { position: absolute; left: 0; top: .95rem; width: 2.1rem; height: 2.1rem;
               border-radius: 50%; display: flex; align-items: center; justify-content: center;
               font-size: .74rem; font-weight: 600; background: var(--sand);
               color: var(--taupe-dark); }
@@ -65,11 +69,11 @@
 .e-beat--erg .e-beat__no { background: var(--blue); color: #fff; }
 .e-beat h4 { margin: 0 0 .3rem; font-size: .74rem; font-weight: 600; letter-spacing: .1em;
              text-transform: uppercase; color: var(--taupe-dark); }
-.e-beat p { margin: 0; font-size: .97rem; line-height: 1.65; color: var(--ink-2); }
+.e-beat p { margin: 0; font-size: .92rem; line-height: 1.6; color: var(--ink-2); }
 .e-beat--erg p { color: var(--ink); font-weight: 500; }
 
 /* Herkunft des Falls, bewusst ohne Kundennamen */
-.e-herkunft { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.4rem;
+.e-herkunft { display: inline-flex; align-self: flex-start; align-items: center; gap: .55rem; margin-top: 1.4rem;
               padding: .4rem .85rem; border-radius: 999px; background: var(--sand);
               font-size: .78rem; color: var(--taupe-dark); }
 .e-herkunft::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%;
@@ -81,50 +85,63 @@
             background: var(--sand); border-radius: 0 var(--r) var(--r) 0;
             font-size: .88rem; color: var(--ink-2); }
 
-/* ---------- E1: Fallakte, ein Fall je Zeile ---------- */
-.e-case { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-          gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding: 4.5rem 0;
-          border-top: 1px solid var(--line); }
-.e-case:first-of-type { border-top: 0; padding-top: 1rem; }
-.e-case:nth-child(even) .e-case__media { order: 2; }
-.e-case__media { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
-                 padding: 1.3rem; }
-.v-sand .e-case__media { background: #fff; }
-.e-case__media svg { width: 100%; height: auto; display: block; }
-.e-case__nr { font-family: var(--serif); font-size: .95rem; font-weight: 600; color: var(--taupe);
-              letter-spacing: .06em; }
-.e-case h3 { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 1.95rem);
-             font-weight: 600; line-height: 1.2; margin: .35rem 0 .5rem; }
-.e-case__claim { font-size: 1.02rem; color: var(--taupe-dark); }
+/* ---------- E2: Auswahl links, Fall rechts ----------
+   Knapp unter einem Drittel fuer die Auswahl. Entscheidend ist der Stapel:
+   alle Faelle liegen in derselben Grid-Zelle uebereinander, damit die Spalte
+   immer so hoch ist wie der laengste Fall und beim Umschalten nichts springt. */
+.e-zwei { display: grid; grid-template-columns: 19rem minmax(0, 1fr);
+          gap: 1.6rem; margin-top: 2.8rem; align-items: start; }
+.e-wahlspalte { display: flex; flex-direction: column; gap: .5rem; }
 
-/* ---------- E2: Auswahl oben, Fall darunter ---------- */
-.e-picker { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .8rem;
-            margin-top: 2.6rem; }
-.e-pick { text-align: left; background: #fff; border: 1px solid var(--line);
-          border-radius: var(--r-lg); padding: 1.1rem 1.2rem; cursor: pointer;
-          transition: border-color .18s, box-shadow .18s, background .18s; font: inherit; }
-.e-pick b { display: block; font-family: var(--serif); font-size: 1.08rem; font-weight: 600;
-            color: var(--ink); }
-.e-pick span { display: block; margin-top: .25rem; font-size: .84rem; color: var(--ink-2); }
-.e-pick:hover { border-color: var(--blue); }
-.e-pick.is-on { background: var(--navy-deep); border-color: var(--navy-deep);
-                box-shadow: 0 .9rem 2rem rgba(6,55,85,.22); }
-.e-pick.is-on b { color: #fff; }
-.e-pick.is-on span { color: rgba(255,255,255,.8); }
-.e-pick[disabled] { opacity: .55; cursor: default; }
-.e-pick[disabled]:hover { border-color: var(--line); }
+.e-wahl { display: flex; align-items: flex-start; gap: .85rem; text-align: left;
+          width: 100%; font: inherit; cursor: pointer; background: #fff;
+          border: 1px solid var(--line); border-radius: var(--r);
+          padding: .85rem .95rem;
+          transition: background .18s, border-color .18s, box-shadow .18s; }
+.e-wahl:hover { border-color: var(--blue); }
+.e-wahl__t { min-width: 0; }
+.e-wahl__t b { display: block; font-family: var(--serif); font-size: 1rem;
+               font-weight: 600; line-height: 1.25; color: var(--ink); }
+.e-wahl__t > span { display: block; margin-top: .2rem; font-size: .78rem;
+                    line-height: 1.45; color: var(--muted); }
+.e-ico { flex: 0 0 2.1rem; height: 2.1rem; border-radius: .5rem; display: flex;
+         align-items: center; justify-content: center; background: var(--sand);
+         color: var(--blue); transition: background .18s, color .18s; }
+.e-ico svg { width: 1.2rem; height: 1.2rem; display: block; }
 
-.e-panel { margin-top: 2.2rem; background: #fff; border: 1px solid var(--line);
-           border-radius: var(--r-lg); padding: clamp(1.6rem, 3.5vw, 2.8rem);
-           display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-           gap: clamp(1.8rem, 4vw, 3.4rem); align-items: center; }
-.e-panel[hidden] { display: none; }
+.e-wahl.is-on { background: var(--navy-deep); border-color: var(--navy-deep);
+                box-shadow: 0 .7rem 1.6rem rgba(6,55,85,.2); }
+.e-wahl.is-on .e-wahl__t b { color: #fff; }
+.e-wahl.is-on .e-wahl__t > span { color: rgba(255,255,255,.72); }
+.e-wahl.is-on .e-ico { background: rgba(255,255,255,.14); color: #8fc1e0; }
+
+/* Der Stapel: eine Zelle, sechs Faelle darin */
+.e-stapel { display: grid; }
+.e-stapel > * { grid-area: 1 / 1; opacity: 0; visibility: hidden;
+                 transition: opacity .28s ease; }
+.e-stapel > *.is-on { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .e-stapel > * { transition: none; } }
+.e-stapel--antwort { margin-top: 2.2rem; }
+
+.e-panel { background: #fff; border: 1px solid var(--line);
+           border-radius: var(--r-lg); padding: 1.5rem 1.7rem 1.6rem; }
+/* Die rechte Spalte ist breit genug, um Takte und Skizze nebeneinander zu
+   stellen. Untereinander waere der Fall rund 400 pt hoeher. */
+.e-panel__koerper { display: grid; grid-template-columns: minmax(0, 1fr) 17rem;
+                    gap: 1.6rem; align-items: start; }
+.e-panel__kopf { margin-bottom: .9rem; }
+.e-case__nr { font-family: var(--serif); font-size: .9rem; font-weight: 600;
+              color: var(--taupe); letter-spacing: .06em; }
+.e-case__claim { font-size: .97rem; color: var(--taupe-dark); line-height: 1.5; }
+.e-panel h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 600;
+              line-height: 1.2; margin: .25rem 0 .35rem; }
+.e-panel__seite { display: flex; flex-direction: column; gap: .9rem; }
+.e-panel__media { border: 1px solid var(--line); border-radius: var(--r);
+                  background: var(--sand); padding: .6rem; }
 .e-panel__media svg { width: 100%; height: auto; display: block; }
-.e-panel h3 { font-family: var(--serif); font-size: clamp(1.45rem, 2.4vw, 1.85rem);
-              font-weight: 600; line-height: 1.2; margin: .3rem 0 .45rem; }
-.e-fade { animation: e-fade .32s ease both; }
-@keyframes e-fade { from { opacity: 0; transform: translateY(.5rem); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .e-fade { animation: none; } }
+.e-panel__text { font-size: .95rem; line-height: 1.7; color: var(--ink-2); }
+.e-panel--kurz .e-herkunft { margin-top: 1.5rem; }
+.e-panel--frei { margin-top: 0; }
 
 /* ---------- E3: Einstieg ueber das Symptom ---------- */
 .e-diag { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem;
@@ -145,8 +162,6 @@
 .e-sym__t b { display: block; font-family: var(--serif); font-size: 1.15rem; font-weight: 600;
               line-height: 1.3; color: var(--ink); }
 .e-sym__t > span { display: block; margin-top: .3rem; font-size: .88rem; color: var(--ink-2); }
-.e-antwort { margin-top: 2.2rem; }
-.e-antwort[hidden] { display: none; }
 .e-antwort__kopf { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
                    margin-bottom: 1.2rem; }
 .e-antwort__kopf .v-kicker { margin-bottom: 0; }
@@ -179,18 +194,21 @@
 /* ---------- Schmale Fenster ---------- */
 @media (max-width: 991px) {
   .e-hero { padding: 7rem 0 4rem; }
-  .e-fields, .e-picker, .e-diag { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .e-case, .e-panel { grid-template-columns: 1fr; }
-  .e-case:nth-child(even) .e-case__media { order: 0; }
+  /* Die eigene Hero-Regel oben ist spezifischer als die Umbruchregel der
+     Vorlage und muss hier ausdruecklich zurueckgenommen werden. */
+  .e-hero .v-split { grid-template-columns: 1fr; }
+  .e-fields, .e-diag { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .e-zwei { grid-template-columns: 1fr; }
   .e-portraits { min-height: 20rem; }
   .e-face { width: 11rem; height: 11rem; }
 }
 @media (max-width: 767px) {
-  .e-fields, .e-picker, .e-diag, .e-short, .e-drei { grid-template-columns: 1fr; }
+  .e-fields, .e-diag, .e-short, .e-drei { grid-template-columns: 1fr; }
+  .e-panel { padding: 1.3rem 1.2rem 1.5rem; }
+  .e-panel__media svg { height: 9rem; }
   .e-face { width: 9.5rem; height: 9.5rem; border-width: .35rem; }
   .e-face--2 { margin-left: -2.2rem; }
   .e-names { gap: 2rem; }
-  .e-case { padding: 3rem 0; }
   .e-beat { padding-left: 2.9rem; }
 }
 

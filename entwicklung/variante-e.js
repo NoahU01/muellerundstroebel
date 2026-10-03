@@ -1,12 +1,16 @@
 /* Variante E – Umschalter fuer E2 (Auswahl) und E3 (Diagnose).
-   Beide tauschen denselben Panel-Typ aus: ein Knopf mit data-fall zeigt das
-   Element mit passendem data-panel und blendet die uebrigen aus. */
+   Ein Knopf mit data-fall schaltet das Element mit passendem data-panel an.
+
+   Bewusst ueber eine Klasse und nicht ueber das hidden-Attribut: in E2 liegen
+   alle Faelle per Grid in derselben Zelle uebereinander. Wuerden die inaktiven
+   aus dem Layout genommen, bestimmte der gerade sichtbare Fall die Hoehe und
+   die Spalte wuerde bei jedem Wechsel springen. So bleibt sie stehen. */
 (function () {
   var knoepfe = document.querySelectorAll('[data-fall]');
   if (!knoepfe.length) return;
   var panels = document.querySelectorAll('[data-panel]');
 
-  function zeige(id, scrollen) {
+  function zeige(id) {
     knoepfe.forEach(function (k) {
       var an = k.getAttribute('data-fall') === id;
       k.classList.toggle('is-on', an);
@@ -14,28 +18,26 @@
     });
     panels.forEach(function (p) {
       var an = p.getAttribute('data-panel') === id;
-      p.hidden = !an;
-      if (an) {
-        p.classList.remove('e-fade');
-        void p.offsetWidth;            /* Animation neu anstossen */
-        p.classList.add('e-fade');
-      }
+      p.classList.toggle('is-on', an);
+      /* visibility:hidden nimmt die inaktiven Faelle aus Tabfolge und
+         Vorlesereihenfolge, ohne ihren Platz freizugeben. */
+      p.setAttribute('aria-hidden', String(!an));
     });
-    if (scrollen) {
-      var ziel = document.querySelector('[data-panel="' + id + '"]');
-      if (!ziel) return;
-      var oben = ziel.getBoundingClientRect().top + window.pageYOffset - 110;
-      if (ziel.getBoundingClientRect().top < 0 ||
-          ziel.getBoundingClientRect().bottom > window.innerHeight) {
-        window.scrollTo({ top: oben, behavior: 'smooth' });
-      }
-    }
   }
 
   knoepfe.forEach(function (k) {
     k.setAttribute('aria-pressed', String(k.classList.contains('is-on')));
-    k.addEventListener('click', function () {
-      zeige(k.getAttribute('data-fall'), true);
-    });
+    k.addEventListener('click', function () { zeige(k.getAttribute('data-fall')); });
   });
+  /* Absicherung: faellt die Startmarkierung im Markup weg, waere sonst gar
+     kein Fall sichtbar. Dann den zum aktiven Knopf passenden einschalten. */
+  var offen = false;
+  panels.forEach(function (p) {
+    if (p.classList.contains('is-on')) offen = true;
+    p.setAttribute('aria-hidden', String(!p.classList.contains('is-on')));
+  });
+  if (!offen) {
+    var aktiv = document.querySelector('[data-fall].is-on') || knoepfe[0];
+    zeige(aktiv.getAttribute('data-fall'));
+  }
 })();

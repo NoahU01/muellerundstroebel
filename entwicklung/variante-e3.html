@@ -27,8 +27,7 @@
 <p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
 <p class="dev-dd-group">Varianten Startseite</p>
 <a href="../entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
-<a href="../entwicklung/variante-e1.html" class="dev-dd-link" data-v="e1"><span class="dev-dd-tag dev-dd-tag--new">E1</span><span class="dev-dd-txt"><b>Fallakte</b><small>Alle vier F&auml;lle offen, einer je Zeile</small></span></a>
-<a href="../entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Sechs K&auml;sten oben, Fall darunter &ndash; ohne Pop-up</small></span></a>
+<a href="../entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Gebiete links, Fall rechts &ndash; ohne Sprung</small></span></a>
 <a href="../entwicklung/variante-e3.html" class="dev-dd-link" data-v="e3"><span class="dev-dd-tag dev-dd-tag--new">E3</span><span class="dev-dd-txt"><b>Diagnose</b><small>Einstieg &uuml;ber das Symptom statt die Kategorie</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Unterseiten</p>
 <a href="../entwicklung/ueber-uns.html" class="dev-dd-link" data-v="ueber"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Über uns (Entwurf)</b><small>Tobias &amp; Daniel, Schwerpunkte, Gemeinsames</small></span></a>
@@ -89,9 +88,9 @@ var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('
 <main>
 <section class="e-hero" id="hero">
 <div class="v-wrap v-split">
-<div class="v-rv"><p class="v-kicker">Für Versicherungsunternehmen</p>
-<h1 class="v-h1">Komplexe Situationen<br><span class="v-blue">entscheidbar</span> machen<span class="v-dot">.</span></h1>
-<p class="v-lead" style="margin-top:1.5rem">Wir unterstützen Führungskräfte in Versicherungsunternehmen bei komplexen Fragestellungen — dort, wo Zusammenhänge unklar sind und ein Thema deshalb nicht vorankommt.</p>
+<div class="v-rv"><p class="v-kicker">Für die Versicherungsbranche</p>
+<h1 class="v-h1">Komplexe Situationen<br><span class="v-blue">entscheidbar</span> machen.<br>Und <span class="v-blue">umsetzen</span><span class="v-dot">.</span></h1>
+<p class="v-lead" style="margin-top:1.5rem">Wir unterstützen Führungskräfte in der Versicherungsbranche, wenn Zusammenhänge unklar sind und ein Thema nicht vorankommt. Wir machen es entscheidbar und führen es gemeinsam mit Ihnen ins Ergebnis — Umsetzung ist unser Handwerk.</p>
 <div style="margin-top:2rem"><div class="v-pills-row"><span>Orientierung</span><span>Entscheidbarkeit</span><span>Übersetzung</span><span>Wachstum</span><span>KI</span><span>Resilienz</span></div></div>
 <div class="v-btns" style="margin-top:2.5rem"><a class="v-btn v-btn--pill ms-cta" href="#einsatzgebiete">Woran hängt es? <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="v-btn v-btn--ghost v-btn--pill ms-cta" href="#kontakt">Kontakt aufnehmen</a></div></div>
 <div class="v-rv e-portraits">
@@ -117,7 +116,11 @@ var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('
 <button class="e-sym" type="button" data-fall="wachstum"><span class="e-sym__q" aria-hidden="true">?</span><span class="e-sym__t"><b>Wir sind austauschbar geworden.</b><span>Der Vertrieb arbeitet hart, aber das Angebot unterscheidet sich kaum vom Wettbewerb.</span></span></button>
 <button class="e-sym" type="button" data-fall="ki"><span class="e-sym__q" aria-hidden="true">?</span><span class="e-sym__t"><b>Bei KI machen wir viel – aber wohin?</b><span>Es laufen mehrere Initiativen, nur ist die Rolle im Geschäftsmodell nicht geklärt.</span></span></button>
 </div>
-<div class="v-rv"><div class="e-antwort" data-panel="orientierung"><div class="e-antwort__kopf"><p class="v-kicker">Fall 01 · Orientierung</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: aus ungeordneten Themen wird eine Rangfolge">
+<div class="v-rv e-stapel e-stapel--antwort"><div class="e-antwort is-on" data-panel="orientierung"><div class="e-antwort__kopf"><p class="v-kicker">Fall 01 · Orientierung</p></div><div class="e-panel"><div class="e-panel__kopf"><p class="e-case__nr">Fall 01</p><h3>Orientierung</h3><p class="e-case__claim">Wenn komplexe Themen nicht mehr klar einzuordnen sind.</p></div><div class="e-panel__koerper"><div class="e-panel__takte"><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Ein Haus hatte <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> groß angelegte Vorhaben gleichzeitig in Arbeit — Zielbild, Bestandsmigration, Tarifwelt, ein KI-Pilot und eine Vertriebsoffensive. Jedes einzelne war begründet. Zusammen beanspruchten sie dieselben Köpfe, und keiner im Vorstand konnte sagen, welches zuerst fertig sein musste.</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben mit <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">elf</mark> Führungskräften gesprochen und die Vorhaben in einem Strukturierungs-Workshop gegeneinander gestellt: Was zahlt worauf ein, was blockiert was, was kann warten. Das Ergebnis war kein Katalog, sondern eine Rangfolge.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Nach <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">sieben Wochen</mark> lag eine Reihenfolge vor, die der Vorstand mitträgt. Zwei Vorhaben wurden bewusst vertagt — und damit zum ersten Mal ehrlich benannt, statt weiter nebenher zu laufen.</p></div>
+</div></div><div class="e-panel__seite"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: aus ungeordneten Themen wird eine Rangfolge">
 <g font-family="Poppins, sans-serif">
 <text x="20" y="26" font-size="10" fill="#998675" letter-spacing="1">VORHER</text>
 <g fill="#fff" stroke="#e5ddd4">
@@ -155,13 +158,12 @@ var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('
 <text x="350" y="268" fill="#6b635b">Vertriebsoffensive</text>
 </g>
 <text x="306" y="312" font-size="9.5" fill="#998675">Rangfolge statt Gleichzeitigkeit</text>
-</g></svg></div><div><h3>Orientierung</h3><p class="e-case__claim">Wenn komplexe Themen nicht mehr klar einzuordnen sind.</p><div class="e-beats">
-<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Ein Haus hatte <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> groß angelegte Vorhaben gleichzeitig in Arbeit — Zielbild, Bestandsmigration, Tarifwelt, ein KI-Pilot und eine Vertriebsoffensive. Jedes einzelne war begründet. Zusammen beanspruchten sie dieselben Köpfe, und keiner im Vorstand konnte sagen, welches zuerst fertig sein musste.</p></div>
-<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben mit <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">elf</mark> Führungskräften gesprochen und die Vorhaben in einem Strukturierungs-Workshop gegeneinander gestellt: Was zahlt worauf ein, was blockiert was, was kann warten. Das Ergebnis war kein Katalog, sondern eine Rangfolge.</p></div>
-<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Nach <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">sieben Wochen</mark> lag eine Reihenfolge vor, die der Vorstand mitträgt. Zwei Vorhaben wurden bewusst vertagt — und damit zum ersten Mal ehrlich benannt, statt weiter nebenher zu laufen.</p></div>
-</div>
-<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Komposit-Versicherer, rund 900 Mitarbeitende</mark></p></div></div></div>
-<div class="e-antwort" data-panel="entscheidbarkeit" hidden><div class="e-antwort__kopf"><p class="v-kicker">Fall 02 · Entscheidbarkeit</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: aus drei Sichtweisen wird eine Entscheidung">
+</g></svg></div><p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Komposit-Versicherer, rund 900 Mitarbeitende</mark></p></div></div></div></div>
+<div class="e-antwort" data-panel="entscheidbarkeit"><div class="e-antwort__kopf"><p class="v-kicker">Fall 02 · Entscheidbarkeit</p></div><div class="e-panel"><div class="e-panel__kopf"><p class="e-case__nr">Fall 02</p><h3>Entscheidbarkeit</h3><p class="e-case__claim">Wenn Themen bekannt sind – aber niemand wirklich entscheiden kann.</p></div><div class="e-panel__koerper"><div class="e-panel__takte"><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Ein Vorhaben stand seit <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">über einem Jahr</mark> auf jeder Vorstandsagenda und kam nicht vom Fleck. Vorstand, Fachbereich und Risikomanagement bewerteten dasselbe Risiko unterschiedlich — ohne dass dieser Unterschied je ausgesprochen wurde.</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben die Beteiligten einzeln befragt, die auseinanderliegenden Bewertungen nebeneinandergelegt und daraus drei entscheidbare Optionen gemacht. Die kritische Abstimmung haben wir moderiert, die Vorlage für das Gremium haben wir geschrieben.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Die Entscheidung fiel in der <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">übernächsten</mark> Sitzung. Zwei Folgeprojekte, die daran hingen, konnten starten.</p></div>
+</div></div><div class="e-panel__seite"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: aus drei Sichtweisen wird eine Entscheidung">
 <g font-family="Poppins, sans-serif">
 <g font-size="10.5">
 <circle cx="78" cy="62" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/>
@@ -196,13 +198,12 @@ var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('
 <rect x="372" y="210" width="110" height="12" rx="6" fill="rgba(255,255,255,.14)"/>
 <rect x="372" y="210" width="110" height="12" rx="6" fill="#185e8a"/>
 <text x="352" y="268" font-size="9.5" fill="#998675">Beschlussreif für das Gremium</text>
-</g></svg></div><div><h3>Entscheidbarkeit</h3><p class="e-case__claim">Wenn Themen bekannt sind – aber niemand wirklich entscheiden kann.</p><div class="e-beats">
-<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Ein Vorhaben stand seit <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">über einem Jahr</mark> auf jeder Vorstandsagenda und kam nicht vom Fleck. Vorstand, Fachbereich und Risikomanagement bewerteten dasselbe Risiko unterschiedlich — ohne dass dieser Unterschied je ausgesprochen wurde.</p></div>
-<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben die Beteiligten einzeln befragt, die auseinanderliegenden Bewertungen nebeneinandergelegt und daraus drei entscheidbare Optionen gemacht. Die kritische Abstimmung haben wir moderiert, die Vorlage für das Gremium haben wir geschrieben.</p></div>
-<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Die Entscheidung fiel in der <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">übernächsten</mark> Sitzung. Zwei Folgeprojekte, die daran hingen, konnten starten.</p></div>
-</div>
-<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Lebensversicherer, Vorstandsressort Betrieb</mark></p></div></div></div>
-<div class="e-antwort" data-panel="wachstum" hidden><div class="e-antwort__kopf"><p class="v-kicker">Fall 03 · Wachstum</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: vom austauschbaren Angebot zur klaren Position">
+</g></svg></div><p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Lebensversicherer, Vorstandsressort Betrieb</mark></p></div></div></div></div>
+<div class="e-antwort" data-panel="wachstum"><div class="e-antwort__kopf"><p class="v-kicker">Fall 03 · Wachstum</p></div><div class="e-panel"><div class="e-panel__kopf"><p class="e-case__nr">Fall 03</p><h3>Wachstum</h3><p class="e-case__claim">Wenn Vertrieb, Positionierung oder Geschäftsmodell weiterentwickelt werden sollen.</p></div><div class="e-panel__koerper"><div class="e-panel__takte"><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Der Vertrieb lieferte, was er konnte — aber das Leistungsversprechen war von dem der Wettbewerber kaum zu unterscheiden. Mehr Vertriebsdruck hätte daran nichts geändert.</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben Zielgruppen und Stakeholder analysiert und das Leistungsversprechen so lange geschärft, bis es eine Gruppe klar ansprach und andere bewusst nicht. Daraus haben wir mit Vertrieb und Kommunikation eine gemeinsame Argumentationslogik gebaut.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Innerhalb von <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">zwei Quartalen</mark> verschob sich die Herkunft der Anfragen spürbar in Richtung der definierten Zielgruppe. <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Kennzahl ergänzen</mark></p></div>
+</div></div><div class="e-panel__seite"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: vom austauschbaren Angebot zur klaren Position">
 <g font-family="Poppins, sans-serif">
 <text x="20" y="26" font-size="10" fill="#998675" letter-spacing="1">AUSTAUSCHBAR</text>
 <g fill="#fff" stroke="#e5ddd4">
@@ -228,13 +229,12 @@ var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('
       fill="none" stroke="#185e8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="482" cy="244" r="5" fill="#185e8a"/>
 <text x="40" y="282" font-size="9.5" fill="#998675">Anfragen aus der Zielgruppe</text>
-</g></svg></div><div><h3>Wachstum</h3><p class="e-case__claim">Wenn Vertrieb, Positionierung oder Geschäftsmodell weiterentwickelt werden sollen.</p><div class="e-beats">
-<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Der Vertrieb lieferte, was er konnte — aber das Leistungsversprechen war von dem der Wettbewerber kaum zu unterscheiden. Mehr Vertriebsdruck hätte daran nichts geändert.</p></div>
-<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben Zielgruppen und Stakeholder analysiert und das Leistungsversprechen so lange geschärft, bis es eine Gruppe klar ansprach und andere bewusst nicht. Daraus haben wir mit Vertrieb und Kommunikation eine gemeinsame Argumentationslogik gebaut.</p></div>
-<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Innerhalb von <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">zwei Quartalen</mark> verschob sich die Herkunft der Anfragen spürbar in Richtung der definierten Zielgruppe. <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Kennzahl ergänzen</mark></p></div>
-</div>
-<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Spezialversicherer, Firmenkundengeschäft</mark></p></div></div></div>
-<div class="e-antwort" data-panel="ki" hidden><div class="e-antwort__kopf"><p class="v-kicker">Fall 04 · KI-Transformation</p></div><div class="e-panel" style="margin-top:0"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: von einzelnen Pilotprojekten zur Rolle im Geschaeftsmodell">
+</g></svg></div><p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Spezialversicherer, Firmenkundengeschäft</mark></p></div></div></div></div>
+<div class="e-antwort" data-panel="ki"><div class="e-antwort__kopf"><p class="v-kicker">Fall 04 · KI-Transformation</p></div><div class="e-panel"><div class="e-panel__kopf"><p class="e-case__nr">Fall 04</p><h3>KI-Transformation</h3><p class="e-case__claim">Wenn KI nicht nur Prozesse verändern soll, sondern das Geschäftsmodell.</p></div><div class="e-panel__koerper"><div class="e-panel__takte"><div class="e-beats">
+<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Es gab <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> KI-Initiativen im Haus, alle technisch solide. Was fehlte, war die Antwort auf die Frage davor: Welche Rolle soll KI im eigenen Geschäftsmodell überhaupt spielen?</p></div>
+<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben den Reifegrad bestimmt und in Workshops mit dem Vorstand ein Zielbild entwickelt — getrennt nach dem, was Prozesse verbessert, und dem, was das Geschäftsmodell verändert. Die Prioritäten haben wir anschließend in die Fachbereiche übersetzt.</p></div>
+<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Aus <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> Initiativen wurden <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">drei</mark> Prioritäten mit benannten Verantwortlichen. <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Zwei</mark> Piloten wurden eingestellt, weil sie auf keine davon einzahlten.</p></div>
+</div><div class="e-grenze">Wir entwickeln keine Software und übernehmen kein technisches IT-Projektmanagement. Unser Fokus liegt auf Strategie, Entscheidbarkeit und organisatorischer Übersetzung.</div></div><div class="e-panel__seite"><div class="e-panel__media"><svg class="v-svg" viewBox="0 0 520 330" role="img" aria-label="Skizze: von einzelnen Pilotprojekten zur Rolle im Geschaeftsmodell">
 <g font-family="Poppins, sans-serif">
 <text x="20" y="26" font-size="10" fill="#998675" letter-spacing="1">PUNKTUELL</text>
 <rect x="18" y="40" width="186" height="252" rx="14" fill="#fff" stroke="#e5ddd4"/>
@@ -262,12 +262,7 @@ var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('
 <text x="268" y="268" font-size="9.5" fill="#185e8a" letter-spacing="1">KI</text>
 <rect x="306" y="256" width="198" height="36" rx="10" fill="#082638"/>
 <text x="326" y="279" font-size="10.5" fill="#fff">Zielbild · drei Prioritäten</text>
-</g></svg></div><div><h3>KI-Transformation</h3><p class="e-case__claim">Wenn KI nicht nur Prozesse verändern soll, sondern das Geschäftsmodell.</p><div class="e-beats">
-<div class="e-beat"><div class="e-beat__no">01</div><h4>Situation</h4><p>Es gab <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> KI-Initiativen im Haus, alle technisch solide. Was fehlte, war die Antwort auf die Frage davor: Welche Rolle soll KI im eigenen Geschäftsmodell überhaupt spielen?</p></div>
-<div class="e-beat"><div class="e-beat__no">02</div><h4>Was wir gemacht haben</h4><p>Wir haben den Reifegrad bestimmt und in Workshops mit dem Vorstand ein Zielbild entwickelt — getrennt nach dem, was Prozesse verbessert, und dem, was das Geschäftsmodell verändert. Die Prioritäten haben wir anschließend in die Fachbereiche übersetzt.</p></div>
-<div class="e-beat e-beat--erg"><div class="e-beat__no">03</div><h4>Ergebnis</h4><p>Aus <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">fünf</mark> Initiativen wurden <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">drei</mark> Prioritäten mit benannten Verantwortlichen. <mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Zwei</mark> Piloten wurden eingestellt, weil sie auf keine davon einzahlten.</p></div>
-</div><div class="e-grenze">Wir entwickeln keine Software und übernehmen kein technisches IT-Projektmanagement. Unser Fokus liegt auf Strategie, Entscheidbarkeit und organisatorischer Übersetzung.</div>
-<p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Erstversicherer, Vorstandsebene</mark></p></div></div></div>
+</g></svg></div><p class="e-herkunft"><mark class="e-ph" title="Platzhalter – durch echte Projektangabe ersetzen">Erstversicherer, Vorstandsebene</mark></p></div></div></div></div>
 </div>
 <div class="v-rv" style="margin-top:4.5rem"><p class="v-kicker">Außerdem</p>
 <h3 class="v-h3" style="font-size:1.25rem">Zwei weitere Einsatzgebiete<span class="v-dot">.</span></h3></div>
