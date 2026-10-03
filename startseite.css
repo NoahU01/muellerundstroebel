@@ -595,6 +595,12 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
 .ms-offers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; margin-top: 3.5rem; }
 .ms-offer { display: flex; flex-direction: column; background: #fff; border-radius: 1.4rem; overflow: hidden; cursor: pointer; transition: transform .25s, box-shadow .25s; }
 .ms-offer:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(6,55,85,.10); }
+/* Loesungen auf weissem Grund: die Karten haben keinen eigenen Ton mehr und
+   brauchen eine Kante. Bewusst nur ein Haarstrich in der Hauslinienfarbe.
+   Eigene Klasse, damit die Archiv- und Entwicklungsseiten, die ihre Karten
+   weiterhin auf Sand stellen, unveraendert bleiben. */
+.ms-offers--rahmen .ms-offer { border: 1px solid var(--line); }
+.ms-offers--rahmen .ms-offer:hover { border-color: #d9cec2; }
 .ms-offer-media { height: 13.5rem; padding: 1.4rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, #fbf9f7, #f1ece6); overflow: hidden; }
 .ms-offer-media .v-svg { width: 100%; height: 100%; object-fit: contain; }
 .ms-offer:nth-child(2) .ms-offer-media { align-items: flex-start; padding-bottom: 0; }
