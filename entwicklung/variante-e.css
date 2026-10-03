@@ -14,30 +14,28 @@
 .e-ph-hint::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: #d8a800; }
 
 /* ---------- Hero mit beiden Personen ----------
-   Die Live-Seite stellt die Portraits nebeneinander. Hier sitzen sie
-   ueberlappend auf dem Konstruktionsraster, das Ampersand liegt als
-   Wasserzeichen dahinter. */
+   Ein einziges grosses Und-Zeichen im Hintergrund statt Raster plus kleinem
+   Zeichen hinter den Gesichtern: ruhiger, und die Form ist als Ganzes zu sehen.
+   Die Schlagzeile laeuft durchgehend schwarz, nur der Schlusspunkt ist taupe. */
 .e-hero { padding: 9rem 0 6rem; background: #fff; position: relative; overflow: hidden; }
-/* Die Schlagzeile traegt jetzt zwei Aussagen und braucht mehr Breite als die
-   Portraits. Dazu ein eigener Schriftgrad: der Standard (bis 5,2rem) wuerde
-   in dieser Spalte in sechs Zeilen zerfallen. */
-.e-hero .v-split { align-items: center; grid-template-columns: 1.12fr .88fr; }
-.e-hero .v-h1 { font-size: clamp(2.2rem, 3.4vw, 3.2rem); line-height: 1.1; }
-.e-portraits { position: relative; min-height: 26rem; display: flex;
+.e-hero .v-split { align-items: center; grid-template-columns: 1.14fr .86fr; }
+.e-hero .v-h1 { font-size: clamp(2.3rem, 3.7vw, 3.5rem); line-height: 1.1; color: var(--ink); }
+.e-hero .v-h1 .v-dot { color: var(--taupe); }
+
+.e-amp { position: absolute; z-index: 0; pointer-events: none; user-select: none;
+         right: 1rem; top: 50%; transform: translateY(-50%);
+         width: 34rem; height: auto; color: var(--navy-deep); opacity: .055; }
+
+.e-portraits { position: relative; z-index: 1; display: flex;
                align-items: center; justify-content: center; }
-.e-portraits__grid { position: absolute; inset: 0; z-index: 0; }
-.e-portraits__amp { position: absolute; z-index: 1; left: 50%; top: 50%;
-                    transform: translate(-50%, -54%); font-family: var(--serif);
-                    font-weight: 600; font-size: 22rem; line-height: 1; color: var(--navy-deep);
-                    opacity: .07; pointer-events: none; user-select: none; }
-.e-faces { position: relative; z-index: 2; display: flex; align-items: center; }
-.e-face { width: 13.5rem; height: 13.5rem; border-radius: 50%; overflow: hidden;
+.e-faces { position: relative; display: flex; align-items: center; justify-content: center; }
+.e-face { width: 13rem; height: 13rem; border-radius: 50%; overflow: hidden;
           background: var(--sand-2); box-shadow: 0 1.5rem 3rem rgba(6,55,85,.18);
           border: .45rem solid #fff; }
 .e-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.e-face--2 { margin-left: -3.2rem; }
-.e-names { position: relative; z-index: 2; display: flex; gap: 3.4rem;
-           margin-top: 1.6rem; justify-content: center; }
+.e-face--2 { margin-left: -3rem; }
+.e-names { position: relative; display: flex; gap: 3.2rem;
+           margin-top: 1.5rem; justify-content: center; }
 .e-name { text-align: center; }
 .e-name b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
 .e-name span { display: block; font-size: .78rem; color: var(--taupe-dark); margin-top: .1rem; }
@@ -89,9 +87,13 @@
    Knapp unter einem Drittel fuer die Auswahl. Entscheidend ist der Stapel:
    alle Faelle liegen in derselben Grid-Zelle uebereinander, damit die Spalte
    immer so hoch ist wie der laengste Fall und beim Umschalten nichts springt. */
+/* Die Zeilenhoehe bestimmt allein die linke Spalte: die Faelle rechts sind
+   absolut gesetzt und steuern nichts zur Hoehe bei. So beginnt der Kasten an
+   der Oberkante von "Orientierung" und endet an der Unterkante von "Resilienz".
+   Laengerer Inhalt scrollt im Kasten, statt ihn zu dehnen. */
 .e-zwei { display: grid; grid-template-columns: 19rem minmax(0, 1fr);
-          gap: 1.6rem; margin-top: 2.8rem; align-items: start; }
-.e-wahlspalte { display: flex; flex-direction: column; gap: .5rem; }
+          gap: 1.6rem; margin-top: 2.8rem; align-items: stretch; }
+.e-wahlspalte { display: flex; flex-direction: column; gap: .5rem; align-self: start; }
 
 .e-wahl { display: flex; align-items: flex-start; gap: .85rem; text-align: left;
           width: 100%; font: inherit; cursor: pointer; background: #fff;
@@ -116,10 +118,12 @@
 .e-wahl.is-on .e-ico { background: rgba(255,255,255,.14); color: #8fc1e0; }
 
 /* Der Stapel: eine Zelle, sechs Faelle darin */
-.e-stapel { display: grid; }
-.e-stapel > * { grid-area: 1 / 1; opacity: 0; visibility: hidden;
-                 transition: opacity .28s ease; }
+.e-stapel { position: relative; }
+.e-stapel > * { position: absolute; inset: 0; overflow-y: auto; opacity: 0;
+                visibility: hidden; transition: opacity .28s ease; }
 .e-stapel > *.is-on { opacity: 1; visibility: visible; }
+/* E3-Erbe: dort lagen die Antworten im Fluss. Hier nicht mehr benutzt. */
+.e-stapel--antwort > * { position: static; opacity: 1; visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .e-stapel > * { transition: none; } }
 .e-stapel--antwort { margin-top: 2.2rem; }
 
@@ -199,6 +203,12 @@
   .e-hero .v-split { grid-template-columns: 1fr; }
   .e-fields, .e-diag { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .e-zwei { grid-template-columns: 1fr; }
+  /* Einspaltig gibt es keine linke Spalte mehr, die die Hoehe vorgibt. Die
+     Faelle muessen wieder im Fluss stehen, sonst hat der Kasten Hoehe null. */
+  .e-stapel { position: static; }
+  .e-stapel > * { position: static; inset: auto; overflow: visible;
+                  display: none; opacity: 1; visibility: visible; }
+  .e-stapel > *.is-on { display: block; }
   .e-portraits { min-height: 20rem; }
   .e-face { width: 11rem; height: 11rem; }
 }
@@ -214,3 +224,32 @@
 
 /* Gebiete ohne ausgearbeiteten Fall: einspaltig, kein Platz fuer eine Skizze */
 .e-panel--kurz { grid-template-columns: 1fr; }
+
+/* ---------- Vorgehen: drei Schritte, der erste traegt den CTA ---------- */
+.e-schritte { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+/* Die Linie beginnt hinter der hervorgehobenen Karte, sonst laeuft sie
+   unsichtbar hinter deren Flaeche. */
+.e-schritte::before { left: 36%; right: 24%; }
+.e-schritt--stark { background: var(--sand); border-radius: var(--r-lg);
+                    padding: 1.5rem 1.6rem 1.7rem; margin: -1.5rem -0.4rem 0; }
+.e-schritt--stark .v-step-dot { background: var(--blue); border-color: var(--blue); color: #fff; }
+.e-schritte .v-step:last-child .v-step-dot { background: #fff; border-color: var(--blue); color: var(--blue); }
+.e-schritt__cta { margin-top: 1.2rem; }
+
+@media (max-width: 991px) {
+  .e-schritte { grid-template-columns: 1fr; gap: 2rem; }
+  .e-schritte::before { display: none; }
+  .e-schritt--stark { margin: 0; }
+  .e-amp { width: 24rem; right: -4rem; opacity: .045; }
+}
+
+/* Die Vorlage richtet die Schritte ueber ein Subgrid aus, damit Ueberschrift
+   und Text in allen Spalten auf gleicher Hoehe beginnen - festgelegt auf drei
+   Reihen (Punkt, Ueberschrift, Text). Der Knopf ist ein viertes Kind und
+   wuerde sonst in der Textreihe landen. Also vier Reihen statt drei. */
+@supports (grid-template-rows: subgrid) {
+  @media screen and (min-width: 992px) {
+    .e-schritte { grid-template-rows: repeat(4, auto); }
+    .e-schritte .v-step { grid-row: span 4; }
+  }
+}
