@@ -11,7 +11,3 @@
 /* Der weisse Ring um die Kreise ist auf dunklem Grund zu hart. */
 .v-hero-b3 .b2-face { border-color: rgba(255,255,255,.16);
                       box-shadow: 0 1.5rem 3rem rgba(0,0,0,.35); }
-
-/* Auf dunklem Grund soll die Schlagzeile durchgehend weiss laufen; das Blau
-   aus B traegt hier nicht. Der Schlusspunkt bleibt taupe. */
-.v-hero-b3 .v-h1 .v-blue { color: #fff; }
