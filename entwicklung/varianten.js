@@ -1,17 +1,6 @@
 (function () {
   'use strict';
   var body = document.body;
-  var current = body.getAttribute('data-variante');
-
-  /* Umschalter unten rechts */
-  var sw = document.createElement('div');
-  sw.className = 'v-switch';
-  sw.innerHTML =
-    '<a href="variante-b.html" data-v="b">B</a><a href="ueber-uns.html" data-v="ueber">Über uns</a>' +
-    '<span></span><button type="button" id="v-labels">Labels</button><span></span><a href="../index.html">Neue Startseite</a><a href="../archiv/startseite-live-2026-09.html">Archiv</a>';
-  body.appendChild(sw);
-  sw.querySelectorAll('a[data-v]').forEach(function (a) { if (a.getAttribute('data-v') === current) a.classList.add('is-current'); });
-  document.getElementById('v-labels').addEventListener('click', function () { body.classList.toggle('hide-labels'); });
 
   /* Scroll-Reveal */
   var els = document.querySelectorAll('.v-rv');
