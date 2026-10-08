@@ -62,5 +62,5 @@ body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data
 .kv-6 { min-height: 0 !important; padding: 12.5rem 0 9rem !important; }
 @media (max-width: 991px) { .kv-6 { padding: 9.5rem 0 5.5rem !important; } }
 
-/* Knöpfe in 3 und 4: Form wie die übrigen Knöpfe der Seite (Rechteck mit runden Ecken), flacher */
-.kv-6 .v-btn, .kv4 .v-btn { border-radius: var(--r); padding: .8rem 1.35rem; font-size: .95rem; }
+/* Knöpfe in allen Köpfen: Form wie die übrigen Knöpfe der Seite (Rechteck mit runden Ecken), flacher */
+.kv-6 .v-btn, .kv-3 .v-btn, .kv4 .v-btn { border-radius: var(--r); padding: .8rem 1.35rem; font-size: .95rem; }
