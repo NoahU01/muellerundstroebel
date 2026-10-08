@@ -1,0 +1,87 @@
+/* ==========================================================================
+   B2 – Kopf-Varianten 1–4 (nur Entwicklung). Gemeinsam: heller Kopf, Personen sichtbar,
+   kein großes Und-Zeichen mehr, Unterzeile nur „Für Versicherungsunternehmen“.
+   1 Sand-Bühne · 2 Reduziert (ohne Streifen) · 3 Editorial-Split · 4 Porträtkarten versetzt
+   ========================================================================== */
+.v-hero-b2 .v-amp { display: none; }
+.v-hero-b2 { min-height: 0; padding: 10.5rem 0 6rem; }
+
+/* Unterzeile mit Auswahl */
+.hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
+.hv-zeile .v-kicker { margin: 0; }
+.hv-wahl { display: inline-flex; gap: .3rem; padding: .2rem; border: 1px dashed #c9bfb4; border-radius: 999px; }
+.hv-wahl button { width: 1.6rem; height: 1.6rem; border: 0; border-radius: 50%; background: transparent; font: 600 .72rem/1 var(--sans); color: var(--muted); cursor: pointer; }
+.hv-wahl button[aria-checked="true"] { background: var(--navy); color: #fff; }
+
+/* Standard aus: Bühne; je Variante eingeschaltet */
+.hv-buehne { display: none; }
+.v-hero-b2 .v-lead { max-width: 34rem; font-size: 1.02rem; line-height: 1.7; }
+
+/* ---------- 1 · Sand-Bühne: Porträts stehen in einer ruhigen Sandfläche, Namen als Zeile darunter ---------- */
+[data-kopf="1"] .b2-faces, [data-kopf="1"] .b2-names { display: none; }
+[data-kopf="1"] .hv-buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 0; width: 100%; max-width: 30rem;
+  padding: 2.2rem 1.6rem 0; border-radius: 1.5rem; background: var(--sand); overflow: hidden; }
+[data-kopf="1"] .hv-p { margin: 0; display: flex; flex-direction: column; }
+[data-kopf="1"] .hv-p img { width: 100%; aspect-ratio: 1 / 1.05; object-fit: cover; object-position: center top; mix-blend-mode: multiply; display: block; }
+[data-kopf="1"] .hv-p figcaption { margin: 0 -1.6rem; padding: 1rem 1.6rem 1.2rem; background: #fff; border-top: 1px solid var(--line); }
+[data-kopf="1"] .hv-p--2 figcaption { border-left: 1px solid var(--line); }
+[data-kopf="1"] .hv-p figcaption { margin: 0; padding: .95rem 0 1.15rem; background: transparent; border: 0; }
+[data-kopf="1"] .hv-buehne { padding-bottom: 0; }
+[data-kopf="1"] .hv-p figcaption b { display: block; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
+[data-kopf="1"] .hv-p figcaption span { display: block; font-size: .76rem; color: var(--taupe-dark); }
+[data-kopf="1"] .v-proof { margin-top: 4rem; border-top: 1px solid var(--line); grid-template-columns: repeat(3, minmax(0,1fr)); }
+[data-kopf="1"] .v-proof div { padding: 1.4rem 1.5rem 0 0; }
+[data-kopf="1"] .v-proof strong { font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+[data-kopf="1"] .v-proof span { margin-top: .35rem; font-size: .95rem; color: var(--ink-2); }
+
+/* ---------- 2 · Reduziert: ohne Ergebnis-Streifen, große Porträts, viel Weißraum ---------- */
+[data-kopf="2"] .v-proof { display: none; }
+[data-kopf="2"] { padding-bottom: 7.5rem; }
+[data-kopf="2"] .b2-face { width: 14rem; height: 14rem; border: 0; box-shadow: none; background: var(--sand); outline: 1px solid var(--line); outline-offset: .55rem; }
+[data-kopf="2"] .b2-face img { mix-blend-mode: multiply; }
+[data-kopf="2"] .b2-face--2 { margin-left: 1.6rem; }
+[data-kopf="2"] .b2-names { gap: 1.6rem; margin-top: 1.8rem; }
+[data-kopf="2"] .b2-name { width: 14rem; }
+[data-kopf="2"] .b2-name span { color: var(--muted); }
+
+/* ---------- 3 · Editorial-Split: rechte Seite als Sandfläche bis zum Rand, Porträts groß, Namen darunter ---------- */
+[data-kopf="3"] { background: linear-gradient(90deg, #fff 0 57%, var(--sand) 57% 100%); }
+[data-kopf="3"] .b2-faces, [data-kopf="3"] .b2-names, [data-kopf="3"] .v-proof { display: none; }
+[data-kopf="3"] .hv-buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; width: 100%; max-width: 32rem; margin-left: auto; }
+[data-kopf="3"] .hv-p { margin: 0; }
+[data-kopf="3"] .hv-p img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; display: block; mix-blend-mode: multiply; border-bottom: 2px solid var(--taupe); }
+[data-kopf="3"] .hv-p figcaption { padding-top: .9rem; }
+[data-kopf="3"] .hv-p figcaption b { display: block; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
+[data-kopf="3"] .hv-p figcaption span { display: block; font-size: .74rem; color: var(--taupe-dark); }
+[data-kopf="3"] .b2-kopf > .v-rv:first-child::after { content: "Umsetzen · Sofort · Überzeugt"; display: block; margin-top: 2.4rem; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-dark); }
+
+/* ---------- 4 · Porträtkarten versetzt: zwei hohe Karten mit Namensschild, Leistungsversprechen als feine Zeile ---------- */
+[data-kopf="4"] .b2-faces, [data-kopf="4"] .b2-names { display: none; }
+[data-kopf="4"] .hv-buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; width: 100%; max-width: 33rem; }
+[data-kopf="4"] .hv-p { position: relative; margin: 0; border-radius: 1.1rem; overflow: hidden; background: var(--sand); }
+[data-kopf="4"] .hv-p--2 { margin-top: 3rem; }
+[data-kopf="4"] .hv-p:first-child { margin-bottom: 3rem; }
+[data-kopf="4"] .hv-p img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; display: block; mix-blend-mode: multiply; }
+[data-kopf="4"] .hv-p figcaption { position: absolute; left: .7rem; right: .7rem; bottom: .7rem; padding: .6rem .8rem; border-radius: .6rem; background: var(--navy); color: #fff; }
+[data-kopf="4"] .hv-p figcaption b { display: block; font-family: var(--serif); font-size: .95rem; font-weight: 600; }
+[data-kopf="4"] .hv-p figcaption span { display: block; font-size: .68rem; line-height: 1.35; color: #cfe0ea; }
+[data-kopf="4"] .v-proof { margin-top: 3.5rem; border-top: 0; display: flex; flex-wrap: wrap; gap: .6rem 2.5rem; }
+[data-kopf="4"] .v-proof div { padding: 0; display: flex; align-items: baseline; gap: .6rem; }
+[data-kopf="4"] .v-proof strong { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+[data-kopf="4"] .v-proof span { margin: 0; font-size: .85rem; color: var(--muted); max-width: none; }
+
+@media (max-width: 991px) {
+  .v-hero-b2 { padding: 8.5rem 0 4.5rem; }
+  [data-kopf="1"] .hv-buehne, [data-kopf="4"] .hv-buehne { max-width: 26rem; margin: 0 auto; }
+  [data-kopf="1"] .v-proof { grid-template-columns: 1fr; } [data-kopf="1"] .v-proof div { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  [data-kopf="2"] .b2-face { width: 9.5rem; height: 9.5rem; } [data-kopf="2"] .b2-face--2 { margin-left: 1.2rem; } [data-kopf="2"] .b2-name { width: 9.5rem; }
+  [data-kopf="3"] { background: #fff; padding-bottom: 0; }
+  [data-kopf="3"] .hv-buehne { max-width: none; margin: 0 -2.5rem; padding: 2.5rem 2.5rem 3rem; width: auto; background: var(--sand); }
+  [data-kopf="4"] .v-proof { flex-direction: column; gap: .5rem; }
+}
+@media (max-width: 560px) {
+  .v-hero-b2 .v-wrap { padding: 0 1.25rem; }
+  [data-kopf="3"] .hv-buehne { margin: 0 -1.25rem; padding: 2rem 1.25rem 2.5rem; gap: 1rem; }
+  [data-kopf="4"] .hv-buehne { gap: .8rem; } [data-kopf="4"] .hv-p--2 { margin-top: 2rem; } [data-kopf="4"] .hv-p:first-child { margin-bottom: 2rem; }
+  [data-kopf="4"] .v-proof div { flex-direction: column; gap: .1rem; }
+}
