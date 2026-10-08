@@ -85,7 +85,10 @@
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/startseite.css">
 <style id="ms-cta-flach">/* Knöpfe wie die übrigen der Seite: Rechteck mit runden Ecken, flacher */
-.v-btn.ms-cta{border-radius:.75rem;padding:.8rem 1.35rem;font-size:.95rem}</style>
+.v-btn.ms-cta{border-radius:.75rem;padding:.8rem 1.35rem;font-size:.95rem}
+/* Kopf wie auf der Startseite: Unterzeile und Überschrift beginnen auf derselben Höhe; Grafik oben/unten um je drei Punktreihen gekürzt (viewBox) */
+@media (min-width:992px){.v-about-hero{padding-top:calc(12.5rem - 6px)}.v-about-hero .v-split{align-items:start}}
+@media (max-width:991px){.v-about-hero{padding-top:calc(9.5rem - 6px)}}</style>
 </head>
 <body class="body v-page ms-home ms-sub">
 
@@ -191,7 +194,7 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <div class="v-rv"><p class="v-kicker">Über uns</p>
 <h1 class="v-h1 v-h1--about">Tobias Müller<br><span class="v-dot">&amp;</span> Daniel Ströbel</h1>
 <p class="v-lead" style="margin-top:1.5rem">Wir kennen das Geschäftsmodell Versicherung von innen und haben schon viele Projekte gemeinsam umgesetzt. Jeder von uns bringt klare Schwerpunkte mit – im Projekt arbeiten wir beide selbst mit.</p></div>
-<div class="v-rv u1-viz"><svg class="v-svg" viewBox="0 0 640 560" role="img" aria-label="Zwei Linien laufen zu einer zusammen">
+<div class="v-rv u1-viz"><svg class="v-svg" viewBox="0 70 640 420" role="img" aria-label="Zwei Linien laufen zu einer zusammen">
 <defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.3" fill="#e3dbd2"/></pattern>
 <linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".15" stop-color="#fff" stop-opacity="1"/><stop offset=".85" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
 <mask id="dm"><rect width="640" height="560" fill="url(#fadeR)"/></mask></defs>

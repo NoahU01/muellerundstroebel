@@ -9,7 +9,7 @@ body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data
 
 .hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
 .hv-zeile .v-kicker { margin: 0; }
-.hv-wahl { display: inline-flex; gap: .3rem; padding: .2rem; border: 1px dashed #c9bfb4; border-radius: 999px; }
+.hv-wahl { display: inline-flex; gap: .3rem; padding: .2rem; margin: -.75rem 0; border: 1px dashed #c9bfb4; border-radius: 999px; }   /* negativer Rand: die Auswahl macht die Unterzeile nicht höher */
 .hv-wahl button { width: 1.6rem; height: 1.6rem; border: 0; border-radius: 50%; background: transparent; font: 600 .72rem/1 var(--sans); color: var(--muted); cursor: pointer; }
 .hv-wahl button[aria-checked="true"] { background: var(--navy); color: #fff; }
 
