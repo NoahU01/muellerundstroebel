@@ -9,7 +9,7 @@
 .v-hero-b2 .v-lead { color: var(--ink-2); }
 /* Das Und-Zeichen traegt sein Weiss als Attribut im Pfad - CSS sticht das. */
 .v-hero-b2 .v-amp { opacity: 1; }
-.v-hero-b2 .v-amp path { fill: #efeae4; }
+.v-hero-b2 .v-amp path { fill: var(--sand); }   /* gleicher Ton wie der Hintergrund der Einsatzgebiete */
 .v-hero-b2 .v-proof { border-top-color: var(--line); }
 .v-hero-b2 .v-proof strong { color: var(--ink); }
 .v-hero-b2 .v-proof span { color: var(--muted); }
