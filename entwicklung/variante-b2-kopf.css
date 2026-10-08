@@ -5,7 +5,7 @@
                           die beiden Personen. Das Und liegt – wie in Variante B – kaum sichtbar im Hintergrund.
    3  wie 1             – ohne Ergebnis-Streifen (Strich, Umsetzen/Sofort/Überzeugt), Und-Zeichen noch heller
    ========================================================================== */
-body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4 { display: none !important; }
+body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data-kopf="3"]) .kv-3 { display: none !important; }
 
 .hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
 .hv-zeile .v-kicker { margin: 0; }
@@ -49,52 +49,7 @@ body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data
 @media (max-width: 991px) { .kv-3 .b2-kopf { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .kv3-br { display: none; } }
 @media (max-width: 991px) { .kv-3 { padding: 8.5rem 0 4.5rem !important; } }
-/* Und-Zeichen in 3: am linken Rand, ein Drittel angeschnitten, senkrecht mittig – nur auf großen Bildschirmen.
+/* Und-Zeichen in 3: am linken Rand, links leicht und unten deutlich angeschnitten – nur auf großen Bildschirmen.
    Auf iPad hochkant und Telefon entfällt es. */
-.kv-3 .v-amp { left: -8rem; right: auto; top: calc(50% + 2.5rem); bottom: auto; width: 24rem; transform: translateY(-50%); }
+.kv-3 .v-amp { left: -4rem; right: auto; top: auto; bottom: -6rem; width: 26rem; transform: none; }   /* unten angeschnitten wie bei „kraftvoll und dunkel“ (dort ca. ein Fünftel) */
 @media (max-width: 1023px) { .kv-3 .v-amp { display: none; } }
-
-/* ---------- 4 · Raster und Ruhe ----------
-   Wie 3 (Schlagzeile, Kreisporträts, leises Und links), nach sechs Regeln geordnet:
-   1 ein Raster – Unterzeile über die volle Breite, darunter beginnen Schlagzeile und Porträts auf derselben Linie
-   2 drei klare Stufen – Schlagzeile groß, Text kleiner und gedämpft, Unterzeile leise
-   3 ein Hauptknopf – „Kontakt aufnehmen“ als ruhiger Textlink (der Kontakt-Knopf steht schon in der Navigation)
-   4 Porträts ruhig – nebeneinander statt überlappend, ohne Schatten, feine Linie statt weißem Ring, Rolle in einer Zeile
-   5 fester Abstandsrhythmus 8 · 16 · 24 · 32 · 64
-   6 ein einziges Gestaltungselement – das Und, leise */
-.kv4 { position: relative; overflow: hidden; background: #fff; padding: 11rem 0 8rem; }
-.kv4-amp { position: absolute; left: -8rem; top: calc(50% + 2.5rem); width: 24rem; height: auto; transform: translateY(-50%); color: #f9f7f5; pointer-events: none; z-index: 0; }
-.kv4-raster { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 64px; align-items: start; }
-.kv4-zeile { grid-column: 1 / -1; }
-.kv4 .hv-zeile { margin-bottom: 24px; }
-.kv4 .v-kicker { font-size: .72rem; }
-.kv4-h1 { max-width: none; margin: 0; font-size: clamp(2.2rem, 3.2vw, 2.95rem); line-height: 1.12; letter-spacing: -.01em; }
-.kv4-nb { white-space: nowrap; }
-.kv4-lead { max-width: 32rem; margin: 24px 0 0; font-size: 1rem; line-height: 1.7; color: var(--muted); }
-.kv4-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; margin-top: 32px; }
-.kv4-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; color: var(--navy); }
-.kv4-link svg { width: 16px; height: 16px; transition: transform .15s ease; }
-.kv4-link:hover svg { transform: translateX(3px); }
-.kv4-personen { display: flex; justify-content: flex-end; gap: 24px; padding-top: 6px; }
-.kv4-personen figure { margin: 0; text-align: center; }
-.kv4-kreis { width: var(--kreis, 12.5rem); height: var(--kreis, 12.5rem); margin: 0 auto; border-radius: 50%; overflow: hidden; background: var(--sand); outline: 1px solid var(--line); outline-offset: 6px; }
-.kv4-kreis img { display: block; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
-.kv4-personen figcaption { margin-top: 24px; }
-.kv4-personen b { display: block; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
-.kv4-personen span { display: block; margin-top: 4px; font-size: .76rem; color: var(--taupe-dark); white-space: nowrap; }
-@media (max-width: 1023px) {
-  .kv4 { padding: 8.5rem 0 4.5rem; }
-  .kv4-amp { display: none; }
-  .kv4-raster { grid-template-columns: minmax(0, 1fr); row-gap: 64px; }
-  .kv4-personen { justify-content: flex-start; }
-}
-@media (max-width: 560px) {
-  .kv4 .v-wrap { padding: 0 1.25rem; }
-  .kv4-br { display: none; }
-  .kv4-raster { row-gap: 48px; }
-  .kv4-personen { justify-content: center; gap: 24px; }
-  .kv4-personen figure { flex: 1 1 0; min-width: 0; }
-  .kv4-kreis { --kreis: 8.5rem; }
-  .kv4-personen b { font-size: .95rem; }
-  .kv4-personen span { white-space: normal; font-size: .72rem; }
-}
