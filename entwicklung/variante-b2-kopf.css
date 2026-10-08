@@ -4,10 +4,8 @@
    2  Live-Aufteilung   – Aufteilung des Live-Kopfs (Text links, Bild rechts); statt des dunkelblauen Und-Zeichens
                           die beiden Personen. Das Und liegt – wie in Variante B – kaum sichtbar im Hintergrund.
    3  wie 1             – ohne Ergebnis-Streifen (Strich, Umsetzen/Sofort/Überzeugt), Und-Zeichen noch heller
-   4  Bühne             – Apple-Prinzip: alles mittig, große Schlagzeile, ein Hauptknopf + Textlink, darunter die beiden
-                          Personen groß als Bühne, unten weich ins Weiß auslaufend
    ========================================================================== */
-body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4 { display: none !important; }
+body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data-kopf="3"]) .kv-3 { display: none !important; }
 
 .hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
 .hv-zeile .v-kicker { margin: 0; }
@@ -45,26 +43,3 @@ body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data
 .kv-3 .v-amp path { fill: #f9f7f5; }
 .kv-3 { min-height: 0 !important; padding: 10rem 0 7rem !important; }
 @media (max-width: 991px) { .kv-3 { padding: 8.5rem 0 4.5rem !important; } }
-
-/* ---------- 4 · Bühne (Apple-Prinzip) ---------- */
-.kv4 { position: relative; overflow: hidden; background: #fff; padding: 10rem 0 0; text-align: center; }
-.kv4-text { display: flex; flex-direction: column; align-items: center; }
-.kv4 .hv-zeile { justify-content: center; }
-.kv4 .v-h1 { max-width: 16ch; margin: 0 auto; font-size: clamp(2.6rem, 5.6vw, 5.2rem); line-height: 1.04; letter-spacing: -.025em; }
-.kv4 .v-lead { max-width: 40rem; margin: 1.6rem auto 0; font-size: clamp(1rem, 1.3vw, 1.18rem); line-height: 1.65; color: var(--muted); }
-.kv4-btns { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 2rem; margin-top: 2.2rem; }
-.kv4-link { font-weight: 500; color: var(--blue); } .kv4-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.kv4-buehne { display: flex; justify-content: center; align-items: flex-end; gap: clamp(1rem, 4vw, 4rem); max-width: 64rem; margin: clamp(3rem, 6vw, 5rem) auto 0; padding: 0 2rem; }
-.kv4-buehne figure { margin: 0; flex: 0 1 26rem; }
-.kv4-buehne img { display: block; width: 100%; height: auto; mix-blend-mode: multiply;
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
-.kv4-buehne figcaption { margin: -1.5rem 0 4.5rem; position: relative; }
-.kv4-buehne b { display: block; font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); }
-.kv4-buehne span { display: block; margin-top: .15rem; font-size: .8rem; color: var(--taupe-dark); }
-@media (max-width: 560px) {
-  .kv4 { padding-top: 8.5rem; }
-  .kv4 .v-wrap { padding: 0 1.25rem; }
-  .kv4-buehne { padding: 0 .75rem; gap: .5rem; }
-  .kv4-buehne figcaption { margin: -.75rem 0 3rem; }
-  .kv4-buehne b { font-size: .95rem; } .kv4-buehne span { font-size: .7rem; }
-}
