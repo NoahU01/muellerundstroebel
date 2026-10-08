@@ -1,10 +1,21 @@
 /* ==========================================================================
-   B2 – Kopf-Varianten 1–4 (nur Entwicklung). Gemeinsam: heller Kopf, Personen sichtbar,
-   kein großes Und-Zeichen mehr, Unterzeile nur „Für Versicherungsunternehmen“.
-   1 Sand-Bühne · 2 Reduziert (ohne Streifen) · 3 Editorial-Split · 4 Porträtkarten versetzt
+   B2 – Kopf-Varianten 1–4 (nur Entwicklung).
+   Gemeinsam: heller Kopf, beide Personen, kein großes Und-Zeichen, Unterzeile „Für Versicherungsunternehmen“.
+   Gestaltungsregel: Die Porträts sind Freisteller, die auf Brusthöhe enden. Diese Schnittkante sitzt immer auf
+   einer echten Kante (Unterkante einer Fläche bzw. des Kopfbereichs) oder läuft weich aus – nie frei schwebend.
+   1 Bühne      – Sandfläche rechts, Porträts stehen auf ihrer Unterkante, Köpfe ragen über die Fläche hinaus
+   2 Reduziert  – ohne Ergebnis-Streifen, Porträts auf Weiß mit weichem Auslauf
+   3 Karten     – zwei gleich große Porträtkarten nebeneinander, Name unter dem Bild
+   4 Zentriert  – Text mittig, darunter beide Personen auf einem Sandband über die volle Breite
    ========================================================================== */
 .v-hero-b2 .v-amp { display: none; }
-.v-hero-b2 { min-height: 0; padding: 10.5rem 0 6rem; }
+.v-hero-b2 { min-height: 0; padding: 10rem 0 0; }
+.v-hero-b2 .b2-faces, .v-hero-b2 .b2-names { display: none; }
+.v-hero-b2 .b2-kopf { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: end; }
+.v-hero-b2 .b2-kopf > .v-rv:first-child { padding-bottom: 5.5rem; }
+.v-hero-b2 .b2-kopf .v-h1 { max-width: 20ch; font-size: clamp(2.3rem, 3.4vw, 3.4rem); }
+.v-hero-b2 .v-lead { max-width: 33rem; }
+.b2-portraits { align-self: stretch; justify-content: flex-end; }
 
 /* Unterzeile mit Auswahl */
 .hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
@@ -13,75 +24,73 @@
 .hv-wahl button { width: 1.6rem; height: 1.6rem; border: 0; border-radius: 50%; background: transparent; font: 600 .72rem/1 var(--sans); color: var(--muted); cursor: pointer; }
 .hv-wahl button[aria-checked="true"] { background: var(--navy); color: #fff; }
 
-/* Standard aus: Bühne; je Variante eingeschaltet */
-.hv-buehne { display: none; }
-.v-hero-b2 .v-lead { max-width: 34rem; font-size: 1.02rem; line-height: 1.7; }
+/* Porträts: gemeinsame Grundform */
+.hv-buehne { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+.hv-p { margin: 0; min-width: 0; }
+.hv-p img { display: block; width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; object-position: center top; mix-blend-mode: multiply; }
+.hv-p figcaption { min-height: 3.6rem; padding-top: .9rem; }
+.hv-p figcaption b { display: block; font-family: var(--serif); font-size: 1.02rem; font-weight: 600; color: var(--ink); }
+.hv-p figcaption span { display: block; margin-top: .1rem; font-size: .78rem; color: var(--taupe-dark); }
 
-/* ---------- 1 · Sand-Bühne: Porträts stehen in einer ruhigen Sandfläche, Namen als Zeile darunter ---------- */
-[data-kopf="1"] .b2-faces, [data-kopf="1"] .b2-names { display: none; }
-[data-kopf="1"] .hv-buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 0; width: 100%; max-width: 30rem;
-  padding: 2.2rem 1.6rem 0; border-radius: 1.5rem; background: var(--sand); overflow: hidden; }
-[data-kopf="1"] .hv-p { margin: 0; display: flex; flex-direction: column; }
-[data-kopf="1"] .hv-p img { width: 100%; aspect-ratio: 1 / 1.05; object-fit: cover; object-position: center top; mix-blend-mode: multiply; display: block; }
-[data-kopf="1"] .hv-p figcaption { margin: 0 -1.6rem; padding: 1rem 1.6rem 1.2rem; background: #fff; border-top: 1px solid var(--line); }
-[data-kopf="1"] .hv-p--2 figcaption { border-left: 1px solid var(--line); }
-[data-kopf="1"] .hv-p figcaption { margin: 0; padding: .95rem 0 1.15rem; background: transparent; border: 0; }
-[data-kopf="1"] .hv-buehne { padding-bottom: 0; }
-[data-kopf="1"] .hv-p figcaption b { display: block; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
-[data-kopf="1"] .hv-p figcaption span { display: block; font-size: .76rem; color: var(--taupe-dark); }
-[data-kopf="1"] .v-proof { margin-top: 4rem; border-top: 1px solid var(--line); grid-template-columns: repeat(3, minmax(0,1fr)); }
-[data-kopf="1"] .v-proof div { padding: 1.4rem 1.5rem 0 0; }
-[data-kopf="1"] .v-proof strong { font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
-[data-kopf="1"] .v-proof span { margin-top: .35rem; font-size: .95rem; color: var(--ink-2); }
+/* Ergebnis-Streifen: einheitlich ruhig (Varianten 1, 3, 4) */
+.v-hero-b2 .v-proof { margin: 0; padding: 1.6rem 0 1.8rem; border-top: 1px solid var(--line); grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2rem; }
+.v-hero-b2 .v-proof div { padding: 0; }
+.v-hero-b2 .v-proof strong { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+.v-hero-b2 .v-proof span { margin-top: .2rem; font-size: .88rem; color: var(--muted); max-width: none; }
 
-/* ---------- 2 · Reduziert: ohne Ergebnis-Streifen, große Porträts, viel Weißraum ---------- */
+/* ---------- 1 · Bühne ---------- */
+[data-kopf="1"] .b2-portraits { justify-content: flex-end; padding-bottom: 3rem; }
+[data-kopf="1"] .hv-buehne { position: relative; gap: 1.2rem; }
+[data-kopf="1"] .hv-buehne::before { content: ""; position: absolute; left: -1.25rem; right: -1.25rem; top: 22%; bottom: 3.6rem; border-radius: 1.25rem; background: var(--sand); z-index: 0; }
+[data-kopf="1"] .hv-p { position: relative; z-index: 1; }
+
+/* ---------- 2 · Reduziert ---------- */
 [data-kopf="2"] .v-proof { display: none; }
-[data-kopf="2"] { padding-bottom: 7.5rem; }
-[data-kopf="2"] .b2-face { width: 14rem; height: 14rem; border: 0; box-shadow: none; background: var(--sand); outline: 1px solid var(--line); outline-offset: .55rem; }
-[data-kopf="2"] .b2-face img { mix-blend-mode: multiply; }
-[data-kopf="2"] .b2-face--2 { margin-left: 1.6rem; }
-[data-kopf="2"] .b2-names { gap: 1.6rem; margin-top: 1.8rem; }
-[data-kopf="2"] .b2-name { width: 14rem; }
-[data-kopf="2"] .b2-name span { color: var(--muted); }
+[data-kopf="2"] { padding-bottom: 5rem; }
+[data-kopf="2"] .b2-kopf { align-items: center; }
+[data-kopf="2"] .b2-kopf > .v-rv:first-child { padding-bottom: 0; }
+[data-kopf="2"] .hv-buehne { gap: 2rem; }
+[data-kopf="2"] .hv-p img { -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); }
+[data-kopf="2"] .hv-p figcaption { margin-top: -.6rem; padding-top: .9rem; border-top: 2px solid var(--taupe); }
 
-/* ---------- 3 · Editorial-Split: rechte Seite als Sandfläche bis zum Rand, Porträts groß, Namen darunter ---------- */
-[data-kopf="3"] { background: linear-gradient(90deg, #fff 0 57%, var(--sand) 57% 100%); }
-[data-kopf="3"] .b2-faces, [data-kopf="3"] .b2-names, [data-kopf="3"] .v-proof { display: none; }
-[data-kopf="3"] .hv-buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; width: 100%; max-width: 32rem; margin-left: auto; }
-[data-kopf="3"] .hv-p { margin: 0; }
-[data-kopf="3"] .hv-p img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; display: block; mix-blend-mode: multiply; border-bottom: 2px solid var(--taupe); }
-[data-kopf="3"] .hv-p figcaption { padding-top: .9rem; }
-[data-kopf="3"] .hv-p figcaption b { display: block; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
-[data-kopf="3"] .hv-p figcaption span { display: block; font-size: .74rem; color: var(--taupe-dark); }
-[data-kopf="3"] .b2-kopf > .v-rv:first-child::after { content: "Umsetzen · Sofort · Überzeugt"; display: block; margin-top: 2.4rem; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-dark); }
+/* ---------- 3 · Karten ---------- */
+[data-kopf="3"] .hv-buehne { gap: 1.25rem; margin-bottom: 4rem; }
+[data-kopf="3"] .b2-kopf { align-items: center; }
+[data-kopf="3"] .b2-kopf > .v-rv:first-child { padding-bottom: 4rem; }
+[data-kopf="3"] .hv-p { border-radius: 1.1rem; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+[data-kopf="3"] .hv-p img { aspect-ratio: 1 / 1; object-fit: cover; object-position: center top; background: var(--sand); }
+[data-kopf="3"] .hv-p { background: var(--sand); }
+[data-kopf="3"] .hv-p figcaption { padding: 1rem 1.1rem 1.1rem; background: #fff; border-top: 1px solid var(--line); }
 
-/* ---------- 4 · Porträtkarten versetzt: zwei hohe Karten mit Namensschild, Leistungsversprechen als feine Zeile ---------- */
-[data-kopf="4"] .b2-faces, [data-kopf="4"] .b2-names { display: none; }
-[data-kopf="4"] .hv-buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; width: 100%; max-width: 33rem; }
-[data-kopf="4"] .hv-p { position: relative; margin: 0; border-radius: 1.1rem; overflow: hidden; background: var(--sand); }
-[data-kopf="4"] .hv-p--2 { margin-top: 3rem; }
-[data-kopf="4"] .hv-p:first-child { margin-bottom: 3rem; }
-[data-kopf="4"] .hv-p img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; display: block; mix-blend-mode: multiply; }
-[data-kopf="4"] .hv-p figcaption { position: absolute; left: .7rem; right: .7rem; bottom: .7rem; padding: .6rem .8rem; border-radius: .6rem; background: var(--navy); color: #fff; }
-[data-kopf="4"] .hv-p figcaption b { display: block; font-family: var(--serif); font-size: .95rem; font-weight: 600; }
-[data-kopf="4"] .hv-p figcaption span { display: block; font-size: .68rem; line-height: 1.35; color: #cfe0ea; }
-[data-kopf="4"] .v-proof { margin-top: 3.5rem; border-top: 0; display: flex; flex-wrap: wrap; gap: .6rem 2.5rem; }
-[data-kopf="4"] .v-proof div { padding: 0; display: flex; align-items: baseline; gap: .6rem; }
-[data-kopf="4"] .v-proof strong { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
-[data-kopf="4"] .v-proof span { margin: 0; font-size: .85rem; color: var(--muted); max-width: none; }
+/* ---------- 4 · Zentriert ---------- */
+[data-kopf="4"] .b2-kopf { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 3.5rem; }
+[data-kopf="4"] .b2-kopf > .v-rv:first-child { padding-bottom: 0; display: flex; flex-direction: column; align-items: center; }
+[data-kopf="4"] .hv-zeile { justify-content: center; }
+[data-kopf="4"] .v-h1 { margin: 0 auto; max-width: 24ch; }
+[data-kopf="4"] .v-lead { margin-left: auto; margin-right: auto; }
+[data-kopf="4"] .v-btns { justify-content: center; }
+[data-kopf="4"] .b2-portraits { width: 100%; padding-bottom: 3rem; }
+[data-kopf="4"] .hv-buehne { position: relative; max-width: 38rem; margin: 0 auto; gap: 2rem; }
+[data-kopf="4"] .hv-buehne::before { content: ""; position: absolute; left: 50%; width: 100vw; transform: translateX(-50%); top: 35%; bottom: 3.6rem; background: var(--sand); z-index: 0; }
+[data-kopf="4"] .hv-p { position: relative; z-index: 1; }
+[data-kopf="4"] .v-proof { text-align: left; }
 
+/* ---------- Tablet ---------- */
 @media (max-width: 991px) {
-  .v-hero-b2 { padding: 8.5rem 0 4.5rem; }
-  [data-kopf="1"] .hv-buehne, [data-kopf="4"] .hv-buehne { max-width: 26rem; margin: 0 auto; }
-  [data-kopf="1"] .v-proof { grid-template-columns: 1fr; } [data-kopf="1"] .v-proof div { padding: 1rem 0; border-bottom: 1px solid var(--line); }
-  [data-kopf="2"] .b2-face { width: 9.5rem; height: 9.5rem; } [data-kopf="2"] .b2-face--2 { margin-left: 1.2rem; } [data-kopf="2"] .b2-name { width: 9.5rem; }
-  [data-kopf="3"] { background: #fff; padding-bottom: 0; }
-  [data-kopf="3"] .hv-buehne { max-width: none; margin: 0 -2.5rem; padding: 2.5rem 2.5rem 3rem; width: auto; background: var(--sand); }
-  [data-kopf="4"] .v-proof { flex-direction: column; gap: .5rem; }
+  .v-hero-b2 { padding-top: 8.5rem; }
+  .v-hero-b2 .b2-kopf { grid-template-columns: 1fr; gap: 2.5rem; }
+  .v-hero-b2 .b2-kopf > .v-rv:first-child { padding-bottom: 0; }
+  .v-hero-b2 .b2-kopf .v-h1 { max-width: 22ch; }
+  .hv-buehne { max-width: 34rem; margin-left: auto; margin-right: auto; }
+  [data-kopf="3"] .hv-buehne { margin-bottom: 3rem; }
+  .v-hero-b2 .v-proof { grid-template-columns: 1fr; gap: 1rem; }
 }
+/* ---------- Telefon ---------- */
 @media (max-width: 560px) {
   .v-hero-b2 .v-wrap { padding: 0 1.25rem; }
-  [data-kopf="3"] .hv-buehne { margin: 0 -1.25rem; padding: 2rem 1.25rem 2.5rem; gap: 1rem; }
-  [data-kopf="4"] .hv-buehne { gap: .8rem; } [data-kopf="4"] .hv-p--2 { margin-top: 2rem; } [data-kopf="4"] .hv-p:first-child { margin-bottom: 2rem; }
-  [data-kopf="4"] .v-proof div { flex-direction: column; gap: .1rem; }
+  .hv-buehne { gap: .75rem !important; }
+  [data-kopf="1"] .hv-buehne::before { left: -.75rem; right: -.75rem; border-radius: 1rem; }
+  .hv-p figcaption { min-height: 3.4rem; }
+  .hv-p figcaption b { font-size: .9rem !important; } .hv-p figcaption span { font-size: .7rem !important; }
+  [data-kopf="3"] .hv-p figcaption { padding: .7rem .75rem .8rem; }
 }
