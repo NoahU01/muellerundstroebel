@@ -1,79 +1,39 @@
 /* ==========================================================================
-   B2 – Kopf-Konzepte A–C (nur Entwicklung). Hell, Personen sichtbar, Unterzeile „Für Versicherungsunternehmen“.
-   A  Person & Person – das dunkelblaue Konstruktions-Und vom Live-Kopf verbindet die beiden Porträts
-   B  Kraft auf Hell   – große Schlagzeile wie in Variante B, Schlüsselwort blau, Und-Zeichen als Sand-Fläche
-   C  Signatur         – rechts ein Namenszug: Tobias Müller / großes Und / Daniel Ströbel
+   B2 – Kopf zum Vergleichen (nur Entwicklung)
+   1  Hell mit Personen – das ursprüngliche B2 (Und-Zeichen im Sandton), Unterzeile nur „Für Versicherungsunternehmen“
+   2  Live-Aufteilung   – Aufteilung des Live-Kopfs (Text links, Bild rechts); statt des dunkelblauen Und-Zeichens
+                          die beiden Personen. Das Und liegt – wie in Variante B – kaum sichtbar im Hintergrund.
    ========================================================================== */
-.hk-kopf { position: relative; overflow: hidden; background: #fff; color: var(--ink); }
-.hk { display: none; position: relative; padding: 10rem 0 6.5rem; }
-.hk-kopf[data-kopf="A"] .hk-A, .hk-kopf[data-kopf="B"] .hk-B, .hk-kopf[data-kopf="C"] .hk-C { display: block; }
+body[data-kopf="1"] .kv-2, body[data-kopf="2"] .kv-1 { display: none; }
 
-/* Unterzeile mit Auswahl */
-.hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.2rem; }
+.hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
 .hv-zeile .v-kicker { margin: 0; }
 .hv-wahl { display: inline-flex; gap: .3rem; padding: .2rem; border: 1px dashed #c9bfb4; border-radius: 999px; }
 .hv-wahl button { width: 1.6rem; height: 1.6rem; border: 0; border-radius: 50%; background: transparent; font: 600 .72rem/1 var(--sans); color: var(--muted); cursor: pointer; }
 .hv-wahl button[aria-checked="true"] { background: var(--navy); color: #fff; }
 
-.hk .v-h1 { font-size: clamp(2.3rem, 3.6vw, 3.2rem); line-height: 1.1; letter-spacing: -.01em; max-width: 21ch; }
-.hk .v-lead { max-width: 34rem; margin: 1.6rem 0 2.4rem; font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); }
-.hk-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
-
-/* Person (Kreisporträt + Name) */
-.hk-person { display: flex; align-items: center; gap: 1rem; }
-.hk-bild { flex: none; width: 7.5rem; height: 7.5rem; border-radius: 50%; overflow: hidden; background: var(--sand); border: .35rem solid #fff; box-shadow: 0 1.2rem 2.6rem rgba(8,38,56,.16); }
-.hk-bild img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: multiply; }
-.hk-name b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
-.hk-name span { display: block; margin-top: .1rem; font-size: .78rem; color: var(--taupe-dark); white-space: nowrap; }
-
-/* ---------- A · Person & Person ---------- */
-.hk-A .hk-buehne { position: relative; max-width: 34rem; width: 100%; margin-left: auto; }
-.hk-A .v-svg { display: block; width: 100%; height: auto; }
-.hk-A .hk-person { position: absolute; }
-.hk-A .hk-t { left: -1.5rem; top: 7%; flex-direction: row-reverse; text-align: right; }
-.hk-A .hk-d { right: -1rem; bottom: 0; }
-.hk-A .hk-name { padding: .45rem .7rem; border-radius: .5rem; background: rgba(255,255,255,.92); }
-
-/* ---------- B · Kraft auf Hell ---------- */
-.hk-B .hk-amp { position: absolute; right: max(-5rem, calc(50% - 46rem)); top: 4.5rem; height: 118%; width: auto; color: var(--sand); z-index: 0; pointer-events: none; }
-.hk-B .v-wrap { position: relative; z-index: 1; }
-.hk-B .hk-gross { font-size: clamp(2.8rem, 6.4vw, 5.8rem); line-height: 1.02; letter-spacing: -.02em; max-width: 14ch; }
-.hk-B .hk-gross em { font-style: normal; color: var(--blue); }
-.hk-B .hk-unten { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; margin-top: 1rem; }
-.hk-B .v-lead { margin-top: 1.4rem; }
-.hk-B .v-btns { margin: 0; }
-.hk-B .hk-duo { display: flex; gap: 2.2rem; padding-bottom: .4rem; }
-.hk-B .hk-duo .hk-person { flex-direction: column; text-align: center; gap: .9rem; }
-.hk-B .hk-duo .hk-bild { width: 9.5rem; height: 9.5rem; }
-
-/* ---------- C · Signatur ---------- */
-.hk-C .hk-sig { display: flex; flex-direction: column; gap: 0; max-width: 26rem; margin-left: auto; }
-.hk-C .hk-person { gap: 1.3rem; }
-.hk-C .hk-bild { width: 7.5rem; height: 7.5rem; }
-.hk-C .hk-name b { font-size: 1.55rem; letter-spacing: -.01em; }
-.hk-C .hk-name span { font-size: .82rem; }
-.hk-C .hk-und { padding: .6rem 0 .6rem 1.2rem; }
-.hk-C .hk-amp-c { display: block; height: 13rem; width: auto; }
-.hk-C .hk-d { padding-left: 6.5rem; }
-.hk-C .hk-und { padding: .4rem 0 .4rem 1.6rem; margin: -.6rem 0; }
-
-/* ---------- Tablet ---------- */
+/* ---------- 2 · Live-Aufteilung ---------- */
+.kv2 { position: relative; overflow: hidden; background: #fff; padding: 9.5rem 0 5rem; }
+.kv2-amp { position: absolute; right: max(-4rem, calc(50% - 44rem)); top: 50%; transform: translateY(-46%); height: 92%; width: auto; color: var(--navy); opacity: .035; pointer-events: none; z-index: 0; }
+.kv2 .v-wrap { position: relative; z-index: 1; }
+.kv2-split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3rem; align-items: center; }
+.kv2 .v-h1 { font-size: clamp(2.3rem, 3.6vw, 3.2rem); max-width: 21ch; line-height: 1.1; }
+.kv2 .v-lead { margin: 1.5rem 0 2.5rem; max-width: 34rem; }
+.kv2-personen { display: flex; justify-content: center; gap: 2.5rem; }
+.kv2-personen figure { margin: 0; text-align: center; }
+.kv2-bild { width: 12rem; height: 12rem; border-radius: 50%; overflow: hidden; background: var(--sand); }
+.kv2-bild img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: multiply; }
+.kv2-personen figcaption { margin-top: 1.1rem; }
+.kv2-personen b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+.kv2-personen span { display: block; margin-top: .15rem; font-size: .78rem; color: var(--taupe-dark); }
 @media (max-width: 991px) {
-  .hk { padding: 8.5rem 0 4.5rem; }
-  .hk-split { grid-template-columns: 1fr; gap: 3rem; }
-  .hk-A .hk-buehne { max-width: 28rem; margin: 0 auto; }
-  .hk-B .hk-unten { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hk-B .hk-amp { height: 80%; right: -8rem; top: auto; bottom: -6rem; }
-  .hk-C .hk-sig { margin: 0; }
+  .kv2 { padding: 8.5rem 0 4rem; }
+  .kv2-split { grid-template-columns: 1fr; gap: 3rem; }
+  .kv2-amp { height: 70%; top: auto; bottom: -4rem; transform: none; }
 }
-/* ---------- Telefon ---------- */
 @media (max-width: 560px) {
-  .hk .v-wrap { padding: 0 1.25rem; }
-  .hk-bild { width: 5.5rem; height: 5.5rem; }
-  .hk-A .hk-t { left: -.25rem; } .hk-A .hk-d { right: -.25rem; }
-  .hk-A .hk-name b { font-size: .9rem; } .hk-A .hk-name span { font-size: .68rem; }
-  .hk-B .hk-duo { gap: 1.2rem; } .hk-B .hk-duo .hk-bild { width: 7rem; height: 7rem; }
-  .hk-B .hk-name b { font-size: .92rem; } .hk-B .hk-name span { font-size: .68rem; white-space: normal; }
-  .hk-C .hk-bild { width: 4.6rem; height: 4.6rem; } .hk-C .hk-name b { font-size: 1.2rem; } .hk-C .hk-name span { white-space: normal; }
-  .hk-C .hk-amp-c { height: 6.5rem; } .hk-C .hk-d { padding-left: 2.5rem; }
+  .kv2 .v-wrap { padding: 0 1.25rem; }
+  .kv2-personen { gap: 1.25rem; }
+  .kv2-bild { width: 8.5rem; height: 8.5rem; }
+  .kv2-personen b { font-size: .95rem; } .kv2-personen span { font-size: .7rem; }
 }

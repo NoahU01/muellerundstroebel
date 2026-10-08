@@ -1,13 +1,12 @@
-/* B2 – Kopf-Konzepte A–C zum Vergleichen (nur Entwicklung). Auswahl bleibt pro Browser gespeichert, ?kopf=B öffnet direkt. */
+/* B2 – Kopf 1 / 2 zum Vergleichen (nur Entwicklung). Auswahl bleibt pro Browser gespeichert, ?kopf=2 öffnet direkt. */
 (function () {
-  var kopf = document.getElementById("hero"); if (!kopf) return;
-  var w = (location.search.match(/kopf=([A-C])/) || [])[1];
-  try { w = w || localStorage.getItem("b2-kopf-abc"); } catch (e) {}
+  var w = (location.search.match(/kopf=([12])/) || [])[1];
+  try { w = w || localStorage.getItem("b2-kopf-12"); } catch (e) {}
   function setze(n) {
-    kopf.setAttribute("data-kopf", n);
-    kopf.querySelectorAll("[data-hv]").forEach(function (b) { b.setAttribute("aria-checked", String(b.getAttribute("data-hv") === String(n))); });
-    try { localStorage.setItem("b2-kopf-abc", n); } catch (e) {}
+    document.body.setAttribute("data-kopf", n);
+    document.querySelectorAll("[data-hv]").forEach(function (b) { b.setAttribute("aria-checked", String(b.getAttribute("data-hv") === String(n))); });
+    try { localStorage.setItem("b2-kopf-12", n); } catch (e) {}
   }
-  kopf.querySelectorAll("[data-hv]").forEach(function (b) { b.addEventListener("click", function () { setze(b.getAttribute("data-hv")); }); });
-  setze(/^[A-C]$/.test(w || "") ? w : "A");
+  document.querySelectorAll("[data-hv]").forEach(function (b) { b.addEventListener("click", function () { setze(b.getAttribute("data-hv")); }); });
+  setze(/^[12]$/.test(w || "") ? w : "1");
 })();
