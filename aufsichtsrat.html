@@ -107,8 +107,9 @@
 <div class="dev-dd-panel" id="dev-dd-panel">
 <p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
 <p class="dev-dd-group">Varianten Startseite</p>
+<div class="dev-dd-fly"><a href="/entwicklung/startseite-und-blau.html" class="dev-dd-link" data-v="und-blau"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Bisherige Startseite</b><small>Mit dem blauen Und-Zeichen &ndash; Stand 08.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Leistungsseiten</p><a href="/strategie-verankern.html" class="dev-dd-link" data-v="strategie-verankern"><span class="dev-dd-tag dev-dd-tag--new">1</span><span class="dev-dd-txt"><b>Strategie im Alltag verankern</b><small>Beschlossene Strategie in den Bereichen wirksam machen</small></span></a><a href="/komplexe-themen.html" class="dev-dd-link" data-v="komplexe-themen"><span class="dev-dd-tag dev-dd-tag--new">2</span><span class="dev-dd-txt"><b>Komplexe Themen strukturieren und entscheiden</b><small>Moderieren, strukturieren, vorantreiben</small></span></a><a href="/geschaeftsmodell.html" class="dev-dd-link" data-v="geschaeftsmodell"><span class="dev-dd-tag dev-dd-tag--new">3</span><span class="dev-dd-txt"><b>Geschäftsmodell neu denken</b><small>Wachstum, KI, veränderte Risiken</small></span></a><a href="/aufsichtsrat.html" class="dev-dd-link" data-v="aufsichtsrat"><span class="dev-dd-tag dev-dd-tag--new">4</span><span class="dev-dd-txt"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Gremium</small></span></a></div></div>
 <a href="/entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
-<a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen</b><small>Wie B, heller Kopf, ohne Landkarte</small></span></a>
+<a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; jetzt Startseite</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
 <a href="/entwicklung/variante-b3.html" class="dev-dd-link" data-v="b3"><span class="dev-dd-tag dev-dd-tag--new">B3</span><span class="dev-dd-txt"><b>Dunkel mit Personen</b><small>Wie B2, aber dunkler Kopf</small></span></a>
 <a href="/entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Gebiete links, Fall rechts &ndash; ohne Sprung</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Unterseiten</p>
@@ -119,6 +120,16 @@
 </div>
 </div>
 <style>
+.dev-dd-fly{position:relative}
+.dev-dd-pfeil{margin-left:auto;padding-left:.5rem;color:#998675;font-size:18px;line-height:1}
+.dev-dd-sub{position:absolute;left:calc(100% + 1.5rem);top:-.6rem;min-width:300px;padding:.6rem;background:#fff;border:1px solid #e5ddd4;border-radius:.75rem;box-shadow:0 18px 40px rgba(6,55,85,.12);opacity:0;visibility:hidden;transform:translateX(-4px);transition:opacity .15s,transform .15s,visibility .15s}
+.dev-dd-sub::before{content:"";position:absolute;left:-1.6rem;top:0;bottom:0;width:1.6rem}
+.dev-dd-fly:hover>.dev-dd-sub,.dev-dd-fly:focus-within>.dev-dd-sub{opacity:1;visibility:visible;transform:none}
+.dev-dd-fly:hover>.dev-dd-link{background:#f4f1ee}
+.dev-dd-sub .dev-dd-group{margin-top:.15rem}
+@media screen and (min-width:992px){#dev-dd .dev-dd-panel{overflow:visible;max-height:none;left:auto;right:var(--dev-dd-ruck,0px);transform:translateY(6px)}#dev-dd.is-open .dev-dd-panel{transform:none}}
+@media screen and (max-width:991px){.dev-dd-sub{position:static;opacity:1;visibility:visible;transform:none;min-width:0;padding:0 0 .4rem 2.75rem;border:0;box-shadow:none}.dev-dd-sub::before,.dev-dd-pfeil{display:none}.dev-dd-sub .dev-dd-group{display:none}}
+
 .dev-dd{position:relative;display:inline-block}
 .dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:Poppins,Arial,sans-serif;font-size:14px;line-height:20px;color:#222;cursor:pointer}
 .dev-dd-chev{width:12px;height:12px;transition:transform .2s}
@@ -155,6 +166,12 @@ document.addEventListener('click',function(e){if(!d.contains(e.target))set(false
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.getAttribute('data-v')===cur)a.classList.add('is-current');});
 })();
+</script>
+<script>
+/* Untermenü „Bisherige Startseite“: Panel so weit nach links rücken, dass die Leistungsseiten rechts daneben Platz haben */
+(function(){var d=document.getElementById("dev-dd");if(!d)return;var p=d.querySelector(".dev-dd-panel"),s=d.querySelector(".dev-dd-sub");if(!p||!s)return;
+function ruecken(){if(innerWidth<992){d.style.removeProperty("--dev-dd-ruck");return;}d.style.setProperty("--dev-dd-ruck","0px");var r=p.getBoundingClientRect(),zu=r.right+26+s.offsetWidth-(innerWidth-16);d.style.setProperty("--dev-dd-ruck",(zu>0?Math.ceil(zu):0)+"px");}
+d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEventListener("click",ruecken);addEventListener("resize",ruecken);})();
 </script>
 <!-- ENTWICKLUNG:END -->
 <a href="#kontakt" class="primary-button navigation"><p class="button-text">Kontakt aufnehmen</p><div class="button-gradient"></div></a>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="robots" content="noindex">
 <meta charset="utf-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script id="Cookiebot" data-vorschau-aus="https://consent.cookiebot.com/uc.js" data-cbid="8870d24b-eae6-4dd4-8406-28c7c01e48b1" data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8870d24b-eae6-4dd4-8406-28c7c01e48b1" data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
 <script data-cookieconsent="ignore">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -20,24 +20,64 @@
   });
   gtag('set', 'ads_data_redaction', true);
   gtag('set', 'url_passthrough', true);
+
+  /* Interner Traffic wird am GERÄT markiert, nicht an der IP: wer aus
+     wechselnden Netzen arbeitet, müsste sonst jedes Netz nachtragen. Einmal
+     ?internal=1 aufrufen, und dieser Browser zählt dauerhaft als intern;
+     ?internal=0 hebt es auf. Der GA4-Datenfilter "Internal Traffic" schließt
+     Ereignisse mit traffic_type=internal aus, er muss auf AKTIV stehen. */
+  var msSchalter = null;
+  try {
+    var msWert = new URLSearchParams(location.search).get('internal');
+    if (msWert === '1') { localStorage.setItem('ms_internal', '1'); msSchalter = 'an'; }
+    if (msWert === '0') { localStorage.removeItem('ms_internal'); msSchalter = 'aus'; }
+  } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+  var msIntern = false;
+  try { msIntern = localStorage.getItem('ms_internal') === '1'; } catch (e) {}
+  if (msIntern) gtag('set', { traffic_type: 'internal' });
+
   gtag('js', new Date());
-  gtag('config', 'G-KSWHNGZS3P');
+
+  /* GA4 nur auf der Produktionsdomain. Ohne diese Sperre schicken die
+     Vercel-Previews (*.vercel.app) und lokale Tests ihre Aufrufe in dieselbe
+     Property und verfälschen die Zahlen dauerhaft. */
+  if (/^(www\.)?muellerundstroebel\.de$/.test(location.hostname)) {
+    gtag('config', 'G-KSWHNGZS3P');
+  }
+
+  if (msSchalter) {
+    var msZeigen = function () {
+      var el = document.createElement('div');
+      el.textContent = msSchalter === 'an'
+        ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+        : 'Markierung entfernt, dieses Gerät zählt wieder mit';
+      el.setAttribute('role', 'status');
+      el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;'
+        + 'background:#185e8a;color:#fff;border-radius:.75rem;padding:12px 20px;'
+        + 'font:14px/1.4 Poppins,system-ui,sans-serif;max-width:90vw;text-align:center;'
+        + 'box-shadow:0 8px 28px rgba(6,55,85,.35)';
+      document.body.appendChild(el);
+      setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+      setTimeout(function () { el.remove(); }, 4600);
+    };
+    if (document.body) msZeigen(); else document.addEventListener('DOMContentLoaded', msZeigen);
+  }
 </script>
-<script async data-vorschau-aus="https://www.googletagmanager.com/gtag/js?id=G-KSWHNGZS3P" data-cookieconsent="ignore"></script>
-<title>Startseite Variante B &ndash; M&uuml;ller &amp; Str&ouml;bel</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHNGZS3P" data-cookieconsent="ignore"></script>
+<title>(Entwicklung) Bisherige Startseite – M&uuml;ller &amp; Str&ouml;bel: Strategie und Umsetzung f&uuml;r Versicherungsunternehmen</title>
 <meta name="description" content="Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung: Wir setzen Strategie gemeinsam mit Vorst&auml;nden und F&uuml;hrungskr&auml;ften um &ndash; von der Entscheidung bis zum Ergebnis.">
 <link rel="canonical" href="https://www.muellerundstroebel.de/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="M&uuml;ller &amp; Str&ouml;bel">
 <meta property="og:locale" content="de_DE">
 <meta property="og:url" content="https://www.muellerundstroebel.de/">
-<meta property="og:title" content="Startseite Variante B &ndash; M&uuml;ller &amp; Str&ouml;bel">
+<meta property="og:title" content="M&uuml;ller &amp; Str&ouml;bel: Strategie und Umsetzung f&uuml;r Versicherungsunternehmen">
 <meta property="og:description" content="Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung: Wir setzen Strategie gemeinsam mit Vorst&auml;nden und F&uuml;hrungskr&auml;ften um &ndash; von der Entscheidung bis zum Ergebnis.">
 <meta property="og:image" content="https://www.muellerundstroebel.de/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Startseite Variante B &ndash; M&uuml;ller &amp; Str&ouml;bel">
+<meta name="twitter:title" content="M&uuml;ller &amp; Str&ouml;bel: Strategie und Umsetzung f&uuml;r Versicherungsunternehmen">
 <meta name="twitter:description" content="Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung: Wir setzen Strategie gemeinsam mit Vorst&auml;nden und F&uuml;hrungskr&auml;ften um &ndash; von der Entscheidung bis zum Ergebnis.">
 <meta name="twitter:image" content="https://www.muellerundstroebel.de/assets/og-image.png">
 <script type="application/ld+json">
@@ -86,15 +126,13 @@
   ]
 }
 </script>
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="../assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="../assets/favicon.png">
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="../startseite.css">
-<link rel="stylesheet" href="startseite-opt.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/startseite.css">
 </head>
-<body class="body v-page ms-home" data-variante="opt-b">
-<div class="ms-optbar"><span>Startseite optimieren · B: Unterschied + Wege zum Ziel, ohne Leistungen</span><a href="startseite-opt-a.html">A</a><a href="startseite-opt-b.html" class="is-cur">B</a><a href="startseite-opt-c.html">C</a><a href="../index.html">Aktuell</a></div>
+<body class="body v-page ms-home" data-variante="und-blau">
 
 <div class="main-wrapper">
 <div class="page-wrapper">
@@ -104,29 +142,28 @@
 <header class="nav-bar padding-global">
 <div class="navigation-line" id="navigation-line"></div>
 <div class="container-large navigation">
-<a href="../index.html" class="brand" aria-label="M&uuml;ller &amp; Str&ouml;bel &ndash; Startseite"><img src="../assets/logo.svg" alt="M&uuml;ller &amp; Str&ouml;bel" class="logo"></a>
+<a href="/" class="brand" aria-label="M&uuml;ller &amp; Str&ouml;bel &ndash; Startseite"><img src="/assets/logo.svg" alt="M&uuml;ller &amp; Str&ouml;bel" class="logo"></a>
 <nav class="navigation-wrapper" id="mobile-menu">
-<a href="../index.html#loesungen" class="menu-text">L&ouml;sungen</a>
-<a href="../index.html#aufsichtsrat" class="menu-text">Aufsichtsrat</a>
+<a href="/#loesungen" class="menu-text">L&ouml;sungen</a>
 <div class="ms-dd"><button class="menu-text ms-dd-toggle" type="button" aria-expanded="false">Leistungen<svg class="ms-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-<div class="ms-dd-panel"><a href="../strategie-verankern.html" class="ms-dd-link"><b>Strategie im Alltag verankern</b><small>Die Strategie ist beschlossen. Jetzt muss sie in den Bereichen ankommen und wirken.</small></a><a href="../komplexe-themen.html" class="ms-dd-link"><b>Komplexe Themen strukturieren und entscheiden</b><small>Viele Beteiligte, unklare Risiken, kein Fortschritt. Wir moderieren, strukturieren und treiben das Thema voran.</small></a><a href="../geschaeftsmodell.html" class="ms-dd-link"><b>Gesch&auml;ftsmodell neu denken</b><small>Wachstum, KI oder ver&auml;nderte Risiken verlangen eine neue Richtung.</small></a><a href="../aufsichtsrat.html" class="ms-dd-link ms-dd-link--ar"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Aufsichtsrat &ndash; f&uuml;r neue Mitglieder und das Gesamtgremium.</small></a></div></div>
-<a href="../ueber-uns.html" class="menu-text">&Uuml;ber uns</a>
+<div class="ms-dd-panel"><a href="/strategie-verankern" class="ms-dd-link"><b>Strategie im Alltag verankern</b><small>Die Strategie ist beschlossen. Jetzt muss sie in den Bereichen ankommen und wirken.</small></a><a href="/komplexe-themen" class="ms-dd-link"><b>Komplexe Themen strukturieren und entscheiden</b><small>Viele Beteiligte, unklare Risiken, kein Fortschritt. Wir moderieren, strukturieren und treiben das Thema voran.</small></a><a href="/geschaeftsmodell" class="ms-dd-link"><b>Gesch&auml;ftsmodell neu denken</b><small>Wachstum, KI oder ver&auml;nderte Risiken verlangen eine neue Richtung.</small></a><a href="/aufsichtsrat" class="ms-dd-link ms-dd-link--ar"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Aufsichtsrat &ndash; f&uuml;r neue Mitglieder und das Gesamtgremium.</small></a></div></div>
+<a href="/ueber-uns" class="menu-text">&Uuml;ber uns</a>
 <!-- ENTWICKLUNG:START (nur Sandbox – wird von vorschau.py github entfernt) -->
 <div class="dev-dd" id="dev-dd">
 <button class="menu-text dev-dd-toggle" type="button" aria-expanded="false" aria-controls="dev-dd-panel">/ Entwicklung /<svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="dev-dd-panel" id="dev-dd-panel">
 <p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
 <p class="dev-dd-group">Varianten Startseite</p>
-<div class="dev-dd-fly"><a href="../entwicklung/startseite-und-blau.html" class="dev-dd-link" data-v="und-blau"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Bisherige Startseite</b><small>Mit dem blauen Und-Zeichen &ndash; Stand 08.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Leistungsseiten</p><a href="../strategie-verankern.html" class="dev-dd-link" data-v="strategie-verankern"><span class="dev-dd-tag dev-dd-tag--new">1</span><span class="dev-dd-txt"><b>Strategie im Alltag verankern</b><small>Beschlossene Strategie in den Bereichen wirksam machen</small></span></a><a href="../komplexe-themen.html" class="dev-dd-link" data-v="komplexe-themen"><span class="dev-dd-tag dev-dd-tag--new">2</span><span class="dev-dd-txt"><b>Komplexe Themen strukturieren und entscheiden</b><small>Moderieren, strukturieren, vorantreiben</small></span></a><a href="../geschaeftsmodell.html" class="dev-dd-link" data-v="geschaeftsmodell"><span class="dev-dd-tag dev-dd-tag--new">3</span><span class="dev-dd-txt"><b>Geschäftsmodell neu denken</b><small>Wachstum, KI, veränderte Risiken</small></span></a><a href="../aufsichtsrat.html" class="dev-dd-link" data-v="aufsichtsrat"><span class="dev-dd-tag dev-dd-tag--new">4</span><span class="dev-dd-txt"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Gremium</small></span></a></div></div>
-<a href="../entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
-<a href="../entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; jetzt Startseite</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
-<a href="../entwicklung/variante-b3.html" class="dev-dd-link" data-v="b3"><span class="dev-dd-tag dev-dd-tag--new">B3</span><span class="dev-dd-txt"><b>Dunkel mit Personen</b><small>Wie B2, aber dunkler Kopf</small></span></a>
-<a href="../entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Gebiete links, Fall rechts &ndash; ohne Sprung</small></span></a>
+<div class="dev-dd-fly"><a href="/entwicklung/startseite-und-blau.html" class="dev-dd-link" data-v="und-blau"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Bisherige Startseite</b><small>Mit dem blauen Und-Zeichen &ndash; Stand 08.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Leistungsseiten</p><a href="/strategie-verankern.html" class="dev-dd-link" data-v="strategie-verankern"><span class="dev-dd-tag dev-dd-tag--new">1</span><span class="dev-dd-txt"><b>Strategie im Alltag verankern</b><small>Beschlossene Strategie in den Bereichen wirksam machen</small></span></a><a href="/komplexe-themen.html" class="dev-dd-link" data-v="komplexe-themen"><span class="dev-dd-tag dev-dd-tag--new">2</span><span class="dev-dd-txt"><b>Komplexe Themen strukturieren und entscheiden</b><small>Moderieren, strukturieren, vorantreiben</small></span></a><a href="/geschaeftsmodell.html" class="dev-dd-link" data-v="geschaeftsmodell"><span class="dev-dd-tag dev-dd-tag--new">3</span><span class="dev-dd-txt"><b>Geschäftsmodell neu denken</b><small>Wachstum, KI, veränderte Risiken</small></span></a><a href="/aufsichtsrat.html" class="dev-dd-link" data-v="aufsichtsrat"><span class="dev-dd-tag dev-dd-tag--new">4</span><span class="dev-dd-txt"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Gremium</small></span></a></div></div>
+<a href="/entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
+<a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; jetzt Startseite</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
+<a href="/entwicklung/variante-b3.html" class="dev-dd-link" data-v="b3"><span class="dev-dd-tag dev-dd-tag--new">B3</span><span class="dev-dd-txt"><b>Dunkel mit Personen</b><small>Wie B2, aber dunkler Kopf</small></span></a>
+<a href="/entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Gebiete links, Fall rechts &ndash; ohne Sprung</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Unterseiten</p>
-<a href="../entwicklung/ueber-uns.html" class="dev-dd-link" data-v="ueber"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Über uns (Entwurf)</b><small>Tobias &amp; Daniel, Schwerpunkte, Gemeinsames</small></span></a>
+<a href="/entwicklung/ueber-uns.html" class="dev-dd-link" data-v="ueber"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Über uns (Entwurf)</b><small>Tobias &amp; Daniel, Schwerpunkte, Gemeinsames</small></span></a>
 <p class="dev-dd-group dev-dd-group--sub">Archiv</p>
-<a href="../archiv/startseite-umfassend-2026-09-17.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv-0917"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite umfassend – 17.09.2026</b><small>Stand vor der Optimierung</small></span></a>
-<a href="../archiv/startseite-live-2026-09.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – Live-Stand Sept. 2026</b><small>So ist die Seite heute online</small></span></a>
+<a href="/archiv/startseite-umfassend-2026-09-17.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv-0917"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite umfassend – 17.09.2026</b><small>Stand vor der Optimierung</small></span></a>
+<a href="/archiv/startseite-live-2026-09.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – Live-Stand Sept. 2026</b><small>So ist die Seite heute online</small></span></a>
 </div>
 </div>
 <style>
@@ -197,49 +234,10 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <section class="v-hero v-hero-d2" id="hero">
 <div class="v-wrap v-split">
 <div class="v-rv"><p class="v-kicker">F&uuml;r Versicherungsunternehmen</p>
-<h1 class="v-h1">Wir beraten nicht.<br>Wir setzen um<span class="v-dot">.</span></h1>
-<p class="v-lead" style="margin-top:1.5rem">M&uuml;ller &amp; Str&ouml;bel sind Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung &ndash; von der Strategie &uuml;ber Kennzahlen und Gremien bis in den Vertrieb. Wir bringen Themen gemeinsam mit Ihnen ins Ergebnis.</p>
-<div style="margin-top:2rem"><div class="v-pills-row"><span>Strategie</span><span>Kennzahlen</span><span>Gremien</span><span>Kommunikation</span><span>Vertrieb</span><span>Umsetzung</span></div></div>
+<h1 class="v-h1 ms-h1--lang">Komplexe Situationen entscheidbar machen<span class="v-dot">.</span></h1>
+<p class="v-lead" style="margin-top:1.5rem">Wir kennen das Gesch&auml;ftsmodell Versicherung von innen &ndash; von der Strategie &uuml;ber Kennzahlen und Gremien bis in den Vertrieb. Deshalb brauchen wir keine Einarbeitung und liefern ab dem ersten Termin.</p>
 <div class="v-btns" style="margin-top:2.5rem"><a class="v-btn v-btn--pill ms-cta" href="#loesungen">Unsere L&ouml;sungen <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="v-btn v-btn--ghost v-btn--pill ms-cta" href="#kontakt">Kontakt aufnehmen</a></div></div>
-<div class="v-rv ms-hero-map"><svg class="v-svg" viewBox="0 0 520 520" role="img" aria-label="Geschäftsmodell Versicherung – sechs Kompetenzfelder">
-<defs><radialGradient id="mg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#185e8a" stop-opacity=".14"/><stop offset="1" stop-color="#185e8a" stop-opacity="0"/></radialGradient></defs>
-<circle cx="260" cy="260" r="250" fill="url(#mg)"/>
-<circle cx="260" cy="260" r="185" fill="none" stroke="#d6cec3" stroke-width="1.5" stroke-dasharray="3 7"/>
-<circle cx="260" cy="260" r="130" fill="none" stroke="#e5ddd4" stroke-width="1"/>
-<g stroke="#998675" stroke-width="1.2" opacity=".5">
-<line x1="260" y1="260" x2="260" y2="75"/><line x1="260" y1="260" x2="420" y2="167"/><line x1="260" y1="260" x2="420" y2="353"/>
-<line x1="260" y1="260" x2="260" y2="445"/><line x1="260" y1="260" x2="100" y2="353"/><line x1="260" y1="260" x2="100" y2="167"/></g>
-<path d="M260 75 A185 185 0 0 1 420 167" fill="none" stroke="#185e8a" stroke-width="4" stroke-linecap="round"/>
-<path d="M420 353 A185 185 0 0 1 260 445" fill="none" stroke="#185e8a" stroke-width="4" stroke-linecap="round"/>
-<path d="M100 353 A185 185 0 0 1 100 167" fill="none" stroke="#998675" stroke-width="4" stroke-linecap="round"/>
-<circle cx="260" cy="260" r="96" fill="#082638"/>
-<text x="260" y="250" text-anchor="middle" font-family="Lora, serif" font-weight="600" font-size="17" fill="#fff">Geschäftsmodell</text>
-<text x="260" y="274" text-anchor="middle" font-family="Lora, serif" font-weight="600" font-size="17" fill="#fff">Versicherung</text>
-<text x="260" y="296" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10" fill="#cbbcae" letter-spacing="1">IN SEINER GÄNZE</text>
-<g font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#1d1d1b" text-anchor="middle">
-<circle cx="260" cy="75" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="260" y="80" font-size="11" fill="#185e8a">01</text><text x="260" y="28">Strategie</text>
-<circle cx="420" cy="167" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="420" y="172" font-size="11" fill="#185e8a">02</text><text x="470" y="128">Kennzahlen</text>
-<circle cx="420" cy="353" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="420" y="358" font-size="11" fill="#185e8a">03</text><text x="468" y="408">Gremien</text>
-<circle cx="260" cy="445" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="260" y="450" font-size="11" fill="#185e8a">04</text><text x="260" y="500">Umsetzung</text>
-<circle cx="100" cy="353" r="30" fill="#fff" stroke="#998675" stroke-width="2"/><text x="100" y="358" font-size="11" fill="#7a6757">05</text><text x="56" y="408">Vertrieb</text>
-<circle cx="100" cy="167" r="30" fill="#fff" stroke="#998675" stroke-width="2"/><text x="100" y="172" font-size="11" fill="#7a6757">06</text><text x="62" y="128">Kommunikation</text>
-</g></svg></div>
-</div></section>
-
-<section class="v-sec v-sand v-problem" id="ausgangslage">
-<div class="v-wrap v-split">
-<div class="v-rv v-problem-head"><p class="v-kicker">Ausgangslage</p>
-<h2 class="v-h2">Das Konzept steht.<br>Umgesetzt ist<br>noch wenig<span class="v-dot">.</span></h2></div>
-<div class="v-darkcard v-rv"><p>Die Themen sind bekannt, Pr&auml;sentationen gibt es genug. Trotzdem kommt es im Unternehmen nicht an:</p>
-<ul><li>Beschl&uuml;sse werden gefasst, aber nicht umgesetzt</li><li>Im Tagesgesch&auml;ft fehlen Zeit und Zust&auml;ndigkeiten</li><li>Externe Berater m&uuml;ssen erst eingearbeitet werden &ndash; und sind weg, wenn es konkret wird</li></ul>
-<p><strong>Genau hier setzen wir an: mit Erfahrung aus dem Gesch&auml;ftsmodell und mit eigener Umsetzungskraft.</strong></p></div>
-</div></section>
-
-<section class="v-sec" id="unterschied">
-<div class="v-wrap">
-<div class="v-split ms-split-b">
-<div class="v-rv"><p class="v-kicker">Was uns unterscheidet</p><h2 class="v-h2">Ergebnisse statt Empfehlungen<span class="v-dot">.</span></h2><p class="v-lead" style="margin-top:1.1rem">Die Antwort auf die Ausgangslage: drei Gr&uuml;nde, warum Themen mit uns ins Ergebnis kommen.</p><div class="ms-uspstack"><div class="ms-uspstack-item"><span class="v-usp3-no">01</span><h3>Umsetzungspower</h3><p>Wir setzen gemeinsam mit Ihren Teams um &ndash; bis das Ergebnis steht. Nicht als Beobachter, sondern als Teil des Projekts.</p></div><div class="ms-uspstack-item"><span class="v-usp3-no">02</span><h3>Sofort Mehrwert</h3><p>Wir kennen das Gesch&auml;ftsmodell Versicherung in seiner G&auml;nze. Es gibt keine Einarbeitungsphase &ndash; Mehrwert entsteht ab dem ersten Termin.</p></div><div class="ms-uspstack-item"><span class="v-usp3-no">03</span><h3>Mit &Uuml;berzeugung</h3><p>Wir machen nur Themen, hinter denen wir stehen und die uns Spa&szlig; machen. Das merken Sie am Einsatz &ndash; und am Ergebnis.</p></div></div></div>
-<div class="v-rv"><div class="ms-ampcard"><svg class="v-svg" viewBox="0 0 640 600" role="img" aria-label="Konstruktionsskizze des &amp;-Zeichens">
+<div class="v-rv d2-amp"><svg class="v-svg" viewBox="0 0 640 600" role="img" aria-label="Konstruktionsskizze des &amp;-Zeichens">
 <defs><linearGradient id="ampg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b3a57"/><stop offset="1" stop-color="#082638"/></linearGradient>
 <radialGradient id="gridfade" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
 <mask id="gm"><rect width="640" height="600" fill="url(#gridfade)"/></mask></defs>
@@ -329,20 +327,45 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <line x1="259.7" y1="206.9" x2="252.9" y2="190.1" stroke="#185e8a" stroke-width="1"/>
 <circle cx="252.9" cy="190.1" r="3.2" fill="#fff" stroke="#185e8a" stroke-width="1.3"/>
 <rect x="255.7" y="202.9" width="8" height="8" fill="#fff" stroke="#185e8a" stroke-width="1.5"/>
-</svg></div></div>
-</div>
-<div class="ms-wege v-rv" id="wege">
-<div class="ms-wege-text"><p class="v-kicker">Wir m&uuml;ssen nicht abgeholt werden</p><h3 class="ms-wege-h">Wir kennen die Wege, die zum Ziel f&uuml;hren<span class="v-dot">.</span></h3>
-<p>Wer muss eingebunden werden? Wie laufen Entscheidungen durch Vorstand und Aufsichtsrat? Welche Kennzahl zeigt, ob es wirkt? Das wissen wir &ndash; aus eigener Praxis.</p></div>
-<div class="ms-wege-side"><ul class="v-checks"><li>Umsetzungspl&auml;ne mit klaren Zust&auml;ndigkeiten</li><li>Fortschritt, den Vorstand und Aufsichtsrat nachvollziehen k&ouml;nnen</li><li>Wirkung, die an Kennzahlen sichtbar wird</li></ul><a href="#" class="v-btn v-btn--light v-btn--pill ms-cta" data-modal="vorgehen">Unser Vorgehen <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-</div>
+</svg></div>
 </div></section>
 
-<section class="v-sec v-sand" id="loesungen">
+<section class="v-sec v-sand v-problem" id="ausgangslage">
+<div class="v-wrap v-split">
+<div class="v-rv v-problem-head"><p class="v-kicker">Ausgangslage</p>
+<h2 class="v-h2">Das Konzept steht.<br>Umgesetzt ist<br>noch wenig<span class="v-dot">.</span></h2></div>
+<div class="v-darkcard v-rv"><p>Die Themen sind bekannt, Pr&auml;sentationen gibt es genug. Trotzdem kommt es im Unternehmen nicht an:</p>
+<ul><li>Beschl&uuml;sse werden gefasst, aber nicht umgesetzt</li><li>Im Tagesgesch&auml;ft fehlen Zeit und Zust&auml;ndigkeiten</li><li>Externe Berater m&uuml;ssen erst eingearbeitet werden &ndash; und sind weg, wenn es konkret wird</li></ul>
+<p><strong>Genau hier setzen wir an: mit Erfahrung aus dem Gesch&auml;ftsmodell und mit eigener Umsetzungskraft.</strong></p></div>
+</div></section>
+
+<section class="v-sec" id="unterschied">
+<div class="v-wrap"><div class="v-rv" style="max-width:44rem"><p class="v-kicker">Was uns unterscheidet</p>
+<h2 class="v-h2">Ergebnisse statt Empfehlungen<span class="v-dot">.</span></h2></div>
+<div class="v-usp3">
+<div class="v-usp3-item v-rv"><span class="v-usp3-no">01</span><h3>Umsetzungspower</h3><p>Wir setzen gemeinsam mit Ihren Teams um &ndash; bis das Ergebnis steht. Nicht als Beobachter, sondern als Teil des Projekts.</p></div>
+<div class="v-usp3-item v-rv"><span class="v-usp3-no">02</span><h3>Sofort Mehrwert</h3><p>Wir m&uuml;ssen nicht abgeholt werden. Wir kennen das Gesch&auml;ftsmodell, die Kennzahlen und die Entscheidungswege im Unternehmen.</p></div>
+<div class="v-usp3-item v-rv"><span class="v-usp3-no">03</span><h3>Mit &Uuml;berzeugung</h3><p>Wir machen nur Themen, hinter denen wir stehen und die uns Spa&szlig; machen. Das merken Sie am Einsatz &ndash; und am Ergebnis.</p></div>
+</div></div></section>
+
+<section class="v-sec v-sand" id="einsatzgebiete">
+<div class="v-wrap"><div class="v-center v-rv" style=""><p class="v-kicker">Unsere Einsatzgebiete</p>
+<h2 class="v-h2">Hier setzen wir an<span class="v-dot">.</span></h2>
+<p class="v-lead" style="margin-top:1.2rem">Wir werden eingebunden, wenn Zusammenh&auml;nge unklar sind, die Komplexit&auml;t zu gro&szlig; ist und somit ein Thema nicht voran kommt. Umsetzung ist unser Handwerk.</p></div>
+<div style="margin-top:3.5rem"><div class="v-grid-3 v-cards">
+<article class="v-card v-card--clean v-rv" data-modal="strategie" tabindex="0" role="button"><span class="v-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span><h3 class="v-h3">Strategie &amp; Geschäftsmodell</h3><p class="v-small">Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</p><span class="v-link">Mehr erfahren <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></article>
+<article class="v-card v-card--clean v-rv" data-modal="kennzahlen" tabindex="0" role="button"><span class="v-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M6 16l4.5-4.5 3 3L19 8"/><path d="M15 8h4v4"/></svg></span><h3 class="v-h3">Kennzahlen &amp; Steuerung</h3><p class="v-small">Wenn Zahlen da sind, aber nicht steuern.</p><span class="v-link">Mehr erfahren <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></article>
+<article class="v-card v-card--clean v-rv" data-modal="gremien" tabindex="0" role="button"><span class="v-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/></svg></span><h3 class="v-h3">Entscheidungen &amp; Gremien</h3><p class="v-small">Wenn Themen seit Monaten „in Bearbeitung“ sind.</p><span class="v-link">Mehr erfahren <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></article>
+<article class="v-card v-card--clean v-rv" data-modal="vertrieb" tabindex="0" role="button"><span class="v-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.4.1 4 1.6 4.5 4.4"/></svg></span><h3 class="v-h3">Vertrieb &amp; Wachstum</h3><p class="v-small">Wenn Potenziale im Markt liegen bleiben.</p><span class="v-link">Mehr erfahren <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></article>
+<article class="v-card v-card--clean v-rv" data-modal="ki" tabindex="0" role="button"><span class="v-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 12h6M12 9v6"/><path d="M9 2.5v2.5M15 2.5v2.5M9 19v2.5M15 19v2.5M2.5 9H5M2.5 15H5M19 9h2.5M19 15h2.5"/></svg></span><h3 class="v-h3">KI-Transformation</h3><p class="v-small">Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</p><span class="v-link">Mehr erfahren <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></article>
+<article class="v-card v-card--clean v-rv" data-modal="resilienz" tabindex="0" role="button"><span class="v-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.1 7.5 9.5 4.4-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span><h3 class="v-h3">Resilienz</h3><p class="v-small">Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</p><span class="v-link">Mehr erfahren <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></article>
+</div></div></div></section>
+
+<section class="v-sec" id="loesungen">
 <div class="v-wrap"><div class="v-center v-rv"><p class="v-kicker">L&ouml;sungen</p>
 <h2 class="v-h2">Was wir konkret f&uuml;r Sie umsetzen<span class="v-dot">.</span></h2>
 <p class="v-lead" style="margin-top:1.2rem">Drei L&ouml;sungen &ndash; je nachdem, wo Ihr Thema gerade steht.</p></div>
-<div class="ms-offers"><a class="ms-offer v-rv" href="../strategie-verankern.html">
+<div class="ms-offers ms-offers--rahmen"><a class="ms-offer v-rv" href="/strategie-verankern">
 <div class="ms-offer-media"><svg class="v-svg" viewBox="0 0 520 440" role="img" aria-label="Skizze: vom Beschluss zum Ergebnis">
 <g font-family="Poppins, sans-serif">
 <rect x="24" y="36" width="150" height="92" rx="14" fill="#fff" stroke="#e5ddd4"/>
@@ -367,7 +390,7 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <text x="358" y="382" font-size="13" font-weight="600" fill="#1d1d1b">informiert ✓</text>
 </g></svg></div>
 <div class="ms-offer-body"><h3>Strategie im Alltag verankern</h3><p class="ms-offer-teaser">Die Strategie ist beschlossen. Jetzt muss sie in den Bereichen ankommen und wirken.</p><ul class="v-checks"><li>Roadmap mit Zust&auml;ndigkeiten und Meilensteinen</li><li>Umsetzung gemeinsam mit Fachbereichen und Vertrieb</li><li>Steuerung &uuml;ber Kennzahlen und Reporting an die Gremien</li></ul>
-<span class="v-link">Zur L&ouml;sung <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a><a class="ms-offer v-rv" href="../komplexe-themen.html">
+<span class="v-link">Zur L&ouml;sung <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a><a class="ms-offer v-rv" href="/komplexe-themen">
 <div class="ms-offer-media"><svg class="v-svg" viewBox="0 0 560 610" role="img" aria-label="Skizze: Aufbau einer Entscheidungsvorlage">
 <g font-family="Poppins, sans-serif">
 <rect x="190" y="14" width="180" height="582" rx="14" fill="#fcfbfa" stroke="#d6cec3"/>
@@ -410,7 +433,7 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <text x="402" y="546" font-family="Lora, serif" font-size="14" font-weight="600" fill="#1d1d1b">Beschluss</text><text x="402" y="562" font-size="9.5" fill="#6b635b">Und was danach passiert</text>
 </g></svg></div>
 <div class="ms-offer-body"><h3>Komplexe Themen strukturieren und entscheiden</h3><p class="ms-offer-teaser">Viele Beteiligte, unklare Risiken, kein Fortschritt. Wir moderieren, strukturieren und treiben das Thema voran.</p><ul class="v-checks"><li>Moderation von Workshops und kritischen Abstimmungen</li><li>Optionen verdichten und verst&auml;ndlich kommunizieren</li><li>Gremienreife Vorlage &ndash; und der Plan f&uuml;r danach</li></ul>
-<span class="v-link">Zur L&ouml;sung <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a><a class="ms-offer v-rv" href="../geschaeftsmodell.html">
+<span class="v-link">Zur L&ouml;sung <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a><a class="ms-offer v-rv" href="/geschaeftsmodell">
 <div class="ms-offer-media"><svg class="v-svg" viewBox="0 0 520 300" role="img" aria-label="Skizze: vom Heute zum Zielbild">
 <g font-family="Poppins, sans-serif">
 <path d="M60 230 C 160 230, 180 120, 280 130 S 400 70, 460 60" fill="none" stroke="#998675" stroke-width="2" stroke-dasharray="5 7"/>
@@ -425,19 +448,15 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <span class="v-link">Zur L&ouml;sung <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a></div>
 </div></section>
 
-<section class="v-sec" id="aufsichtsrat">
-<div class="v-wrap v-split">
-<div class="v-rv ms-ar-sketch"><svg class="v-svg" viewBox="0 0 600 470" role="img" aria-label="Skizze: Kompetenzprofil eines Aufsichtsrats"><g font-family="Poppins, sans-serif"><rect x="10" y="10" width="580" height="400" rx="18" fill="#fff" stroke="#e5ddd4"/><circle cx="34" cy="34" r="4" fill="#ddd3c8"/><circle cx="48" cy="34" r="4" fill="#ddd3c8"/><circle cx="62" cy="34" r="4" fill="#ddd3c8"/><text x="80" y="38" font-size="11" fill="#6b635b">Kompetenzprofil · Aufsichtsrat</text><line x1="10" y1="56" x2="590" y2="56" stroke="#e5ddd4"/><rect x="454" y="66" width="38" height="316" rx="10" fill="#185e8a" fill-opacity=".07" stroke="#185e8a" stroke-opacity=".35"/><rect x="522" y="66" width="52" height="316" rx="10" fill="#082638" fill-opacity=".05"/><text x="248" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#6b635b">AR 1</text><text x="293" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#6b635b">AR 2</text><text x="338" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#6b635b">AR 3</text><text x="383" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#6b635b">AR 4</text><text x="428" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#6b635b">AR 5</text><text x="473" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#185e8a">Neu</text><text x="548" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="#082638">Gremium</text><line x1="30" y1="135" x2="570" y2="135" stroke="#f1ece6"/><text x="30" y="116" font-size="11" fill="#1d1d1b">Strategie &amp; Geschäftsmodell</text><circle cx="248" cy="112" r="8" fill="#082638"/><circle cx="293" cy="112" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M293 104 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="338" cy="112" r="8" fill="#082638"/><circle cx="383" cy="112" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="428" cy="112" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M428 104 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="473" cy="112" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M473 104 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="548" cy="112" r="10" fill="#185e8a"/><path d="m543 112 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="181" x2="570" y2="181" stroke="#f1ece6"/><text x="30" y="162" font-size="11" fill="#1d1d1b">Kapitalanlage</text><circle cx="248" cy="158" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M248 150 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="293" cy="158" r="8" fill="#082638"/><circle cx="338" cy="158" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="383" cy="158" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M383 150 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="428" cy="158" r="8" fill="#082638"/><circle cx="473" cy="158" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="548" cy="158" r="10" fill="#185e8a"/><path d="m543 158 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="227" x2="570" y2="227" stroke="#f1ece6"/><text x="30" y="208" font-size="11" fill="#1d1d1b">Versicherungstechnik</text><circle cx="248" cy="204" r="8" fill="#082638"/><circle cx="293" cy="204" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="338" cy="204" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M338 196 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="383" cy="204" r="8" fill="#082638"/><circle cx="428" cy="204" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M428 196 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="473" cy="204" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M473 196 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="548" cy="204" r="10" fill="#185e8a"/><path d="m543 204 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="273" x2="570" y2="273" stroke="#f1ece6"/><text x="30" y="254" font-size="11" fill="#1d1d1b">Rechnungslegung</text><circle cx="248" cy="250" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="293" cy="250" r="8" fill="#082638"/><circle cx="338" cy="250" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M338 242 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="383" cy="250" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M383 242 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="428" cy="250" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="473" cy="250" r="8" fill="#185e8a"/><circle cx="548" cy="250" r="10" fill="#185e8a"/><path d="m543 250 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="319" x2="570" y2="319" stroke="#f1ece6"/><text x="30" y="300" font-size="11" fill="#1d1d1b">Risikomanagement</text><circle cx="248" cy="296" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M248 288 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="293" cy="296" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M293 288 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="338" cy="296" r="8" fill="#082638"/><circle cx="383" cy="296" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="428" cy="296" r="8" fill="#082638"/><circle cx="473" cy="296" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M473 288 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="548" cy="296" r="10" fill="#185e8a"/><path d="m543 296 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="30" y1="365" x2="570" y2="365" stroke="#f1ece6"/><text x="30" y="346" font-size="11" fill="#1d1d1b">Governance &amp; Recht</text><circle cx="248" cy="342" r="8" fill="#082638"/><circle cx="293" cy="342" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="338" cy="342" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M338 334 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="383" cy="342" r="8" fill="#082638"/><circle cx="428" cy="342" r="8" fill="#fff" stroke="#998675" stroke-width="1.8"/><path d="M428 334 a8 8 0 0 1 0 16 z" fill="#998675"/><circle cx="473" cy="342" r="8" fill="#fff" stroke="#d6cec3" stroke-width="1.6"/><circle cx="548" cy="342" r="10" fill="#185e8a"/><path d="m543 342 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="436" r="6" fill="#082638"/><text x="42" y="440" font-size="10" fill="#6b635b">vertieft</text><circle cx="112" cy="436" r="6" fill="#fff" stroke="#998675" stroke-width="1.6"/><path d="M112 430 a6 6 0 0 1 0 12 z" fill="#998675"/><text x="124" y="440" font-size="10" fill="#6b635b">Grundlagen</text><circle cx="212" cy="436" r="6" fill="#fff" stroke="#d6cec3" stroke-width="1.5"/><text x="224" y="440" font-size="10" fill="#6b635b">aufzubauen</text></g></svg></div>
-<div class="v-rv"><p class="v-kicker">F&uuml;r Aufsichtsr&auml;te</p>
-<h2 class="v-h2">Schulungen f&uuml;r Aufsichtsr&auml;te<span class="v-dot">.</span></h2>
-<p class="v-lead" style="margin-top:1.2rem">Aus eigener Praxis im Aufsichtsrat und aus vielen durchgef&uuml;hrten Schulungen: Wir schulen neue Mitglieder und das Gesamtgremium &ndash; praxisnah und zugeschnitten auf Versicherungsunternehmen.</p>
-<div class="ms-ar-formats">
-<div class="ms-ar-format"><span class="v-usp3-no">01</span><h3>Fit &amp; Proper</h3>
-<p>Neue Aufsichtsratsmitglieder m&uuml;ssen nachweisen, dass sie f&uuml;r das Mandat geeignet sind. Wir bereiten sie gezielt vor &ndash; und bringen das Gesamtgremium regelm&auml;&szlig;ig auf den aktuellen Stand. Halber Tag, rund drei Stunden.</p></div>
-<div class="ms-ar-format"><span class="v-usp3-no">02</span><h3>Strategie im Aufsichtsrat</h3>
-<p>Ein Mix aus Vortrag und Schulung &uuml;ber einen halben Tag, rund drei Stunden, der als Fortbildung angerechnet werden kann.</p></div>
+<section class="v-sec v-navy" id="vorgehen">
+<div class="v-wrap"><div class="v-rv" style="max-width:46rem"><p class="v-kicker">Vorgehen</p>
+<h2 class="v-h2">Verstehen. Entscheiden. <span class="v-blue">Umsetzen</span><span class="v-dot">.</span></h2></div>
+<div class="v-steps v-rv">
+<div class="v-step"><div class="v-step-dot">01</div><h3 class="v-h3">Verstehen</h3><p>Wir steigen ohne Anlaufzeit ein, weil wir das Gesch&auml;ftsmodell kennen.</p></div>
+<div class="v-step"><div class="v-step-dot">02</div><h3 class="v-h3">Entscheidbar machen</h3><p>Wir bereiten Entscheidungen so vor, dass Vorstand und Gremien entscheiden k&ouml;nnen.</p></div>
+<div class="v-step"><div class="v-step-dot">03</div><h3 class="v-h3">Umsetzen</h3><p>Wir setzen gemeinsam mit Ihren Teams um &ndash; operativ, nicht nur begleitend.</p></div>
+<div class="v-step"><div class="v-step-dot">04</div><h3 class="v-h3">Ergebnis sichern</h3><p>Wir machen die Wirkung an Kennzahlen fest und halten nach.</p></div>
 </div>
-<div class="v-btns" style="margin-top:2rem"><a class="v-btn v-btn--pill ms-cta" href="../aufsichtsrat.html">Zu den Schulungen <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
 </div></section>
 
 <section class="v-sec v-sand v-kontakt-c" id="kontakt">
@@ -446,11 +465,11 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 <p class="v-lead" style="margin-top:1.3rem">Erz&auml;hlen Sie uns, was ansteht. Wir sagen Ihnen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen.</p>
 <p class="v-kontakt-note">Direkt mit uns beiden &ndash; ohne Vertriebsschleife.</p>
 <div class="v-btns" style="margin-top:2rem"><a class="v-btn v-btn--pill ms-cta" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de">Gespr&auml;ch anfragen <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-<div class="v-kpersons"><article class="v-kperson ms-person v-rv"><div class="v-circle"><img src="../assets/tobias-kreis.webp" alt="Tobias Müller"></div><h3>Tobias Müller</h3><p class="v-krole">Governance, Gremien &amp; Risiko</p>
+<div class="v-kpersons"><article class="v-kperson ms-person v-rv"><div class="v-circle"><img src="/assets/tobias-kreis.webp" alt="Tobias Müller"></div><h3>Tobias Müller</h3><p class="v-krole">Governance, Gremien &amp; Risiko</p>
 <div class="v-clines">
 <a class="ms-contact-link" href="mailto:tobias@muellerundstroebel.de"><svg viewBox="0 0 14 12"><path fill="currentColor" d="M13.37 0C13.72.04 14 .36 14 .75v10.5c0 .41-.31.75-.7.75H.7c-.39 0-.7-.34-.7-.75V.75C.04.3.34 0 .7 0h12.6l.07 0ZM7.37 6.64a.7.7 0 0 1-.73.05L1.4 3.21v7.29h11.2V3.21L7.37 6.64ZM7 5.12l5.53-3.62H1.47L7 5.12Z"/></svg><span>tobias@muellerundstroebel.de</span></a>
 <a class="ms-contact-link" href="tel:+4917621529798"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M12.93 9.62 11.5 8.19a1.63 1.63 0 0 0-2.33 0l-.29.29a36 36 0 0 1-3.97-3.97l.29-.29a1.65 1.65 0 0 0 0-2.33L3.79.47a1.66 1.66 0 0 0-2.33 0l-.79.78a2.3 2.3 0 0 0-.29 2.92 32.5 32.5 0 0 0 8.85 8.85 2.3 2.3 0 0 0 2.92-.29l.78-.78a1.64 1.64 0 0 0 0-2.33Z"/></svg><span>+49 176 2152 9798</span></a>
-<a class="ms-contact-link" href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M.33 4.67H3c.33 0 .33.33.33.33v8.67c0 .33-.33.33-.33.33H.33C0 14 0 13.67 0 13.67V5c0-.33.33-.33.33-.33ZM1.65 3.33a1.67 1.67 0 1 0 0-3.33 1.67 1.67 0 0 0 0 3.33ZM13.67 14h-2.67c-.33 0-.33-.33-.33-.33V9c0-1-.34-1.67-1.34-1.67-.66 0-1 .34-1.33 1v5.34c0 .33-.33.33-.33.33H5c-.33 0-.33-.33-.33-.33V5c0-.33.33-.33.33-.33h2.67C8 4.67 8 5 8 5v.67a3 3 0 0 1 2.67-1.34C12.67 4.33 14 5.67 14 8.33v5.34c0 .33-.33.33-.33.33Z"/></svg><span>LinkedIn</span></a></div></article><article class="v-kperson ms-person v-rv"><div class="v-circle"><img src="../assets/daniel-kreis.webp" alt="Daniel Ströbel"></div><h3>Daniel Ströbel</h3><p class="v-krole">Strategie, Führung &amp; Vertrieb</p>
+<a class="ms-contact-link" href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M.33 4.67H3c.33 0 .33.33.33.33v8.67c0 .33-.33.33-.33.33H.33C0 14 0 13.67 0 13.67V5c0-.33.33-.33.33-.33ZM1.65 3.33a1.67 1.67 0 1 0 0-3.33 1.67 1.67 0 0 0 0 3.33ZM13.67 14h-2.67c-.33 0-.33-.33-.33-.33V9c0-1-.34-1.67-1.34-1.67-.66 0-1 .34-1.33 1v5.34c0 .33-.33.33-.33.33H5c-.33 0-.33-.33-.33-.33V5c0-.33.33-.33.33-.33h2.67C8 4.67 8 5 8 5v.67a3 3 0 0 1 2.67-1.34C12.67 4.33 14 5.67 14 8.33v5.34c0 .33-.33.33-.33.33Z"/></svg><span>LinkedIn</span></a></div></article><article class="v-kperson ms-person v-rv"><div class="v-circle"><img src="/assets/daniel-kreis.webp" alt="Daniel Ströbel"></div><h3>Daniel Ströbel</h3><p class="v-krole">Strategie, Führung &amp; Vertrieb</p>
 <div class="v-clines">
 <a class="ms-contact-link" href="mailto:daniel@muellerundstroebel.de"><svg viewBox="0 0 14 12"><path fill="currentColor" d="M13.37 0C13.72.04 14 .36 14 .75v10.5c0 .41-.31.75-.7.75H.7c-.39 0-.7-.34-.7-.75V.75C.04.3.34 0 .7 0h12.6l.07 0ZM7.37 6.64a.7.7 0 0 1-.73.05L1.4 3.21v7.29h11.2V3.21L7.37 6.64ZM7 5.12l5.53-3.62H1.47L7 5.12Z"/></svg><span>daniel@muellerundstroebel.de</span></a>
 <a class="ms-contact-link" href="tel:+4917631347217"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M12.93 9.62 11.5 8.19a1.63 1.63 0 0 0-2.33 0l-.29.29a36 36 0 0 1-3.97-3.97l.29-.29a1.65 1.65 0 0 0 0-2.33L3.79.47a1.66 1.66 0 0 0-2.33 0l-.79.78a2.3 2.3 0 0 0-.29 2.92 32.5 32.5 0 0 0 8.85 8.85 2.3 2.3 0 0 0 2.92-.29l.78-.78a1.64 1.64 0 0 0 0-2.33Z"/></svg><span>+49 176 3134 7217</span></a>
@@ -466,8 +485,8 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
             <div class="footer-content">
               <div class="footer-name">&copy; M&uuml;ller&amp;Str&ouml;bel. 2026</div>
               <div class="footer-links">
-                <a href="../impressum.html" class="footer-link">Impressum</a>
-                <a href="../datenschutz.html" class="footer-link">Datenschutz</a>
+                <a href="/impressum" class="footer-link">Impressum</a>
+                <a href="/datenschutz" class="footer-link">Datenschutz</a>
               <button type="button" id="cookie-settings" class="footer-link">Cookie-Einstellungen</button>
               </div>
             </div>
@@ -480,19 +499,16 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 </div>
 </div>
 
-<template id="m-vorgehen"><p class="v-kicker">Vorgehen</p><h3>Verstehen. Entscheiden. Umsetzen.</h3>
-<p>Vom ersten Termin bis zum Ergebnis &ndash; in vier Schritten.</p><ol class="ms-mstep"><li><span>01</span><div><b>Verstehen</b><p>Wir verschaffen uns in kurzer Zeit ein klares Bild von Ausgangslage, Zielen und Beteiligten.</p></div></li><li><span>02</span><div><b>Entscheidbar machen</b><p>Wir bereiten Entscheidungen so vor, dass Vorstand und Gremien entscheiden k&ouml;nnen.</p></div></li><li><span>03</span><div><b>Umsetzen</b><p>Wir setzen gemeinsam mit Ihren Teams um &ndash; operativ, nicht nur begleitend.</p></div></li><li><span>04</span><div><b>Ergebnis sichern</b><p>Wir machen die Wirkung an Kennzahlen fest und halten nach.</p></div></li></ol><div class="ms-mstats"><div><strong>Tag 1</strong><span>Mehrwert ab dem ersten Termin &ndash; ohne Einarbeitung</span></div><div><strong>2 Partner</strong><span>die selbst mitarbeiten und nicht delegieren</span></div><div><strong>2 Mandate</strong><span>im Aufsichtsrat &ndash; Gremienlogik aus eigener Praxis</span></div></div>
-<h4>So sieht das in der Praxis aus</h4><div class="v-modal-sketch"><div class="v-doc"><div class="v-doc-bar"><i></i><i></i><i></i><span>Umsetzungsplan · Vorstandssitzung</span></div>
-<div class="v-doc-body"><p class="v-doc-title">Vom Beschluss zur Wirkung</p><p class="v-doc-sub">Stand der Umsetzung · vorbereitet für Vorstand &amp; Aufsichtsrat</p>
-<div class="v-doc-row"><em>01</em>Zielbild und Prioritäten beschlossen<b class="st-ok">erledigt</b></div>
-<div class="v-doc-row"><em>02</em>Stakeholder und Entscheidungswege geklärt<b class="st-ok">erledigt</b></div>
-<div class="v-doc-row"><em>03</em>Maßnahmen in den Fachbereichen<b class="st-run">in Umsetzung</b></div>
-<div class="v-doc-row"><em>04</em>Kennzahlen im Vorstandsreporting<b class="st-run">in Umsetzung</b></div>
-<div class="v-doc-row"><em>05</em>Bericht an den Aufsichtsrat<b class="st-open">geplant</b></div>
-</div></div></div></template>
 
-<script src="../script.js" data-cookieconsent="ignore"></script>
-<script src="../startseite.js" data-cookieconsent="ignore"></script>
-<script src="startseite-opt.js"></script>
+
+<template id="m-strategie"><p class="v-kicker">Einsatzgebiet</p><h3>Strategie &amp; Geschäftsmodell</h3><p>Eine Strategie ist erst dann etwas wert, wenn sie im Unternehmen wirkt. Wir schärfen Zielbild und Geschäftsmodell und übersetzen beides in konkrete Maßnahmen, Zuständigkeiten und Meilensteine.</p><h4>Was wir konkret tun</h4><ul><li>Zielbild und Prioritäten gemeinsam mit dem Vorstand schärfen</li><li>Strategie in Maßnahmen, Rollen und Roadmap übersetzen</li><li>Umsetzung steuern und nachhalten</li></ul><h4>Ihr Ergebnis</h4><p>Eine Strategie, die im Unternehmen verstanden und umgesetzt wird.</p></template>
+<template id="m-kennzahlen"><p class="v-kicker">Einsatzgebiet</p><h3>Kennzahlen &amp; Steuerung</h3><p>Wir kennen die Kennzahlenlogik des Versicherungsgeschäfts – von der Rechnungslegung bis zur Vertriebssteuerung – und verbinden sie mit den Zielen, die tatsächlich erreicht werden sollen.</p><h4>Was wir konkret tun</h4><ul><li>Relevante Steuerungsgrößen definieren</li><li>Wirkung von Maßnahmen an Kennzahlen festmachen</li><li>Reporting für Vorstand und Gremien aufsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Sie sehen, ob die Umsetzung wirkt – und können gegensteuern.</p></template>
+<template id="m-gremien"><p class="v-kicker">Einsatzgebiet</p><h3>Entscheidungen &amp; Gremien</h3><p>Wir wissen, wie Entscheidungswege in Versicherungsunternehmen laufen und wer eingebunden werden muss. Wir bereiten Entscheidungen so vor, dass Vorstand und Aufsichtsrat entscheiden können.</p><h4>Was wir konkret tun</h4><ul><li>Stakeholder und Entscheidungswege klären</li><li>Entscheidungsvorlagen erarbeiten</li><li>Abstimmungen moderieren und Beschlüsse in die Umsetzung bringen</li></ul><h4>Ihr Ergebnis</h4><p>Eine Entscheidung – und ein Plan, wie sie umgesetzt wird.</p></template>
+<template id="m-vertrieb"><p class="v-kicker">Einsatzgebiet</p><h3>Vertrieb &amp; Wachstum</h3><p>Wachstum entsteht selten allein durch mehr Vertrieb. Wir schärfen Leistungsversprechen, Zielgruppen und Vertriebslogik – und setzen die Maßnahmen mit Ihren Teams um.</p><h4>Was wir konkret tun</h4><ul><li>Positionierung und Leistungsversprechen schärfen</li><li>Vertriebs- und Kommunikationslogik entwickeln</li><li>Maßnahmen gemeinsam mit Vertrieb und Marketing umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Messbar mehr Wirkung im Markt.</p></template>
+<template id="m-ki"><p class="v-kicker">Einsatzgebiet</p><h3>KI-Transformation</h3><p>Wir klären, welche Rolle KI im eigenen Geschäftsmodell spielen soll, und bringen die Prioritäten in die Fachbereiche – vom Zielbild bis zu den ersten umgesetzten Vorhaben.</p><h4>Was wir konkret tun</h4><ul><li>Ausgangslage und Reifegrad bestimmen</li><li>Zielbild und Prioritäten auf Vorstandsebene entwickeln</li><li>Erste Vorhaben in den Fachbereichen umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Eine KI-Strategie, die im Unternehmen konkret wird.</p></template>
+<template id="m-resilienz"><p class="v-kicker">Einsatzgebiet</p><h3>Resilienz</h3><p>Resilienz beschreibt die Fähigkeit, unter veränderten Bedingungen handlungsfähig zu bleiben. Wir verbinden Geschäftsmodellverständnis mit Risiko- und Governance-Perspektive.</p><h4>Was wir konkret tun</h4><ul><li>Strategische Risiken einordnen und priorisieren</li><li>Resilienz-Check und Szenarioanalysen durchführen</li><li>Handlungsfelder ableiten und umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Klare Verantwortlichkeiten und robustere Strukturen.</p></template>
+<script src="/script.js" data-cookieconsent="ignore"></script>
+<script src="/startseite.js" data-cookieconsent="ignore"></script>
+<script src="/tracking.js" data-cookieconsent="ignore"></script>
 </body>
 </html>
