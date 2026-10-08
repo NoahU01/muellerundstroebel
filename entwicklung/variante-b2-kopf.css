@@ -42,4 +42,14 @@ body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data
 /* ---------- 3 · wie 1, ohne Streifen, Und heller ---------- */
 .kv-3 .v-amp path { fill: #f9f7f5; }
 .kv-3 { min-height: 0 !important; padding: 10rem 0 7rem !important; }
+/* längere Schlagzeile: drei Zeilen – „Komplexe Situationen / strukturieren, entscheiden / & umsetzen.“ */
+.kv-3 .b2-kopf { grid-template-columns: 1.3fr .7fr; }
+.kv-3 .b2-kopf .v-h1 { max-width: none; font-size: clamp(2.1rem, 3.2vw, 2.9rem); }
+.kv3-nb { white-space: nowrap; }
+@media (max-width: 991px) { .kv-3 .b2-kopf { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .kv3-br { display: none; } }
 @media (max-width: 991px) { .kv-3 { padding: 8.5rem 0 4.5rem !important; } }
+/* Und-Zeichen in 3 wie bei „kraftvoll und dunkel“: dort wirkt es ruhiger, weil der Kopf höher ist und das Zeichen
+   unten rechts angeschnitten wird, oben aber frei steht. Hier ist der Kopf niedriger – deshalb etwas kleiner,
+   gleicher Anschnitt rechts und unten, oben mit Abstand zur Navigation. */
+@media (min-width: 992px) { .kv-3 .v-amp { width: 34rem; right: -5rem; bottom: -7rem; top: auto; } }
