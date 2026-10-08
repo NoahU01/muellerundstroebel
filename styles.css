@@ -605,3 +605,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .modal { top: 1rem; bottom: 1rem; padding: 1.75rem; overflow: auto; }
   .modal-header { gap: .75rem; }
 }
+
+/* ---------- Navigation auf Tablet-Breiten (992–1279 px, z. B. iPad mini quer) ----------
+   Vorher brachen die Menüpunkte und der Kontakt-Knopf in zwei Zeilen um. Jetzt: nie umbrechen,
+   engere Abstände, etwas kleineres Logo und flacherer Knopf. */
+@media screen and (min-width: 992px) and (max-width: 1279px) {
+  .menu-text, .dev-dd-toggle, .primary-button.navigation .button-text { white-space: nowrap; }
+  .menu-text { padding: 20px 11px; font-size: 14px; }
+  .logo { height: 2.6rem; }
+  .primary-button.navigation { margin-left: .75rem; padding: .8rem 1.1rem; }
+}
+@media screen and (min-width: 992px) and (max-width: 1099px) { .menu-text { padding-left: 8px; padding-right: 8px; } .logo { height: 2.4rem; } }
+
+/* ---------- Ein Raster für Navigation und Inhalt ----------
+   Die Navigation lief auf 80rem, die Inhalte (.v-wrap) auf 72rem – Logo und Kontakt-Knopf standen dadurch
+   weiter außen als alles darunter. Jetzt enden Logo links und Kontakt-Knopf rechts genau auf den Inhaltskanten. */
+.v-page .container-large.navigation { max-width: calc(72rem - 5rem); }

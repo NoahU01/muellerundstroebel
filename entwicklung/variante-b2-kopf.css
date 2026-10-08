@@ -63,3 +63,16 @@ body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data
 
 /* Knöpfe in allen Köpfen: Form wie die übrigen Knöpfe der Seite (Rechteck mit runden Ecken), flacher */
 .kv-6 .v-btn, .kv-3 .v-btn, .kv4 .v-btn { border-radius: var(--r); padding: .8rem 1.35rem; font-size: .95rem; }
+
+/* Tablet quer (992–1279 px): Porträts kleiner, damit zwischen Text und Bildern Luft bleibt und die Rollen einzeilig sind */
+@media (min-width: 992px) and (max-width: 1279px) {
+  .kv-6 .b2-face, .kv-3 .b2-face { width: 10rem; height: 10rem; border-width: .35rem; }
+  .kv-6 .b2-face--2, .kv-3 .b2-face--2 { margin-left: -2.2rem; }
+  .kv-6 .b2-names, .kv-3 .b2-names { gap: 1.5rem; }
+  .kv-6 .b2-name span, .kv-3 .b2-name span { white-space: nowrap; font-size: .72rem; }
+}
+/* Rollen unter den Porträts auf allen großen Bildschirmen einzeilig */
+@media (min-width: 992px) {
+  .kv-6 .b2-names, .kv-3 .b2-names { gap: 1.5rem; }
+  .kv-6 .b2-name span, .kv-3 .b2-name span { white-space: nowrap; font-size: .72rem; }
+}
