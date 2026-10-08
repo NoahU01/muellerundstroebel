@@ -5,7 +5,7 @@
                           die beiden Personen. Das Und liegt – wie in Variante B – kaum sichtbar im Hintergrund.
    3  wie 1             – ohne Ergebnis-Streifen (Strich, Umsetzen/Sofort/Überzeugt), Und-Zeichen noch heller
    ========================================================================== */
-body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data-kopf="6"]) .kv-6 { display: none !important; }
+body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data-kopf="6"]) .kv-6 { display: none !important; }
 
 .hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
 .hv-zeile .v-kicker { margin: 0; }
