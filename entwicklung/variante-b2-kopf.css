@@ -15,14 +15,12 @@ body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data
 
 /* ---------- 3 · wie 1, ohne Streifen, Und heller ---------- */
 .kv-3 .v-amp path { fill: #f9f7f5; }
-.kv-3 { min-height: 0 !important; padding: 10rem 0 7rem !important; }
 /* längere Schlagzeile: drei Zeilen – „Komplexe Situationen / strukturieren, entscheiden / & umsetzen.“ */
 .kv-3 .b2-kopf, .kv-6 .b2-kopf { grid-template-columns: 1.3fr .7fr; }
 .kv-3 .b2-kopf .v-h1, .kv-6 .b2-kopf .v-h1 { max-width: none; font-size: clamp(2.1rem, 3.2vw, 2.9rem); }
 .kv3-nb { white-space: nowrap; }
 @media (max-width: 991px) { .kv-3 .b2-kopf, .kv-6 .b2-kopf { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .kv3-br { display: none; } }
-@media (max-width: 991px) { .kv-3 { padding: 8.5rem 0 4.5rem !important; } }
 /* Und-Zeichen in 3: am linken Rand, links leicht und unten deutlich angeschnitten – nur auf großen Bildschirmen.
    Auf iPad hochkant und Telefon entfällt es. */
 .kv-3 .v-amp { left: -4rem; right: auto; top: auto; bottom: -6rem; width: 26rem; transform: none; }   /* unten angeschnitten wie bei „kraftvoll und dunkel“ (dort ca. ein Fünftel) */
@@ -59,8 +57,9 @@ body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data
 }
 
 /* ---------- neue 3 (intern kv-6) · wie 2 ohne Und-Zeichen, mehr Luft oben und unten ---------- */
-.kv-6 { min-height: 0 !important; padding: 12.5rem 0 9rem !important; }
-@media (max-width: 991px) { .kv-6 { padding: 9.5rem 0 5.5rem !important; } }
+/* 1 und 2 gleich hoch – 2 unterscheidet sich nur durch das Und-Zeichen */
+.kv-6, .kv-3 { min-height: 0 !important; padding: 12.5rem 0 9rem !important; }
+@media (max-width: 991px) { .kv-6, .kv-3 { padding: 9.5rem 0 5.5rem !important; } }
 
 /* Knöpfe in allen Köpfen: Form wie die übrigen Knöpfe der Seite (Rechteck mit runden Ecken), flacher */
 .kv-6 .v-btn, .kv-3 .v-btn, .kv4 .v-btn { border-radius: var(--r); padding: .8rem 1.35rem; font-size: .95rem; }
