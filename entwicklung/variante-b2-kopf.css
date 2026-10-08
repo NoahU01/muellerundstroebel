@@ -1,96 +1,79 @@
 /* ==========================================================================
-   B2 – Kopf-Varianten 1–4 (nur Entwicklung).
-   Gemeinsam: heller Kopf, beide Personen, kein großes Und-Zeichen, Unterzeile „Für Versicherungsunternehmen“.
-   Gestaltungsregel: Die Porträts sind Freisteller, die auf Brusthöhe enden. Diese Schnittkante sitzt immer auf
-   einer echten Kante (Unterkante einer Fläche bzw. des Kopfbereichs) oder läuft weich aus – nie frei schwebend.
-   1 Bühne      – Sandfläche rechts, Porträts stehen auf ihrer Unterkante, Köpfe ragen über die Fläche hinaus
-   2 Reduziert  – ohne Ergebnis-Streifen, Porträts auf Weiß mit weichem Auslauf
-   3 Karten     – zwei gleich große Porträtkarten nebeneinander, Name unter dem Bild
-   4 Zentriert  – Text mittig, darunter beide Personen auf einem Sandband über die volle Breite
+   B2 – Kopf-Konzepte A–C (nur Entwicklung). Hell, Personen sichtbar, Unterzeile „Für Versicherungsunternehmen“.
+   A  Person & Person – das dunkelblaue Konstruktions-Und vom Live-Kopf verbindet die beiden Porträts
+   B  Kraft auf Hell   – große Schlagzeile wie in Variante B, Schlüsselwort blau, Und-Zeichen als Sand-Fläche
+   C  Signatur         – rechts ein Namenszug: Tobias Müller / großes Und / Daniel Ströbel
    ========================================================================== */
-.v-hero-b2 .v-amp { display: none; }
-.v-hero-b2 { min-height: 0; padding: 10rem 0 0; }
-.v-hero-b2 .b2-faces, .v-hero-b2 .b2-names { display: none; }
-.v-hero-b2 .b2-kopf { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: end; }
-.v-hero-b2 .b2-kopf > .v-rv:first-child { padding-bottom: 5.5rem; }
-.v-hero-b2 .b2-kopf .v-h1 { max-width: 20ch; font-size: clamp(2.3rem, 3.4vw, 3.4rem); }
-.v-hero-b2 .v-lead { max-width: 33rem; }
-.b2-portraits { align-self: stretch; justify-content: flex-end; }
+.hk-kopf { position: relative; overflow: hidden; background: #fff; color: var(--ink); }
+.hk { display: none; position: relative; padding: 10rem 0 6.5rem; }
+.hk-kopf[data-kopf="A"] .hk-A, .hk-kopf[data-kopf="B"] .hk-B, .hk-kopf[data-kopf="C"] .hk-C { display: block; }
 
 /* Unterzeile mit Auswahl */
-.hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
+.hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.2rem; }
 .hv-zeile .v-kicker { margin: 0; }
 .hv-wahl { display: inline-flex; gap: .3rem; padding: .2rem; border: 1px dashed #c9bfb4; border-radius: 999px; }
 .hv-wahl button { width: 1.6rem; height: 1.6rem; border: 0; border-radius: 50%; background: transparent; font: 600 .72rem/1 var(--sans); color: var(--muted); cursor: pointer; }
 .hv-wahl button[aria-checked="true"] { background: var(--navy); color: #fff; }
 
-/* Porträts: gemeinsame Grundform */
-.hv-buehne { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
-.hv-p { margin: 0; min-width: 0; }
-.hv-p img { display: block; width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; object-position: center top; mix-blend-mode: multiply; }
-.hv-p figcaption { min-height: 3.6rem; padding-top: .9rem; }
-.hv-p figcaption b { display: block; font-family: var(--serif); font-size: 1.02rem; font-weight: 600; color: var(--ink); }
-.hv-p figcaption span { display: block; margin-top: .1rem; font-size: .78rem; color: var(--taupe-dark); }
+.hk .v-h1 { font-size: clamp(2.3rem, 3.6vw, 3.2rem); line-height: 1.1; letter-spacing: -.01em; max-width: 21ch; }
+.hk .v-lead { max-width: 34rem; margin: 1.6rem 0 2.4rem; font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); }
+.hk-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
 
-/* Ergebnis-Streifen: einheitlich ruhig (Varianten 1, 3, 4) */
-.v-hero-b2 .v-proof { margin: 0; padding: 1.6rem 0 1.8rem; border-top: 1px solid var(--line); grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2rem; }
-.v-hero-b2 .v-proof div { padding: 0; }
-.v-hero-b2 .v-proof strong { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); }
-.v-hero-b2 .v-proof span { margin-top: .2rem; font-size: .88rem; color: var(--muted); max-width: none; }
+/* Person (Kreisporträt + Name) */
+.hk-person { display: flex; align-items: center; gap: 1rem; }
+.hk-bild { flex: none; width: 7.5rem; height: 7.5rem; border-radius: 50%; overflow: hidden; background: var(--sand); border: .35rem solid #fff; box-shadow: 0 1.2rem 2.6rem rgba(8,38,56,.16); }
+.hk-bild img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: multiply; }
+.hk-name b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.hk-name span { display: block; margin-top: .1rem; font-size: .78rem; color: var(--taupe-dark); white-space: nowrap; }
 
-/* ---------- 1 · Bühne ---------- */
-[data-kopf="1"] .b2-portraits { justify-content: flex-end; padding-bottom: 3rem; }
-[data-kopf="1"] .hv-buehne { position: relative; gap: 1.2rem; }
-[data-kopf="1"] .hv-buehne::before { content: ""; position: absolute; left: -1.25rem; right: -1.25rem; top: 22%; bottom: 3.6rem; border-radius: 1.25rem; background: var(--sand); z-index: 0; }
-[data-kopf="1"] .hv-p { position: relative; z-index: 1; }
+/* ---------- A · Person & Person ---------- */
+.hk-A .hk-buehne { position: relative; max-width: 34rem; width: 100%; margin-left: auto; }
+.hk-A .v-svg { display: block; width: 100%; height: auto; }
+.hk-A .hk-person { position: absolute; }
+.hk-A .hk-t { left: -1.5rem; top: 7%; flex-direction: row-reverse; text-align: right; }
+.hk-A .hk-d { right: -1rem; bottom: 0; }
+.hk-A .hk-name { padding: .45rem .7rem; border-radius: .5rem; background: rgba(255,255,255,.92); }
 
-/* ---------- 2 · Reduziert ---------- */
-[data-kopf="2"] .v-proof { display: none; }
-[data-kopf="2"] { padding-bottom: 5rem; }
-[data-kopf="2"] .b2-kopf { align-items: center; }
-[data-kopf="2"] .b2-kopf > .v-rv:first-child { padding-bottom: 0; }
-[data-kopf="2"] .hv-buehne { gap: 2rem; }
-[data-kopf="2"] .hv-p img { -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); mask-image: linear-gradient(to bottom, #000 62%, transparent 96%); }
-[data-kopf="2"] .hv-p figcaption { margin-top: -.6rem; padding-top: .9rem; border-top: 2px solid var(--taupe); }
+/* ---------- B · Kraft auf Hell ---------- */
+.hk-B .hk-amp { position: absolute; right: max(-5rem, calc(50% - 46rem)); top: 4.5rem; height: 118%; width: auto; color: var(--sand); z-index: 0; pointer-events: none; }
+.hk-B .v-wrap { position: relative; z-index: 1; }
+.hk-B .hk-gross { font-size: clamp(2.8rem, 6.4vw, 5.8rem); line-height: 1.02; letter-spacing: -.02em; max-width: 14ch; }
+.hk-B .hk-gross em { font-style: normal; color: var(--blue); }
+.hk-B .hk-unten { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; margin-top: 1rem; }
+.hk-B .v-lead { margin-top: 1.4rem; }
+.hk-B .v-btns { margin: 0; }
+.hk-B .hk-duo { display: flex; gap: 2.2rem; padding-bottom: .4rem; }
+.hk-B .hk-duo .hk-person { flex-direction: column; text-align: center; gap: .9rem; }
+.hk-B .hk-duo .hk-bild { width: 9.5rem; height: 9.5rem; }
 
-/* ---------- 3 · Karten ---------- */
-[data-kopf="3"] .hv-buehne { gap: 1.25rem; margin-bottom: 4rem; }
-[data-kopf="3"] .b2-kopf { align-items: center; }
-[data-kopf="3"] .b2-kopf > .v-rv:first-child { padding-bottom: 4rem; }
-[data-kopf="3"] .hv-p { border-radius: 1.1rem; overflow: hidden; background: #fff; border: 1px solid var(--line); }
-[data-kopf="3"] .hv-p img { aspect-ratio: 1 / 1; object-fit: cover; object-position: center top; background: var(--sand); }
-[data-kopf="3"] .hv-p { background: var(--sand); }
-[data-kopf="3"] .hv-p figcaption { padding: 1rem 1.1rem 1.1rem; background: #fff; border-top: 1px solid var(--line); }
-
-/* ---------- 4 · Zentriert ---------- */
-[data-kopf="4"] .b2-kopf { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 3.5rem; }
-[data-kopf="4"] .b2-kopf > .v-rv:first-child { padding-bottom: 0; display: flex; flex-direction: column; align-items: center; }
-[data-kopf="4"] .hv-zeile { justify-content: center; }
-[data-kopf="4"] .v-h1 { margin: 0 auto; max-width: 24ch; }
-[data-kopf="4"] .v-lead { margin-left: auto; margin-right: auto; }
-[data-kopf="4"] .v-btns { justify-content: center; }
-[data-kopf="4"] .b2-portraits { width: 100%; padding-bottom: 3rem; }
-[data-kopf="4"] .hv-buehne { position: relative; max-width: 38rem; margin: 0 auto; gap: 2rem; }
-[data-kopf="4"] .hv-buehne::before { content: ""; position: absolute; left: 50%; width: 100vw; transform: translateX(-50%); top: 35%; bottom: 3.6rem; background: var(--sand); z-index: 0; }
-[data-kopf="4"] .hv-p { position: relative; z-index: 1; }
-[data-kopf="4"] .v-proof { text-align: left; }
+/* ---------- C · Signatur ---------- */
+.hk-C .hk-sig { display: flex; flex-direction: column; gap: 0; max-width: 26rem; margin-left: auto; }
+.hk-C .hk-person { gap: 1.3rem; }
+.hk-C .hk-bild { width: 7.5rem; height: 7.5rem; }
+.hk-C .hk-name b { font-size: 1.55rem; letter-spacing: -.01em; }
+.hk-C .hk-name span { font-size: .82rem; }
+.hk-C .hk-und { padding: .6rem 0 .6rem 1.2rem; }
+.hk-C .hk-amp-c { display: block; height: 13rem; width: auto; }
+.hk-C .hk-d { padding-left: 6.5rem; }
+.hk-C .hk-und { padding: .4rem 0 .4rem 1.6rem; margin: -.6rem 0; }
 
 /* ---------- Tablet ---------- */
 @media (max-width: 991px) {
-  .v-hero-b2 { padding-top: 8.5rem; }
-  .v-hero-b2 .b2-kopf { grid-template-columns: 1fr; gap: 2.5rem; }
-  .v-hero-b2 .b2-kopf > .v-rv:first-child { padding-bottom: 0; }
-  .v-hero-b2 .b2-kopf .v-h1 { max-width: 22ch; }
-  .hv-buehne { max-width: 34rem; margin-left: auto; margin-right: auto; }
-  [data-kopf="3"] .hv-buehne { margin-bottom: 3rem; }
-  .v-hero-b2 .v-proof { grid-template-columns: 1fr; gap: 1rem; }
+  .hk { padding: 8.5rem 0 4.5rem; }
+  .hk-split { grid-template-columns: 1fr; gap: 3rem; }
+  .hk-A .hk-buehne { max-width: 28rem; margin: 0 auto; }
+  .hk-B .hk-unten { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hk-B .hk-amp { height: 80%; right: -8rem; top: auto; bottom: -6rem; }
+  .hk-C .hk-sig { margin: 0; }
 }
 /* ---------- Telefon ---------- */
 @media (max-width: 560px) {
-  .v-hero-b2 .v-wrap { padding: 0 1.25rem; }
-  .hv-buehne { gap: .75rem !important; }
-  [data-kopf="1"] .hv-buehne::before { left: -.75rem; right: -.75rem; border-radius: 1rem; }
-  .hv-p figcaption { min-height: 3.4rem; }
-  .hv-p figcaption b { font-size: .9rem !important; } .hv-p figcaption span { font-size: .7rem !important; }
-  [data-kopf="3"] .hv-p figcaption { padding: .7rem .75rem .8rem; }
+  .hk .v-wrap { padding: 0 1.25rem; }
+  .hk-bild { width: 5.5rem; height: 5.5rem; }
+  .hk-A .hk-t { left: -.25rem; } .hk-A .hk-d { right: -.25rem; }
+  .hk-A .hk-name b { font-size: .9rem; } .hk-A .hk-name span { font-size: .68rem; }
+  .hk-B .hk-duo { gap: 1.2rem; } .hk-B .hk-duo .hk-bild { width: 7rem; height: 7rem; }
+  .hk-B .hk-name b { font-size: .92rem; } .hk-B .hk-name span { font-size: .68rem; white-space: normal; }
+  .hk-C .hk-bild { width: 4.6rem; height: 4.6rem; } .hk-C .hk-name b { font-size: 1.2rem; } .hk-C .hk-name span { white-space: normal; }
+  .hk-C .hk-amp-c { height: 6.5rem; } .hk-C .hk-d { padding-left: 2.5rem; }
 }
