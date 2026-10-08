@@ -586,3 +586,16 @@ body.v-page { font-family: var(--sans); color: var(--ink); font-size: 15px; line
 .v-modal-box:has(.v-cv) { max-width: 44rem; }
 .v-stats--line { margin-top: 4.5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,.14); text-align: left; }
 .v-stats--line strong { font-size: 2.2rem; }
+
+/* ---------- iPad mini hochkant (601–767 px) ----------
+   Vorher fiel hier alles auf eine Spalte: sehr breite, leere Karten und untereinanderstehende Kontaktpersonen.
+   Jetzt zwei Spalten wie auf größeren Tablets – einspaltig erst auf dem Telefon. */
+@media (min-width: 601px) and (max-width: 767px) {
+  .v-grid-3, .v-features, .v-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1rem; }
+  .v-kpersons { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+}
+
+/* Alle Knöpfe flacher, in einheitlicher Form */
+.v-btn { padding: .8rem 1.35rem; }
+.v-btn--pill { padding: .8rem 1.4rem; }
