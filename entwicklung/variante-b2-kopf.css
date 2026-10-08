@@ -5,7 +5,7 @@
                           die beiden Personen. Das Und liegt – wie in Variante B – kaum sichtbar im Hintergrund.
    3  wie 1             – ohne Ergebnis-Streifen (Strich, Umsetzen/Sofort/Überzeugt), Und-Zeichen noch heller
    ========================================================================== */
-body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data-kopf="5"]) .kv-5 { display: none !important; }
+body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="3"]) .kv-3, body:not([data-kopf="4"]) .kv-4, body:not([data-kopf="6"]) .kv-6 { display: none !important; }
 
 .hv-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-bottom: 1.1rem; }
 .hv-zeile .v-kicker { margin: 0; }
@@ -13,40 +13,14 @@ body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data
 .hv-wahl button { width: 1.6rem; height: 1.6rem; border: 0; border-radius: 50%; background: transparent; font: 600 .72rem/1 var(--sans); color: var(--muted); cursor: pointer; }
 .hv-wahl button[aria-checked="true"] { background: var(--navy); color: #fff; }
 
-/* ---------- 2 · Live-Aufteilung ---------- */
-.kv2 { position: relative; overflow: hidden; background: #fff; padding: 9.5rem 0 5rem; }
-.kv2-amp { position: absolute; right: max(-4rem, calc(50% - 44rem)); top: 50%; transform: translateY(-46%); height: 92%; width: auto; color: var(--navy); opacity: .035; pointer-events: none; z-index: 0; }
-.kv2 .v-wrap { position: relative; z-index: 1; }
-.kv2-split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3rem; align-items: center; }
-.kv2 .v-h1 { font-size: clamp(2.3rem, 3.6vw, 3.2rem); max-width: 21ch; line-height: 1.1; }
-.kv2 .v-lead { margin: 1.5rem 0 2.5rem; max-width: 34rem; }
-.kv2-personen { display: flex; justify-content: center; gap: 2.5rem; }
-.kv2-personen figure { margin: 0; text-align: center; }
-.kv2-bild { width: 12rem; height: 12rem; border-radius: 50%; overflow: hidden; background: var(--sand); }
-.kv2-bild img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: multiply; }
-.kv2-personen figcaption { margin-top: 1.1rem; }
-.kv2-personen b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
-.kv2-personen span { display: block; margin-top: .15rem; font-size: .78rem; color: var(--taupe-dark); }
-@media (max-width: 991px) {
-  .kv2 { padding: 8.5rem 0 4rem; }
-  .kv2-split { grid-template-columns: 1fr; gap: 3rem; }
-  .kv2-amp { height: 70%; top: auto; bottom: -4rem; transform: none; }
-}
-@media (max-width: 560px) {
-  .kv2 .v-wrap { padding: 0 1.25rem; }
-  .kv2-personen { gap: 1.25rem; }
-  .kv2-bild { width: 8.5rem; height: 8.5rem; }
-  .kv2-personen b { font-size: .95rem; } .kv2-personen span { font-size: .7rem; }
-}
-
 /* ---------- 3 · wie 1, ohne Streifen, Und heller ---------- */
 .kv-3 .v-amp path { fill: #f9f7f5; }
 .kv-3 { min-height: 0 !important; padding: 10rem 0 7rem !important; }
 /* längere Schlagzeile: drei Zeilen – „Komplexe Situationen / strukturieren, entscheiden / & umsetzen.“ */
-.kv-3 .b2-kopf { grid-template-columns: 1.3fr .7fr; }
-.kv-3 .b2-kopf .v-h1 { max-width: none; font-size: clamp(2.1rem, 3.2vw, 2.9rem); }
+.kv-3 .b2-kopf, .kv-6 .b2-kopf { grid-template-columns: 1.3fr .7fr; }
+.kv-3 .b2-kopf .v-h1, .kv-6 .b2-kopf .v-h1 { max-width: none; font-size: clamp(2.1rem, 3.2vw, 2.9rem); }
 .kv3-nb { white-space: nowrap; }
-@media (max-width: 991px) { .kv-3 .b2-kopf { grid-template-columns: 1fr; } }
+@media (max-width: 991px) { .kv-3 .b2-kopf, .kv-6 .b2-kopf { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .kv3-br { display: none; } }
 @media (max-width: 991px) { .kv-3 { padding: 8.5rem 0 4.5rem !important; } }
 /* Und-Zeichen in 3: am linken Rand, links leicht und unten deutlich angeschnitten – nur auf großen Bildschirmen.
@@ -62,7 +36,7 @@ body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data
 .kv4 .hv-zeile { margin-bottom: 1.75rem; }
 .kv4-h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(2.5rem, 5.4vw, 4.75rem); line-height: 1.04; letter-spacing: -.02em; color: var(--ink); }
 .kv4-und { color: var(--taupe); }
-.kv4-fuss { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 4rem; align-items: end; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.kv4-fuss { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 4rem; align-items: end; margin-top: 4rem; }
 .kv4 .v-lead { max-width: 34rem; margin: 0 0 2rem; }
 .kv4 .v-btns { margin: 0; }
 .kv4-duo { display: flex; align-items: center; gap: 1.25rem; }
@@ -73,41 +47,20 @@ body:not([data-kopf="1"]) .kv-1, body:not([data-kopf="2"]) .kv-2, body:not([data
 .kv4-namen b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .kv4-namen span { display: block; margin-top: .15rem; font-size: .78rem; color: var(--taupe-dark); }
 
-/* ---------- 5 · Sandbühne ----------
-   Prinzip klarer Markengestalter (z. B. Collins): eine eindeutige Zweiteilung. Links auf Weiß die Aussage, rechts eine
-   Fläche im Sandton der Einsatzgebiete, die bis an den Bildrand läuft – darauf die beiden Porträts wie in Kopf 3.
-   Das Und liegt nur in dieser Fläche, einen Hauch dunkler als der Sand und unten angeschnitten wie bei „kraftvoll und dunkel“. */
-.kv5 { position: relative; overflow: hidden; background: #fff; padding: 10rem 0 0; }
-.kv5-raster { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 0 4rem; align-items: stretch; }
-.kv5-text { padding-bottom: 6.5rem; align-self: center; }
-.kv5-h1 { max-width: none; font-size: clamp(2.1rem, 3.2vw, 2.9rem); }
-.kv5-nb { white-space: nowrap; }
-.kv5 .v-lead { max-width: 33rem; margin: 1.6rem 0 2.5rem; }
-.kv4 .v-lead { color: var(--ink-2); }
-.kv5-buehne { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 0 5rem; }
-.kv5-buehne::before { content: ""; position: absolute; top: -10rem; bottom: 0; left: -2rem; width: 100vw; background: var(--sand); z-index: 0; }
-.kv5-amp { position: absolute; right: -7rem; bottom: -5.5rem; width: 25rem; height: auto; color: #ece6df; z-index: 0; pointer-events: none; }
-.kv5-buehne .b2-faces, .kv5-buehne .b2-names { position: relative; z-index: 1; }
-.kv5-buehne .b2-face { border-color: #fff; }
 @media (max-width: 1023px) {
   .kv4 { padding: 8.5rem 0 4.5rem; }
   .kv4-fuss { grid-template-columns: minmax(0, 1fr); margin-top: 3rem; }
-  .kv5 { padding-top: 8.5rem; }
-  .kv5-raster { grid-template-columns: minmax(0, 1fr); }
-  .kv5-text { padding-bottom: 3.5rem; }
-  .kv5-buehne { margin: 0 -2.5rem; padding: 3.5rem 0 4rem; }
-  .kv5-buehne::before { top: 0; left: 0; width: 100%; }
-  .kv5-amp { width: 18rem; right: -4rem; bottom: -4rem; }
 }
 @media (max-width: 560px) {
-  .kv4 .v-wrap, .kv5 .v-wrap { padding: 0 1.25rem; }
-  .kv4-br, .kv5-br { display: none; }
+  .kv4 .v-wrap { padding: 0 1.25rem; }
+  .kv4-br { display: none; }
   .kv4-h1 { font-size: 2.35rem; }
-  .kv5-buehne { margin: 0 -1.25rem; }
   .kv4-namen b { white-space: normal; }
-  .kv5 .b2-face { width: 8.5rem; height: 8.5rem; border-width: .3rem; }
-  .kv5 .b2-face--2 { margin-left: -1.6rem; }
-  .kv5 .b2-names { gap: 1.25rem; padding: 0 1rem; }
-  .kv5 .b2-name { flex: 1 1 0; min-width: 0; }
-  .kv5 .b2-name span { white-space: normal; }
 }
+
+/* ---------- neue 3 (intern kv-6) · wie 2 ohne Und-Zeichen, mehr Luft oben und unten ---------- */
+.kv-6 { min-height: 0 !important; padding: 12.5rem 0 9rem !important; }
+@media (max-width: 991px) { .kv-6 { padding: 9.5rem 0 5.5rem !important; } }
+
+/* Knöpfe in 3 und 4: Form wie die übrigen Knöpfe der Seite (Rechteck mit runden Ecken), flacher */
+.kv-6 .v-btn, .kv4 .v-btn { border-radius: var(--r); padding: .8rem 1.35rem; font-size: .95rem; }
