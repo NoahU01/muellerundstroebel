@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Müller &amp; Ströbel – Was wir tun und wofür wir stehen</title>
+<link rel="stylesheet" href="vorlage.css">
+<style>
+/* Nur in diesem Handout: Einsatzgebiete im Detail, Übersichtsraster, Personenprofile */
+.uebersicht { display: grid; grid-template-columns: 226.5pt 226.5pt; column-gap: 28.8pt; row-gap: 17pt; margin-top: 22pt; }
+.uebersicht > div { border-top: 1.5pt solid var(--taupe); padding-top: 11pt; }
+.uebersicht h3 { font-family: Lora, Georgia, serif; font-size: 12.5pt; font-weight: 600; color: var(--tinte); }
+.uebersicht p { margin-top: 4.5pt; font-size: 9pt; line-height: 1.55; color: var(--tinte-2); }
+.gebiete { margin-top: 20pt; }
+.gebiet { display: grid; grid-template-columns: 150pt 1fr; column-gap: 28pt; padding: 24pt 0 26pt; border-top: .8pt solid var(--linie); }
+.gebiet__nr { display: block; font-size: 8pt; font-weight: 600; letter-spacing: .14em; color: var(--taupe); }
+.gebiet h3 { margin-top: 5pt; font-family: Lora, Georgia, serif; font-size: 14pt; line-height: 1.2; font-weight: 600; color: var(--tinte); }
+.gebiet__wenn { margin-top: 7pt; font-size: 8.8pt; line-height: 1.5; color: var(--taupe-dunkel); }
+.gebiet__label { margin-top: 9pt; color: var(--taupe-dunkel); }
+.gebiet .haken { margin-top: 6pt; }
+.gebiet .haken li { margin-top: 3pt; font-size: 9pt; }
+.gebiet__ergebnis { margin-top: 9pt; padding-left: 10pt; border-left: 2pt solid var(--blau); font-size: 9pt; line-height: 1.5; color: var(--tinte); }
+.gebiet__ergebnis span { display: block; font-size: 7.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blau); }
+.profile { display: grid; grid-template-columns: 1fr; row-gap: 0; margin-top: 18pt; }
+.profil2 { display: grid; grid-template-columns: 92pt 1fr; column-gap: 24pt; padding: 18pt 0; border-top: .8pt solid var(--linie); }
+.profil2__kreis { width: 92pt; height: 92pt; border-radius: 50%; overflow: hidden; background: #eae4dd; }
+.profil2__kreis img { width: 100%; height: 100%; object-fit: cover; }
+.profil2 .person__name { font-size: 16pt; }
+.schwerpunkte { display: flex; flex-wrap: wrap; gap: 5pt; margin-top: 9pt; }
+.schwerpunkte span { padding: 3.5pt 8pt; border: .8pt solid var(--linie); border-radius: 20pt; font-size: 7.8pt; color: var(--tinte); }
+.profil2 .fliesstext { margin-top: 10pt; }
+.profil2__hinweis { margin-top: 8pt; font-size: 8.2pt; font-weight: 600; color: var(--blau); }
+.gaenze-raster { display: grid; grid-template-columns: repeat(3, 149.2pt); column-gap: 13.3pt; margin-top: 30pt; }
+.gaenze-raster > div { border-top: 1.5pt solid var(--blau); padding-top: 11pt; }
+.gaenze-raster > div:nth-child(2) { border-top-color: var(--taupe); }
+.gaenze-raster > div:nth-child(3) { border-top-color: var(--navy); }
+.gaenze-raster span { font-size: 8pt; font-weight: 600; letter-spacing: .14em; color: var(--taupe); }
+.gaenze-raster h3 { margin-top: 5pt; font-family: Lora, Georgia, serif; font-size: 12pt; font-weight: 600; color: var(--tinte); }
+.gaenze-raster p { margin-top: 6pt; font-size: 8.8pt; line-height: 1.65; color: var(--tinte-2); }
+</style>
+</head>
+<body>
+
+<!-- ============================ Seite 1: Deckblatt ======================== -->
+<section class="seite seite--navy">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Wer wir sind</div>
+  </div>
+  <div class="deckblatt__grafik"><img src="bausteine/ampersand-konstruktion.svg" alt=""></div>
+  <div class="deckblatt__text deckblatt__text--breit" style="width:400pt">
+    <p class="kicker">Für Versicherungsunternehmen</p>
+    <h1 class="titel titel--thema" style="width:400pt;font-size:33pt;line-height:1.08">Komplexe Situationen<br>strukturieren, entscheiden<br>&amp;&nbsp;umsetzen<span class="punkt">.</span></h1>
+    <p class="vorspann">Wir kennen das Geschäftsmodell Versicherung von innen – von der Strategie über
+      Kennzahlen und Gremien bis in den Vertrieb. Deshalb brauchen wir keine Einarbeitung und liefern
+      ab dem ersten Termin.</p>
+    <div class="marken">
+      <span class="marke">Umsetzen</span>
+      <span class="marke">Sofort</span>
+      <span class="marke">Überzeugt</span>
+    </div>
+  </div>
+  <div class="fuss-linie"></div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Für Versicherungsunternehmen</span><span>www.muellerundstroebel.de</span></div>
+</section>
+
+<!-- ======================= Seite 2: Überblick ============================= -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Auf einen Blick</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Unsere Einsatzgebiete</p>
+    <h1 class="titel">Hier setzen wir an<span class="punkt">.</span></h1>
+    <p class="vorspann" style="width:420pt">Wir werden eingebunden, wenn Zusammenhänge unklar sind, die Komplexität
+      zu groß ist und somit ein Thema nicht voran kommt. Umsetzung ist unser Handwerk.</p>
+    <div class="uebersicht">
+      <div><h3>Strategie &amp; Geschäftsmodell</h3><p>Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</p></div><div><h3>Kennzahlen &amp; Steuerung</h3><p>Wenn Zahlen da sind, aber nicht steuern.</p></div><div><h3>Entscheidungen &amp; Gremien</h3><p>Wenn Themen seit Monaten „in Bearbeitung“ sind.</p></div><div><h3>Vertrieb &amp; Wachstum</h3><p>Wenn Potenziale im Markt liegen bleiben.</p></div><div><h3>KI-Transformation</h3><p>Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</p></div><div><h3>Resilienz</h3><p>Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</p></div>
+    </div>
+  </div>
+  <div class="schluss" style="top:500pt">
+    <div class="schluss__links">
+      <p class="kicker">Wir müssen nicht abgeholt werden</p>
+      <p class="schluss__titel">Wir kennen das Geschäftsmodell<br>Versicherung von innen.</p>
+    </div>
+    <p class="schluss__text">Wer muss eingebunden werden? Wie laufen Entscheidungen durch Vorstand und
+      Aufsichtsrat? Welche Kennzahl zeigt, ob es wirkt? Das wissen wir – aus eigener Praxis. Deshalb
+      steigen wir ohne Einarbeitungszeit ein.</p>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 2 / 9</span></div>
+</section>
+
+<!-- ================= Seite 3: Einsatzgebiete im Detail ================ -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Einsatzgebiete</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Einsatzgebiete im Detail</p>
+    <h1 class="titel titel--breit">Was wir konkret tun – und was Sie davon haben<span class="punkt">.</span></h1>
+    <div class="gebiete"><div class="gebiet"><div class="gebiet__kopf"><span class="gebiet__nr">01</span><h3>Strategie &amp; Geschäftsmodell</h3><p class="gebiet__wenn">Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</p></div><div class="gebiet__inhalt"><p class="fliesstext">Eine Strategie ist erst dann etwas wert, wenn sie im Unternehmen wirkt. Wir schärfen Zielbild und Geschäftsmodell und übersetzen beides in konkrete Maßnahmen, Zuständigkeiten und Meilensteine.</p><p class="label gebiet__label">Was wir konkret tun</p><ul class="haken"><li>Zielbild und Prioritäten gemeinsam mit dem Vorstand schärfen</li><li>Strategie in Maßnahmen, Rollen und Roadmap übersetzen</li><li>Umsetzung steuern und nachhalten</li></ul><p class="gebiet__ergebnis"><span>Ihr Ergebnis</span>Eine Strategie, die im Unternehmen verstanden und umgesetzt wird.</p></div></div><div class="gebiet"><div class="gebiet__kopf"><span class="gebiet__nr">02</span><h3>Kennzahlen &amp; Steuerung</h3><p class="gebiet__wenn">Wenn Zahlen da sind, aber nicht steuern.</p></div><div class="gebiet__inhalt"><p class="fliesstext">Wir kennen die Kennzahlenlogik des Versicherungsgeschäfts – von der Rechnungslegung bis zur Vertriebssteuerung – und verbinden sie mit den Zielen, die tatsächlich erreicht werden sollen.</p><p class="label gebiet__label">Was wir konkret tun</p><ul class="haken"><li>Relevante Steuerungsgrößen definieren</li><li>Wirkung von Maßnahmen an Kennzahlen festmachen</li><li>Reporting für Vorstand und Gremien aufsetzen</li></ul><p class="gebiet__ergebnis"><span>Ihr Ergebnis</span>Sie sehen, ob die Umsetzung wirkt – und können gegensteuern.</p></div></div></div>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 3 / 9</span></div>
+</section>
+
+<!-- ================= Seite 4: Einsatzgebiete im Detail ================ -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Einsatzgebiete</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Einsatzgebiete im Detail</p>
+    <h1 class="titel titel--breit">Was wir konkret tun – und was Sie davon haben<span class="punkt">.</span></h1>
+    <div class="gebiete"><div class="gebiet"><div class="gebiet__kopf"><span class="gebiet__nr">03</span><h3>Entscheidungen &amp; Gremien</h3><p class="gebiet__wenn">Wenn Themen seit Monaten „in Bearbeitung“ sind.</p></div><div class="gebiet__inhalt"><p class="fliesstext">Wir wissen, wie Entscheidungswege in Versicherungsunternehmen laufen und wer eingebunden werden muss. Wir bereiten Entscheidungen so vor, dass Vorstand und Aufsichtsrat entscheiden können.</p><p class="label gebiet__label">Was wir konkret tun</p><ul class="haken"><li>Stakeholder und Entscheidungswege klären</li><li>Entscheidungsvorlagen erarbeiten</li><li>Abstimmungen moderieren und Beschlüsse in die Umsetzung bringen</li></ul><p class="gebiet__ergebnis"><span>Ihr Ergebnis</span>Eine Entscheidung – und ein Plan, wie sie umgesetzt wird.</p></div></div><div class="gebiet"><div class="gebiet__kopf"><span class="gebiet__nr">04</span><h3>Vertrieb &amp; Wachstum</h3><p class="gebiet__wenn">Wenn Potenziale im Markt liegen bleiben.</p></div><div class="gebiet__inhalt"><p class="fliesstext">Wachstum entsteht selten allein durch mehr Vertrieb. Wir schärfen Leistungsversprechen, Zielgruppen und Vertriebslogik – und setzen die Maßnahmen mit Ihren Teams um.</p><p class="label gebiet__label">Was wir konkret tun</p><ul class="haken"><li>Positionierung und Leistungsversprechen schärfen</li><li>Vertriebs- und Kommunikationslogik entwickeln</li><li>Maßnahmen gemeinsam mit Vertrieb und Marketing umsetzen</li></ul><p class="gebiet__ergebnis"><span>Ihr Ergebnis</span>Messbar mehr Wirkung im Markt.</p></div></div></div>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 4 / 9</span></div>
+</section>
+
+<!-- ================= Seite 5: Einsatzgebiete im Detail ================ -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Einsatzgebiete</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Einsatzgebiete im Detail</p>
+    <h1 class="titel titel--breit">Was wir konkret tun – und was Sie davon haben<span class="punkt">.</span></h1>
+    <div class="gebiete"><div class="gebiet"><div class="gebiet__kopf"><span class="gebiet__nr">05</span><h3>KI-Transformation</h3><p class="gebiet__wenn">Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</p></div><div class="gebiet__inhalt"><p class="fliesstext">Wir klären, welche Rolle KI im eigenen Geschäftsmodell spielen soll, und bringen die Prioritäten in die Fachbereiche – vom Zielbild bis zu den ersten umgesetzten Vorhaben.</p><p class="label gebiet__label">Was wir konkret tun</p><ul class="haken"><li>Ausgangslage und Reifegrad bestimmen</li><li>Zielbild und Prioritäten auf Vorstandsebene entwickeln</li><li>Erste Vorhaben in den Fachbereichen umsetzen</li></ul><p class="gebiet__ergebnis"><span>Ihr Ergebnis</span>Eine KI-Strategie, die im Unternehmen konkret wird.</p></div></div><div class="gebiet"><div class="gebiet__kopf"><span class="gebiet__nr">06</span><h3>Resilienz</h3><p class="gebiet__wenn">Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</p></div><div class="gebiet__inhalt"><p class="fliesstext">Resilienz beschreibt die Fähigkeit, unter veränderten Bedingungen handlungsfähig zu bleiben. Wir verbinden Geschäftsmodellverständnis mit Risiko- und Governance-Perspektive.</p><p class="label gebiet__label">Was wir konkret tun</p><ul class="haken"><li>Strategische Risiken einordnen und priorisieren</li><li>Resilienz-Check und Szenarioanalysen durchführen</li><li>Handlungsfelder ableiten und umsetzen</li></ul><p class="gebiet__ergebnis"><span>Ihr Ergebnis</span>Klare Verantwortlichkeiten und robustere Strukturen.</p></div></div></div>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 5 / 9</span></div>
+</section>
+
+<!-- ================= Seite 6: Ergebnis und Vorgehen ======================= -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">So arbeiten wir</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Ihr Ergebnis</p>
+    <h1 class="titel">Nur das Ergebnis zählt<span class="punkt">.</span></h1>
+    <p class="vorspann" style="width:420pt">Wir kennen das Geschäftsmodell Versicherung über alle Ebenen
+      hinweg – und steigen deshalb ohne Einarbeitungszeit ein.</p>
+  </div>
+  <div class="ergebnis" style="top:252pt">
+    <p class="kicker">Struktur · Klarheit · Umsetzung</p>
+    <p class="ergebnis__titel">Vom komplexen Thema zum umgesetzten Ergebnis<span class="punkt">.</span></p>
+    <div class="ergebnis__spalten">
+      <div><h3>Unser Handwerk</h3><p>Wir unterstützen Führungskräfte, komplexe Themen zu strukturieren und entscheidbar zu machen.</p></div>
+      <div><h3>Ihr Erfolg</h3><p>Durch Fokus auf die Interessen der beteiligten Stakeholder erzeugen wir Klarheit und Entscheidbarkeit.</p></div>
+      <div><h3>Ihr Ergebnis</h3><p>Um das gewünschte Ergebnis sicherzustellen, stehen wir für die anschließende Umsetzung bereit.</p></div>
+    </div>
+  </div>
+  <div class="inhalt" style="top:520pt">
+    <p class="label">Vorgehen</p>
+    <h2 class="titel titel--mittel">Vom ersten Termin bis zum Ergebnis<span class="punkt">.</span></h2>
+    <div class="schritte-raster">
+      <div class="raster-schritt"><span class="raster-schritt__nr">01</span><h3>Verstehen</h3>
+        <p>Wir steigen ohne Anlaufzeit ein, weil wir das Geschäftsmodell kennen.</p></div>
+      <div class="raster-schritt"><span class="raster-schritt__nr">02</span><h3>Entscheidbar machen</h3>
+        <p>Wir bereiten Entscheidungen so vor, dass Vorstand und Gremien entscheiden können.</p></div>
+      <div class="raster-schritt"><span class="raster-schritt__nr">03</span><h3>Umsetzen</h3>
+        <p>Wir setzen gemeinsam mit Ihren Teams um – operativ, nicht nur begleitend.</p></div>
+      <div class="raster-schritt"><span class="raster-schritt__nr">04</span><h3>Ergebnis sichern</h3>
+        <p>Wir machen die Wirkung an Kennzahlen fest und halten nach.</p></div>
+    </div>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 6 / 9</span></div>
+</section>
+
+<!-- ======================= Seite 6: Wer wir sind ========================== -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Über uns</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Über uns</p>
+    <h1 class="titel">Tobias Müller <span class="punkt">&amp;</span> Daniel Ströbel</h1>
+    <p class="vorspann" style="width:430pt">Wir kennen das Geschäftsmodell Versicherung von innen und haben schon
+      viele Projekte gemeinsam umgesetzt. Jeder von uns bringt klare Schwerpunkte mit – im Projekt arbeiten
+      wir beide selbst mit.</p>
+    <div class="profile">
+      <div class="profil2">
+        <div class="profil2__kreis"><img src="../assets/tobias-kreis.webp" alt=""></div>
+        <div>
+          <p class="label">Partner</p>
+          <p class="person__name" style="margin-top:4pt">Tobias Müller</p>
+          <p class="person__rolle">Governance, Gremien &amp; Risiko</p>
+          <div class="schwerpunkte"><span>Governance &amp; Gremienlogik</span><span>Aufsichtsrats- &amp; Vorstandssicht</span><span>Risiko &amp; Rechnungslegung</span></div>
+          <p class="fliesstext">Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als
+            Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer
+            und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und
+            Grundeigentümer-Versicherung.</p>
+          <p class="profil2__hinweis">Mitglied in zwei Aufsichtsräten</p>
+        </div>
+      </div>
+      <div class="profil2">
+        <div class="profil2__kreis"><img src="../assets/daniel-kreis.webp" alt=""></div>
+        <div>
+          <p class="label">Partner</p>
+          <p class="person__name" style="margin-top:4pt">Daniel Ströbel</p>
+          <p class="person__rolle">Strategie, Führung &amp; Vertrieb</p>
+          <div class="schwerpunkte"><span>Strategie &amp; Geschäftsmodell</span><span>Struktur &amp; Führung</span><span>Vertrieb &amp; Stakeholderfokus</span></div>
+          <p class="fliesstext">Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie
+            und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund
+            40 Mitarbeitenden. Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die
+            Versicherungsbranche.</p>
+          <p class="profil2__hinweis">Über 300 Projekte für die Versicherungsbranche</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 7 / 9</span></div>
+</section>
+
+<!-- ============ Seite 7: Das Geschäftsmodell in seiner Gänze ============= -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Was uns verbindet</div>
+  </div>
+  <div class="inhalt inhalt--thema">
+    <p class="kicker">Was uns verbindet</p>
+    <h1 class="titel titel--breit">Das Geschäftsmodell Versicherung.<br>In seiner Gänze<span class="punkt">.</span></h1>
+    <p class="fliesstext" style="margin-top:14pt;width:400pt">Wir verstehen, wie die Teile zusammenhängen: wie
+      Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.
+      Genau dort treffen sich unsere beiden Schwerpunkte.</p>
+    <ul class="haken" style="margin-top:16pt">
+      <li>Wir wissen, wie Erfolg im Unternehmen generiert wird</li>
+      <li>Wir kennen Entscheidungswege und wer eingebunden werden muss</li>
+      <li>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich</li>
+    </ul>
+    <div class="gaenze-raster">
+      <div><span>01</span><h3>Viele gemeinsame Projekte</h3><p>Wir sind eingespielt. Sie bekommen zwei Partner, die sich ergänzen – nicht zwei Einzelkämpfer.</p></div>
+      <div><span>02</span><h3>Das ganze Geschäftsmodell</h3><p>Governance, Risiko und Gremien auf der einen, Strategie, Führung und Vertrieb auf der anderen Seite.</p></div>
+      <div><span>03</span><h3>Themen mit Überzeugung</h3><p>Wir machen nur, woran wir glauben und was uns Spaß macht. Das merken Sie am Ergebnis.</p></div>
+    </div>
+  </div>
+  <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 8 / 9</span></div>
+</section>
+<!-- =========================== Seite 8: Kontakt =========================== -->
+<section class="seite">
+  <div class="kopf">
+    <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
+    <div class="kopf__marke">Kontakt</div>
+  </div>
+
+  <div class="inhalt">
+    <p class="kicker">Ihr Kontakt</p>
+    <h1 class="titel">Sprechen wir über Ihr Thema<span class="punkt">.</span></h1>
+    <p class="vorspann">Erzählen Sie uns, was ansteht. Wir sagen Ihnen offen, ob und wie wir es
+      gemeinsam mit Ihnen umsetzen.</p>
+
+    <div class="personen">
+      <div class="person">
+        <div class="person__kreis"><img src="../assets/tobias-kreis.webp" alt=""></div>
+        <div>
+          <p class="person__name">Tobias Müller</p>
+          <p class="person__rolle">Governance, Gremien &amp; Risiko</p>
+          <p class="person__zeile">tobias@muellerundstroebel.de<br>+49 176 2152 9798</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="person__kreis"><img src="../assets/daniel-kreis.webp" alt=""></div>
+        <div>
+          <p class="person__name">Daniel Ströbel</p>
+          <p class="person__rolle">Strategie, Führung &amp; Vertrieb</p>
+          <p class="person__zeile">daniel@muellerundstroebel.de<br>+49 176 3134 7217</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="drei">
+      <div><h3>Umsetzen</h3>
+        <p>Wir bleiben, bis das Ergebnis steht.</p></div>
+      <div><h3>Sofort</h3>
+        <p>Wir müssen nicht abgeholt werden.</p></div>
+      <div><h3>Überzeugt</h3>
+        <p>Wir machen nur, woran wir glauben.</p></div>
+    </div>
+
+    <div class="aufruf">
+      <div class="aufruf__knopf">
+        <b>Gespräch anfragen</b>
+        <span>Direkt mit uns beiden – ohne Vertriebsschleife.</span>
+      </div>
+      <p class="aufruf__url">www.muellerundstroebel.de</p>
+    </div>
+  </div>
+
+  <div class="impressum-linie"></div>
+  <div class="impressum">
+    <div><p class="label label--klein">Impressum</p>
+      <p>empiria GmbH<br>Kapellengasse 6<br>74564 Crailsheim</p></div>
+    <div><p class="label label--klein">Register</p>
+      <p>Handelsregister: HRB 750146<br>Registergericht: Amtsgericht Ulm<br>Vertreten durch: Daniel Ströbel</p></div>
+    <div><p class="label label--klein">Kontakt</p>
+      <p>daniel@muellerundstroebel.de<br>USt-IdNr.: DE 281217286<br>www.muellerundstroebel.de</p></div>
+  </div>
+
+  <div class="fuss"><span>Müller &amp; Ströbel · Stand: Oktober 2026</span><span>Seite 9 / 9</span></div>
+</section>
+
+</body>
+</html>

@@ -28,7 +28,7 @@ DOWNLOADS = WURZEL / "assets" / "downloads"
 PORT = 8801
 BREITE, HOEHE = 520, 736
 
-DOKUMENTE = ["geschaeftsmodell", "komplexe-themen", "strategie-verankern"]
+DOKUMENTE = ["geschaeftsmodell", "komplexe-themen", "strategie-verankern", "mueller-stroebel-wer-wir-sind"]
 
 CHROME_PFADE = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -85,16 +85,24 @@ def einzelseite(quelle, ziel, nummer):
     shutil.copy(quelle, ziel)
     d = open(ziel, "rb").read()
     karte = xref_karte(d)
-    baum = None
-    for num, off in karte.items():
+    objekte = {}
+    for n_, off in karte.items():
         m = re.match(rb"\s*\d+\s+0\s+obj", d[off:off + 40])
-        if not m:
-            continue
-        o = d[off + m.end():d.find(b"endobj", off)]
-        if re.search(rb"/Type\s*/Pages", o) and b"/Kids" in o:
-            baum = (num, o)
-    num, o = baum
-    refs = re.findall(rb"\d+\s+0\s+R", re.search(rb"/Kids\s*\[(.*?)\]", o, re.S).group(1))
+        if m:
+            objekte[n_] = d[off + m.end():d.find(b"endobj", off)]
+    # Wurzel des Seitenbaums (ohne /Parent). Ab 9 Seiten verschachtelt Chrome den Baum –
+    # deshalb die Blattseiten der Reihe nach einsammeln.
+    num = next(k for k, o in objekte.items() if re.search(rb"/Type\s*/Pages", o) and b"/Parent" not in o)
+    o = objekte[num]
+    def blaetter(k):
+        ob = objekte[k]
+        if re.search(rb"/Type\s*/Pages", ob):
+            aus = []
+            for r in re.findall(rb"(\d+)\s+0\s+R", re.search(rb"/Kids\s*\[(.*?)\]", ob, re.S).group(1)):
+                aus += blaetter(int(r))
+            return aus
+        return [b"%d 0 R" % k]
+    refs = blaetter(num)
     neu = re.sub(rb"/Kids\s*\[.*?\]", b"/Kids [" + refs[nummer - 1] + b"]", o, flags=re.S)
     neu = re.sub(rb"/Count\s+\d+", b"/Count 1", neu)
 

@@ -29,6 +29,7 @@ DOKUMENTE = {
     "geschaeftsmodell.html": "geschaeftsmodell.pdf",
     "komplexe-themen.html": "komplexe-themen.pdf",
     "strategie-verankern.html": "strategie-verankern.pdf",
+    "wer-wir-sind.html": "mueller-stroebel-wer-wir-sind.pdf",
 }
 
 CHROME_PFADE = [
