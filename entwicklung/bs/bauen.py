@@ -90,14 +90,19 @@ AMP = '<img class="bs-amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="
 PORTRAIT = {"tobias": "/assets/tobias-portrait.webp", "daniel": "/assets/daniel-portrait.webp"}
 
 
+def portraitkarte(key, klein=False):
+    """Person als Karte: farbige Fläche, freigestelltes Porträt steht auf der Unterkante, Name als Etikett."""
+    p = PERSONEN[key]
+    return (f'<figure class="bs-pk bs-pk--{key}{" bs-pk--klein" if klein else ""}"><img src="{PORTRAIT[key]}" alt="{p["name"]}">'
+            f'<figcaption><b>{p["name"]}</b><span>{p["rolle"]}</span></figcaption></figure>')
+
+
+def duo():
+    return f'<div class="bs-duo">{portraitkarte("tobias")}{portraitkarte("daniel")}</div>'
+
+
 def team_reihe(mit_netz=False):
-    leute = "".join(f'<a class="bs-mensch" href="/entwicklung/bs-steckbrief-{k}.html"><div class="bs-mensch__bild"><img src="{PORTRAIT[k]}" alt="{p["name"]}"></div>'
-                    f'<b>{p["name"]}</b><span>{p["rolle"]}</span><em>Steckbrief {PF}</em></a>' for k, p in PERSONEN.items())
-    netz = ""
-    if mit_netz:
-        netz = (f'<div class="bs-mensch bs-mensch--netz"><div class="bs-mensch__bild">{orbit(klein=True)}</div><b>Unser Netzwerk</b>'
-                f'<span>Gezielt eingebunden, von uns koordiniert</span></div>')
-    return f'<div class="bs-menschen{" bs-menschen--drei" if mit_netz else ""}">{leute}{netz}</div>'
+    return f'<div class="bs-duo bs-duo--reihe">{portraitkarte("tobias")}{portraitkarte("daniel")}</div>'
 
 
 def orbit(klein=False):
@@ -119,31 +124,42 @@ def orbit(klein=False):
 
 
 def abschluss():
-    return f'''<section class="bs-sek bs-navy bs-schluss"><div class="bs-wrap">
-  {AMP}
-  <p class="bs-kicker bs-kicker--hell">Ihr Thema</p>
-  <h2 class="bs-h1 bs-h1--hell">Welches Thema liegt auf Ihrem Tisch<span class="bs-dot">?</span></h2>
-  <div class="bs-knoepfe"><a class="bs-knopf bs-knopf--weiss" href="{MAIL_BEIDE}">Thema besprechen {PF}</a></div>
+    kontakte = "".join(f'<div class="bs-ruf"><img src="{PERSONEN[k]["bild"]}" alt=""><div><b>{PERSONEN[k]["name"]}</b>'
+                       f'<a href="tel:{PERSONEN[k]["tel_roh"]}">{PERSONEN[k]["tel"]}</a><a href="mailto:{PERSONEN[k]["mail"]}">{PERSONEN[k]["mail"]}</a></div></div>' for k in PERSONEN)
+    return f'''<section class="bs-sek bs-schluss"><div class="bs-wrap bs-zwei bs-zwei--mitte">
+  <div>{kopf("Ihr Thema", 'Welches Thema liegt gerade auf Ihrem Tisch<span class="bs-dot">?</span>', "Rufen Sie an oder schreiben Sie uns. Wir sagen Ihnen offen, ob und wie wir es übernehmen.")}
+    <div class="bs-knoepfe"><a class="bs-knopf" href="{MAIL_BEIDE}">Thema besprechen {PF}</a></div></div>
+  <div class="bs-rufe">{kontakte}</div>
 </div></section>'''
 
 
 # ---------------------------------------------------------------- Startseite
 def startseite():
-    themen_wolke = ["Aufsichtsratsvorlage", "Strategie 2030", "Kennzahlen", "Reorganisation", "Vertriebsziele", "KI-Einsatz",
-                    "Budget", "Projekt-Review", "Gremienvorlage", "Kooperation", "Personal", "Solvency"]
-    m = [f'''<section class="bs-held bs-navy"><div class="bs-wrap">
-  {AMP}
-  <p class="bs-kicker bs-kicker--hell">Für Vorstände und Führungskräfte in Versicherungsunternehmen</p>
-  <h1 class="bs-h1 bs-h1--held">Sie geben uns ein Thema.<br><em>Wir machen daraus ein Ergebnis.</em></h1>
-  <p class="bs-dreiwort"><span>Mitdenken</span><span>Organisieren</span><span>Selber machen</span></p>
-  <div class="bs-knoepfe"><a class="bs-knopf bs-knopf--weiss" href="{MAIL_BEIDE}">Thema besprechen {PF}</a><a class="bs-knopf bs-knopf--hell" href="#modell">Wie wir arbeiten</a></div>
+    m = [f'''<section class="bs-held"><div class="bs-wrap bs-held__raster">
+  <div>
+    <p class="bs-kicker">Für Führungskräfte in Versicherungsunternehmen</p>
+    <h1 class="bs-h1">Sie geben uns ein Thema. Wir sorgen dafür, dass daraus ein Ergebnis wird<span class="bs-dot">.</span></h1>
+    <p class="bs-lead">Wir denken auf Augenhöhe mit, organisieren die Bearbeitung und packen selbst mit an. Sie müssen nichts koordinieren.</p>
+    <div class="bs-knoepfe"><a class="bs-knopf" href="{MAIL_BEIDE}">Thema besprechen {PF}</a><a class="bs-knopf bs-knopf--rand" href="#loesung">So arbeiten wir</a></div>
+  </div>
+  {duo()}
 </div></section>''',
-         f'''<section class="bs-sek"><div class="bs-wrap bs-zwei">
-  <div>{kopf("Die Ausgangslage", 'Zu viele Themen.<br>Zu wenig Hände<span class="bs-dot">.</span>', "Ob Vorstand, Hauptabteilungs- oder Bereichsleitung: Auf dem Tisch liegt mehr, als sich selbst bearbeiten lässt.")}</div>
-  <div class="bs-wolke" aria-hidden="true">{"".join(f'<span style="--i:{i}">{t}</span>' for i, t in enumerate(themen_wolke))}</div>
+         '''<section class="bs-sek bs-sand"><div class="bs-wrap bs-zwei">
+  <div><p class="bs-kicker">Kennen Sie das?</p>
+    <h2 class="bs-h2">Viele wichtige Themen. Und alle liegen bei Ihnen<span class="bs-dot">.</span></h2>
+    <p class="bs-text">Sie wissen meist genau, was wichtig ist. Aber Strategie, Entscheidungen, Projekte und Tagesgeschäft laufen gleichzeitig. Für vieles fehlt schlicht die Zeit, die Kapazität oder die passende Kompetenz.</p>
+    <p class="bs-fazit">Unterschiedliche Ebene, gleiches Problem.</p></div>
+  <div class="bs-stimmen">
+    <blockquote><span>Vorstand</span>„Ich muss den Aufsichtsrat vorbereiten, Entscheidungen treffen und meine Bereiche koordinieren.“</blockquote>
+    <blockquote><span>Hauptabteilungsleitung</span>„Ich soll Vorgaben umsetzen, Abteilungen abstimmen und Ergebnisse liefern.“</blockquote>
+    <blockquote><span>Bereichsleitung</span>„Ich stimme mich mit dem Vorstand ab, führe meine Teams und treibe zig Themen voran.“</blockquote>
+  </div>
 </div></section>''',
-         f'''<section class="bs-sek bs-sand"><div class="bs-wrap">
-  {kopf("Die Lücke", 'Berater, Projektmanager, Spezialisten.<br>Und wer hält alles zusammen<span class="bs-dot">?</span>', mitte=True)}
+         '''<section class="bs-sek"><div class="bs-wrap bs-zwei bs-zwei--mitte">
+  <div><p class="bs-kicker">Warum Beratung allein nicht reicht</p>
+    <h2 class="bs-h2">Ein Berater gibt Ihnen Empfehlungen. Die Arbeit bleibt bei Ihnen<span class="bs-dot">.</span></h2>
+    <p class="bs-text">Sie können einen Strategieberater holen, einen Projektmanager und Spezialisten. Dann müssen Sie trotzdem alles zusammenbringen, die Beteiligten koordinieren und dranbleiben, bis ein Ergebnis da ist.</p>
+    <p class="bs-fazit">Genau diese Last nehmen wir Ihnen ab.</p></div>
   <div class="bs-gegen">
     <figure><figcaption>Üblich</figcaption>
       <svg viewBox="0 0 360 300" class="bs-diag" role="img" aria-label="Drei Dienstleister, die Koordination bleibt bei Ihnen">
@@ -151,50 +167,48 @@ def startseite():
         <g class="d-n"><circle cx="60" cy="54" r="34"/><circle cx="180" cy="54" r="34"/><circle cx="300" cy="54" r="34"/></g>
         <g class="d-t"><text x="60" y="58">Berater</text><text x="180" y="58">Projekt</text><text x="300" y="58">Spezialist</text></g>
         <circle cx="180" cy="236" r="42" class="d-sie"/><text x="180" y="242" class="d-t2">Sie</text>
-      </svg>
-      <p>Die Koordination bleibt bei Ihnen.</p></figure>
+      </svg></figure>
     <figure class="bs-gegen--wir"><figcaption>Mit Müller &amp; Ströbel</figcaption>
       <svg viewBox="0 0 360 300" class="bs-diag" role="img" aria-label="Ein Partner, ein Ergebnis">
         <path d="M180 120V196" class="d-l d-l--wir"/>
         <circle cx="180" cy="66" r="56" class="d-wir"/><text x="180" y="86" class="d-amp">&amp;</text>
         <circle cx="180" cy="236" r="42" class="d-erg"/><text x="180" y="242" class="d-t2 d-t2--hell">Ergebnis</text>
-      </svg>
-      <p>Ein Partner. Ein Ergebnis.</p></figure>
+      </svg></figure>
   </div>
 </div></section>''',
-         f'''<section class="bs-sek" id="modell"><div class="bs-wrap">
-  {kopf("Unser Modell", 'Drei Leistungen. Eine Verantwortung<span class="bs-dot">.</span>')}
+         '''<section class="bs-sek bs-sand" id="loesung"><div class="bs-wrap">
+  <div class="bs-kopf"><p class="bs-kicker">So lösen wir es</p><h2 class="bs-h2">Mitdenken. Organisieren. Selber machen<span class="bs-dot">.</span></h2></div>
   <div class="bs-trio">
-    <div><span>01 · Fachliches Sparring</span><b>Mitdenken<i>.</i></b><p>Wir denken auf Ihrer Ebene mit und bereiten Entscheidungen vor.</p></div>
-    <div><span>02 · Projektmanagement</span><b>Organisieren<i>.</i></b><p>Wir steuern die Bearbeitung – mit allen Beteiligten.</p></div>
-    <div><span>03 · Operative Umsetzung</span><b>Selber machen<i>.</i></b><p>Wo wir die Fachkompetenz haben, arbeiten wir selbst mit.</p></div>
+    <div><span>01</span><b>Mitdenken</b><p>Wir verstehen, wie Versicherungsunternehmen funktionieren, und denken auf Ihrer Ebene mit. Wir ordnen Ihr Thema ein, entwickeln Optionen und bereiten Entscheidungen vor. Und wir sagen offen, wo wir selbst nicht tief genug drin sind.</p></div>
+    <div><span>02</span><b>Organisieren</b><p>Nach dem Gespräch lassen wir Sie nicht mit einer Liste allein. Wir sprechen mit den Beteiligten, setzen Prioritäten, halten Projekte am Laufen und legen Ihnen vor, was Sie entscheiden müssen.</p></div>
+    <div><span>03</span><b>Selber machen</b><p>Wo wir die Fachkompetenz haben, arbeiten wir selbst mit: Konzepte, Analysen, Lösungen. Wo es mehr braucht, holen wir passende Spezialisten aus unserem Netzwerk dazu.</p></div>
   </div>
-  <div class="bs-klammer"><span>Aus einer Hand – Sie müssen nichts koordinieren.</span></div>
+  <p class="bs-satz">Das Besondere ist nicht eine dieser Leistungen, sondern dass Sie alle drei aus einer Hand bekommen.</p>
 </div></section>''',
-         f'''<section class="bs-sek bs-navy bs-ursprung"><div class="bs-wrap bs-ursprung__raster">
-  <div>
-    <p class="bs-kicker bs-kicker--hell">Entstanden aus der Praxis</p>
-    <blockquote class="bs-gross-zitat">„Du hast das Projektmanagement übernommen, mit den Leuten gesprochen und dafür gesorgt, dass die Dinge weiterlaufen. Und dort, wo du die fachliche Kompetenz hattest, hast du selbst mit angepackt.“</blockquote>
-    <p class="bs-quelle"><b>Tobias Müller</b>damals Geschäftsführer des HÖV, über die Zusammenarbeit mit Daniel Ströbel</p>
-  </div>
-  <div class="bs-ursprung__bild"><img src="{PORTRAIT["tobias"]}" alt="Tobias Müller"></div>
+         '''<section class="bs-sek"><div class="bs-wrap">
+  <div class="bs-kopf"><p class="bs-kicker">So gehen wir vor</p><h2 class="bs-h2">Vom ersten Gespräch bis zum Ergebnis<span class="bs-dot">.</span></h2></div>
+  <ol class="bs-pfad"><li><b>Zuhören</b><span>Wir klären mit Ihnen, worum es wirklich geht, auch wenn das am Anfang noch offen ist.</span></li><li><b>Vorgehen</b><span>Wir entwickeln gemeinsam, wie wir das Thema angehen.</span></li><li><b>Bearbeiten</b><span>Wir übernehmen die Bearbeitung und halten Sie auf dem Laufenden.</span></li><li><b>Ergebnis</b><span>Sie bekommen ein Ergebnis, mit dem Sie weiterarbeiten können.</span></li></ol>
 </div></section>''',
-         f'''<section class="bs-sek bs-sand"><div class="bs-wrap bs-zwei bs-zwei--mitte">
-  <div>{kopf("Was bei Ihnen nicht mehr hängen bleibt", 'Sie geben ab. Wir bringen es zu Ende<span class="bs-dot">.</span>')}</div>
-  <ul class="bs-weg"><li>Berater briefen und Ergebnisse nachhalten</li><li>Projekte und Beteiligte koordinieren</li><li>Spezialisten suchen und steuern</li></ul>
+         f'''<section class="bs-sek bs-navy"><div class="bs-wrap bs-zwei">
+  <div><p class="bs-kicker bs-kicker--hell">So fühlt sich das an</p>
+    <h2 class="bs-h2">Ein Ansprechpartner für jedes Thema<span class="bs-dot">.</span></h2>
+    <p class="bs-text bs-text--hell">Sie haben jemanden, mit dem Sie über jedes Thema sprechen können. Sie geben ein Thema ab. Es kommt zu Ihnen zurück, wenn etwas zu entscheiden ist oder wenn es fertig ist. Dazwischen müssen Sie sich um nichts kümmern.</p></div>
+  <figure class="bs-beleg">
+    <p class="bs-beleg__label">So war es beim HÖV</p>
+    <blockquote>„Ich konnte mit dir über jedes Thema sprechen. Du hast verstanden, worum es geht. Wenn du dich fachlich auskanntest, konntest du direkt mitdenken. Wenn du dich nicht auskanntest, hast du das offen gesagt und wusstest trotzdem, wie man das Thema angehen kann.“</blockquote>
+    <blockquote>„Du hast das Projektmanagement übernommen. Du hast mit den Leuten gesprochen, die Projekte im Blick behalten und dafür gesorgt, dass die Dinge weiterlaufen. Und dort, wo du die fachliche Kompetenz hattest, hast du selbst mit angepackt.“</blockquote>
+    <figcaption><img src="{PERSONEN["tobias"]["bild"]}" alt=""><span><b>Tobias Müller</b>damals Geschäftsführer des HÖV, über die Zusammenarbeit mit Daniel Ströbel</span></figcaption>
+  </figure>
 </div></section>''',
-         f'''<section class="bs-sek"><div class="bs-wrap">
-  {kopf("Von der ersten Klärung bis zum Ergebnis", 'So übernehmen wir ein Thema<span class="bs-dot">.</span>')}
-  <ol class="bs-pfad"><li><b>Klären</b><span>Auch wenn noch offen ist, worum es geht.</span></li><li><b>Mitdenken</b><span>Zielbild, Optionen, Vorgehen.</span></li><li><b>Organisieren</b><span>Die richtigen Menschen, ein Plan.</span></li><li><b>Ergebnis</b><span>Mit dem Sie weiterarbeiten.</span></li></ol>
+         f'''<section class="bs-sek"><div class="bs-wrap bs-zwei bs-zwei--mitte">
+  <div><p class="bs-kicker">Unser Netzwerk</p>
+    <h2 class="bs-h2">Wenn ein Thema mehr braucht<span class="bs-dot">.</span></h2>
+    <p class="bs-text">Dann holen wir gezielt die richtigen Leute dazu. Wir steuern sie, und Sie haben weiter einen Ansprechpartner.</p></div>
+  <ul class="bs-netz">{"".join(f"<li>{n}</li>" for n in ["IT- und Prozess-Spezialisten", "Ehemalige Vorstände", "Aufsichtsratsmitglieder", "Marketingexperten", "Programmierer", "Grafiker"])}</ul>
 </div></section>''',
-         f'''<section class="bs-sek bs-sand"><div class="bs-wrap bs-zwei bs-zwei--mitte">
-  <div>{kopf("Unser Netzwerk", 'Und wenn es mehr braucht, bringen wir die richtigen Leute mit<span class="bs-dot">.</span>', "Erfahrene Persönlichkeiten – gezielt eingebunden, von uns koordiniert, ein Ansprechpartner für Sie.")}</div>
-  <div>{orbit()}</div>
-</div></section>''',
-         f'''<section class="bs-sek bs-sek--team"><div class="bs-wrap">
-  {kopf("Wer dahintersteht", 'Erfahrene Führungskräfte.<br>Auf Ihrer Seite des Tisches<span class="bs-dot">.</span>')}
-  {team_reihe()}
-  <p class="bs-mehr"><a href="/entwicklung/bs-ueber-uns.html">Über uns und unsere Themenfelder {PF}</a></p>
+         f'''<section class="bs-sek bs-sand" id="wir"><div class="bs-wrap">
+  <div class="bs-kopf"><p class="bs-kicker">Wer wir sind</p><h2 class="bs-h2">Zwei Partner, die selbst mitarbeiten<span class="bs-dot">.</span></h2></div>
+  <div class="bs-wir">{"".join(f'<article>{portraitkarte(k, klein=True)}<div><p class="bs-text">{PERSONEN[k]["werdegang"]}</p><a class="bs-link" href="/entwicklung/bs-steckbrief-{k}.html">Steckbrief von {PERSONEN[k]["name"]} {PF}</a></div></article>' for k in PERSONEN)}</div>
 </div></section>''',
          abschluss()]
     return rahmen("Müller & Ströbel – Business Story (Entwurf)", "Entwurf der Startseite auf Basis der Business Story", "\n".join(m), "business-story.html")
@@ -206,11 +220,11 @@ def ueber_uns():
                 ("Den Überblick behalten", "Viele Themen und Projekte gleichzeitig im Blick."),
                 ("Menschen zusammenbringen", "Wir organisieren die richtigen Leute und Kompetenzen."),
                 ("Verantwortung übernehmen", "Wir arbeiten selbst mit – bis das Ergebnis steht.")]
-    m = [f'''<section class="bs-held bs-held--ueber"><div class="bs-wrap bs-ueber__raster">
+    m = [f'''<section class="bs-held"><div class="bs-wrap bs-held__raster">
   <div><p class="bs-kicker">Über uns</p>
     <h1 class="bs-h1">Erfahrung einer Führungskraft. Ohne eine Stelle zu besetzen<span class="bs-dot">.</span></h1>
-    <p class="bs-sub">Wir ersetzen niemanden. Wir nehmen Führungskräften ein ganzes Aufgabenpaket ab.</p></div>
-  <div class="bs-ueber__bild"><img src="{PORTRAIT["tobias"]}" alt="Tobias Müller"><img src="{PORTRAIT["daniel"]}" alt="Daniel Ströbel"></div>
+    <p class="bs-lead">Wir ersetzen keine Führungskraft. Wir nehmen ihr ein vollständiges Aufgabenpaket ab – ob Vorstand, Hauptabteilungs- oder Bereichsleitung. Entscheidend ist nicht die Stellenbezeichnung, sondern dass ein Thema zum Ergebnis kommt.</p></div>
+  {duo()}
 </div></section>''',
          f'''<section class="bs-sek"><div class="bs-wrap">
   {kopf("Was Sie bekommen", 'Die Erfahrung langjähriger Führungskräfte<span class="bs-dot">.</span>')}
@@ -218,7 +232,8 @@ def ueber_uns():
 </div></section>''',
          f'''<section class="bs-sek bs-sand bs-sek--team" id="team"><div class="bs-wrap">
   {kopf("Das Team", 'Partner, die selbst mitarbeiten<span class="bs-dot">.</span>')}
-  {team_reihe(mit_netz=True)}
+  <div class="bs-wir">{"".join(f'<article>{portraitkarte(k, klein=True)}<div><p class="bs-text">{PERSONEN[k]["werdegang"]}</p><a class="bs-link" href="/entwicklung/bs-steckbrief-{k}.html">Steckbrief von {PERSONEN[k]["name"]} {PF}</a></div></article>' for k in PERSONEN)}</div>
+  <p class="bs-text" style="margin-top:3rem;max-width:44rem">Dazu kommt unser Netzwerk: IT- und Prozess-Spezialisten, ehemalige Vorstände und Aufsichtsratsmitglieder, Marketingexperten, Programmierer und Grafiker. Wir binden sie gezielt ein und steuern sie für Sie.</p>
 </div></section>''',
          f'''<section class="bs-sek" id="themen"><div class="bs-wrap bs-zwei">
   <div>{kopf("Unsere Themenfelder", 'Hier setzen wir an<span class="bs-dot">.</span>', "Wenn Zusammenhänge unklar sind und ein Thema nicht vorankommt.")}</div>
@@ -237,17 +252,17 @@ def steckbrief(key):
     p = PERSONEN[key]
     vcf = f"/entwicklung/bs/{key}.vcf"
     vn = p["name"].split()[0]
-    m = [f'''<section class="bs-held bs-navy bs-profil"><div class="bs-wrap bs-profil__raster">
+    m = [f'''<section class="bs-held bs-profil"><div class="bs-wrap bs-profil__raster">
   <div>
-    <p class="bs-kicker bs-kicker--hell">Partner · Müller &amp; Ströbel</p>
-    <h1 class="bs-h1 bs-h1--held">{p["name"]}</h1>
+    <p class="bs-kicker">Partner · Müller &amp; Ströbel</p>
+    <h1 class="bs-h1">{p["name"]}</h1>
     <p class="bs-profil__rolle">{p["rolle"]}</p>
     <p class="bs-profil__kurz">{p["kurz"]}</p>
     <div class="bs-aktionen">
       <a href="tel:{p["tel_roh"]}">Anrufen</a><a href="mailto:{p["mail"]}">E-Mail</a><a href="{p["linkedin"]}" target="_blank" rel="noopener">LinkedIn</a><a href="{vcf}" download class="bs-aktionen__haupt">Kontakt speichern</a>
     </div>
   </div>
-  <div class="bs-profil__bild"><img src="{PORTRAIT[key]}" alt="{p["name"]}"></div>
+  {portraitkarte(key)}
 </div></section>''',
          f'''<section class="bs-sek"><div class="bs-wrap">
   {kopf("Warum in Ihrem Projekt", f'Was {vn} einbringt<span class="bs-dot">.</span>')}
