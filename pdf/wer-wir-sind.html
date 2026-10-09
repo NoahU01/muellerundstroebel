@@ -36,6 +36,193 @@
 .gaenze-raster span { font-size: 8pt; font-weight: 600; letter-spacing: .14em; color: var(--taupe); }
 .gaenze-raster h3 { margin-top: 5pt; font-family: Lora, Georgia, serif; font-size: 12pt; font-weight: 600; color: var(--tinte); }
 .gaenze-raster p { margin-top: 6pt; font-size: 8.8pt; line-height: 1.65; color: var(--tinte-2); }
+
+/* ---------- Seite 8: Grafik „Zwei Linien laufen zusammen“ (wie auf der Website, Über uns) ---------- */
+.gaenze-grafik { position: absolute; left: var(--rand); top: 560pt; width: var(--satzbreite); display: grid; grid-template-columns: 300pt 1fr; column-gap: 26pt; align-items: center; }
+.gaenze-grafik svg { width: 300pt; height: 197pt; display: block; }
+.gaenze-grafik__text { border-left: 2pt solid var(--blau); padding-left: 12pt; }
+.gaenze-grafik__text p { font-size: 8.8pt; line-height: 1.6; color: var(--tinte-2); }
+.gaenze-grafik__text b { display: block; margin-bottom: 4pt; font-family: Lora, Georgia, serif; font-size: 12.5pt; font-weight: 600; color: var(--tinte); line-height: 1.25; }
+
+/* ---------- Seite 9: Abschluss – oben hell, unten der Navy-Balken des Deckblatts ---------- */
+.ab-oben { position: absolute; left: var(--rand); top: 125.2pt; width: var(--satzbreite); }
+.ab-oben .titel { margin-top: 10.6pt; } .ab-oben .vorspann { margin-top: 11.2pt; }
+.ab-personen { position: absolute; left: var(--rand); top: 252pt; width: var(--satzbreite); display: grid; grid-template-columns: 1fr 1fr; column-gap: 28.8pt; }
+.ab-person { display: grid; grid-template-columns: 64pt 1fr; column-gap: 14pt; align-items: center; padding-top: 14pt; border-top: 1.5pt solid var(--taupe); }
+.ab-person:last-child { border-top-color: var(--navy); }
+.ab-person__bild { width: 64pt; height: 64pt; border-radius: 50%; overflow: hidden; background: #eae4dd; }
+.ab-person__bild img { width: 100%; height: 100%; object-fit: cover; }
+.ab-person__name { font-family: Lora, Georgia, serif; font-size: 14pt; font-weight: 600; line-height: 1.2; color: var(--tinte); }
+.ab-person__rolle { margin-top: 2pt; font-size: 8.2pt; color: var(--taupe-dunkel); }
+.ab-person__kontakt { margin-top: 6pt; font-size: 8.2pt; line-height: 1.6; color: var(--tinte); }
+.ab-drei { position: absolute; left: var(--rand); top: 376pt; width: var(--satzbreite); display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 17.15pt; }
+.ab-drei > div { padding-top: 10pt; border-top: .8pt solid var(--linie); }
+.ab-drei h3 { font-family: Lora, Georgia, serif; font-size: 12pt; font-weight: 600; color: var(--tinte); }
+.ab-drei p { margin-top: 4pt; font-size: 8.6pt; line-height: 1.55; color: var(--tinte-2); }
+.ab-balken { position: absolute; left: 0; right: 0; top: 488pt; bottom: 0; overflow: hidden; color: #fff;
+  background: radial-gradient(circle 230pt at 500pt 40pt, #114564 0%, rgba(17,69,100,.55) 38%, rgba(8,38,56,0) 72%), var(--navy); }
+.ab-balken__grafik { position: absolute; right: -40pt; top: -70pt; width: 300pt; height: 298pt; opacity: .28; }
+.ab-balken__grafik img { width: 100%; height: 100%; }
+.ab-aufruf { position: absolute; left: var(--rand); top: 44pt; width: var(--satzbreite); }
+.ab-aufruf .kicker { color: var(--taupe-hell); }
+.ab-aufruf .kicker::before { height: 1.5pt; }
+.ab-aufruf__titel { margin-top: 9pt; font-family: Lora, Georgia, serif; font-size: 25pt; font-weight: 600; line-height: 1.12; color: #fff; }
+.ab-aufruf__text { margin-top: 8pt; width: 300pt; font-size: 9.6pt; line-height: 1.55; color: rgba(255,255,255,.82); }
+.ab-aufruf__url { display: inline-flex; align-items: center; height: 27pt; margin-top: 14pt; padding: 0 15pt; border-radius: 999pt; background: #fff; font-size: 9pt; font-weight: 600; color: var(--navy); }
+.ab-linie { position: absolute; left: var(--rand); top: 200pt; width: var(--satzbreite); height: .8pt; background: rgba(255,255,255,.22); }
+.ab-impressum { position: absolute; left: var(--rand); top: 218pt; width: var(--satzbreite); display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 17.15pt; }
+.ab-impressum .label { color: var(--taupe-hell); font-size: 7.4pt; }
+.ab-impressum p { margin-top: 6pt; font-size: 8pt; line-height: 1.6; color: rgba(255,255,255,.85); }
+.ab-impressum p.label { margin-top: 0; }
+.ab-balken .fuss { top: auto; bottom: 30pt; color: rgba(255,255,255,.6); }
+
+/* ================= One-Pager (Varianten A–D) ================= */
+.op { position: absolute; inset: 0; }
+.op .kicker { font-size: 7.4pt; }
+.op-h { font-family: Lora, Georgia, serif; font-weight: 600; color: var(--tinte); line-height: 1.1; letter-spacing: -.005em; }
+.op-txt { font-size: 8.4pt; line-height: 1.55; color: var(--tinte-2); }
+.op-label { font-size: 6.8pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-dunkel); }
+.op-foto { border-radius: 50%; overflow: hidden; background: #eae4dd; }
+.op-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.op-pill { display: inline-flex; align-items: center; height: 21pt; padding: 0 11pt; border-radius: 999pt; border: .8pt solid rgba(255,255,255,.45); font-size: 7.8pt; color: #fff; }
+.op-navy { color: #fff; background: radial-gradient(circle 240pt at 470pt 60pt, #114564 0%, rgba(17,69,100,.55) 38%, rgba(8,38,56,0) 72%), var(--navy); }
+.op-fuss { position: absolute; left: var(--rand); right: var(--rand); bottom: 22pt; display: flex; justify-content: space-between; font-size: 7pt; color: var(--fussnote); }
+.op-variante { position: absolute; right: var(--rand); top: 22pt; font-size: 6.6pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--fussnote); }
+.op-navy .op-variante, .op-variante--hell { color: rgba(255,255,255,.55); }
+
+/* A – Navy-Kopf, Raster darunter */
+.opa-kopf { position: absolute; left: 0; right: 0; top: 0; height: 290pt; }
+.opa-kopf img.logo { position: absolute; left: var(--rand); top: 40pt; width: 150pt; }
+.opa-kopf__text { position: absolute; left: var(--rand); top: 104pt; width: 360pt; }
+.opa-kopf .kicker { color: var(--taupe-hell); }
+.opa-kopf h1 { margin-top: 8pt; font-family: Lora, Georgia, serif; font-size: 25pt; font-weight: 600; line-height: 1.1; color: #fff; }
+.opa-kopf p.lead { margin-top: 10pt; font-size: 9pt; line-height: 1.55; color: rgba(255,255,255,.85); }
+.opa-kopf .pills { display: flex; gap: 6pt; margin-top: 13pt; }
+.opa-kopf__amp { position: absolute; right: -30pt; top: 20pt; width: 260pt; height: 258pt; opacity: .55; }
+.opa-felder { position: absolute; left: var(--rand); top: 316pt; width: var(--satzbreite); }
+.opa-raster { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 17.15pt; row-gap: 12pt; margin-top: 9pt; }
+.opa-raster > div { padding-top: 7pt; border-top: 1.2pt solid var(--taupe); }
+.opa-raster span { font-size: 6.8pt; font-weight: 600; letter-spacing: .14em; color: var(--taupe); }
+.opa-raster h3 { margin-top: 2pt; font-family: Lora, Georgia, serif; font-size: 10.5pt; font-weight: 600; color: var(--tinte); line-height: 1.2; }
+.opa-raster p { margin-top: 3pt; font-size: 7.8pt; line-height: 1.45; color: var(--tinte-2); }
+.opa-weg { position: absolute; left: var(--rand); top: 492pt; width: var(--satzbreite); }
+.opa-schritte { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 10pt; position: relative; }
+.opa-schritte::before { content: ""; position: absolute; left: 6pt; right: 6pt; top: 6pt; height: 1.2pt; background: var(--linie); }
+.opa-schritte > div { position: relative; padding-right: 12pt; }
+.opa-schritte i { display: block; width: 13pt; height: 13pt; border-radius: 50%; background: #fff; border: 2pt solid var(--blau); }
+.opa-schritte > div:last-child i { background: var(--blau); }
+.opa-schritte h3 { margin-top: 8pt; font-family: Lora, Georgia, serif; font-size: 10.5pt; font-weight: 600; color: var(--tinte); }
+.opa-schritte p { margin-top: 3pt; font-size: 7.8pt; line-height: 1.45; color: var(--tinte-2); }
+.opa-wer { position: absolute; left: var(--rand); top: 612pt; width: var(--satzbreite); display: grid; grid-template-columns: 1fr 1fr; column-gap: 28.8pt; }
+.opa-person { display: grid; grid-template-columns: 54pt 1fr; column-gap: 12pt; align-items: start; }
+.opa-person .op-foto { width: 54pt; height: 54pt; }
+.opa-person b { display: block; font-family: Lora, Georgia, serif; font-size: 12pt; font-weight: 600; color: var(--tinte); }
+.opa-person span { display: block; font-size: 7.8pt; color: var(--taupe-dunkel); }
+.opa-person p { margin-top: 4pt; font-size: 7.6pt; line-height: 1.5; color: var(--tinte-2); }
+.opa-person em { display: block; margin-top: 4pt; font-style: normal; font-size: 7.6pt; color: var(--tinte); }
+.opa-band { position: absolute; left: var(--rand); right: var(--rand); top: 744pt; height: 44pt; border-radius: 8pt; display: flex; align-items: center; justify-content: space-between; padding: 0 18pt; background: var(--sand); }
+.opa-band b { font-family: Lora, Georgia, serif; font-size: 13pt; font-weight: 600; color: var(--tinte); }
+.opa-band span { font-size: 8pt; color: var(--tinte-2); }
+.opa-band .url { height: 24pt; display: inline-flex; align-items: center; padding: 0 13pt; border-radius: 999pt; background: var(--navy); color: #fff; font-weight: 600; }
+
+/* B – Navy-Seitenleiste links */
+.opb-leiste { position: absolute; left: 0; top: 0; bottom: 0; width: 196pt; }
+.opb-leiste img.logo { position: absolute; left: 30pt; top: 40pt; width: 136pt; }
+.opb-leiste__inhalt { position: absolute; left: 30pt; right: 26pt; top: 120pt; }
+.opb-leiste .op-label { color: var(--taupe-hell); }
+.opb-person { margin-top: 14pt; }
+.opb-person .op-foto { width: 58pt; height: 58pt; border: 1.5pt solid rgba(255,255,255,.25); }
+.opb-person b { display: block; margin-top: 7pt; font-family: Lora, Georgia, serif; font-size: 12pt; font-weight: 600; color: #fff; }
+.opb-person span { display: block; font-size: 7.4pt; color: var(--taupe-hell); }
+.opb-person p { margin-top: 5pt; font-size: 7.2pt; line-height: 1.55; color: rgba(255,255,255,.8); }
+.opb-prinzip { margin-top: 9pt; padding-left: 9pt; border-left: 1.5pt solid var(--taupe); }
+.opb-prinzip b { display: block; font-family: Lora, Georgia, serif; font-size: 10.5pt; color: #fff; font-weight: 600; }
+.opb-prinzip span { font-size: 7.2pt; color: rgba(255,255,255,.75); }
+.opb-leiste__fuss { position: absolute; left: 30pt; right: 26pt; bottom: 30pt; font-size: 7.2pt; line-height: 1.6; color: rgba(255,255,255,.75); }
+.opb-leiste__fuss b { color: #fff; font-weight: 600; }
+.opb-haupt { position: absolute; left: 228pt; right: 40pt; top: 46pt; bottom: 40pt; }
+.opb-haupt h1 { margin-top: 8pt; font-size: 23pt; }
+.opb-haupt .lead { margin-top: 9pt; font-size: 8.8pt; line-height: 1.55; color: var(--tinte-2); }
+.opb-grafik { margin-top: 12pt; }
+.opb-grafik svg { width: 100%; height: 150pt; display: block; }
+.opb-liste { margin-top: 6pt; }
+.opb-liste > div { display: grid; grid-template-columns: 18pt 1fr; padding: 6pt 0; border-top: .8pt solid var(--linie); }
+.opb-liste span { font-size: 7pt; font-weight: 600; color: var(--taupe); padding-top: 2pt; }
+.opb-liste h3 { font-family: Lora, Georgia, serif; font-size: 10.2pt; font-weight: 600; color: var(--tinte); line-height: 1.2; }
+.opb-liste p { font-size: 7.6pt; line-height: 1.4; color: var(--tinte-2); }
+.opb-ergebnis { margin-top: 12pt; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10pt; }
+.opb-ergebnis > div { padding: 9pt 10pt 10pt; border-radius: 6pt; background: var(--sand); }
+.opb-ergebnis span { font-size: 6.6pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blau); }
+.opb-ergebnis h3 { margin-top: 3pt; font-family: Lora, Georgia, serif; font-size: 10pt; font-weight: 600; color: var(--tinte); }
+.opb-ergebnis p { margin-top: 3pt; font-size: 7.2pt; line-height: 1.45; color: var(--tinte-2); }
+
+.opb-schritte { margin-top: 14pt; display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 10pt; }
+.opb-schritte > div { padding-top: 7pt; border-top: 1.2pt solid var(--blau); }
+.opb-schritte span { font-size: 6.6pt; font-weight: 600; letter-spacing: .14em; color: var(--blau); }
+.opb-schritte h3 { margin-top: 2pt; font-family: Lora, Georgia, serif; font-size: 9.4pt; font-weight: 600; color: var(--tinte); line-height: 1.2; }
+.opb-schritte p { margin-top: 3pt; font-size: 7pt; line-height: 1.45; color: var(--tinte-2); }
+/* C – Grafik als Bühne */
+.opc-kopf { position: absolute; left: var(--rand); right: var(--rand); top: 40pt; display: flex; justify-content: space-between; align-items: center; }
+.opc-kopf img { width: 140pt; }
+.opc-buehne { position: absolute; left: 0; right: 0; top: 92pt; height: 236pt; background: var(--sand); }
+.opc-buehne svg { position: absolute; left: 50%; top: 8pt; width: 430pt; height: 220pt; transform: translateX(-50%); }
+.opc-titel { position: absolute; left: var(--rand); top: 350pt; width: var(--satzbreite); display: grid; grid-template-columns: 290pt 1fr; column-gap: 24pt; align-items: end; }
+.opc-titel h1 { font-size: 24pt; margin-top: 7pt; }
+.opc-titel p { font-size: 8.6pt; line-height: 1.55; color: var(--tinte-2); padding-bottom: 3pt; }
+.opc-spalten { position: absolute; left: var(--rand); top: 470pt; width: var(--satzbreite); display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 17.15pt; }
+.opc-spalten > div { padding-top: 9pt; border-top: 2pt solid var(--blau); }
+.opc-spalten > div:nth-child(2) { border-top-color: var(--taupe); }
+.opc-spalten > div:nth-child(3) { border-top-color: var(--navy); }
+.opc-spalten h2 { font-family: Lora, Georgia, serif; font-size: 12pt; font-weight: 600; color: var(--tinte); }
+.opc-spalten ul { list-style: none; margin-top: 6pt; }
+.opc-spalten li { padding: 4.5pt 0; border-bottom: .6pt solid var(--linie); font-size: 7.8pt; line-height: 1.4; color: var(--tinte-2); }
+.opc-spalten li b { display: block; font-weight: 600; color: var(--tinte); }
+.opc-wer { display: grid; grid-template-columns: 34pt 1fr; column-gap: 8pt; align-items: center; padding: 6pt 0; border-bottom: .6pt solid var(--linie); }
+.opc-wer .op-foto { width: 34pt; height: 34pt; }
+.opc-wer b { display: block; font-size: 8.4pt; font-weight: 600; color: var(--tinte); }
+.opc-wer span { font-size: 7.2pt; color: var(--taupe-dunkel); line-height: 1.35; display: block; }
+.opc-fuss { position: absolute; left: 0; right: 0; bottom: 0; height: 78pt; }
+.opc-fuss__inhalt { position: absolute; left: var(--rand); right: var(--rand); top: 22pt; display: flex; justify-content: space-between; align-items: center; }
+.opc-fuss b { font-family: Lora, Georgia, serif; font-size: 15pt; font-weight: 600; color: #fff; }
+.opc-fuss span.zeile { display: block; margin-top: 3pt; font-size: 7.8pt; color: rgba(255,255,255,.8); }
+.opc-fuss .url { height: 25pt; display: inline-flex; align-items: center; padding: 0 14pt; border-radius: 999pt; background: #fff; color: var(--navy); font-size: 8.4pt; font-weight: 600; }
+
+/* D – Editorial, wie eine Zeitungsseite */
+.opd-kopf { position: absolute; left: var(--rand); right: var(--rand); top: 38pt; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 8pt; border-bottom: 2pt solid var(--tinte); }
+.opd-kopf img { width: 150pt; }
+.opd-kopf span { font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); font-weight: 600; }
+.opd-unterzeile { position: absolute; left: var(--rand); right: var(--rand); top: 92pt; display: flex; justify-content: space-between; padding-bottom: 5pt; border-bottom: .6pt solid var(--tinte); font-size: 6.8pt; letter-spacing: .1em; text-transform: uppercase; color: var(--grau); }
+.opd-titel { position: absolute; left: var(--rand); width: var(--satzbreite); top: 118pt; }
+.opd-titel h1 { font-size: 32pt; line-height: 1.02; letter-spacing: -.01em; }
+.opd-titel .lead { margin-top: 9pt; width: 430pt; font-family: Lora, Georgia, serif; font-size: 10.5pt; line-height: 1.45; font-style: italic; color: var(--tinte-2); }
+.opd-zahlen { position: absolute; left: var(--rand); width: var(--satzbreite); top: 290pt; display: grid; grid-template-columns: repeat(3, 1fr); border-top: .6pt solid var(--tinte); border-bottom: .6pt solid var(--tinte); }
+.opd-zahlen > div { padding: 9pt 12pt 9pt 0; }
+.opd-zahlen > div + div { padding-left: 12pt; border-left: .6pt solid var(--linie); }
+.opd-zahlen b { display: block; font-family: Lora, Georgia, serif; font-size: 22pt; font-weight: 600; color: var(--navy); line-height: 1; }
+.opd-zahlen span { display: block; margin-top: 4pt; font-size: 7.4pt; line-height: 1.35; color: var(--tinte-2); }
+.opd-spalten { position: absolute; left: var(--rand); width: var(--satzbreite); top: 364pt; display: grid; grid-template-columns: 1.15fr 1fr 1fr; column-gap: 0; }
+.opd-spalten > div { padding: 0 12pt; border-left: .6pt solid var(--linie); }
+.opd-spalten > div:first-child { padding-left: 0; border-left: 0; }
+.opd-spalten > div:last-child { padding-right: 0; }
+.opd-spalten h2 { font-family: Lora, Georgia, serif; font-size: 13pt; font-weight: 600; color: var(--tinte); line-height: 1.15; }
+.opd-spalten h2 + p { margin-top: 5pt; }
+.opd-spalten p { font-size: 7.8pt; line-height: 1.55; color: var(--tinte-2); }
+.opd-gebiet { padding: 5pt 0; border-bottom: .6pt solid var(--linie); }
+.opd-gebiet b { display: block; font-size: 8pt; font-weight: 600; color: var(--tinte); }
+.opd-gebiet span { display: block; font-size: 7.4pt; line-height: 1.4; color: var(--tinte-2); }
+.opd-zitat { margin: 8pt 0 4pt; padding: 8pt 0; border-top: 2pt solid var(--blau); border-bottom: .6pt solid var(--linie); font-family: Lora, Georgia, serif; font-size: 14pt; font-weight: 600; line-height: 1.2; color: var(--navy); }
+.opd-person { display: grid; grid-template-columns: 44pt 1fr; column-gap: 9pt; align-items: center; margin-top: 9pt; }
+.opd-person .op-foto { width: 44pt; height: 44pt; filter: grayscale(1); }
+.opd-person b { display: block; font-family: Lora, Georgia, serif; font-size: 10.5pt; color: var(--tinte); }
+.opd-person span { display: block; font-size: 7pt; color: var(--taupe-dunkel); line-height: 1.35; }
+.opd-schritt { display: grid; grid-template-columns: 16pt 1fr; padding: 5pt 0; border-bottom: .6pt solid var(--linie); }
+.opd-schritt i { font-style: normal; font-size: 7pt; font-weight: 600; color: var(--blau); padding-top: 1pt; }
+.opd-schritt b { display: block; font-size: 8pt; font-weight: 600; color: var(--tinte); }
+.opd-schritt span { display: block; font-size: 7.4pt; line-height: 1.4; color: var(--tinte-2); }
+.opd-fuss { position: absolute; left: 0; right: 0; bottom: 0; height: 56pt; }
+.opd-fuss__inhalt span { font-size: 7.6pt; }
+.opd-fuss__inhalt { position: absolute; left: var(--rand); right: var(--rand); top: 18pt; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: rgba(255,255,255,.85); }
+.opd-fuss b { white-space: nowrap; font-family: Lora, Georgia, serif; font-size: 13pt; color: #fff; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -239,70 +426,208 @@
       <div><span>03</span><h3>Themen mit Überzeugung</h3><p>Wir machen nur, woran wir glauben und was uns Spaß macht. Das merken Sie am Ergebnis.</p></div>
     </div>
   </div>
+  <div class="gaenze-grafik">
+    <svg viewBox="0 70 640 420" class="" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Zwei Linien laufen zu einer zusammen">
+<defs><pattern id="dotsg8" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.3" fill="#e3dbd2"/></pattern>
+<linearGradient id="fadeRg8" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".15" stop-color="#fff" stop-opacity="1"/><stop offset=".85" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="dmg8"><rect width="640" height="560" fill="url(#fadeRg8)"/></mask></defs>
+<rect width="640" height="560" fill="url(#dotsg8)" mask="url(#dmg8)"/>
+<path d="M40 113 C 230 113, 250 272.5, 380 276.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 393 C 230 393, 250 272.5, 380 276.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 122 C 230 122, 250 275.0, 380 277.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 402 C 230 402, 250 275.0, 380 277.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 131 C 230 131, 250 277.5, 380 278.8" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 411 C 230 411, 250 277.5, 380 278.8" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 140 C 230 140, 250 280.0, 380 280.0" fill="none" stroke="#082638" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
+<path d="M40 420 C 230 420, 250 280.0, 380 280.0" fill="none" stroke="#998675" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
+<path d="M40 149 C 230 149, 250 282.5, 380 281.2" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 429 C 230 429, 250 282.5, 380 281.2" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 158 C 230 158, 250 285.0, 380 282.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 438 C 230 438, 250 285.0, 380 282.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 167 C 230 167, 250 287.5, 380 283.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 447 C 230 447, 250 287.5, 380 283.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<line x1="380" y1="280" x2="560" y2="280" stroke="#185e8a" stroke-width="9" stroke-linecap="round"/>
+<line x1="380" y1="266" x2="540" y2="266" stroke="#185e8a" stroke-width="1" opacity=".3"/>
+<line x1="380" y1="294" x2="540" y2="294" stroke="#185e8a" stroke-width="1" opacity=".3"/>
+<circle cx="40" cy="140" r="7" fill="#fff" stroke="#082638" stroke-width="2.5"/><circle cx="40" cy="420" r="7" fill="#fff" stroke="#998675" stroke-width="2.5"/>
+<g font-family="Poppins, sans-serif" font-size="10" letter-spacing="1.1" font-weight="600"><text x="40" y="110" fill="#082638">GOVERNANCE · GREMIEN · RISIKO</text><text x="40" y="460" fill="#7a6757">STRATEGIE · FÜHRUNG · VERTRIEB</text></g>
+<circle cx="380" cy="280" r="34" fill="#fff" stroke="#e5ddd4" stroke-width="1.5"/>
+<circle cx="380" cy="280" r="46" fill="none" stroke="#e5ddd4" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="380" y="295" text-anchor="middle" font-family="Lora, serif" font-size="42" font-weight="600" fill="#998675">&amp;</text>
+<circle cx="578" cy="280" r="18" fill="#185e8a"/><path d="M570 280 h14 M578 273 l7 7 -7 7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="578" y="330" text-anchor="middle" font-family="Lora, serif" font-size="17" font-weight="600" fill="#082638">Ergebnis</text>
+</svg>
+    <div class="gaenze-grafik__text"><b>Zwei Perspektiven. Ein Ergebnis<span class="punkt">.</span></b>
+      <p>Governance, Gremien und Risiko auf der einen Seite, Strategie, Führung und Vertrieb auf der anderen – in Ihrem Projekt laufen beide zusammen.</p></div>
+  </div>
   <div class="fuss"><span>Müller &amp; Ströbel · Was wir tun und wofür wir stehen</span><span>Seite 8 / 9</span></div>
 </section>
-<!-- =========================== Seite 8: Kontakt =========================== -->
+<!-- =========================== Seite 9: Kontakt / Abschluss =========================== -->
 <section class="seite">
   <div class="kopf">
     <div class="kopf__logo"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"></div>
     <div class="kopf__marke">Kontakt</div>
   </div>
-
-  <div class="inhalt">
+  <div class="ab-oben">
     <p class="kicker">Ihr Kontakt</p>
     <h1 class="titel">Sprechen wir über Ihr Thema<span class="punkt">.</span></h1>
-    <p class="vorspann">Erzählen Sie uns, was ansteht. Wir sagen Ihnen offen, ob und wie wir es
+    <p class="vorspann" style="width:420pt">Erzählen Sie uns, was ansteht. Wir sagen Ihnen offen, ob und wie wir es
       gemeinsam mit Ihnen umsetzen.</p>
-
-    <div class="personen">
-      <div class="person">
-        <div class="person__kreis"><img src="../assets/tobias-kreis.webp" alt=""></div>
-        <div>
-          <p class="person__name">Tobias Müller</p>
-          <p class="person__rolle">Governance, Gremien &amp; Risiko</p>
-          <p class="person__zeile">tobias@muellerundstroebel.de<br>+49 176 2152 9798</p>
-        </div>
-      </div>
-      <div class="person">
-        <div class="person__kreis"><img src="../assets/daniel-kreis.webp" alt=""></div>
-        <div>
-          <p class="person__name">Daniel Ströbel</p>
-          <p class="person__rolle">Strategie, Führung &amp; Vertrieb</p>
-          <p class="person__zeile">daniel@muellerundstroebel.de<br>+49 176 3134 7217</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="drei">
-      <div><h3>Umsetzen</h3>
-        <p>Wir bleiben, bis das Ergebnis steht.</p></div>
-      <div><h3>Sofort</h3>
-        <p>Wir müssen nicht abgeholt werden.</p></div>
-      <div><h3>Überzeugt</h3>
-        <p>Wir machen nur, woran wir glauben.</p></div>
-    </div>
-
-    <div class="aufruf">
-      <div class="aufruf__knopf">
-        <b>Gespräch anfragen</b>
-        <span>Direkt mit uns beiden – ohne Vertriebsschleife.</span>
-      </div>
-      <p class="aufruf__url">www.muellerundstroebel.de</p>
-    </div>
   </div>
-
-  <div class="impressum-linie"></div>
-  <div class="impressum">
-    <div><p class="label label--klein">Impressum</p>
-      <p>empiria GmbH<br>Kapellengasse 6<br>74564 Crailsheim</p></div>
-    <div><p class="label label--klein">Register</p>
-      <p>Handelsregister: HRB 750146<br>Registergericht: Amtsgericht Ulm<br>Vertreten durch: Daniel Ströbel</p></div>
-    <div><p class="label label--klein">Kontakt</p>
-      <p>daniel@muellerundstroebel.de<br>USt-IdNr.: DE 281217286<br>www.muellerundstroebel.de</p></div>
+  <div class="ab-personen">
+    <div class="ab-person"><div class="ab-person__bild"><img src="../assets/tobias-kreis.webp" alt=""></div>
+      <div><p class="ab-person__name">Tobias Müller</p><p class="ab-person__rolle">Governance, Gremien &amp; Risiko</p>
+        <p class="ab-person__kontakt">tobias@muellerundstroebel.de<br>+49 176 2152 9798</p></div></div>
+    <div class="ab-person"><div class="ab-person__bild"><img src="../assets/daniel-kreis.webp" alt=""></div>
+      <div><p class="ab-person__name">Daniel Ströbel</p><p class="ab-person__rolle">Strategie, Führung &amp; Vertrieb</p>
+        <p class="ab-person__kontakt">daniel@muellerundstroebel.de<br>+49 176 3134 7217</p></div></div>
   </div>
-
-  <div class="fuss"><span>Müller &amp; Ströbel · Stand: Oktober 2026</span><span>Seite 9 / 9</span></div>
+  <div class="ab-drei">
+    <div><h3>Umsetzen</h3><p>Wir bleiben, bis das Ergebnis steht.</p></div>
+    <div><h3>Sofort</h3><p>Wir müssen nicht abgeholt werden.</p></div>
+    <div><h3>Überzeugt</h3><p>Wir machen nur, woran wir glauben.</p></div>
+  </div>
+  <div class="ab-balken">
+    <div class="ab-balken__grafik"><img src="bausteine/ampersand-konstruktion.svg" alt=""></div>
+    <div class="ab-aufruf">
+      <p class="kicker">Gespräch anfragen</p>
+      <p class="ab-aufruf__titel">Direkt mit uns beiden<span class="punkt">.</span></p>
+      <p class="ab-aufruf__text">Ohne Vertriebsschleife – kurze Wege statt langer Abstimmungsrunden.</p>
+      <span class="ab-aufruf__url">www.muellerundstroebel.de</span>
+    </div>
+    <div class="ab-linie"></div>
+    <div class="ab-impressum">
+      <div><p class="label">Impressum</p><p>empiria GmbH<br>Kapellengasse 6<br>74564 Crailsheim</p></div>
+      <div><p class="label">Register</p><p>Handelsregister: HRB 750146<br>Registergericht: Amtsgericht Ulm<br>Vertreten durch: Daniel Ströbel</p></div>
+      <div><p class="label">Kontakt</p><p>daniel@muellerundstroebel.de<br>USt-IdNr.: DE 281217286<br>www.muellerundstroebel.de</p></div>
+    </div>
+    <div class="fuss"><span>Müller &amp; Ströbel · Stand: Oktober 2026</span><span>Seite 9 / 9</span></div>
+  </div>
 </section>
+
+<!-- ========================= One-Pager · Variante A ========================= -->
+<section class="seite"><div class="op">
+  <div class="opa-kopf op-navy">
+    <span class="op-variante">One-Pager · Variante A</span>
+    <img class="logo" src="bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel">
+    <div class="opa-kopf__amp"><img src="bausteine/ampersand-konstruktion.svg" alt="" style="width:100%;height:100%"></div>
+    <div class="opa-kopf__text"><p class="kicker">Für Versicherungsunternehmen</p><h1>Komplexe Situationen strukturieren, entscheiden &amp;&nbsp;umsetzen<span class="punkt">.</span></h1><p class="lead">Wir kennen das Geschäftsmodell Versicherung von innen – von der Strategie über Kennzahlen und Gremien bis in den Vertrieb. Deshalb brauchen wir keine Einarbeitung und liefern ab dem ersten Termin.</p>
+      <div class="pills"><span class="op-pill">Umsetzen</span><span class="op-pill">Sofort</span><span class="op-pill">Überzeugt</span></div></div>
+  </div>
+  <div class="opa-felder"><p class="op-label">Hier setzen wir an</p><div class="opa-raster"><div><span>01</span><h3>Strategie &amp; Geschäftsmodell</h3><p>Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</p></div><div><span>02</span><h3>Kennzahlen &amp; Steuerung</h3><p>Wenn Zahlen da sind, aber nicht steuern.</p></div><div><span>03</span><h3>Entscheidungen &amp; Gremien</h3><p>Wenn Themen seit Monaten „in Bearbeitung“ sind.</p></div><div><span>04</span><h3>Vertrieb &amp; Wachstum</h3><p>Wenn Potenziale im Markt liegen bleiben.</p></div><div><span>05</span><h3>KI-Transformation</h3><p>Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</p></div><div><span>06</span><h3>Resilienz</h3><p>Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</p></div></div></div>
+  <div class="opa-weg"><p class="op-label">Vom ersten Termin bis zum Ergebnis</p><div class="opa-schritte"><div><i></i><h3>Verstehen</h3><p>Wir steigen ohne Anlaufzeit ein, weil wir das Geschäftsmodell kennen.</p></div><div><i></i><h3>Entscheidbar machen</h3><p>Wir bereiten Entscheidungen so vor, dass Vorstand und Gremien entscheiden können.</p></div><div><i></i><h3>Umsetzen</h3><p>Wir setzen gemeinsam mit Ihren Teams um – operativ, nicht nur begleitend.</p></div><div><i></i><h3>Ergebnis sichern</h3><p>Wir machen die Wirkung an Kennzahlen fest und halten nach.</p></div></div></div>
+  <div class="opa-wer"><div class="opa-person"><div class="op-foto"><img src="../assets/tobias-kreis.webp" alt=""></div><div><b>Tobias Müller</b><span>Governance, Gremien &amp; Risiko</span><p>Aus der Rückversicherung (SCOR, Hannover Re), über zwölf Jahre eigene Beratung für Versicherer. Mitglied in zwei Aufsichtsräten.</p><em>tobias@muellerundstroebel.de<br>+49 176 2152 9798</em></div></div><div class="opa-person"><div class="op-foto"><img src="../assets/daniel-kreis.webp" alt=""></div><div><b>Daniel Ströbel</b><span>Strategie, Führung &amp; Vertrieb</span><p>Konzernstrategie und Risikomanagement bei der SV SparkassenVersicherung, seit 2012 Geschäftsführer der empiria GmbH. Über 300 Projekte für die Versicherungsbranche.</p><em>daniel@muellerundstroebel.de<br>+49 176 3134 7217</em></div></div></div>
+  <div class="opa-band"><div><b>Gespräch anfragen<span class="punkt">.</span></b><br><span>Direkt mit uns beiden – ohne Vertriebsschleife.</span></div><span class="url">www.muellerundstroebel.de</span></div>
+  <div class="op-fuss"><span>Müller &amp; Ströbel · Für Versicherungsunternehmen</span><span>www.muellerundstroebel.de</span></div>
+</div></section>
+<!-- ========================= One-Pager · Variante B ========================= -->
+<section class="seite"><div class="op">
+  <div class="opb-leiste op-navy">
+    <img class="logo" src="bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel">
+    <div class="opb-leiste__inhalt"><p class="op-label">Ihre Ansprechpartner</p><div class="opb-person"><div class="op-foto"><img src="../assets/tobias-kreis.webp" alt=""></div><b>Tobias Müller</b><span>Governance, Gremien &amp; Risiko</span><p>Aus der Rückversicherung (SCOR, Hannover Re), über zwölf Jahre eigene Beratung für Versicherer. Mitglied in zwei Aufsichtsräten.</p></div><div class="opb-person"><div class="op-foto"><img src="../assets/daniel-kreis.webp" alt=""></div><b>Daniel Ströbel</b><span>Strategie, Führung &amp; Vertrieb</span><p>Konzernstrategie und Risikomanagement bei der SV SparkassenVersicherung, seit 2012 Geschäftsführer der empiria GmbH. Über 300 Projekte für die Versicherungsbranche.</p></div>
+      <p class="op-label" style="margin-top:20pt">Wofür wir stehen</p>
+      <div class="opb-prinzip"><b>Umsetzen</b><span>Wir bleiben, bis das Ergebnis steht.</span></div>
+      <div class="opb-prinzip"><b>Sofort</b><span>Wir müssen nicht abgeholt werden.</span></div>
+      <div class="opb-prinzip"><b>Überzeugt</b><span>Wir machen nur, woran wir glauben.</span></div></div>
+    <div class="opb-leiste__fuss"><b>Gespräch anfragen</b><br>tobias@muellerundstroebel.de<br>daniel@muellerundstroebel.de<br>www.muellerundstroebel.de</div>
+  </div>
+  <div class="opb-haupt">
+    <span class="op-variante" style="right:0;top:-24pt">One-Pager · Variante B</span>
+    <p class="kicker">Für Versicherungsunternehmen</p><h1 class="op-h">Komplexe Situationen strukturieren, entscheiden &amp;&nbsp;umsetzen<span class="punkt">.</span></h1><p class="lead">Wir kennen das Geschäftsmodell Versicherung von innen – von der Strategie über Kennzahlen und Gremien bis in den Vertrieb. Deshalb brauchen wir keine Einarbeitung und liefern ab dem ersten Termin.</p>
+    <div class="opb-grafik"><svg viewBox="20 80 600 410" class="" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Zwei Linien laufen zu einer zusammen">
+<defs><pattern id="dotsgB" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.3" fill="#e3dbd2"/></pattern>
+<linearGradient id="fadeRgB" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".15" stop-color="#fff" stop-opacity="1"/><stop offset=".85" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="dmgB"><rect width="640" height="560" fill="url(#fadeRgB)"/></mask></defs>
+<rect width="640" height="560" fill="url(#dotsgB)" mask="url(#dmgB)"/>
+<path d="M40 113 C 230 113, 250 272.5, 380 276.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 393 C 230 393, 250 272.5, 380 276.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 122 C 230 122, 250 275.0, 380 277.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 402 C 230 402, 250 275.0, 380 277.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 131 C 230 131, 250 277.5, 380 278.8" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 411 C 230 411, 250 277.5, 380 278.8" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 140 C 230 140, 250 280.0, 380 280.0" fill="none" stroke="#082638" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
+<path d="M40 420 C 230 420, 250 280.0, 380 280.0" fill="none" stroke="#998675" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
+<path d="M40 149 C 230 149, 250 282.5, 380 281.2" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 429 C 230 429, 250 282.5, 380 281.2" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 158 C 230 158, 250 285.0, 380 282.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 438 C 230 438, 250 285.0, 380 282.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 167 C 230 167, 250 287.5, 380 283.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 447 C 230 447, 250 287.5, 380 283.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<line x1="380" y1="280" x2="560" y2="280" stroke="#185e8a" stroke-width="9" stroke-linecap="round"/>
+<line x1="380" y1="266" x2="540" y2="266" stroke="#185e8a" stroke-width="1" opacity=".3"/>
+<line x1="380" y1="294" x2="540" y2="294" stroke="#185e8a" stroke-width="1" opacity=".3"/>
+<circle cx="40" cy="140" r="7" fill="#fff" stroke="#082638" stroke-width="2.5"/><circle cx="40" cy="420" r="7" fill="#fff" stroke="#998675" stroke-width="2.5"/>
+<g font-family="Poppins, sans-serif" font-size="10" letter-spacing="1.1" font-weight="600"><text x="40" y="110" fill="#082638">GOVERNANCE · GREMIEN · RISIKO</text><text x="40" y="460" fill="#7a6757">STRATEGIE · FÜHRUNG · VERTRIEB</text></g>
+<circle cx="380" cy="280" r="34" fill="#fff" stroke="#e5ddd4" stroke-width="1.5"/>
+<circle cx="380" cy="280" r="46" fill="none" stroke="#e5ddd4" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="380" y="295" text-anchor="middle" font-family="Lora, serif" font-size="42" font-weight="600" fill="#998675">&amp;</text>
+<circle cx="578" cy="280" r="18" fill="#185e8a"/><path d="M570 280 h14 M578 273 l7 7 -7 7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="578" y="330" text-anchor="middle" font-family="Lora, serif" font-size="17" font-weight="600" fill="#082638">Ergebnis</text>
+</svg></div>
+    <p class="op-label" style="margin-top:4pt">Hier setzen wir an</p>
+    <div class="opb-liste"><div><span>01</span><div><h3>Strategie &amp; Geschäftsmodell</h3><p>Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</p></div></div><div><span>02</span><div><h3>Kennzahlen &amp; Steuerung</h3><p>Wenn Zahlen da sind, aber nicht steuern.</p></div></div><div><span>03</span><div><h3>Entscheidungen &amp; Gremien</h3><p>Wenn Themen seit Monaten „in Bearbeitung“ sind.</p></div></div><div><span>04</span><div><h3>Vertrieb &amp; Wachstum</h3><p>Wenn Potenziale im Markt liegen bleiben.</p></div></div><div><span>05</span><div><h3>KI-Transformation</h3><p>Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</p></div></div><div><span>06</span><div><h3>Resilienz</h3><p>Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</p></div></div></div>
+    <div class="opb-ergebnis"><div><span>Struktur</span><h3>Unser Handwerk</h3><p>Komplexe Themen strukturieren und entscheidbar machen.</p></div><div><span>Klarheit</span><h3>Ihr Erfolg</h3><p>Fokus auf die Interessen der Stakeholder schafft Entscheidbarkeit.</p></div><div><span>Umsetzung</span><h3>Ihr Ergebnis</h3><p>Wir stehen für die anschließende Umsetzung bereit.</p></div></div>
+    <p class="op-label" style="margin-top:16pt">Vom ersten Termin bis zum Ergebnis</p><div class="opb-schritte"><div><span>01</span><h3>Verstehen</h3><p>Ohne Anlaufzeit, weil wir das Geschäftsmodell kennen.</p></div><div><span>02</span><h3>Entscheidbar machen</h3><p>Vorlagen, mit denen Vorstand und Gremien entscheiden können.</p></div><div><span>03</span><h3>Umsetzen</h3><p>Gemeinsam mit Ihren Teams – operativ, nicht nur begleitend.</p></div><div><span>04</span><h3>Ergebnis sichern</h3><p>Wirkung an Kennzahlen festmachen und nachhalten.</p></div></div>
+  </div>
+</div></section>
+<!-- ========================= One-Pager · Variante C ========================= -->
+<section class="seite"><div class="op">
+  <div class="opc-kopf"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"><span class="op-label">Für Versicherungsunternehmen</span></div>
+  <span class="op-variante">One-Pager · Variante C</span>
+  <div class="opc-buehne"><svg viewBox="20 80 600 410" class="" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Zwei Linien laufen zu einer zusammen">
+<defs><pattern id="dotsgC" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.3" fill="#e3dbd2"/></pattern>
+<linearGradient id="fadeRgC" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".15" stop-color="#fff" stop-opacity="1"/><stop offset=".85" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="dmgC"><rect width="640" height="560" fill="url(#fadeRgC)"/></mask></defs>
+<rect width="640" height="560" fill="url(#dotsgC)" mask="url(#dmgC)"/>
+<path d="M40 113 C 230 113, 250 272.5, 380 276.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 393 C 230 393, 250 272.5, 380 276.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 122 C 230 122, 250 275.0, 380 277.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 402 C 230 402, 250 275.0, 380 277.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 131 C 230 131, 250 277.5, 380 278.8" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 411 C 230 411, 250 277.5, 380 278.8" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 140 C 230 140, 250 280.0, 380 280.0" fill="none" stroke="#082638" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
+<path d="M40 420 C 230 420, 250 280.0, 380 280.0" fill="none" stroke="#998675" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
+<path d="M40 149 C 230 149, 250 282.5, 380 281.2" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 429 C 230 429, 250 282.5, 380 281.2" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
+<path d="M40 158 C 230 158, 250 285.0, 380 282.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 438 C 230 438, 250 285.0, 380 282.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
+<path d="M40 167 C 230 167, 250 287.5, 380 283.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<path d="M40 447 C 230 447, 250 287.5, 380 283.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
+<line x1="380" y1="280" x2="560" y2="280" stroke="#185e8a" stroke-width="9" stroke-linecap="round"/>
+<line x1="380" y1="266" x2="540" y2="266" stroke="#185e8a" stroke-width="1" opacity=".3"/>
+<line x1="380" y1="294" x2="540" y2="294" stroke="#185e8a" stroke-width="1" opacity=".3"/>
+<circle cx="40" cy="140" r="7" fill="#fff" stroke="#082638" stroke-width="2.5"/><circle cx="40" cy="420" r="7" fill="#fff" stroke="#998675" stroke-width="2.5"/>
+<g font-family="Poppins, sans-serif" font-size="10" letter-spacing="1.1" font-weight="600"><text x="40" y="110" fill="#082638">GOVERNANCE · GREMIEN · RISIKO</text><text x="40" y="460" fill="#7a6757">STRATEGIE · FÜHRUNG · VERTRIEB</text></g>
+<circle cx="380" cy="280" r="34" fill="#fff" stroke="#e5ddd4" stroke-width="1.5"/>
+<circle cx="380" cy="280" r="46" fill="none" stroke="#e5ddd4" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="380" y="295" text-anchor="middle" font-family="Lora, serif" font-size="42" font-weight="600" fill="#998675">&amp;</text>
+<circle cx="578" cy="280" r="18" fill="#185e8a"/><path d="M570 280 h14 M578 273 l7 7 -7 7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="578" y="330" text-anchor="middle" font-family="Lora, serif" font-size="17" font-weight="600" fill="#082638">Ergebnis</text>
+</svg></div>
+  <div class="opc-titel"><div><p class="kicker">Zwei Perspektiven. Ein Ergebnis.</p><h1 class="op-h">Komplexe Situationen strukturieren, entscheiden &amp;&nbsp;umsetzen<span class="punkt">.</span></h1></div><p>Wir kennen das Geschäftsmodell Versicherung von innen – von der Strategie über Kennzahlen und Gremien bis in den Vertrieb. Deshalb brauchen wir keine Einarbeitung und liefern ab dem ersten Termin.</p></div>
+  <div class="opc-spalten">
+    <div><h2>Hier setzen wir an</h2><ul><li><b>Strategie &amp; Geschäftsmodell</b>Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</li><li><b>Kennzahlen &amp; Steuerung</b>Wenn Zahlen da sind, aber nicht steuern.</li><li><b>Entscheidungen &amp; Gremien</b>Wenn Themen seit Monaten „in Bearbeitung“ sind.</li><li><b>Vertrieb &amp; Wachstum</b>Wenn Potenziale im Markt liegen bleiben.</li><li><b>KI-Transformation</b>Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</li><li><b>Resilienz</b>Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</li></ul></div>
+    <div><h2>So arbeiten wir</h2><ul><li><b>01 · Verstehen</b>Wir steigen ohne Anlaufzeit ein, weil wir das Geschäftsmodell kennen.</li><li><b>02 · Entscheidbar machen</b>Wir bereiten Entscheidungen so vor, dass Vorstand und Gremien entscheiden können.</li><li><b>03 · Umsetzen</b>Wir setzen gemeinsam mit Ihren Teams um – operativ, nicht nur begleitend.</li><li><b>04 · Ergebnis sichern</b>Wir machen die Wirkung an Kennzahlen fest und halten nach.</li></ul></div>
+    <div><h2>Wer wir sind</h2><div class="opc-wer"><div class="op-foto"><img src="../assets/tobias-kreis.webp" alt=""></div><div><b>Tobias Müller</b><span>Governance, Gremien &amp; Risiko</span></div></div><div class="opc-wer"><div class="op-foto"><img src="../assets/daniel-kreis.webp" alt=""></div><div><b>Daniel Ströbel</b><span>Strategie, Führung &amp; Vertrieb</span></div></div><ul>
+      <li><b>Umsetzen</b>Wir bleiben, bis das Ergebnis steht.</li><li><b>Sofort</b>Wir müssen nicht abgeholt werden.</li><li><b>Überzeugt</b>Wir machen nur, woran wir glauben.</li></ul></div>
+  </div>
+  <div class="opc-fuss op-navy"><div class="opc-fuss__inhalt"><div><b>Gespräch anfragen<span class="punkt">.</span></b><span class="zeile">tobias@muellerundstroebel.de · daniel@muellerundstroebel.de</span></div><span class="url">www.muellerundstroebel.de</span></div></div>
+</div></section>
+<!-- ========================= One-Pager · Variante D ========================= -->
+<section class="seite"><div class="op">
+  <span class="op-variante" style="top:16pt">One-Pager · Variante D</span>
+  <div class="opd-kopf"><img src="../assets/logo.svg" alt="Müller &amp; Ströbel"><span>Für Versicherungsunternehmen</span></div>
+  <div class="opd-unterzeile"><span>Strategie · Kennzahlen · Gremien · Vertrieb</span><span>Stand Oktober 2026</span></div>
+  <div class="opd-titel"><h1 class="op-h">Komplexe Situationen strukturieren, entscheiden &amp;&nbsp;umsetzen<span class="punkt">.</span></h1><p class="lead">Wir kennen das Geschäftsmodell Versicherung von innen – von der Strategie über Kennzahlen und Gremien bis in den Vertrieb. Deshalb brauchen wir keine Einarbeitung und liefern ab dem ersten Termin.</p></div>
+  <div class="opd-zahlen"><div><b>300+</b><span>Projekte für die Versicherungsbranche</span></div><div><b>2</b><span>Aufsichtsratsmandate in Versicherungsunternehmen</span></div><div><b>0</b><span>Tage Einarbeitung – wir liefern ab dem ersten Termin</span></div></div>
+  <div class="opd-spalten">
+    <div><h2>Hier setzen wir an<span class="punkt">.</span></h2><p>Wir werden eingebunden, wenn Zusammenhänge unklar sind und ein Thema nicht voran kommt.</p><div class="opd-gebiet"><b>Strategie &amp; Geschäftsmodell</b><span>Wenn die Richtung klar sein muss – und im Alltag ankommen soll.</span></div><div class="opd-gebiet"><b>Kennzahlen &amp; Steuerung</b><span>Wenn Zahlen da sind, aber nicht steuern.</span></div><div class="opd-gebiet"><b>Entscheidungen &amp; Gremien</b><span>Wenn Themen seit Monaten „in Bearbeitung“ sind.</span></div><div class="opd-gebiet"><b>Vertrieb &amp; Wachstum</b><span>Wenn Potenziale im Markt liegen bleiben.</span></div><div class="opd-gebiet"><b>KI-Transformation</b><span>Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</span></div><div class="opd-gebiet"><b>Resilienz</b><span>Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</span></div></div>
+    <div><h2>Nur das Ergebnis zählt<span class="punkt">.</span></h2><p>Wir unterstützen Führungskräfte, komplexe Themen zu strukturieren und entscheidbar zu machen – und bleiben für die Umsetzung.</p>
+      <p class="opd-zitat">„Wir müssen nicht abgeholt werden.“</p><div class="opd-schritt"><i>01</i><div><b>Verstehen</b><span>Wir steigen ohne Anlaufzeit ein, weil wir das Geschäftsmodell kennen.</span></div></div><div class="opd-schritt"><i>02</i><div><b>Entscheidbar machen</b><span>Wir bereiten Entscheidungen so vor, dass Vorstand und Gremien entscheiden können.</span></div></div><div class="opd-schritt"><i>03</i><div><b>Umsetzen</b><span>Wir setzen gemeinsam mit Ihren Teams um – operativ, nicht nur begleitend.</span></div></div><div class="opd-schritt"><i>04</i><div><b>Ergebnis sichern</b><span>Wir machen die Wirkung an Kennzahlen fest und halten nach.</span></div></div></div>
+    <div><h2>Wer wir sind<span class="punkt">.</span></h2><p>Zwei Partner, die sich ergänzen – im Projekt arbeiten wir beide selbst mit.</p><div class="opd-person"><div class="op-foto"><img src="../assets/tobias-kreis.webp" alt=""></div><div><b>Tobias Müller</b><span>Governance, Gremien &amp; Risiko</span></div></div><p style="margin-top:5pt">Aus der Rückversicherung (SCOR, Hannover Re), über zwölf Jahre eigene Beratung für Versicherer. Mitglied in zwei Aufsichtsräten.</p><div class="opd-person"><div class="op-foto"><img src="../assets/daniel-kreis.webp" alt=""></div><div><b>Daniel Ströbel</b><span>Strategie, Führung &amp; Vertrieb</span></div></div><p style="margin-top:5pt">Konzernstrategie und Risikomanagement bei der SV SparkassenVersicherung, seit 2012 Geschäftsführer der empiria GmbH. Über 300 Projekte für die Versicherungsbranche.</p></div>
+  </div>
+  <div class="opd-fuss op-navy"><div class="opd-fuss__inhalt"><b>Gespräch anfragen<span class="punkt">.</span></b><span>tobias@muellerundstroebel.de · daniel@muellerundstroebel.de · www.muellerundstroebel.de</span></div></div>
+</div></section>
 
 </body>
 </html>
