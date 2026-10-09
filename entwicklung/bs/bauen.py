@@ -288,7 +288,6 @@ def vcard(key):
 
 
 def main():
-    (ZIEL / "business-story.html").write_text(startseite(), encoding="utf-8")
     (ZIEL / "bs-ueber-uns.html").write_text(ueber_uns(), encoding="utf-8")
     for k in PERSONEN:
         (ZIEL / f"bs-steckbrief-{k}.html").write_text(steckbrief(k), encoding="utf-8")

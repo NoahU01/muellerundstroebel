@@ -1,0 +1,177 @@
+/* Müller & Ströbel – Business Story, Neustart. Nur CD-Schriften und -Farben; alles andere neu. */
+.nb { --navy: #082638; --blau: #185e8a; --taupe: #998675; --taupe-d: #7a6757; --taupe-h: #cbbcae; --sand: #f6f3ef; --sand-2: #ebe4dc;
+  --linie: #e6ded5; --ink: #16222b; --ink-2: #44505a; --serif: Lora, Georgia, serif; --sans: Poppins, Arial, sans-serif;
+  font-family: var(--sans); color: var(--ink); font-size: 16px; line-height: 1.6; }
+.nb *, .nb *::before, .nb *::after { box-sizing: border-box; }
+:where(.nb) :where(h1, h2, h3, p, ul, ol, figure, blockquote) { margin: 0; padding: 0; }
+.nb ul, .nb ol { list-style: none; }
+.nb-wrap { width: 100%; max-width: 76rem; margin: 0 auto; padding: 0 2.5rem; }
+.nb-sek { padding: 7rem 0; }
+.nb-sand { background: var(--sand); }
+.nb-navy { background: var(--navy); color: #fff; }
+.nb-zwei { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 5rem; align-items: center; }
+.nb-kopf { max-width: 46rem; }
+
+/* Typografie */
+.nb h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.5rem, 4.6vw, 4.1rem); line-height: 1.08; letter-spacing: -.02em; color: var(--navy); }
+.nb h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 3.4vw, 2.9rem); line-height: 1.12; letter-spacing: -.015em; color: var(--navy); }
+.nb-navy h2 { color: #fff; }
+.nb h3 { font-family: var(--serif); font-weight: 500; }
+.nb-kicker { margin-bottom: 1.2rem !important; font-size: .74rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-d); }
+.nb-kicker--hell { color: var(--taupe-h); }
+.nb-lead { margin-top: 1.6rem !important; max-width: 32rem; font-size: 1.15rem; line-height: 1.65; color: var(--ink-2); }
+.nb-text { margin-top: 1.4rem !important; max-width: 36rem; font-size: 1.04rem; line-height: 1.75; color: var(--ink-2); }
+.nb-text--hell { color: rgba(255,255,255,.75); }
+
+/* Knöpfe */
+.nb-knoepfe { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.6rem; }
+.nb-knopf { display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.5rem; border-radius: 999px; background: var(--navy); color: #fff; font-weight: 600; font-size: .98rem; text-decoration: none; transition: background .15s ease; }
+.nb-knopf:hover { background: var(--blau); }
+.nb-knopf svg { width: 1rem; height: 1rem; }
+.nb-knopf--leise { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--linie); }
+.nb-knopf--leise:hover { background: var(--sand); }
+
+/* Kopf: Text links, die beiden Partner mit dem „&“ dazwischen */
+.nb-held { padding: 5rem 0 6rem; }
+.nb-held__raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+.nb-paar { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: end; padding-top: 2rem; }
+.nb-paar figure { position: relative; z-index: 1; }
+.nb-paar img { display: block; width: 112%; max-width: none; height: auto; margin: 0 -6%; filter: drop-shadow(0 18px 24px rgba(8,38,56,.10)); }
+.nb-paar::before { content: ""; position: absolute; left: 0; right: 0; bottom: 3.6rem; height: 72%; border-radius: 2rem; background: var(--sand-2); }
+.nb-paar__und { position: absolute; z-index: 0; left: 50%; top: 4%; transform: translateX(-50%); font-family: var(--serif); font-size: clamp(9rem, 18vw, 15rem); line-height: 1; color: #fff; opacity: .9; }
+.nb-paar figcaption { padding: 1rem .2rem 0; text-align: center; font-size: .82rem; color: var(--taupe-d); }
+.nb-paar figcaption b { display: block; font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--navy); }
+
+/* Kennen Sie das? */
+.nb-tisch { padding: 1.6rem 1.8rem 1.4rem; border-radius: 1.4rem; background: #fff; box-shadow: 0 30px 60px -30px rgba(8,38,56,.25); transform: rotate(-1.2deg); }
+.nb-tisch__kopf { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--linie); font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
+.nb-tisch__kopf b { padding: .25rem .7rem; border-radius: 999px; background: var(--navy); color: #fff; letter-spacing: .04em; }
+.nb-tisch li { display: flex; align-items: center; gap: .9rem; padding: .78rem 0; border-bottom: 1px solid var(--linie); font-size: .98rem; color: var(--ink); }
+.nb-tisch li:last-child { border-bottom: 0; }
+.nb-tisch i { flex: none; width: 1.1rem; height: 1.1rem; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--taupe-h); }
+.nb-ebenen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; margin-top: 5rem; padding-top: 2.5rem; border-top: 1px solid var(--linie); }
+.nb-ebenen p { font-family: var(--serif); font-size: 1.22rem; line-height: 1.5; color: var(--navy); }
+.nb-ebenen cite { display: block; margin-top: 1rem; font-style: normal; font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.nb-schluss { margin-top: 3rem !important; font-family: var(--serif); font-size: 1.5rem; color: var(--navy); }
+
+/* Vergleich */
+.nb-vergleich { margin-top: 4rem; }
+.nb-vergleich__kopf, .nb-vergleich__zeile { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); align-items: center; }
+.nb-vergleich__kopf span { padding: 1.2rem .5rem; text-align: center; font-size: .84rem; font-weight: 600; color: var(--ink-2); hyphens: manual; }
+.nb-vergleich__zeile { border-top: 1px solid var(--linie); }
+.nb-vergleich__zeile > span { display: grid; place-items: center; padding: 1.15rem .5rem; }
+.nb-vergleich__zeile > span:first-child { place-items: center start; font-family: var(--serif); font-size: 1.2rem; color: var(--navy); }
+.nb-vergleich .nb-wir { background: var(--navy); color: #fff; }
+.nb-vergleich__kopf .nb-wir { border-radius: 1rem 1rem 0 0; color: #fff; font-family: var(--serif); font-size: 1.05rem; font-weight: 500; }
+.nb-vergleich__kopf .nb-wir i { font-style: normal; color: var(--taupe-h); }
+.nb-vergleich__zeile:last-child .nb-wir { border-radius: 0 0 1rem 1rem; }
+.nb-vergleich__zeile .nb-wir { border-top: 1px solid rgba(255,255,255,.12); }
+.nb-vergleich svg { width: 1.6rem; height: 1.6rem; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.nb-vergleich svg[aria-label="ja"] circle { fill: var(--navy); stroke: none; } .nb-vergleich svg[aria-label="ja"] path { stroke: #fff; }
+.nb-vergleich svg[aria-label="nein"] circle { stroke: var(--linie); } .nb-vergleich svg[aria-label="nein"] path { stroke: #c7bdb2; }
+.nb-wir svg[aria-label="ja"] circle { fill: var(--taupe-h); } .nb-wir svg[aria-label="ja"] path { stroke: var(--navy); }
+
+/* So lösen wir es */
+.nb-drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 4.5rem; }
+.nb-drei li { padding: 0 2.5rem; border-left: 1px solid rgba(255,255,255,.15); }
+.nb-drei li:first-child { padding-left: 0; border-left: 0; }
+.nb-drei span { font-size: .8rem; font-weight: 600; letter-spacing: .14em; color: var(--taupe-h); }
+.nb-drei h3 { margin-top: 1rem; font-size: clamp(2rem, 3vw, 2.6rem); color: #fff; }
+.nb-drei p { margin-top: 1.2rem; font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,.75); }
+
+/* So gehen wir vor */
+.nb-weg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-top: 4rem; counter-reset: w; }
+.nb-weg li { counter-increment: w; position: relative; padding-top: 3.4rem; }
+.nb-weg li::before { content: counter(w); position: absolute; top: 0; left: 0; z-index: 1; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--sand-2); font-family: var(--serif); font-size: 1.1rem; color: var(--navy); }
+.nb-weg li:last-child::before { background: var(--navy); color: #fff; }
+.nb-weg li::after { content: ""; position: absolute; top: 1.2rem; left: 2.4rem; right: -2rem; height: 1px; background: var(--linie); }
+.nb-weg li:last-child::after { display: none; }
+.nb-weg b { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; color: var(--navy); }
+.nb-weg p { margin-top: .6rem; color: var(--ink-2); line-height: 1.65; }
+.nb-alltag { margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--linie); }
+.nb-alltag p:last-child { max-width: 54rem; font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.45; color: var(--ink-2); }
+.nb-alltag b { font-weight: 500; color: var(--navy); }
+
+/* Zitat */
+.nb-zitat { max-width: 60rem; text-align: center; }
+.nb-zitat blockquote p { font-family: var(--serif); font-size: clamp(1.25rem, 2vw, 1.55rem); line-height: 1.55; color: var(--navy); }
+.nb-zitat blockquote p + p { margin-top: 1.4rem; }
+.nb-zitat__wer { display: inline-flex; align-items: center; gap: 1rem; margin-top: 2.6rem !important; text-align: left; font-size: .9rem; color: var(--ink-2); }
+.nb-zitat__wer img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: var(--sand-2); }
+.nb-zitat__wer b { display: block; color: var(--navy); }
+
+/* Netzwerk */
+.nb-netz { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
+.nb-netz li { display: flex; align-items: center; gap: .9rem; padding: 1.05rem 0; border-bottom: 1px solid var(--linie); font-family: var(--serif); font-size: 1.2rem; color: var(--navy); }
+.nb-netz li::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--taupe); }
+
+/* Partner */
+.nb-partner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; }
+.nb-partner article { display: grid; grid-template-columns: 15rem 1fr; gap: 2rem; align-items: start; }
+.nb-partner__bild { aspect-ratio: 1; border-radius: 1.4rem; overflow: hidden; background: var(--sand-2); }
+.nb-partner__bild img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.nb-partner h3 { font-size: 1.7rem; color: var(--navy); }
+.nb-rolle { margin-top: .3rem !important; font-size: .9rem; color: var(--taupe-d); }
+.nb-partner .nb-text { margin-top: 1rem !important; font-size: .97rem; }
+.nb-link { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.2rem; font-weight: 600; color: var(--blau); text-decoration: none; }
+.nb-link svg { width: 1rem; height: 1rem; }
+
+/* Ende */
+.nb-ende { padding: 7rem 0; }
+.nb-ruf { display: grid; gap: 0; }
+.nb-ruf > div { display: grid; grid-template-columns: 1fr; gap: .2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--linie); }
+.nb-ruf > div:first-child { border-top: 1px solid var(--linie); }
+.nb-ruf b { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; color: var(--navy); }
+.nb-ruf a { color: var(--ink-2); text-decoration: none; font-size: 1.02rem; }
+.nb-ruf a:hover { color: var(--blau); }
+
+/* Entwicklungsleiste */
+.nb-dev { position: fixed; left: 50%; bottom: 1rem; z-index: 50; transform: translateX(-50%); max-width: calc(100vw - 2rem); border-radius: 999px; background: rgba(8,38,56,.94); font-size: .78rem; box-shadow: 0 .6rem 1.6rem rgba(0,0,0,.25); }
+.nb-dev > div { display: flex; align-items: center; gap: .8rem; padding: .35rem .45rem .35rem 1rem; overflow-x: auto; }
+.nb-dev span { flex: none; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--taupe-h); }
+.nb-dev nav { display: flex; gap: .2rem; flex: none; }
+.nb-dev a { padding: .3rem .7rem; border-radius: 999px; color: #fff; text-decoration: none; white-space: nowrap; }
+.nb-dev a[aria-current] { background: #fff; color: var(--navy); font-weight: 600; }
+
+/* Responsiv */
+@media (max-width: 991px) {
+  .nb-sek { padding: 5rem 0; }
+  .nb-held__raster, .nb-zwei { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+  .nb-paar { max-width: 32rem; }
+  .nb-ebenen, .nb-drei, .nb-partner { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
+  .nb-drei li { padding: 2rem 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
+  .nb-drei li:first-child { padding-top: 0; border-top: 0; }
+  .nb-weg { grid-template-columns: 1fr 1fr; row-gap: 3rem; }
+  .nb-weg li:nth-child(2)::after { display: none; }
+}
+@media (max-width: 640px) {
+  .nb-wrap { padding: 0 1.25rem; }
+  .nb-held { padding: 2.5rem 0 4rem; }
+  .nb-weg, .nb-netz { grid-template-columns: minmax(0, 1fr); }
+  .nb-weg li::after { display: none; }
+  .nb-partner article { grid-template-columns: minmax(0, 1fr); }
+  .nb-partner__bild { max-width: 14rem; }
+  .nb-vergleich__kopf, .nb-vergleich__zeile { grid-template-columns: 1.3fr repeat(4, 1fr); }
+  .nb-vergleich__kopf span { font-size: .62rem; padding: .8rem .15rem; }
+  .nb-vergleich__zeile > span:first-child { font-size: .9rem; }
+  .nb-vergleich svg { width: 1.2rem; height: 1.2rem; }
+  .nb-knopf { width: 100%; justify-content: center; }
+  .nb-dev span { display: none; }
+  .nb-tisch { transform: none; }
+}
+/* Kopfzeile der Seite liegt über dem Inhalt */
+.nb { padding-top: 96px; }
+@media (max-width: 991px) { .nb { padding-top: 80px; } }
+.nb-tisch { transform: none; }
+/* Vergleich: Linien an den Zellen, Spalte Müller & Ströbel durchgehend */
+.nb-vergleich__zeile { border-top: 0; }
+.nb-vergleich__zeile > span { border-top: 1px solid var(--linie); }
+.nb-vergleich__zeile > .nb-wir { border-top: 1px solid rgba(255,255,255,.12); }
+.nb ol, .nb ul { padding: 0 !important; margin: 0 !important; }
+.nb-drei h3 { line-height: 1.1; }
+.nb-vergleich__kopf, .nb-vergleich__zeile { align-items: stretch; }
+.nb-vergleich__kopf > span { display: grid; place-items: center; }
+@media (max-width: 640px) {
+  .nb-vergleich__kopf .nb-wir { font-size: .78rem; }
+  .nb-vergleich__zeile > span:first-child { padding-left: 0; }
+}
