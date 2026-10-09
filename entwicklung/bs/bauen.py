@@ -81,154 +81,152 @@ def rahmen(titel, beschreibung, main, aktiv):
     return kopf + "<main class=\"bs\">\n" + leiste + main + "\n</main>" + fuss
 
 
-def kopfzeile(k, h, lead=None, mitte=False, hell=False):
+def kopf(k, h, sub=None, hell=False, mitte=False):
     return (f'<div class="bs-kopf{" bs-kopf--mitte" if mitte else ""}"><p class="bs-kicker{" bs-kicker--hell" if hell else ""}">{k}</p><h2 class="bs-h2">{h}</h2>' +
-            (f'<p class="bs-lead">{lead}</p>' if lead else "") + "</div>")
+            (f'<p class="bs-sub">{sub}</p>' if sub else "") + "</div>")
 
 
-def personenkarte(key):
-    p = PERSONEN[key]
-    return (f'<a class="bs-person" href="/entwicklung/bs-steckbrief-{key}.html"><img src="{p["bild"]}" alt="{p["name"]}" width="96" height="96">'
-            f'<div><b>{p["name"]}</b><span>{p["rolle"]}</span><p>{p["kurz"]}</p><em>Zum Steckbrief {PF}</em></div></a>')
+AMP = '<img class="bs-amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="" aria-hidden="true">'
+PORTRAIT = {"tobias": "/assets/tobias-portrait.webp", "daniel": "/assets/daniel-portrait.webp"}
 
 
-# ---------------------------------------------------------------- Startseite
-def startseite():
-    m = []
-    m.append(f'''<section class="bs-held"><div class="bs-wrap bs-held__raster">
-  <div>
-    <p class="bs-kicker">Für Führungskräfte in Versicherungsunternehmen</p>
-    <h1 class="bs-h1">Sie geben uns ein Thema. Wir machen daraus ein Ergebnis<span class="bs-dot">.</span></h1>
-    <p class="bs-lead">Wir denken auf Ihrer Ebene mit, organisieren die Bearbeitung und packen selbst mit an – von der ersten Klärung bis zum fertigen Ergebnis. Ohne dass Sie die einzelnen Schritte selbst orchestrieren müssen.</p>
-    <div class="bs-knoepfe"><a class="bs-knopf" href="{MAIL_BEIDE}">Thema besprechen {PF}</a><a class="bs-knopf bs-knopf--rand" href="#modell">So arbeiten wir</a></div>
-  </div>
-  <div class="bs-dreiklang" aria-label="Mitdenken. Organisieren. Selber machen.">
-    <div><span>01</span><b>Mitdenken<i>.</i></b><small>Fachliches Sparring auf Führungsebene</small></div>
-    <div><span>02</span><b>Organisieren<i>.</i></b><small>Projektmanagement und Koordination</small></div>
-    <div><span>03</span><b>Selber machen<i>.</i></b><small>Operative Umsetzung im Projektteam</small></div>
-  </div>
-</div></section>''')
-    m.append(f'''<section class="bs-sek bs-sand" id="ausgangslage"><div class="bs-wrap">
-  {kopfzeile("Die Ausgangslage", 'Zu viele wichtige Themen. Und niemand, der sie Ihnen wirklich abnimmt<span class="bs-dot">.</span>')}
-  <blockquote class="bs-zitat">„Ich habe zu viele wichtige Themen auf dem Tisch. Ich brauche jemanden, der meine Situation versteht, mitdenkt – und mir nicht noch zusätzliche Koordinationsarbeit verursacht.“</blockquote>
-  <div class="bs-ebenen">
-    <div><span>Vorstand</span><p>Themen mit dem Aufsichtsrat klären, Entscheidungen vorbereiten, die Bereichsleitungen koordinieren.</p></div>
-    <div><span>Hauptabteilungsleitung</span><p>Strategische Vorgaben in konkrete Aktivitäten übersetzen, Abteilungen koordinieren, Ergebnisse sicherstellen.</p></div>
-    <div><span>Bereichsleitung</span><p>Mit dem Vorstand abstimmen, Teamleitungen führen, zahlreiche fachliche und organisatorische Themen voranbringen.</p></div>
-  </div>
-  <p class="bs-fazit">Die Hierarchie unterscheidet sich. Das Problem ist dasselbe: mehr Themen, als sich selbst im notwendigen Umfang bearbeiten und koordinieren lassen.</p>
-</div></section>''')
-    m.append(f'''<section class="bs-sek" id="luecke"><div class="bs-wrap">
-  {kopfzeile("Die Lücke", 'Berater, Projektmanager, Spezialisten – und wer hält alles zusammen<span class="bs-dot">?</span>', "Ein Unternehmen kann einen Strategieberater beauftragen, einen Projektmanager engagieren und Spezialisten hinzuziehen. Dann bleibt eine wesentliche Aufgabe bei der Führungskraft selbst: die Leistungen verbinden, die Beteiligten koordinieren und dafür sorgen, dass am Ende ein Ergebnis entsteht.")}
-  <div class="bs-vergleich">
-    <div class="bs-vergleich__seite">
-      <p class="bs-vergleich__label">Üblich</p>
-      <div class="bs-bausteine"><span>Strategieberater</span><span>Projektmanager</span><span>Spezialisten</span></div>
-      <div class="bs-pfeile" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="bs-last"><b>Sie</b><small>koordinieren, verbinden, treiben an</small></div>
-    </div>
-    <div class="bs-vergleich__seite bs-vergleich__seite--wir">
-      <p class="bs-vergleich__label">Mit Müller &amp; Ströbel</p>
-      <div class="bs-eins"><b>Müller &amp; Ströbel</b><small>Sparring · Projektmanagement · Umsetzung</small></div>
-      <div class="bs-pfeile bs-pfeile--eins" aria-hidden="true"><i></i></div>
-      <div class="bs-ergebnis"><b>Ihr Ergebnis</b><small>Sie entscheiden, wir kümmern uns um den Rest</small></div>
-    </div>
-  </div>
-</div></section>''')
-    leist = [
-        ("01", "Fachliches Sparring", "Wir denken auf Führungsebene mit.",
-         ["Themen aufnehmen, einordnen und strukturieren", "Komplexität reduzieren, Handlungsoptionen entwickeln", "Entscheidungen und Zielbilder vorbereiten", "Offen sagen, wo zusätzliche Spezialisten nötig sind"],
-         "Einen erfahrenen Gesprächspartner auf Augenhöhe, der Ihre Themen versteht."),
-        ("02", "Projektmanagement", "Wir übernehmen die Verantwortung für die Bearbeitung.",
-         ["Organisation und Koordination der weiteren Bearbeitung", "Gespräche mit Führungskräften, Teams und Spezialisten", "Prioritäten setzen, Fortschritt im Blick behalten", "Regelmäßig berichten und Entscheidungen vorlegen"],
-         "Sie müssen sich nicht selbst darum kümmern, dass aus einer guten Idee ein Ergebnis wird."),
-        ("03", "Operative Umsetzung", "Wir packen selbst mit an.",
-         ["Konzepte erstellen, Sachverhalte analysieren", "Lösungen entwickeln und Ergebnisse erarbeiten", "Teil des operativen Projektteams sein", "Spezialisten aus unserem Netzwerk einbinden"],
-         "Nicht nur Empfehlungen und Steuerung, sondern die notwendige operative Unterstützung."),
-    ]
-    m.append(f'''<section class="bs-sek bs-sand" id="modell"><div class="bs-wrap">
-  {kopfzeile("Unser Modell", 'Mitdenken. Organisieren. Selber machen<span class="bs-dot">.</span>', "Drei Leistungen, die zusammengehören. Nicht die einzelne Leistung macht den Unterschied, sondern ihre Kombination – aus einer Hand.")}
-  <div class="bs-drei">{"".join(f'<article class="bs-leistung"><span class="bs-nr">{n}</span><h3>{t}</h3><p class="bs-leistung__satz">{s}</p><ul>{"".join(f"<li>{x}</li>" for x in l)}</ul><p class="bs-leistung__nutzen"><b>Sie bekommen</b>{u}</p></article>' for n, t, s, l, u in leist)}</div>
-</div></section>''')
-    m.append(f'''<section class="bs-sek bs-navy" id="praxis"><div class="bs-wrap bs-praxis">
-  <div>{kopfzeile("Aus der Praxis", 'Entstanden aus einer echten Zusammenarbeit<span class="bs-dot">.</span>', None, hell=True)}
-    <p class="bs-lead bs-lead--hell">Als Tobias Müller Geschäftsführer des Haftpflichtverbands öffentlicher Verkehrsbetriebe (HÖV) war, lagen viele Themen gleichzeitig auf seinem Tisch – fachlich unterschiedlich, teils komplex, über Personen, Projekte und Einheiten hinweg. Daniel Ströbel hat ihn dabei begleitet. Aus dieser Zusammenarbeit ist Müller &amp; Ströbel entstanden.</p></div>
-  <figure class="bs-stimme">
-    <blockquote>„Ich konnte mit dir über jedes Thema sprechen. Du hast verstanden, worum es geht. Wenn du dich nicht auskanntest, hast du das offen gesagt – und wusstest trotzdem, wie man das Thema angehen kann.“</blockquote>
-    <blockquote>„Du hast das Projektmanagement übernommen, mit den Leuten gesprochen und dafür gesorgt, dass die Dinge weiterlaufen. Und dort, wo du die fachliche Kompetenz hattest, hast du selbst mit angepackt.“</blockquote>
-    <figcaption><img src="/assets/tobias-kreis.webp" alt="" width="44" height="44"><span><b>Tobias Müller</b>über die gemeinsame Zeit beim HÖV</span></figcaption>
-  </figure>
-</div></section>''')
-    versprechen = ["Wir verstehen das Thema und die dahinterliegende Herausforderung.", "Wir bringen die Erfahrung mit, um auf Führungsebene mitzudenken.",
-                   "Wir machen aus komplexen Aufgaben eine strukturierte Bearbeitung.", "Wir organisieren die notwendigen Menschen und Kompetenzen.",
-                   "Wir koordinieren die gesamte Bearbeitung.", "Wir arbeiten selbst mit, wo wir die Fachkompetenz besitzen.",
-                   "Wir binden bei Bedarf weitere Spezialisten ein.", "Wir liefern ein Ergebnis, mit dem Sie weiterarbeiten können."]
-    m.append(f'''<section class="bs-sek" id="versprechen"><div class="bs-wrap bs-versprechen">
-  <div>{kopfzeile("Unser Versprechen", 'Eine Gesamtlösung statt einzelner Leistungen<span class="bs-dot">.</span>', "Sie müssen die einzelnen Leistungen nicht selbst organisieren. Sie können uns ein vollständiges Thema übertragen.")}</div>
-  <ol class="bs-liste">{"".join(f"<li>{v}</li>" for v in versprechen)}</ol>
-</div></section>''')
-    schritte = [("Klären", "Auch wenn noch offen ist, worum es genau geht: Wir ordnen das Thema gemeinsam ein."),
-                ("Mitdenken", "Wir entwickeln mit Ihnen Zielbild, Optionen und die richtige Vorgehensweise."),
-                ("Organisieren", "Wir stellen die passenden Menschen und Kompetenzen zusammen und steuern die Bearbeitung."),
-                ("Ergebnis liefern", "Wir arbeiten selbst mit und legen Ihnen ein Ergebnis vor, mit dem Sie weiterarbeiten.")]
-    m.append(f'''<section class="bs-sek bs-sand" id="ablauf"><div class="bs-wrap">
-  {kopfzeile("Von der ersten Klärung bis zum Ergebnis", 'So übernehmen wir ein Thema<span class="bs-dot">.</span>')}
-  <div class="bs-schritte">{"".join(f'<div><span>0{i+1}</span><h3>{t}</h3><p>{p}</p></div>' for i, (t, p) in enumerate(schritte))}</div>
-</div></section>''')
-    m.append(f'''<section class="bs-sek" id="netzwerk"><div class="bs-wrap bs-netzwerk">
-  <div>{kopfzeile("Unser Netzwerk", 'Wenn es mehr braucht, bringen wir die richtigen Leute mit<span class="bs-dot">.</span>', "Erfahrene Persönlichkeiten, die wir gezielt einsetzen – koordiniert von uns, mit einem Ansprechpartner für Sie.")}</div>
-  <div class="bs-chips">{"".join(f"<span>{n}</span>" for n in NETZWERK)}</div>
-</div></section>''')
-    m.append(f'''<section class="bs-sek bs-sand" id="wir"><div class="bs-wrap">
-  {kopfzeile("Wer dahintersteht", 'Erfahrene Führungskräfte auf Ihrer Seite des Tisches<span class="bs-dot">.</span>')}
-  <div class="bs-personen">{personenkarte("tobias")}{personenkarte("daniel")}</div>
-  <p class="bs-mehr"><a href="/entwicklung/bs-ueber-uns.html">Über uns und unsere Themenfelder {PF}</a></p>
-</div></section>''')
-    m.append(abschluss())
-    return rahmen("Müller & Ströbel – Business Story (Entwurf)", "Entwurf der Startseite auf Basis der Business Story", "\n".join(m), "business-story.html")
+def team_reihe(mit_netz=False):
+    leute = "".join(f'<a class="bs-mensch" href="/entwicklung/bs-steckbrief-{k}.html"><div class="bs-mensch__bild"><img src="{PORTRAIT[k]}" alt="{p["name"]}"></div>'
+                    f'<b>{p["name"]}</b><span>{p["rolle"]}</span><em>Steckbrief {PF}</em></a>' for k, p in PERSONEN.items())
+    netz = ""
+    if mit_netz:
+        netz = (f'<div class="bs-mensch bs-mensch--netz"><div class="bs-mensch__bild">{orbit(klein=True)}</div><b>Unser Netzwerk</b>'
+                f'<span>Gezielt eingebunden, von uns koordiniert</span></div>')
+    return f'<div class="bs-menschen{" bs-menschen--drei" if mit_netz else ""}">{leute}{netz}</div>'
+
+
+def orbit(klein=False):
+    n = len(NETZWERK); import math
+    r = 150; cx = cy = 210
+    punkte = ""
+    for i, name in enumerate(NETZWERK):
+        w = -math.pi / 2 + 2 * math.pi * i / n
+        x, y = cx + r * math.cos(w), cy + r * math.sin(w)
+        anker = "middle" if abs(math.cos(w)) < .3 else ("start" if math.cos(w) > 0 else "end")
+        dx = 0 if anker == "middle" else (14 if anker == "start" else -14)
+        dy = -16 if math.sin(w) < -.5 else (26 if math.sin(w) > .5 else 5)
+        punkte += f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" class="o-l"/><circle cx="{x:.0f}" cy="{y:.0f}" r="7" class="o-p"/>'
+        if not klein:
+            punkte += f'<text x="{x+dx:.0f}" y="{y+dy:.0f}" text-anchor="{anker}" class="o-t">{name}</text>'
+    return (f'<svg class="bs-orbit{" bs-orbit--klein" if klein else ""}" viewBox="{"-60 0 540 420" if not klein else "40 40 340 340"}" role="img" aria-label="Netzwerk">'
+            f'<circle cx="{cx}" cy="{cy}" r="{r}" class="o-k"/>{punkte}<circle cx="{cx}" cy="{cy}" r="52" class="o-m"/>'
+            f'<text x="{cx}" y="{cy+15}" text-anchor="middle" class="o-amp">&amp;</text></svg>')
 
 
 def abschluss():
-    return f'''<section class="bs-sek bs-navy bs-schluss"><div class="bs-wrap bs-kopf--mitte">
+    return f'''<section class="bs-sek bs-navy bs-schluss"><div class="bs-wrap">
+  {AMP}
   <p class="bs-kicker bs-kicker--hell">Ihr Thema</p>
-  <h2 class="bs-h2">Welches Thema liegt auf Ihrem Tisch<span class="bs-dot">?</span></h2>
-  <p class="bs-lead bs-lead--hell">Erzählen Sie uns davon. Wir sagen Ihnen offen, ob und wie wir es übernehmen.</p>
+  <h2 class="bs-h1 bs-h1--hell">Welches Thema liegt auf Ihrem Tisch<span class="bs-dot">?</span></h2>
   <div class="bs-knoepfe"><a class="bs-knopf bs-knopf--weiss" href="{MAIL_BEIDE}">Thema besprechen {PF}</a></div>
 </div></section>'''
 
 
+# ---------------------------------------------------------------- Startseite
+def startseite():
+    themen_wolke = ["Aufsichtsratsvorlage", "Strategie 2030", "Kennzahlen", "Reorganisation", "Vertriebsziele", "KI-Einsatz",
+                    "Budget", "Projekt-Review", "Gremienvorlage", "Kooperation", "Personal", "Solvency"]
+    m = [f'''<section class="bs-held bs-navy"><div class="bs-wrap">
+  {AMP}
+  <p class="bs-kicker bs-kicker--hell">Für Vorstände und Führungskräfte in Versicherungsunternehmen</p>
+  <h1 class="bs-h1 bs-h1--held">Sie geben uns ein Thema.<br><em>Wir machen daraus ein Ergebnis.</em></h1>
+  <p class="bs-dreiwort"><span>Mitdenken</span><span>Organisieren</span><span>Selber machen</span></p>
+  <div class="bs-knoepfe"><a class="bs-knopf bs-knopf--weiss" href="{MAIL_BEIDE}">Thema besprechen {PF}</a><a class="bs-knopf bs-knopf--hell" href="#modell">Wie wir arbeiten</a></div>
+</div></section>''',
+         f'''<section class="bs-sek"><div class="bs-wrap bs-zwei">
+  <div>{kopf("Die Ausgangslage", 'Zu viele Themen.<br>Zu wenig Hände<span class="bs-dot">.</span>', "Ob Vorstand, Hauptabteilungs- oder Bereichsleitung: Auf dem Tisch liegt mehr, als sich selbst bearbeiten lässt.")}</div>
+  <div class="bs-wolke" aria-hidden="true">{"".join(f'<span style="--i:{i}">{t}</span>' for i, t in enumerate(themen_wolke))}</div>
+</div></section>''',
+         f'''<section class="bs-sek bs-sand"><div class="bs-wrap">
+  {kopf("Die Lücke", 'Berater, Projektmanager, Spezialisten.<br>Und wer hält alles zusammen<span class="bs-dot">?</span>', mitte=True)}
+  <div class="bs-gegen">
+    <figure><figcaption>Üblich</figcaption>
+      <svg viewBox="0 0 360 300" class="bs-diag" role="img" aria-label="Drei Dienstleister, die Koordination bleibt bei Ihnen">
+        <path d="M60 70 C60 150 180 140 180 220M180 70V220M300 70C300 150 180 140 180 220" class="d-l"/>
+        <g class="d-n"><circle cx="60" cy="54" r="34"/><circle cx="180" cy="54" r="34"/><circle cx="300" cy="54" r="34"/></g>
+        <g class="d-t"><text x="60" y="58">Berater</text><text x="180" y="58">Projekt</text><text x="300" y="58">Spezialist</text></g>
+        <circle cx="180" cy="236" r="42" class="d-sie"/><text x="180" y="242" class="d-t2">Sie</text>
+      </svg>
+      <p>Die Koordination bleibt bei Ihnen.</p></figure>
+    <figure class="bs-gegen--wir"><figcaption>Mit Müller &amp; Ströbel</figcaption>
+      <svg viewBox="0 0 360 300" class="bs-diag" role="img" aria-label="Ein Partner, ein Ergebnis">
+        <path d="M180 120V196" class="d-l d-l--wir"/>
+        <circle cx="180" cy="66" r="56" class="d-wir"/><text x="180" y="86" class="d-amp">&amp;</text>
+        <circle cx="180" cy="236" r="42" class="d-erg"/><text x="180" y="242" class="d-t2 d-t2--hell">Ergebnis</text>
+      </svg>
+      <p>Ein Partner. Ein Ergebnis.</p></figure>
+  </div>
+</div></section>''',
+         f'''<section class="bs-sek" id="modell"><div class="bs-wrap">
+  {kopf("Unser Modell", 'Drei Leistungen. Eine Verantwortung<span class="bs-dot">.</span>')}
+  <div class="bs-trio">
+    <div><span>01 · Fachliches Sparring</span><b>Mitdenken<i>.</i></b><p>Wir denken auf Ihrer Ebene mit und bereiten Entscheidungen vor.</p></div>
+    <div><span>02 · Projektmanagement</span><b>Organisieren<i>.</i></b><p>Wir steuern die Bearbeitung – mit allen Beteiligten.</p></div>
+    <div><span>03 · Operative Umsetzung</span><b>Selber machen<i>.</i></b><p>Wo wir die Fachkompetenz haben, arbeiten wir selbst mit.</p></div>
+  </div>
+  <div class="bs-klammer"><span>Aus einer Hand – Sie müssen nichts koordinieren.</span></div>
+</div></section>''',
+         f'''<section class="bs-sek bs-navy bs-ursprung"><div class="bs-wrap bs-ursprung__raster">
+  <div>
+    <p class="bs-kicker bs-kicker--hell">Entstanden aus der Praxis</p>
+    <blockquote class="bs-gross-zitat">„Du hast das Projektmanagement übernommen, mit den Leuten gesprochen und dafür gesorgt, dass die Dinge weiterlaufen. Und dort, wo du die fachliche Kompetenz hattest, hast du selbst mit angepackt.“</blockquote>
+    <p class="bs-quelle"><b>Tobias Müller</b>damals Geschäftsführer des HÖV, über die Zusammenarbeit mit Daniel Ströbel</p>
+  </div>
+  <div class="bs-ursprung__bild"><img src="{PORTRAIT["tobias"]}" alt="Tobias Müller"></div>
+</div></section>''',
+         f'''<section class="bs-sek bs-sand"><div class="bs-wrap bs-zwei bs-zwei--mitte">
+  <div>{kopf("Was bei Ihnen nicht mehr hängen bleibt", 'Sie geben ab. Wir bringen es zu Ende<span class="bs-dot">.</span>')}</div>
+  <ul class="bs-weg"><li>Berater briefen und Ergebnisse nachhalten</li><li>Projekte und Beteiligte koordinieren</li><li>Spezialisten suchen und steuern</li></ul>
+</div></section>''',
+         f'''<section class="bs-sek"><div class="bs-wrap">
+  {kopf("Von der ersten Klärung bis zum Ergebnis", 'So übernehmen wir ein Thema<span class="bs-dot">.</span>')}
+  <ol class="bs-pfad"><li><b>Klären</b><span>Auch wenn noch offen ist, worum es geht.</span></li><li><b>Mitdenken</b><span>Zielbild, Optionen, Vorgehen.</span></li><li><b>Organisieren</b><span>Die richtigen Menschen, ein Plan.</span></li><li><b>Ergebnis</b><span>Mit dem Sie weiterarbeiten.</span></li></ol>
+</div></section>''',
+         f'''<section class="bs-sek bs-sand"><div class="bs-wrap bs-zwei bs-zwei--mitte">
+  <div>{kopf("Unser Netzwerk", 'Und wenn es mehr braucht, bringen wir die richtigen Leute mit<span class="bs-dot">.</span>', "Erfahrene Persönlichkeiten – gezielt eingebunden, von uns koordiniert, ein Ansprechpartner für Sie.")}</div>
+  <div>{orbit()}</div>
+</div></section>''',
+         f'''<section class="bs-sek bs-sek--team"><div class="bs-wrap">
+  {kopf("Wer dahintersteht", 'Erfahrene Führungskräfte.<br>Auf Ihrer Seite des Tisches<span class="bs-dot">.</span>')}
+  {team_reihe()}
+  <p class="bs-mehr"><a href="/entwicklung/bs-ueber-uns.html">Über uns und unsere Themenfelder {PF}</a></p>
+</div></section>''',
+         abschluss()]
+    return rahmen("Müller & Ströbel – Business Story (Entwurf)", "Entwurf der Startseite auf Basis der Business Story", "\n".join(m), "business-story.html")
+
+
 # ---------------------------------------------------------------- Über uns
 def ueber_uns():
-    eigenschaften = ["Auf Augenhöhe mit anderen Führungskräften diskutieren", "Strategische und operative Zusammenhänge verstehen",
-                     "Unterschiedliche Themen und Projekte gleichzeitig im Blick behalten", "Menschen und Fachkompetenzen zusammenbringen",
-                     "Aufgaben organisieren und koordinieren", "Entscheidungen vorbereiten", "Selbst operativ mitarbeiten",
-                     "Verantwortung für die vereinbarte Bearbeitung übernehmen"]
-    m = [f'''<section class="bs-held bs-held--schmal"><div class="bs-wrap">
-  <p class="bs-kicker">Über uns</p>
-  <h1 class="bs-h1">Erfahrung einer Führungskraft. Ohne eine Stelle zu besetzen<span class="bs-dot">.</span></h1>
-  <p class="bs-lead">Wir ersetzen keine Führungskraft. Wir entlasten sie um ein vollständiges Aufgabenpaket – egal ob Vorstand, Hauptabteilungs- oder Bereichsleitung. Entscheidend ist nicht die Stellenbezeichnung, sondern dass ein Thema zum Ergebnis kommt.</p>
+    staerken = [("Auf Augenhöhe", "Wir diskutieren mit Vorstand, Aufsichtsrat und Fachbereich."),
+                ("Den Überblick behalten", "Viele Themen und Projekte gleichzeitig im Blick."),
+                ("Menschen zusammenbringen", "Wir organisieren die richtigen Leute und Kompetenzen."),
+                ("Verantwortung übernehmen", "Wir arbeiten selbst mit – bis das Ergebnis steht.")]
+    m = [f'''<section class="bs-held bs-held--ueber"><div class="bs-wrap bs-ueber__raster">
+  <div><p class="bs-kicker">Über uns</p>
+    <h1 class="bs-h1">Erfahrung einer Führungskraft. Ohne eine Stelle zu besetzen<span class="bs-dot">.</span></h1>
+    <p class="bs-sub">Wir ersetzen niemanden. Wir nehmen Führungskräften ein ganzes Aufgabenpaket ab.</p></div>
+  <div class="bs-ueber__bild"><img src="{PORTRAIT["tobias"]}" alt="Tobias Müller"><img src="{PORTRAIT["daniel"]}" alt="Daniel Ströbel"></div>
 </div></section>''',
-         f'''<section class="bs-sek bs-sand"><div class="bs-wrap bs-versprechen">
-  <div>{kopfzeile("Was uns ausmacht", 'Was Sie von uns erwarten können<span class="bs-dot">.</span>', "Wir bringen die Erfahrung langjähriger Führungskräfte mit – verbunden mit Branchenkenntnis, Methodenkompetenz, Projektmanagement und operativer Umsetzungsfähigkeit.")}</div>
-  <ol class="bs-liste">{"".join(f"<li>{v}</li>" for v in eigenschaften)}</ol>
+         f'''<section class="bs-sek"><div class="bs-wrap">
+  {kopf("Was Sie bekommen", 'Die Erfahrung langjähriger Führungskräfte<span class="bs-dot">.</span>')}
+  <div class="bs-vier">{"".join(f'<div><span>0{i+1}</span><b>{t}</b><p>{x}</p></div>' for i, (t, x) in enumerate(staerken))}</div>
 </div></section>''',
-         f'''<section class="bs-sek" id="team"><div class="bs-wrap">
-  {kopfzeile("Das Team", 'Partner, die selbst mitarbeiten<span class="bs-dot">.</span>', "Im Projekt arbeiten wir selbst mit. Jede Person hat einen eigenen Steckbrief – mit Schwerpunkten, Erfahrung und dem, wofür Sie sie einsetzen.")}
-  <div class="bs-team">{personenkarte("tobias")}{personenkarte("daniel")}
-    <div class="bs-person bs-person--netz"><div class="bs-netz-sym" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div><b>Unser Netzwerk</b><span>Gezielt eingebunden</span><p>{", ".join(NETZWERK[:-1])} und {NETZWERK[-1]}.</p></div></div>
-  </div>
+         f'''<section class="bs-sek bs-sand bs-sek--team" id="team"><div class="bs-wrap">
+  {kopf("Das Team", 'Partner, die selbst mitarbeiten<span class="bs-dot">.</span>')}
+  {team_reihe(mit_netz=True)}
 </div></section>''',
-         f'''<section class="bs-sek bs-sand" id="themen"><div class="bs-wrap">
-  {kopfzeile("Unsere Themenfelder", 'Hier setzen wir an<span class="bs-dot">.</span>', "Wir werden eingebunden, wenn Zusammenhänge unklar sind, die Komplexität zu groß ist und ein Thema nicht vorankommt.")}
-  <div class="bs-themen">{"".join(f'<div><span>0{i+1}</span><h3>{t}</h3><p>{w}</p></div>' for i, (t, w) in enumerate(THEMEN))}</div>
+         f'''<section class="bs-sek" id="themen"><div class="bs-wrap bs-zwei">
+  <div>{kopf("Unsere Themenfelder", 'Hier setzen wir an<span class="bs-dot">.</span>', "Wenn Zusammenhänge unklar sind und ein Thema nicht vorankommt.")}</div>
+  <ol class="bs-index">{"".join(f'<li><b>{t}</b><span>{w}</span></li>' for t, w in THEMEN)}</ol>
 </div></section>''',
-         f'''<section class="bs-sek" id="haltung"><div class="bs-wrap">
-  {kopfzeile("Unsere Haltung", 'Umsetzen. Sofort. Überzeugt<span class="bs-dot">.</span>')}
-  <div class="bs-drei bs-drei--haltung">
-    <div class="bs-haltung"><h3>Umsetzen</h3><p>Wir bleiben, bis das Ergebnis steht.</p></div>
-    <div class="bs-haltung"><h3>Sofort</h3><p>Wir müssen nicht abgeholt werden.</p></div>
-    <div class="bs-haltung bs-haltung--stark"><h3>Überzeugt</h3><p>Wir machen nur, woran wir glauben.</p></div>
-  </div>
+         '''<section class="bs-sek bs-sand"><div class="bs-wrap">
+  <p class="bs-kicker">Unsere Haltung</p>
+  <div class="bs-haltung"><div><b>Umsetzen<i>.</i></b><span>Wir bleiben, bis das Ergebnis steht.</span></div><div><b>Sofort<i>.</i></b><span>Wir müssen nicht abgeholt werden.</span></div><div><b>Überzeugt<i>.</i></b><span>Wir machen nur, woran wir glauben.</span></div></div>
 </div></section>''',
          abschluss()]
     return rahmen("Müller & Ströbel – Über uns (Entwurf Business Story)", "Über uns, Team und Themenfelder", "\n".join(m), "bs-ueber-uns.html")
@@ -238,33 +236,33 @@ def ueber_uns():
 def steckbrief(key):
     p = PERSONEN[key]
     vcf = f"/entwicklung/bs/{key}.vcf"
-    m = [f'''<section class="bs-karte"><div class="bs-wrap bs-karte__raster">
-  <div class="bs-karte__person">
-    <img src="{p["bild"]}" alt="{p["name"]}" width="200" height="200">
-    <div><p class="bs-kicker">Partner · Müller &amp; Ströbel</p><h1 class="bs-h1 bs-h1--name">{p["name"]}</h1><p class="bs-karte__rolle">{p["rolle"]}</p></div>
+    vn = p["name"].split()[0]
+    m = [f'''<section class="bs-held bs-navy bs-profil"><div class="bs-wrap bs-profil__raster">
+  <div>
+    <p class="bs-kicker bs-kicker--hell">Partner · Müller &amp; Ströbel</p>
+    <h1 class="bs-h1 bs-h1--held">{p["name"]}</h1>
+    <p class="bs-profil__rolle">{p["rolle"]}</p>
+    <p class="bs-profil__kurz">{p["kurz"]}</p>
+    <div class="bs-aktionen">
+      <a href="tel:{p["tel_roh"]}">Anrufen</a><a href="mailto:{p["mail"]}">E-Mail</a><a href="{p["linkedin"]}" target="_blank" rel="noopener">LinkedIn</a><a href="{vcf}" download class="bs-aktionen__haupt">Kontakt speichern</a>
+    </div>
   </div>
-  <div class="bs-aktionen">
-    <a href="tel:{p["tel_roh"]}"><i>☎</i><span><b>Anrufen</b>{p["tel"]}</span></a>
-    <a href="mailto:{p["mail"]}"><i>@</i><span><b>E-Mail</b>{p["mail"]}</span></a>
-    <a href="{p["linkedin"]}" target="_blank" rel="noopener"><i>in</i><span><b>LinkedIn</b>Profil ansehen</span></a>
-    <a href="{vcf}" download><i>+</i><span><b>Kontakt speichern</b>Visitenkarte fürs Adressbuch</span></a>
-  </div>
+  <div class="bs-profil__bild"><img src="{PORTRAIT[key]}" alt="{p["name"]}"></div>
 </div></section>''',
-         f'''<section class="bs-sek bs-sand"><div class="bs-wrap">
-  {kopfzeile("Warum in Ihrem Projekt", f'Was {p["name"].split()[0]} einbringt<span class="bs-dot">.</span>')}
-  <div class="bs-drei">{"".join(f'<article class="bs-leistung"><span class="bs-nr">0{i+1}</span><h3>{t}</h3><p>{x}</p></article>' for i, (t, x) in enumerate(p["warum"]))}</div>
-  <div class="bs-fakten"><div><b>{p["fakt"][0]}</b><span>{p["fakt"][1]}</span></div><div><b>{p["fakt2"][0]}</b><span>{p["fakt2"][1]}</span></div></div>
+         f'''<section class="bs-sek"><div class="bs-wrap">
+  {kopf("Warum in Ihrem Projekt", f'Was {vn} einbringt<span class="bs-dot">.</span>')}
+  <div class="bs-vier bs-vier--drei">{"".join(f'<div><span>0{i+1}</span><b>{t}</b><p>{x}</p></div>' for i, (t, x) in enumerate(p["warum"]))}</div>
+  <div class="bs-zahlen"><div><b>{p["fakt"][0]}</b><span>{p["fakt"][1]}</span></div><div><b>{p["fakt2"][0]}</b><span>{p["fakt2"][1]}</span></div></div>
 </div></section>''',
-         f'''<section class="bs-sek"><div class="bs-wrap bs-zwei">
-  <div>{kopfzeile("Schwerpunkte", 'Kompetenzen<span class="bs-dot">.</span>')}
-    <div class="bs-chips bs-chips--dunkel">{"".join(f"<span>{s}</span>" for s in p["schwerpunkte"])}</div>
-    <p class="bs-text">{p["werdegang"]}</p>
-    <h3 class="bs-h3">Im Projekt</h3>
-    <ul class="bs-rollen"><li><b>Sparring</b>denkt auf Führungsebene mit</li><li><b>Projektmanagement</b>organisiert und steuert die Bearbeitung</li><li><b>Umsetzung</b>arbeitet selbst im Projektteam mit</li></ul></div>
-  <div>{kopfzeile("Werdegang", 'Stationen<span class="bs-dot">.</span>')}<div class="bs-cv">{cv(key)}</div></div>
+         f'''<section class="bs-sek bs-sand"><div class="bs-wrap bs-zwei">
+  <div>{kopf("Schwerpunkte", 'Kompetenzen<span class="bs-dot">.</span>')}
+    <ul class="bs-kompetenzen">{"".join(f"<li>{x}</li>" for x in p["schwerpunkte"])}</ul>
+    <p class="bs-kicker" style="margin-top:3rem">Im Projekt</p>
+    <p class="bs-rollen"><span>Mitdenken</span><span>Organisieren</span><span>Selber machen</span></p></div>
+  <div>{kopf("Werdegang", 'Stationen<span class="bs-dot">.</span>')}<div class="bs-cv">{cv(key)}</div></div>
 </div></section>''',
          abschluss()]
-    return rahmen(f"{p['name'].replace('&amp;', '&')} – Steckbrief · Müller & Ströbel (Entwurf)", f"Beraterprofil {p['name']}", "\n".join(m), f"bs-steckbrief-{key}.html")
+    return rahmen(f"{p['name']} – Steckbrief · Müller & Ströbel (Entwurf)", f"Beraterprofil {p['name']}", "\n".join(m), f"bs-steckbrief-{key}.html")
 
 
 def vcard(key):
