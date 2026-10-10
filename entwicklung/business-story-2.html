@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Müller &amp; Ströbel – Business Story 2.0 (Entwurf)</title>
+<meta name="description" content="Entwurf der Startseite: Business Story 2.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=1">
+</head>
+<body data-variante="bs2">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ziel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="5.5" r="2"/><path d="M7.5 18.5h7a3.5 3.5 0 0 0 0-7h-5a3.5 3.5 0 0 1 0-7h7"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M14 4.5h-7.5A1.5 1.5 0 0 0 5 6v13.5A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V12"/><path d="M8.5 16.5l1-3.5 8-8 2.5 2.5-8 8-3.5 1z"/></symbol>
+  <symbol id="i-vorstand" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/></symbol>
+  <symbol id="i-ebene" viewBox="0 0 24 24"><rect x="8.5" y="3" width="7" height="5" rx="1.2"/><rect x="2.5" y="16" width="7" height="5" rx="1.2"/><rect x="14.5" y="16" width="7" height="5" rx="1.2"/><path d="M12 8v4M6 16v-4h12v4"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.4.1 4 1.6 4.5 4.4"/></symbol>
+  <symbol id="i-auge" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-gespraech" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></symbol>
+  <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3"/></symbol>
+  <symbol id="i-analyse" viewBox="0 0 24 24"><path d="M3.5 20.5h17"/><path d="M6 16l4.5-4.5 3 3L19 8"/><path d="M15 8h4v4"/></symbol>
+  <symbol id="i-plan" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16.5" rx="2"/><path d="M3 9h18M7 13h5M10 16.5h6"/></symbol>
+  <symbol id="i-netz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6"/><circle cx="4.5" cy="6" r="2"/><circle cx="19.5" cy="6" r="2"/><circle cx="4.5" cy="18" r="2"/><circle cx="19.5" cy="18" r="2"/><path d="M6.3 7.2 9.8 10.4M17.7 7.2l-3.5 3.2M6.3 16.8l3.5-3.2M17.7 16.8l-3.5-3.2"/></symbol>
+  <symbol id="i-weiter" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 20 20"><path d="M5 10h10"/></symbol>
+  <symbol id="i-haken" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="i-extern" viewBox="0 0 16 16"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></symbol>
+</svg>
+
+<header class="kopf"><div class="wrap">
+  <a class="marke" href="/entwicklung/business-story-2.html" aria-label="Müller &amp; Ströbel – Startseite"><img src="/assets/logo.svg" alt="Müller &amp; Ströbel"></a>
+  <nav class="nav" aria-label="Hauptmenü">
+    <a class="nav__anker" href="#vorgehen">Vorgehen</a>
+    <a class="nav__anker" href="#arbeitsweise">Arbeitsweise</a>
+    <a class="nav__anker" href="#wir">Wer wir sind</a>
+<!-- ENTWICKLUNG:START (nur Sandbox – wird von vorschau.py github entfernt) -->
+<div class="dev-dd" id="dev-dd">
+<button class="menu-text dev-dd-toggle" type="button" aria-expanded="false" aria-controls="dev-dd-panel">/ Entwicklung /<svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div class="dev-dd-panel" id="dev-dd-panel">
+<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<p class="dev-dd-group">Varianten Startseite</p>
+<a href="/entwicklung/business-story-2.html" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Neue Startseite aus der Grundstory &ndash; Entwurf 10.10.2026</small></span></a>
+<div class="dev-dd-fly"><a href="/entwicklung/business-story.html" class="dev-dd-link" data-v="business-story"><span class="dev-dd-tag dev-dd-tag--new">BS</span><span class="dev-dd-txt"><b>Business Story</b><small>Mitdenken. Organisieren. Selber machen. &ndash; Entwurf 09.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/bs-ueber-uns.html" class="dev-dd-link" data-v="bs-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns &amp; Themen</b><small>Team, Netzwerk, Themenfelder, Haltung</small></span></a><a href="/entwicklung/bs-steckbrief-tobias.html" class="dev-dd-link" data-v="bs-tobias"><span class="dev-dd-tag dev-dd-tag--new">TM</span><span class="dev-dd-txt"><b>Steckbrief Tobias Müller</b><small>Beraterprofil &amp; digitale Visitenkarte</small></span></a><a href="/entwicklung/bs-steckbrief-daniel.html" class="dev-dd-link" data-v="bs-daniel"><span class="dev-dd-tag dev-dd-tag--new">DS</span><span class="dev-dd-txt"><b>Steckbrief Daniel Ströbel</b><small>Beraterprofil &amp; digitale Visitenkarte</small></span></a></div></div>
+<div class="dev-dd-fly"><a href="/entwicklung/startseite-und-blau.html" class="dev-dd-link" data-v="und-blau"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Bisherige Startseite</b><small>Mit dem blauen Und-Zeichen &ndash; Stand 08.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Leistungsseiten</p><a href="/strategie-verankern.html" class="dev-dd-link" data-v="strategie-verankern"><span class="dev-dd-tag dev-dd-tag--new">1</span><span class="dev-dd-txt"><b>Strategie im Alltag verankern</b><small>Beschlossene Strategie in den Bereichen wirksam machen</small></span></a><a href="/komplexe-themen.html" class="dev-dd-link" data-v="komplexe-themen"><span class="dev-dd-tag dev-dd-tag--new">2</span><span class="dev-dd-txt"><b>Komplexe Themen strukturieren und entscheiden</b><small>Moderieren, strukturieren, vorantreiben</small></span></a><a href="/geschaeftsmodell.html" class="dev-dd-link" data-v="geschaeftsmodell"><span class="dev-dd-tag dev-dd-tag--new">3</span><span class="dev-dd-txt"><b>Geschäftsmodell neu denken</b><small>Wachstum, KI, veränderte Risiken</small></span></a><a href="/aufsichtsrat.html" class="dev-dd-link" data-v="aufsichtsrat"><span class="dev-dd-tag dev-dd-tag--new">4</span><span class="dev-dd-txt"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Gremium</small></span></a></div></div>
+<a href="/entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
+<a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; jetzt Startseite</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
+<a href="/entwicklung/variante-b3.html" class="dev-dd-link" data-v="b3"><span class="dev-dd-tag dev-dd-tag--new">B3</span><span class="dev-dd-txt"><b>Dunkel mit Personen</b><small>Wie B2, aber dunkler Kopf</small></span></a>
+<a href="/entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Gebiete links, Fall rechts &ndash; ohne Sprung</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Unterseiten</p>
+<a href="/entwicklung/ueber-uns.html" class="dev-dd-link" data-v="ueber"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Über uns (Entwurf)</b><small>Tobias &amp; Daniel, Schwerpunkte, Gemeinsames</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
+<a href="/archiv/startseite-umfassend-2026-09-17.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv-0917"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite umfassend – 17.09.2026</b><small>Stand vor der Optimierung</small></span></a>
+<a href="/archiv/startseite-live-2026-09.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – Live-Stand Sept. 2026</b><small>So ist die Seite heute online</small></span></a>
+</div>
+</div>
+<style>
+.dev-dd-fly{position:relative}
+.dev-dd-pfeil{margin-left:auto;padding-left:.5rem;color:#998675;font-size:18px;line-height:1}
+.dev-dd-sub{position:absolute;left:calc(100% + 1.5rem);top:-.6rem;min-width:300px;padding:.6rem;background:#fff;border:1px solid #e5ddd4;border-radius:.75rem;box-shadow:0 18px 40px rgba(6,55,85,.12);opacity:0;visibility:hidden;transform:translateX(-4px);transition:opacity .15s,transform .15s,visibility .15s}
+.dev-dd-sub::before{content:"";position:absolute;left:-1.6rem;top:0;bottom:0;width:1.6rem}
+.dev-dd-fly:hover>.dev-dd-sub,.dev-dd-fly:focus-within>.dev-dd-sub{opacity:1;visibility:visible;transform:none}
+.dev-dd-fly:hover>.dev-dd-link{background:#f4f1ee}
+.dev-dd-sub .dev-dd-group{margin-top:.15rem}
+@media screen and (min-width:992px){#dev-dd .dev-dd-panel{overflow:visible;max-height:none;left:auto;right:var(--dev-dd-ruck,0px);transform:translateY(6px)}#dev-dd.is-open .dev-dd-panel{transform:none}}
+@media screen and (max-width:991px){.dev-dd-sub{position:static;opacity:1;visibility:visible;transform:none;min-width:0;padding:0 0 .4rem 2.75rem;border:0;box-shadow:none}.dev-dd-sub::before,.dev-dd-pfeil{display:none}.dev-dd-sub .dev-dd-group{display:none}}
+
+.dev-dd{position:relative;display:inline-block}
+.dev-dd-toggle{display:inline-flex;align-items:center;gap:.35rem;font-family:Poppins,Arial,sans-serif;font-size:14px;line-height:20px;color:#222;cursor:pointer}
+.dev-dd-chev{width:12px;height:12px;transition:transform .2s}
+.dev-dd.is-open .dev-dd-chev{transform:rotate(180deg)}
+.dev-dd-panel{max-height:80vh;overflow:auto;position:absolute;top:calc(100% + .25rem);left:50%;transform:translate(-50%,6px);min-width:360px;padding:.75rem;background:#fff;border:1px solid #e5ddd4;border-radius:.75rem;box-shadow:0 18px 40px rgba(6,55,85,.12);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s;z-index:20}
+.dev-dd.is-open .dev-dd-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.dev-dd-note{margin:0 0 .9rem;padding:.7rem .85rem;background:#082638;color:#fff;border-radius:.5rem;font-size:12px;line-height:1.4}
+.dev-dd-note b{display:block;font-size:13px;font-weight:600;margin-bottom:.15rem}
+.dev-dd-group{margin:.25rem .5rem .6rem;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#998675;font-weight:600}
+.dev-dd-link{display:flex;align-items:center;gap:.75rem;padding:.6rem .5rem;border-radius:.5rem;color:#1d1d1b;text-decoration:none;transition:background .15s}
+.dev-dd-link:hover,.dev-dd-link.is-current{background:#f4f1ee}
+.dev-dd-tag{flex:0 0 2rem;height:2rem;display:flex;align-items:center;justify-content:center;border-radius:.5rem;background:#185e8a;color:#fff;font-weight:600;font-size:13px}
+.dev-dd-tag--new{background:#998675}
+.dev-dd-group--sub{margin-top:.9rem;padding-top:.8rem;border-top:1px solid #efe9e3}
+.dev-dd-link--muted .dev-dd-tag{background:#f4f1ee;color:#7a6757}
+.dev-dd-link--muted{}
+.dev-dd-txt{display:flex;flex-direction:column;line-height:1.3}
+.dev-dd-txt b{font-weight:600;font-size:14px}
+.dev-dd-txt small{font-size:12px;color:#7a6757}
+@media screen and (max-width:991px){
+.dev-dd{display:block}
+.dev-dd-toggle{display:flex;width:100%;justify-content:space-between;padding:.75rem 0}
+.dev-dd-panel{position:static;transform:none;min-width:0;box-shadow:none;border:0;border-left:2px solid #e5ddd4;border-radius:0;padding:0 0 .5rem .75rem;display:none;opacity:1;visibility:visible}
+.dev-dd.is-open .dev-dd-panel{display:block;transform:none}
+}
+</style>
+<script>
+(function(){var d=document.getElementById('dev-dd');if(!d)return;var b=d.querySelector('.dev-dd-toggle');
+function set(o){d.classList.toggle('is-open',o);b.setAttribute('aria-expanded',String(o));}
+b.addEventListener('click',function(e){e.stopPropagation();if(window.innerWidth>991&&d.matches(':hover')){set(true);}else{set(!d.classList.contains('is-open'));}});
+var t;d.addEventListener('mouseenter',function(){if(window.innerWidth>991){clearTimeout(t);set(true);}});
+d.addEventListener('mouseleave',function(){if(window.innerWidth>991){t=setTimeout(function(){set(false);},180);}});
+document.addEventListener('click',function(e){if(!d.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+var cur=document.body.getAttribute('data-variante')||'live';d.querySelectorAll('.dev-dd-link').forEach(function(a){if(a.getAttribute('data-v')===cur)a.classList.add('is-current');});
+})();
+</script>
+<script>
+/* Untermenü „Bisherige Startseite“: Panel so weit nach links rücken, dass die Leistungsseiten rechts daneben Platz haben */
+(function(){var d=document.getElementById("dev-dd");if(!d)return;var p=d.querySelector(".dev-dd-panel"),s=d.querySelector(".dev-dd-sub");if(!p||!s)return;
+function ruecken(){if(innerWidth<992){d.style.removeProperty("--dev-dd-ruck");return;}d.style.setProperty("--dev-dd-ruck","0px");var r=p.getBoundingClientRect(),zu=r.right+26+s.offsetWidth-(innerWidth-16);d.style.setProperty("--dev-dd-ruck",(zu>0?Math.ceil(zu):0)+"px");}
+d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEventListener("click",ruecken);addEventListener("resize",ruecken);})();
+</script>
+<!-- ENTWICKLUNG:END -->
+    <a class="knopf" href="#kontakt">Thema besprechen</a>
+  </nav>
+</div></header>
+
+<main>
+
+<!-- 1 Kopf -->
+<section class="held"><div class="wrap">
+  <div class="held__raster">
+    <div>
+      <p class="kicker">Für Führungskräfte in Versicherungsunternehmen</p>
+      <div class="wahl" data-gruppe="kopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3</button></div>
+      <h1 data-gruppe="kopf" data-variante="1">Sie entscheiden. Wir bringen es ins Ziel.</h1>
+      <h1 data-gruppe="kopf" data-variante="2" hidden>Komplexe Themen. Klar strukturiert, entschieden und umgesetzt.</h1>
+      <h1 data-gruppe="kopf" data-variante="3" hidden>Mehr erreichen, ohne alles selbst koordinieren zu müssen.</h1>
+      <p class="lead">Wir übernehmen komplexe Themen von der ersten Klärung bis zum fertigen Ergebnis. Wir denken auf Ihrer Ebene mit, steuern die Bearbeitung und arbeiten selbst mit.</p>
+      <div class="knoepfe"><a class="knopf" href="#kontakt">Thema besprechen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#vorgehen">So gehen wir vor</a></div>
+    </div>
+    <div class="held__duo">
+      <figure class="person"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div><figcaption><b>Tobias Müller</b>Partner</figcaption></figure>
+      <figure class="person"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div><figcaption><b>Daniel Ströbel</b>Partner</figcaption></figure>
+    </div>
+  </div>
+  <div class="held__leiste">
+    <div><svg class="ico" aria-hidden="true"><use href="#i-ziel"/></svg><p><b>Klarheit schaffen</b><span>Wir holen das Thema aus Ihrem Kopf und arbeiten den Kern heraus.</span></p></div>
+    <div><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><p><b>Umsetzung steuern</b><span>Wir organisieren die Bearbeitung und halten sie in Bewegung.</span></p></div>
+    <div><svg class="ico" aria-hidden="true"><use href="#i-hand"/></svg><p><b>Selbst mitarbeiten</b><span>Wir erarbeiten Konzepte, Analysen und Vorlagen selbst.</span></p></div>
+  </div>
+</div></section>
+
+<!-- 2 Ausgangslage -->
+<section class="sek sek--sand"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Die Ausgangslage</p>
+    <h2 class="h2">Manche Themen kommen einfach nicht voran.</h2>
+    <p class="lead">Sie beschäftigen Sie schon länger. Sie sind komplex, viele sind beteiligt, und niemand kann genau sagen, wo der Kern liegt. Daneben läuft das Tagesgeschäft weiter, und die nächste Sitzung steht schon im Kalender.</p>
+  </div>
+  <div class="ebenen">
+    <div class="karte"><svg class="ico" aria-hidden="true"><use href="#i-vorstand"/></svg><h3>Im Vorstand</h3><p>Themen mit dem Aufsichtsrat klären, Entscheidungen vorbereiten, die Bereiche aufeinander abstimmen.</p></div>
+    <div class="karte"><svg class="ico" aria-hidden="true"><use href="#i-ebene"/></svg><h3>In der Hauptabteilung</h3><p>Strategische Vorgaben in konkrete Vorhaben übersetzen, Abteilungen koordinieren, Ergebnisse sicherstellen.</p></div>
+    <div class="karte"><svg class="ico" aria-hidden="true"><use href="#i-team"/></svg><h3>Im Bereich</h3><p>Sich mit dem Vorstand abstimmen, Teams führen, fachliche und organisatorische Themen gleichzeitig voranbringen.</p></div>
+  </div>
+  <div class="fazit">
+    <p>Die Ebene ist verschieden. Die Lage ist dieselbe: mehr wichtige Themen, als einer allein bearbeiten und koordinieren kann.</p>
+    <p><b>Wie Versicherung funktioniert, müssen Sie uns nicht erklären.</b> Wir kennen Ihre Welt aus eigener Führungsverantwortung und wissen, was Sie in dieser Lage brauchen.</p>
+  </div>
+</div></section>
+
+<!-- 3 Aus eigener Erfahrung -->
+<section class="sek sek--navy"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Aus eigener Erfahrung</p>
+    <h2 class="h2">Wir kennen diese Lage von beiden Seiten.</h2>
+    <p class="lead">Wir haben selbst Verantwortung getragen und erlebt, wie viele Themen gleichzeitig auf dem Tisch einer Führungskraft liegen. Und wir haben Führungskräfte in genau dieser Lage begleitet. Dabei wurde klar, was wirklich hilft.</p>
+  </div>
+  <div class="erfahrung">
+    <div><small>Was gebraucht wird</small><h3>Jemand, mit dem man über jedes Thema sprechen kann.</h3><p>Der sofort versteht, worum es geht, ohne lange Einarbeitung. Der dort direkt mitdenkt, wo er sich auskennt. Und der offen sagt, wo nicht, und trotzdem weiß, wie man das Thema angeht.</p></div>
+    <div><small>Was den Unterschied macht</small><h3>Jemand, der die Arbeit danach auch übernimmt.</h3><p>Der mit den Beteiligten spricht, die Vorhaben im Blick behält und dafür sorgt, dass es weitergeht. Und der dort, wo er die Fachkompetenz hat, selbst mit anpackt.</p></div>
+  </div>
+  <div class="erfahrung__schluss"><span aria-hidden="true">&amp;</span><p>Gute Ratschläge allein reichen nicht. Den Unterschied macht die Verbindung von beidem. Genau so arbeiten wir.</p></div>
+</div></section>
+
+<!-- 4 Klarheit -->
+<section class="sek" id="vorgehen"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Schritt 1 · Klarheit</p>
+    <h2 class="h2">Ab dem ersten Gespräch sorgen wir für Klarheit.</h2>
+    <p class="lead">Dafür müssen Sie nichts vorbereiten. Wir stellen gezielte Fragen, bringen andere Perspektiven ein und holen das Thema so aus Ihrem Kopf. Dann verdichten wir es auf das Wesentliche und leiten ab, wohin es gehen soll.</p>
+  </div>
+  <div class="weg3">
+    <div class="stufe"><small>Am Anfang</small><h3>Ihr Thema</h3><p>Viele Aspekte, viele Beteiligte, kein klarer Kern.</p>
+      <div class="stufe__bild wolke" aria-hidden="true"><span>Erwartungen</span><span>Zuständigkeiten</span><span>Zahlen</span><span>Abhängigkeiten</span><span>Termine</span><span>Risiken</span><span>Meinungen</span><span>Budget</span></div></div>
+    <div class="weg3__pfeil" aria-hidden="true"><svg class="ico"><use href="#i-pfeil"/></svg></div>
+    <div class="stufe"><small>Nach den ersten Gesprächen</small><h3>Der Kern</h3><p>Auf das reduziert, was zählt.</p>
+      <ul class="stufe__bild kern"><li>Worum es wirklich geht</li><li>Was zu entscheiden ist</li><li>Was dafür nötig ist</li></ul></div>
+    <div class="weg3__pfeil" aria-hidden="true"><svg class="ico"><use href="#i-pfeil"/></svg></div>
+    <div class="stufe stufe--ziel"><small>Die Richtung</small><h3>Das Zielbild</h3><p>Wohin es geht und wie alles zusammenhängt.</p>
+      <div class="stufe__bild ziel" aria-hidden="true"><span>Ziel</span><span>Vorhaben A</span><span>Vorhaben B</span><span>Vorhaben C</span></div></div>
+  </div>
+  <div class="sichtbar"><svg class="ico" aria-hidden="true"><use href="#i-auge"/></svg><p>Wir machen das sichtbar: Sie sehen jederzeit, wo wir stehen, wie das Zielbild aussieht und wie alles zusammenhängt.</p></div>
+</div></section>
+
+<!-- 5 Umsetzung -->
+<section class="sek sek--sand"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Schritt 2 · Umsetzung</p>
+    <h2 class="h2">Dann treiben wir die Umsetzung voran.</h2>
+    <p class="lead">Wir steuern das Vorhaben und bleiben dran, bis das Ergebnis steht. Sie müssen sich nicht darum kümmern, dass aus einer guten Idee auch etwas wird.</p>
+  </div>
+  <div class="schritte">
+    <div class="schritt"><span class="schritt__ico"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg></span><h3>Steuern</h3><p>Wir planen die Bearbeitung, setzen Prioritäten und behalten den Fortschritt im Blick.</p></div>
+    <div class="schritt"><span class="schritt__ico"><svg class="ico" aria-hidden="true"><use href="#i-gespraech"/></svg></span><h3>Abstimmen</h3><p>Wir sprechen mit den Beteiligten, über Ebenen und Bereiche hinweg, und bereiten Entscheidungen vor.</p></div>
+    <div class="schritt"><span class="schritt__ico"><svg class="ico" aria-hidden="true"><use href="#i-hand"/></svg></span><h3>Mitarbeiten</h3><p>Konzepte, Analysen, Entscheidungsvorlagen: Wo wir die Fachkompetenz haben, erarbeiten wir sie selbst.</p></div>
+  </div>
+  <div class="netz">
+    <div class="netz__text">
+      <p class="kicker">Unser Netzwerk</p>
+      <h3>Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</h3>
+      <p>Wir wissen, wo unsere eigene Fachkompetenz endet, und sagen das offen. Dann setzen wir gezielt erfahrene Personen aus unserem Netzwerk ein. Die Koordination bleibt bei uns, Sie haben weiterhin einen Ansprechpartner.</p>
+    </div>
+    <div class="netzbild">
+      <div class="netzbild__mitte"><span>Müller<br><i>&amp;</i> Ströbel</span></div>
+      <ul><li>Ehemalige Vorstände</li><li>Aufsichtsratsmitglieder</li><li>IT-Spezialisten</li><li>Prozess-Spezialisten</li><li>Entwickler</li><li>Marketingexperten</li><li>Grafiker</li><li>und weitere</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6 Arbeitsweise -->
+<section class="sek" id="arbeitsweise"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Unsere Arbeitsweise</p>
+    <h2 class="h2">Wir brauchen Sie oft. Aber immer nur kurz.</h2>
+    <p class="lead">Keine Workshops, für die Sie einen ganzen Tag blocken. Meist genügt eine halbe Stunde am Telefon, auch auf der Fahrt zum nächsten Termin. Lieber oft und kurz abstimmen als lange nichts und dann ein Workshop, nach dem wieder alles stillsteht.</p>
+  </div>
+  <div class="takt">
+    <div class="takt__zeile">
+      <div><small>Üblich</small><b>Großer Workshop, danach Stillstand</b></div>
+      <svg viewBox="0 0 600 104" role="img" aria-label="Ein Workshop-Tag, danach wochenlang kein Fortschritt, dann der nächste Workshop">
+        <rect x="0" y="16" width="76" height="86" rx="8" fill="#ebe4dc"/><text x="38" y="38" text-anchor="middle" fill="#7a6757" font-weight="600">Workshop</text>
+        <rect x="380" y="16" width="76" height="86" rx="8" fill="#ebe4dc"/><text x="418" y="38" text-anchor="middle" fill="#7a6757" font-weight="600">Workshop</text>
+        <path d="M0 98 L76 76 L380 76 L456 56 L600 56" fill="none" stroke="#998675" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="228" y="64" text-anchor="middle" fill="#998675">Stillstand</text>
+        <text x="528" y="44" text-anchor="middle" fill="#998675">Stillstand</text>
+      </svg>
+      <p class="takt__mobil">Ein Workshop-Tag, danach wochenlang wenig Bewegung, dann der nächste Workshop.</p>
+    </div>
+    <div class="takt__zeile takt__zeile--wir">
+      <div><small>Mit uns</small><b>Kurz abstimmen, dazwischen arbeiten wir</b></div>
+      <svg viewBox="0 0 600 108" role="img" aria-label="Regelmäßige Gespräche von 30 Minuten, jedes setzt eine Stufe höher an">
+        <path d="M0 78 H24 L76 66 H110 L162 54 H196 L248 42 H282 L334 30 H368 L420 18 H454 L506 6 H540 L600 2" fill="none" stroke="#cbbcae" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="#fff"><circle cx="24" cy="78" r="6"/><circle cx="110" cy="66" r="6"/><circle cx="196" cy="54" r="6"/><circle cx="282" cy="42" r="6"/><circle cx="368" cy="30" r="6"/><circle cx="454" cy="18" r="6"/><circle cx="540" cy="6" r="6"/></g>
+        <g fill="rgba(255,255,255,.66)"><text x="18" y="102">Klarheit</text><text x="104" y="90">Kern</text><text x="190" y="78">Optionen</text><text x="276" y="66">Entwurf</text><text x="362" y="54">Entscheidung</text><text x="448" y="42">Umsetzung</text><text x="534" y="30">Ergebnis</text></g>
+      </svg>
+      <p class="takt__mobil" style="color:rgba(255,255,255,.78)">Jede Woche eine halbe Stunde. Dazwischen arbeiten wir, und jedes Gespräch setzt eine Stufe höher an: Klarheit, Kern, Optionen, Entwurf, Entscheidung, Umsetzung, Ergebnis.</p>
+    </div>
+    <div class="takt__achse" aria-hidden="true"><span></span><div><span>Woche 1</span><span>Woche 4</span><span>Woche 8</span></div></div>
+  </div>
+  <div class="zwischen">
+    <div><h3>Zwischen den Gesprächen arbeiten wir</h3><p>An mehreren Strängen gleichzeitig. Wir entwickeln Ideen, Optionen und Entwürfe und bereiten sie so auf, dass Sie damit arbeiten können.</p></div>
+    <div><h3>Jedes Gespräch setzt höher an</h3><p>Sie sehen, was entstanden ist, geben die Richtung vor oder entscheiden. Beim nächsten Mal sind wir eine Stufe weiter.</p></div>
+    <div><h3>Ihre Zeit bleibt bei Ihnen</h3><p>Sie bleiben im Tagesgeschäft und behalten trotzdem die Steuerung. Das Thema läuft, auch wenn Sie gerade nicht daran arbeiten.</p></div>
+  </div>
+</div></section>
+
+<!-- 7 Alle Rollen -->
+<section class="sek sek--navy"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Was Sie bekommen</p>
+    <div class="wahl" data-gruppe="rollen"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
+    <h2 class="h2" data-gruppe="rollen" data-variante="1">Alle Rollen, die Ihr Thema braucht. Aus einer Hand.</h2>
+    <h2 class="h2" data-gruppe="rollen" data-variante="2" hidden>Die Zuarbeit, die sich jede Führungskraft wünscht.</h2>
+    <p class="lead">Ein Thema braucht selten nur eine Fähigkeit. Es braucht jemanden, der auf Ihrer Ebene mitdenkt, der aufbereitet und analysiert, der das Vorhaben steuert und der fachlich mit anpackt. Bei uns bekommen Sie das zusammen, und Sie müssen nichts davon selbst koordinieren.</p>
+  </div>
+  <div class="rollen">
+    <div class="rolle"><svg class="ico" aria-hidden="true"><use href="#i-gespraech"/></svg><div><h3>Sparringspartner</h3><p>Denkt auf Ihrer Ebene mit und bereitet Entscheidungen vor.</p></div></div>
+    <div class="rolle"><svg class="ico" aria-hidden="true"><use href="#i-dokument"/></svg><div><h3>Referent</h3><p>Bereitet Themen so auf, dass Sie damit arbeiten können.</p></div></div>
+    <div class="rolle"><svg class="ico" aria-hidden="true"><use href="#i-analyse"/></svg><div><h3>Analyse</h3><p>Prüft Zahlen, Sachverhalte und Optionen.</p></div></div>
+    <div class="rolle"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg><div><h3>Projektleitung</h3><p>Steuert Beteiligte, Termine und Fortschritt.</p></div></div>
+    <div class="rolle"><svg class="ico" aria-hidden="true"><use href="#i-hand"/></svg><div><h3>Fachliche Mitarbeit</h3><p>Erarbeitet Konzepte und Ergebnisse selbst.</p></div></div>
+    <div class="rolle"><svg class="ico" aria-hidden="true"><use href="#i-netz"/></svg><div><h3>Spezialisten</h3><p>Kommen aus unserem Netzwerk dazu, wenn es sie braucht.</p></div></div>
+  </div>
+  <div class="buendel" aria-hidden="true"><svg viewBox="0 0 1000 54" preserveAspectRatio="none"><path d="M166 0 C166 30 500 22 500 54 M500 0 V54 M834 0 C834 30 500 22 500 54"/></svg></div>
+  <div class="ergebnis"><p>Ein Ansprechpartner. Ein Ergebnis.</p><span>Wir übernehmen alle Rollen, die Ihr Thema braucht, um zum Erfolg zu kommen.</span></div>
+</div></section>
+
+<!-- 8 Was sich ändert -->
+<section class="sek sek--sand"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Was sich für Sie ändert</p>
+    <h2 class="h2">Sie sind wieder da, wo Sie als Führungskraft sein wollen.</h2>
+  </div>
+  <div class="wechsel">
+    <div class="wechsel__spalte wechsel__spalte--vorher"><small>Bisher</small><ul>
+      <li><svg aria-hidden="true"><use href="#i-minus"/></svg>Sie verwalten den Mangel: zu wenig Zeit, zu wenig Kapazität, zu viele offene Enden.</li>
+      <li><svg aria-hidden="true"><use href="#i-minus"/></svg>Sie koordinieren Berater, Fachbereiche und Spezialisten selbst.</li>
+      <li><svg aria-hidden="true"><use href="#i-minus"/></svg>Themen kommen halb fertig zu Ihnen zurück.</li>
+      <li><svg aria-hidden="true"><use href="#i-minus"/></svg>Nach dem Workshop bleibt es still.</li></ul></div>
+    <div class="wechsel__pfeil" aria-hidden="true"><svg class="ico"><use href="#i-pfeil"/></svg></div>
+    <div class="wechsel__spalte wechsel__spalte--nachher"><small>Mit uns</small><ul>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Themen kommen so aufbereitet zu Ihnen, dass Sie damit arbeiten können.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Sie entscheiden und steuern. Die Koordination liegt bei uns.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Die Bearbeitung läuft weiter, während Sie im Tagesgeschäft sind.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Die Ergebnisse kommen.</li></ul></div>
+  </div>
+  <div class="profis">
+    <blockquote><p>„Einmal mit Profis arbeiten.“</p><p>Sie kennen den Satz. Genau das bekommen Sie: Leute, die verstehen, was Sie brauchen, und liefern.</p></blockquote>
+    <div class="profis__freude"><b>Und die Zusammenarbeit macht Freude.</b>Wir gehen mit Energie an Ihre Themen. Das spüren Sie in jeder Abstimmung.</div>
+  </div>
+</div></section>
+
+<!-- 9 Wer dahintersteht -->
+<section class="sek" id="wir"><div class="wrap">
+  <div class="kopfteil">
+    <p class="kicker">Wer dahintersteht</p>
+    <h2 class="h2">Zwei Partner, die selbst mitarbeiten.</h2>
+    <p class="lead">Wir haben beide selbst Führungsverantwortung in der Versicherungswirtschaft getragen. Komplexe Themen zu strukturieren, zur Entscheidung zu bringen und umzusetzen, ist unser tägliches Handwerk.</p>
+  </div>
+  <div class="partner">
+    <article><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div><div>
+      <h3>Tobias Müller</h3><p class="partner__rolle">Governance, Gremien &amp; Risiko</p>
+      <div class="wege">
+        <a href="tel:+4917621529798"><span>Telefon</span><b>+49 176 2152 9798</b></a>
+        <a href="mailto:tobias@muellerundstroebel.de"><span>E-Mail</span><b>tobias@muellerundstroebel.de</b></a>
+        <a class="li" href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener"><span>Profil</span><b><i>in</i>LinkedIn <svg aria-hidden="true"><use href="#i-extern"/></svg></b></a>
+      </div></div></article>
+    <article><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div><div>
+      <h3>Daniel Ströbel</h3><p class="partner__rolle">Strategie, Führung &amp; Vertrieb</p>
+      <div class="wege">
+        <a href="tel:+4917631347217"><span>Telefon</span><b>+49 176 3134 7217</b></a>
+        <a href="mailto:daniel@muellerundstroebel.de"><span>E-Mail</span><b>daniel@muellerundstroebel.de</b></a>
+        <a class="li" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener"><span>Profil</span><b><i>in</i>LinkedIn <svg aria-hidden="true"><use href="#i-extern"/></svg></b></a>
+      </div></div></article>
+  </div>
+  <a class="mehr" href="/ueber-uns.html">Mehr über uns <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+</div></section>
+
+<!-- 10 Versprechen -->
+<section class="sek sek--navy versprechen" id="kontakt"><div class="wrap">
+  <p class="kicker">Unser Versprechen</p>
+  <h2>Sie geben uns ein Thema. Wir sorgen dafür, dass daraus ein Ergebnis wird.</h2>
+  <p class="lead">Rufen Sie einen von uns direkt an oder schreiben Sie uns. Wir sagen Ihnen offen, ob und wie wir Ihr Thema übernehmen.</p>
+  <div class="knoepfe"><a class="knopf knopf--hell" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen">Thema besprechen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" style="color:#fff;border-color:rgba(255,255,255,.3)" href="#wir">Direkt anrufen</a></div>
+</div></section>
+
+</main>
+
+<footer class="fuss"><div class="wrap">
+  <img src="/pdf/bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel">
+  <nav><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
+</div></footer>
+
+<script>
+/* Variantenwahl (nur Entwurf): Knopf 1/2/3 zeigt die jeweilige Fassung */
+document.querySelectorAll('.wahl').forEach(function (w) {
+  var g = w.getAttribute('data-gruppe');
+  w.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.textContent.trim();
+      w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
+    });
+  });
+});
+</script>
+</body>
+</html>
