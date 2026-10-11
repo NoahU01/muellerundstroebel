@@ -205,6 +205,20 @@ def seiten():
       <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
     </div>
   </div>''', "ende"))
+    # Rückseite Variante B: komplett dunkelblau, skizziertes & rechts oben, darüber der Pitch in 10 Sekunden
+    S.append(("navy ab ab2n abb", f'''{leiste("Kontakt", True)}
+  <img class="abb__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
+  <div class="ab2n__unten dunkel">
+    <div class="ab2n__text abb__text">
+      <p class="abb__kurz">{b.PITCH_10}</p>
+      <p class="abb__kurz abb__schluss">Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p>
+    </div>
+    <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
+    <div class="ab4__impressum">
+      <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
+      <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
+    </div>
+  </div>''', "ende"))
     return S
 
 

@@ -738,3 +738,9 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .o5-einstieg { font-size: 16pt; }
 .o5-schluss { font-size: 13.5pt; }
 .o5c .o5-schluss { font-size: 17pt; }
+/* Rückseite Variante B: komplett dunkelblau, skizziertes & rechts oben, Pitch in 10 Sekunden */
+.abb .ab2n__unten { background: transparent; }
+.abb__amp { position: absolute; right: -10pt; top: 92pt; width: 300pt; height: auto; opacity: .9; }
+.abb__text { right: var(--rand) !important; top: 40pt !important; }
+.abb__kurz { font-family: Lora, serif; font-size: 15pt; line-height: 1.45; color: var(--weiss); }
+.abb__schluss { margin-top: 14pt; color: var(--taupe-h); }

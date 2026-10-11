@@ -84,7 +84,7 @@ def html():
 <h2>Herkunft der Kurzfassung</h2>
 <table class="tab tab--zwei">
   <tr><td><b>Für wen</b></td><td>F1: „Für Führungskräfte in der Versicherungsbranche.“</td></tr>
-  <tr><td><b>Zwei Beispiele</b></td><td>Aus den Einsatzgebieten: die Vorlage für den Aufsichtsrat und die Strategie für die Bereiche. Mehr als zwei Beispiele versteht man gesprochen nicht.</td></tr>
+  <tr><td><b>Zwei Beispiele</b></td><td>Aus den Einsatzgebieten: die Vorlage für den Aufsichtsrat und die Überführung der Strategie in den Alltag. Mehr als zwei Beispiele versteht man gesprochen nicht.</td></tr>
   <tr><td><b>Das Versprechen</b></td><td>F4 (Punkt 7): „… und liefern das Ergebnis.“</td></tr>
   <tr><td><b>Sein Aufwand</b></td><td>F6 (Punkt 9): „Sie brauchen dafür nur kurze Abstimmungen.“</td></tr>
   <tr><td><b>Schlusssatz</b></td><td>„Die rechte Hand“: ein Rollenbild, das weder über der Führungskraft steht (Bereichsleiter) noch zu klein ist (Assistenz). Mit einer Leerzeile abgesetzt.</td></tr>

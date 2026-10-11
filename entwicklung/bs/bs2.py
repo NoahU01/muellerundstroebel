@@ -279,7 +279,7 @@ def startseite():
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,5 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>12 Seiten</span><span>1,3 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -350,7 +350,7 @@ def kontakt_neu(titel, text):
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,5 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>12 Seiten</span><span>1,3 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -774,7 +774,7 @@ PITCH = [  # (Nr, Baustein, Frage des Gegenübers, Quelle im Storyboard, Satz im
      "Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen.",
      "Ein konkretes Erlebnis aus seinem Alltag statt einer Behauptung über den Markt."),
     ("3", "Unsere Antwort", "Was macht ihr anders?", "F4 · Punkt 7 · Aussagen 8, 9",
-     "Da setzen wir an. Sie geben uns die Verantwortung für ein Thema, etwa die Vorlage für den Aufsichtsrat. Wir strukturieren es, arbeiten es mit Ihren Leuten aus und liefern das Ergebnis.",
+     "Da setzen wir an. Sie geben uns die Verantwortung für ein Thema, etwa die Vorlage für den Aufsichtsrat. Wir strukturieren es, arbeiten es mit Ihrem Team aus und liefern das Ergebnis.",
      "Versprechen plus ein Beispiel, das er sofort einordnen kann. Weitere Beispiele, wenn er nachfragt."),
     ("4", "Sein Aufwand", "Was kostet mich das?", "F6 · Punkt 9",
      "Von Ihnen brauchen wir dafür meist nur ein kurzes Telefonat zwischendurch.",
@@ -787,7 +787,7 @@ PITCH = [  # (Nr, Baustein, Frage des Gegenübers, Quelle im Storyboard, Satz im
      "Niedrige Schwelle, konkreter Anlass. Im Nachgespräch: Das erste Gespräch kostet nichts."),
 ]
 PITCH_10 = ("Wir übernehmen für Führungskräfte in der Versicherungsbranche komplexe Themen, von der Vorlage für den Aufsichtsrat "
-            "bis zur Strategie für die Bereiche, und liefern das Ergebnis. Sie brauchen dafür nur kurze Abstimmungen.")
+            "bis zur Überführung der Strategie in den Alltag, und liefern das Ergebnis. Sie brauchen dafür nur kurze Abstimmungen.")
 WEG = [  # was im kurzen Pitch bewusst fehlt
     ("Die sechs Einsatzgebiete", "Zu viel für ein Gespräch. Zwei Beispiele reichen, den Rest liefert das PDF."),
     ("Das Netzwerk im Detail", "Kommt als Antwort, wenn er fragt: „Und wenn ihr etwas nicht könnt?“"),
