@@ -392,3 +392,127 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .ab-personen--hell .ab-person span { color: rgba(255,255,255,.78); }
 .ab-personen--hell .ab-person span:nth-of-type(1) { color: var(--taupe-h); }
 .ab-personen--hell .kreis { border-color: var(--weiss); }
+
+/* ===================== One-Pager Neubau (o2) ===================== */
+.o2 { padding-top: 104pt; }
+.o2 h1 { font-size: 27pt; line-height: 1.1; max-width: 440pt; }
+.o2 .unter { font-size: 9.6pt; max-width: 420pt; }
+.o2 h2 { font-size: 14pt; line-height: 1.22; }
+
+/* Kontaktleiste unten, einmal je Seite */
+.o2-kontakt { position: absolute; left: var(--rand); right: var(--rand); bottom: 34pt; display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16pt; align-items: center; padding-top: 14pt; border-top: .6pt solid var(--linie); }
+.o2-kontakt .kicker { margin-bottom: 4pt; }
+.o2-kontakt__satz { font-family: Lora, serif; font-size: 10pt; line-height: 1.35; color: var(--navy); }
+.o2-person { display: flex; gap: 8pt; align-items: center; }
+.o2-person .kreis { flex: none; border-width: 2pt; }
+.o2-person b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 9.6pt; color: var(--navy); }
+.o2-person span { display: block; font-size: 6.8pt; line-height: 1.45; color: var(--ink-2); }
+
+/* A: Bahnen */
+.o2-feld { margin-top: 26pt; padding: 18pt 18pt 14pt; border-radius: 14pt; background: var(--sand); }
+.o2-bahn { width: 100%; height: auto; }
+.o2-bahn text { font-family: Poppins, sans-serif; }
+.t-lane { font-family: Lora, serif !important; font-size: 15px; fill: #082638; }
+.t-sie { font-size: 8.4px; font-weight: 500; fill: #16222b; text-anchor: middle; }
+.t-wir { font-size: 8.2px; font-weight: 500; fill: #fff; text-anchor: middle; }
+.t-erg { font-size: 7.4px; font-weight: 600; fill: #082638; text-anchor: middle; }
+.t-fuss { font-size: 8.2px; fill: #46525c; }
+.l-sie { stroke: #cbbcae; stroke-width: 1.5; stroke-dasharray: 2 4; }
+.l-verb { stroke: #cbbcae; stroke-width: 1; stroke-dasharray: 2 3; }
+.p-sie { fill: #fff; stroke: #082638; stroke-width: 2; }
+.r-wir { fill: #082638; }
+.l-trenn { stroke: rgba(255,255,255,.25); stroke-width: 1; }
+.l-pfeil { stroke: #082638; stroke-width: 2; }
+.p-erg { fill: #cbbcae; }
+.o2-karten { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; margin-top: 18pt; }
+.o2-karte { padding: 14pt 14pt 13pt; border-radius: 12pt; border: .8pt solid var(--linie); }
+.o2-karte span { font-family: Lora, serif; font-size: 10pt; color: var(--taupe-h); }
+.o2-karte h3 { margin-top: 5pt; font-size: 12pt; }
+.o2-karte p { margin-top: 5pt; font-size: 8.4pt; line-height: 1.5; }
+
+/* B: Vergleich */
+.o2-vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 26pt; }
+.o2-panel { padding: 18pt 16pt 16pt; border-radius: 14pt; }
+.o2-panel--hell { background: var(--sand); }
+.o2-panel--dunkel { background: var(--navy); }
+.o2-panel h2 { font-size: 13pt; }
+.o2-fluss { width: 100%; height: auto; margin-top: 12pt; }
+.o2-fluss text { font-family: Poppins, sans-serif; font-size: 8.4px; font-weight: 500; text-anchor: middle; }
+.k-hell { fill: #fff; stroke: #e6ded5; }
+.k-dunkel { fill: #082638; }
+.k-weiss { fill: #fff; }
+.k-taupe { fill: #cbbcae; }
+.k-rand { fill: none; stroke: rgba(255,255,255,.4); }
+.t-hell, .t-weiss, .t-taupe { fill: #082638; }
+.t-dunkel, .t-rand { fill: #fff; }
+.l-b { fill: none; stroke: #998675; stroke-width: 1.2; }
+.l-m { fill: none; stroke: #cbbcae; stroke-width: 1.4; }
+.l-duenn { stroke-width: 1; stroke-dasharray: 2 3; }
+.l-gestr { stroke-dasharray: 3 3; }
+.t-notiz { font-size: 7.6px !important; font-weight: 400 !important; fill: #7a6757; }
+.t-notiz--hell { fill: rgba(255,255,255,.7); }
+.o2-panel__satz { margin-top: 10pt; font-family: Lora, serif; font-size: 10.5pt; line-height: 1.35; color: var(--navy); }
+.o2-panel--dunkel .o2-panel__satz { color: var(--weiss); }
+
+/* C: drei Spalten */
+.o2c h1 { font-size: 30pt; }
+.o2-spalten { display: grid; grid-template-columns: 1fr 14pt 1fr 14pt 1fr; gap: 4pt; margin-top: 28pt; align-items: stretch; }
+.o2-spalte { padding: 18pt 14pt 16pt; border-radius: 14pt; border: .8pt solid var(--linie); }
+.o2-spalte--dunkel { background: var(--navy); border-color: var(--navy); }
+.o2-spalte--sand { background: var(--sand); border-color: var(--sand); }
+.o2-spalte h2 { font-size: 13.5pt; min-height: 52pt; }
+.o2-spalte ul { margin-top: 12pt; }
+.o2-spalte li { padding: 6pt 0; border-top: .6pt solid var(--linie); font-size: 8.4pt; line-height: 1.4; color: var(--ink); }
+.o2-spalte--dunkel li { border-color: rgba(255,255,255,.16); color: rgba(255,255,255,.88); }
+.o2-spalte--sand li { border-color: var(--sand-2); }
+.o2-pfeil { display: grid; place-items: center; }
+.o2-pfeil svg { width: 14pt; height: 14pt; fill: none; stroke: var(--taupe); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.o2-aufwand { display: flex; gap: 10pt; align-items: center; margin-top: 16pt; padding: 12pt 14pt; border-radius: 12pt; background: var(--sand); }
+.o2-aufwand svg { flex: none; width: 20pt; height: 20pt; fill: none; stroke: var(--blau); stroke-width: 1.5; stroke-linecap: round; }
+.o2-aufwand p { font-size: 9pt; color: var(--ink); }
+.o2-aufwand b { font-weight: 600; color: var(--navy); }
+
+/* D: Plakat + Einsatzgebiete */
+.o2d { padding-top: 0; }
+.o2d__plakat { position: relative; height: 420pt; padding: 40pt var(--rand) 0; background: var(--navy); overflow: hidden; }
+.o2d__amp { position: absolute; right: -70pt; top: 40pt; width: 260pt; opacity: .5; }
+.o2d__text { position: absolute; left: var(--rand); right: 120pt; bottom: 34pt; }
+.o2d h1 { font-size: 27pt; color: var(--weiss); }
+.o2d .unter { color: rgba(255,255,255,.78); }
+.o2d__unten { padding: 26pt var(--rand) 0; }
+.o2-felder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14pt 16pt; margin-top: 6pt; }
+.o2-feldchen { display: flex; gap: 9pt; align-items: flex-start; }
+.o2-feldchen svg { flex: none; width: 20pt; height: 20pt; }
+.o2-feldchen b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 10.5pt; line-height: 1.25; color: var(--navy); }
+.o2-feldchen span { display: block; margin-top: 3pt; font-size: 7.6pt; line-height: 1.45; color: var(--ink-2); }
+
+/* One-Pager Korrekturen (Sichtprüfung) */
+.o2-person span { display: block; }
+.o2-ergebnis { position: absolute; left: var(--rand); right: var(--rand); bottom: 112pt; display: grid; grid-template-columns: 110pt 1fr; gap: 16pt; align-items: center; padding: 18pt 20pt; border-radius: 14pt; background: var(--navy); }
+.o2-ergebnis .kicker { margin: 0; color: var(--taupe-h); }
+.o2-ergebnis .kicker::before { background: var(--taupe-h); }
+.o2-ergebnis h2 { font-size: 16pt; color: var(--weiss); }
+.o2-ergebnis p:not(.kicker) { margin-top: 4pt; font-size: 8.8pt; line-height: 1.5; color: rgba(255,255,255,.78); }
+.o2c .o2-spalten { margin-top: 30pt; }
+.o2c .o2-spalte { min-height: 300pt; }
+/* D: Plakat randlos */
+.o2d { padding: 0; }
+.o2d .leiste--fluss { display: flex; justify-content: space-between; margin: 0; }
+.o2d__plakat { height: 380pt; }
+.o2d__unten { padding: 28pt var(--rand) 0; }
+
+/* Abschluss Variante 4: dunkel, Gesichter, viel Luft, zweizeiliges Impressum */
+.ab4__inhalt { position: absolute; left: var(--rand); right: var(--rand); top: 96pt; text-align: center; }
+.ab4__logo { height: 34pt; width: auto; margin: 0 auto 70pt; }
+.ab4__inhalt .kicker { justify-content: center; }
+.ab4__inhalt h2 { font-size: 21pt; line-height: 1.25; max-width: 380pt; margin: 0 auto; color: var(--weiss); }
+.ab4__inhalt .unter { margin: 14pt auto 0; max-width: 340pt; font-size: 9.2pt; text-align: center; }
+.ab4__personen { display: grid; grid-template-columns: 1fr 1fr; gap: 24pt; max-width: 380pt; margin: 54pt auto 0; }
+.ab4-person { display: flex; flex-direction: column; align-items: center; }
+.ab4-person .kreis { border-width: 3pt; }
+.ab4-person b { margin-top: 12pt; font-family: Lora, serif; font-weight: 500; font-size: 12.5pt; color: var(--weiss); }
+.ab4-person span { font-size: 8.2pt; line-height: 1.55; color: rgba(255,255,255,.8); }
+.ab4-person .ab4-rolle { margin: 2pt 0 7pt; color: var(--taupe-h); }
+.ab4__web { margin-top: 34pt; font-size: 8.6pt; font-weight: 600; letter-spacing: .08em; color: var(--taupe-h); }
+.ab4__impressum { position: absolute; left: var(--rand); right: var(--rand); bottom: 40pt; text-align: center; font-size: 6.9pt; line-height: 1.7; color: rgba(255,255,255,.55); }
+.ab4__impressum b { font-weight: 600; color: rgba(255,255,255,.8); }
