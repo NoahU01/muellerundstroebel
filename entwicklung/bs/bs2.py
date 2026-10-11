@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 9
+VERSION = 10
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -313,10 +313,10 @@ def storyboard():
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div></div>\n')
 
-    fragen_alle = sorted(((int(f), t, [p[0] for p in ps]) for _, _, fr in STORY for f, t, ps in fr))
-    def spanne(ps):
-        return f"Punkt {ps[0]}" if len(ps) == 1 else f"Punkte {ps[0]}–{ps[-1]}"
-    logik = "".join(f'<li><span class="sb-f">F{f}</span><b>{t}</b><small>{spanne(ps)}</small></li>' for f, t, ps in fragen_alle)
+    fragen_alle = sorted((int(f), t) for _, _, fr in STORY for f, t, _ in fr)
+    punkte_alle = sorted((int(p[0]), p[1]) for _, _, fr in STORY for _, _, ps in fr for p in ps)
+    logik_fragen = "".join(f'<li><span>F{n}</span>{t}</li>' for n, t in fragen_alle)
+    logik_punkte = "".join(f'<li><span>{n}</span>{t}</li>' for n, t in punkte_alle)
 
     regeln = [("s-eins", "Eine Aussage je Frage", "Acht Fragen, acht Sätze. Mehr kommt nicht auf die erste Ebene."),
               ("s-wort", "Ihr Wortlaut", "Ich kürze und ordne Ihre Antworten. Wo etwas fehlt, frage ich nach."),
@@ -343,9 +343,12 @@ def storyboard():
 </div></section>
 
 <section class="sb-logik"><div class="wrap">
-  <div class="sb-logik__text"><p class="kicker">Die Logik dahinter</p>
-    <p>Der Leser stellt sich acht Fragen, immer in dieser Reihenfolge. Die zwölf Punkte sind danach nummeriert: Jeder Punkt liefert die Antwort auf eine Frage. In der Zuordnung darunter stehen sie nach Abschnitten der Seite sortiert. Deshalb folgt im Kopf auf Punkt 2 der Punkt 7: Die Antwort auf F4 steht ganz oben.</p></div>
-  <ol class="sb-logik__fragen">{logik}</ol>
+  <div class="sb-logik__kopf"><p class="kicker">Die Logik dahinter</p>
+    <p>Der Leser stellt sich acht Fragen, immer in dieser Reihenfolge. Um sie zu beantworten, klären wir zwölf Punkte. Wie beides zusammenhängt, zeigt die Zuordnung darunter.</p></div>
+  <div class="sb-logik__listen">
+    <div><h2>Die 8 Fragen des Lesers</h2><ol class="sb-liste">{logik_fragen}</ol></div>
+    <div><h2>Die 12 Punkte, die wir klären</h2><ol class="sb-liste">{logik_punkte}</ol></div>
+  </div>
 </div></section>
 
 <section class="sek sek--sand"><div class="wrap">
