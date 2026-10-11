@@ -1,71 +1,114 @@
-/* Storyboard Business Story 2.0 – ergänzt business-story-2.css (nur Entwicklung) */
+/* Storyboard Business Story 2.0 – ergänzt business-story-2.css (nur Entwicklung).
+   Stil: Klarheit der Wagenpaten-Seite – große Überschriften, Schritt-Karten, klare Flächen. */
 
-/* Kopfzeile der Zuordnung */
-.sb-kopfzeile { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr) minmax(0, .9fr); gap: 1.4rem; margin-top: .6rem; padding-bottom: .9rem; border-bottom: 2px solid var(--navy); }
-.sb-kopfzeile span { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
-.sb-kopfzeile small { display: block; margin-top: .15rem; font-size: .74rem; font-weight: 500; letter-spacing: .04em; text-transform: none; color: var(--taupe-d); }
+/* Kopf mit drei Schritten */
+.sb-held { padding-bottom: 6.5rem; }
+.sb-held h1 { max-width: 14ch; }
+.sb-weg { display: grid; grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr) 3rem minmax(0, 1fr); align-items: stretch; margin-top: 4rem; }
+.sb-weg > li:not(.sb-weg__pfeil) { position: relative; padding: 2rem 1.8rem 1.8rem; border-radius: 22px; background: var(--sand); }
+.sb-weg__ico { display: grid; place-items: center; width: 3.4rem; height: 3.4rem; border-radius: 14px; background: var(--navy); color: var(--weiss); }
+.sb-weg__ico .ico { width: 1.8rem; height: 1.8rem; }
+.sb-weg b { display: block; margin-top: 1.6rem; font-family: var(--head); font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3rem); line-height: 1; color: var(--navy); }
+.sb-weg h2 { margin-top: .6rem; font-family: var(--text); font-size: 1.05rem; font-weight: 600; letter-spacing: 0; color: var(--navy); }
+.sb-weg p { margin-top: .35rem; font-size: .95rem; color: var(--ink-2); }
+.sb-weg__pfeil { display: grid; place-items: center; color: var(--taupe); }
+.sb-weg__pfeil .ico { width: 1.5rem; height: 1.5rem; }
+.sb-weg > li.sb-weg--ziel { background: var(--navy); }
+.sb-weg--ziel .sb-weg__ico { background: var(--weiss); color: var(--navy); }
+.sb-weg--ziel b, .sb-weg--ziel h2 { color: var(--weiss); }
+.sb-weg--ziel p { color: rgba(255,255,255,.75); }
 
-/* Gruppe = ein Abschnitt der Landingpage mit seinen zwei Leserfragen */
-.sb-gruppe { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, .9fr); gap: 1.4rem; padding: 1.4rem 0; border-bottom: 1px solid var(--linie); }
-.sb-zeilen { display: grid; gap: .8rem; }
-.sb-zeile { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: 1.4rem; align-items: center; }
-.sb-punkte { display: grid; gap: .45rem; }
-.sb-punkt { position: relative; display: grid; grid-template-columns: 1.9rem minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .65rem .8rem; border-radius: 12px; background: var(--weiss); border: 1px solid var(--linie); }
-.sb-punkt b { display: block; font-weight: 500; font-size: .93rem; line-height: 1.35; color: var(--ink); }
-.sb-punkt q { display: block; margin-top: .15rem; font-size: .82rem; line-height: 1.35; color: var(--ink-2); quotes: "„" "“"; }
-.sb-punkt em, .sb-legende em { font-style: normal; padding: .18rem .55rem; border-radius: 999px; font-size: .68rem; font-weight: 600; letter-spacing: .04em; white-space: nowrap; }
-.sb-punkt--da em, .st-da { background: var(--navy); color: var(--weiss); }
-.sb-punkt--teil em, .st-teil { background: var(--sand-2); color: var(--taupe-d); }
-.sb-punkt--offen em, .st-offen { background: var(--weiss); color: var(--taupe-d); box-shadow: inset 0 0 0 1px var(--taupe-h); }
-.sb-punkt--offen { border-style: dashed; border-color: var(--taupe-h); background: transparent; }
+/* Zuordnung: vier Bahnen = vier Abschnitte */
+.sb-titel { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem 3rem; }
+.sb-legende { display: flex; gap: 1.4rem; font-size: .88rem; font-weight: 500; color: var(--ink-2); }
+.sb-legende li { display: inline-flex; align-items: center; gap: .5rem; }
+.sb-bahnen { display: grid; gap: 1.2rem; margin-top: 3rem; }
+.sb-bahn { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.1fr) minmax(0, 1.1fr); overflow: hidden; border-radius: 22px; background: var(--weiss); box-shadow: 0 24px 50px -36px rgba(8,38,56,.4); }
+.sb-bahn__kopf { padding: 1.8rem 1.7rem; background: var(--navy); color: var(--weiss); }
+.sb-bahn__kopf span { font-family: var(--head); font-size: 2.8rem; line-height: 1; color: var(--taupe-h); }
+.sb-bahn__kopf h3 { margin-top: .8rem; font-size: 1.75rem; color: var(--weiss); }
+.sb-bahn__kopf p { margin-top: .6rem; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.72); }
+.sb-frage { padding: 1.8rem 1.7rem; }
+.sb-frage + .sb-frage { border-left: 1px solid var(--linie); }
+.sb-f { display: inline-block; padding: .2rem .65rem; border-radius: 999px; background: var(--sand-2); font-size: .75rem; font-weight: 600; letter-spacing: .06em; color: var(--taupe-d); }
+.sb-frage h3 { margin-top: .7rem; font-size: 1.45rem; line-height: 1.2; }
+.sb-frage ul { display: grid; gap: .55rem; margin-top: 1.3rem; }
 
-.sb-nr { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--sand-2); font-family: var(--head); font-size: .9rem; color: var(--navy); }
-.sb-nr--frage { width: auto; min-width: 2.3rem; padding: 0 .5rem; border-radius: 999px; background: var(--weiss); box-shadow: inset 0 0 0 1.5px var(--navy); font-family: var(--text); font-size: .78rem; font-weight: 600; }
-.sb-nr--abschnitt { width: 2.3rem; height: 2.3rem; background: var(--navy); color: var(--weiss); font-size: 1.05rem; }
+/* Punkt mit Status-Kreis: voll = vorhanden, halb = teilweise, leer = offen */
+.sb-p { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); gap: .75rem; align-items: start; }
+.sb-p i, .sb-legende i { display: block; width: 1.1rem; height: 1.1rem; margin-top: .2rem; border-radius: 50%; }
+.sb-p--da i { background: var(--navy); }
+.sb-p--teil i { background: linear-gradient(90deg, var(--navy) 50%, var(--weiss) 50%); box-shadow: inset 0 0 0 1.5px var(--navy); }
+.sb-p--offen i { box-shadow: inset 0 0 0 1.5px var(--taupe-h); background: var(--weiss); }
+.sb-p small { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
+.sb-p b { display: block; font-weight: 500; font-size: .98rem; line-height: 1.35; color: var(--ink); }
+.sb-p--offen b { color: var(--ink-2); }
+.sb-p q { display: block; margin-top: .45rem; padding: .55rem .75rem; border-radius: 10px; background: var(--sand); font-family: var(--head); font-size: .95rem; line-height: 1.4; color: var(--navy); quotes: "„" "“"; }
 
-/* Frage des Lesers, mit Pfeil von den Punkten */
-.sb-frage { position: relative; display: flex; align-items: center; gap: .8rem; padding: .9rem 1rem; border-radius: 12px; background: var(--weiss); border: 1.5px solid var(--navy); }
-.sb-frage b { font-family: var(--head); font-weight: 500; font-size: 1.08rem; line-height: 1.25; color: var(--navy); }
-.sb-frage::before { content: ""; position: absolute; left: -1.4rem; top: 50%; width: 1.4rem; border-top: 1.5px solid var(--taupe); }
-.sb-frage::after { content: ""; position: absolute; left: -.45rem; top: calc(50% - .32rem); border: .32rem solid transparent; border-left-color: var(--taupe); border-right: 0; }
+/* Regeln als Karten */
+.sb-karten { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3.2rem; counter-reset: k; }
+.sb-karte { position: relative; padding: 1.9rem 1.6rem 1.7rem; border-radius: var(--r); border: 1px solid var(--linie); background: var(--weiss); }
+.sb-karte::after { counter-increment: k; content: "0" counter(k); position: absolute; right: 1.4rem; top: 1.5rem; font-family: var(--head); font-size: 1.1rem; color: var(--taupe-h); }
+.sb-karte__ico { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 14px; background: var(--navy); color: var(--weiss); }
+.sb-karte__ico .ico { width: 1.6rem; height: 1.6rem; }
+.sb-karte h3 { margin-top: 1.3rem; font-size: 1.35rem; }
+.sb-karte p { margin-top: .5rem; font-size: .95rem; color: var(--ink-2); }
 
-/* Abschnitt der Landingpage */
-.sb-abschnitt { position: relative; display: flex; flex-direction: column; justify-content: center; gap: .6rem; padding: 1.4rem; border-radius: 16px; background: var(--navy); color: var(--weiss); }
-.sb-abschnitt .sb-nr--abschnitt { background: var(--weiss); color: var(--navy); }
-.sb-abschnitt b { font-family: var(--head); font-weight: 500; font-size: 1.45rem; }
-.sb-abschnitt p { font-size: .9rem; line-height: 1.5; color: rgba(255,255,255,.75); }
-.sb-abschnitt::before { content: ""; position: absolute; left: -1.4rem; top: 50%; width: 1.4rem; border-top: 1.5px solid var(--taupe); }
+/* Bauplan: Liste links, Seitenskizze rechts */
+.sb-bau { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4.5rem; align-items: center; }
+.sb-bau__liste { display: grid; gap: 0; margin-top: 2.4rem; }
+.sb-bau__liste li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.14); }
+.sb-nr { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--weiss); color: var(--navy); font-family: var(--head); font-size: 1.05rem; }
+.sb-bau__liste b { font-family: var(--head); font-weight: 500; font-size: 1.25rem; color: var(--weiss); }
+.sb-bau__liste p { margin-top: .25rem; font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.7); }
+.sb-bau__liste em { font-style: normal; color: var(--taupe-h); font-weight: 600; }
 
-.sb-legende { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.6rem; font-size: .85rem; color: var(--ink-2); }
-.sb-legende span { display: inline-flex; align-items: center; gap: .5rem; }
+.sb-mock { overflow: hidden; border-radius: 18px; background: var(--weiss); box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
+.sb-mock__leiste { display: flex; gap: .35rem; padding: .7rem .9rem; background: var(--sand-2); }
+.sb-mock__leiste i { width: .6rem; height: .6rem; border-radius: 50%; background: var(--weiss); }
+.sb-mock__a { position: relative; display: grid; gap: .55rem; justify-items: start; padding: 1.3rem 1.4rem; }
+.sb-mock__a--1 { padding-right: 9rem; }
+.sb-mock__a--2 { background: var(--sand); }
+.sb-mock__a--3 { background: var(--navy-2); }
+.sb-mock__a--4 { border-top: 1px solid var(--linie); }
+.sb-bar { display: block; width: 70%; height: .55rem; border-radius: 99px; background: var(--sand-2); }
+.sb-bar--h1 { width: 92%; height: 1.4rem; background: var(--navy); }
+.sb-bar--h2 { width: 66%; height: 1rem; background: var(--navy); }
+.sb-mock__a--3 .sb-bar--h2 { background: var(--weiss); }
+.sb-tag { padding: .2rem .6rem; border-radius: 999px; background: var(--sand-2); font-size: .7rem; font-weight: 600; color: var(--taupe-d); }
+.sb-tag--n { background: var(--navy); color: var(--weiss); }
+.sb-tag--h { background: rgba(255,255,255,.12); color: var(--taupe-h); }
+.sb-knopf { padding: .35rem .8rem; border-radius: 999px; background: var(--navy); color: var(--weiss); font-size: .7rem; font-weight: 600; }
+.sb-kreise { position: absolute; right: 1.4rem; top: 1.4rem; display: flex; }
+.sb-kreise i { width: 3.6rem; height: 3.6rem; border-radius: 50%; background: var(--sand-2); border: 3px solid var(--weiss); box-shadow: 0 6px 14px -6px rgba(8,38,56,.4); }
+.sb-kreise i + i { margin: 1.4rem 0 0 -.8rem; }
+.sb-kreise--klein { top: auto; bottom: 1.2rem; }
+.sb-kreise--klein i { width: 2.4rem; height: 2.4rem; }
+.sb-kreise--klein i + i { margin: 0 0 0 .4rem; }
+.sb-zwei { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; width: 100%; }
+.sb-zwei span { padding: .7rem; border-radius: 10px; background: var(--weiss); font-size: .72rem; font-weight: 500; color: var(--ink-2); }
+.sb-treppe { display: flex; align-items: flex-end; gap: .4rem; height: 3rem; }
+.sb-treppe i { width: 2.4rem; border-radius: 6px; background: var(--taupe-h); }
+.sb-treppe i:nth-child(1) { height: 25%; } .sb-treppe i:nth-child(2) { height: 50%; } .sb-treppe i:nth-child(3) { height: 75%; } .sb-treppe i:nth-child(4) { height: 100%; }
 
-/* Schritt 2 */
-.sb-regeln { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 4rem; align-items: start; }
-.sb-regeln ol { counter-reset: r; }
-.sb-regeln li { counter-increment: r; position: relative; padding: 1.1rem 0 1.1rem 3.2rem; border-top: 1px solid var(--linie); color: var(--ink-2); }
-.sb-regeln li::before { content: counter(r); position: absolute; left: 0; top: 1rem; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--sand-2); font-family: var(--head); color: var(--navy); }
-.sb-regeln li b { display: block; font-family: var(--head); font-weight: 500; font-size: 1.2rem; color: var(--navy); }
-
-/* Schritt 3: Seitenaufbau als Gerüst */
-.sb-seite { display: grid; gap: .8rem; max-width: 52rem; margin-top: 2.6rem; padding: 1.2rem; border-radius: 22px; background: var(--weiss); border: 1px solid var(--linie); }
-.sb-block { padding: 1.1rem 1.2rem; border-radius: 14px; border: 1.5px dashed var(--taupe-h); }
-.sb-block__kopf { display: flex; align-items: center; gap: .8rem; }
-.sb-block__kopf b { font-family: var(--head); font-weight: 500; font-size: 1.3rem; color: var(--navy); }
-.sb-block ul { display: grid; gap: .35rem; margin-top: .9rem; }
-.sb-block li { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem .8rem; border-radius: 10px; background: var(--sand); font-size: .92rem; }
-.sb-block li em { flex: none; font-style: normal; font-size: .78rem; font-weight: 600; color: var(--taupe-d); }
-
-@media (max-width: 991px) {
-  .sb-kopfzeile { display: none; }
-  .sb-gruppe { grid-template-columns: minmax(0, 1fr); }
-  .sb-abschnitt { order: -1; }
-  .sb-abschnitt::before, .sb-frage::before, .sb-frage::after { display: none; }
-  .sb-zeile { grid-template-columns: minmax(0, 1fr); gap: .5rem; padding-left: 1rem; border-left: 2px solid var(--taupe-h); }
-  .sb-frage { order: -1; }
-  .sb-regeln { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+@media (max-width: 1100px) {
+  .sb-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sb-bahn { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .sb-bahn__kopf { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.2rem; align-items: center; }
+  .sb-bahn__kopf h3 { margin-top: 0; }
+  .sb-bahn__kopf p { grid-column: 1 / -1; }
 }
-@media (max-width: 560px) {
-  .sb-punkt { grid-template-columns: 1.9rem minmax(0, 1fr); }
-  .sb-punkt em { grid-column: 2; justify-self: start; }
-  .sb-block li { flex-direction: column; gap: .1rem; }
+@media (max-width: 991px) {
+  .sb-weg { grid-template-columns: minmax(0, 1fr); }
+  .sb-weg__pfeil { height: 2.6rem; }
+  .sb-weg__pfeil .ico { transform: rotate(90deg); }
+  .sb-bau { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+}
+@media (max-width: 680px) {
+  .sb-bahn { grid-template-columns: minmax(0, 1fr); }
+  .sb-frage + .sb-frage { border-left: 0; border-top: 1px solid var(--linie); }
+  .sb-karten { grid-template-columns: minmax(0, 1fr); }
+  .sb-mock__a--1 { padding-right: 1.4rem; }
+  .sb-kreise { position: static; }
+  .sb-legende { gap: 1rem; }
 }

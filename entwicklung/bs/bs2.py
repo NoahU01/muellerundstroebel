@@ -16,16 +16,16 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 5
+VERSION = 6
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
-    "tobias": dict(name="Tobias Müller", rolle="Governance, Gremien &amp; Risiko", kurz="Aufsichtsrat in zwei Versicherungsvereinen",
+    "tobias": dict(name="Tobias Müller", rolle="Governance, Gremien &amp; Risiko", kurz="Partner · Mitglied in zwei Aufsichtsräten",
                    tel="+49 176 2152 9798", tel_roh="+4917621529798", mail="tobias@muellerundstroebel.de",
                    linkedin="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/",
                    schwerpunkte=["Governance &amp; Gremienlogik", "Aufsichtsrats- &amp; Vorstandssicht", "Risiko &amp; Rechnungslegung"],
                    werdegang="Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung."),
-    "daniel": dict(name="Daniel Ströbel", rolle="Strategie, Führung &amp; Vertrieb", kurz="Früher Konzernstrategie und Abteilungsleitung bei einem Versicherer",
+    "daniel": dict(name="Daniel Ströbel", rolle="Strategie, Führung &amp; Vertrieb", kurz="Partner · Geschäftsführer der empiria GmbH",
                    tel="+49 176 3134 7217", tel_roh="+4917631347217", mail="daniel@muellerundstroebel.de",
                    linkedin="https://www.linkedin.com/in/daniel-stroebel/",
                    schwerpunkte=["Strategie &amp; Geschäftsmodell", "Struktur &amp; Führung", "Vertrieb &amp; Stakeholderfokus"],
@@ -84,9 +84,9 @@ def kontakt(titel, text):
     personen = "".join(f'''<article class="person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div><div>
       <h3>{p['name']}</h3><p class="person__kurz">{p['kurz']}</p>
       <div class="wege">
-        <a href="tel:{p['tel_roh']}"><span>Telefon</span><b>{p['tel']}</b></a>
-        <a href="mailto:{p['mail']}"><span>E-Mail</span><b>{p['mail']}</b></a>
-        <a class="li" href="{p['linkedin']}" target="_blank" rel="noopener"><span>Profil</span><b><i>in</i>LinkedIn <svg aria-hidden="true"><use href="#i-extern"/></svg></b></a>
+        <a href="tel:{p['tel_roh']}">{p['tel']}</a>
+        <a href="mailto:{p['mail']}">{p['mail']}</a>
+        <a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a>
       </div></div></article>''' for k, p in PERSONEN.items())
     return f'''<section class="sek sek--sand kontakt" id="kontakt"><div class="wrap">
   <h2>{titel}</h2>
@@ -335,57 +335,82 @@ SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
 
 
 def storyboard():
-    gruppen = ""
+    sprite = """<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="s-antwort" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+  <symbol id="s-leser" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></symbol>
+  <symbol id="s-seite" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M4 8h16M7.5 11.5h9M7.5 14.5h6"/></symbol>
+  <symbol id="s-eins" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M4 7h10M4 17h7"/></symbol>
+  <symbol id="s-wort" viewBox="0 0 24 24"><path d="M6 7.5h4.5v4.5c0 2.5-1.3 4-3.5 4.5M13.5 7.5H18v4.5c0 2.5-1.3 4-3.5 4.5"/></symbol>
+  <symbol id="s-test" viewBox="0 0 24 24"><path d="M5 6.5l1.5 1.5 3-3M5 12.5l1.5 1.5 3-3M5 18.5l1.5 1.5 3-3M12.5 7h7M12.5 13h7M12.5 19h7"/></symbol>
+  <symbol id="s-frei" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 12.3l2.6 2.6 5-5.4"/></symbol>
+  <symbol id="s-pfeil" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+</svg>"""
+
+    def punkt(nr, txt, st, zit):
+        q = f'<q>{zit}</q>' if zit else ""
+        return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr}</small><b>{txt}</b>{q}</div></li>'
+
+    bahnen = ""
     for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):
-        zeilen = ""
+        spalten = ""
         for fnr, frage, punkte in fragen:
-            pk = ""
-            for nr, txt, st, zit in punkte:
-                q = f"<q>{zit}</q>" if zit else ""
-                pk += (f'<li class="sb-punkt sb-punkt--{st}"><span class="sb-nr">{nr}</span>'
-                       f'<div><b>{txt}</b>{q}</div><em>{STATUS[st]}</em></li>')
-            zeilen += (f'<div class="sb-zeile"><ul class="sb-punkte">{pk}</ul>'
-                       f'<div class="sb-frage"><span class="sb-nr sb-nr--frage">F{fnr}</span><b>{frage}</b></div></div>')
-        gruppen += (f'<div class="sb-gruppe"><div class="sb-zeilen">{zeilen}</div>'
-                    f'<div class="sb-abschnitt"><span class="sb-nr sb-nr--abschnitt">{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div></div>\n')
-    slots = ""
-    for n, t, bs in SLOTS:
-        li = "".join(f"<li><span>{a}</span><em>{h}</em></li>" for a, h in bs)
-        slots += (f'<div class="sb-block"><div class="sb-block__kopf"><span class="sb-nr sb-nr--abschnitt">{n}</span>'
-                  f'<b>{t}</b></div><ul>{li}</ul></div>')
-    main = f"""
-<section class="held held--klein"><div class="wrap">
-  <p class="kicker">Storyboard Business Story 2.0</p>
-  <h1>Von Ihren Antworten zur Landingpage</h1>
-  <p class="lead">Drei Schritte: Sie beantworten zwölf enge Punkte. Jeder Punkt beantwortet eine der acht Fragen, die sich der Leser stellt. Je zwei Fragen werden zu einem Abschnitt der Landingpage.</p>
-</div></section>
+            spalten += (f'<div class="sb-frage"><span class="sb-f">F{fnr}</span><h3>{frage}</h3>'
+                        f'<ul>{"".join(punkt(*p) for p in punkte)}</ul></div>')
+        bahnen += (f'<article class="sb-bahn"><div class="sb-bahn__kopf"><span>0{i}</span><h3>{abschnitt}</h3><p>{wirkung}</p></div>'
+                   f'{spalten}</article>\n')
 
-<section class="sek sek--sand sb"><div class="wrap">
-  <p class="kicker">Zuordnung eins zu eins</p>
-  <div class="sb-kopfzeile"><span>Schritt 1 · Ihre Antworten<small>12 Punkte</small></span><span>Schritt 2 · Fragen des Lesers<small>8 Fragen</small></span><span>Schritt 3 · Landingpage<small>4 Abschnitte</small></span></div>
-  {gruppen}
-  <p class="sb-legende"><span><em class="st-da">vorhanden</em> aus Ihren bisherigen Aussagen</span><span><em class="st-teil">teilweise</em> Material da, Satz fehlt</span><span><em class="st-offen">offen</em> noch zu klären</span></p>
-</div></section>
+    regeln = [("s-eins", "Eine Aussage je Frage", "Acht Fragen, acht Sätze. Mehr kommt nicht auf die erste Ebene."),
+              ("s-wort", "Ihr Wortlaut", "Ich kürze und ordne Ihre Antworten. Wo etwas fehlt, frage ich nach."),
+              ("s-test", "Drei Tests je Satz", "Könnte das jede Beratung schreiben? Steckt Führungsalltag drin? Gibt es eine echte Situation dahinter?"),
+              ("s-frei", "Freigabe als Liste", "Sie sehen die acht Sätze untereinander, bevor eine Seite entsteht.")]
+    karten = "".join(f'<div class="sb-karte"><span class="sb-karte__ico"><svg class="ico"><use href="#{ic}"/></svg></span><h3>{t}</h3><p>{x}</p></div>'
+                     for ic, t, x in regeln)
 
-<section class="sek"><div class="wrap sb-regeln">
-  <div><p class="kicker">Schritt 2</p><h2 class="h2">Aus Punkten werden Aussagen.</h2></div>
-  <ol>
-    <li><b>Eine Aussage je Leserfrage.</b> Acht Fragen, acht Sätze. Mehr kommt nicht auf die erste Ebene.</li>
-    <li><b>Ihr Wortlaut, nicht meiner.</b> Ich kürze und ordne Ihre Antworten. Wo etwas fehlt, frage ich nach.</li>
-    <li><b>Drei Tests je Satz.</b> Könnte ihn eine andere Beratung genauso schreiben? Steht ein Ding aus dem Führungsalltag drin? Gibt es eine echte Situation dahinter?</li>
-    <li><b>Freigabe als Liste.</b> Sie sehen die acht Sätze untereinander, bevor eine Seite entsteht.</li>
+    legende = "".join(f'<li><span class="sb-nr">{n}</span><div><b>{t}</b><p>{" · ".join(f"{a} <em>{h}</em>" for a, h in bs)}</p></div></li>'
+                      for n, t, bs in SLOTS)
+
+    main = f"""{sprite}
+<section class="held sb-held"><div class="wrap">
+  <p class="kicker">Storyboard</p>
+  <h1>So entsteht die Landingpage.</h1>
+  <p class="lead">Sie beantworten enge Punkte. Daraus werden die Antworten auf die Fragen, die sich der Leser stellt. Und daraus die Seite.</p>
+  <ol class="sb-weg">
+    <li><span class="sb-weg__ico"><svg class="ico"><use href="#s-antwort"/></svg></span><b>12 Punkte</b><h2>Ihre Antworten</h2><p>Enge Fragen, je eine klare Antwort.</p></li>
+    <li class="sb-weg__pfeil" aria-hidden="true"><svg class="ico"><use href="#s-pfeil"/></svg></li>
+    <li><span class="sb-weg__ico"><svg class="ico"><use href="#s-leser"/></svg></span><b>8 Fragen</b><h2>Die Gedanken des Lesers</h2><p>In der Reihenfolge, in der er sie sich stellt.</p></li>
+    <li class="sb-weg__pfeil" aria-hidden="true"><svg class="ico"><use href="#s-pfeil"/></svg></li>
+    <li class="sb-weg--ziel"><span class="sb-weg__ico"><svg class="ico"><use href="#s-seite"/></svg></span><b>4 Abschnitte</b><h2>Die Landingpage</h2><p>Je zwei Fragen ergeben einen Abschnitt.</p></li>
   </ol>
 </div></section>
 
 <section class="sek sek--sand"><div class="wrap">
-  <p class="kicker">Schritt 3</p>
-  <h2 class="h2">Aus Aussagen wird die Seite.</h2>
-  <p class="lead">Jeder Baustein der Seite hat genau eine Herkunft. Was darüber hinausgeht, kommt in die zweite Ebene oder auf „Über uns“.</p>
-  <div class="sb-seite">{slots}</div>
+  <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div>
+    <ul class="sb-legende"><li class="sb-p--da"><i></i>vorhanden</li><li class="sb-p--teil"><i></i>teilweise</li><li class="sb-p--offen"><i></i>offen</li></ul></div>
+  <div class="sb-bahnen">{bahnen}</div>
+</div></section>
+
+<section class="sek"><div class="wrap">
+  <p class="kicker">Aus Punkten werden Aussagen</p>
+  <h2 class="h2">Vier Regeln, bevor ein Satz auf die Seite kommt.</h2>
+  <div class="sb-karten">{karten}</div>
+</div></section>
+
+<section class="sek sek--navy"><div class="wrap sb-bau">
+  <div>
+    <p class="kicker">Aus Aussagen wird die Seite</p>
+    <h2 class="h2">Jeder Baustein hat genau eine Herkunft.</h2>
+    <ol class="sb-bau__liste">{legende}</ol>
+  </div>
+  <div class="sb-mock" aria-label="Aufbau der Landingpage">
+    <div class="sb-mock__leiste"><i></i><i></i><i></i></div>
+    <div class="sb-mock__a sb-mock__a--1"><span class="sb-tag">F1 · Für wen</span><b class="sb-bar sb-bar--h1"></b><span class="sb-tag sb-tag--n">F4 · Versprechen</span><b class="sb-bar"></b><span class="sb-knopf">F8 · Anrufen</span><em class="sb-kreise"><i></i><i></i></em></div>
+    <div class="sb-mock__a sb-mock__a--2"><span class="sb-tag">F2 · Ihre Lage</span><b class="sb-bar sb-bar--h2"></b><div class="sb-zwei"><span>Szene aus dem Alltag</span><span>F3 · Übliche Wege vs. wir</span></div></div>
+    <div class="sb-mock__a sb-mock__a--3"><span class="sb-tag sb-tag--h">F6 · Ablauf</span><b class="sb-bar sb-bar--h2"></b><div class="sb-treppe"><i></i><i></i><i></i><i></i></div><span class="sb-tag sb-tag--h">F5 · Beleg</span></div>
+    <div class="sb-mock__a sb-mock__a--4"><span class="sb-tag">F7 · Ergebnis</span><b class="sb-bar sb-bar--h2"></b><em class="sb-kreise sb-kreise--klein"><i></i><i></i></em><span class="sb-knopf">F8 · Anrufen</span></div>
+  </div>
 </div></section>"""
     html = seite("Müller &amp; Ströbel – Storyboard Business Story 2.0", "Storyboard: von den Antworten zur Landingpage", "bs2-story", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
-
 
 if __name__ == "__main__":
     (ZIEL / "business-story-2.html").write_text(startseite(), encoding="utf-8")

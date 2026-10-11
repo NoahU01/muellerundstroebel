@@ -157,14 +157,9 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 .person { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1.8rem; align-items: center; }
 .person h3 { font-size: 1.6rem; }
 .person__kurz { margin-top: .2rem; font-size: .88rem; color: var(--taupe-d); }
-.wege { display: grid; gap: .1rem; margin-top: .8rem; }
-.wege a { display: grid; grid-template-columns: 4.4rem minmax(0, 1fr); align-items: baseline; gap: .6rem; padding: .28rem 0; text-decoration: none; font-size: .97rem; color: var(--navy); }
-.wege a span { font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-d); }
-.wege a:hover b { text-decoration: underline; text-underline-offset: 3px; }
-.wege b { font-weight: 500; overflow-wrap: anywhere; }
-.wege .li b { display: inline-flex; align-items: center; gap: .45rem; }
-.wege .li i { display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 4px; background: var(--blau); color: var(--weiss); font: 700 .7rem/1 var(--text); font-style: normal; }
-.wege .li svg { width: .8rem; height: .8rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.wege { display: grid; gap: .15rem; margin-top: .9rem; }
+.wege a { width: max-content; max-width: 100%; text-decoration: none; font-size: 1rem; color: var(--navy); overflow-wrap: anywhere; }
+.wege a:hover { color: var(--blau); text-decoration: underline; text-underline-offset: 3px; }
 
 /* Zweite Ebene: Fenster für ein Einsatzgebiet */
 .fenster { width: min(40rem, calc(100vw - 2rem)); max-height: calc(100vh - 3rem); padding: 0; border: 0; border-radius: 22px; background: var(--weiss); color: var(--ink); box-shadow: 0 40px 80px -30px rgba(8,38,56,.5); }
