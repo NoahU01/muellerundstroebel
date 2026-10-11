@@ -246,3 +246,7 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .opd__versprechen { position: absolute; left: var(--rand); right: var(--rand); bottom: 190pt; margin-top: 0; font-size: 22pt; }
 .gaenze { grid-template-columns: 1fr 290pt; margin-top: 40pt; }
 .gaenze > svg { width: 290pt; height: 290pt; }
+
+/* Druck: keine weichen Schatten – Chrome rastert sie im PDF als graue Rechtecke (11.10.) */
+.kreis, .ende__personen .kreis, .op-person .kreis { box-shadow: none !important; }
+@media print { .seite { box-shadow: none !important; } }
