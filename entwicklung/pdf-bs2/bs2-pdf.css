@@ -525,3 +525,11 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .ab2n__amp { top: 108pt; right: -50pt; width: 270pt; opacity: 1; }
 .ab2n__oben { top: 330pt; }
 .ab2n__unten .ab-personen { top: 74pt; }
+/* Abschluss V2, Runde 4: dunkelblaues &-Zeichen oben im Hellen, Text und Personen im höheren blauen Kasten */
+.ab2n__amp { right: 40pt; top: 104pt; width: 250pt; opacity: 1; }
+.ab2n__unten { height: 470pt; }
+.ab2n__text { position: absolute; left: var(--rand); right: 130pt; top: 50pt; }
+.ab2n__text h2 { color: var(--weiss); }
+.ab2n__text .unter { margin-top: 12pt; }
+.ab2n__unten .ab-personen { top: auto; bottom: 108pt; }
+.ab2n__unten .ab4__impressum { bottom: 40pt; }

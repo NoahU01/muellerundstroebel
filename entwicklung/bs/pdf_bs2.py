@@ -203,13 +203,13 @@ def seiten():
   </div>
   <div class="ab-impressum">{impressum}</div>''', "ende"))
     S.append(("ab ab2n", f'''<span class="op-kennung">Abschlussseite · Variante 2</span>{leiste("Kontakt")}
-  <img class="ab2n__amp" src="/entwicklung/pdf-bs2/ampersand-konstruktion-hell.svg" alt="">
-  <div class="ab2n__oben">
-    <p class="kicker">Kontakt</p>
-    <h2>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h2>
-    <p class="unter">{KONTAKT_TEXT}</p>
-  </div>
+  <img class="ab2n__amp" src="/entwicklung/pdf-bs2/ampersand-blau.svg" alt="">
   <div class="ab2n__unten dunkel">
+    <div class="ab2n__text">
+      <p class="kicker">Kontakt</p>
+      <h2>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h2>
+      <p class="unter">{KONTAKT_TEXT}</p>
+    </div>
     <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
     <div class="ab4__impressum">
       <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
