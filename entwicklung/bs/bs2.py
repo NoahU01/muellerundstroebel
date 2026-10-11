@@ -763,23 +763,23 @@ def storyboard():
 # Von den Storyboard-Aussagen zum kurzen, gesprochenen Pitch (30 und 10 Sekunden).
 PITCH = [  # (Nr, Baustein, Frage des Gegenübers, Quelle im Storyboard, Satz im Pitch, warum so)
     ("1", "Aufhänger", "Kennt der meine Lage?", "F2 · Punkt 3 · Punkt 4",
-     "Sie kennen das: Sie müssen alles im Blick haben, und am Ende zählt nur das Ergebnis.",
+     "Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.",
      "Startet bei ihm, nicht bei uns. Er nickt, bevor wir über uns reden."),
     ("2", "Der Schmerz", "Warum klappt es bisher nicht?", "F3 · Punkte 5–6",
-     "Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen. Und am Ende greifen Sie doch wieder selbst ein.",
+     "Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen.",
      "Ein konkretes Erlebnis aus seinem Alltag statt einer Behauptung über den Markt."),
     ("3", "Unsere Antwort", "Was macht ihr anders?", "F4 · Punkt 7 · Aussagen 8, 9",
-     "Genau da setzen wir an. Sie geben uns die Verantwortung für ein Thema, etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche. Wir strukturieren es, arbeiten es mit Ihren Leuten aus und liefern das Ergebnis.",
-     "Versprechen plus zwei Beispiele, die er sofort einordnen kann."),
+     "Da setzen wir an. Sie geben uns die Verantwortung für ein Thema, etwa die Vorlage für den Aufsichtsrat. Wir strukturieren es, arbeiten es mit Ihren Leuten aus und liefern das Ergebnis.",
+     "Versprechen plus ein Beispiel, das er sofort einordnen kann. Weitere Beispiele, wenn er nachfragt."),
     ("4", "Sein Aufwand", "Was kostet mich das?", "F6 · Punkt 9",
      "Von Ihnen brauchen wir dafür meist nur ein kurzes Telefonat zwischendurch.",
      "Räumt den häufigsten Einwand aus: keine Zeit für noch ein Projekt."),
     ("5", "Sein Gewinn", "Was habe ich davon?", "F7 · Punkt 11",
-     "So haben Sie Ihre Themen im Griff, statt ihnen hinterherzulaufen.",
+     "So haben Sie Ihre Themen im Griff.",
      "Das Gefühl, um das es eigentlich geht, in einem Satz."),
     ("6", "Nächster Schritt", "Was soll ich jetzt tun?", "F8 · Punkt 12",
-     "Wenn gerade so ein Thema auf Ihrem Tisch liegt, lassen Sie uns kurz sprechen. Schon das erste Gespräch schafft Klarheit, und dafür stellen wir keine Rechnung.",
-     "Niedrige Schwelle, konkreter Anlass, kein Verkaufsgespräch."),
+     "Liegt gerade so ein Thema auf Ihrem Tisch? Dann lassen Sie uns kurz sprechen.",
+     "Niedrige Schwelle, konkreter Anlass. Im Nachgespräch: Das erste Gespräch kostet nichts."),
 ]
 PITCH_10 = ("Wir übernehmen für Führungskräfte in der Versicherungsbranche komplexe Themen, von der Vorlage für den Aufsichtsrat "
             "bis zur Strategie für die Bereiche, und liefern das Ergebnis. Sie brauchen dafür nur kurze Abstimmungen.")
@@ -820,7 +820,7 @@ def elevator_pitch():
     main = f"""
 <section class="held held--klein"><div class="wrap">
   <p class="kicker">Elevator Pitch</p>
-  <h1>Von der Landingpage zu 30 Sekunden.</h1>
+  <h1>Von der Landingpage zur halben Minute.</h1>
   <p class="lead">Die Landingpage ist die lange Fassung unserer Story. Hier verdichten wir sie auf das, was Sie einem Vorstand in einer Kaffeepause sagen: ohne Bild, mit einfachen Worten, aus seiner Sicht. Jeder Satz beantwortet seine stille Frage: Was bringt mir das?</p>
 </div></section>
 
@@ -841,14 +841,14 @@ def elevator_pitch():
 
 <section class="sek sek--navy"><div class="wrap ep-pitch">
   <div>
-    <p class="kicker">Der Pitch · 30 Sekunden</p>
+    <p class="kicker">Der Pitch · gut eine halbe Minute</p>
     <div class="ep-text">{absaetze}</div>
-    <p class="ep-mass">{woerter} Wörter · gesprochen etwa 30 Sekunden</p>
+    <p class="ep-mass">{woerter} Wörter · gesprochen etwa {round(woerter / 2.5 / 5) * 5} Sekunden (ruhiges Sprechtempo, 2,5 Wörter je Sekunde)</p>
   </div>
   <aside>
-    <p class="kicker">Die Kurzfassung · 10 Sekunden</p>
+    <p class="kicker">Die Kurzfassung · gut 10 Sekunden</p>
     <p class="ep-kurz">{PITCH_10}</p>
-    <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die 30-Sekunden-Fassung.</p>
+    <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>
   </aside>
 </div></section>
 
