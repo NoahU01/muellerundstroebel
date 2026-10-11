@@ -191,15 +191,18 @@ def seiten():
     <div><b>Stand</b>Oktober 2026<br>www.muellerundstroebel.de</div>'''
     kontakt_zeilen = "".join(f'<div class="ab-person">{kreis(k, 58)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span>'
                              f'<span>{p["mail"]}</span><span>{p["tel"]}</span></div></div>' for k, p in b.PERSONEN.items())
-    S.append(("ab ab1", f'''<span class="op-kennung">Abschlussseite · Variante 1</span>{leiste("Kontakt")}
-  <div class="ab1__mitte">
-    <p class="kicker">Kontakt</p>
-    <h2>{VERSPRECHEN}</h2>
+    S.append(("ab ab1n", f'''<span class="op-kennung op-kennung--hell">Abschlussseite · Variante 1</span>
+  <div class="ab1n__oben dunkel">
+    <img class="ab1n__logo" src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
+    <img class="ab1n__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
+    <div class="ab1n__titel"><p class="kicker">Kontakt</p><h2>{VERSPRECHEN}</h2></div>
+  </div>
+  <div class="ab1n__unten">
     <p class="unter">{KONTAKT_TEXT}</p>
-    <div class="ab-personen">{kontakt_zeilen}</div>
+    <div class="ab-personen ab-personen--ohne">{kontakt_zeilen}</div>
   </div>
   <div class="ab-impressum">{impressum}</div>''', "ende"))
-    S.append(("sand ab ab2", f'''<span class="op-kennung">Abschlussseite · Variante 2</span>{leiste("Kontakt")}
+    S.append(("ab ab2", f'''<span class="op-kennung">Abschlussseite · Variante 2</span>{leiste("Kontakt")}
   <div class="ab2__oben">
     <p class="kicker">Kontakt</p>
     <h2>{VERSPRECHEN}</h2>

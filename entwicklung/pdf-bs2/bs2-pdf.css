@@ -362,3 +362,24 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 /* A und C: Ergebnis-Band füllt die freie Höhe, kein Leerraum vor dem Kontakt */
 .opa2 .band--navy, .opc2 .gg__ergebnis { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .opc2 .gg__ergebnis { margin-top: 16pt; }
+
+/* Abschlussseiten, Runde 2 (11.10.): Impressum ohne Trennstrich, Inhalte unten, viel Weißraum */
+.ab-impressum, .ab-impressum--hell { border-top: 0; padding-top: 0; }
+/* V1 neu: dunkle obere Hälfte mit &-Konstruktion als Gegenstück zum Deckblatt, unten weiß */
+.ab1n__oben { position: absolute; left: 0; right: 0; top: 0; height: 430pt; padding: 40pt var(--rand) 0; background: var(--navy); overflow: hidden; }
+.ab1n__logo { position: relative; z-index: 1; height: 30pt; width: auto; }
+.ab1n__amp { position: absolute; right: -40pt; top: 40pt; width: 330pt; height: auto; opacity: .85; }
+.ab1n__titel { position: absolute; left: var(--rand); right: 150pt; bottom: 36pt; }
+.ab1n__titel h2 { color: var(--weiss); }
+.ab1n__unten { position: absolute; left: var(--rand); right: var(--rand); top: 466pt; }
+.ab1n__unten .unter { margin-top: 0; }
+.ab-personen--ohne { border-top: 0; padding-top: 0; margin-top: 30pt; }
+.op-kennung--hell { z-index: 2; color: var(--taupe-h); }
+/* V2: weiß, Inhalt nach unten, großer Weißraum oben */
+.ab2__oben { position: absolute; left: var(--rand); right: var(--rand); bottom: 200pt; margin-top: 0; }
+.ab2 .ab-personen { border-color: var(--linie); }
+/* V3: kein Strich unten (Impressum) */
+.ab1n__amp { right: -70pt; top: 30pt; width: 290pt; opacity: .7; }
+.ab1n__titel { right: 200pt; }
+.ab1n__unten { top: auto; bottom: 150pt; }
+.ab2__fuss img { margin-bottom: 0; }
