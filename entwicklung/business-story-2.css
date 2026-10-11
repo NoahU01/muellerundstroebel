@@ -279,22 +279,16 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 .lp-weg + .lp-weg { border-left: 1px solid var(--linie); }
 .lp-weg__nr { font-family: var(--head); font-size: 1.6rem; line-height: 1; color: var(--taupe-h); }
 
-/* Abschnitt 3: Treppe aus Gesprächen */
-.lp-treppe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; padding-top: 6rem; }
-.lp-stufe { position: relative; padding: 1.7rem 1.5rem 1.6rem; border-radius: 22px; background: var(--sand); }
-.lp-stufe:nth-child(2) { transform: translateY(-2rem); }
-.lp-stufe:nth-child(3) { transform: translateY(-4rem); }
-.lp-stufe:nth-child(4) { transform: translateY(-6rem); background: var(--navy); }
-.lp-stufe__ico { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 14px; background: var(--navy); color: var(--weiss); }
-.lp-stufe__ico .ico { width: 1.6rem; height: 1.6rem; }
-.lp-stufe small { display: block; margin-top: 1.3rem; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
-.lp-stufe h3 { margin-top: .4rem; font-size: 1.4rem; line-height: 1.2; }
-.lp-stufe p { margin-top: 1rem; padding-top: .9rem; border-top: 1px solid var(--linie); font-family: var(--head); font-size: 1.25rem; color: var(--navy); }
-.lp-stufe p b { display: block; font-family: var(--text); font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
-.lp-stufe:nth-child(4) .lp-stufe__ico { background: var(--weiss); color: var(--navy); }
-.lp-stufe:nth-child(4) h3, .lp-stufe:nth-child(4) p { color: var(--weiss); }
-.lp-stufe:nth-child(4) small, .lp-stufe:nth-child(4) p b { color: var(--taupe-h); }
-.lp-stufe:nth-child(4) p { border-color: rgba(255,255,255,.15); }
+/* Abschnitt 3: drei Schritt-Karten (Muster Wagenpaten-Seite) */
+.lp-schritte { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3.2rem; counter-reset: s; }
+.lp-schritt { position: relative; padding: 2rem 1.8rem 1.9rem; border-radius: var(--r); background: var(--weiss); border: 1px solid var(--linie); }
+.lp-schritt::after { counter-increment: s; content: "0" counter(s); position: absolute; right: 1.5rem; top: 1.6rem; font-family: var(--head); font-size: 1.1rem; color: var(--taupe-h); }
+.lp-schritt__ico { display: grid; place-items: center; width: 3.4rem; height: 3.4rem; border-radius: 14px; background: var(--navy); color: var(--weiss); }
+.lp-schritt__ico .ico { width: 1.7rem; height: 1.7rem; }
+.lp-schritt h3 { margin-top: 1.4rem; font-size: 1.45rem; }
+.lp-schritt p { margin-top: .55rem; font-size: .98rem; color: var(--ink-2); }
+.lp-takt { display: flex; align-items: center; gap: .7rem; margin-top: 1.4rem; padding: 1rem 1.3rem; border-radius: 14px; background: var(--sand); font-weight: 500; color: var(--navy); }
+.lp-takt .ico { flex: none; width: 1.4rem; height: 1.4rem; color: var(--blau); }
 .lp-beleg .platz { margin-top: 2.5rem; max-width: 46rem; }
 
 /* Abschnitt 4: Ergebnis + Kontakt auf Dunkelblau */
@@ -307,13 +301,10 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 .lp-ende .kreis { background: linear-gradient(180deg, #e9e1d7, #d8cdbf); }
 
 @media (max-width: 991px) {
-  .lp-bahn { grid-template-columns: minmax(0, 1fr); }
+  .lp-bahn, .lp-schritte { grid-template-columns: minmax(0, 1fr); }
   .lp-weg + .lp-weg { border-left: 0; border-top: 1px solid var(--linie); }
-  .lp-treppe { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 0; }
-  .lp-stufe:nth-child(n) { transform: none; }
   .lp-beleg .platz { margin-top: 2rem; }
 }
 @media (max-width: 560px) {
-  .lp-treppe { grid-template-columns: minmax(0, 1fr); }
   .platz-marke { margin: .4rem 0 0; }
 }

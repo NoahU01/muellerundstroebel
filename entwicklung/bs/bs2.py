@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 14
+VERSION = 15
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -134,15 +134,19 @@ def platz(punkt, titel, hinweis, status="offen", klein=False):
 def startseite():
     T, D = PERSONEN["tobias"], PERSONEN["daniel"]
     sprite = """<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="l-tel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="l-gespraech" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></symbol>
+  <symbol id="l-arbeit" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3"/></symbol>
+  <symbol id="l-entscheid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 12.3l2.6 2.6 5-5.4"/></symbol>
+  <symbol id="l-kreis" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></symbol>
   <symbol id="l-pfeil" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
 </svg>"""
     duo = "".join(f'<figure><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p["name"]}"></div><figcaption><b>{p["name"]}</b>{p["kurz"]}</figcaption></figure>'
                   for k, p in PERSONEN.items())
-    gespraeche = [("Sie schildern das Thema.", "Ideen"), ("Sie legen die Richtung fest.", "Optionen"),
-                  ("Sie entscheiden.", "Entwürfe"), ("Sie geben frei.", "Ergebnis")]
-    treppe = "".join(f'''<li class="lp-stufe"><span class="lp-stufe__ico"><svg class="ico"><use href="#l-tel"/></svg></span>
-        <small>Gespräch {i}</small><h3>{s}</h3><p><b>Dazwischen liefern wir</b>{x}</p></li>''' for i, (s, x) in enumerate(gespraeche, 1))
+    ablauf = [("l-gespraech", "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
+              ("l-arbeit", "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
+              ("l-entscheid", "Sie entscheiden", "Über Optionen, Entwürfe und Vorlagen, professionell aufbereitet.")]
+    schritte = "".join(f'''<li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico"><use href="#{ic}"/></svg></span>
+        <h3>{t}</h3><p>{x}</p></li>''' for ic, t, x in ablauf)
     wege = "".join(f'''<div class="lp-weg"><span class="lp-weg__nr">Weg {i}</span>
         {platz("Punkt 5", "Was die Führungskraft vorher probiert hat", "z. B. Berater, Workshop, eigene Leute – Ihre Antwort", klein=True)}
         {platz("Punkt 6", "Warum das nicht gereicht hat", "ein Satz, aus Sicht der Führungskraft", klein=True)}</div>''' for i in (1, 2, 3))
@@ -180,7 +184,8 @@ def startseite():
   <p class="kicker">So arbeiten wir</p>
   <h2 class="h2">Wir bleiben im regelmäßigen, kurzen Austausch.</h2>
   <p class="lead">Oft reicht ein Telefonat, manchmal eine längere Videokonferenz, und wenn es sinnvoll ist, ein Workshop. So bleibt Ihr Thema präsent, und Sie haben es im Griff. Dazwischen arbeiten wir. <span class="platz-marke">Punkte 9–10 Entwurf</span></p>
-  <ol class="lp-treppe">{treppe}</ol>
+  <ol class="lp-schritte">{schritte}</ol>
+  <p class="lp-takt"><svg class="ico" aria-hidden="true"><use href="#l-kreis"/></svg>Regelmäßig, bis das Ergebnis steht. So bleibt Ihr Thema präsent.</p>
   <div class="lp-beleg">{platz("Punkt 8", "Der Beleg: ein erzählter Fall", "Die Zusammenarbeit beim HÖV – erzählt in drei, vier Sätzen, ohne Namen", status="teil")}</div>
 </div></section>
 
@@ -352,11 +357,11 @@ SKIZZE = [
         ("A", [("H2", "Wir arbeiten. Sie entscheiden.", "Punkte 9, 10"),
                ("Text", "Wir bleiben im regelmäßigen, kurzen Austausch, oft reicht ein Telefonat. Danach liegen Optionen, Entwürfe und Entscheidungsvorlagen auf Ihrem Tisch, professionell aufbereitet.", "Punkt 9 · Punkt 10 · Entscheidungsvorlagen: Einsatzgebiet Gremien"),
                ("Element", "Formate je nach Bedarf: kurzes Telefonat · längere Videokonferenz · Workshop, wenn sinnvoll", "Punkt 9"),
-               ("Element", "Treppe aus vier Gesprächen: Ideen → Optionen → Entwürfe → Ergebnis", "Punkt 10"),
+               ("Element", "Drei Schritt-Karten: Kurzer Austausch → Wir arbeiten → Sie entscheiden · darunter: regelmäßig, bis das Ergebnis steht", "Punkte 9, 10"),
                ("Element", "Netzwerk: ehemalige Vorstände, Aufsichtsräte, IT- und Prozess-Spezialisten, Entwickler, Grafiker", "Netzwerk-Hinweis")]),
         ("B", [("H2", "Zwischen zwei Telefonaten entstehen Konzept, Analyse und Entscheidungsvorlage.", "Punkt 10 · Ausarbeitung 3.3"),
                ("Text", "Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.", "Ausarbeitung 3.2, 3.3 · Punkt 9"),
-               ("Element", "Treppe aus vier Gesprächen · Formate: Telefonat, Videokonferenz, Workshop, wenn sinnvoll", "Punkte 9, 10"),
+               ("Element", "Drei Schritt-Karten: Kurzer Austausch → Wir arbeiten → Sie entscheiden", "Punkte 9, 10"),
                ("Kasten", "Aus eigener Erfahrung: Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.", "Punkt 8, Fall HÖV, ohne Namen")]),
     ]),
     ("navy", [
@@ -486,7 +491,7 @@ def storyboard():
     <div class="sb-mock__leiste"><i></i><i></i><i></i></div>
     <div class="sb-mock__a sb-mock__a--1"><span class="sb-tag">F1 · Für wen</span><b class="sb-bar sb-bar--h1"></b><span class="sb-tag sb-tag--n">F4 · Versprechen</span><b class="sb-bar"></b><span class="sb-knopf">F8 · Anrufen</span><em class="sb-kreise"><i></i><i></i></em></div>
     <div class="sb-mock__a sb-mock__a--2"><span class="sb-tag">F2 · Ihre Lage</span><b class="sb-bar sb-bar--h2"></b><div class="sb-zwei"><span>Szene aus dem Alltag</span><span>F3 · Übliche Wege vs. wir</span></div></div>
-    <div class="sb-mock__a sb-mock__a--3"><span class="sb-tag sb-tag--h">F6 · Ablauf</span><b class="sb-bar sb-bar--h2"></b><div class="sb-treppe"><i></i><i></i><i></i><i></i></div><span class="sb-tag sb-tag--h">F5 · Beleg</span></div>
+    <div class="sb-mock__a sb-mock__a--3"><span class="sb-tag sb-tag--h">F6 · Ablauf</span><b class="sb-bar sb-bar--h2"></b><div class="sb-drei"><i></i><i></i><i></i></div><span class="sb-tag sb-tag--h">F5 · Beleg</span></div>
     <div class="sb-mock__a sb-mock__a--4"><span class="sb-tag">F7 · Ergebnis</span><b class="sb-bar sb-bar--h2"></b><em class="sb-kreise sb-kreise--klein"><i></i><i></i></em><span class="sb-knopf">F8 · Anrufen</span></div>
   </div>
 </div></section>"""

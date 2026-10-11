@@ -87,9 +87,6 @@
 .sb-kreise--klein i + i { margin: 0 0 0 .4rem; }
 .sb-zwei { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; width: 100%; }
 .sb-zwei span { padding: .7rem; border-radius: 10px; background: var(--weiss); font-size: .72rem; font-weight: 500; color: var(--ink-2); }
-.sb-treppe { display: flex; align-items: flex-end; gap: .4rem; height: 3rem; }
-.sb-treppe i { width: 2.4rem; border-radius: 6px; background: var(--taupe-h); }
-.sb-treppe i:nth-child(1) { height: 25%; } .sb-treppe i:nth-child(2) { height: 50%; } .sb-treppe i:nth-child(3) { height: 75%; } .sb-treppe i:nth-child(4) { height: 100%; }
 
 @media (max-width: 1100px) {
   .sb-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -246,3 +243,6 @@
 .sk-teil span { grid-column: 2; white-space: normal; font-weight: 500; color: var(--blau); }
 .sk--navy .sk-teil span { color: var(--taupe-h); }
 .sk-teil--kasten { outline: 1.5px solid var(--taupe-h); outline-offset: -1.5px; }
+
+.sb-drei { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; width: 100%; }
+.sb-drei i { height: 2.4rem; border-radius: 8px; background: rgba(255,255,255,.12); }
