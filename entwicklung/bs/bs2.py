@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 10
+VERSION = 11
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -245,9 +245,9 @@ STORY = [
     ("Kopf", "Der Leser weiß sofort: Ich bin richtig, und das bekomme ich.", [
         ("1", "Bin ich hier richtig?", [
             ("1", "Welche Rollen genau", "da", "Vorstände und Geschäftsführer, Hauptabteilungs- und Bereichsleiter."),
-            ("2", "Welche Unternehmen genau", "da", "Versicherungsbranche: Versicherer und Rückversicherer vom Konzern bis zum Versicherungsverein, Makler und Rückversicherungsmakler. Auf der Seite nur: „Versicherungsbranche“.")]),
+            ("2", "Welche Unternehmen genau", "da", "Versicherungsbranche: Versicherer und Rückversicherer vom Konzern bis zum Versicherungsverein, Makler und Rückversicherungsmakler. Auf der Seite steht nur das Wort Versicherungsbranche.")]),
         ("4", "Was ist eure Antwort?", [
-            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Entwurf: Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
+            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
     ]),
     ("Ihre Lage", "Der Leser nickt: Genau so ist es bei mir, und darum hat es bisher nicht geklappt.", [
         ("2", "Verstehen die mein Problem?", [
@@ -301,7 +301,7 @@ def storyboard():
         art = "Festlegung" if nr in ("1", "2") else "Wortlaut"
         info = ('<button class="sb-info" type="button" aria-label="Hinweis zu Punkt 7">i<span role="tooltip"><b>Management Summary</b>'
                 'Das Versprechen fasst alles zusammen, was die übrigen Punkte ergeben. Deshalb legen wir es als Letztes fest.</span></button>') if nr == "7" else ""
-        return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr} · <span class="sb-art sb-art--{art.lower()}">{art}</span>{info}</small><b>{txt}</b>{q}</div></li>'
+        return f'<li class="sb-p sb-p--{st}"><div><small>Punkt {nr} · {art}{info}</small><b>{txt}</b>{q}</div></li>'
 
     baum = ""
     for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):
@@ -352,8 +352,7 @@ def storyboard():
 </div></section>
 
 <section class="sek sek--sand"><div class="wrap">
-  <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div>
-    <ul class="sb-legende"><li class="sb-p--da"><i></i>vorhanden</li><li class="sb-p--teil"><i></i>teilweise</li><li class="sb-p--offen"><i></i>offen</li><li class="sb-p--zuletzt"><i></i>zum Schluss</li></ul></div>
+  <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div></div>
   <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten<small>12 Punkte</small></span><span><i>2</i>Fragen des Lesers<small>8 Fragen</small></span><span><i>3</i>Landingpage<small>4 Abschnitte</small></span></div>
   <div class="sb-t">{baum}</div>
 </div></section>

@@ -178,3 +178,10 @@
   .sb-info span { left: auto; right: -4rem; transform: none; width: 14rem; }
   .sb-info:hover span, .sb-info:focus span { transform: none; }
 }
+
+/* Reduziert (11.10.): Status nur über Rahmen und Hinterlegung, keine Kreise, keine Legende */
+.sb-p { display: block; }
+.sb-p > i { display: none; }
+.sb-p small { letter-spacing: .08em; }
+.sb-p--teil q, .sb-p--zuletzt q { background: transparent; border: 1.5px dashed var(--taupe-h); color: var(--ink-2); }
+.sb-p--da q { background: var(--sand); border: 1.5px solid var(--sand); }
