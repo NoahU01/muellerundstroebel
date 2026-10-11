@@ -203,15 +203,18 @@ def seiten():
   </div>
   <div class="ab-impressum">{impressum}</div>''', "ende"))
     S.append(("ab ab2n", f'''<span class="op-kennung">Abschlussseite · Variante 2</span>{leiste("Kontakt")}
+  <img class="ab2n__amp" src="/entwicklung/pdf-bs2/ampersand-konstruktion-hell.svg" alt="">
   <div class="ab2n__oben">
     <p class="kicker">Kontakt</p>
-    <h2>{VERSPRECHEN}</h2>
+    <h2>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h2>
     <p class="unter">{KONTAKT_TEXT}</p>
   </div>
   <div class="ab2n__unten dunkel">
-    <img class="ab2n__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
     <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
-    <div class="ab-impressum ab-impressum--hell">{impressum}</div>
+    <div class="ab4__impressum">
+      <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
+      <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
+    </div>
   </div>''', "ende"))
     namen = "".join(f'<div><b>{p["name"]}</b>{p["mail"]}<br>{p["tel"]}</div>' for p in b.PERSONEN.values())
     S.append(("navy ab ab3", f'''<span class="op-kennung">Abschlussseite · Variante 3</span>

@@ -516,3 +516,12 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .ab4__web { margin-top: 34pt; font-size: 8.6pt; font-weight: 600; letter-spacing: .08em; color: var(--taupe-h); }
 .ab4__impressum { position: absolute; left: var(--rand); right: var(--rand); bottom: 40pt; text-align: center; font-size: 6.9pt; line-height: 1.7; color: rgba(255,255,255,.55); }
 .ab4__impressum b { font-weight: 600; color: rgba(255,255,255,.8); }
+/* Abschluss V2, Runde 3: &-Konstruktion oben im Hellen (blau), Text tiefer, Personen nebeneinander, Band flacher, zweizeiliges Impressum */
+.ab2n__amp { position: absolute; right: -60pt; top: 40pt; width: 290pt; height: auto; opacity: .55; }
+.ab2n__oben { top: 270pt; right: 170pt; }
+.ab2n__unten { height: 300pt; }
+.ab2n__unten .ab-personen { left: var(--rand); right: var(--rand); top: 56pt; grid-template-columns: 1fr 1fr; gap: 20pt; }
+.ab2n__unten .ab4__impressum { bottom: 36pt; }
+.ab2n__amp { top: 108pt; right: -50pt; width: 270pt; opacity: 1; }
+.ab2n__oben { top: 330pt; }
+.ab2n__unten .ab-personen { top: 74pt; }
