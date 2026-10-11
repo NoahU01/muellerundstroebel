@@ -873,7 +873,6 @@ def elevator_pitch():
       <h3>Sein Thema</h3>
       <p>Aus seiner Antwort wird klar, welches unserer Einsatzgebiete passt. Darüber sprechen wir weiter.</p>
       <ul class="ep-themen">{themen_chips}</ul>
-      <p class="ep-bsp"><span class="ep-bsp-punkt" aria-hidden="true"></span>Beispiel: Er erzählt von der nächsten Gremiensitzung.</p>
     </div>
   </div>
 </div></section>
