@@ -191,7 +191,7 @@ def seiten():
     <div><b>Stand</b>Oktober 2026<br>www.muellerundstroebel.de</div>'''
     kontakt_zeilen = "".join(f'<div class="ab-person">{kreis(k, 58)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span>'
                              f'<span>{p["mail"]}</span><span>{p["tel"]}</span></div></div>' for k, p in b.PERSONEN.items())
-    S.append(("ab ab2n", f'''<span class="op-kennung">Abschlussseite · Variante 1</span>{leiste("Kontakt")}
+    S.append(("ab ab2n", f'''{leiste("Kontakt")}
   <img class="ab2n__amp" src="/entwicklung/pdf-bs2/ampersand-blau.svg" alt="">
   <div class="ab2n__unten dunkel">
     <div class="ab2n__text">
@@ -205,32 +205,6 @@ def seiten():
       <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
     </div>
   </div>''', "ende"))
-    namen = "".join(f'<div><b>{p["name"]}</b>{p["mail"]}<br>{p["tel"]}</div>' for p in b.PERSONEN.values())
-    S.append(("navy ab ab3", f'''<span class="op-kennung">Abschlussseite · Variante 2</span>
-  <div class="ab3__mitte">
-    <img src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
-    <p class="ab3__satz">{VERSPRECHEN}</p>
-    <div class="ab3__namen">{namen}</div>
-    <p class="ab3__web">www.muellerundstroebel.de</p>
-  </div>
-  <div class="ab-impressum ab-impressum--hell">{impressum}</div>''', "ende"))
-
-    pers4 = "".join(f'<div class="ab4-person">{kreis(k, 78)}<b>{p["name"]}</b><span class="ab4-rolle">{p["rolle"]}</span>'
-                    f'<span>{p["mail"]}</span><span>{p["tel"]}</span></div>' for k, p in b.PERSONEN.items())
-    S.append(("navy ab ab4", f'''<span class="op-kennung op-kennung--hell">Abschlussseite · Variante 3</span>
-  <div class="ab4__inhalt">
-    <img class="ab4__logo" src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
-    <p class="kicker">Kontakt</p>
-    <h2>{VERSPRECHEN}</h2>
-    <p class="unter">{KONTAKT_TEXT}</p>
-    <div class="ab4__personen">{pers4}</div>
-    <p class="ab4__web">www.muellerundstroebel.de</p>
-  </div>
-  <div class="ab4__impressum">
-    <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
-    <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
-  </div>''', "ende"))
-
     # ===================== One-Pager „Der Pitch als Text“: fortlaufend erzählt, nur der Kernsatz hervorgehoben =====================
     kontakt_brief = "".join(f'<div class="o4-person">{kreis(k, 52)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
                             for k, p in b.PERSONEN.items())
