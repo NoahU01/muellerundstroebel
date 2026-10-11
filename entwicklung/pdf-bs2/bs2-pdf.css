@@ -383,3 +383,12 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .ab1n__titel { right: 200pt; }
 .ab1n__unten { top: auto; bottom: 150pt; }
 .ab2__fuss img { margin-bottom: 0; }
+/* Abschluss V2 neu: Spiegel von V1 – oben hell mit dem Versprechen, unten dunkler Block mit uns */
+.ab2n__oben { position: absolute; left: var(--rand); right: 150pt; top: 210pt; }
+.ab2n__unten { position: absolute; left: 0; right: 0; bottom: 0; height: 400pt; overflow: hidden; background: var(--navy); }
+.ab2n__amp { position: absolute; right: -70pt; top: 20pt; width: 290pt; height: auto; opacity: .55; }
+.ab2n__unten .ab-personen { position: absolute; left: var(--rand); right: 170pt; top: 60pt; margin-top: 0; grid-template-columns: 1fr; gap: 22pt; }
+.ab-personen--hell .ab-person b { color: var(--weiss); }
+.ab-personen--hell .ab-person span { color: rgba(255,255,255,.78); }
+.ab-personen--hell .ab-person span:nth-of-type(1) { color: var(--taupe-h); }
+.ab-personen--hell .kreis { border-color: var(--weiss); }
