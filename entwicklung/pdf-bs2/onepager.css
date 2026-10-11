@@ -71,3 +71,70 @@ body { background: #fff; }
 .op > :last-child > .wrap { height: 100%; display: flex; flex-direction: column; justify-content: center; }
 /* Heller Kasten auf Sand: weiß statt Sand, damit er sichtbar bleibt */
 .op .sek--sand .pk__bild--hell { background: var(--weiss) !important; }
+
+/* Der Pitch auf einem Blatt (Varianten A und B) */
+.op .op-h1-breit { max-width: 19ch !important; margin-top: .4rem; }
+.op .sek--sand .h2 { max-width: 28ch !important; }
+.op .op-pks2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.op-wende .h2 { font-size: 2.7rem !important; }
+.op-satz { margin-top: 1.2rem; max-width: 34ch; font-family: var(--head); font-size: 2rem; line-height: 1.25; color: var(--weiss); }
+.op-tel { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.6rem; margin-top: 2.6rem; padding-top: 2rem; }
+.op-tel::before { content: ""; position: absolute; left: .5rem; right: 0; top: .5rem; height: 2px; background: var(--navy); }
+.op-tel li { position: relative; }
+.op-tel li::before { content: ""; position: absolute; left: 0; top: -2rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 5px var(--weiss); }
+.op-tel li.op-tel__kurz::before { background: var(--weiss); box-shadow: inset 0 0 0 2px var(--taupe), 0 0 0 5px var(--weiss); }
+.op-tel b { display: block; font-family: var(--head); font-weight: 500; font-size: 1.2rem; line-height: 1.25; color: var(--navy); }
+.op-tel li.op-tel__kurz b { color: var(--taupe-d); }
+.op-griff-raster { display: grid; grid-template-columns: minmax(0, 1fr) 11rem; gap: 3rem; align-items: center; padding-bottom: 2.4rem; border-bottom: 1px solid rgba(255,255,255,.16); }
+.op .op-griff { font-size: 2.7rem !important; }
+.op .op-griff-raster .szene { max-width: 11rem !important; }
+.op-einladung { margin-top: 2.2rem; font-family: var(--head); font-size: 2rem; line-height: 1.2; color: var(--weiss); max-width: 30ch; }
+/* Variante B */
+.op-linie .wrap { position: relative; }
+.op-linie .wrap::before { content: ""; position: absolute; left: calc(4rem + .45rem); top: 1rem; bottom: 1rem; width: 2px; background: var(--navy); }
+.op-reihe { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: center; padding: 2.2rem 0 2.2rem 2.6rem; position: relative; border-top: 1px solid var(--linie); }
+.op-reihe:first-child { border-top: 0; padding-top: 0; }
+.op-reihe:last-child { padding-bottom: 0; }
+.op-reihe::before { content: ""; position: absolute; left: 0; top: calc(2.2rem + .6rem); width: 1rem; height: 1rem; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 5px var(--weiss); }
+.op-reihe:first-child::before { top: .6rem; }
+.op-reihe__satz { font-family: var(--head); font-size: 1.75rem; line-height: 1.25; color: var(--navy); }
+.op-satz-a { font-weight: 500; }
+.op-reihe .pks { margin-top: 0 !important; gap: .8rem !important; }
+.op-reihe .pk__bild { height: 9.5rem; padding: 1.1rem !important; }
+.op-reihe .pk__bild b { font-size: 1.15rem !important; }
+.op-reihe .pk__bild .ico { width: 2rem !important; height: 2rem !important; right: 1rem !important; bottom: 1rem !important; }
+.op-reihe .duo { width: 78% !important; margin: 0 auto; }
+.op-reihe .op-tel { margin-top: 0; gap: .8rem; }
+.op-reihe .op-tel b { font-size: .98rem; }
+.op-szene-hell { background: var(--navy); border-radius: var(--r); padding: 1.6rem; display: flex; justify-content: center; }
+.op-szene-hell .szene { max-width: 9rem !important; }
+.op-kz { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; padding-top: 1.8rem; border-top: 1px solid rgba(255,255,255,.16); }
+.op-kz p { display: grid; gap: .1rem; color: rgba(255,255,255,.88); font-size: 1rem; }
+.op-kz b { font-family: var(--head); font-weight: 500; font-size: 1.4rem; color: var(--weiss); margin-bottom: .3rem; }
+.op-lead2 { margin-top: 1.6rem; max-width: 34ch; font-family: var(--head); font-size: 2rem; line-height: 1.25; color: var(--ink-2); }
+.op-tel-block { margin-top: 2.6rem; padding-top: 2.2rem; border-top: 1px solid rgba(255,255,255,.16); }
+.op-satz-klein { font-family: var(--head); font-size: 1.6rem; line-height: 1.25; color: var(--weiss); }
+.op-wende .op-tel::before { background: var(--taupe-h); }
+.op-wende .op-tel li::before { background: var(--weiss); box-shadow: 0 0 0 5px var(--navy); }
+.op-wende .op-tel li.op-tel__kurz::before { background: var(--navy); box-shadow: inset 0 0 0 2px var(--taupe-h), 0 0 0 5px var(--navy); }
+.op-wende .op-tel b { color: var(--weiss); }
+.op-wende .op-tel li.op-tel__kurz b { color: var(--taupe-h); }
+.op-ende--hell .op-einladung { color: var(--navy); }
+.op-ende--hell .h2 { color: var(--navy); }
+.op-reihe .op-kz { margin-top: 0; padding-top: 0; border-top: 0; gap: 1.2rem; }
+.op-reihe .op-kz p { color: var(--ink); font-size: .92rem; }
+.op-reihe .op-kz b { color: var(--navy); font-size: 1.2rem; }
+/* Korrekturen nach Sichtprüfung */
+.op-lead2 { max-width: 46ch; }
+.op-satz { max-width: 46ch; }
+.op-einladung { max-width: 44ch; }
+.op-tel::before { right: calc((100% - 4.8rem) / 4 + .4rem); }
+.op-reihe .op-tel::before { right: calc((100% - 2.4rem) / 4 + .2rem); }
+.op-szene-hell { padding: 1.4rem; max-width: 22rem; }
+.op-szene-hell .szene { max-width: 7.5rem !important; }
+.op-reihe .op-kz { grid-template-columns: 1fr; gap: .9rem; }
+.op-reihe .op-kz p { display: block; }
+.op-reihe .op-kz b { display: block; margin-bottom: .1rem; }
+.op-reihe .op-kz span + span::before { content: " · "; color: var(--taupe); }
+.op-szene-hell { background: none; padding: 0; max-width: none; justify-content: flex-start; }
+.op-szene-hell .szene { max-width: 9.5rem !important; }

@@ -64,45 +64,49 @@ def blatt(name, inhalt):
     return f'<section class="op" aria-label="{name}"><span class="op-name">{name}</span>{inhalt}</section>'
 
 
+def zwei_kaesten():
+    return '<div class="pks op-pks2">' + "".join(
+        f'<article class="pk"><div class="pk__bild pk__bild--{f}"><small>{t}</small><b>{x}</b>{ICO[k]}</div></article>'
+        for f, t, x, k, _ in KAESTEN[:2]) + "</div>"
+
+
+def telefonat():
+    """Visualisiert Satz 4: Sie übergeben, dazwischen nur kurze Telefonate, am Ende das Ergebnis."""
+    return ('<ol class="op-tel"><li><b>Sie übergeben das Thema</b></li><li class="op-tel__kurz"><b>Kurzes Telefonat</b></li>'
+            '<li class="op-tel__kurz"><b>Kurzes Telefonat</b></li><li><b>Sie haben das Ergebnis</b></li></ol>')
+
+
+def kontaktzeile():
+    return '<div class="op-kz">' + "".join(
+        f'<p><b>{p["name"]}</b><span>{p["mail"]}</span><span>{p["tel"]}</span></p>' for p in b.PERSONEN.values()) + "</div>"
+
+
+def kopf(satz, lead=""):
+    return (f'<div class="held op-held"><div class="wrap">{logo()}'
+            f'<p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>'
+            f'<h1 class="op-h1-breit">{satz}</h1>' + (f'<p class="op-lead2">{lead}</p>' if lead else "") + '</div></div>')
+
+
 def seiten():
-    v1 = blatt("Variante 1 · Die Startseite in kurz", f'''
-  <div class="held op-held"><div class="wrap">{logo()}
-    <div class="held__raster"><div>
-      <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-      <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-      <p class="lead">{KOPF_TEXT}</p></div>{duo()}</div></div></div>
-  <div class="sek sek--sand"><div class="wrap">
-    <p class="kicker">Ihre Lage</p><h2 class="h2">„Es ging schon wieder nichts voran.“</h2>
-    <p class="lead">Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>{kaesten()}</div></div>
-  <div class="sek sek--navy op-ende"><div class="wrap">
-    <p class="kicker">Kontakt</p><h2 class="h2">{VERSPRECHEN}</h2>
-    <p class="lead">Erzählen Sie uns, was ansteht. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>{personen()}</div></div>''')
-
-    v2 = blatt("Variante 2 · Vom Problem zum Versprechen", f'''
-  <div class="held op-held"><div class="wrap">{logo()}
-    <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-    <h1 class="op-h1-breit">„Es ging schon wieder nichts voran.“</h1>
-    <p class="lead">Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen.</p>
-    {kaesten()}</div></div>
-  <div class="sek sek--navy lp-ergebnis op-wende"><div class="wrap lp-ergebnis__raster">
-    <div><p class="kicker">Da setzen wir an</p><h2 class="h2">{VERSPRECHEN}</h2>
-      <p class="lead">Wir strukturieren Ihr Thema, arbeiten es mit Ihren Leuten aus und holen Spezialisten dazu. Von Ihnen brauchen wir meist nur ein kurzes Telefonat zwischendurch.</p></div>
-    {b.trio_szene("compass", "circle-check", "target")}</div></div>
-  <div class="sek sek--sand op-ende op-ende--hell"><div class="wrap">
-    <p class="kicker">Kontakt</p><h2 class="h2">Liegt gerade so ein Thema auf Ihrem Tisch?</h2>{personen()}</div></div>''')
-
-    v3 = blatt("Variante 3 · Das Ergebnis zuerst", f'''
-  <div class="sek sek--navy op-held op-held--dunkel"><div class="wrap">{logo(True)}
-    <div class="lp-ergebnis__raster"><div>
-      <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-      <h1>Sie haben Ihre Themen im Griff.</h1>
-      <p class="lead">Wir übernehmen komplexe Themen, von der Vorlage für den Aufsichtsrat bis zur Strategie für die Bereiche, und sorgen dafür, dass sie vorankommen. Sie entscheiden.</p></div>
-      {b.trio_szene("compass", "circle-check", "target")}</div></div></div>
-  <div class="sek sek--sand"><div class="wrap">
-    <p class="kicker">Heute</p><h2 class="h2">Die üblichen Wege helfen nur halb.</h2>{kaesten()}</div></div>
-  <div class="sek op-ende op-ende--hell"><div class="wrap">
-    <p class="kicker">Unser Versprechen</p><h2 class="h2">{VERSPRECHEN}</h2>{personen()}</div></div>''')
-    return [v1, v2, v3]
+    """Zwei Varianten. In beiden: die sechs Sätze des Elevator Pitch wörtlich und in Reihenfolge."""
+    P = {x[0]: x[4] for x in b.PITCH}
+    s3a = "Da setzen wir an."
+    s3b = P["3"].replace(s3a + " ", "")
+    szene = b.trio_szene("compass", "circle-check", "target")
+    a = blatt("Variante A · Der Pitch als Abfolge", kopf(P["1"], P["2"])
+              + f'<div class="sek sek--navy op-wende"><div class="wrap"><h2 class="h2">{s3a}</h2><p class="op-satz">{s3b}</p>'
+              + f'<div class="op-tel-block"><p class="op-satz-klein">{P["4"]}</p>{telefonat()}</div></div></div>'
+              + f'<div class="sek sek--sand op-ende op-ende--hell"><div class="wrap"><h2 class="h2">{P["5"]}</h2>'
+              + f'<p class="op-einladung">{P["6"]}</p>{personen()}</div></div>')
+    reihen = [(P["2"], zwei_kaesten()),
+              (f'<b class="op-satz-a">{s3a}</b> {s3b}', duo()),
+              (P["4"], telefonat()),
+              (P["5"], f'<div class="op-szene-hell">{b.trio_szene("compass", "circle-check", "target", farbe="#082638", akzentfarbe="#998675", strich=3.6)}</div>'),
+              (P["6"], kontaktzeile())]
+    zeilen = "".join(f'<div class="op-reihe"><p class="op-reihe__satz">{t}</p><div class="op-reihe__bild">{x}</div></div>' for t, x in reihen)
+    b_ = blatt("Variante B · Die Story auf einer Linie", kopf(P["1"])
+               + f'<div class="sek op-linie"><div class="wrap">{zeilen}</div></div>')
+    return [a, b_]
 
 
 def html():
