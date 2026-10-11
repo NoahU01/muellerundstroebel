@@ -383,3 +383,30 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
   .lp-kontakt__personen .kreis { width: 7rem; }
   .lp-dl .knopf { width: 100%; justify-content: center; }
 }
+
+/* Kopf: wechselndes Wort, Zeile der drei Schritte, Porträts auf gleicher Höhe */
+.lp-held h1 { max-width: none; }
+.wort { display: inline-grid; vertical-align: top; }
+.wort > span { grid-area: 1 / 1; opacity: 0; transform: translateY(.25em); transition: opacity .5s ease, transform .5s ease; }
+.wort > span.ist { opacity: 1; transform: none; }
+.nur-lesen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.lp-vorzeile { font-family: var(--head); font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--taupe-d); margin-bottom: .3rem; }
+.lp-held .lead { max-width: 38rem; }
+.lp-drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 2.2rem; }
+.lp-drei li { position: relative; padding-top: 1rem; border-top: 2px solid var(--linie); transition: border-color .5s ease; }
+.lp-drei li.ist { border-color: var(--navy); }
+.lp-drei small { font-size: .72rem; font-weight: 600; letter-spacing: .1em; color: var(--taupe-h); }
+.lp-drei b { display: block; margin-top: .2rem; font-family: var(--head); font-weight: 500; font-size: 1.2rem; color: var(--taupe-d); transition: color .5s ease; }
+.lp-drei li.ist b { color: var(--navy); }
+.lp-drei span { display: block; margin-top: .2rem; font-size: .88rem; line-height: 1.4; color: var(--ink-2); }
+.duo--gleich { align-items: flex-start; width: min(100%, 30rem); }
+.duo--gleich figure { width: 52%; }
+.duo--gleich figure + figure { margin-top: 0; margin-left: -4%; }
+@media (prefers-reduced-motion: reduce) {
+  .wort > span { transition: none; }
+  .lp-drei li { border-color: var(--navy); }
+  .lp-drei b { color: var(--navy); }
+}
+@media (max-width: 560px) {
+  .lp-drei { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+}

@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 21
+VERSION = 22
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -159,11 +159,18 @@ def startseite():
 <section class="held lp-held"><div class="wrap held__raster">
   <div>
     <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-    <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-    <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, die Kennzahlen, die steuern sollen: Wir machen Ihr Thema entscheidbar, mit Konzept, Analyse und Entscheidungsvorlage. Und wir sorgen für die Umsetzung, mit wenig Aufwand für Sie.</p>
-    <div class="knoepfe"><a class="knopf" href="#kontakt">Direkt anrufen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Ihre Lage</a></div>
+    <div class="wahl" data-gruppe="kopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
+    <h1 data-gruppe="kopf" data-variante="1">Komplexe Situationen <span class="wort" aria-hidden="true"><span class="ist">strukturieren.</span><span>entscheiden.</span><span>umsetzen.</span></span><span class="nur-lesen">strukturieren, entscheiden, umsetzen.</span></h1>
+    <div data-gruppe="kopf" data-variante="2" hidden><p class="lp-vorzeile">Komplexe Situationen</p><h1>Strukturieren. Entscheiden. Umsetzen.</h1></div>
+    <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
+    <ol class="lp-drei">
+      <li class="ist"><small>01</small><b>Strukturieren</b><span>Den Kern herausarbeiten</span></li>
+      <li><small>02</small><b>Entscheiden</b><span>Konzept, Analyse, Entscheidungsvorlage</span></li>
+      <li><small>03</small><b>Umsetzen</b><span>Mit Ihren Leuten und unserem Netzwerk</span></li>
+    </ol>
+    <div class="knoepfe"><a class="knopf" href="#kontakt">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Ihre Lage</a></div>
   </div>
-  <div class="duo">{duo}</div>
+  <div class="duo duo--gleich">{duo}</div>
 </div></section>
 
 <!-- 2 Ihre Lage -->
@@ -219,6 +226,28 @@ def startseite():
 <dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
 {vorlagen}"""
     skript = """<script>
+/* Variantenwahl (nur Entwurf) */
+document.querySelectorAll('.wahl').forEach(function (w) {
+  var g = w.getAttribute('data-gruppe');
+  w.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.textContent.trim();
+      w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
+    });
+  });
+});
+/* Wechselndes Wort in der Überschrift, im Takt mit der Zeile der drei Schritte */
+(function () {
+  var woerter = document.querySelectorAll('.wort > span'), schritte = document.querySelectorAll('.lp-drei li');
+  if (!woerter.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var i = 0;
+  setInterval(function () {
+    i = (i + 1) % woerter.length;
+    woerter.forEach(function (w, n) { w.classList.toggle('ist', n === i); });
+    schritte.forEach(function (s, n) { s.classList.toggle('ist', n === i); });
+  }, 2600);
+})();
 (function () {
   var f = document.getElementById('fenster'), inh = f.querySelector('.fenster__inhalt');
   document.querySelectorAll('[data-thema]').forEach(function (b) {
