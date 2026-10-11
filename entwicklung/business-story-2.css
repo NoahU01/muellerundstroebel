@@ -491,3 +491,24 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 @media (max-width: 1180px) { .kp__themen, .kp__wege a { white-space: normal; } }
 /* Ihre Lage: Kästen etwas flacher (5:4) */
 .pk__bild { aspect-ratio: 5 / 4; }
+
+/* So arbeiten wir: Kasten bündig mit der Überschrift */
+#arbeitsweise .lp-arbeit { margin-top: .2rem; }
+#arbeitsweise .wahl { margin-bottom: 1rem; }
+
+/* Variante 3: reduzierter Ablauf ohne Kästen – eine Linie, Punkte, knappe Beschriftung */
+.lp-ablauf { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-top: 4rem; padding-top: 2.2rem; }
+.lp-ablauf::before { content: ""; position: absolute; left: .55rem; right: 0; top: .55rem; height: 2px; background: linear-gradient(90deg, var(--navy) 0 75%, var(--linie) 75% 100%); }
+.lp-ablauf::after { content: ""; position: absolute; right: -.1rem; top: .2rem; border: .4rem solid transparent; border-left-color: var(--linie); border-right: 0; }
+.lp-ablauf li { position: relative; }
+.lp-ablauf li::before { content: ""; position: absolute; left: 0; top: -2.2rem; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 5px var(--weiss); }
+.lp-ablauf b { display: block; font-family: var(--head); font-weight: 500; font-size: 1.3rem; color: var(--navy); }
+.lp-ablauf span { display: block; margin-top: .35rem; font-size: .93rem; line-height: 1.45; color: var(--ink-2); }
+.lp-ablauf__ende::before { background: var(--weiss) !important; box-shadow: inset 0 0 0 2px var(--taupe), 0 0 0 5px var(--weiss) !important; }
+.lp-ablauf__ende b { color: var(--taupe-d); }
+@media (max-width: 760px) {
+  .lp-ablauf { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; padding: 0 0 0 2.2rem; }
+  .lp-ablauf::before { left: .5rem; top: .3rem; bottom: .3rem; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, var(--navy) 0 75%, var(--linie) 75% 100%); }
+  .lp-ablauf::after { display: none; }
+  .lp-ablauf li::before { left: -2.2rem; top: .3rem; }
+}

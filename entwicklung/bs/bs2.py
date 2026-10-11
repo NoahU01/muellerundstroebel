@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 28
+VERSION = 29
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -217,14 +217,18 @@ def startseite():
 
 <!-- 3 So arbeiten wir -->
 <section class="sek" id="arbeitsweise"><div class="wrap">
+  <p class="kicker">So arbeiten wir</p>
+  <div class="wahl" data-gruppe="arbeit"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3</button></div>
   <div class="lp-arbeit">
     <div>
-      <p class="kicker">So arbeiten wir</p>
-      <div class="wahl" data-gruppe="arbeit"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
       <h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
-      <div class="lp-arbeit__text">
+      <div class="lp-arbeit__text" data-gruppe="arbeit-text" data-variante="lang">
         <p>Wir bleiben im regelmäßigen, kurzen Austausch. Meist reicht ein Telefonat zwischen zwei Terminen oder auf der Fahrt. Wenn es ein Thema braucht, nehmen wir uns eine längere Videokonferenz, und wenn es sinnvoll ist, einen Workshop.</p>
         <p>Dazwischen arbeiten wir: Wir sprechen mit Ihren Leuten, erarbeiten selbst und holen Spezialisten dazu, wo es sie braucht. Beim nächsten Austausch steigen wir eine Stufe höher ein.</p>
+        <p><b>So bleibt Ihr Thema präsent, ohne dass Sie Ihren Kalender blockieren müssen.</b></p>
+      </div>
+      <div class="lp-arbeit__text" data-gruppe="arbeit-text" data-variante="kurz" hidden>
+        <p>Sie geben den Takt vor, wir halten Ihr Thema in Bewegung. Der Ablauf ist einfach und wiederholt sich, bis das Ergebnis steht.</p>
         <p><b>So bleibt Ihr Thema präsent, ohne dass Sie Ihren Kalender blockieren müssen.</b></p>
       </div>
     </div>
@@ -236,6 +240,12 @@ def startseite():
     </aside>
   </div>
   <ol class="lp-schritte" data-gruppe="arbeit" data-variante="2" hidden>{schritte}</ol>
+  <ol class="lp-ablauf" data-gruppe="arbeit" data-variante="3" hidden>
+    <li><b>Kurzer Austausch</b><span>Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist</span></li>
+    <li><b>Wir arbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten</span></li>
+    <li><b>Eine Stufe höher</b><span>Beim nächsten Austausch steigen wir weiter oben ein</span></li>
+    <li class="lp-ablauf__ende"><b>Bis das Ergebnis steht</b><span>Im regelmäßigen Takt</span></li>
+  </ol>
 </div></section>
 
 <!-- 4.1 Ergebnis -->
@@ -282,6 +292,7 @@ document.querySelectorAll('.wahl').forEach(function (w) {
       var v = b.textContent.trim();
       w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
       document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
+      if (g === 'arbeit') document.querySelectorAll('[data-gruppe="arbeit-text"]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== (v === '3' ? 'kurz' : 'lang'); });
     });
   });
 });
