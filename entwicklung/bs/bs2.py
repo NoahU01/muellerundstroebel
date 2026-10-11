@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 18
+VERSION = 20
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -132,71 +132,91 @@ def platz(punkt, titel, hinweis, status="offen", klein=False):
 
 
 def startseite():
-    T, D = PERSONEN["tobias"], PERSONEN["daniel"]
-    sprite = """<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="l-gespraech" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></symbol>
-  <symbol id="l-arbeit" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3"/></symbol>
-  <symbol id="l-entscheid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 12.3l2.6 2.6 5-5.4"/></symbol>
-  <symbol id="l-kreis" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></symbol>
-  <symbol id="l-pfeil" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
-</svg>"""
+    """Startseite nach Storyboard: Kopf C · Ihre Lage C · So arbeiten wir Vis. 2 · 4.1 Ergebnis C · 4.2 Kontakt C."""
     duo = "".join(f'<figure><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p["name"]}"></div><figcaption><b>{p["name"]}</b>{p["kurz"]}</figcaption></figure>'
                   for k, p in PERSONEN.items())
-    ablauf = [("l-gespraech", "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
-              ("l-arbeit", "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
-              ("l-kreis", "Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")]
-    schritte = "".join(f'''<li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico"><use href="#{ic}"/></svg></span>
-        <h3>{t}</h3><p>{x}</p></li>''' for ic, t, x in ablauf)
-    wege = "".join(f'''<div class="lp-weg"><span class="lp-weg__nr">Weg {i}</span>
-        {platz("Punkt 5", "Was die Führungskraft vorher probiert hat", "z. B. Berater, Workshop, eigene Leute – Ihre Antwort", klein=True)}
-        {platz("Punkt 6", "Warum das nicht gereicht hat", "ein Satz, aus Sicht der Führungskraft", klein=True)}</div>''' for i in (1, 2, 3))
+    wege = [("weiss", "Ihr Team", "Liefert, aber nicht so, wie Sie es brauchen.", "team",
+             "<h3>Ihr Team</h3><p>Ihr Team liefert, aber nicht so, wie Sie es brauchen. Sie greifen wieder selbst ein.</p>"
+             "<h4>Typisch bei</h4><ul><li>der Vorlage für den Aufsichtsrat</li><li>der Analyse, die eine Entscheidung tragen soll</li><li>dem Konzept, das in den Bereichen umgesetzt werden muss</li></ul>"),
+            ("navy", "Externe", "Empfehlungen ja. Umsetzen bleibt bei Ihnen.", "extern",
+             "<h3>Externe</h3><p>Strategieberater, Projektmanager, Spezialisten: jeweils einzeln beauftragt. Die Verbindung, die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.</p>"),
+            ("weiss", "Nur Workshops", "Zwei Tage im Kalender. Dann wochenlang Stillstand.", "workshop",
+             "<h3>Nur Workshops</h3><p>Große Themen werden zur Hürde: erst ein Termin für den großen Workshop, danach tut sich wenig, bis wieder Zeit im Kalender ist.</p>")]
+    karten = "".join(f'<button class="weg weg--{f}" type="button" data-thema="{k}"><small>{t}</small><b>{x}</b><span>Mehr</span></button>' for f, t, x, k, _ in wege)
+    vorlagen = "".join(f'<template id="t-{k}">{d}</template>' for _, _, _, k, d in wege)
+    schritte = "".join(f'<li class="lp-schritt"><span class="lp-schritt__ico">{ic}</span><h3>{t}</h3><p>{x}</p></li>' for ic, t, x in [
+        (ICO_GESPRAECH, "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
+        (ICO_ARBEIT, "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
+        (ICO_KREIS, "Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")])
     kontakte = "".join(f'''<article class="person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div><div>
       <h3>{p['name']}</h3><p class="person__kurz">{p['kurz']}</p>
       <div class="wege"><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="mailto:{p['mail']}">{p['mail']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></div>
     </div></article>''' for k, p in PERSONEN.items())
-    main = f"""{sprite}
-<div class="entwurf-hinweis"><div class="wrap">Entwurf nach dem <a href="/entwicklung/storyboard.html">Storyboard</a>: gestrichelte Felder sind offene Punkte und werden durch Ihre freigegebenen Sätze ersetzt.</div></div>
+    main = f"""
+<div class="entwurf-hinweis"><div class="wrap">Entwurf nach dem <a href="/entwicklung/storyboard.html">Storyboard</a>: Kopf C · Ihre Lage C · So arbeiten wir Visualisierung 2 · Ergebnis C · Kontakt C</div></div>
 
-<!-- Abschnitt 1 · Kopf (F1 + F4) -->
+<!-- 1 Kopf -->
 <section class="held lp-held"><div class="wrap held__raster">
   <div>
     <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-    <h1>Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h1>
-    {platz("Punkte 1–2", "Ein Satz darunter: für wen und in welcher Lage", "Rollen und Unternehmen aus Punkt 1 und 2, in einem Satz")}
-    <div class="knoepfe"><a class="knopf" href="#kontakt">Direkt anrufen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Kennen Sie das?</a></div>
+    <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
+    <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, die Kennzahlen, die steuern sollen: Wir machen Ihr Thema entscheidbar, mit Konzept, Analyse und Entscheidungsvorlage. Und wir sorgen für die Umsetzung, mit wenig Aufwand für Sie.</p>
+    <div class="knoepfe"><a class="knopf" href="#kontakt">Direkt anrufen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Ihre Lage</a></div>
   </div>
   <div class="duo">{duo}</div>
 </div></section>
 
-<!-- Abschnitt 2 · Ihre Lage (F2 + F3) -->
+<!-- 2 Ihre Lage -->
 <section class="sek sek--sand" id="lage"><div class="wrap">
-  <p class="kicker">Ihre Lage</p>
-  <h2 class="h2 lp-gross">„Es ging schon wieder nichts voran.“</h2>
-  <div class="lp-szene">{platz("Punkt 3", "Szene aus dem Alltag", "Der Moment, in dem eine Führungskraft zum Telefon greift und Sie anruft – konkret, mit Ort, Anlass, Frist")}</div>
-  <div class="lp-bahn">
-    <div class="lp-bahn__kopf"><span>Warum es bisher nicht geklappt hat</span><h3>Die üblichen Wege</h3></div>
-    {wege}
+  <div class="kopfteil">
+    <p class="kicker">Ihre Lage</p>
+    <h2 class="h2">„Es ging schon wieder nichts voran.“</h2>
+    <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
   </div>
+  <div class="wege3">{karten}</div>
 </div></section>
 
-<!-- Abschnitt 3 · So arbeiten wir (F5 + F6) -->
+<!-- 3 So arbeiten wir -->
 <section class="sek" id="arbeitsweise"><div class="wrap">
-  <p class="kicker">So arbeiten wir</p>
-  <h2 class="h2">Wir bleiben im regelmäßigen, kurzen Austausch.</h2>
-  <p class="lead">Oft reicht ein Telefonat, manchmal eine längere Videokonferenz, und wenn es sinnvoll ist, ein Workshop. So bleibt Ihr Thema präsent, und Sie haben es im Griff. Dazwischen arbeiten wir. <span class="platz-marke">Punkte 9–10 Entwurf</span></p>
+  <div class="vs-zwei">
+    <div><p class="kicker">So arbeiten wir</p><h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
+      <p class="lead">Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.</p></div>
+    <blockquote class="vs-erfahrung"><small>Aus eigener Erfahrung</small><p>Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.</p></blockquote>
+  </div>
   <ol class="lp-schritte">{schritte}</ol>
-  <p class="lp-takt"><svg class="ico" aria-hidden="true"><use href="#l-kreis"/></svg>Regelmäßig, bis das Ergebnis steht. So bleibt Ihr Thema präsent.</p>
-  <div class="lp-beleg">{platz("Punkt 8", "Der Beleg: ein erzählter Fall", "Die Zusammenarbeit beim HÖV – erzählt in drei, vier Sätzen, ohne Namen", status="teil")}</div>
 </div></section>
 
-<!-- Abschnitt 4 · Ergebnis + Kontakt (F7 + F8) -->
-<section class="sek sek--navy lp-ende" id="kontakt"><div class="wrap">
-  <p class="kicker">Ihr Ergebnis <span class="platz-marke platz-marke--hell">Punkt 11 teilweise</span></p>
-  <h2 class="h2 lp-gross">Sie entscheiden und steuern, statt den Mangel zu verwalten.</h2>
-  <div class="lp-anruf">{platz("Punkt 12", "Das erste Gespräch schafft Klarheit.", "Sie erzählen uns, was ansteht. Wir stellen Fragen, sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen können, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.", status="teil", klein=True)}</div>
+<!-- 4.1 Ergebnis -->
+<section class="sek sek--navy lp-ergebnis"><div class="wrap">
+  <p class="kicker">Ihr Ergebnis</p>
+  <h2 class="h2 lp-gross">Sie haben Ihre Themen im Griff.</h2>
+  <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+</div></section>
+
+<!-- 4.2 Kontakt -->
+<section class="sek lp-kontakt" id="kontakt"><div class="wrap">
+  <h2 class="h2">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h2>
+  <p class="lead">Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
   <div class="personen">{kontakte}</div>
-</div></section>"""
-    return seite("Müller &amp; Ströbel – Business Story 2.0 (Entwurf)", "Entwurf der Startseite: Business Story 2.0", "bs2", "", main)
+</div></section>
+
+<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
+{vorlagen}"""
+    skript = """<script>
+(function () {
+  var f = document.getElementById('fenster'), inh = f.querySelector('.fenster__inhalt');
+  document.querySelectorAll('[data-thema]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      inh.innerHTML = document.getElementById('t-' + b.getAttribute('data-thema')).innerHTML;
+      var h = inh.querySelector('h3'); if (h) h.id = 'fenster-titel';
+      f.showModal();
+    });
+  });
+  f.querySelector('.fenster__zu').addEventListener('click', function () { f.close(); });
+  f.addEventListener('click', function (e) { if (e.target === f) f.close(); });
+})();
+</script>"""
+    return seite("Müller &amp; Ströbel – Business Story 2.0 (Entwurf)", "Entwurf der Startseite: Business Story 2.0", "bs2", "", main, skript)
 
 
 # ------------------------------------------------------------------ Über uns
@@ -408,8 +428,8 @@ SKIZZE = [
                ("Text", "Sie entscheiden über Vorlagen, Zielbild und Fahrplan und sehen, wie es vorangeht.", "Punkt 11 · Zielbild: Grundstory")]),
         ("C", [("H2", "Sie haben Ihre Themen im Griff.", "Punkt 11"),
                ("Text", "Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.", "Punkt 11, Daniel 11.10.")]),
-    ], "4.1 Ergebnis", [
-        ("4.2 Kontakt", "sand", [
+    ], "4.1 · Ergebnis", [
+        ("4.2 · Kontakt", "sand", [
             ("C", [("H2", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Punkt 7 · zum Schluss"),
                    ("Text", "Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "Punkt 12")]),
         ]),
@@ -471,11 +491,16 @@ def storyboard():
                 out += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else v}</b>{zeilen_sk}</div>'
             return out
 
-        streifen_html = f'<div class="sk__streifen">{streifen_titel}</div>' if streifen_titel else ""
-        weitere_html = "".join(f'<div class="sk-unter sk-unter--{a2}"><div class="sk__streifen">{t2}</div><div class="sk__vars">{vars_html(v2)}</div></div>' for t2, a2, v2 in weitere)
+        if weitere:  # gleichrangige Sektionen (z. B. 4.1 Ergebnis, 4.2 Kontakt): je ein eigener Kasten
+            kaesten = [(streifen_titel, art, varianten)] + list(weitere)
+            skizze_html = '<div class="sk-stapel">' + "".join(
+                f'<div class="sk sk--{a2}"><div class="sk__kopf">Abschnitt {t2}</div><div class="sk__vars">{vars_html(v2)}</div></div>'
+                for t2, a2, v2 in kaesten) + '</div>'
+        else:
+            skizze_html = f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div><div class="sk__vars">{vars_html(varianten)}</div></div>'
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div>'
-                 f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div>{streifen_html}<div class="sk__vars">{vars_html(varianten)}</div>{weitere_html}</div></div>\n')
+                 f'{skizze_html}</div>\n')
 
     fragen_alle = sorted((int(f), t) for _, _, fr in STORY for f, t, _ in fr)
     punkte_alle = sorted((int(p[0]), p[1]) for _, _, fr in STORY for _, _, ps in fr for p in ps)

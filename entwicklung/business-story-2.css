@@ -318,3 +318,35 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 .vs-erfahrung { margin: 0; padding: 1.8rem; border-radius: 18px; background: var(--navy); color: var(--weiss); }
 .vs-erfahrung small { display: block; font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-h); }
 .vs-erfahrung p { margin-top: .8rem; font-family: var(--head); font-size: 1.25rem; line-height: 1.4; }
+
+/* ===== Startseite nach Storyboard, Prinzipien Wagenpaten-Seite (11.10.) ===== */
+/* Drei Wege als Kästen hell / dunkel / hell – nur Typografie, Details im Fenster */
+.wege3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3.2rem; }
+.weg { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; aspect-ratio: 1; padding: 1.8rem; border-radius: var(--r); border: 1px solid var(--linie); background: var(--weiss); color: var(--navy); font: inherit; text-align: left; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+.weg:hover, .weg:focus-visible { transform: translateY(-2px); box-shadow: 0 20px 40px -26px rgba(8,38,56,.45); outline: none; }
+.weg--navy { background: var(--navy); border-color: var(--navy); color: var(--weiss); }
+.weg small { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.weg--navy small { color: var(--taupe-h); }
+.weg b { font-family: var(--head); font-weight: 500; font-size: clamp(1.6rem, 2.5vw, 2.1rem); line-height: 1.12; letter-spacing: -.01em; }
+.weg span { font-size: .85rem; font-weight: 600; color: var(--blau); }
+.weg--navy span { color: var(--taupe-h); }
+.weg span::after { content: " +"; }
+
+/* Abschnitt 3: Text links, Erfahrung rechts, darunter die drei Schritte */
+#arbeitsweise .vs-zwei { align-items: center; }
+#arbeitsweise .vs-erfahrung p { font-size: 1.35rem; }
+
+/* 4.1 Ergebnis: positiv, ruhig, groß */
+.lp-ergebnis { padding: 8rem 0; }
+.lp-ergebnis .lp-gross { color: var(--weiss); max-width: 16ch; }
+.lp-ergebnis .lead { font-size: 1.3rem; max-width: 40rem; }
+
+/* 4.2 Kontakt: schmal */
+.lp-kontakt { padding: 5.5rem 0; }
+.lp-kontakt .h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); max-width: 24ch; }
+.lp-kontakt .personen { margin-top: 3rem; }
+
+@media (max-width: 991px) {
+  .wege3 { grid-template-columns: minmax(0, 1fr); }
+  .weg { aspect-ratio: auto; min-height: 13rem; }
+}

@@ -267,3 +267,7 @@
 .sk-unter--sand .sk-teil p, .sk-unter--sand .sk-teil--h2 p { color: var(--navy); }
 .sk-unter--sand .sk-teil em, .sk-unter--sand .sk-teil span { color: var(--taupe-d); }
 .sk-unter .sk__vars { margin-top: .6rem; }
+/* Gleichrangige Sektionen: zwei eigenständige Kästen untereinander, je mit eigener Linie */
+.sk-stapel { display: grid; gap: 1.2rem; align-content: center; }
+.sk-stapel > .sk::before { top: 50%; }
+.sk--sand { background: #efe9e2; }
