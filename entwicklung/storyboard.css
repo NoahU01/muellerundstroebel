@@ -324,3 +324,7 @@
   .ep-held h1 { white-space: normal; }
   .ep-dl { max-width: 22rem; }
 }
+/* Elevator Pitch: Nach dem Pitch – Lenkungsfragen und Gesprächsführung */
+.ep-gespraech { margin-top: 3rem; }
+.ep-gespraech h3 { font-size: 1.5rem; color: var(--navy); }
+.ep-gespraech > div > p { margin-top: .6rem; color: var(--ink-2); }

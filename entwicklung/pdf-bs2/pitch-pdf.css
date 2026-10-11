@@ -49,3 +49,9 @@ p { margin: 0; }
 .verd { margin-top: 2mm; padding: 2.6mm 3.5mm; background: var(--sand); border-left: .8mm solid var(--navy); font: 400 9.5pt/1.45 var(--head); color: var(--navy); }
 .verd small { display: block; margin-bottom: .6mm; font: 600 6.5pt/1 var(--text); letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-d); }
 .nw { white-space: nowrap; }
+/* Seite 1 schlicht als Text */
+.fliess p { font: 400 11.5pt/1.55 var(--head); color: var(--ink); }
+.fliess p + p { margin-top: 2.6mm; }
+.notiz { margin: 3mm 0 2mm; font-size: 8pt; color: var(--ink-2); }
+.intro--eng { margin-bottom: 3mm; }
+.tab--fragen td.frage-l { width: 95mm; font: 400 9.5pt/1.45 var(--head); color: var(--navy); }

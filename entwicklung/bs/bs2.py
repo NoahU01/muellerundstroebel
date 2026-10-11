@@ -788,12 +788,20 @@ PITCH = [  # (Nr, Baustein, Frage des Gegenübers, Quelle im Storyboard, Satz im
 ]
 PITCH_10 = ("Wir übernehmen für Führungskräfte in der Versicherungsbranche komplexe Themen, von der Vorlage für den Aufsichtsrat "
             "bis zur Überführung der Strategie in den Alltag, und liefern das Ergebnis. Sie brauchen dafür nur kurze Abstimmungen.")
-WEG = [  # was im kurzen Pitch bewusst fehlt
-    ("Die sechs Einsatzgebiete", "Zu viel für ein Gespräch. Zwei Beispiele reichen, den Rest liefert das PDF."),
-    ("Das Netzwerk im Detail", "Kommt als Antwort, wenn er fragt: „Und wenn ihr etwas nicht könnt?“"),
-    ("Werdegang und Fakten zu uns", "Steht auf Über uns. Im Gespräch stellt man sich ohnehin mit Namen und Rolle vor."),
-    ("Der Fall aus der eigenen Erfahrung", "Bester Beleg für das Nachgespräch, wenn er nachhakt."),
-    ("Formate (Videokonferenz, Workshop)", "Im Pitch reicht „kurzes Telefonat“. Die Bandbreite erklären wir, wenn es konkret wird."),
+WEG = [  # nach dem Pitch: worauf wir im Gespräch bewusst hinsteuern
+    ("Sein Thema", "Wir fragen, was bei ihm gerade ansteht. Passt eines unserer Einsatzgebiete, nennen wir es mit einem Beispiel. Den Überblick gibt das PDF."),
+    ("Der Beleg aus eigener Erfahrung", "Fragt er, ob das funktioniert, erzählen wir, wie wir eine Führungskraft genau so begleitet haben."),
+    ("Unser Netzwerk", "Fragt er „Und wenn ihr etwas nicht könnt?“, erzählen wir, welche Spezialisten wir dazuholen."),
+    ("Die Formate", "Wird es konkret, zeigen wir die Bandbreite: Telefonat, Videokonferenz, Workshop, wo er sinnvoll ist."),
+    ("Wer wir sind", "Name und Rolle in der Vorstellung. Werdegang und Fakten stehen auf Über uns und im PDF."),
+    ("Der nächste Schritt", "Ein Gespräch zu seinem Thema vereinbaren. Das erste Gespräch kostet nichts: Wir sagen offen, ob und wie wir es umsetzen können."),
+]
+LENKUNG = [  # Lenkungsfragen: herausfinden, was für das Gegenüber wichtig ist
+    ("„Was liegt bei Ihnen gerade auf dem Tisch, das nicht so vorankommt, wie Sie es brauchen?“", "Zeigt das konkrete Thema."),
+    ("„Wo greifen Sie im Moment selbst ein, obwohl Sie es eigentlich abgegeben haben?“", "Zeigt, wo es hakt und was ihn Zeit kostet."),
+    ("„Was steht als Nächstes im Vorstand oder im Aufsichtsrat an?“", "Zeigt Anlass und Termin."),
+    ("„Wer aus Ihrem Team arbeitet daran, und was fehlt dort?“", "Zeigt, wie wir mit seinem Team arbeiten würden."),
+    ("„Woran würden Sie in drei Monaten merken, dass das Thema im Griff ist?“", "Zeigt sein Zielbild."),
 ]
 REGELN = [
     ("Bei ihm anfangen", "Die ersten zwei Sätze handeln nur von seiner Lage. Über uns sprechen wir erst ab Satz drei."),
@@ -820,6 +828,7 @@ def elevator_pitch():
     pitch_text = " ".join(satz for *_, satz, _ in [(p[0], p[1], p[2], p[3], p[4], p[5]) for p in PITCH])
     woerter = len(pitch_text.split())
     weg = "".join(f"<li><b>{t}</b>{x}</li>" for t, x in WEG)
+    lenkung = "".join(f"<li><b>{t}</b>{x}</li>" for t, x in LENKUNG)
     regeln = "".join(f'<div class="sb-karte"><h3>{t}</h3><p>{x}</p></div>' for t, x in REGELN)
     absaetze = "".join(f"<p>{p[4]}</p>" for p in PITCH)
     main = f"""
@@ -833,7 +842,7 @@ def elevator_pitch():
     <div class="ep-dl__bild" aria-hidden="true"><img class="ep-dl__seite ep-dl__seite--hinten" src="/entwicklung/downloads/elevator-pitch-2.png" alt=""><img class="ep-dl__seite ep-dl__seite--vorn" src="/entwicklung/downloads/elevator-pitch-1.png" alt=""></div>
     <p class="kicker">Download · intern</p>
     <b>Der Pitch und wie er entstanden ist.</b>
-    <span class="ep-dl__meta">PDF · 6 Seiten · 0,3 MB</span>
+    <span class="ep-dl__meta">PDF · 8 Seiten · 0,3 MB</span>
     <span class="knopf knopf--hell">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></span>
   </a>
 </div></section>
@@ -873,9 +882,18 @@ def elevator_pitch():
   <div class="sb-karten ep-regeln">{regeln}</div>
 </div></section>
 
-<section class="sek sek--sand"><div class="wrap ep-weg">
-  <div><p class="kicker">Bewusst weggelassen</p><h2 class="h2">Was im kurzen Pitch fehlt und wann es kommt.</h2></div>
-  <ul>{weg}</ul>
+<section class="sek sek--sand"><div class="wrap">
+  <p class="kicker">Nach dem Pitch</p>
+  <h2 class="h2">Nächste Schritte und Gesprächsführung.</h2>
+  <p class="lead">Der Pitch öffnet das Gespräch. Danach fragen wir, was für das Gegenüber wichtig ist, und steuern bewusst auf sein Thema zu.</p>
+  <div class="ep-weg ep-gespraech">
+    <div><h3>Lenkungsfragen</h3><p>Damit finden wir heraus, welches Thema ihn gerade beschäftigt.</p></div>
+    <ul>{lenkung}</ul>
+  </div>
+  <div class="ep-weg ep-gespraech">
+    <div><h3>Worauf wir hinsteuern</h3><p>Was wir im Gespräch einbringen, sobald er danach fragt.</p></div>
+    <ul>{weg}</ul>
+  </div>
 </div></section>"""
     html = seite("Müller &amp; Ströbel – Elevator Pitch (Business Story 2.0)", "Elevator Pitch: von den Storyboard-Aussagen zum kurzen Pitch", "bs2-pitch", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)

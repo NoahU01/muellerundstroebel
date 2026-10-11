@@ -50,23 +50,18 @@ def html():
     sek = round(woerter / 2.5 / 5) * 5
     s1 = f'''
 <h1>Elevator Pitch</h1>
-<p class="intro">Das Ergebnis vorneweg. Ab Seite 2 steht, wie wir dorthin gekommen sind.</p>
-<div class="kasten">
-  <p class="label">Der Pitch · gut eine halbe Minute</p>
-  <ol class="pitch">{"".join(f"<li><span>{p[0]}</span><p>{p[4]}</p></li>" for p in b.PITCH)}</ol>
-  <p class="mass">{woerter} Wörter · gesprochen etwa {sek} Sekunden (ruhiges Sprechtempo, 2,5 Wörter je Sekunde). Die Nummern verweisen auf die Zuordnung auf Seite 2.</p>
-</div>
-<div class="kasten kasten--hell">
-  <p class="label">Die Kurzfassung · gut 10 Sekunden</p>
-  <p class="kurz">{b.PITCH_10}</p>
-  <p class="kurz">{SCHLUSS}</p>
-  <p class="mass">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>
-</div>'''
+<p class="intro">Das Ergebnis vorneweg. Danach Regeln und Gesprächsführung (Seiten 2 und 3), ab Seite 4 die Herleitung.</p>
+<h2>Der Pitch · gut 30 Sekunden</h2>
+<div class="fliess">{"".join(f"<p>{p[4]}</p>" for p in b.PITCH)}</div>
+<p class="notiz">{woerter} Wörter · gesprochen etwa {sek} Sekunden (ruhiges Sprechtempo, 2,5 Wörter je Sekunde)</p>
+<h2>Die Kurzfassung · gut 10 Sekunden</h2>
+<div class="fliess"><p>{b.PITCH_10}</p><p>{SCHLUSS}</p></div>
+<p class="notiz">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>'''
     zeilen = "".join(f'<tr><td class="nr">{n}</td><td><b>{t}</b><br><em>„{fr}“</em></td><td class="satz">{satz}</td>'
                      f'<td>{" · ".join(f"<span class=nw>{x}</span>" for x in q.split(" · "))}</td><td>{w}</td></tr>' for n, t, fr, q, satz, w in b.PITCH)
     s2 = f'''
 <h1>Wie wir dorthin gekommen sind</h1>
-<p class="intro">Drei Schritte: Im Storyboard haben wir zwölf Punkte als Antworten auf acht Leserfragen gesammelt (Seiten 3 bis 5). Je Leserfrage haben wir die Punkte zu einer Aussage verdichtet. Aus den Verdichtungen sind sechs Bausteine mit je einem gesprochenen Satz geworden (diese Seite). Die Herkunft der Kurzfassung, die Regeln und was bewusst fehlt, stehen auf Seite 6.</p>
+<p class="intro">Drei Schritte: Im Storyboard haben wir zwölf Punkte als Antworten auf acht Leserfragen gesammelt (Seiten 5 bis 7). Je Leserfrage haben wir die Punkte zu einer Aussage verdichtet. Aus den Verdichtungen sind sechs Bausteine mit je einem gesprochenen Satz geworden (diese Seite). Die Herkunft der Kurzfassung steht auf Seite 8.</p>
 <h2>Zuordnung: Satz für Satz</h2>
 <table class="tab">
   <tr><th></th><th>Baustein · seine Frage</th><th>Satz im Pitch</th><th>Herkunft im Storyboard</th><th>Warum so</th></tr>{zeilen}
@@ -78,22 +73,30 @@ def html():
     s4 = fort + "".join(frage_block(*x) for x in f[3:6])
     s4b = fort + "".join(frage_block(*x) for x in f[6:])
     regeln = "".join(f"<tr><td><b>{t}</b></td><td>{x}</td></tr>" for t, x in b.REGELN)
+    lenkung = "".join(f"<tr><td class='frage-l'>{t}</td><td>{x}</td></tr>" for t, x in b.LENKUNG)
     weg = "".join(f"<tr><td><b>{t}</b></td><td>{x}</td></tr>" for t, x in b.WEG)
-    s5 = f'''
-<h1>Kurzfassung, Regeln, Weggelassenes</h1>
-<h2>Herkunft der Kurzfassung</h2>
-<table class="tab tab--zwei">
-  <tr><td><b>Für wen</b></td><td>F1: „Für Führungskräfte in der Versicherungsbranche.“</td></tr>
-  <tr><td><b>Zwei Beispiele</b></td><td>Aus den Einsatzgebieten: die Vorlage für den Aufsichtsrat und die Überführung der Strategie in den Alltag. Mehr als zwei Beispiele versteht man gesprochen nicht.</td></tr>
-  <tr><td><b>Das Versprechen</b></td><td>F4 (Punkt 7): „… und liefern das Ergebnis.“</td></tr>
-  <tr><td><b>Sein Aufwand</b></td><td>F6 (Punkt 9): „Sie brauchen dafür nur kurze Abstimmungen.“</td></tr>
-  <tr><td><b>Schlusssatz</b></td><td>„Die rechte Hand“: ein Rollenbild, das weder über der Führungskraft steht (Bereichsleiter) noch zu klein ist (Assistenz). Mit einer Leerzeile abgesetzt.</td></tr>
-</table>
+    s_regeln = f'''
+<h1>Regeln und Gesprächsführung</h1>
 <h2>Vier Regeln für den kurzen Pitch</h2>
 <table class="tab tab--zwei">{regeln}</table>
-<h2>Bewusst weggelassen und wann es kommt</h2>
+<h2>Nach dem Pitch: Lenkungsfragen</h2>
+<p class="intro intro--eng">Der Pitch öffnet das Gespräch. Danach finden wir mit wenigen Fragen heraus, was für das Gegenüber wichtig ist.</p>
+<table class="tab tab--zwei tab--fragen">{lenkung}</table>'''
+    s_weg = f'''
+<h1>Nächste Schritte im Gespräch</h1>
+<p class="intro">Worauf wir bewusst hinsteuern, sobald das Gegenüber danach fragt.</p>
 <table class="tab tab--zwei">{weg}</table>'''
-    seiten = [s1, s2, s3, s4, s4b, s5]
+    kurz_herkunft = (
+        "<tr><td><b>Für wen</b></td><td>F1: „Für Führungskräfte in der Versicherungsbranche.“</td></tr>"
+        "<tr><td><b>Zwei Beispiele</b></td><td>Aus den Einsatzgebieten: die Vorlage für den Aufsichtsrat und die Überführung der Strategie in den Alltag. Mehr als zwei Beispiele versteht man gesprochen nicht.</td></tr>"
+        "<tr><td><b>Das Versprechen</b></td><td>F4 (Punkt 7): „… und liefern das Ergebnis.“</td></tr>"
+        "<tr><td><b>Sein Aufwand</b></td><td>F6 (Punkt 9): „Sie brauchen dafür nur kurze Abstimmungen.“</td></tr>"
+        "<tr><td><b>Schlusssatz</b></td><td>„Die rechte Hand“: ein Rollenbild, das weder über der Führungskraft steht (Bereichsleiter) noch zu klein ist (Assistenz). Mit einer Leerzeile abgesetzt.</td></tr>")
+    s_kurz = f'''
+<h1>Herkunft der Kurzfassung</h1>
+<p class="intro">Aus welchen Bausteinen die 10-Sekunden-Fassung besteht.</p>
+<table class="tab tab--zwei">{kurz_herkunft}</table>'''
+    seiten = [s1, s_regeln, s_weg, s2, s3, s4, s4b, s_kurz]
     return f'''<!DOCTYPE html>
 <html lang="de"><head><meta charset="utf-8"><title>Müller &amp; Ströbel – Elevator Pitch (intern)</title>
 <link rel="stylesheet" href="/entwicklung/business-story-2.css?v={b.VERSION}">
