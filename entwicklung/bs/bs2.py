@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 32
+VERSION = 33
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -823,10 +823,27 @@ def elevator_pitch():
     regeln = "".join(f'<div class="sb-karte"><h3>{t}</h3><p>{x}</p></div>' for t, x in REGELN)
     absaetze = "".join(f"<p>{p[4]}</p>" for p in PITCH)
     main = f"""
-<section class="held held--klein"><div class="wrap">
+<section class="sek sek--navy ep-kopf-ergebnis"><div class="wrap">
   <p class="kicker">Elevator Pitch</p>
-  <h1>Von der Landingpage zur halben Minute.</h1>
-  <p class="lead">Die Landingpage ist die lange Fassung unserer Story. Hier verdichten wir sie auf das, was Sie einem Vorstand in einer Kaffeepause sagen: ohne Bild, mit einfachen Worten, aus seiner Sicht. Jeder Satz beantwortet seine stille Frage: Was bringt mir das?</p>
+  <h1 class="ep-h1">Unser Pitch in 30 und in 10 Sekunden.</h1>
+</div><div class="wrap ep-pitch">
+  <div>
+    <p class="kicker">Der Pitch · gut eine halbe Minute</p>
+    <div class="ep-text">{absaetze}</div>
+    <p class="ep-mass">{woerter} Wörter · gesprochen etwa {round(woerter / 2.5 / 5) * 5} Sekunden (ruhiges Sprechtempo, 2,5 Wörter je Sekunde)</p>
+  </div>
+  <aside>
+    <p class="kicker">Die Kurzfassung · gut 10 Sekunden</p>
+    <p class="ep-kurz">{PITCH_10}</p>
+    <p class="ep-kurz ep-schluss">Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p>
+    <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>
+  </aside>
+</div></section>
+
+<section class="held held--klein"><div class="wrap">
+  <p class="kicker">Wie wir dorthin gekommen sind</p>
+  <h2 class="h2">Von der Landingpage zur halben Minute.</h2>
+  <p class="lead">Die Landingpage ist die lange Fassung unserer Story. Für den Pitch haben wir sie auf das verdichtet, was Sie einem Vorstand in einer Kaffeepause sagen: ohne Bild, mit einfachen Worten, aus seiner Sicht. Jeder Satz beantwortet seine stille Frage: Was bringt mir das?</p>
 </div></section>
 
 <section class="sek sek--sand"><div class="wrap">
@@ -844,19 +861,7 @@ def elevator_pitch():
   <div class="ep-zeilen">{zeilen}</div>
 </div></section>
 
-<section class="sek sek--navy"><div class="wrap ep-pitch">
-  <div>
-    <p class="kicker">Der Pitch · gut eine halbe Minute</p>
-    <div class="ep-text">{absaetze}</div>
-    <p class="ep-mass">{woerter} Wörter · gesprochen etwa {round(woerter / 2.5 / 5) * 5} Sekunden (ruhiges Sprechtempo, 2,5 Wörter je Sekunde)</p>
-  </div>
-  <aside>
-    <p class="kicker">Die Kurzfassung · gut 10 Sekunden</p>
-    <p class="ep-kurz">{PITCH_10}</p>
-    <p class="ep-kurz ep-schluss">Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p>
-    <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>
-  </aside>
-</div></section>
+
 
 <section class="sek"><div class="wrap">
   <p class="kicker">Aufbau eines guten kurzen Pitches</p>

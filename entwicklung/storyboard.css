@@ -304,3 +304,6 @@
   .ep-pitch, .ep-weg { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
 }
 .ep-schluss { margin-top: 1.4em; color: var(--taupe-h) !important; }
+/* Elevator Pitch: Ergebnis als Kopf der Seite */
+.ep-kopf-ergebnis { padding-top: 4.5rem; }
+.ep-kopf-ergebnis .ep-h1 { margin: .6rem 0 2.6rem; max-width: 20ch; font-size: clamp(2.2rem, 4.6vw, 3.6rem); color: var(--weiss); }
