@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 26
+VERSION = 27
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -163,9 +163,6 @@ def startseite():
     lang = {"team": "Liefert, aber nicht so, wie Sie es brauchen. Sie greifen wieder selbst ein.",
             "extern": "Liefern Empfehlungen. Umsetzen und koordinieren bleibt bei Ihnen.",
             "workshop": "Zwei Tage im Kalender. Danach tut sich wochenlang nichts."}
-    # Variante 1: Aufbau wie „Für Unternehmen“ (Wagenpaten): Icon, Überschrift, kurzer Text
-    karten1 = "".join(f'<button class="nk" type="button" data-thema="{k}">{ico[k]}<h3>{t}</h3><p>{lang[k]}</p><span class="nk__mehr">Mehr</span></button>'
-                      for f, t, x, k, _ in wege)
     # Variante 2: Aufbau wie die Social-Media-Kästen: weißer Rahmen, farbiges Quadrat mit Aussage und Icon, Text darunter
     farben = {"team": "sand", "extern": "navy", "workshop": "hell"}
     ergaenzung = {"team": "Typisch bei der Vorlage für den Aufsichtsrat oder dem Konzept für die Bereiche. Am Ende greifen Sie wieder selbst ein.",
@@ -174,8 +171,7 @@ def startseite():
     karten2 = "".join(f'<article class="pk"><div class="pk__bild pk__bild--{farben[k]}"><small>{t}</small><b>{x}</b>{ico[k]}</div>'
                       f'<div class="pk__text"><p>{ergaenzung[k]}</p><button class="pk__mehr" type="button" data-thema="{k}">Mehr</button></div></article>'
                       for f, t, x, k, _ in wege)
-    karten = (f'<div class="nks" data-gruppe="lage" data-variante="1">{karten1}</div>'
-              f'<div class="pks" data-gruppe="lage" data-variante="2" hidden>{karten2}</div>')
+    karten = f'<div class="pks">{karten2}</div>'
     vorlagen = "".join(f'<template id="t-{k}">{d}</template>' for _, _, _, k, d in wege)
     schritte = "".join(f'<li class="lp-schritt"><span class="lp-schritt__ico">{ic}</span><h3>{t}</h3><p>{x}</p></li>' for ic, t, x in [
         (ICO_GESPRAECH, "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
@@ -219,7 +215,6 @@ def startseite():
 <section class="sek sek--sand" id="lage"><div class="wrap">
   <div class="kopfteil">
     <p class="kicker">Ihre Lage</p>
-    <div class="wahl" data-gruppe="lage"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
     <h2 class="h2">„Es ging schon wieder nichts voran.“</h2>
     <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
   </div>
