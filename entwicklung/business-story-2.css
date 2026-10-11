@@ -308,3 +308,13 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 @media (max-width: 560px) {
   .platz-marke { margin: .4rem 0 0; }
 }
+
+/* Vorschau-Bausteine (Storyboard, Abschnitt 3) */
+.vs-netz { margin-top: 1.4rem; padding: 1.2rem 1.4rem; border-radius: 14px; background: var(--sand); }
+.vs-netz b { display: block; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
+.vs-netz div { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .8rem; }
+.vs-netz span { padding: .4rem .85rem; border-radius: 999px; background: var(--weiss); border: 1px solid var(--linie); font-size: .88rem; color: var(--navy); }
+.vs-zwei { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 3rem; align-items: end; }
+.vs-erfahrung { margin: 0; padding: 1.8rem; border-radius: 18px; background: var(--navy); color: var(--weiss); }
+.vs-erfahrung small { display: block; font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-h); }
+.vs-erfahrung p { margin-top: .8rem; font-family: var(--head); font-size: 1.25rem; line-height: 1.4; }

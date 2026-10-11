@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 15
+VERSION = 16
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -331,6 +331,24 @@ VERDICHTUNG = {
     "7": "Sie verwalten keinen Mangel mehr. Sie entscheiden und steuern, und die Ergebnisse kommen.",
     "8": "Rufen Sie an. Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.",
 }
+ICO_GESPRAECH = '<svg class="ico" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></svg>'
+ICO_ARBEIT = '<svg class="ico" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3"/></svg>'
+ICO_ENTSCHEID = '<svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 12.3l2.6 2.6 5-5.4"/></svg>'
+ICO_KREIS = '<svg class="ico" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></svg>'
+SCHRITTE_HTML = ('<ol class="lp-schritte">'
+    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_GESPRAECH}</span><h3>Kurzer Austausch</h3><p>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</p></li>'
+    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_ARBEIT}</span><h3>Wir arbeiten</h3><p>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</p></li>'
+    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_ENTSCHEID}</span><h3>Sie entscheiden</h3><p>Über Optionen, Entwürfe und Vorlagen, professionell aufbereitet.</p></li></ol>')
+VORSCHAU_3_1 = ('<p class="kicker">So arbeiten wir</p><h2 class="h2">Wir arbeiten. Sie entscheiden.</h2>'
+    '<p class="lead">Wir bleiben im regelmäßigen, kurzen Austausch, oft reicht ein Telefonat. Danach liegen Optionen, Entwürfe und Entscheidungsvorlagen auf Ihrem Tisch, professionell aufbereitet.</p>'
+    + SCHRITTE_HTML +
+    '<div class="vs-netz"><b>Wenn es Spezialwissen braucht, kommt es aus unserem Netzwerk</b><div><span>Ehemalige Vorstände</span><span>Aufsichtsräte</span><span>IT-Spezialisten</span><span>Prozess-Spezialisten</span><span>Entwickler</span><span>Grafiker</span></div></div>')
+VORSCHAU_3_2 = ('<div class="vs-zwei"><div><p class="kicker">So arbeiten wir</p><h2 class="h2">Wir arbeiten. Sie entscheiden.</h2>'
+    '<p class="lead">Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.</p></div>'
+    '<blockquote class="vs-erfahrung"><small>Aus eigener Erfahrung</small><p>Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.</p></blockquote></div>'
+    + SCHRITTE_HTML +
+    f'<p class="lp-takt">{ICO_KREIS}Regelmäßig, bis das Ergebnis steht. So bleibt Ihr Thema präsent.</p>')
+
 # Skizze der Landingpage je Abschnitt: zwei konkrete Fassungen (A/B), jede Zeile mit Quelle im Material
 SKIZZE = [
     ("weiss", [
@@ -378,6 +396,8 @@ SKIZZE = [
                ("Text", "Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.", "Ausarbeitung 3.2, 3.3 · Punkt 9"),
                ("Element", "Drei Schritt-Karten: Kurzer Austausch → Wir arbeiten → Sie entscheiden", "Punkte 9, 10"),
                ("Kasten", "Aus eigener Erfahrung: Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.", "Punkt 8, Fall HÖV, ohne Namen")]),
+        ("Visualisierung 1", [("Vorschau", VORSCHAU_3_1, "Überschrift aus A · Text A · drei Schritt-Karten · Netzwerk als Leiste")]),
+        ("Visualisierung 2", [("Vorschau", VORSCHAU_3_2, "Überschrift aus A · Text B · Erfahrung als Kasten rechts · drei Schritt-Karten · Takt-Zeile")]),
     ]),
     ("navy", [
         ("A", [("H2", "Sie verwalten keinen Mangel mehr. Sie entscheiden über fertige Vorlagen.", "Punkt 11"),
@@ -435,8 +455,10 @@ def storyboard():
         art, varianten = SKIZZE[i - 1]
         skizze = ""
         for v, teile in varianten:
-            zeilen_sk = "".join(f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>' for t, x, q in teile)
-            skizze += f'<div class="sk-var"><b class="sk-var__kopf">Fassung {v}</b>{zeilen_sk}</div>'
+            zeilen_sk = "".join(
+                (f'<div class="sk-vorschau"><div class="sk-vorschau__innen">{x}</div></div><span class="sk-vorschau__quelle">{q}</span>' if t == "Vorschau"
+                 else f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>') for t, x, q in teile)
+            skizze += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else v}</b>{zeilen_sk}</div>'
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div>'
                  f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div><div class="sk__vars">{skizze}</div></div></div>\n')

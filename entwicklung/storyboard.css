@@ -252,3 +252,8 @@
 .sk-teil--hinweis { background: transparent !important; outline: 1.5px dashed var(--taupe-h); outline-offset: -1.5px; }
 .sk-teil--aufklappen { margin-left: 1.4rem; background: transparent !important; outline: 1.5px dashed var(--taupe-h); outline-offset: -1.5px; }
 .sk-teil--aufklappen em::before { content: "+ "; }
+/* Echte Vorschau eines Abschnitts, verkleinert */
+.sk-vorschau { overflow: hidden; border-radius: 12px; border: 1px solid var(--linie); background: var(--weiss); }
+.sk-vorschau__innen { width: 60rem; padding: 2.4rem 2.6rem 2.6rem; zoom: .5; }
+.sk-vorschau__quelle { font-size: .7rem; font-weight: 500; color: var(--blau); }
+.sk__vars:has(.sk-vorschau) { grid-auto-columns: 30rem; }
