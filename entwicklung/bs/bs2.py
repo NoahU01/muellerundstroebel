@@ -247,15 +247,15 @@ STORY = [
             ("1", "Welche Rollen genau", "da", "Vorstände und Geschäftsführer, Hauptabteilungs- und Bereichsleiter."),
             ("2", "Welche Unternehmen genau", "da", "Versicherungsbranche: Versicherer und Rückversicherer vom Konzern bis zum Versicherungsverein, Makler und Rückversicherungsmakler. Auf der Seite steht nur das Wort Versicherungsbranche.")]),
         ("4", "Was ist eure Antwort?", [
-            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
+            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Kern: Wir verstehen Sie, strukturieren das Thema, sorgen für die Abarbeitung und liefern das Ergebnis. Und belasten Sie dabei nur minimal.")]),
     ]),
     ("Ihre Lage", "Der Leser nickt: Genau so ist es bei mir, und darum hat es bisher nicht geklappt.", [
         ("2", "Verstehen die mein Problem?", [
-            ("3", "Der Moment, in dem man euch anruft", "offen", ""),
+            ("3", "Der Moment, in dem man euch anruft", "teil", "Sie müssen alles im Blick haben: Strategie, Entscheidungen, Projekte und das Tagesgeschäft. Gleichzeitig. Und am Ende zählt nur das Ergebnis."),
             ("4", "Das Problem in einem Satz", "teil", "Es ging schon wieder nichts voran.")]),
         ("3", "Warum hat das bisher keiner gelöst?", [
-            ("5", "Was die Person vorher probiert hat", "offen", ""),
-            ("6", "Warum das nicht gereicht hat", "offen", "")]),
+            ("5", "Was die Person vorher probiert hat", "teil", "Das eigene Team, externe Unterstützung, der große Workshop über ein, zwei Tage."),
+            ("6", "Warum das nicht gereicht hat", "teil", "Verstehen und Strukturieren: Es fehlt ein Sparringspartner auf Augenhöhe. Abarbeiten: Das Ergebnis kommt nicht so zurück, wie es gebraucht wird, man greift selbst wieder ein. Und nach dem Workshop passiert wochenlang nichts.")]),
     ]),
     ("So arbeiten wir", "Der Leser glaubt es und sieht, wie wenig Aufwand es ihn kostet.", [
         ("5", "Warum soll ich euch das glauben?", [
