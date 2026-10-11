@@ -853,19 +853,27 @@ def elevator_pitch():
   <p class="kicker">So hängt es zusammen</p>
   <div class="ep-weg3">
     <div class="ep-stufe ep-stufe--pitch">
+      <span class="ep-schritt">1 · Wir sprechen</span>
       <h3>Pitch</h3>
+      <p>Wir sagen in einem Satzbündel, was wir für ihn tun. Je nach Gelegenheit lang oder kurz.</p>
       <div class="ep-dauer"><span>30 Sekunden</span><span>10 Sekunden</span></div>
       <ul class="ep-regeln-kurz">{regeln_kurz}</ul>
     </div>
     <span class="ep-pfeil" aria-hidden="true"></span>
     <div class="ep-stufe">
+      <span class="ep-schritt">2 · Er erzählt</span>
       <h3>Fragen</h3>
-      <p class="ep-zitat">„Wie ist bei Ihnen gerade die Situation?“</p>
+      <p>Danach geben wir ihm das Wort. Eine offene Frage zu seiner Lage genügt, zum Beispiel:</p>
+      <p class="ep-zitat">„Was liegt bei Ihnen gerade auf dem Tisch, das nicht so vorankommt, wie Sie es brauchen?“</p>
+      <p class="ep-bsp">Weitere Lenkungsfragen weiter unten. Wir wählen die, die zur Situation passt.</p>
     </div>
     <span class="ep-pfeil" aria-hidden="true"></span>
     <div class="ep-stufe">
+      <span class="ep-schritt">3 · Wir hören zu</span>
       <h3>Sein Thema</h3>
+      <p>Aus seiner Antwort wird klar, welches unserer Einsatzgebiete passt. Darüber sprechen wir weiter.</p>
       <ul class="ep-themen">{themen_chips}</ul>
+      <p class="ep-bsp"><span class="ep-bsp-punkt" aria-hidden="true"></span>Beispiel: Er erzählt von der nächsten Gremiensitzung.</p>
     </div>
   </div>
 </div></section>
@@ -886,17 +894,21 @@ def elevator_pitch():
   </div>
 </div></section>
 
-<section class="sek"><div class="wrap">
-  <p class="kicker">Nach dem Pitch</p>
-  <h2 class="h2">Nächste Schritte und Gesprächsführung.</h2>
-  <p class="lead">Der Pitch öffnet das Gespräch. Danach fragen wir, was für das Gegenüber wichtig ist, und steuern bewusst auf sein Thema zu.</p>
-  <div class="ep-weg ep-gespraech">
-    <div><h3>Lenkungsfragen</h3><p>Damit finden wir heraus, welches Thema ihn gerade beschäftigt.</p></div>
-    <ul>{lenkung}</ul>
-  </div>
-  <div class="ep-weg ep-gespraech">
-    <div><h3>Worauf wir hinsteuern</h3><p>Was wir im Gespräch einbringen, sobald er danach fragt.</p></div>
-    <ul>{weg}</ul>
+<section class="sek ep-nach"><div class="wrap">
+  <div class="ep-nach-kopf"><div><p class="kicker">Nach dem Pitch</p>
+  <h2 class="h2">Nächste Schritte und Gesprächsführung.</h2></div>
+  <p class="lead">Der Pitch öffnet das Gespräch. Danach fragen wir, was für das Gegenüber wichtig ist, und steuern bewusst auf sein Thema zu.</p></div>
+  <div class="ep-zwei ep-zwei--nach">
+    <div>
+      <h3>Lenkungsfragen</h3>
+      <p class="ep-mass-k">Damit finden wir heraus, welches Thema ihn gerade beschäftigt. Eine passende reicht.</p>
+      <ul class="ep-kompakt">{lenkung}</ul>
+    </div>
+    <div>
+      <h3>Worauf wir hinsteuern</h3>
+      <p class="ep-mass-k">Was wir einbringen, sobald er danach fragt.</p>
+      <ul class="ep-kompakt">{weg}</ul>
+    </div>
   </div>
 </div></section>
 
