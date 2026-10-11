@@ -335,12 +335,12 @@ VERDICHTUNG = {
 SKIZZE = [
     ("weiss", [
         ("A", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "Punkte 1–2"),
-               ("H1", "Komplexe Situationen strukturieren, entscheiden, umsetzen.", "bisheriger Favorit · Kern Punkt 7"),
-               ("Text", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, die Kennzahlen, die steuern sollen: Wir liefern Konzept, Analyse und Entscheidungsvorlage und sorgen für die Umsetzung. Mit wenig Aufwand für Sie.", "Beispiele: Aussagen 8, 9, Einsatzgebiet · Konzept, Analyse: Ausarbeitung 3.3 · Umsetzung, wenig Aufwand: Kern Punkt 7"),
+               ("H1", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Punkt 7 · zum Schluss"),
+               ("Text", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, die Kennzahlen, die steuern sollen: Wir verstehen Ihr Thema, strukturieren es und sorgen für die Umsetzung. Mit wenig Aufwand für Sie.", "Aufsichtsrat: Aussage 8 · Bereiche: Aussage 9 · Kennzahlen: Einsatzgebiet · Kern: Punkt 7"),
                ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "Punkt 12")]),
         ("B", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "Punkte 1–2"),
-               ("H1", "Komplexe Situationen entscheidbar machen.", "bisherige Variante"),
-               ("Text", "Wir liefern Konzept, Analyse und Entscheidungsvorlage und sorgen für die Umsetzung. Ob die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, oder die Kennzahlen, die steuern sollen.", "wie A, andere Reihenfolge: erst Leistung, dann Beispiele"),
+               ("H1", "Die Vorlage für den Aufsichtsrat. Die Strategie für die Bereiche. Das Projekt, das seit Monaten hängt. Geben Sie es uns.", "Aussagen 8, 9 · „seit Monaten in Bearbeitung“: Einsatzgebiet"),
+               ("Text", "Wir verstehen Ihr Thema, strukturieren es und liefern Konzept, Analyse und Entscheidungsvorlage. Sie entscheiden.", "Kern: Punkt 7 · Konzepte, Analysen: Ausarbeitung 3.3"),
                ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "Punkt 12")]),
         ("C", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "Punkte 1–2"),
                ("H1", "Komplexe Situationen strukturieren, entscheiden, umsetzen.", "aus A"),
