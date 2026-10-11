@@ -103,14 +103,14 @@ def seiten():
     <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
     <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
     <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
-  </div>''', False))
+  </div>''', "haupt"))
     # 2 Ihre Lage
     S.append(("sand", f'''{leiste("Ihre Lage")}
   <p class="kicker">Ihre Lage</p>
   <h2>„Es ging schon wieder nichts voran.“</h2>
   <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
   <div class="block">{posts()}</div>
-  <div class="kern"><p class="kicker">Was Sie brauchen</p><p>Jemanden, der Ihr Thema versteht, es strukturiert, die Bearbeitung übernimmt und das Ergebnis liefert. Mit wenig Aufwand für Sie.</p></div>''', True))
+  <div class="kern"><p class="kicker">Was Sie brauchen</p><p>Jemanden, der Ihr Thema versteht, es strukturiert, die Bearbeitung übernimmt und das Ergebnis liefert. Mit wenig Aufwand für Sie.</p></div>''', "haupt"))
     # 3 So arbeiten wir
     netz = "".join(f'<li><svg viewBox="0 0 24 24">{p}</svg>{n}</li>' for n, p in NETZ)
     S.append(("", f'''{leiste("So arbeiten wir")}
@@ -122,7 +122,7 @@ def seiten():
   </div>
   <div class="block">{ablauf()}</div>
   <div class="block netz"><p class="kicker">Unser Netzwerk</p><h3>Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</h3>
-    <p>Sie behalten einen Ansprechpartner. Die Koordination liegt bei uns.</p><ul>{netz}</ul></div>''', True))
+    <p>Sie behalten einen Ansprechpartner. Die Koordination liegt bei uns.</p><ul>{netz}</ul></div>''', "haupt"))
     # 4 Ihr Ergebnis
     S.append(("navy ergebnis", f'''{leiste("Ihr Ergebnis", True)}
   <div class="ergebnis__szene">{b.trio_szene("compass", "circle-check", "target")}</div>
@@ -135,7 +135,7 @@ def seiten():
       <li>{HAKEN}Ihre Vorhaben laufen weiter, während Sie im Tagesgeschäft sind.</li>
       <li>{HAKEN}Sie verwalten keinen Mangel mehr. Sie steuern.</li>
     </ul>
-  </div>''', True))
+  </div>''', "haupt"))
     # 5 Einsatzgebiete – Überblick
     weiss_ico = {k: b.icon(k).replace('stroke="currentColor"', 'stroke="#ffffff"') for k, _, _ in b.THEMEN}
     gebiete = "".join(f'<div class="gebiet"><span class="gebiet__ico">{weiss_ico[k]}</span>'
@@ -144,7 +144,7 @@ def seiten():
   <p class="kicker">Einsatzgebiete</p>
   <h2>Hier setzen wir an.</h2>
   <p class="unter">Sechs Felder, in denen Führungskräfte uns typischerweise dazuholen. Auf den folgenden Seiten: was wir jeweils konkret tun und was Sie davon haben.</p>
-  <div class="block gebiete">{gebiete}</div>''', True))
+  <div class="block gebiete">{gebiete}</div>''', "haupt"))
     # 6–7 Einsatzgebiete im Detail
     for teil in (b.THEMEN[:2], b.THEMEN[2:4], b.THEMEN[4:]):
         bloecke = ""
@@ -157,7 +157,7 @@ def seiten():
         S.append(("", f'''{leiste("Einsatzgebiete im Detail")}
   <p class="kicker">Einsatzgebiete im Detail</p>
   <h2>Was wir konkret tun.</h2>
-  <div class="block">{bloecke}</div>''', True))
+  <div class="block">{bloecke}</div>''', "haupt"))
     # 8 Wer wir sind
     zusatz = {"tobias": "Mitglied in zwei Aufsichtsräten", "daniel": "Geschäftsführer der empiria GmbH"}
     personen = ""
@@ -170,7 +170,7 @@ def seiten():
   <p class="kicker">Wer wir sind</p>
   <h2>Unser Team. Unser Netzwerk.</h2>
   <p class="unter">Zwei Partner mit eigener Führungserfahrung in der Versicherungswirtschaft, dazu ein Netzwerk erfahrener Spezialisten. Im Projekt arbeiten wir beide selbst mit.</p>
-  <div class="block">{personen}</div>''', True))
+  <div class="block">{personen}</div>''', "haupt"))
     # 9 Das Geschäftsmodell in seiner Gänze
     S.append(("weiss", f'''{leiste("Was uns verbindet")}
   <p class="kicker">Was uns verbindet</p>
@@ -184,75 +184,119 @@ def seiten():
       <li>{HAKEN}Sechs Felder, ein Geschäftsmodell: Wir bringen sie in Ihrem Projekt zusammen.</li>
     </ul>
     {kreismodell()}
-  </div>''', True))
-    # 10 Abschluss
-    pers = "".join(f'<div>{kreis(k, 96)}<h3>{p["name"]}</h3><p>{p["rolle"]}</p><div class="wege">{p["mail"]}<br>{p["tel"]}</div></div>'
-                   for k, p in b.PERSONEN.items())
-    S.append(("navy ende", f'''<img class="ende__logo" src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
-  <div class="ende__kern"><p class="kicker">Kontakt</p><h2>{VERSPRECHEN}</h2><p class="unter">{KONTAKT_TEXT}</p></div>
-  <div class="ende__personen">{pers}</div>
-  <p class="ende__web">www.muellerundstroebel.de</p>
-  <div class="impressum">
-    <div><b>Impressum</b>empiria GmbH<br>Kapellengasse 6<br>74564 Crailsheim</div>
+  </div>''', "haupt"))
+    # 10 Abschluss – drei ruhige Varianten (gleiche Seitenzahl 10, Auswahl durch Daniel)
+    impressum = '''<div><b>Impressum</b>empiria GmbH<br>Kapellengasse 6<br>74564 Crailsheim</div>
     <div><b>Register</b>Handelsregister: HRB 750146<br>Registergericht: Amtsgericht Ulm<br>Vertreten durch: Daniel Ströbel</div>
-    <div><b>Stand</b>Oktober 2026<br>Müller &amp; Ströbel<br>www.muellerundstroebel.de</div>
-  </div>''', False))
-    # 11–14 One-Pager
-    S.append(("opa", f'''<span class="op-kennung">One-Pager · Variante A</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
-  <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-  <p class="unter">Wir übernehmen Ihr Thema, von der Vorlage für den Aufsichtsrat bis zur Strategie für die Bereiche, und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
-  <p class="zwischen">Ihre Lage: Die üblichen Wege helfen nur halb</p>{posts(klein=True)}
-  <p class="zwischen">So arbeiten wir: Die Zusammenarbeit passt in Ihren Kalender</p>{ablauf()}
-  <div class="opa__band dunkel"><p class="kicker">Ihr Ergebnis</p><h2>Sie haben Ihre Themen im Griff.</h2>
-    <p class="unter">{VERSPRECHEN}</p><div class="opa__kontakt">{op_person("tobias")}{op_person("daniel")}</div></div>''', False))
-    S.append(("opb", f'''<div class="opb__links"><img src="{LOGO_WEISS}" alt="Müller &amp; Ströbel"><span class="op-kennung" style="right:auto;left:24pt">One-Pager · Variante B</span>
-    <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-    <p class="unter">Für Führungskräfte in der Versicherungsbranche.</p>
-    <p class="opb__versprechen">{VERSPRECHEN}</p>
-    <div class="opb__kontakt dunkel">{op_person("tobias")}{op_person("daniel")}</div></div>
-  <div class="opb__rechts">
-    <div class="opb__abschnitt"><p class="kicker">Ihre Lage</p><h2>„Es ging schon wieder nichts voran.“</h2>
-      <ul class="opb__liste" style="margin-top:10pt">{"".join(f"<li><b>{t}</b>{x}</li>" for _, t, x, _, _ in WEGE)}</ul></div>
-    <div class="opb__abschnitt"><p class="kicker">So arbeiten wir</p><h2>Die Zusammenarbeit passt in Ihren Kalender.</h2>
-      <ul class="opb__liste" style="margin-top:10pt">{"".join(f"<li><b>{t}</b>{x}</li>" for t, x in ABLAUF)}</ul></div>
-    <div class="opb__abschnitt"><p class="kicker">Unser Netzwerk</p><p>Ehemalige Vorstände, Aufsichtsräte, IT- und Prozess-Spezialisten, Entwickler, Marketingexperten, Grafiker. Sie behalten einen Ansprechpartner.</p></div>
-    <div class="opb__abschnitt"><p class="kicker">Ihr Ergebnis</p><h2>Sie haben Ihre Themen im Griff.</h2>
-      <p>Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p></div>
-  </div>''', False))
-    kacheln = [
-        ("navy", "Für Führungskräfte in der Versicherungsbranche", "Komplexe Situationen strukturieren, entscheiden, umsetzen.", ""),
-        ("sand", "Ihre Lage", "„Es ging schon wieder nichts voran.“", "Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche: Alles läuft über Ihren Tisch."),
-        ("", "Die üblichen Wege", "Team, Externe, Workshops helfen nur halb.", "Das Ergebnis kommt nicht so zurück, wie Sie es brauchen."),
-        ("", "So arbeiten wir", "Die Zusammenarbeit passt in Ihren Kalender.", "Kurz abstimmen, oft reicht ein Telefonat. Die Arbeit dazwischen machen wir."),
-        ("sand", "Unser Netzwerk", "Die passenden Leute, ein Ansprechpartner.", "Ehemalige Vorstände, Aufsichtsräte, IT-Spezialisten, Entwickler, Grafiker."),
-        ("navy", "Ihr Ergebnis", "Sie haben Ihre Themen im Griff.", "Zielbild im Blick, Klarheit, wohin es geht. Sie entscheiden."),
-    ]
-    k_html = "".join(f'<div class="kachel{" kachel--" + f if f else ""}"><small>{t}</small><b>{x}</b><p>{e}</p></div>' for f, t, x, e in kacheln)
-    S.append(("opc", f'''<span class="op-kennung">One-Pager · Variante C</span>{leiste("Was wir tun und wofür wir stehen")}
-  <p class="kicker">Auf einen Blick</p>
-  <h1>Sie geben uns ein Thema. Wir liefern das Ergebnis.</h1>
-  <div class="kacheln">{k_html}</div>
-  <div class="opc__kontakt"><p>Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>{op_person("tobias")}{op_person("daniel")}</div>''', False))
-    S.append(("navy opd", f'''<span class="op-kennung">One-Pager · Variante D</span>{leiste("Für Führungskräfte in der Versicherungsbranche", True)}
-  <h1>„Es ging schon wieder nichts voran.“</h1>
-  <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Genau hier setzen wir an.</p>
-  <div class="opd__drei">
-    <div><small>01</small><h3>Strukturieren</h3><p>Wir verstehen Ihr Thema und arbeiten den Kern heraus. Sie müssen nichts vorbereiten.</p></div>
-    <div><small>02</small><h3>Entscheiden</h3><p>Im kurzen, regelmäßigen Austausch behalten wir das Zielbild im Blick. Sie entscheiden.</p></div>
-    <div><small>03</small><h3>Umsetzen</h3><p>Wir arbeiten mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</p></div>
+    <div><b>Stand</b>Oktober 2026<br>www.muellerundstroebel.de</div>'''
+    kontakt_zeilen = "".join(f'<div class="ab-person">{kreis(k, 58)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span>'
+                             f'<span>{p["mail"]}</span><span>{p["tel"]}</span></div></div>' for k, p in b.PERSONEN.items())
+    S.append(("ab ab1", f'''<span class="op-kennung">Abschlussseite · Variante 1</span>{leiste("Kontakt")}
+  <div class="ab1__mitte">
+    <p class="kicker">Kontakt</p>
+    <h2>{VERSPRECHEN}</h2>
+    <p class="unter">{KONTAKT_TEXT}</p>
+    <div class="ab-personen">{kontakt_zeilen}</div>
   </div>
-  <p class="opd__versprechen">{VERSPRECHEN}</p>
-  <div class="opd__kontakt dunkel">{op_person("tobias")}{op_person("daniel")}</div>''', False))
+  <div class="ab-impressum">{impressum}</div>''', "ende"))
+    S.append(("sand ab ab2", f'''<span class="op-kennung">Abschlussseite · Variante 2</span>{leiste("Kontakt")}
+  <div class="ab2__oben">
+    <p class="kicker">Kontakt</p>
+    <h2>{VERSPRECHEN}</h2>
+    <p class="unter">{KONTAKT_TEXT}</p>
+    <div class="ab-personen">{kontakt_zeilen}</div>
+  </div>
+  <div class="ab2__fuss dunkel"><img src="{LOGO_WEISS}" alt="Müller &amp; Ströbel"><div class="ab-impressum ab-impressum--hell">{impressum}</div></div>''', "ende"))
+    namen = "".join(f'<div><b>{p["name"]}</b>{p["mail"]}<br>{p["tel"]}</div>' for p in b.PERSONEN.values())
+    S.append(("navy ab ab3", f'''<span class="op-kennung">Abschlussseite · Variante 3</span>
+  <div class="ab3__mitte">
+    <img src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
+    <p class="ab3__satz">{VERSPRECHEN}</p>
+    <div class="ab3__namen">{namen}</div>
+    <p class="ab3__web">www.muellerundstroebel.de</p>
+  </div>
+  <div class="ab-impressum ab-impressum--hell">{impressum}</div>''', "ende"))
+
+    # One-Pager: jede Variante erzählt die ganze Story der Startseite in derselben Reihenfolge
+    KOPF_H1 = "Komplexe Situationen strukturieren, entscheiden, umsetzen."
+    KOPF_TEXT = ("Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: "
+                 "Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.")
+    LAGE_H = "„Es ging schon wieder nichts voran.“"
+    ARBEIT_H = "Die Zusammenarbeit passt in Ihren Kalender."
+    ERGEBNIS_H = "Sie haben Ihre Themen im Griff."
+    ERGEBNIS_T = "Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden."
+    personen2 = f'{op_person("tobias")}{op_person("daniel")}'
+    mini = "".join(f'<div class="mini mini--{f}"><small>{t}</small><b>{x}</b></div>' for f, t, x, _, _ in WEGE)
+
+    # A – die Startseite im Kleinen: fünf Flächen
+    S.append(("opx opa2", f'''<span class="op-kennung">One-Pager · Variante A</span>
+  <div class="band band--weiss band--kopf">{leiste("Für Führungskräfte in der Versicherungsbranche").replace('class="leiste"', 'class="leiste leiste--fluss"')}
+    <div class="kopf2"><div><h1>{KOPF_H1}</h1><p class="unter">{KOPF_TEXT}</p></div>
+      <div class="kopf2__duo">{kreis("tobias", 62)}{kreis("daniel", 62)}</div></div></div>
+  <div class="band band--sand"><p class="kicker">Ihre Lage</p><h2>{LAGE_H}</h2><p class="band__text">Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p><div class="minis">{mini}</div></div>
+  <div class="band band--weiss"><p class="kicker">So arbeiten wir</p><h2>{ARBEIT_H}</h2>{ablauf()}</div>
+  <div class="band band--navy dunkel"><p class="kicker">Ihr Ergebnis</p><h2>{ERGEBNIS_H}</h2><p class="band__text">{ERGEBNIS_T}</p></div>
+  <div class="band band--weiss band--kontakt"><div><p class="kicker">Kontakt</p><p class="band__versprechen">{VERSPRECHEN}</p></div><div class="band__personen">{personen2}</div></div>''', "op"))
+
+    # B – roter Faden: Nummern 01–04 an einer Linie, rechts die Aussagen
+    def faden(nr, label, h, inhalt):
+        return f'<div class="faden__schritt"><div class="faden__marke"><span>{nr}</span><small>{label}</small></div><div class="faden__inhalt"><h2>{h}</h2>{inhalt}</div></div>'
+    wege_liste = '<ul class="wege3">' + "".join(f"<li><b>{t}</b>{x}</li>" for _, t, x, _, _ in WEGE) + "</ul>"
+    ablauf_liste = '<ul class="wege3">' + "".join(f"<li><b>{t}</b>{x}</li>" for t, x in ABLAUF) + "</ul>"
+    S.append(("opx opb2", f'''<span class="op-kennung">One-Pager · Variante B</span>
+  <div class="band band--navy dunkel band--kopfb">{leiste("Für Führungskräfte in der Versicherungsbranche", True).replace('class="leiste"', 'class="leiste leiste--fluss"')}
+    <h1>{KOPF_H1}</h1><p class="unter">{KOPF_TEXT}</p></div>
+  <div class="faden">
+    {faden("01", "Ihre Lage", LAGE_H, wege_liste)}
+    {faden("02", "So arbeiten wir", ARBEIT_H, ablauf_liste)}
+    {faden("03", "Ihr Ergebnis", ERGEBNIS_H, f'<p class="faden__text">{ERGEBNIS_T}</p>')}
+    {faden("04", "Kontakt", VERSPRECHEN, f'<div class="band__personen">{personen2}</div>')}
+  </div>''', "op"))
+
+    # C – Bisher / Mit uns im direkten Gegenüber
+    paare = [("Ihr Team", "Liefert, aber nicht so, wie Sie es brauchen. Sie greifen wieder selbst ein.",
+              "Wir arbeiten mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
+             ("Externe", "Empfehlungen ja. Umsetzen und koordinieren bleibt bei Ihnen.",
+              "Wir übernehmen Ihr Thema samt Verantwortung und sorgen dafür, dass es vorankommt."),
+             ("Nur Workshops", "Zwei Tage im Kalender, danach wochenlang Stillstand.",
+              "Kurzer, regelmäßiger Austausch, oft reicht ein Telefonat. Die Arbeit dazwischen machen wir.")]
+    zeilen = "".join(f'<div class="gg__zeile"><div class="gg__bisher"><small>{t}</small><p>{a}</p></div>'
+                     f'<div class="gg__pfeil"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>'
+                     f'<div class="gg__mit"><p>{m}</p></div></div>' for t, a, m in paare)
+    S.append(("opx opc2", f'''<span class="op-kennung">One-Pager · Variante C</span>
+  <div class="band band--weiss band--kopf">{leiste("Für Führungskräfte in der Versicherungsbranche").replace('class="leiste"', 'class="leiste leiste--fluss"')}
+    <h1>{KOPF_H1}</h1><p class="unter">{KOPF_TEXT}</p></div>
+  <div class="band band--weiss gg">
+    <div class="gg__kopf"><div><p class="kicker">Ihre Lage</p><h2>{LAGE_H}</h2></div><div></div><div><p class="kicker">So arbeiten wir</p><h2>{ARBEIT_H}</h2></div></div>
+    {zeilen}
+  </div>
+  <div class="band band--navy dunkel gg__ergebnis"><div><p class="kicker">Ihr Ergebnis</p><h2>{ERGEBNIS_H}</h2><p class="band__text">{ERGEBNIS_T}</p></div></div>
+  <div class="band band--weiss band--kontakt"><div><p class="kicker">Kontakt</p><p class="band__versprechen">{VERSPRECHEN}</p></div><div class="band__personen">{personen2}</div></div>''', "op"))
+
+    # D – dunkel, vier große Sätze untereinander
+    satz = [("01", "Ihre Lage", LAGE_H, "Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche: Alles läuft über Ihren Tisch. Ihr Team, Externe und Workshops helfen nur halb."),
+            ("02", "So arbeiten wir", ARBEIT_H, "Kurzer, regelmäßiger Austausch, oft reicht ein Telefonat. Dazwischen arbeiten wir: mit Ihren Leuten, selbst und mit unserem Netzwerk."),
+            ("03", "Ihr Ergebnis", ERGEBNIS_H, ERGEBNIS_T),
+            ("04", "Unser Versprechen", VERSPRECHEN, "")]
+    saetze = "".join(f'<div class="ed__zeile"><div class="ed__marke"><span>{n}</span>{l}</div><div><h2>{h}</h2>{f"<p>{t}</p>" if t else ""}</div></div>' for n, l, h, t in satz)
+    S.append(("navy opx opd2", f'''<span class="op-kennung">One-Pager · Variante D</span>
+  <div class="band dunkel band--kopfd">{leiste("Für Führungskräfte in der Versicherungsbranche", True).replace('class="leiste"', 'class="leiste leiste--fluss"')}
+    <h1>{KOPF_H1}</h1></div>
+  <div class="band dunkel ed">{saetze}</div>
+  <div class="band dunkel ed__kontakt"><div class="band__personen">{personen2}</div></div>''', "op"))
     return S
 
 
 def html():
     S = seiten()
-    n = len(S)
-    body = ""
-    for i, (klasse, inhalt, mit_fuss) in enumerate(S, 1):
+    gesamt = sum(1 for _, _, art in S if art == "haupt") + 1   # + Abschlussseite
+    body, nr = "", 0
+    for klasse, inhalt, art in S:
+        if art == "haupt":
+            nr += 1
         kl = " ".join(f"seite--{k}" if k in ("navy", "sand", "weiss") else k for k in klasse.split())
-        body += f'<section class="seite {kl}">\n  {inhalt}\n  {fuss(i, n) if mit_fuss else ""}\n</section>\n'
+        f = fuss(nr, gesamt) if (art == "haupt" and nr > 1) else ""
+        body += f'<section class="seite {kl}">\n  {inhalt}\n  {f}\n</section>\n'
     return f'''<!DOCTYPE html>
 <html lang="de"><head><meta charset="utf-8"><title>Müller &amp; Ströbel – {DOKUMENT}</title>
 <link rel="stylesheet" href="/entwicklung/pdf-bs2/bs2-pdf.css"></head>

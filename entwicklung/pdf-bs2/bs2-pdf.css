@@ -250,3 +250,115 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 /* Druck: keine weichen Schatten – Chrome rastert sie im PDF als graue Rechtecke (11.10.) */
 .kreis, .ende__personen .kreis, .op-person .kreis { box-shadow: none !important; }
 @media print { .seite { box-shadow: none !important; } }
+
+/* ===================== Abschlussseiten (ruhig, kleinere Typografie) ===================== */
+.ab h2 { font-size: 21pt; line-height: 1.22; max-width: 380pt; }
+.ab .unter { font-size: 9.6pt; max-width: 360pt; }
+.ab-personen { display: grid; grid-template-columns: 1fr 1fr; gap: 20pt; margin-top: 28pt; padding-top: 20pt; border-top: .6pt solid var(--linie); }
+.ab-person { display: flex; gap: 12pt; align-items: center; }
+.ab-person .kreis { flex: none; border-width: 3pt; }
+.ab-person b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 11.5pt; color: var(--navy); }
+.ab-person span { display: block; font-size: 8pt; line-height: 1.5; color: var(--ink-2); }
+.ab-person span:nth-of-type(1) { color: var(--taupe-d); margin-bottom: 2pt; }
+.ab-impressum { position: absolute; left: var(--rand); right: var(--rand); bottom: 40pt; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16pt; padding-top: 12pt; border-top: .6pt solid var(--linie); font-size: 7pt; line-height: 1.6; color: #8a8682; }
+.ab-impressum b { display: block; margin-bottom: 2pt; font-size: 6.2pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.ab-impressum--hell { border-color: rgba(255,255,255,.16); color: rgba(255,255,255,.62); }
+.ab-impressum--hell b { color: var(--taupe-h); }
+/* V1 weiß, Inhalt im oberen Drittel, viel Luft */
+.ab1__mitte { margin-top: 70pt; }
+/* V2 sand, dunkler Fuß */
+.ab2__oben { margin-top: 70pt; }
+.ab2__fuss { position: absolute; left: 0; right: 0; bottom: 0; height: 150pt; padding: 30pt var(--rand) 0; background: var(--navy); }
+.ab2__fuss img { height: 28pt; width: auto; }
+.ab2 .ab-personen { border-color: var(--sand-2); }
+/* V3 dunkel, wie eine Rückseite */
+.ab3__mitte { position: absolute; left: var(--rand); right: var(--rand); top: 250pt; text-align: center; }
+.ab3__mitte img { height: 40pt; width: auto; margin: 0 auto; }
+.ab3__satz { margin: 40pt auto 0; max-width: 340pt; font-family: Lora, serif; font-size: 15pt; line-height: 1.4; color: var(--weiss); }
+.ab3__namen { display: grid; grid-template-columns: 1fr 1fr; gap: 20pt; max-width: 360pt; margin: 30pt auto 0; padding-top: 18pt; border-top: .6pt solid rgba(255,255,255,.16); font-size: 8.2pt; line-height: 1.6; color: rgba(255,255,255,.75); }
+.ab3__namen b { display: block; margin-bottom: 3pt; font-family: Lora, serif; font-weight: 500; font-size: 11pt; color: var(--weiss); }
+.ab3__web { margin-top: 24pt; font-size: 8.4pt; font-weight: 600; letter-spacing: .08em; color: var(--taupe-h); }
+
+/* ===================== One-Pager (gemeinsame Bänder) ===================== */
+.opx { display: flex; flex-direction: column; padding: 0; }
+.band { padding: 20pt var(--rand); }
+.band--sand { background: var(--sand); }
+.band--navy, .opd2 .band { background: var(--navy); color: rgba(255,255,255,.78); }
+.leiste--fluss { position: static; margin-bottom: 22pt; }
+.band .kicker { margin-bottom: 7pt; }
+.band h1 { font-size: 23pt; line-height: 1.1; max-width: 380pt; }
+.band h2 { font-size: 15pt; line-height: 1.2; }
+.band .unter { margin-top: 10pt; font-size: 8.8pt; max-width: 360pt; }
+.band__text { margin-top: 6pt; font-size: 8.6pt; line-height: 1.5; max-width: 420pt; }
+.band--kopf { padding-top: 34pt; }
+.band--kontakt { display: grid; grid-template-columns: 1fr 1.25fr; gap: 20pt; align-items: center; margin-top: auto; border-top: .6pt solid var(--linie); }
+.band__versprechen { font-family: Lora, serif; font-size: 12pt; line-height: 1.3; color: var(--navy); }
+.band__personen { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+.opx .op-person .kreis { width: 38pt; height: 38pt; border-width: 2pt; }
+.opx .op-person b { font-size: 9.6pt; }
+.opx .op-person span { font-size: 6.9pt; }
+.opx .ablauf { margin-top: 16pt; gap: 14pt; padding-top: 18pt; }
+.opx .ablauf b { font-size: 10.5pt; }
+.opx .ablauf span { font-size: 7.8pt; }
+.opx .ablauf li::before { width: 8pt; height: 8pt; top: -18pt; }
+.opx .ablauf::before { top: 3.5pt; }
+.opx .ablauf::after { top: .5pt; }
+
+/* A: Kopf mit Porträts */
+.kopf2 { display: grid; grid-template-columns: 1fr auto; gap: 20pt; align-items: center; }
+.kopf2__duo { display: flex; }
+.kopf2__duo .kreis { border-width: 3pt; box-shadow: none; }
+.kopf2__duo .kreis + .kreis { margin-left: -8pt; }
+.minis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt; margin-top: 12pt; }
+.mini { display: flex; flex-direction: column; justify-content: space-between; gap: 8pt; height: 70pt; padding: 10pt 11pt; border-radius: 9pt; border: .7pt solid var(--linie); background: var(--weiss); }
+.mini--sand { background: var(--sand-2); border-color: var(--sand-2); }
+.mini--navy { background: var(--navy); border-color: var(--navy); }
+.mini small { font-size: 6pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.mini--navy small { color: var(--taupe-h); }
+.mini b { font-family: Lora, serif; font-weight: 500; font-size: 9.6pt; line-height: 1.2; color: var(--navy); }
+.mini--navy b { color: var(--weiss); }
+
+/* B: roter Faden */
+.band--kopfb { padding-top: 34pt; padding-bottom: 26pt; }
+.faden { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 24pt var(--rand) 28pt; }
+.faden::before { content: ""; position: absolute; left: calc(var(--rand) + 13pt); top: 30pt; bottom: 50pt; width: 1.2pt; background: var(--linie); }
+.faden__schritt { position: relative; display: grid; grid-template-columns: 96pt 1fr; gap: 16pt; }
+.faden__marke span { position: relative; z-index: 1; display: grid; place-items: center; width: 27pt; height: 27pt; border-radius: 50%; background: var(--navy); font-family: Lora, serif; font-size: 9.5pt; color: var(--weiss); box-shadow: 0 0 0 4pt var(--weiss); }
+.faden__marke small { display: block; margin-top: 7pt; font-size: 6.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.faden__inhalt h2 { font-size: 14pt; line-height: 1.22; }
+.faden__text { margin-top: 6pt; font-size: 8.6pt; line-height: 1.5; }
+.wege3 { margin-top: 8pt; }
+.wege3 li { display: grid; grid-template-columns: 92pt 1fr; gap: 8pt; padding: 4pt 0; border-top: .6pt solid var(--linie); font-size: 8.2pt; line-height: 1.45; color: var(--ink-2); }
+.wege3 li:first-child { border-top: 0; }
+.wege3 b { font-family: Lora, serif; font-weight: 500; font-size: 9.2pt; color: var(--navy); }
+.faden .band__personen { margin-top: 10pt; }
+
+/* C: Bisher / Mit uns */
+.gg { padding-top: 6pt; }
+.gg__kopf, .gg__zeile { display: grid; grid-template-columns: 1fr 26pt 1fr; gap: 10pt; }
+.gg__kopf h2 { font-size: 13pt; }
+.gg__zeile { margin-top: 8pt; align-items: stretch; }
+.gg__bisher { padding: 10pt 12pt; border-radius: 9pt; background: var(--sand); }
+.gg__mit { display: flex; align-items: center; padding: 10pt 12pt; border-radius: 9pt; background: var(--navy); }
+.gg__bisher small { font-size: 6pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.gg__bisher p { margin-top: 3pt; font-size: 8.4pt; line-height: 1.45; color: var(--ink); }
+.gg__mit p { font-size: 8.4pt; line-height: 1.45; color: var(--weiss); }
+.gg__pfeil { display: grid; place-items: center; }
+.gg__pfeil svg { width: 16pt; height: 16pt; fill: none; stroke: var(--taupe); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.gg__ergebnis { margin-top: 16pt; }
+
+/* D: dunkel, vier große Sätze */
+.band--kopfd { padding-top: 34pt; }
+.band--kopfd h1 { font-size: 21pt; max-width: 420pt; }
+.ed { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.ed__zeile { display: grid; grid-template-columns: 96pt 1fr; gap: 16pt; padding: 16pt 0; border-top: .6pt solid rgba(255,255,255,.16); }
+.ed__marke { font-size: 6.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-h); }
+.ed__marke span { display: block; margin-bottom: 4pt; font-family: Lora, serif; font-size: 13pt; letter-spacing: 0; color: var(--taupe-h); }
+.ed h2 { font-size: 16pt; line-height: 1.22; color: var(--weiss); }
+.ed p { margin-top: 6pt; font-size: 8.6pt; line-height: 1.5; color: rgba(255,255,255,.74); }
+.ed__kontakt { padding-bottom: 32pt; border-top: .6pt solid rgba(255,255,255,.16); margin: 0 var(--rand); padding-left: 0; padding-right: 0; padding-top: 16pt; }
+/* Überschriften auf dunklen Bändern weiß (One-Pager B, D) */
+.band.dunkel h1, .band.dunkel h2 { color: var(--weiss); }
+/* A und C: Ergebnis-Band füllt die freie Höhe, kein Leerraum vor dem Kontakt */
+.opa2 .band--navy, .opc2 .gg__ergebnis { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.opc2 .gg__ergebnis { margin-top: 16pt; }
