@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 22
+VERSION = 23
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -142,7 +142,27 @@ def startseite():
              "<h3>Externe</h3><p>Strategieberater, Projektmanager, Spezialisten: jeweils einzeln beauftragt. Die Verbindung, die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.</p>"),
             ("weiss", "Nur Workshops", "Zwei Tage im Kalender. Dann wochenlang Stillstand.", "workshop",
              "<h3>Nur Workshops</h3><p>Große Themen werden zur Hürde: erst ein Termin für den großen Workshop, danach tut sich wenig, bis wieder Zeit im Kalender ist.</p>")]
-    karten = "".join(f'<button class="weg weg--{f}" type="button" data-thema="{k}"><small>{t}</small><b>{x}</b><span>Mehr</span></button>' for f, t, x, k, _ in wege)
+    ico = {
+        "team": '<svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.4.1 4 1.6 4.5 4.4"/></svg>',
+        "extern": '<svg class="ico" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12.5" rx="2"/><path d="M8.5 7.5V5.8A1.8 1.8 0 0 1 10.3 4h3.4a1.8 1.8 0 0 1 1.8 1.8v1.7M3 12.5h18"/></svg>',
+        "workshop": '<svg class="ico" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M7.5 13.5h3M13.5 13.5h3M7.5 17h3"/></svg>',
+    }
+    lang = {"team": "Liefert, aber nicht so, wie Sie es brauchen. Sie greifen wieder selbst ein.",
+            "extern": "Liefern Empfehlungen. Umsetzen und koordinieren bleibt bei Ihnen.",
+            "workshop": "Zwei Tage im Kalender. Danach tut sich wochenlang nichts."}
+    # Variante 1: Aufbau wie „Für Unternehmen“ (Wagenpaten): Icon, Überschrift, kurzer Text
+    karten1 = "".join(f'<button class="nk" type="button" data-thema="{k}">{ico[k]}<h3>{t}</h3><p>{lang[k]}</p><span class="nk__mehr">Mehr</span></button>'
+                      for f, t, x, k, _ in wege)
+    # Variante 2: Aufbau wie die Social-Media-Kästen: weißer Rahmen, farbiges Quadrat mit Aussage und Icon, Text darunter
+    farben = {"team": "sand", "extern": "navy", "workshop": "hell"}
+    ergaenzung = {"team": "Typisch bei der Vorlage für den Aufsichtsrat oder dem Konzept für die Bereiche. Am Ende greifen Sie wieder selbst ein.",
+                  "extern": "Strategieberater, Projektmanager, Spezialisten: Die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.",
+                  "workshop": "Große Themen werden zur Hürde. Es geht erst weiter, wenn wieder Zeit im Kalender ist."}
+    karten2 = "".join(f'<article class="pk"><div class="pk__bild pk__bild--{farben[k]}"><small>{t}</small><b>{x}</b>{ico[k]}</div>'
+                      f'<div class="pk__text"><p>{ergaenzung[k]}</p><button class="pk__mehr" type="button" data-thema="{k}">Mehr</button></div></article>'
+                      for f, t, x, k, _ in wege)
+    karten = (f'<div class="nks" data-gruppe="lage" data-variante="1">{karten1}</div>'
+              f'<div class="pks" data-gruppe="lage" data-variante="2" hidden>{karten2}</div>')
     vorlagen = "".join(f'<template id="t-{k}">{d}</template>' for _, _, _, k, d in wege)
     schritte = "".join(f'<li class="lp-schritt"><span class="lp-schritt__ico">{ic}</span><h3>{t}</h3><p>{x}</p></li>' for ic, t, x in [
         (ICO_GESPRAECH, "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
@@ -177,10 +197,11 @@ def startseite():
 <section class="sek sek--sand" id="lage"><div class="wrap">
   <div class="kopfteil">
     <p class="kicker">Ihre Lage</p>
+    <div class="wahl" data-gruppe="lage"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
     <h2 class="h2">„Es ging schon wieder nichts voran.“</h2>
     <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
   </div>
-  <div class="wege3">{karten}</div>
+  {karten}
 </div></section>
 
 <!-- 3 So arbeiten wir -->

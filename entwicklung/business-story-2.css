@@ -410,3 +410,34 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 @media (max-width: 560px) {
   .lp-drei { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
 }
+
+/* Ihre Lage – Variante 1: Karten wie „Für Unternehmen“ (Icon, Überschrift, kurzer Text) */
+.nks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+.nk { display: flex; flex-direction: column; align-items: flex-start; padding: 2rem 1.8rem 1.7rem; border-radius: var(--r); border: 1px solid var(--linie); background: var(--weiss); font: inherit; text-align: left; color: inherit; cursor: pointer; transition: box-shadow .15s ease, transform .15s ease; }
+.nk:hover, .nk:focus-visible { transform: translateY(-2px); box-shadow: 0 18px 36px -24px rgba(8,38,56,.4); outline: none; }
+.nk .ico { width: 2.3rem; height: 2.3rem; color: var(--blau); }
+.nk h3 { margin-top: 1.3rem; font-size: 1.5rem; }
+.nk p { margin-top: .6rem; font-size: 1rem; color: var(--ink-2); }
+.nk__mehr { margin-top: auto; padding-top: 1rem; font-size: .85rem; font-weight: 600; color: var(--blau); }
+.nk__mehr::after, .pk__mehr::after { content: " +"; }
+
+/* Ihre Lage – Variante 2: Kästen wie Social Media (weißer Rahmen, farbiges Quadrat, Text darunter) */
+.pks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+.pk { overflow: hidden; border-radius: var(--r); border: 1px solid var(--linie); background: var(--weiss); }
+.pk__bild { position: relative; display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 1; padding: 1.6rem; }
+.pk__bild--sand { background: var(--sand-2); color: var(--navy); }
+.pk__bild--navy { background: var(--navy); color: var(--weiss); }
+.pk__bild--hell { background: var(--sand); color: var(--navy); }
+.pk__bild small { font-size: .76rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-d); }
+.pk__bild--navy small { color: var(--taupe-h); }
+.pk__bild b { max-width: 80%; font-family: var(--head); font-weight: 500; font-size: clamp(1.5rem, 2.3vw, 2rem); line-height: 1.12; }
+.pk__bild .ico { position: absolute; right: 1.3rem; bottom: 1.3rem; width: 3.6rem; height: 3.6rem; stroke-width: 1.2; opacity: .85; }
+.pk__bild--navy .ico { color: var(--taupe-h); }
+.pk__bild--sand .ico, .pk__bild--hell .ico { color: var(--blau); }
+.pk__text { padding: 1rem 1.2rem 1.2rem; }
+.pk__text p { font-size: .93rem; color: var(--ink-2); }
+.pk__mehr { margin-top: .5rem; padding: 0; border: 0; background: none; font: 600 .85rem var(--text); color: var(--blau); cursor: pointer; }
+@media (max-width: 991px) {
+  .nks, .pks { grid-template-columns: minmax(0, 1fr); }
+  .pks { max-width: 26rem; }
+}
