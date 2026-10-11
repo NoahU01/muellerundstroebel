@@ -350,3 +350,36 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
   .wege3 { grid-template-columns: minmax(0, 1fr); }
   .weg { aspect-ratio: auto; min-height: 13rem; }
 }
+
+/* 4.2 Kontakt mit Unterzeile, CTA, Themen je Person und Download */
+.lp-kontakt { padding: 7rem 0; background: var(--sand); }
+.lp-kontakt__raster { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 4.5rem; align-items: center; }
+.lp-kontakt .h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); max-width: 20ch; }
+.lp-kontakt .lead { font-size: 1.1rem; }
+.lp-kontakt__personen { display: grid; gap: 1.2rem; }
+.lp-kontakt__personen .person { padding: 1.4rem 1.6rem; border-radius: var(--r); background: var(--weiss); grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.4rem; }
+.lp-kontakt__personen .kreis { border-width: 5px; }
+.person__themen { margin-top: .2rem; font-size: .92rem; font-weight: 500; color: var(--taupe-d); }
+.lp-dl { position: relative; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 4rem; align-items: center; overflow: hidden; margin-top: 4.5rem; padding: 3.2rem 3.6rem; border-radius: 22px; background: var(--navy); color: var(--weiss); }
+.lp-dl__bild { position: relative; height: 20rem; }
+.lp-dl__seite { position: absolute; top: 50%; left: 50%; height: 100%; width: auto; aspect-ratio: 210 / 297; object-fit: cover; border-radius: .35rem; box-shadow: 0 24px 50px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.14); transition: transform .35s ease; }
+.lp-dl__seite--hinten { transform: translate(-28%, -50%) rotate(6deg); }
+.lp-dl__seite--vorn { transform: translate(-72%, -50%) rotate(-3deg); }
+.lp-dl:hover .lp-dl__seite--hinten { transform: translate(-18%, -52%) rotate(8deg); }
+.lp-dl:hover .lp-dl__seite--vorn { transform: translate(-80%, -51%) rotate(-5deg); }
+.lp-dl .kicker { color: var(--taupe-h); }
+.lp-dl .kicker::before { background: var(--taupe-h); }
+.lp-dl h3 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--weiss); }
+.lp-dl__text > p:not(.kicker) { margin-top: 1rem; max-width: 32rem; color: rgba(255,255,255,.8); }
+.lp-dl__meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 1.8rem; }
+.lp-dl__meta span { padding: .35rem .85rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); font-size: .8rem; color: rgba(255,255,255,.85); }
+@media (max-width: 991px) {
+  .lp-kontakt__raster, .lp-dl { grid-template-columns: minmax(0, 1fr); gap: 2.6rem; }
+  .lp-dl { padding: 2.2rem 1.6rem; }
+  .lp-dl__bild { height: 15rem; }
+}
+@media (max-width: 560px) {
+  .lp-kontakt__personen .person { grid-template-columns: minmax(0, 1fr); }
+  .lp-kontakt__personen .kreis { width: 7rem; }
+  .lp-dl .knopf { width: 100%; justify-content: center; }
+}

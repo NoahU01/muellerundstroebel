@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 20
+VERSION = 21
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -149,7 +149,7 @@ def startseite():
         (ICO_ARBEIT, "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
         (ICO_KREIS, "Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")])
     kontakte = "".join(f'''<article class="person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div><div>
-      <h3>{p['name']}</h3><p class="person__kurz">{p['kurz']}</p>
+      <h3>{p['name']}</h3><p class="person__themen">{p['rolle']}</p>
       <div class="wege"><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="mailto:{p['mail']}">{p['mail']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></div>
     </div></article>''' for k, p in PERSONEN.items())
     main = f"""
@@ -195,9 +195,25 @@ def startseite():
 
 <!-- 4.2 Kontakt -->
 <section class="sek lp-kontakt" id="kontakt"><div class="wrap">
-  <h2 class="h2">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h2>
-  <p class="lead">Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
-  <div class="personen">{kontakte}</div>
+  <div class="lp-kontakt__raster">
+    <div>
+      <p class="kicker">Kontakt</p>
+      <h2 class="h2">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h2>
+      <p class="lead">Erzählen Sie uns, was ansteht. Wir sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen, und geben direkt unsere Meinung. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
+      <div class="knoepfe"><a class="knopf" href="{MAIL_BEIDE}">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
+    </div>
+    <div class="lp-kontakt__personen">{kontakte}</div>
+  </div>
+  <div class="lp-dl">
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/assets/downloads/mueller-stroebel-wer-wir-sind-2.webp" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/assets/downloads/mueller-stroebel-wer-wir-sind-1.webp" alt="" loading="lazy"></div>
+    <div class="lp-dl__text">
+      <p class="kicker">Download</p>
+      <h3>Was wir tun und wofür wir stehen.</h3>
+      <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
+      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,7 MB</span></div>
+      <a class="knopf knopf--hell" href="/assets/downloads/mueller-stroebel-wer-wir-sind.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+    </div>
+  </div>
 </div></section>
 
 <dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
