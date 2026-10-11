@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 13
+VERSION = 14
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -324,24 +324,48 @@ VERDICHTUNG = {
     "7": "Sie verwalten keinen Mangel mehr. Sie entscheiden und steuern, und die Ergebnisse kommen.",
     "8": "Rufen Sie an. Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.",
 }
-# Skizze der Landingpage je Abschnitt: (Art, Inhalt, Quelle)
+# Skizze der Landingpage je Abschnitt: zwei konkrete Fassungen (A/B), jede Zeile mit Quelle im Material
 SKIZZE = [
-    ("weiss", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "F1"),
-               ("H1", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "F4 · zum Schluss"),
-               ("Text", "Wir verstehen Sie, strukturieren das Thema, sorgen für die Abarbeitung und liefern das Ergebnis. Und belasten Sie dabei nur minimal.", "F4"),
-               ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "F8")]),
-    ("sand", [("H2", "Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.", "F2"),
-              ("Element", "Drei Karten „Die üblichen Wege“: Ihr Team · Externe · Der große Workshop", "F3"),
-              ("Karte", "Ihr Team / Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen. Sie greifen wieder selbst ein.", "F3"),
-              ("Karte", "Der große Workshop: Danach tut sich wochenlang nichts.", "F3")]),
-    ("weiss", [("H2", "Wir brauchen Sie nur kurz.", "F6"),
-               ("Text", "Eine halbe Stunde am Telefon, gern aus dem Auto. Dazwischen arbeiten wir.", "F6"),
-               ("Element", "Treppe aus vier Gesprächen: Ideen → Optionen → Entwürfe → Ergebnis", "F6"),
-               ("Element", "Kasten „Aus eigener Erfahrung“: der Fall, ohne Namen erzählt", "F5")]),
-    ("navy", [("H2", "Sie entscheiden und steuern. Die Ergebnisse kommen.", "F7"),
-              ("Text", "Sie verwalten keinen Mangel mehr.", "F7"),
-              ("Element", "Kasten: Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "F8"),
-              ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "F8")]),
+    ("weiss", [
+        ("A", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "Punkte 1–2"),
+               ("H1", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Punkt 7 · zum Schluss"),
+               ("Text", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, die Kennzahlen, die steuern sollen: Wir verstehen Ihr Thema, strukturieren es und sorgen für die Umsetzung. Mit wenig Aufwand für Sie.", "Aufsichtsrat: Aussage 8 · Bereiche: Aussage 9 · Kennzahlen: Einsatzgebiet · Kern: Punkt 7"),
+               ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "Punkt 12")]),
+        ("B", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "Punkte 1–2"),
+               ("H1", "Die Vorlage für den Aufsichtsrat. Die Strategie für die Bereiche. Das Projekt, das seit Monaten hängt. Geben Sie es uns.", "Aussagen 8, 9 · „seit Monaten in Bearbeitung“: Einsatzgebiet"),
+               ("Text", "Wir verstehen Ihr Thema, strukturieren es und liefern Konzept, Analyse und Entscheidungsvorlage. Sie entscheiden.", "Kern: Punkt 7 · Konzepte, Analysen: Ausarbeitung 3.3"),
+               ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "Punkt 12")]),
+    ]),
+    ("sand", [
+        ("A", [("H2", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, das Projekt, das seit Monaten hängt. Alles läuft über Ihren Tisch.", "Aussagen 8, 9 · Einsatzgebiet · Punkt 3"),
+               ("Karte", "Ihr Team: liefert, aber nicht so, wie Sie es brauchen. Sie greifen wieder selbst ein.", "Punkt 6, Grenze 2"),
+               ("Karte", "Externe: Der Berater liefert Empfehlungen. Umsetzen und koordinieren bleibt bei Ihnen.", "Aussagen 15, 18"),
+               ("Karte", "Der Workshop: zwei Tage im Kalender. Danach tut sich wochenlang nichts, bis wieder Zeit für den nächsten ist.", "Aussagen 22, 26")]),
+        ("B", [("H2", "„Es ging schon wieder nichts voran. Jetzt muss ich mich doch selbst darum kümmern.“", "Dein Satz im Chat, Aussage 25"),
+               ("Element", "Themen als Leiste: Aufsichtsrat · Strategie in die Bereiche · Kennzahlen · Vertrieb · KI-Vorhaben", "Aussagen 8, 9 · Einsatzgebiete"),
+               ("Karte", "Ihr Team und Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen.", "Punkt 6"),
+               ("Karte", "Der Workshop: zwei Tage im Kalender, danach wochenlang Stillstand.", "Aussagen 22, 26")]),
+    ]),
+    ("weiss", [
+        ("A", [("H2", "Wir arbeiten. Sie entscheiden.", "Punkte 9, 10"),
+               ("Text", "Eine halbe Stunde am Telefon, gern aus dem Auto. Danach liegen Optionen, Entwürfe und Entscheidungsvorlagen auf Ihrem Tisch, professionell aufbereitet.", "Punkt 9 · Punkt 10 · Entscheidungsvorlagen: Einsatzgebiet Gremien"),
+               ("Element", "Treppe aus vier Gesprächen: Ideen → Optionen → Entwürfe → Ergebnis", "Punkt 10"),
+               ("Element", "Netzwerk: ehemalige Vorstände, Aufsichtsräte, IT- und Prozess-Spezialisten, Entwickler, Grafiker", "Netzwerk-Hinweis")]),
+        ("B", [("H2", "Zwischen zwei Telefonaten entstehen Konzept, Analyse und Entscheidungsvorlage.", "Punkt 10 · Ausarbeitung 3.3"),
+               ("Text", "Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Beim nächsten Gespräch entscheiden Sie.", "Ausarbeitung 3.2, 3.3 · Punkt 10"),
+               ("Element", "Treppe aus vier Gesprächen", "Punkt 10"),
+               ("Kasten", "Aus eigener Erfahrung: Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.", "Punkt 8, Fall HÖV, ohne Namen")]),
+    ]),
+    ("navy", [
+        ("A", [("H2", "Sie verwalten keinen Mangel mehr. Sie entscheiden über fertige Vorlagen.", "Punkt 11"),
+               ("Text", "Themen kommen so aufbereitet auf Ihren Tisch, dass Sie damit arbeiten können.", "Punkt 11"),
+               ("Kasten", "Das erste Gespräch: Sie erzählen, was ansteht. Wir sagen offen, ob und wie wir es umsetzen, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.", "Punkt 12"),
+               ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
+        ("B", [("H2", "„Einmal mit Profis arbeiten.“", "Punkt 11, Aussage 27"),
+               ("Text", "Sie entscheiden über Vorlagen, Zielbild und Fahrplan und sehen, wie es vorangeht.", "Punkt 11 · Zielbild: Grundstory"),
+               ("Kasten", "Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "Punkt 12"),
+               ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
+    ]),
 ]
 STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen", "zuletzt": "zum Schluss"}
 SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
@@ -385,11 +409,14 @@ def storyboard():
             zeilen += (f'<div class="sb-t-zeile"><ul class="sb-t-punkte">{pk}</ul>'
                        f'<div class="sb-t-frage"><span class="sb-f">F{fnr}</span><b>{frage}</b>'
                        f'<p class="sb-verdichtung"><small>Verdichtung</small>{VERDICHTUNG[fnr]}</p></div></div>')
-        art, teile = SKIZZE[i - 1]
-        skizze = "".join(f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>' for t, x, q in teile)
+        art, varianten = SKIZZE[i - 1]
+        skizze = ""
+        for v, teile in varianten:
+            zeilen_sk = "".join(f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>' for t, x, q in teile)
+            skizze += f'<div class="sk-var"><b class="sk-var__kopf">Fassung {v}</b>{zeilen_sk}</div>'
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div>'
-                 f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div>{skizze}</div></div>\n')
+                 f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div><div class="sk__vars">{skizze}</div></div></div>\n')
 
     fragen_alle = sorted((int(f), t) for _, _, fr in STORY for f, t, _ in fr)
     punkte_alle = sorted((int(p[0]), p[1]) for _, _, fr in STORY for _, _, ps in fr for p in ps)

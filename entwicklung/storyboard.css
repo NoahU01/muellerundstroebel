@@ -235,3 +235,14 @@
   .sb-flaeche .sb-t-gruppe { padding: 1.4rem; gap: 2.4rem; }
   .sb-flaeche .sb-t-zeile { gap: 2.4rem; }
 }
+
+/* Skizze mit zwei Fassungen nebeneinander */
+.sb-flaeche .sb-t-kopf, .sb-flaeche .sb-t-gruppe { grid-template-columns: 26rem 24rem 15rem 62rem; }
+.sk__vars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.sk-var { display: grid; align-content: start; gap: .5rem; }
+.sk-var__kopf { font-family: var(--head); font-weight: 500; font-size: 1.1rem; color: var(--navy); }
+.sk--navy .sk-var__kopf { color: var(--weiss); }
+.sk-teil { grid-template-columns: 4.2rem minmax(0, 1fr); row-gap: .25rem; }
+.sk-teil span { grid-column: 2; white-space: normal; font-weight: 500; color: var(--blau); }
+.sk--navy .sk-teil span { color: var(--taupe-h); }
+.sk-teil--kasten { outline: 1.5px solid var(--taupe-h); outline-offset: -1.5px; }
