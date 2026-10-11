@@ -533,3 +533,5 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .ab2n__text .unter { margin-top: 12pt; }
 .ab2n__unten .ab-personen { top: auto; bottom: 108pt; }
 .ab2n__unten .ab4__impressum { bottom: 40pt; }
+/* Abschluss (neu Variante 1): Text 70 pt näher an die Personen, Kasten um 70 pt flacher */
+.ab2n__unten { height: 400pt; }
