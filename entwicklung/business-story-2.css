@@ -555,3 +555,52 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 .lp-ablauf::before { background: var(--navy); right: 1.2rem; }
 .lp-ablauf::after { right: .4rem; border-left-color: var(--navy); }
 @media (max-width: 760px) { .lp-ablauf { grid-template-columns: minmax(0, 1fr); } .lp-ablauf::before { background: var(--navy); } }
+
+/* ===================== Mobile-Optimierung (11.10.) – steht bewusst am Ende ===================== */
+@media (max-width: 991px) {
+  .lp-kontakt__raster { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+  .lp-ergebnis { padding: 5rem 0; }
+  .lp-ergebnis__raster { gap: 2.4rem; }
+  .szene { max-width: 13rem; }
+  .pk__bild { aspect-ratio: auto; min-height: 13rem; }
+  .pks { max-width: 34rem; }
+  .lp-arbeit { gap: 2.4rem; }
+}
+@media (max-width: 760px) {
+  .held h1 { font-size: clamp(2.3rem, 9.5vw, 3rem); }
+  .lp-held .lead { font-size: 1.08rem; }
+  .duo--gleich { width: min(100%, 20rem); }
+  .duo figcaption { font-size: .74rem; }
+  .duo figcaption b { font-size: 1rem; }
+  .h2, .lp-gross { font-size: clamp(1.9rem, 7.6vw, 2.5rem); }
+  .lp-kontakt .h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+  .lp-kontakt { padding: 4.5rem 0; }
+  .lp-kontakt__personen { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  .kp .kreis { width: 8.5rem; }
+  .kp h3 { font-size: 1.25rem; }
+  .kp__themen { font-size: .82rem; white-space: normal; }
+  .kp__wege a { font-size: .82rem; white-space: nowrap; }
+  .lp-netz { padding: 1.8rem 1.4rem; }
+  .lp-dl { padding: 2rem 1.4rem; gap: 1.6rem; }
+  .lp-dl__bild { height: 13rem; }
+  .lp-arbeit__text p { font-size: 1.02rem; }
+  .pk__bild b { font-size: 1.5rem; }
+  .sek { padding: 4rem 0; }
+}
+@media (max-width: 400px) {
+  .lp-kontakt__personen { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
+  .kp__wege a { font-size: .9rem; }
+}
+/* Kein Querscrollen durch das (unsichtbare) Untermenü im Entwicklungsmenü */
+html, body { overflow-x: clip; }
+/* Tablet (iPad mini hoch, 700–991 px): Kästen dreispaltig, Szene rechts neben dem Ergebnis */
+@media (min-width: 700px) and (max-width: 991px) {
+  .pks { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; gap: .9rem; }
+  .pk__bild { min-height: 11.5rem; padding: 1.2rem; }
+  .pk__bild b { font-size: 1.15rem; max-width: 100%; padding-right: 2.4rem; }
+  .pk__bild .ico { width: 2.4rem; height: 2.4rem; right: 1rem; bottom: 1rem; }
+  .pk__text { padding: .9rem 1rem 1rem; }
+  .pk__text p { font-size: .86rem; }
+  .lp-ergebnis__raster { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); }
+  .szene { justify-self: end; max-width: 12rem; }
+}
