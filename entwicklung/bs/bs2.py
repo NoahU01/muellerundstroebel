@@ -142,7 +142,7 @@ def startseite():
     gespraeche = [("Sie schildern das Thema.", "Ideen"), ("Sie legen die Richtung fest.", "Optionen"),
                   ("Sie entscheiden.", "Entwürfe"), ("Sie geben frei.", "Ergebnis")]
     treppe = "".join(f'''<li class="lp-stufe"><span class="lp-stufe__ico"><svg class="ico"><use href="#l-tel"/></svg></span>
-        <small>Gespräch {i} · 30 Min.</small><h3>{s}</h3><p><b>Dazwischen liefern wir</b>{x}</p></li>''' for i, (s, x) in enumerate(gespraeche, 1))
+        <small>Gespräch {i}</small><h3>{s}</h3><p><b>Dazwischen liefern wir</b>{x}</p></li>''' for i, (s, x) in enumerate(gespraeche, 1))
     wege = "".join(f'''<div class="lp-weg"><span class="lp-weg__nr">Weg {i}</span>
         {platz("Punkt 5", "Was die Führungskraft vorher probiert hat", "z. B. Berater, Workshop, eigene Leute – Ihre Antwort", klein=True)}
         {platz("Punkt 6", "Warum das nicht gereicht hat", "ein Satz, aus Sicht der Führungskraft", klein=True)}</div>''' for i in (1, 2, 3))
@@ -178,8 +178,8 @@ def startseite():
 <!-- Abschnitt 3 · So arbeiten wir (F5 + F6) -->
 <section class="sek" id="arbeitsweise"><div class="wrap">
   <p class="kicker">So arbeiten wir</p>
-  <h2 class="h2">Eine halbe Stunde am Telefon. Gern aus dem Auto.</h2>
-  <p class="lead">Zwischen den Gesprächen arbeiten wir. Jedes Gespräch setzt eine Stufe höher an. <span class="platz-marke">Punkt 10 teilweise</span></p>
+  <h2 class="h2">Wir bleiben im regelmäßigen, kurzen Austausch.</h2>
+  <p class="lead">Oft reicht ein Telefonat, manchmal eine längere Videokonferenz, und wenn es sinnvoll ist, ein Workshop. So bleibt Ihr Thema präsent, und Sie haben es im Griff. Dazwischen arbeiten wir. <span class="platz-marke">Punkte 9–10 Entwurf</span></p>
   <ol class="lp-treppe">{treppe}</ol>
   <div class="lp-beleg">{platz("Punkt 8", "Der Beleg: ein erzählter Fall", "Die Zusammenarbeit beim HÖV – erzählt in drei, vier Sätzen, ohne Namen", status="teil")}</div>
 </div></section>
@@ -261,7 +261,7 @@ STORY = [
         ("5", "Warum soll ich euch das glauben?", [
             ("8", "Der eine Beleg, der euch glaubwürdig macht", "teil", "Die Zusammenarbeit beim HÖV")]),
         ("6", "Wie läuft das ab, und was kostet es mich?", [
-            ("9", "Der Zeitaufwand für den Kunden, konkret", "da", "30 Minuten am Telefon, gern aus dem Auto"),
+            ("9", "Der Zeitaufwand für den Kunden, konkret", "teil", "Wir setzen Formate gezielt ein: kurzer Austausch am Telefon, längere Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch. Entscheidend ist der regelmäßige Kontakt: So bleibt das Thema präsent, und Sie haben es im Griff."),
             ("10", "Was ihr zwischen den Gesprächen liefert", "teil", "Ideen, Optionen, Entwürfe")]),
     ]),
     ("Ergebnis + Kontakt", "Der Leser weiß, was er davon hat, und greift zum Telefon.", [
@@ -299,8 +299,10 @@ HINTERGRUND = {
           "Sinngemäß: Er konnte über jedes Thema sprechen; wo Daniel sich auskannte, dachte er direkt mit, wo nicht, sagte er es offen und wusste trotzdem, wie man das Thema angeht.",
           "Sinngemäß: Daniel hat das Projektmanagement übernommen, mit den Leuten gesprochen, dafür gesorgt, dass es weiterläuft, und selbst angepackt.",
           "Auf der Seite ohne Namen: „aus eigener Erfahrung“."],
-    "9": ["„Dafür brauchen wir dich nur kurz.“", "„Oft reicht eine halbe Stunde am Telefon, wenn du sowieso im Auto sitzt.“",
-          "„Keine Workshops, für die du einen ganzen Tag blockst.“", "„Lieber oft und kurz abstimmen als lange nichts und dann einen Workshop.“",
+    "9": ["„Wir haben verschiedene Formate, die wir gezielt einsetzen. Natürlich haben wir auch mal eine längere Videokonferenz. Und wenn es Sinn macht, dann gibt es auch mal einen Workshop.“ (11.10.)",
+          "„Oftmals reicht ein kurzer Austausch.“ – zum Beispiel eine halbe Stunde am Telefon, wenn Sie ohnehin im Auto sitzen.",
+          "„Wir wollen sicherstellen, dass wir im regelmäßigen kurzen Austausch bleiben, weil so bleibt das Thema präsent und unser Auftraggeber hat auch permanent das Thema im Griff.“",
+          "Ähnlich wie das 1:1-Sparring für Führungskräfte bei empiria.",
           "Kern: Wir belasten die Führungskraft nur minimal."],
     "10": ["„Zwischen diesen Gesprächen arbeiten wir, an mehreren Ebenen gleichzeitig.“", "„Wir entwickeln Ideen, Optionen und Entwürfe, professionell aufbereitet.“",
            "„Beim nächsten Gespräch steigen wir eine Stufe höher ein, und du kannst entscheiden.“", "„Wir sind Referent, Analyseabteilung und Projektleitung in einem.“",
@@ -320,7 +322,7 @@ VERDICHTUNG = {
     "3": "Ob eigenes Team oder Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen. Sie greifen doch wieder selbst ein. Und nach dem großen Workshop tut sich wochenlang nichts.",
     "4": "Wir verstehen Sie, strukturieren das Thema, sorgen für die Abarbeitung und liefern das Ergebnis. Und belasten Sie dabei nur minimal.",
     "5": "Aus eigener Erfahrung: Wir haben eine Führungskraft genau so begleitet. Mitgedacht, die Bearbeitung übernommen und dort selbst angepackt, wo wir die Fachkompetenz hatten.",
-    "6": "Wir brauchen Sie nur kurz: eine halbe Stunde am Telefon. Dazwischen arbeiten wir und kommen mit Ideen, Optionen und Entwürfen zurück, über die Sie entscheiden.",
+    "6": "Wir bleiben regelmäßig und kurz im Austausch, oft reicht ein Telefonat. So bleibt Ihr Thema präsent, und Sie haben es im Griff. Dazwischen arbeiten wir und kommen mit Optionen und Entwürfen zurück, über die Sie entscheiden.",
     "7": "Sie verwalten keinen Mangel mehr. Sie entscheiden und steuern, und die Ergebnisse kommen.",
     "8": "Rufen Sie an. Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.",
 }
@@ -340,20 +342,21 @@ SKIZZE = [
         ("A", [("H2", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, das Projekt, das seit Monaten hängt. Alles läuft über Ihren Tisch.", "Aussagen 8, 9 · Einsatzgebiet · Punkt 3"),
                ("Karte", "Ihr Team: liefert, aber nicht so, wie Sie es brauchen. Sie greifen wieder selbst ein.", "Punkt 6, Grenze 2"),
                ("Karte", "Externe: Der Berater liefert Empfehlungen. Umsetzen und koordinieren bleibt bei Ihnen.", "Aussagen 15, 18"),
-               ("Karte", "Der Workshop: zwei Tage im Kalender. Danach tut sich wochenlang nichts, bis wieder Zeit für den nächsten ist.", "Aussagen 22, 26")]),
+               ("Karte", "Nur Workshops: zwei Tage im Kalender. Danach tut sich wochenlang nichts, bis wieder Zeit für den nächsten ist.", "Aussagen 22, 26")]),
         ("B", [("H2", "„Es ging schon wieder nichts voran. Jetzt muss ich mich doch selbst darum kümmern.“", "Dein Satz im Chat, Aussage 25"),
                ("Element", "Themen als Leiste: Aufsichtsrat · Strategie in die Bereiche · Kennzahlen · Vertrieb · KI-Vorhaben", "Aussagen 8, 9 · Einsatzgebiete"),
                ("Karte", "Ihr Team und Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen.", "Punkt 6"),
-               ("Karte", "Der Workshop: zwei Tage im Kalender, danach wochenlang Stillstand.", "Aussagen 22, 26")]),
+               ("Karte", "Nur Workshops: zwei Tage im Kalender, danach wochenlang Stillstand.", "Aussagen 22, 26")]),
     ]),
     ("weiss", [
         ("A", [("H2", "Wir arbeiten. Sie entscheiden.", "Punkte 9, 10"),
-               ("Text", "Eine halbe Stunde am Telefon, gern aus dem Auto. Danach liegen Optionen, Entwürfe und Entscheidungsvorlagen auf Ihrem Tisch, professionell aufbereitet.", "Punkt 9 · Punkt 10 · Entscheidungsvorlagen: Einsatzgebiet Gremien"),
+               ("Text", "Wir bleiben im regelmäßigen, kurzen Austausch, oft reicht ein Telefonat. Danach liegen Optionen, Entwürfe und Entscheidungsvorlagen auf Ihrem Tisch, professionell aufbereitet.", "Punkt 9 · Punkt 10 · Entscheidungsvorlagen: Einsatzgebiet Gremien"),
+               ("Element", "Formate je nach Bedarf: kurzes Telefonat · längere Videokonferenz · Workshop, wenn sinnvoll", "Punkt 9"),
                ("Element", "Treppe aus vier Gesprächen: Ideen → Optionen → Entwürfe → Ergebnis", "Punkt 10"),
                ("Element", "Netzwerk: ehemalige Vorstände, Aufsichtsräte, IT- und Prozess-Spezialisten, Entwickler, Grafiker", "Netzwerk-Hinweis")]),
         ("B", [("H2", "Zwischen zwei Telefonaten entstehen Konzept, Analyse und Entscheidungsvorlage.", "Punkt 10 · Ausarbeitung 3.3"),
-               ("Text", "Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Beim nächsten Gespräch entscheiden Sie.", "Ausarbeitung 3.2, 3.3 · Punkt 10"),
-               ("Element", "Treppe aus vier Gesprächen", "Punkt 10"),
+               ("Text", "Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.", "Ausarbeitung 3.2, 3.3 · Punkt 9"),
+               ("Element", "Treppe aus vier Gesprächen · Formate: Telefonat, Videokonferenz, Workshop, wenn sinnvoll", "Punkte 9, 10"),
                ("Kasten", "Aus eigener Erfahrung: Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.", "Punkt 8, Fall HÖV, ohne Namen")]),
     ]),
     ("navy", [
