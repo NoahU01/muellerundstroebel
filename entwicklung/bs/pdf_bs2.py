@@ -219,6 +219,20 @@ def seiten():
       <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
     </div>
   </div>''', "ende"))
+    # Rückseite Variante C: wie B, aber mit dem 30-Sekunden-Pitch als Text in Abschnitten
+    P = {x[0]: x[4] for x in b.PITCH}
+    abschnitte = [P["1"] + " " + P["2"], P["3"], P["4"] + " " + P["5"]]
+    pitch30 = "".join(f"<p>{a}</p>" for a in abschnitte) + f'<p class="abc__frage">{P["6"]}</p>'
+    S.append(("navy ab ab2n abb abc", f'''{leiste("Kontakt", True)}
+  <img class="abb__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
+  <div class="ab2n__unten dunkel">
+    <div class="ab2n__text abb__text abc__text">{pitch30}</div>
+    <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
+    <div class="ab4__impressum">
+      <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
+      <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
+    </div>
+  </div>''', "ende"))
     return S
 
 

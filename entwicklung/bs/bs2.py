@@ -279,7 +279,7 @@ def startseite():
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>12 Seiten</span><span>1,3 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,4 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -350,7 +350,7 @@ def kontakt_neu(titel, text):
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>12 Seiten</span><span>1,3 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,4 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -823,10 +823,19 @@ def elevator_pitch():
     regeln = "".join(f'<div class="sb-karte"><h3>{t}</h3><p>{x}</p></div>' for t, x in REGELN)
     absaetze = "".join(f"<p>{p[4]}</p>" for p in PITCH)
     main = f"""
-<section class="held held--klein"><div class="wrap">
-  <p class="kicker">Elevator Pitch</p>
-  <h1>Unsere Story in 30/10 Sekunden.</h1>
-  <p class="lead">Die Landingpage ist die lange Fassung unserer Story. Hier verdichten wir sie auf das, was Sie einem Vorstand in einer Kaffeepause sagen: ohne Bild, mit einfachen Worten, aus seiner Sicht. Jeder Satz beantwortet seine stille Frage: Was bringt mir das?</p>
+<section class="held held--klein"><div class="wrap ep-held">
+  <div>
+    <p class="kicker">Elevator Pitch</p>
+    <h1>Unsere Story<br>in 30/10 Sekunden.</h1>
+    <p class="lead">Die Landingpage ist die lange Fassung unserer Story. Hier verdichten wir sie auf das, was Sie einem Vorstand in einer Kaffeepause sagen: ohne Bild, mit einfachen Worten, aus seiner Sicht. Jeder Satz beantwortet seine stille Frage: Was bringt mir das?</p>
+  </div>
+  <a class="ep-dl" href="/entwicklung/downloads/elevator-pitch.pdf" target="_blank" rel="noopener">
+    <div class="ep-dl__bild" aria-hidden="true"><img class="ep-dl__seite ep-dl__seite--hinten" src="/entwicklung/downloads/elevator-pitch-2.png" alt=""><img class="ep-dl__seite ep-dl__seite--vorn" src="/entwicklung/downloads/elevator-pitch-1.png" alt=""></div>
+    <p class="kicker">Download · intern</p>
+    <b>Der Pitch und wie er entstanden ist.</b>
+    <span class="ep-dl__meta">PDF · 6 Seiten · 0,3 MB</span>
+    <span class="knopf knopf--hell">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></span>
+  </a>
 </div></section>
 
 <section class="sek sek--sand"><div class="wrap">
@@ -867,19 +876,6 @@ def elevator_pitch():
 <section class="sek sek--sand"><div class="wrap ep-weg">
   <div><p class="kicker">Bewusst weggelassen</p><h2 class="h2">Was im kurzen Pitch fehlt und wann es kommt.</h2></div>
   <ul>{weg}</ul>
-</div></section>
-
-<section class="sek"><div class="wrap">
-  <div class="lp-dl" style="margin-top:0">
-    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/entwicklung/downloads/elevator-pitch-2.png" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/entwicklung/downloads/elevator-pitch-1.png" alt="" loading="lazy"></div>
-    <div class="lp-dl__text">
-      <p class="kicker">Download · intern</p>
-      <h3>Der Pitch und wie er entstanden ist.</h3>
-      <p>Seite 1: der Pitch und die Kurzfassung. Danach Satz für Satz die Herkunft aus dem Storyboard, das Ausgangsmaterial, die Regeln und was bewusst fehlt.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>6 Seiten</span><span>0,3 MB</span><span>Arbeitsdokument</span></div>
-      <a class="knopf knopf--hell" href="/entwicklung/downloads/elevator-pitch.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
-    </div>
-  </div>
 </div></section>"""
     html = seite("Müller &amp; Ströbel – Elevator Pitch (Business Story 2.0)", "Elevator Pitch: von den Storyboard-Aussagen zum kurzen Pitch", "bs2-pitch", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)

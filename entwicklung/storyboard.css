@@ -304,3 +304,23 @@
   .ep-pitch, .ep-weg { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
 }
 .ep-schluss { margin-top: 1.4em; color: var(--taupe-h) !important; }
+/* Elevator Pitch: Kopf mit kleinem Download-Kasten rechts */
+.ep-held { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: 4rem; align-items: center; }
+.ep-held h1 { white-space: nowrap; }
+.ep-dl { display: block; padding: 1.6rem 1.6rem 1.8rem; border-radius: 20px; background: var(--navy); color: var(--weiss); text-decoration: none; }
+.ep-dl__bild { position: relative; height: 10.5rem; margin-bottom: 1.4rem; }
+.ep-dl__seite { position: absolute; top: 50%; left: 50%; height: 100%; width: auto; aspect-ratio: 210 / 297; object-fit: cover; border-radius: .25rem; box-shadow: 0 14px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.14); transition: transform .35s ease; }
+.ep-dl__seite--hinten { transform: translate(-22%, -50%) rotate(6deg); }
+.ep-dl__seite--vorn { transform: translate(-78%, -50%) rotate(-3deg); }
+.ep-dl:hover .ep-dl__seite--hinten { transform: translate(-14%, -52%) rotate(8deg); }
+.ep-dl:hover .ep-dl__seite--vorn { transform: translate(-86%, -51%) rotate(-5deg); }
+.ep-dl .kicker { color: var(--taupe-h); }
+.ep-dl .kicker::before { background: var(--taupe-h); }
+.ep-dl b { display: block; margin-top: .4rem; font-family: var(--head); font-weight: 500; font-size: 1.3rem; line-height: 1.2; }
+.ep-dl__meta { display: block; margin: .6rem 0 1.2rem; font-size: .8rem; color: rgba(255,255,255,.75); }
+.ep-dl .knopf { width: 100%; justify-content: center; }
+@media (max-width: 991px) {
+  .ep-held { grid-template-columns: minmax(0, 1fr); gap: 2.6rem; }
+  .ep-held h1 { white-space: normal; }
+  .ep-dl { max-width: 22rem; }
+}
