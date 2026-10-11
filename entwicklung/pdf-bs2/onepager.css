@@ -1,0 +1,73 @@
+/* One-Pager aus den Bausteinen der Startseite (business-story-2.css). Nur Blatt, Logo-Zeile und Druck – keine eigene Typografie. */
+@page { size: 1123px 1587px; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { background: #fff; }
+.op { position: relative; width: 1123px; height: 1587px; overflow: hidden; display: flex; flex-direction: column; break-after: page; page-break-after: always; }
+.op > * { flex: none; }
+.op > :last-child { flex: 1 1 auto; }
+.op-name { position: absolute; right: 2rem; top: 1.2rem; z-index: 5; font-size: .66rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-h); }
+.op .wrap { padding: 0 4rem; }
+.op .kreis { box-shadow: none; }
+.op-logo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3.6rem; }
+.op-logo img { height: 46px; width: auto; }
+.op-logo span { font-size: .8rem; font-weight: 600; letter-spacing: .08em; color: var(--taupe-d); }
+.sek--navy .op-logo span { color: var(--taupe-h); }
+.op-held { padding: 3rem 0 4.5rem; }
+.op-held--dunkel { padding: 3rem 0 4.5rem; }
+.op-held--dunkel h1 { color: var(--weiss); font-size: 4.4rem; line-height: 1.04; max-width: 13ch; }
+.op-h1-breit { max-width: 18ch !important; }
+.op .sek { padding: 4.5rem 0; }
+.op .pks { margin-top: 2.4rem; }
+.op .pk { border: 0; }
+.op-ende .h2 { font-size: 2.6rem; max-width: 22ch; }
+.op-personen { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.6rem; padding-top: 2.4rem; border-top: 1px solid rgba(255,255,255,.16); }
+.op-ende--hell .op-personen { border-color: var(--linie); }
+.op-personen .kp { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.4rem; align-items: center; text-align: left; }
+.op-personen .kp .kreis { width: 7.5rem; border-width: 5px; }
+.op-personen .kp h3 { margin: 0; font-size: 1.4rem; color: var(--weiss); }
+.op-ende--hell .op-personen .kp h3 { color: var(--navy); }
+.op-personen .kp__themen { margin-top: .2rem; font-size: .9rem; color: var(--taupe-h); white-space: normal; }
+.op-ende--hell .op-personen .kp__themen { color: var(--taupe-d); }
+.op-personen .kp__wege { display: grid; gap: .1rem; margin-top: .6rem; font-size: .95rem; color: rgba(255,255,255,.88); }
+.op-ende--hell .op-personen .kp__wege { color: var(--ink); }
+.op .lp-ergebnis { padding: 4.5rem 0; }
+.op .szene { max-width: 15rem; }
+/* Desktop-Gestaltung der Startseite fest einstellen (im Druck greifen sonst die Tablet-Regeln) */
+.op .held__raster { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr) !important; gap: 3rem !important; align-items: center; }
+.op .lp-ergebnis__raster { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr) !important; gap: 3rem !important; align-items: center; }
+.op h1 { font-size: 3.7rem !important; line-height: 1.05 !important; max-width: 16ch; }
+.op .h2 { font-size: 2.7rem !important; line-height: 1.1 !important; }
+.op .lead { font-size: 1.15rem !important; max-width: 40rem; }
+.op .pks { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; max-width: none !important; gap: 1.2rem !important; }
+.op .pk__bild { aspect-ratio: auto !important; min-height: 0 !important; height: 11rem; padding: 1.4rem !important; }
+.op .pk__bild b { font-size: 1.45rem !important; max-width: 82% !important; padding-right: 0 !important; }
+.op .pk__bild .ico { width: 2.6rem !important; height: 2.6rem !important; right: 1.2rem !important; bottom: 1.2rem !important; }
+.op .pk__text { padding: 1rem 1.2rem 1.1rem !important; }
+.op .pk__text p { font-size: .9rem !important; }
+.op .duo { width: 100% !important; justify-self: end; }
+.op .duo figure { width: 54% !important; }
+.op .duo figure + figure { margin-left: -6% !important; }
+.op .sek { padding: 4rem 0 !important; }
+.op .op-held { padding: 2.6rem 0 4rem !important; }
+.op .szene { max-width: 13rem !important; justify-self: end; }
+.op-ende .h2 { font-size: 2.4rem !important; }
+.op .h2 { max-width: 30ch !important; }
+.op-held .lead, .op-held--dunkel .lead { max-width: 44rem; }
+.op .sek { padding: 3.6rem 0 !important; }
+.op .op-held { padding: 2.4rem 0 3.6rem !important; }
+.op h1 { max-width: 18ch; }
+.op .pk { border-radius: var(--r); overflow: hidden; }
+.op .pk__bild { height: 12rem; }
+.op-personen { margin-top: 2rem; padding-top: 2rem; }
+.op .op-logo { margin-bottom: 2.8rem; }
+.op-personen .kp { grid-template-columns: 6.2rem 1fr; }
+.op-personen .kp .kreis { width: 6.2rem; }
+.op-ende .lead { margin-top: 1rem !important; }
+.op-ende .h2 { font-size: 2.3rem !important; }
+.op .sek { padding: 3.3rem 0 !important; }
+.op .op-held { padding: 2.4rem 0 3.2rem !important; }
+.op-personen .kp > div { display: block; }
+.op-personen .kp__wege span { display: block; }
+.op > :last-child > .wrap { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+/* Heller Kasten auf Sand: weiß statt Sand, damit er sichtbar bleibt */
+.op .sek--sand .pk__bild--hell { background: var(--weiss) !important; }

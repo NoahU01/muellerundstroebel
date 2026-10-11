@@ -303,3 +303,4 @@
   .ep-zeile { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
   .ep-pitch, .ep-weg { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
 }
+.ep-schluss { margin-top: 1.4em; color: var(--taupe-h) !important; }

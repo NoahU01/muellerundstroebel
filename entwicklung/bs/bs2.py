@@ -193,7 +193,7 @@ def startseite():
     netz = "".join(f'<li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">{p}</svg>{n}</li>' for n, p in netz_ico)
     kontakte = "".join(f'''<article class="kp"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div>
       <h3>{p['name']}</h3><p class="kp__themen">{p['rolle']}</p>
-      <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p>
+      <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a class="kp__li" href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p>
     </article>''' for k, p in PERSONEN.items())
     main = f"""
 
@@ -279,7 +279,7 @@ def startseite():
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>15 Seiten</span><span>1,7 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,5 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -332,7 +332,7 @@ def kontakt_neu(titel, text):
     """Kontakt wie auf der Startseite: Personen frei nebeneinander, darunter der Download."""
     kontakte = "".join(f'''<article class="kp"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div>
       <h3>{p['name']}</h3><p class="kp__themen">{p['rolle']}</p>
-      <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p>
+      <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a class="kp__li" href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p>
     </article>''' for k, p in PERSONEN.items())
     return f'''<section class="sek lp-kontakt" id="kontakt"><div class="wrap">
   <div class="lp-kontakt__raster">
@@ -350,7 +350,7 @@ def kontakt_neu(titel, text):
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>15 Seiten</span><span>1,7 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,5 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -401,7 +401,7 @@ def ueber_uns():
         <div><h4>Schwerpunkte</h4><div class="pp__chips">{chips}</div>{zusatz[k]}</div>
         <div><h4>Werdegang</h4><p>{p['werdegang']}</p>
           <button class="pp__mehr" type="button" data-thema="cv-{k}">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
-          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p></div>
+          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a class="kp__li" href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p></div>
       </div>
     </div>
   </article>'''
@@ -853,6 +853,7 @@ def elevator_pitch():
   <aside>
     <p class="kicker">Die Kurzfassung · gut 10 Sekunden</p>
     <p class="ep-kurz">{PITCH_10}</p>
+    <p class="ep-kurz ep-schluss">Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p>
     <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>
   </aside>
 </div></section>

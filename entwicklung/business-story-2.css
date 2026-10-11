@@ -630,3 +630,8 @@ html, body { overflow-x: clip; }
   .kopf #dev-dd .dev-dd-panel { top: 100%; height: calc(100vh - 64px); height: calc(100dvh - 64px); }
 }
 @media (max-width: 760px) { .kopf #dev-dd .dev-dd-toggle { padding: .5rem .2rem .5rem .6rem; } .kopf .wrap { padding-right: 1rem; } }
+/* LinkedIn im Kontakt: erkennbar als externer Link, aber ruhig (kein Knopf – der Weg ist der Termin) */
+.kp__wege .kp__li { display: inline-flex; align-items: center; gap: .35rem; margin: .3rem auto 0; font-weight: 600; color: var(--blau); text-decoration: underline; text-decoration-color: rgba(24,94,138,.3); text-underline-offset: 4px; }
+.kp__wege .kp__li svg { width: .8rem; height: .8rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.kp__wege .kp__li:hover { text-decoration-color: currentColor; }
+.pp__wege a.kp__li, .pp__wege .kp__li { margin: .2rem 0 0; }
