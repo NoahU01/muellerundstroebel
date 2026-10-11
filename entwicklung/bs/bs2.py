@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 8
+VERSION = 9
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -247,7 +247,7 @@ STORY = [
             ("1", "Welche Rollen genau", "da", "Vorstände und Geschäftsführer, Hauptabteilungs- und Bereichsleiter."),
             ("2", "Welche Unternehmen genau", "da", "Versicherungsbranche: Versicherer und Rückversicherer vom Konzern bis zum Versicherungsverein, Makler und Rückversicherungsmakler. Auf der Seite nur: „Versicherungsbranche“.")]),
         ("4", "Was ist eure Antwort?", [
-            ("7", "Das Versprechen im Wortlaut", "da", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
+            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Entwurf: Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
     ]),
     ("Ihre Lage", "Der Leser nickt: Genau so ist es bei mir, und darum hat es bisher nicht geklappt.", [
         ("2", "Verstehen die mein Problem?", [
@@ -271,7 +271,7 @@ STORY = [
             ("12", "Was im ersten Anruf passiert", "offen", "")]),
     ]),
 ]
-STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen"}
+STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen", "zuletzt": "zum Schluss"}
 SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
     ("1", "Kopf", [("Zeile über der Überschrift", "F1 · Punkte 1–2"), ("Überschrift", "F4 · Punkt 7"),
                    ("Ein Satz darunter: für wen und welche Lage", "F1 · Punkte 1–2"), ("Knopf „Anrufen“", "F8 · Punkt 12")]),
@@ -299,7 +299,9 @@ def storyboard():
     def punkt(nr, txt, st, zit):
         q = f'<q>{zit}</q>' if zit else ""
         art = "Festlegung" if nr in ("1", "2") else "Wortlaut"
-        return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr} · <span class="sb-art sb-art--{art.lower()}">{art}</span></small><b>{txt}</b>{q}</div></li>'
+        info = ('<button class="sb-info" type="button" aria-label="Hinweis zu Punkt 7">i<span role="tooltip"><b>Management Summary</b>'
+                'Das Versprechen fasst alles zusammen, was die übrigen Punkte ergeben. Deshalb legen wir es als Letztes fest.</span></button>') if nr == "7" else ""
+        return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr} · <span class="sb-art sb-art--{art.lower()}">{art}</span>{info}</small><b>{txt}</b>{q}</div></li>'
 
     baum = ""
     for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):
@@ -310,6 +312,11 @@ def storyboard():
                        f'<div class="sb-t-frage"><span class="sb-f">F{fnr}</span><b>{frage}</b></div></div>')
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div></div>\n')
+
+    fragen_alle = sorted(((int(f), t, [p[0] for p in ps]) for _, _, fr in STORY for f, t, ps in fr))
+    def spanne(ps):
+        return f"Punkt {ps[0]}" if len(ps) == 1 else f"Punkte {ps[0]}–{ps[-1]}"
+    logik = "".join(f'<li><span class="sb-f">F{f}</span><b>{t}</b><small>{spanne(ps)}</small></li>' for f, t, ps in fragen_alle)
 
     regeln = [("s-eins", "Eine Aussage je Frage", "Acht Fragen, acht Sätze. Mehr kommt nicht auf die erste Ebene."),
               ("s-wort", "Ihr Wortlaut", "Ich kürze und ordne Ihre Antworten. Wo etwas fehlt, frage ich nach."),
@@ -335,9 +342,15 @@ def storyboard():
   </ol>
 </div></section>
 
+<section class="sb-logik"><div class="wrap">
+  <div class="sb-logik__text"><p class="kicker">Die Logik dahinter</p>
+    <p>Der Leser stellt sich acht Fragen, immer in dieser Reihenfolge. Die zwölf Punkte sind danach nummeriert: Jeder Punkt liefert die Antwort auf eine Frage. In der Zuordnung darunter stehen sie nach Abschnitten der Seite sortiert. Deshalb folgt im Kopf auf Punkt 2 der Punkt 7: Die Antwort auf F4 steht ganz oben.</p></div>
+  <ol class="sb-logik__fragen">{logik}</ol>
+</div></section>
+
 <section class="sek sek--sand"><div class="wrap">
   <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div>
-    <ul class="sb-legende"><li class="sb-p--da"><i></i>vorhanden</li><li class="sb-p--teil"><i></i>teilweise</li><li class="sb-p--offen"><i></i>offen</li></ul></div>
+    <ul class="sb-legende"><li class="sb-p--da"><i></i>vorhanden</li><li class="sb-p--teil"><i></i>teilweise</li><li class="sb-p--offen"><i></i>offen</li><li class="sb-p--zuletzt"><i></i>zum Schluss</li></ul></div>
   <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten<small>12 Punkte</small></span><span><i>2</i>Fragen des Lesers<small>8 Fragen</small></span><span><i>3</i>Landingpage<small>4 Abschnitte</small></span></div>
   <div class="sb-t">{baum}</div>
 </div></section>
