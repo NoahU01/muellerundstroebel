@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 31
+VERSION = 32
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -71,10 +71,12 @@ def kopfzeile(aktiv):
              ("/entwicklung/business-story-2-ueber-uns.html", "Über uns")]
     akt = ' aria-current="page"'
     nav = "".join(f'<a class="nav__anker" href="{h}"{akt if n == aktiv else ""}>{n}</a>' for h, n in links)
+    seiten = "".join(f'<a href="{h}">{n}</a>' for h, n in links) + '<a href="/entwicklung/business-story-2.html#kontakt">Thema besprechen</a>'
+    dev = DEV.replace('<p class="dev-dd-note">', f'<div class="menu-seiten">{seiten}</div><p class="dev-dd-note">', 1)
     return f'''<header class="kopf"><div class="wrap">
   <a class="marke" href="{start}" aria-label="Müller &amp; Ströbel – Startseite"><img src="/assets/logo.svg" alt="Müller &amp; Ströbel"></a>
   <nav class="nav" aria-label="Hauptmenü">{nav}
-{DEV}
+{dev}
     <a class="knopf" href="#kontakt">Thema besprechen</a>
   </nav>
 </div></header>'''
@@ -119,6 +121,9 @@ def seite(titel, beschreibung, variante, aktiv, main, skript=""):
   <nav><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
 </div></footer>
 {skript}
+<script>/* Menü schließt nach Klick auf einen Eintrag (Tablet/Handy) */
+document.querySelectorAll('#dev-dd .dev-dd-panel a').forEach(function (a) {{ a.addEventListener('click', function () {{ var d = document.getElementById('dev-dd'); d.classList.remove('is-open'); d.querySelector('.dev-dd-toggle').setAttribute('aria-expanded', 'false'); }}); }});
+</script>
 </body>
 </html>
 '''

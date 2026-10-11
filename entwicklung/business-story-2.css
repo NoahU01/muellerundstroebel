@@ -604,3 +604,29 @@ html, body { overflow-x: clip; }
   .lp-ergebnis__raster { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); }
   .szene { justify-self: end; max-width: 12rem; }
 }
+
+/* Menü auf Tablet/Handy (< 992 px): Entwicklungsmenü als eigene, scrollbare Fläche unter der Kopfzeile */
+@media (max-width: 991px) {
+  .kopf #dev-dd { position: static; }
+  .kopf #dev-dd .dev-dd-toggle { display: inline-flex; width: auto; padding: .5rem .8rem; }
+  .kopf #dev-dd .dev-dd-panel { position: fixed; left: 0; right: 0; top: 76px; bottom: 0; z-index: 40; display: none; min-width: 0; max-height: none;
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; margin: 0; padding: 1rem 1.2rem 2.5rem;
+    border: 0; border-top: 1px solid var(--linie); border-radius: 0; background: var(--weiss); box-shadow: 0 30px 40px -20px rgba(8,38,56,.25);
+    opacity: 1; visibility: visible; transform: none; }
+  .kopf #dev-dd.is-open .dev-dd-panel { display: block; }
+  .kopf #dev-dd .dev-dd-link { padding: .75rem .5rem; }
+  .kopf #dev-dd .dev-dd-sub { padding-left: 2.6rem; }
+  .menu-seiten { display: grid; gap: .1rem; margin: 0 0 1rem; padding-bottom: .8rem; border-bottom: 1px solid var(--linie); }
+  .menu-seiten a { padding: .7rem .5rem; border-radius: .5rem; text-decoration: none; font-weight: 600; color: var(--navy); }
+  .menu-seiten a:hover { background: var(--sand); }
+}
+@media (max-width: 760px) { .kopf #dev-dd .dev-dd-panel { top: 64px; } }
+@media (min-width: 992px) { .menu-seiten { display: none; } }
+/* Kopfzeile mit backdrop-filter wird zum Bezugsrahmen für fixed – Panel deshalb relativ zur Kopfzeile, Höhe über den Bildschirm */
+@media (max-width: 991px) {
+  .kopf #dev-dd .dev-dd-panel { top: 100%; bottom: auto; height: calc(100vh - 76px); height: calc(100dvh - 76px); }
+}
+@media (max-width: 760px) {
+  .kopf #dev-dd .dev-dd-panel { top: 100%; height: calc(100vh - 64px); height: calc(100dvh - 64px); }
+}
+@media (max-width: 760px) { .kopf #dev-dd .dev-dd-toggle { padding: .5rem .2rem .5rem .6rem; } .kopf .wrap { padding-right: 1rem; } }
