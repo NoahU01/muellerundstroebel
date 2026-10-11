@@ -229,82 +229,87 @@ def seiten():
     <div class="o4-fuss__pers">{fuss_pers}</div>
   </footer>''', "op"))
 
-    # ===================== One-Pager nach dem Elevator Pitch: sechs Bausteine, Reihenfolge wie gesprochen =====================
-    P = {p[0]: p[4] for p in b.PITCH}
-    UHR = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>'
-    ZIEL = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>'
-    PFEIL = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+    # ===================== One-Pager mit Visualisierung: gleicher Kopf und Fuß, Mitte erzählt den Pitch mit Bild =====================
+    def o5_rahmen(label, klasse, mitte):
+        return (klasse, f'''<span class="op-kennung op-kennung--hell">One-Pager · {label}</span>
+  <header class="o4-kopf dunkel">
+    <img class="o4-kopf__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
+    <img class="o4-kopf__logo" src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
+    <div class="o4-kopf__text"><p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
+      <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1></div>
+  </header>
+  <main class="o5-mitte">{mitte}</main>
+  <footer class="o4-fuss dunkel">
+    <p class="o4-fuss__satz">Liegt gerade so ein Thema auf Ihrem Tisch? Lassen Sie uns kurz sprechen.</p>
+    <div class="o4-fuss__pers">{fuss_pers}</div>
+  </footer>''', "op")
 
-    def op3_kontakt(dunkel=False):
-        pers = "".join(f'<div class="o3-person">{kreis(k, 40)}<div><b>{p["name"]}</b><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
-                       for k, p in b.PERSONEN.items())
-        return (f'<div class="o3-kontakt{" o3-kontakt--dunkel dunkel" if dunkel else ""}"><div class="o3-kontakt__satz">'
-                f'<p class="kicker">06 · Nächster Schritt</p><p>Liegt gerade so ein Thema auf Ihrem Tisch? Dann lassen Sie uns kurz sprechen.</p></div>{pers}</div>')
+    N, T, TH, SA = "#082638", "#998675", "#cbbcae", "#ebe4dc"
+    def svg(inhalt, w=150, h=70):
+        return f'<svg viewBox="0 0 {w} {h}" class="o5-svg" font-family="Poppins, sans-serif">{inhalt}</svg>'
+    def pill(x, y, w, h, text, fill=N, farbe="#fff", rand=None):
+        r = f' stroke="{rand}" stroke-width="1.2"' if rand else ""
+        return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{h/2}" fill="{fill}"{r}/>'
+                f'<text x="{x+w/2}" y="{y+h/2+3}" font-size="8" font-weight="600" fill="{farbe}" text-anchor="middle">{text}</text>')
+    pfeil_def = f'<defs><marker id="pf" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0l8 4-8 4z" fill="{T}"/></marker></defs>'
 
-    # --- A: Lesefluss
-    S.append(("o3 o3a", f'''<span class="op-kennung">One-Pager · Variante A</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
-  <p class="kicker">01 · Ihre Lage</p>
-  <h1>Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.</h1>
-  <div class="o3a-schmerz">
-    <p class="o3-label">02 · Bisher</p>
-    <div class="o3a-wege">
-      <div class="o3a-weg"><small>Ihr Team</small><b>Liefert, aber nicht so, wie Sie es brauchen.</b></div>
-      <div class="o3a-weg"><small>Externe</small><b>Empfehlungen ja. Umsetzen bleibt bei Ihnen.</b></div>
-      <p class="o3a-folge">Am Ende greifen Sie doch wieder selbst ein.</p>
-    </div>
-  </div>
-  <div class="o3a-antwort dunkel">
-    <p class="kicker">03 · Unsere Antwort</p>
-    <h2>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h2>
-    <ol class="o3a-schritte"><li><b>Strukturieren</b><span>Wir holen das Thema aus Ihrem Kopf und arbeiten den Kern heraus.</span></li>
-      <li><b>Ausarbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</span></li>
-      <li><b>Liefern</b><span>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche.</span></li></ol>
-  </div>
-  <div class="o3a-zwei">
-    <div class="o3a-feld"><span class="o3-ico">{UHR}</span><div><p class="o3-label">04 · Ihr Aufwand</p><b>Meist nur ein kurzes Telefonat zwischendurch.</b></div></div>
-    <div class="o3a-feld o3a-feld--sand"><span class="o3-ico">{ZIEL}</span><div><p class="o3-label">05 · Ihr Gewinn</p><b>Sie haben Ihre Themen im Griff.</b></div></div>
-  </div>
-  {op3_kontakt()}''', "op"))
-
-    # --- B: sechs Kacheln, hell und dunkel im Wechsel
-    kacheln = [
-        ("weiss", "01 · Ihre Lage", "Sie müssen alles im Blick haben.", "Und am Ende zählt nur das Ergebnis."),
-        ("sand", "02 · Bisher", "Es kommt selten so zurück, wie Sie es brauchen.", "Ob Sie ein Thema Ihrem Team geben oder Externe holen."),
-        ("navy", "03 · Unsere Antwort", "Sie geben uns die Verantwortung für ein Thema.", "Wir strukturieren es, arbeiten es mit Ihren Leuten aus und liefern das Ergebnis."),
-        ("weiss", "04 · Ihr Aufwand", "Ein kurzes Telefonat zwischendurch.", "Die Arbeit dazwischen machen wir."),
-        ("navy", "05 · Ihr Gewinn", "Sie haben Ihre Themen im Griff.", "Das Zielbild im Blick, Klarheit, wohin es geht."),
-        ("sand", "06 · Nächster Schritt", "Lassen Sie uns kurz sprechen.", "Liegt gerade so ein Thema auf Ihrem Tisch?"),
+    # --- Variante 1: Text mit Bild am Rand
+    bilder = [
+        svg("".join(f'<rect x="{x}" y="{y}" width="40" height="15" rx="4" fill="{f}" stroke="{TH}" stroke-width=".8"/>' for x, y, f in
+                    [(8, 8, "#fff"), (56, 4, SA), (104, 10, "#fff"), (20, 30, SA), (68, 26, "#fff"), (96, 46, SA), (40, 50, "#fff")])),
+        svg(pfeil_def + pill(4, 26, 34, 18, "Sie") + f'<path d="M40 35 H70" stroke="{T}" stroke-width="1.2" marker-end="url(#pf)"/>'
+            + pill(72, 26, 72, 18, "Team · Externe", "#fff", N, TH)
+            + f'<path d="M108 46 C108 66 22 66 22 47" fill="none" stroke="{T}" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#pf)"/>'),
+        svg(pfeil_def + pill(4, 26, 34, 18, "Sie", "#fff", N, TH) + f'<path d="M40 35 H74" stroke="{N}" stroke-width="1.6" marker-end="url(#pf)"/>'
+            + pill(76, 24, 70, 22, "Müller &amp; Ströbel")),
+        svg(pill(56, 4, 58, 18, "Ihr Thema") + f'<path d="M85 22 L31 46 M85 22 L85 46 M85 22 L139 46" stroke="{TH}" stroke-width="1"/>'
+            + pill(1, 46, 60, 18, "Strukturieren", "#fff", N, TH) + pill(63, 46, 44, 18, "Ihre Leute", "#fff", N, TH) + pill(109, 46, 60, 18, "Spezialisten", "#fff", N, TH), 170, 70),
+        svg(f'<circle cx="28" cy="35" r="20" fill="none" stroke="{N}" stroke-width="1.4"/><path d="M28 23v12l8 5" fill="none" stroke="{N}" stroke-width="1.4" stroke-linecap="round"/>'
+            f'<path d="M58 35 H86" stroke="{TH}" stroke-width="1.2"/><circle cx="112" cy="35" r="20" fill="{N}"/>'
+            f'<path d="M103 35l6 6 12-13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'),
     ]
-    k_html = "".join(f'<div class="o3b-kachel o3b-kachel--{f}{" dunkel" if f == "navy" else ""}"><small>{t}</small><b>{h}</b><p>{x}</p></div>'
-                     for f, t, h, x in kacheln)
-    pers_b = "".join(f'<div class="o3-person">{kreis(k, 40)}<div><b>{p["name"]}</b><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
-                     for k, p in b.PERSONEN.items())
-    S.append(("o3 o3b", f'''<span class="op-kennung">One-Pager · Variante B</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
-  <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-  <p class="unter">Was wir tun, in sechs Sätzen.</p>
-  <div class="o3b-raster">{k_html}</div>
-  <div class="o3b-fuss">{pers_b}<p class="o3b-web">www.muellerundstroebel.de</p></div>''', "op"))
+    zeilen1 = [
+        ("Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.", "gross"),
+        ("Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen. Am Ende greifen Sie doch wieder selbst ein.", ""),
+        ("Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.", "kern"),
+        ("Etwa die Vorlage für den Aufsichtsrat. Wir strukturieren es, arbeiten es mit Ihren Leuten aus und holen Spezialisten dazu.", ""),
+        ("Von Ihnen brauchen wir meist nur ein kurzes Telefonat zwischendurch. So haben Sie Ihre Themen im Griff.", ""),
+    ]
+    m1 = "".join(f'<div class="o5a-zeile o5a-zeile--{art}"><p>{t}</p>{bild}</div>' for (t, art), bild in zip(zeilen1, bilder))
+    S.append(o5_rahmen("Variante 1 · Text mit Bild", "o5 o5a", m1))
 
-    # --- C: Ihre Seite / unsere Seite
-    S.append(("o3 o3c", f'''<span class="op-kennung op-kennung--hell">One-Pager · Variante C</span>
-  <div class="o3c-kopf dunkel">{leiste("Für Führungskräfte in der Versicherungsbranche", True).replace('class="leiste"', 'class="leiste leiste--fluss"')}
-    <h1>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h1></div>
-  <div class="o3c-spalten">
-    <div class="o3c-sie">
-      <p class="o3c-titel">Was Sie davon haben</p>
-      <div class="o3c-zeile"><p class="o3-label">01 · Ihre Lage</p><b>Sie müssen alles im Blick haben. Am Ende zählt nur das Ergebnis.</b></div>
-      <div class="o3c-zeile"><p class="o3-label">02 · Bisher</p><b>Ob Team oder Externe: Es kommt selten so zurück, wie Sie es brauchen.</b></div>
-      <div class="o3c-zeile"><p class="o3-label">04 · Ihr Aufwand</p><b>Meist nur ein kurzes Telefonat zwischendurch.</b></div>
-      <div class="o3c-zeile o3c-zeile--ziel"><p class="o3-label">05 · Ihr Gewinn</p><b>Sie haben Ihre Themen im Griff.</b></div>
+    # --- Variante 2: Bisher und mit uns
+    bisher = svg(pfeil_def + pill(55, 4, 70, 20, "Ihr Thema", "#fff", N, TH)
+                 + f'<path d="M90 24 L52 52 M90 24 L128 52" stroke="{T}" stroke-width="1.2" marker-end="url(#pf)"/>'
+                 + pill(14, 54, 72, 20, "Ihr Team", "#fff", N, TH) + pill(94, 54, 72, 20, "Externe", "#fff", N, TH)
+                 + f'<path d="M50 74 L84 104 M130 74 L96 104" stroke="{T}" stroke-width="1.2" marker-end="url(#pf)"/>'
+                 + pill(50, 106, 80, 22, "Sie greifen ein")
+                 + f'<path d="M132 117 C172 117 172 14 128 14" fill="none" stroke="{T}" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#pf)"/>', 180, 134)
+    mit = svg(pfeil_def + pill(55, 4, 70, 20, "Ihr Thema", "#fff", N)
+              + f'<path d="M90 24 V48" stroke="{TH}" stroke-width="1.4" marker-end="url(#pf)"/>'
+              + pill(40, 50, 100, 24, "Müller &amp; Ströbel", TH, N)
+              + f'<path d="M90 74 V100" stroke="{TH}" stroke-width="1.4" marker-end="url(#pf)"/>'
+              + pill(50, 104, 80, 24, "Ihr Ergebnis", "#fff", N), 180, 134)
+    m2 = f'''<p class="o5-einstieg">Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.</p>
+    <div class="o5b-zwei">
+      <div class="o5b-feld"><p class="kicker">Bisher</p>{bisher}<p>Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen.</p></div>
+      <div class="o5b-feld o5b-feld--dunkel dunkel"><p class="kicker">Mit uns</p>{mit}<p>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis, etwa die Vorlage für den Aufsichtsrat.</p></div>
     </div>
-    <div class="o3c-wir dunkel">
-      <p class="o3c-titel">Was wir tun</p>
-      <div class="o3c-zeile"><p class="o3-label">Wir verstehen Ihr Thema</p><b>Sie müssen nichts vorbereiten. Wir fragen gezielt und arbeiten den Kern heraus.</b></div>
-      <div class="o3c-zeile"><p class="o3-label">Wir arbeiten es aus</p><b>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</b></div>
-      <div class="o3c-zeile"><p class="o3-label">Wir liefern</p><b>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche.</b></div>
+    <p class="o5-schluss">Von Ihnen brauchen wir meist nur ein kurzes Telefonat zwischendurch. <b>So haben Sie Ihre Themen im Griff.</b></p>'''
+    S.append(o5_rahmen("Variante 2 · Bisher und mit uns", "o5 o5b", m2))
+
+    # --- Variante 3: Die Übergabe
+    m3 = f'''<p class="o5-einstieg">Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis. Ob Team oder Externe: Es kommt selten so zurück, wie Sie es brauchen.</p>
+    <div class="o5c-tausch">
+      <div class="o5c-seite"><p class="kicker">Bei Ihnen bleibt</p><ul><li>Die Richtung vorgeben</li><li>Entscheiden</li><li>Ein kurzes Telefonat zwischendurch</li></ul></div>
+      <div class="o5c-mitte">
+        <div class="o5c-pfeil"><span>Verantwortung für ein Thema</span><svg viewBox="0 0 100 12"><path d="M2 6H96M90 1l6 5-6 5" fill="none" stroke="{N}" stroke-width="1.6"/></svg></div>
+        <div class="o5c-pfeil o5c-pfeil--zurueck"><svg viewBox="0 0 100 12"><path d="M98 6H4M10 1L4 6l6 5" fill="none" stroke="{T}" stroke-width="1.6"/></svg><span>Das Ergebnis</span></div>
+      </div>
+      <div class="o5c-seite o5c-seite--wir dunkel"><p class="kicker">Bei uns liegt</p><ul><li>Das Thema strukturieren</li><li>Mit Ihren Leuten ausarbeiten</li><li>Spezialisten dazuholen</li><li>Das Ergebnis liefern, etwa die Vorlage für den Aufsichtsrat</li></ul></div>
     </div>
-  </div>
-  {op3_kontakt()}''', "op"))
+    <p class="o5-schluss"><b>So haben Sie Ihre Themen im Griff.</b></p>'''
+    S.append(o5_rahmen("Variante 3 · Die Übergabe", "o5 o5c", m3))
     return S
 
 
