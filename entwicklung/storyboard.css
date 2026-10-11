@@ -142,3 +142,6 @@
   .sb-t-frage::before, .sb-t-frage::after, .sb-t-abschnitt::before, .sb-t-abschnitt::after { display: none; }
   .sb-t-punkte { padding-left: 1rem; border-left: 2px solid var(--taupe-h); }
 }
+.sb-art { padding: .05rem .45rem; border-radius: 999px; letter-spacing: .06em; }
+.sb-art--festlegung { background: var(--sand-2); color: var(--taupe-d); }
+.sb-art--wortlaut { background: var(--navy); color: var(--weiss); }

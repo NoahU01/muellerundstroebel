@@ -156,7 +156,7 @@ def startseite():
 <!-- Abschnitt 1 · Kopf (F1 + F4) -->
 <section class="held lp-held"><div class="wrap held__raster">
   <div>
-    <p class="kicker">Für Führungskräfte in Versicherungsunternehmen <span class="platz-marke">Punkte 1–2 offen</span></p>
+    <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
     <h1>Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h1>
     {platz("Punkte 1–2", "Ein Satz darunter: für wen und in welcher Lage", "Rollen und Unternehmen aus Punkt 1 und 2, in einem Satz")}
     <div class="knoepfe"><a class="knopf" href="#kontakt">Direkt anrufen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Kennen Sie das?</a></div>
@@ -245,7 +245,7 @@ STORY = [
     ("Kopf", "Der Leser weiß sofort: Ich bin richtig, und das bekomme ich.", [
         ("1", "Bin ich hier richtig?", [
             ("1", "Welche Rollen genau", "da", "Vorstände und Geschäftsführer, Hauptabteilungs- und Bereichsleiter."),
-            ("2", "Welche Unternehmen genau", "da", "Versicherer und Rückversicherer, vom Konzern bis zum Versicherungsverein.")]),
+            ("2", "Welche Unternehmen genau", "da", "Versicherungsbranche: Versicherer und Rückversicherer vom Konzern bis zum Versicherungsverein, Makler und Rückversicherungsmakler. Auf der Seite nur: „Versicherungsbranche“.")]),
         ("4", "Was ist eure Antwort?", [
             ("7", "Das Versprechen im Wortlaut", "da", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
     ]),
@@ -298,7 +298,8 @@ def storyboard():
 
     def punkt(nr, txt, st, zit):
         q = f'<q>{zit}</q>' if zit else ""
-        return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr}</small><b>{txt}</b>{q}</div></li>'
+        art = "Festlegung" if nr in ("1", "2") else "Wortlaut"
+        return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr} · <span class="sb-art sb-art--{art.lower()}">{art}</span></small><b>{txt}</b>{q}</div></li>'
 
     baum = ""
     for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):
@@ -324,7 +325,7 @@ def storyboard():
 <section class="held sb-held"><div class="wrap">
   <p class="kicker">Storyboard</p>
   <h1>So entsteht die Landingpage.</h1>
-  <p class="lead">Sie beantworten enge Punkte. Daraus werden die Antworten auf die Fragen, die sich der Leser stellt. Und daraus die Seite.</p>
+  <p class="lead">Sie beantworten enge Punkte. Daraus werden die Antworten auf die Fragen, die sich der Leser stellt. Und daraus die Seite. <b>Festlegung</b> heißt: steuert den Text, steht nicht wörtlich da. <b>Wortlaut</b> heißt: kommt so oder fast so auf die Seite.</p>
   <ol class="sb-weg">
     <li><span class="sb-weg__ico"><svg class="ico"><use href="#s-antwort"/></svg></span><b>12 Punkte</b><h2>Ihre Antworten</h2><p>Enge Fragen, je eine klare Antwort.</p></li>
     <li class="sb-weg__pfeil" aria-hidden="true"><svg class="ico"><use href="#s-pfeil"/></svg></li>
