@@ -87,6 +87,45 @@ def kopf(satz, lead=""):
             f'<h1 class="op-h1-breit">{satz}</h1>' + (f'<p class="op-lead2">{lead}</p>' if lead else "") + '</div></div>')
 
 
+LU = {
+    "struktur": '<path d="M21 12h-8"/><path d="M21 6H8"/><path d="M21 18h-8"/><path d="M3 6v4c0 1.1.9 2 2 2h3"/><path d="M3 10v6c0 1.1.9 2 2 2h3"/>',
+    "leute": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    "ergebnis": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/>',
+    "pfeil": '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+}
+
+
+def lu(n, k="pg-ico"):
+    return f'<svg class="{k}" viewBox="0 0 24 24">{LU[n]}</svg>'
+
+
+def pitch_blatt():
+    """Der Pitch auf einem Blatt: festes Raster, drei Teile, vier Schriftgrößen."""
+    P = {x[0]: x[4] for x in b.PITCH}
+    schritte = [("struktur", "Wir strukturieren es."), ("leute", "Wir arbeiten es mit Ihren Leuten aus."), ("ergebnis", "Wir liefern das Ergebnis.")]
+    kette = lu("pfeil", "pg-pfeil").join(f'<div class="pg-schritt">{lu(i)}<p>{t}</p></div>' for i, t in schritte)
+    karten = "".join(f'<div class="pg-karte pg-karte--{f}"><small>{t}</small><p>{x}</p></div>' for f, t, x, *_ in KAESTEN[:2])
+    menschen = "".join(
+        f'<div class="pg-person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p["name"]}"></div>'
+        f'<div><b>{p["name"]}</b><span>{p["mail"]}</span><span>{p["tel"]}</span></div></div>' for k, p in b.PERSONEN.items())
+    szene = b.trio_szene("compass", "circle-check", "target", farbe="#082638", akzentfarbe="#998675", strich=3.2)
+    return f'''<section class="op pg" aria-label="One-Pager">
+  <header class="pg-kopf">
+    <div class="pg-marke"><img src="/pdf/bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel"><span>www.muellerundstroebel.de</span></div>
+    <p class="pg-kicker">Für Führungskräfte in der Versicherungsbranche</p>
+    <h1>{P["1"]}</h1>
+    <div class="pg-lage"><p class="pg-lead">{P["2"]}</p><div class="pg-karten">{karten}</div></div>
+  </header>
+  <div class="pg-ansatz">
+    <div class="pg-zwei"><h2>Da setzen wir an.</h2><p class="pg-lead">Sie geben uns die Verantwortung für ein Thema, etwa die Vorlage für den Aufsichtsrat.</p></div>
+    <div class="pg-kette">{kette}</div>
+    <div class="pg-aufwand"><p>{P["4"]}</p></div>
+  </div>
+  <div class="pg-griff"><h2>{P["5"]}</h2>{szene}</div>
+  <footer class="pg-fuss"><p class="pg-frage">{P["6"]}</p><div class="pg-menschen">{menschen}</div></footer>
+</section>'''
+
+
 def seiten():
     """Zwei Varianten. In beiden: die sechs Sätze des Elevator Pitch wörtlich und in Reihenfolge."""
     P = {x[0]: x[4] for x in b.PITCH}
@@ -106,7 +145,7 @@ def seiten():
     zeilen = "".join(f'<div class="op-reihe"><p class="op-reihe__satz">{t}</p><div class="op-reihe__bild">{x}</div></div>' for t, x in reihen)
     b_ = blatt("Variante B · Die Story auf einer Linie", kopf(P["1"])
                + f'<div class="sek op-linie"><div class="wrap">{zeilen}</div></div>')
-    return [a, b_]
+    return [pitch_blatt(), a, b_]
 
 
 def html():

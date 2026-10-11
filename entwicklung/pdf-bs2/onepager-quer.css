@@ -1,0 +1,51 @@
+/* One-Pager A3 quer – Maße 1:1 aus der empiria-Vorlage (ga-onepager.html, „A3 quer · Inhalt“), CD Müller & Ströbel.
+   Blatt 1587 × 1123 px = 420 × 297 mm; cqw = 1 % der Blattbreite. */
+@page { size: 1587px 1123px; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; background: #fff; }
+.oq { position: relative; width: 1587px; height: 1123px; overflow: hidden; container-type: inline-size; display: flex; flex-direction: column;
+  background: #fff; color: var(--navy); font-family: var(--text); line-height: 1.4; }
+.oq h1, .oq h2, .oq h3, .oq p, .oq ul, .oq ol { margin: 0; padding: 0; }
+.oq h1, .oq h2, .oq h3 { font-family: var(--head); font-weight: 500; color: var(--navy); }
+.oq > header, .oq > section, .oq > footer { padding: 0 5.2381cqw; }
+.op-k { display: flex; align-items: center; gap: 0.7143cqw; margin: 0 0 0.9524cqw !important; font: 600 0.6720cqw/1 var(--text); letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-d); }
+.op-k::before { content: ""; width: 1.9048cqw; height: 0.1429cqw; background: currentColor; }
+/* Kopf */
+.oi-kopf { position: relative; padding-top: 3.8095cqw !important; }
+.oi-logo { position: absolute; right: 5.2381cqw; top: 3.8095cqw; height: 2.6cqw; width: auto; }
+.oi-titel { display: flex; justify-content: space-between; align-items: flex-end; gap: 3.8095cqw; }
+.oq h1 { font-size: 3.1920cqw; line-height: 1.15; letter-spacing: -.02em; max-width: 62cqw; }
+.oq h1 i { font-style: normal; color: var(--taupe); }
+.op-lead { margin-top: 1.1905cqw !important; max-width: 54.7619cqw; font: 300 1.0080cqw/1.55 var(--text); color: var(--ink-2); }
+.oi-zeichen { flex: 0 0 9.5cqw; width: 9.5cqw; height: auto; margin-bottom: 0.2cqw; }
+/* Drei Spalten */
+.oi-spalten { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto auto 1fr; column-gap: 3.3333cqw; margin-top: 3.8095cqw; }
+.oi-spalte { display: grid; grid-template-rows: subgrid; grid-row: span 4; align-content: start; }
+.oq h2 { font-size: 1.3440cqw; line-height: 1.25; letter-spacing: -.015em; }
+.oi-text { margin-top: 0.9524cqw !important; font: 300 0.7980cqw/1.55 var(--text); color: var(--ink-2); }
+.oi-liste { list-style: none; margin-top: 1.1905cqw !important; }
+.oi-liste li { display: grid; grid-template-columns: 1.9048cqw 1fr; align-items: baseline; padding: 0.6190cqw 0; border-top: 0.0714cqw solid var(--linie); }
+.oi-liste li:last-child { border-bottom: 0.0714cqw solid var(--linie); }
+.oi-liste b { display: block; font: 500 0.9240cqw/1.3 var(--head); color: var(--navy); }
+.oi-liste p { margin-top: 0.2381cqw !important; font: 300 0.7560cqw/1.45 var(--text); color: var(--ink-2); }
+.oi-strich { display: block; width: 0.8333cqw; height: 0.1429cqw; background: var(--taupe); transform: translateY(-0.2857cqw); }
+.oi-ico { display: block; width: 1.1905cqw; height: 1.1905cqw; transform: translateY(0.1905cqw); }
+.oi-ico svg { display: block; width: 100%; height: 100%; fill: none; stroke: var(--navy); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.oi-nr { font: 600 0.6300cqw/1 var(--text); letter-spacing: .12em; color: var(--taupe-d); }
+/* Themenzeile */
+.oi-fragen { margin-top: auto; padding-top: 2.8571cqw !important; padding-bottom: 3.3333cqw !important; }
+.oi-fragen__in { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 3.3333cqw; align-items: start; }
+.oi-fragen h3 { font-size: 1.1760cqw; line-height: 1.3; letter-spacing: -.01em; }
+.oi-fragen ol { grid-column: 2 / span 2; list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 1.4286cqw; }
+.oi-fragen li { border-top: 0.1429cqw solid var(--navy); padding-top: 0.7143cqw; }
+.oi-fragen li b { display: block; font: 500 0.8820cqw/1.3 var(--head); color: var(--navy); }
+/* Dunkles Band */
+.oi-fuss { background: var(--navy); color: #fff; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 3.3333cqw; align-items: center;
+  padding-top: 2.1429cqw !important; padding-bottom: 2.1429cqw !important; }
+.oi-person { display: flex; align-items: center; gap: 1.2cqw; white-space: nowrap; }
+.oi-person .kreis { flex: 0 0 3.8cqw; width: 3.8cqw; border-width: 0.22cqw; box-shadow: none; }
+.oi-person b { display: block; margin-bottom: 0.25cqw; font: 500 0.9240cqw/1.2 var(--head); color: #fff; }
+.oi-person span { display: block; font: 400 0.7140cqw/1.45 var(--text); color: rgba(255,255,255,.82); }
+.oi-ergebnis .op-k { color: var(--taupe-h); }
+.oi-ergebnis p:last-child { font: 500 1.0920cqw/1.35 var(--head); color: #fff; }
+.oi-zeichen { flex: 0 0 auto; width: auto; margin: 0 0 -1.4cqw; font: 500 11cqw/1 var(--head); color: var(--navy); }

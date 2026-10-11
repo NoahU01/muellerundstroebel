@@ -138,3 +138,57 @@ body { background: #fff; }
 .op-reihe .op-kz span + span::before { content: " · "; color: var(--taupe); }
 .op-szene-hell { background: none; padding: 0; max-width: none; justify-content: flex-start; }
 .op-szene-hell .szene { max-width: 9.5rem !important; }
+
+/* ===== One-Pager „Der Pitch“ – eigenes Raster: Rand 72px, Schriftgrößen 56 / 36 / 21 / 15 ===== */
+.pg { font-family: var(--text); color: var(--ink); }
+.pg > * { flex: none !important; }
+.pg > .pg-fuss { flex: 1 1 auto !important; }
+.pg h1, .pg h2 { font-family: var(--head); font-weight: 500; letter-spacing: -.015em; margin: 0; }
+.pg-kopf { background: var(--navy); color: var(--weiss); padding: 52px 72px 64px; }
+.pg-marke { display: flex; justify-content: space-between; align-items: center; }
+.pg-marke img { height: 42px; width: auto; }
+.pg-marke span { font-size: 13px; font-weight: 600; letter-spacing: .08em; color: var(--taupe-h); }
+.pg-kicker { margin: 64px 0 18px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-h); }
+.pg-kopf h1 { font-size: 56px; line-height: 1.08; color: var(--weiss); max-width: 20ch; }
+.pg-lage { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: end; margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.18); }
+.pg-lead { font-family: var(--head); font-size: 21px; line-height: 1.45; margin: 0; }
+.pg-kopf .pg-lead { color: rgba(255,255,255,.86); }
+.pg-karten { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pg-karte { border-radius: 16px; padding: 22px 24px 24px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; }
+.pg-karte small { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.pg-karte p { margin: 0; font-family: var(--head); font-size: 21px; line-height: 1.3; }
+.pg-karte--sand { background: var(--sand-2); color: var(--navy); }
+.pg-karte--sand small { color: var(--taupe-d); }
+.pg-karte--navy { background: var(--weiss); color: var(--navy); }
+.pg-karte--navy small { color: var(--taupe-d); }
+.pg-ansatz { padding: 64px 72px 60px; }
+.pg-zwei { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: baseline; }
+.pg h2 { font-size: 36px; line-height: 1.12; color: var(--navy); }
+.pg-ansatz .pg-lead { color: var(--ink); }
+.pg-kette { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr; gap: 14px; align-items: center; margin-top: 44px; }
+.pg-schritt { border: 1px solid var(--linie); border-radius: 16px; padding: 26px 24px; height: 100%; }
+.pg-ico { width: 34px; height: 34px; fill: none; stroke: var(--navy); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pg-schritt p { margin: 18px 0 0; font-family: var(--head); font-size: 21px; line-height: 1.3; color: var(--navy); }
+.pg-pfeil { width: 28px; height: 28px; fill: none; stroke: var(--taupe); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pg-aufwand { margin-top: 28px; padding: 22px 26px; border-left: 3px solid var(--navy); background: var(--sand); }
+.pg-aufwand p { margin: 0; font-family: var(--head); font-size: 21px; line-height: 1.4; color: var(--navy); }
+.pg-griff { display: grid; grid-template-columns: 1fr 150px; gap: 48px; align-items: center; margin: 0 72px; padding: 40px 0; border-top: 1px solid var(--linie); }
+.pg-griff .szene { max-width: 150px !important; justify-self: end; opacity: 1; }
+.pg-fuss { background: var(--navy); color: var(--weiss); padding: 52px 72px; display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; }
+.pg-frage { margin: 0; font-family: var(--head); font-size: 28px; line-height: 1.25; color: var(--weiss); }
+.pg-menschen { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pg-person { display: grid; grid-template-columns: 84px 1fr; gap: 18px; align-items: center; }
+.pg-person .kreis { width: 84px; border-width: 4px; }
+.pg-person b { display: block; font-family: var(--head); font-weight: 500; font-size: 19px; margin-bottom: 4px; }
+.pg-person span { display: block; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.85); }
+/* Korrekturen nach Sichtprüfung */
+.pg-kopf { padding: 48px 72px 56px; }
+.pg-kicker { margin: 52px 0 16px; }
+.pg-lage { align-items: start; margin-top: 36px; padding-top: 36px; }
+.pg-karte { min-height: 0; justify-content: flex-start; gap: 14px; padding: 22px 24px 26px; }
+.pg-ansatz { padding: 56px 72px 52px; }
+.pg-griff { grid-template-columns: 1fr 104px; padding: 30px 0; }
+.pg-griff .szene { max-width: 104px !important; }
+.pg-fuss { grid-template-columns: 1fr 1fr; padding: 48px 72px; align-items: center; }
+.pg-menschen { grid-template-columns: 1fr; gap: 20px; }
+.pg-griff { padding: 28px 0; }
