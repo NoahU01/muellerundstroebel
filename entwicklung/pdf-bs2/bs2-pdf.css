@@ -653,3 +653,37 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .o4-kern p { font-size: 23pt; }
 .o4-einladung { margin-top: 16pt !important; }
 .o4-kontakt { bottom: 32pt; }
+
+/* ===== One-Pager „Der Pitch als Text“, Neubau: Kopf dunkel · Story mit rotem Faden · Fuß dunkel ===== */
+.o4 { padding: 0; }
+.o4-kopf { position: absolute; left: 0; right: 0; top: 0; height: 240pt; overflow: hidden; background: var(--navy); }
+.o4-kopf__amp { position: absolute; right: -40pt; top: 22pt; width: 210pt; height: auto; opacity: .55; }
+.o4-kopf__logo { position: absolute; left: var(--rand); top: 40pt; height: 30pt; width: auto; }
+.o4-kopf__text { position: absolute; left: var(--rand); right: 170pt; bottom: 32pt; }
+.o4-kopf__text .kicker { margin-bottom: 10pt; }
+.o4-kopf h1 { font-size: 27pt; line-height: 1.1; color: var(--weiss); }
+.o4-story { position: absolute; left: var(--rand); right: 70pt; top: 272pt; }
+.o4-story::before { content: ""; position: absolute; left: 4pt; top: 10pt; bottom: 12pt; width: 1.2pt; background: var(--sand-2); }
+.o4-schritt { position: relative; padding: 0 0 15pt 26pt; }
+.o4-schritt::before { content: ""; position: absolute; left: 0; top: 7pt; width: 9pt; height: 9pt; border-radius: 50%; background: var(--weiss); box-shadow: inset 0 0 0 1.6pt var(--taupe); }
+.o4-schritt p { font-family: Lora, serif; font-size: 12.6pt; line-height: 1.5; color: var(--ink-2); }
+.o4-schritt b { font-weight: 600; color: var(--navy); }
+.o4-gross { font-size: 17pt !important; line-height: 1.3 !important; color: var(--navy) !important; }
+.o4-schritt--kern { padding-top: 4pt; padding-bottom: 19pt; }
+.o4-schritt--kern::before { width: 13pt; height: 13pt; left: -2pt; top: 11pt; background: var(--navy); box-shadow: none; }
+.o4-kernsatz { font-size: 19.5pt !important; line-height: 1.25 !important; color: var(--navy) !important; }
+.o4-kernsatz span { display: block; margin-bottom: 4pt; font-family: Poppins, sans-serif; font-size: 7.4pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-d); }
+.o4-schritt--ende::before { background: var(--taupe); box-shadow: none; }
+.o4-fuss { position: absolute; left: 0; right: 0; bottom: 0; height: 150pt; display: grid; grid-template-columns: 1fr 1.25fr; gap: 26pt; align-items: center; padding: 0 var(--rand); background: var(--navy); }
+.o4-fuss__satz { font-family: Lora, serif; font-size: 15pt; line-height: 1.3; color: var(--weiss); }
+.o4-fuss__pers { display: grid; grid-template-columns: 1fr 1fr; gap: 16pt; }
+.o4-p { display: flex; gap: 10pt; align-items: center; }
+.o4-p .kreis { flex: none; border-width: 2.5pt; border-color: var(--weiss); }
+.o4-p b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 10.5pt; color: var(--weiss); }
+.o4-p span { display: block; font-size: 7.4pt; line-height: 1.5; color: rgba(255,255,255,.78); }
+.o4-story { top: 286pt; }
+.o4-schritt { padding-bottom: 22pt; }
+.o4-schritt--kern { padding-top: 6pt; padding-bottom: 26pt; }
+.o4-fuss { grid-template-columns: 1fr; gap: 16pt; align-content: center; height: 160pt; }
+.o4-fuss__satz { font-size: 14pt; }
+.o4-fuss__pers { grid-template-columns: 1fr 1fr; gap: 24pt; }

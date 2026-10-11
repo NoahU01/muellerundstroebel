@@ -234,21 +234,26 @@ def seiten():
     # ===================== One-Pager „Der Pitch als Text“: fortlaufend erzählt, nur der Kernsatz hervorgehoben =====================
     kontakt_brief = "".join(f'<div class="o4-person">{kreis(k, 52)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
                             for k, p in b.PERSONEN.items())
-    S.append(("o4", f'''<span class="op-kennung">One-Pager · Der Pitch als Text</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
-  <div class="o4-text">
-    <p class="o4-auf">Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.</p>
-    <p>Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen. Am Ende greifen Sie doch wieder selbst ein.</p>
-    <p>Da setzen wir an.</p>
-  </div>
-  <div class="o4-kern dunkel">
-    <p>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</p>
-  </div>
-  <div class="o4-text">
-    <p>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche. Wir strukturieren Ihr Thema, arbeiten es mit Ihren Leuten aus und holen Spezialisten dazu, wo es sie braucht.</p>
-    <p>Von Ihnen brauchen wir dafür meist nur ein kurzes Telefonat zwischendurch. So haben Sie Ihre Themen im Griff.</p>
-    <p class="o4-einladung">Liegt gerade so ein Thema auf Ihrem Tisch? Dann lassen Sie uns kurz sprechen.</p>
-  </div>
-  <div class="o4-kontakt">{kontakt_brief}</div>''', "op"))
+    fuss_pers = "".join(f'<div class="o4-p">{kreis(k, 42)}<div><b>{p["name"]}</b><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
+                        for k, p in b.PERSONEN.items())
+    S.append(("o4", f'''<span class="op-kennung op-kennung--hell">One-Pager · Der Pitch als Text</span>
+  <header class="o4-kopf dunkel">
+    <img class="o4-kopf__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
+    <img class="o4-kopf__logo" src="{LOGO_WEISS}" alt="Müller &amp; Ströbel">
+    <div class="o4-kopf__text"><p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
+      <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1></div>
+  </header>
+  <main class="o4-story">
+    <div class="o4-schritt"><p class="o4-gross">Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.</p></div>
+    <div class="o4-schritt"><p>Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen. Am Ende greifen Sie doch wieder selbst ein.</p></div>
+    <div class="o4-schritt o4-schritt--kern"><p class="o4-kernsatz"><span>Da setzen wir an.</span> Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</p></div>
+    <div class="o4-schritt"><p>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche. Wir strukturieren Ihr Thema, arbeiten es mit Ihren Leuten aus und holen Spezialisten dazu, wo es sie braucht.</p></div>
+    <div class="o4-schritt o4-schritt--ende"><p>Von Ihnen brauchen wir dafür meist nur ein kurzes Telefonat zwischendurch. <b>So haben Sie Ihre Themen im Griff.</b></p></div>
+  </main>
+  <footer class="o4-fuss dunkel">
+    <p class="o4-fuss__satz">Liegt gerade so ein Thema auf Ihrem Tisch? Lassen Sie uns kurz sprechen.</p>
+    <div class="o4-fuss__pers">{fuss_pers}</div>
+  </footer>''', "op"))
 
     # ===================== One-Pager nach dem Elevator Pitch: sechs Bausteine, Reihenfolge wie gesprochen =====================
     P = {p[0]: p[4] for p in b.PITCH}
