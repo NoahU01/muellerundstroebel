@@ -271,3 +271,35 @@
 .sk-stapel { display: grid; gap: 1.2rem; align-content: center; }
 .sk-stapel > .sk::before { top: 50%; }
 .sk--sand { background: #efe9e2; }
+
+/* ===================== Elevator Pitch ===================== */
+.ep-quellen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.6rem; }
+.ep-quelle { padding: 1.3rem 1.4rem; border-radius: 16px; background: var(--weiss); }
+.ep-quelle b { display: block; margin-top: .5rem; font-family: var(--head); font-weight: 500; font-size: 1.1rem; color: var(--navy); }
+.ep-quelle p { margin-top: .5rem; font-size: .93rem; line-height: 1.55; color: var(--ink-2); }
+.ep-kopf { display: grid; grid-template-columns: 11rem 16rem minmax(0, 1fr); gap: 2rem; margin-top: 3rem; padding-bottom: .8rem; border-bottom: 2px solid var(--navy); font-size: .76rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); }
+.ep-zeile { display: grid; grid-template-columns: 11rem 16rem minmax(0, 1fr); gap: 2rem; align-items: start; padding: 1.5rem 0; border-bottom: 1px solid var(--linie); }
+.ep-quelle-k small { display: inline-block; padding: .25rem .7rem; border-radius: 999px; background: var(--sand); font-size: .78rem; font-weight: 600; color: var(--taupe-d); }
+.ep-baustein span { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--navy); color: var(--weiss); font-family: var(--head); }
+.ep-baustein b { display: block; margin-top: .6rem; font-family: var(--head); font-weight: 500; font-size: 1.3rem; color: var(--navy); }
+.ep-baustein em { display: block; margin-top: .2rem; font-style: normal; font-size: .9rem; color: var(--taupe-d); }
+.ep-satz p { font-family: var(--head); font-size: 1.2rem; line-height: 1.45; color: var(--navy); }
+.ep-satz small { display: block; margin-top: .5rem; font-size: .88rem; color: var(--ink-2); }
+.ep-pitch { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 4rem; align-items: start; }
+.ep-text p { font-family: var(--head); font-size: clamp(1.25rem, 1.9vw, 1.55rem); line-height: 1.5; color: var(--weiss); }
+.ep-text p + p { margin-top: .9rem; }
+.ep-mass { margin-top: 1.6rem; font-size: .85rem; color: var(--taupe-h); }
+.ep-pitch aside { padding: 2rem; border-radius: 20px; background: var(--navy-2); }
+.ep-kurz { font-family: var(--head); font-size: 1.3rem; line-height: 1.45; color: var(--weiss); }
+.ep-hinweis { margin-top: 1.2rem; font-size: .9rem; color: rgba(255,255,255,.7); }
+.ep-regeln .sb-karte::after { display: none; }
+.ep-regeln .sb-karte h3 { margin-top: 0; }
+.ep-weg { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 4rem; align-items: start; }
+.ep-weg li { padding: 1rem 0; border-top: 1px solid var(--sand-2); color: var(--ink-2); }
+.ep-weg li b { display: block; font-family: var(--head); font-weight: 500; font-size: 1.15rem; color: var(--navy); }
+@media (max-width: 991px) {
+  .ep-quellen { grid-template-columns: minmax(0, 1fr); }
+  .ep-kopf { display: none; }
+  .ep-zeile { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+  .ep-pitch, .ep-weg { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
+}

@@ -759,8 +759,116 @@ def storyboard():
     html = seite("Müller &amp; Ströbel – Storyboard Business Story 2.0", "Storyboard: von den Antworten zur Landingpage", "bs2-story", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
 
+# ------------------------------------------------------------------ Elevator Pitch
+# Von den Storyboard-Aussagen zum kurzen, gesprochenen Pitch (30 und 10 Sekunden).
+PITCH = [  # (Nr, Baustein, Frage des Gegenübers, Quelle im Storyboard, Satz im Pitch, warum so)
+    ("1", "Aufhänger", "Kennt der meine Lage?", "F2 · Punkt 3 · Punkt 4",
+     "Sie kennen das: Sie müssen alles im Blick haben, und am Ende zählt nur das Ergebnis.",
+     "Startet bei ihm, nicht bei uns. Er nickt, bevor wir über uns reden."),
+    ("2", "Der Schmerz", "Warum klappt es bisher nicht?", "F3 · Punkte 5–6",
+     "Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen. Und am Ende greifen Sie doch wieder selbst ein.",
+     "Ein konkretes Erlebnis aus seinem Alltag statt einer Behauptung über den Markt."),
+    ("3", "Unsere Antwort", "Was macht ihr anders?", "F4 · Punkt 7 · Aussagen 8, 9",
+     "Genau da setzen wir an. Sie geben uns die Verantwortung für ein Thema, etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche. Wir strukturieren es, arbeiten es mit Ihren Leuten aus und liefern das Ergebnis.",
+     "Versprechen plus zwei Beispiele, die er sofort einordnen kann."),
+    ("4", "Sein Aufwand", "Was kostet mich das?", "F6 · Punkt 9",
+     "Von Ihnen brauchen wir dafür meist nur ein kurzes Telefonat zwischendurch.",
+     "Räumt den häufigsten Einwand aus: keine Zeit für noch ein Projekt."),
+    ("5", "Sein Gewinn", "Was habe ich davon?", "F7 · Punkt 11",
+     "So haben Sie Ihre Themen im Griff, statt ihnen hinterherzulaufen.",
+     "Das Gefühl, um das es eigentlich geht, in einem Satz."),
+    ("6", "Nächster Schritt", "Was soll ich jetzt tun?", "F8 · Punkt 12",
+     "Wenn gerade so ein Thema auf Ihrem Tisch liegt, lassen Sie uns kurz sprechen. Schon das erste Gespräch schafft Klarheit, und dafür stellen wir keine Rechnung.",
+     "Niedrige Schwelle, konkreter Anlass, kein Verkaufsgespräch."),
+]
+PITCH_10 = ("Wir übernehmen für Führungskräfte in der Versicherungsbranche komplexe Themen, von der Vorlage für den Aufsichtsrat "
+            "bis zur Strategie für die Bereiche, und liefern das Ergebnis. Sie brauchen dafür nur kurze Abstimmungen.")
+WEG = [  # was im kurzen Pitch bewusst fehlt
+    ("Die sechs Einsatzgebiete", "Zu viel für ein Gespräch. Zwei Beispiele reichen, den Rest liefert das PDF."),
+    ("Das Netzwerk im Detail", "Kommt als Antwort, wenn er fragt: „Und wenn ihr etwas nicht könnt?“"),
+    ("Werdegang und Fakten zu uns", "Steht auf Über uns. Im Gespräch stellt man sich ohnehin mit Namen und Rolle vor."),
+    ("Der Fall aus der eigenen Erfahrung", "Bester Beleg für das Nachgespräch, wenn er nachhakt."),
+    ("Formate (Videokonferenz, Workshop)", "Im Pitch reicht „kurzes Telefonat“. Die Bandbreite erklären wir, wenn es konkret wird."),
+]
+REGELN = [
+    ("Bei ihm anfangen", "Die ersten zwei Sätze handeln nur von seiner Lage. Über uns sprechen wir erst ab Satz drei."),
+    ("Ein Gedanke je Satz", "Kurze Sätze, die man gesprochen versteht. Keine Aufzählungen mit mehr als zwei Beispielen."),
+    ("Sein Wortschatz", "Aufsichtsrat, Bereiche, Team, Telefonat: Dinge aus seinem Kalender, keine Beraterbegriffe."),
+    ("Mit einer Einladung enden", "Ein konkreter, kleiner nächster Schritt. Er muss nichts entscheiden außer einem Gespräch."),
+]
+
+
+def elevator_pitch():
+    quellen = ""
+    for _, _, fragen in STORY:
+        for fnr, frage, punkte in fragen:
+            if fnr in ("1", "5"):
+                continue
+            quellen += (f'<div class="ep-quelle"><span class="sb-f">F{fnr}</span><b>{frage}</b>'
+                        f'<p>{VERDICHTUNG[fnr]}</p></div>')
+    zeilen = "".join(
+        f'''<div class="ep-zeile">
+      <div class="ep-quelle-k"><small>{q}</small></div>
+      <div class="ep-baustein"><span>{n}</span><b>{t}</b><em>„{frage}“</em></div>
+      <div class="ep-satz"><p>{satz}</p><small>{warum}</small></div>
+    </div>''' for n, t, frage, q, satz, warum in PITCH)
+    pitch_text = " ".join(satz for *_, satz, _ in [(p[0], p[1], p[2], p[3], p[4], p[5]) for p in PITCH])
+    woerter = len(pitch_text.split())
+    weg = "".join(f"<li><b>{t}</b>{x}</li>" for t, x in WEG)
+    regeln = "".join(f'<div class="sb-karte"><h3>{t}</h3><p>{x}</p></div>' for t, x in REGELN)
+    absaetze = "".join(f"<p>{p[4]}</p>" for p in PITCH)
+    main = f"""
+<section class="held held--klein"><div class="wrap">
+  <p class="kicker">Elevator Pitch</p>
+  <h1>Von der Landingpage zu 30 Sekunden.</h1>
+  <p class="lead">Die Landingpage ist die lange Fassung unserer Story. Hier verdichten wir sie auf das, was Sie einem Vorstand in einer Kaffeepause sagen: ohne Bild, mit einfachen Worten, aus seiner Sicht. Jeder Satz beantwortet seine stille Frage: Was bringt mir das?</p>
+</div></section>
+
+<section class="sek sek--sand"><div class="wrap">
+  <p class="kicker">Ausgangsmaterial</p>
+  <h2 class="h2">Diese Aussagen haben wir im Storyboard entwickelt.</h2>
+  <p class="lead">Die Verdichtungen je Leserfrage. F1 (für wen) ist im Gespräch durch die Situation geklärt, F5 (Beleg) heben wir für das Nachgespräch auf.</p>
+  <div class="ep-quellen">{quellen}</div>
+</div></section>
+
+<section class="sek"><div class="wrap">
+  <p class="kicker">Zuordnung</p>
+  <h2 class="h2">Sechs Bausteine, sechs Sätze.</h2>
+  <p class="lead">Links die Herkunft im Storyboard, in der Mitte der Baustein mit der Frage, die sich das Gegenüber stellt, rechts der Satz, wie er gesprochen wird.</p>
+  <div class="ep-kopf"><span>Herkunft</span><span>Baustein · seine Frage</span><span>Satz im Pitch · warum so</span></div>
+  <div class="ep-zeilen">{zeilen}</div>
+</div></section>
+
+<section class="sek sek--navy"><div class="wrap ep-pitch">
+  <div>
+    <p class="kicker">Der Pitch · 30 Sekunden</p>
+    <div class="ep-text">{absaetze}</div>
+    <p class="ep-mass">{woerter} Wörter · gesprochen etwa 30 Sekunden</p>
+  </div>
+  <aside>
+    <p class="kicker">Die Kurzfassung · 10 Sekunden</p>
+    <p class="ep-kurz">{PITCH_10}</p>
+    <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die 30-Sekunden-Fassung.</p>
+  </aside>
+</div></section>
+
+<section class="sek"><div class="wrap">
+  <p class="kicker">Aufbau eines guten kurzen Pitches</p>
+  <h2 class="h2">Vier Regeln.</h2>
+  <div class="sb-karten ep-regeln">{regeln}</div>
+</div></section>
+
+<section class="sek sek--sand"><div class="wrap ep-weg">
+  <div><p class="kicker">Bewusst weggelassen</p><h2 class="h2">Was im kurzen Pitch fehlt und wann es kommt.</h2></div>
+  <ul>{weg}</ul>
+</div></section>"""
+    html = seite("Müller &amp; Ströbel – Elevator Pitch (Business Story 2.0)", "Elevator Pitch: von den Storyboard-Aussagen zum kurzen Pitch", "bs2-pitch", "", main)
+    return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
+
+
 if __name__ == "__main__":
     (ZIEL / "business-story-2.html").write_text(startseite(), encoding="utf-8")
     (ZIEL / "business-story-2-ueber-uns.html").write_text(ueber_uns(), encoding="utf-8")
     (ZIEL / "storyboard.html").write_text(storyboard(), encoding="utf-8")
+    (ZIEL / "elevator-pitch.html").write_text(elevator_pitch(), encoding="utf-8")
     print("gebaut: business-story-2.html, business-story-2-ueber-uns.html, storyboard.html")
