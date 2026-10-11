@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 6
+VERSION = 7
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -350,14 +350,15 @@ def storyboard():
         q = f'<q>{zit}</q>' if zit else ""
         return f'<li class="sb-p sb-p--{st}"><i aria-label="{STATUS[st]}"></i><div><small>Punkt {nr}</small><b>{txt}</b>{q}</div></li>'
 
-    bahnen = ""
+    baum = ""
     for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):
-        spalten = ""
+        zeilen = ""
         for fnr, frage, punkte in fragen:
-            spalten += (f'<div class="sb-frage"><span class="sb-f">F{fnr}</span><h3>{frage}</h3>'
-                        f'<ul>{"".join(punkt(*p) for p in punkte)}</ul></div>')
-        bahnen += (f'<article class="sb-bahn"><div class="sb-bahn__kopf"><span>0{i}</span><h3>{abschnitt}</h3><p>{wirkung}</p></div>'
-                   f'{spalten}</article>\n')
+            pk = "".join(punkt(*p) for p in punkte)
+            zeilen += (f'<div class="sb-t-zeile"><ul class="sb-t-punkte">{pk}</ul>'
+                       f'<div class="sb-t-frage"><span class="sb-f">F{fnr}</span><b>{frage}</b></div></div>')
+        baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
+                 f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div></div>\n')
 
     regeln = [("s-eins", "Eine Aussage je Frage", "Acht Fragen, acht Sätze. Mehr kommt nicht auf die erste Ebene."),
               ("s-wort", "Ihr Wortlaut", "Ich kürze und ordne Ihre Antworten. Wo etwas fehlt, frage ich nach."),
@@ -386,7 +387,8 @@ def storyboard():
 <section class="sek sek--sand"><div class="wrap">
   <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div>
     <ul class="sb-legende"><li class="sb-p--da"><i></i>vorhanden</li><li class="sb-p--teil"><i></i>teilweise</li><li class="sb-p--offen"><i></i>offen</li></ul></div>
-  <div class="sb-bahnen">{bahnen}</div>
+  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten<small>12 Punkte</small></span><span><i>2</i>Fragen des Lesers<small>8 Fragen</small></span><span><i>3</i>Landingpage<small>4 Abschnitte</small></span></div>
+  <div class="sb-t">{baum}</div>
 </div></section>
 
 <section class="sek"><div class="wrap">

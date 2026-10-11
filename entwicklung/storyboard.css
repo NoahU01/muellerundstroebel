@@ -112,3 +112,33 @@
   .sb-kreise { position: static; }
   .sb-legende { gap: 1rem; }
 }
+
+/* Zuordnung als Logikbaum: Punkte -> Leserfragen -> Abschnitt der Landingpage */
+.sb-t-kopf { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .85fr) minmax(0, .85fr); gap: 2.4rem; margin-top: 3rem; }
+.sb-t-kopf span { display: flex; align-items: center; gap: .7rem; font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
+.sb-t-kopf i { display: grid; place-items: center; flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--navy); color: var(--weiss); font-family: var(--head); font-style: normal; font-size: .95rem; letter-spacing: 0; }
+.sb-t-kopf small { margin-left: auto; padding: .15rem .6rem; border-radius: 999px; background: var(--weiss); font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: none; color: var(--taupe-d); }
+.sb-t { display: grid; gap: 1.2rem; margin-top: 1.2rem; }
+.sb-t-gruppe { display: grid; grid-template-columns: minmax(0, 2.05fr) minmax(0, .85fr); gap: 2.4rem; padding: 1.4rem; border-radius: 22px; background: rgba(255,255,255,.55); }
+.sb-t-zeilen { display: grid; gap: 1rem; }
+.sb-t-zeile { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .85fr); gap: 2.4rem; align-items: center; }
+.sb-t-punkte { display: grid; gap: .5rem; }
+.sb-t-punkte .sb-p { padding: .85rem 1rem; border-radius: 14px; background: var(--weiss); box-shadow: 0 10px 24px -18px rgba(8,38,56,.4); }
+.sb-t-punkte .sb-p--offen { background: transparent; box-shadow: none; outline: 1.5px dashed var(--taupe-h); outline-offset: -1.5px; }
+.sb-t-frage { position: relative; padding: 1.1rem 1.2rem; border-radius: 14px; background: var(--weiss); border: 2px solid var(--navy); }
+.sb-t-frage b { display: block; margin-top: .5rem; font-family: var(--head); font-weight: 500; font-size: 1.22rem; line-height: 1.25; color: var(--navy); }
+.sb-t-frage::before, .sb-t-abschnitt::before { content: ""; position: absolute; left: -2.4rem; top: 50%; width: 2.4rem; border-top: 2px solid var(--taupe); }
+.sb-t-frage::after, .sb-t-abschnitt::after { content: ""; position: absolute; left: -.5rem; top: calc(50% - .4rem); border: .4rem solid transparent; border-left-color: var(--taupe); border-right: 0; }
+.sb-t-abschnitt { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 1.8rem 1.6rem; border-radius: 18px; background: var(--navy); color: var(--weiss); }
+.sb-t-abschnitt span { font-family: var(--head); font-size: 2.6rem; line-height: 1; color: var(--taupe-h); }
+.sb-t-abschnitt b { margin-top: .7rem; font-family: var(--head); font-weight: 500; font-size: 1.6rem; line-height: 1.15; }
+.sb-t-abschnitt p { margin-top: .6rem; font-size: .9rem; line-height: 1.5; color: rgba(255,255,255,.72); }
+@media (max-width: 991px) {
+  .sb-t-kopf { display: none; }
+  .sb-t-gruppe { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding: 1rem; }
+  .sb-t-abschnitt { order: -1; }
+  .sb-t-zeile { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .sb-t-frage { order: -1; }
+  .sb-t-frage::before, .sb-t-frage::after, .sb-t-abschnitt::before, .sb-t-abschnitt::after { display: none; }
+  .sb-t-punkte { padding-left: 1rem; border-left: 2px solid var(--taupe-h); }
+}
