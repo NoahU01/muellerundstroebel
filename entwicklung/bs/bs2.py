@@ -342,6 +342,11 @@ SKIZZE = [
                ("H1", "Komplexe Situationen entscheidbar machen.", "bisherige Variante"),
                ("Text", "Wir liefern Konzept, Analyse und Entscheidungsvorlage und sorgen für die Umsetzung. Ob die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, oder die Kennzahlen, die steuern sollen.", "wie A, andere Reihenfolge: erst Leistung, dann Beispiele"),
                ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "Punkt 12")]),
+        ("C", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "Punkte 1–2"),
+               ("H1", "Komplexe Situationen strukturieren, entscheiden, umsetzen.", "aus A"),
+               ("Text", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, die Kennzahlen, die steuern sollen: Wir machen Ihr Thema entscheidbar, mit Konzept, Analyse und Entscheidungsvorlage. Und wir sorgen für die Umsetzung, mit wenig Aufwand für Sie.", "Beispiele zuerst (A) · „entscheidbar machen“ (B) · Leistung und Umsetzung (A, B) · wenig Aufwand: Kern Punkt 7"),
+               ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "Punkt 12"),
+               ("Hinweis", "Das Versprechen (Punkt 7) wandert als Überschrift in den Kontakt am Ende.", "Vorschlag")]),
     ]),
     ("sand", [
         ("A", [("H2", "Die Vorlage für den Aufsichtsrat, die Strategie, die in den Bereichen ankommen soll, das Projekt, das seit Monaten hängt. Alles läuft über Ihren Tisch.", "Aussagen 8, 9 · Einsatzgebiet · Punkt 3"),

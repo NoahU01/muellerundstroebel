@@ -246,3 +246,7 @@
 
 .sb-drei { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; width: 100%; }
 .sb-drei i { height: 2.4rem; border-radius: 8px; background: rgba(255,255,255,.12); }
+/* Skizze: beliebig viele Fassungen nebeneinander, je 30rem */
+.sb-flaeche .sb-t-kopf, .sb-flaeche .sb-t-gruppe { grid-template-columns: 26rem 24rem 15rem auto; }
+.sk__vars { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 30rem; }
+.sk-teil--hinweis { background: transparent !important; outline: 1.5px dashed var(--taupe-h); outline-offset: -1.5px; }
