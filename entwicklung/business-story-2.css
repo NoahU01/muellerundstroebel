@@ -441,3 +441,34 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
   .nks, .pks { grid-template-columns: minmax(0, 1fr); }
   .pks { max-width: 26rem; }
 }
+
+/* So arbeiten wir: erzählender Text links, Netzwerk als dunkle Fläche rechts */
+.lp-arbeit { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 4.5rem; align-items: start; }
+.lp-arbeit__text { margin-top: 1.6rem; max-width: 36rem; }
+.lp-arbeit__text p { font-size: 1.12rem; line-height: 1.7; color: var(--ink-2); }
+.lp-arbeit__text p + p { margin-top: 1rem; }
+.lp-arbeit__text b { font-weight: 500; color: var(--navy); }
+.lp-netz { padding: 2.4rem 2.2rem 2.2rem; border-radius: 22px; background: var(--navy); color: var(--weiss); }
+.lp-netz .kicker { color: var(--taupe-h); }
+.lp-netz .kicker::before { background: var(--taupe-h); }
+.lp-netz h3 { font-size: 1.6rem; line-height: 1.2; color: var(--weiss); }
+.lp-netz > p:not(.kicker) { margin-top: .7rem; font-size: .97rem; color: rgba(255,255,255,.75); }
+.lp-netz ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.4rem; margin-top: 1.6rem; }
+.lp-netz li { display: flex; align-items: center; gap: .8rem; padding: .85rem 0; border-top: 1px solid rgba(255,255,255,.14); font-size: .95rem; line-height: 1.3; }
+.lp-netz li .ico { flex: none; width: 1.5rem; height: 1.5rem; color: var(--taupe-h); }
+#arbeitsweise .lp-schritte { margin-top: 3.5rem; }
+@media (max-width: 991px) {
+  .lp-arbeit { grid-template-columns: minmax(0, 1fr); gap: 2.6rem; }
+}
+@media (max-width: 560px) {
+  .lp-netz { padding: 1.8rem 1.4rem; }
+  .lp-netz ul { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 4.1 Ergebnis mit Icon-Szene (Trio, nur Linien) */
+.lp-ergebnis__raster { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 4rem; align-items: center; }
+.szene { width: 100%; max-width: 24rem; height: auto; justify-self: end; opacity: .95; }
+@media (max-width: 991px) {
+  .lp-ergebnis__raster { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .szene { justify-self: start; max-width: 15rem; }
+}

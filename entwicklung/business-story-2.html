@@ -7,7 +7,7 @@
 <meta name="description" content="Entwurf der Startseite: Business Story 2.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=23">
+<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=25">
 </head>
 <body data-variante="bs2">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -134,19 +134,35 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 
 <!-- 3 So arbeiten wir -->
 <section class="sek" id="arbeitsweise"><div class="wrap">
-  <div class="vs-zwei">
-    <div><p class="kicker">So arbeiten wir</p><h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
-      <p class="lead">Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.</p></div>
-    <blockquote class="vs-erfahrung"><small>Aus eigener Erfahrung</small><p>Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.</p></blockquote>
+  <div class="lp-arbeit">
+    <div>
+      <p class="kicker">So arbeiten wir</p>
+      <div class="wahl" data-gruppe="arbeit"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
+      <h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
+      <div class="lp-arbeit__text">
+        <p>Wir bleiben im regelmäßigen, kurzen Austausch. Meist reicht ein Telefonat zwischen zwei Terminen oder auf der Fahrt. Wenn es ein Thema braucht, nehmen wir uns eine längere Videokonferenz, und wenn es sinnvoll ist, einen Workshop.</p>
+        <p>Dazwischen arbeiten wir: Wir sprechen mit Ihren Leuten, erarbeiten selbst und holen Spezialisten dazu, wo es sie braucht. Beim nächsten Austausch steigen wir eine Stufe höher ein.</p>
+        <p><b>So bleibt Ihr Thema präsent, ohne dass Sie Ihren Kalender blockieren müssen.</b></p>
+      </div>
+    </div>
+    <aside class="lp-netz">
+      <p class="kicker">Unser Netzwerk</p>
+      <h3>Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</h3>
+      <p>Sie behalten einen Ansprechpartner. Die Koordination liegt bei uns.</p>
+      <ul><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/></svg>Ehemalige Vorstände</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6.5" r="2.3"/><circle cx="5.5" cy="11" r="2"/><circle cx="18.5" cy="11" r="2"/><path d="M3 20h18M6 20v-3.5h12V20"/></svg>Aufsichtsräte</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16.5V20M7.5 10.5h3l1.5-2 1.5 4 1.5-2h1.5"/></svg>IT- und Prozess-Spezialisten</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5M13.5 5l-3 14"/></svg>Entwickler</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l6 4V6L7 10H4Z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg>Marketingexperten</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.2L15.5 5.5a2 2 0 0 1 2.8 0l.2.2a2 2 0 0 1 0 2.8L8.2 18.8 4 20Z"/><path d="M13.5 7.5l3 3"/></svg>Grafiker</li></ul>
+    </aside>
   </div>
-  <ol class="lp-schritte"><li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></svg></span><h3>Kurzer Austausch</h3><p>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</p></li><li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3"/></svg></span><h3>Wir arbeiten</h3><p>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</p></li><li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></svg></span><h3>Nächster Austausch</h3><p>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</p></li></ol>
+  <ol class="lp-schritte" data-gruppe="arbeit" data-variante="2" hidden><li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></svg></span><h3>Kurzer Austausch</h3><p>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</p></li><li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3"/></svg></span><h3>Wir arbeiten</h3><p>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</p></li><li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></svg></span><h3>Nächster Austausch</h3><p>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</p></li></ol>
 </div></section>
 
 <!-- 4.1 Ergebnis -->
-<section class="sek sek--navy lp-ergebnis"><div class="wrap">
-  <p class="kicker">Ihr Ergebnis</p>
-  <h2 class="h2 lp-gross">Sie haben Ihre Themen im Griff.</h2>
-  <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+<section class="sek sek--navy lp-ergebnis"><div class="wrap lp-ergebnis__raster">
+  <div>
+    <p class="kicker">Ihr Ergebnis</p>
+    <h2 class="h2 lp-gross">Sie haben Ihre Themen im Griff.</h2>
+    <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+  </div>
+  <svg class="szene" viewBox="0 0 440 400" role="img" aria-label="Zielbild, Entscheidung, Fokus"><g transform="translate(40 104) scale(8.1667)" fill="none" stroke="#ffffff" stroke-width="0.637" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></g><g transform="translate(316 104) scale(3.5000)" fill="none" stroke="#cbbcae" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" /></g><g transform="translate(316 216) scale(3.5000)" fill="none" stroke="#ffffff" stroke-width="1.486" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /></g></svg>
 </div></section>
 
 <!-- 4.2 Kontakt -->

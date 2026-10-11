@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 23
+VERSION = 25
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -131,6 +131,19 @@ def platz(punkt, titel, hinweis, status="offen", klein=False):
             f'<b>{titel}</b><p>{hinweis}</p></div>')
 
 
+# Lucide Icons (https://lucide.dev, ISC-Lizenz) – Icon-Szene „Trio“ nach dem System der empiria-Kopfbilder:
+# eine Familie, gleiche Strichstärke, nur Linien, genau ein Icon in Akzentfarbe.
+LUCIDE = {'compass': '<circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />', 'circle-check': '<circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" />', 'target': '<circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" />'}
+
+
+def trio_szene(kern, akzent, neben, farbe="#ffffff", akzentfarbe="#cbbcae", strich=5.2):
+    def icon(n, x, y, g, f):
+        return (f'<g transform="translate({x} {y}) scale({g/24:.4f})" fill="none" stroke="{f}" stroke-width="{strich*24/g:.3f}" '
+                f'stroke-linecap="round" stroke-linejoin="round">{LUCIDE[n]}</g>')
+    return ('<svg class="szene" viewBox="0 0 440 400" role="img" aria-label="Zielbild, Entscheidung, Fokus">'
+            + icon(kern, 40, 104, 196, farbe) + icon(akzent, 316, 104, 84, akzentfarbe) + icon(neben, 316, 216, 84, farbe) + '</svg>')
+
+
 def startseite():
     """Startseite nach Storyboard: Kopf C · Ihre Lage C · So arbeiten wir Vis. 2 · 4.1 Ergebnis C · 4.2 Kontakt C."""
     duo = "".join(f'<figure><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p["name"]}"></div><figcaption><b>{p["name"]}</b>{p["kurz"]}</figcaption></figure>'
@@ -168,6 +181,15 @@ def startseite():
         (ICO_GESPRAECH, "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
         (ICO_ARBEIT, "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
         (ICO_KREIS, "Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")])
+    netz_ico = [
+        ("Ehemalige Vorstände", '<path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/>'),
+        ("Aufsichtsräte", '<circle cx="12" cy="6.5" r="2.3"/><circle cx="5.5" cy="11" r="2"/><circle cx="18.5" cy="11" r="2"/><path d="M3 20h18M6 20v-3.5h12V20"/>'),
+        ("IT- und Prozess-Spezialisten", '<rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16.5V20M7.5 10.5h3l1.5-2 1.5 4 1.5-2h1.5"/>'),
+        ("Entwickler", '<path d="M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5M13.5 5l-3 14"/>'),
+        ("Marketingexperten", '<path d="M4 10v4h3l6 4V6L7 10H4Z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/>'),
+        ("Grafiker", '<path d="M4 20l1.2-4.2L15.5 5.5a2 2 0 0 1 2.8 0l.2.2a2 2 0 0 1 0 2.8L8.2 18.8 4 20Z"/><path d="M13.5 7.5l3 3"/>'),
+    ]
+    netz = "".join(f'<li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">{p}</svg>{n}</li>' for n, p in netz_ico)
     kontakte = "".join(f'''<article class="person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div><div>
       <h3>{p['name']}</h3><p class="person__themen">{p['rolle']}</p>
       <div class="wege"><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="mailto:{p['mail']}">{p['mail']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></div>
@@ -206,19 +228,35 @@ def startseite():
 
 <!-- 3 So arbeiten wir -->
 <section class="sek" id="arbeitsweise"><div class="wrap">
-  <div class="vs-zwei">
-    <div><p class="kicker">So arbeiten wir</p><h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
-      <p class="lead">Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.</p></div>
-    <blockquote class="vs-erfahrung"><small>Aus eigener Erfahrung</small><p>Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.</p></blockquote>
+  <div class="lp-arbeit">
+    <div>
+      <p class="kicker">So arbeiten wir</p>
+      <div class="wahl" data-gruppe="arbeit"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
+      <h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
+      <div class="lp-arbeit__text">
+        <p>Wir bleiben im regelmäßigen, kurzen Austausch. Meist reicht ein Telefonat zwischen zwei Terminen oder auf der Fahrt. Wenn es ein Thema braucht, nehmen wir uns eine längere Videokonferenz, und wenn es sinnvoll ist, einen Workshop.</p>
+        <p>Dazwischen arbeiten wir: Wir sprechen mit Ihren Leuten, erarbeiten selbst und holen Spezialisten dazu, wo es sie braucht. Beim nächsten Austausch steigen wir eine Stufe höher ein.</p>
+        <p><b>So bleibt Ihr Thema präsent, ohne dass Sie Ihren Kalender blockieren müssen.</b></p>
+      </div>
+    </div>
+    <aside class="lp-netz">
+      <p class="kicker">Unser Netzwerk</p>
+      <h3>Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</h3>
+      <p>Sie behalten einen Ansprechpartner. Die Koordination liegt bei uns.</p>
+      <ul>{netz}</ul>
+    </aside>
   </div>
-  <ol class="lp-schritte">{schritte}</ol>
+  <ol class="lp-schritte" data-gruppe="arbeit" data-variante="2" hidden>{schritte}</ol>
 </div></section>
 
 <!-- 4.1 Ergebnis -->
-<section class="sek sek--navy lp-ergebnis"><div class="wrap">
-  <p class="kicker">Ihr Ergebnis</p>
-  <h2 class="h2 lp-gross">Sie haben Ihre Themen im Griff.</h2>
-  <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+<section class="sek sek--navy lp-ergebnis"><div class="wrap lp-ergebnis__raster">
+  <div>
+    <p class="kicker">Ihr Ergebnis</p>
+    <h2 class="h2 lp-gross">Sie haben Ihre Themen im Griff.</h2>
+    <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+  </div>
+  {trio_szene("compass", "circle-check", "target")}
 </div></section>
 
 <!-- 4.2 Kontakt -->
