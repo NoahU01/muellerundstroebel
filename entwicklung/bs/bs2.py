@@ -268,7 +268,7 @@ STORY = [
         ("7", "Was habe ich am Ende davon?", [
             ("11", "Was am Ende anders ist, konkret", "teil", "Entscheiden und steuern statt Mangel verwalten")]),
         ("8", "Was ist der nächste Schritt?", [
-            ("12", "Was im ersten Anruf passiert", "offen", "")]),
+            ("12", "Was im ersten Anruf passiert", "teil", "Sie erzählen uns, was ansteht. Wir stellen Fragen, sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen können, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung. Schon das erste Gespräch schafft Klarheit.")]),
     ]),
 ]
 # Hintergrund je Punkt: Aussagen, die zum Kasten geführt haben (aufklappbar im Storyboard)
@@ -305,6 +305,11 @@ HINTERGRUND = {
     "10": ["„Zwischen diesen Gesprächen arbeiten wir, an mehreren Ebenen gleichzeitig.“", "„Wir entwickeln Ideen, Optionen und Entwürfe, professionell aufbereitet.“",
            "„Beim nächsten Gespräch steigen wir eine Stufe höher ein, und du kannst entscheiden.“", "„Wir sind Referent, Analyseabteilung und Projektleitung in einem.“",
            "Netzwerk: ehemalige Vorstände und Aufsichtsräte, IT- und Prozess-Spezialisten, Entwickler, Marketingexperten, Grafiker."],
+    "12": ["„Wir wollen mit den Personen sprechen. Sprechen wir über ihr Thema. Erzählen sie uns, was ansteht.“",
+           "„Wir sagen ihnen offen, ob und wie wir es gemeinsam mit ihnen umsetzen können.“",
+           "„Wir liefern direkt unseren Input und unsere Meinungen zu dem Thema. Wir halten da nichts zurück.“",
+           "„Schon das erste Gespräch wird Klarheit schaffen, und da stellen wir auch gar keine Rechnung. Wir pitchen auch nichts.“",
+           "„Unser Kunde kann direkt über seine Situation sprechen. Wir verstehen ihn. Wir stellen Fragen. Wir geben unsere Meinung ganz offen. Das ist schon allein ein Mehrwert.“"],
     "11": ["„Du verwaltest keinen Mangel mehr.“", "„Du bekommst Themen so aufbereitet, dass du damit arbeiten kannst, du entscheidest und steuerst, und die Ergebnisse kommen.“",
            "Management macht wieder Spaß: permanent Themen zugeliefert, über die man entscheiden kann.", "„Einmal mit Profis arbeiten.“"],
 }
