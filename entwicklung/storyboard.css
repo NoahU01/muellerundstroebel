@@ -250,3 +250,5 @@
 .sb-flaeche .sb-t-kopf, .sb-flaeche .sb-t-gruppe { grid-template-columns: 26rem 24rem 15rem auto; }
 .sk__vars { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 30rem; }
 .sk-teil--hinweis { background: transparent !important; outline: 1.5px dashed var(--taupe-h); outline-offset: -1.5px; }
+.sk-teil--aufklappen { margin-left: 1.4rem; background: transparent !important; outline: 1.5px dashed var(--taupe-h); outline-offset: -1.5px; }
+.sk-teil--aufklappen em::before { content: "+ "; }
