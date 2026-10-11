@@ -472,3 +472,20 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
   .lp-ergebnis__raster { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .szene { justify-self: start; max-width: 15rem; }
 }
+
+/* Kontakt: Personen frei nebeneinander, ohne Kästen, zentriert (wie bisherige Kontaktsektion) */
+.lp-kontakt__personen { grid-template-columns: 1fr 1fr; gap: 2rem; }
+.kp { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.kp .kreis { width: 11rem; border-width: 6px; }
+.kp h3 { margin-top: 1.4rem; font-size: 1.55rem; }
+.kp__themen { margin-top: .3rem; font-size: .95rem; color: var(--taupe-d); }
+.kp__wege { display: grid; gap: .35rem; margin-top: 1.3rem; }
+.kp__wege a { text-decoration: none; font-size: .98rem; color: var(--ink); overflow-wrap: anywhere; }
+.kp__wege a:hover { color: var(--blau); }
+@media (max-width: 560px) {
+  .lp-kontakt__personen { grid-template-columns: minmax(0, 1fr); gap: 2.6rem; }
+}
+.lp-kontakt__raster { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 3rem; }
+.kp__themen, .kp__wege a { white-space: nowrap; }
+.kp__wege a { font-size: .95rem; }
+@media (max-width: 1180px) { .kp__themen, .kp__wege a { white-space: normal; } }

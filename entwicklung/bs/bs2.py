@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 25
+VERSION = 26
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -190,10 +190,10 @@ def startseite():
         ("Grafiker", '<path d="M4 20l1.2-4.2L15.5 5.5a2 2 0 0 1 2.8 0l.2.2a2 2 0 0 1 0 2.8L8.2 18.8 4 20Z"/><path d="M13.5 7.5l3 3"/>'),
     ]
     netz = "".join(f'<li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">{p}</svg>{n}</li>' for n, p in netz_ico)
-    kontakte = "".join(f'''<article class="person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div><div>
-      <h3>{p['name']}</h3><p class="person__themen">{p['rolle']}</p>
-      <div class="wege"><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="mailto:{p['mail']}">{p['mail']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></div>
-    </div></article>''' for k, p in PERSONEN.items())
+    kontakte = "".join(f'''<article class="kp"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div>
+      <h3>{p['name']}</h3><p class="kp__themen">{p['rolle']}</p>
+      <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p>
+    </article>''' for k, p in PERSONEN.items())
     main = f"""
 <div class="entwurf-hinweis"><div class="wrap">Entwurf nach dem <a href="/entwicklung/storyboard.html">Storyboard</a>: Kopf C · Ihre Lage C · So arbeiten wir Visualisierung 2 · Ergebnis C · Kontakt C</div></div>
 
