@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 16
+VERSION = 17
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -144,7 +144,7 @@ def startseite():
                   for k, p in PERSONEN.items())
     ablauf = [("l-gespraech", "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
               ("l-arbeit", "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
-              ("l-entscheid", "Sie entscheiden", "Über Optionen, Entwürfe und Vorlagen, professionell aufbereitet.")]
+              ("l-kreis", "Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")]
     schritte = "".join(f'''<li class="lp-schritt"><span class="lp-schritt__ico"><svg class="ico"><use href="#{ic}"/></svg></span>
         <h3>{t}</h3><p>{x}</p></li>''' for ic, t, x in ablauf)
     wege = "".join(f'''<div class="lp-weg"><span class="lp-weg__nr">Weg {i}</span>
@@ -271,7 +271,7 @@ STORY = [
     ]),
     ("Ergebnis + Kontakt", "Der Leser weiß, was er davon hat, und greift zum Telefon.", [
         ("7", "Was habe ich am Ende davon?", [
-            ("11", "Was am Ende anders ist, konkret", "teil", "Entscheiden und steuern statt Mangel verwalten")]),
+            ("11", "Was am Ende anders ist, konkret", "teil", "Sie haben Ihre Themen im Griff und konzentrieren sich auf die richtigen Dinge. Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Darüber entscheiden Sie.")]),
         ("8", "Was ist der nächste Schritt?", [
             ("12", "Was im ersten Anruf passiert", "teil", "Sie erzählen uns, was ansteht. Wir stellen Fragen, sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen können, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung. Schon das erste Gespräch schafft Klarheit.")]),
     ]),
@@ -317,8 +317,10 @@ HINTERGRUND = {
            "„Wir liefern direkt unseren Input und unsere Meinungen zu dem Thema. Wir halten da nichts zurück.“",
            "„Schon das erste Gespräch wird Klarheit schaffen, und da stellen wir auch gar keine Rechnung. Wir pitchen auch nichts.“",
            "„Unser Kunde kann direkt über seine Situation sprechen. Wir verstehen ihn. Wir stellen Fragen. Wir geben unsere Meinung ganz offen. Das ist schon allein ein Mehrwert.“"],
-    "11": ["„Du verwaltest keinen Mangel mehr.“", "„Du bekommst Themen so aufbereitet, dass du damit arbeiten kannst, du entscheidest und steuerst, und die Ergebnisse kommen.“",
-           "Management macht wieder Spaß: permanent Themen zugeliefert, über die man entscheiden kann.", "„Einmal mit Profis arbeiten.“"],
+    "11": ["„Es geht über Entscheiden und Managen, Themen im Griff haben und sich auf die richtigen Dinge fokussieren.“ (11.10.)",
+           "„Das Tolle ist, dass wir im Gespräch immer wieder das Zukunftsbild im Blick haben und Klarheit schaffen, wo es hingehen soll. Und darüber entschieden wird.“",
+           "Es darf nicht nach Unterlagen und großen Dokumenten klingen. Kein Wort „Vorlagen“ an dieser Stelle.",
+           "„Du verwaltest keinen Mangel mehr.“ (Grundstory)"],
 }
 # Verdichtung: der Satz für den Leser je Frage (Entwurf, gestrichelt bis zur Freigabe)
 VERDICHTUNG = {
@@ -327,8 +329,8 @@ VERDICHTUNG = {
     "3": "Ob eigenes Team oder Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen. Sie greifen doch wieder selbst ein. Und nach dem großen Workshop tut sich wochenlang nichts.",
     "4": "Wir verstehen Sie, strukturieren das Thema, sorgen für die Abarbeitung und liefern das Ergebnis. Und belasten Sie dabei nur minimal.",
     "5": "Aus eigener Erfahrung: Wir haben eine Führungskraft genau so begleitet. Mitgedacht, die Bearbeitung übernommen und dort selbst angepackt, wo wir die Fachkompetenz hatten.",
-    "6": "Wir bleiben regelmäßig und kurz im Austausch, oft reicht ein Telefonat. So bleibt Ihr Thema präsent, und Sie haben es im Griff. Dazwischen arbeiten wir und kommen mit Optionen und Entwürfen zurück, über die Sie entscheiden.",
-    "7": "Sie verwalten keinen Mangel mehr. Sie entscheiden und steuern, und die Ergebnisse kommen.",
+    "6": "Die Zusammenarbeit passt in Ihren Kalender: regelmäßig und kurz im Austausch, oft reicht ein Telefonat. Die Arbeit dazwischen machen wir.",
+    "7": "Sie haben Ihre Themen im Griff und konzentrieren sich auf die richtigen Dinge. Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Darüber entscheiden Sie.",
     "8": "Rufen Sie an. Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.",
 }
 ICO_GESPRAECH = '<svg class="ico" viewBox="0 0 24 24"><path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 13V7a1.5 1.5 0 0 1 1.5-1.5Z"/><path d="M16 9h4.5A1.5 1.5 0 0 1 22 10.5v6a1.5 1.5 0 0 1-1.5 1.5h-1v3l-3.5-3h-4"/></svg>'
@@ -338,12 +340,12 @@ ICO_KREIS = '<svg class="ico" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34
 SCHRITTE_HTML = ('<ol class="lp-schritte">'
     f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_GESPRAECH}</span><h3>Kurzer Austausch</h3><p>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</p></li>'
     f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_ARBEIT}</span><h3>Wir arbeiten</h3><p>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</p></li>'
-    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_ENTSCHEID}</span><h3>Sie entscheiden</h3><p>Über Optionen, Entwürfe und Vorlagen, professionell aufbereitet.</p></li></ol>')
-VORSCHAU_3_1 = ('<p class="kicker">So arbeiten wir</p><h2 class="h2">Wir arbeiten. Sie entscheiden.</h2>'
-    '<p class="lead">Wir bleiben im regelmäßigen, kurzen Austausch, oft reicht ein Telefonat. Danach liegen Optionen, Entwürfe und Entscheidungsvorlagen auf Ihrem Tisch, professionell aufbereitet.</p>'
+    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_KREIS}</span><h3>Nächster Austausch</h3><p>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</p></li></ol>')
+VORSCHAU_3_1 = ('<p class="kicker">So arbeiten wir</p><h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>'
+    '<p class="lead">Wir bleiben im regelmäßigen, kurzen Austausch, oft reicht ein Telefonat. Die Arbeit dazwischen machen wir.</p>'
     + SCHRITTE_HTML +
     '<div class="vs-netz"><b>Wenn es Spezialwissen braucht, kommt es aus unserem Netzwerk</b><div><span>Ehemalige Vorstände</span><span>Aufsichtsräte</span><span>IT-Spezialisten</span><span>Prozess-Spezialisten</span><span>Entwickler</span><span>Grafiker</span></div></div>')
-VORSCHAU_3_2 = ('<div class="vs-zwei"><div><p class="kicker">So arbeiten wir</p><h2 class="h2">Wir arbeiten. Sie entscheiden.</h2>'
+VORSCHAU_3_2 = ('<div class="vs-zwei"><div><p class="kicker">So arbeiten wir</p><h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>'
     '<p class="lead">Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.</p></div>'
     '<blockquote class="vs-erfahrung"><small>Aus eigener Erfahrung</small><p>Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.</p></blockquote></div>'
     + SCHRITTE_HTML +
@@ -396,8 +398,8 @@ SKIZZE = [
                ("Text", "Wir sprechen mit Ihren Leuten, arbeiten selbst mit und holen Spezialisten aus unserem Netzwerk dazu. Mit Ihnen bleiben wir im regelmäßigen, kurzen Austausch: So bleibt das Thema präsent, und Sie haben es im Griff.", "Ausarbeitung 3.2, 3.3 · Punkt 9"),
                ("Element", "Drei Schritt-Karten: Kurzer Austausch → Wir arbeiten → Sie entscheiden", "Punkte 9, 10"),
                ("Kasten", "Aus eigener Erfahrung: Ein Geschäftsführer konnte mit uns über jedes Thema sprechen. Wir haben die Projekte übernommen, mit den Leuten gesprochen und selbst angepackt.", "Punkt 8, Fall HÖV, ohne Namen")]),
-        ("Visualisierung 1", [("Vorschau", VORSCHAU_3_1, "Überschrift aus A · Text A · drei Schritt-Karten · Netzwerk als Leiste")]),
-        ("Visualisierung 2", [("Vorschau", VORSCHAU_3_2, "Überschrift aus A · Text B · Erfahrung als Kasten rechts · drei Schritt-Karten · Takt-Zeile")]),
+        ("Visualisierung 1", [("Vorschau", VORSCHAU_3_1, "Überschrift neu: Einfachheit der Zusammenarbeit · drei Schritt-Karten · Netzwerk als Leiste")]),
+        ("Visualisierung 2", [("Vorschau", VORSCHAU_3_2, "Überschrift neu: Einfachheit der Zusammenarbeit · Erfahrung als Kasten rechts · drei Schritt-Karten · Takt-Zeile")]),
     ]),
     ("navy", [
         ("A", [("H2", "Sie verwalten keinen Mangel mehr. Sie entscheiden über fertige Vorlagen.", "Punkt 11"),
@@ -407,6 +409,12 @@ SKIZZE = [
         ("B", [("H2", "„Einmal mit Profis arbeiten.“", "Punkt 11, Aussage 27"),
                ("Text", "Sie entscheiden über Vorlagen, Zielbild und Fahrplan und sehen, wie es vorangeht.", "Punkt 11 · Zielbild: Grundstory"),
                ("Kasten", "Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "Punkt 12"),
+               ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
+        ("C", [("H2", "Sie haben Ihre Themen im Griff.", "Punkt 11"),
+               ("Text", "Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.", "Punkt 11, Daniel 11.10."),
+               ("Element", "Trennlinie, dann der Kontakt", "Gestaltung"),
+               ("H3", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Punkt 7 · zum Schluss"),
+               ("Kasten", "Das erste Gespräch: Sie erzählen, was ansteht. Wir sagen offen, ob und wie wir es umsetzen, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.", "Punkt 12"),
                ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
     ]),
 ]

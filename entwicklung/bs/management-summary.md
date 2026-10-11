@@ -13,3 +13,9 @@ Das ist, was wir in Summe bringen: Wir verstehen das Gegenüber. Wir strukturier
 | Grenze 1: verstehen, strukturieren, priorisieren – kein Sparringspartner auf Augenhöhe | Wir verstehen Sie und strukturieren das Thema. |
 | Grenze 2: abarbeiten, liefern – eigenes Team oder Externe, Ergebnis kommt nicht wie gebraucht, selbst eingreifen | Wir sorgen für die Abarbeitung und liefern das Ergebnis. |
 | Verstärker: großer Workshop, danach wochenlang Stillstand | Wir belasten Sie nur minimal. (Kern) |
+
+## Sprachregeln (Daniel, 11.10.2026)
+- Keine Superlative („perfekt“ o. Ä.).
+- Nicht „fertige Vorlagen“, kein Bild von Unterlagen und großen Dokumenten. Stattdessen: Im Gespräch das Zielbild im Blick behalten, Klarheit schaffen, wohin es geht – darüber wird entschieden.
+- „Einmal mit Profis arbeiten“ wird nicht verwendet.
+- Abschnitt 3 = Einfachheit der Zusammenarbeit; Entscheiden und Steuern gehört in Abschnitt 4.
