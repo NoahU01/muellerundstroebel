@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 12
+VERSION = 13
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -247,7 +247,7 @@ STORY = [
             ("1", "Welche Rollen genau", "da", "Vorstände und Geschäftsführer, Hauptabteilungs- und Bereichsleiter."),
             ("2", "Welche Unternehmen genau", "da", "Versicherungsbranche: Versicherer und Rückversicherer vom Konzern bis zum Versicherungsverein, Makler und Rückversicherungsmakler. Auf der Seite steht nur das Wort Versicherungsbranche.")]),
         ("4", "Was ist eure Antwort?", [
-            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Wir verstehen das Gegenüber. Wir strukturieren das Thema. Wir sorgen für die perfekte Abarbeitung und liefern das perfekte Ergebnis. Und wir belasten die Führungskraft dabei nur minimal.")]),
+            ("7", "Das Versprechen im Wortlaut", "zuletzt", "Wir verstehen das Gegenüber. Wir strukturieren das Thema. Wir sorgen für die Abarbeitung und liefern das Ergebnis. Und wir belasten die Führungskraft dabei nur minimal.")]),
     ]),
     ("Ihre Lage", "Der Leser nickt: Genau so ist es bei mir, und darum hat es bisher nicht geklappt.", [
         ("2", "Verstehen die mein Problem?", [
@@ -292,7 +292,7 @@ HINTERGRUND = {
           "Workshop: „Der Workshop alleine hilft nichts, weil danach tut sich wieder ewig nichts, bis man dann irgendwann wieder im Kalender Zeit findet für den Riesen-Workshop.“"],
     "7": ["„Wir verstehen das Gegenüber.“",
           "„Wir strukturieren das Thema.“",
-          "„Wir sorgen aber auch für die perfekte Abarbeitung und die Lieferung des perfekten Ergebnisses.“",
+          "Sinngemäß: „Wir sorgen aber auch für die Abarbeitung und liefern das Ergebnis.“",
           "„Wir belasten die Führungskraft nur minimal, das ist der Kern.“",
           "Wird als Management Summary zum Schluss festgelegt."],
     "8": ["Euer Fall beim HÖV: Tobias als Geschäftsführer, Daniel hat ihn begleitet.",
@@ -313,6 +313,36 @@ HINTERGRUND = {
     "11": ["„Du verwaltest keinen Mangel mehr.“", "„Du bekommst Themen so aufbereitet, dass du damit arbeiten kannst, du entscheidest und steuerst, und die Ergebnisse kommen.“",
            "Management macht wieder Spaß: permanent Themen zugeliefert, über die man entscheiden kann.", "„Einmal mit Profis arbeiten.“"],
 }
+# Verdichtung: der Satz für den Leser je Frage (Entwurf, gestrichelt bis zur Freigabe)
+VERDICHTUNG = {
+    "1": "Für Führungskräfte in der Versicherungsbranche.",
+    "2": "Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.",
+    "3": "Ob eigenes Team oder Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen. Sie greifen doch wieder selbst ein. Und nach dem großen Workshop tut sich wochenlang nichts.",
+    "4": "Wir verstehen Sie, strukturieren das Thema, sorgen für die Abarbeitung und liefern das Ergebnis. Und belasten Sie dabei nur minimal.",
+    "5": "Aus eigener Erfahrung: Wir haben eine Führungskraft genau so begleitet. Mitgedacht, die Bearbeitung übernommen und dort selbst angepackt, wo wir die Fachkompetenz hatten.",
+    "6": "Wir brauchen Sie nur kurz: eine halbe Stunde am Telefon. Dazwischen arbeiten wir und kommen mit Ideen, Optionen und Entwürfen zurück, über die Sie entscheiden.",
+    "7": "Sie verwalten keinen Mangel mehr. Sie entscheiden und steuern, und die Ergebnisse kommen.",
+    "8": "Rufen Sie an. Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.",
+}
+# Skizze der Landingpage je Abschnitt: (Art, Inhalt, Quelle)
+SKIZZE = [
+    ("weiss", [("Zeile", "Für Führungskräfte in der Versicherungsbranche", "F1"),
+               ("H1", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "F4 · zum Schluss"),
+               ("Text", "Wir verstehen Sie, strukturieren das Thema, sorgen für die Abarbeitung und liefern das Ergebnis. Und belasten Sie dabei nur minimal.", "F4"),
+               ("Element", "Tobias und Daniel im Kreis · Knopf „Direkt anrufen“", "F8")]),
+    ("sand", [("H2", "Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.", "F2"),
+              ("Element", "Drei Karten „Die üblichen Wege“: Ihr Team · Externe · Der große Workshop", "F3"),
+              ("Karte", "Ihr Team / Externe: Das Ergebnis kommt nicht so zurück, wie Sie es brauchen. Sie greifen wieder selbst ein.", "F3"),
+              ("Karte", "Der große Workshop: Danach tut sich wochenlang nichts.", "F3")]),
+    ("weiss", [("H2", "Wir brauchen Sie nur kurz.", "F6"),
+               ("Text", "Eine halbe Stunde am Telefon, gern aus dem Auto. Dazwischen arbeiten wir.", "F6"),
+               ("Element", "Treppe aus vier Gesprächen: Ideen → Optionen → Entwürfe → Ergebnis", "F6"),
+               ("Element", "Kasten „Aus eigener Erfahrung“: der Fall, ohne Namen erzählt", "F5")]),
+    ("navy", [("H2", "Sie entscheiden und steuern. Die Ergebnisse kommen.", "F7"),
+              ("Text", "Sie verwalten keinen Mangel mehr.", "F7"),
+              ("Element", "Kasten: Schon das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "F8"),
+              ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "F8")]),
+]
 STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen", "zuletzt": "zum Schluss"}
 SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
     ("1", "Kopf", [("Zeile über der Überschrift", "F1 · Punkte 1–2"), ("Überschrift", "F4 · Punkt 7"),
@@ -353,9 +383,13 @@ def storyboard():
         for fnr, frage, punkte in fragen:
             pk = "".join(punkt(*p) for p in punkte)
             zeilen += (f'<div class="sb-t-zeile"><ul class="sb-t-punkte">{pk}</ul>'
-                       f'<div class="sb-t-frage"><span class="sb-f">F{fnr}</span><b>{frage}</b></div></div>')
+                       f'<div class="sb-t-frage"><span class="sb-f">F{fnr}</span><b>{frage}</b>'
+                       f'<p class="sb-verdichtung"><small>Verdichtung</small>{VERDICHTUNG[fnr]}</p></div></div>')
+        art, teile = SKIZZE[i - 1]
+        skizze = "".join(f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>' for t, x, q in teile)
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
-                 f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div></div>\n')
+                 f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div>'
+                 f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div>{skizze}</div></div>\n')
 
     fragen_alle = sorted((int(f), t) for _, _, fr in STORY for f, t, _ in fr)
     punkte_alle = sorted((int(p[0]), p[1]) for _, _, fr in STORY for _, _, ps in fr for p in ps)
@@ -397,8 +431,13 @@ def storyboard():
 
 <section class="sek sek--sand"><div class="wrap">
   <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div></div>
-  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten<small>12 Punkte</small></span><span><i>2</i>Fragen des Lesers<small>8 Fragen</small></span><span><i>3</i>Landingpage<small>4 Abschnitte</small></span></div>
+  <p class="sb-schieben">Arbeitsfläche: mit dem Trackpad nach rechts schieben bis zur Skizze der Landingpage →</p>
+</div>
+<div class="sb-flaeche"><div class="sb-flaeche__innen">
+  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten<small>12 Punkte</small></span><span><i>2</i>Fragen des Lesers<small>8 Fragen · Verdichtung</small></span><span><i>3</i>Abschnitt<small>4</small></span><span><i>4</i>Landingpage-Skizze<small>Headline · Text · Elemente</small></span></div>
   <div class="sb-t">{baum}</div>
+</div></div>
+<div class="wrap">
 </div></section>
 
 <section class="sek"><div class="wrap">

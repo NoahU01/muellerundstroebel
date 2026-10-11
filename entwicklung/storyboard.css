@@ -195,3 +195,43 @@
 .sb-mehr ul { display: grid; gap: .35rem; margin-top: .6rem; padding: .8rem .9rem .8rem 1.9rem !important; border-radius: 10px; background: var(--sand); list-style: disc; }
 .sb-mehr li { font-size: .85rem; line-height: 1.45; color: var(--ink-2); }
 .sb-mehr li::marker { color: var(--taupe); }
+
+/* ===== Arbeitsfläche (horizontal verschiebbar): Punkte → Fragen + Verdichtung → Abschnitt → Skizze ===== */
+.sb-schieben { margin-top: 1.4rem; font-size: .88rem; font-weight: 600; color: var(--blau); }
+.sb-flaeche { overflow-x: auto; overscroll-behavior-x: contain; padding: 1.2rem 0 2.5rem; scrollbar-width: thin; }
+.sb-flaeche__innen { width: max-content; padding: 0 max(2rem, calc((100vw - 74rem) / 2 + 2rem)); }
+.sb-flaeche .sb-t-kopf, .sb-flaeche .sb-t-gruppe { grid-template-columns: 26rem 24rem 15rem 34rem; gap: 2.4rem; }
+.sb-flaeche .sb-t-kopf { display: grid; margin-top: 0; }
+.sb-flaeche .sb-t-gruppe { display: grid; align-items: stretch; }
+.sb-flaeche .sb-t-zeilen { grid-column: 1 / 3; }
+.sb-flaeche .sb-t-zeile { grid-template-columns: 26rem 24rem; }
+.sb-flaeche .sb-t-abschnitt { grid-column: 3; }
+.sb-verdichtung { margin-top: .9rem; padding: .7rem .8rem; border-radius: 10px; border: 1.5px dashed var(--taupe-h); font-size: .9rem; line-height: 1.45; color: var(--ink); }
+.sb-verdichtung small { display: block; margin-bottom: .2rem; font-size: .66rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
+
+/* Skizze der Landingpage: einfache Darstellung, je Abschnitt eine Fläche */
+.sk { position: relative; display: grid; align-content: start; gap: .6rem; padding: 1.4rem; border-radius: 18px; border: 1px solid var(--linie); background: var(--weiss); }
+.sk::before { content: ""; position: absolute; left: -2.4rem; top: 50%; width: 2.4rem; border-top: 2px solid var(--taupe); }
+.sk--sand { background: #efe9e2; }
+.sk--navy { background: var(--navy); border-color: var(--navy); }
+.sk__kopf { font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-d); }
+.sk--navy .sk__kopf { color: var(--taupe-h); }
+.sk-teil { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr) auto; gap: .7rem; align-items: baseline; padding: .55rem .7rem; border-radius: 10px; background: rgba(255,255,255,.7); }
+.sk--weiss .sk-teil { background: var(--sand); }
+.sk--navy .sk-teil { background: rgba(255,255,255,.07); }
+.sk-teil em { font-style: normal; font-size: .66rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--taupe-d); }
+.sk-teil p { font-size: .88rem; line-height: 1.4; color: var(--ink); }
+.sk-teil span { font-size: .66rem; font-weight: 600; color: var(--taupe-d); white-space: nowrap; }
+.sk-teil--h1 p { font-family: var(--head); font-size: 1.3rem; line-height: 1.2; color: var(--navy); }
+.sk-teil--h2 p { font-family: var(--head); font-size: 1.15rem; line-height: 1.25; color: var(--navy); }
+.sk--navy .sk-teil p, .sk--navy .sk-teil--h2 p { color: var(--weiss); }
+.sk--navy .sk-teil em, .sk--navy .sk-teil span { color: var(--taupe-h); }
+@media (max-width: 991px) {
+  .sb-flaeche .sb-t-kopf { display: grid; }
+  .sb-flaeche .sb-t-abschnitt { order: 0; }
+  .sb-flaeche .sb-t-frage { order: 0; }
+  .sb-flaeche .sb-t-frage::before, .sb-flaeche .sb-t-frage::after, .sb-flaeche .sb-t-abschnitt::before, .sb-flaeche .sb-t-abschnitt::after { display: block; }
+  .sb-flaeche .sb-t-punkte { padding-left: 0; border-left: 0; }
+  .sb-flaeche .sb-t-gruppe { padding: 1.4rem; gap: 2.4rem; }
+  .sb-flaeche .sb-t-zeile { gap: 2.4rem; }
+}
