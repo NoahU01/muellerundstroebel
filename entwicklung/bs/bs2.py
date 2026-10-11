@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 7
+VERSION = 8
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -67,7 +67,7 @@ def stationen(key):
 
 def kopfzeile(aktiv):
     start = "/entwicklung/business-story-2.html"
-    links = [(f"{start}#themen", "Themen"), (f"{start}#vorteile", "Was Sie bekommen"),
+    links = [(f"{start}#lage", "Ihre Lage"), (f"{start}#arbeitsweise", "So arbeiten wir"),
              ("/entwicklung/business-story-2-ueber-uns.html", "Über uns")]
     akt = ' aria-current="page"'
     nav = "".join(f'<a class="nav__anker" href="{h}"{akt if n == aktiv else ""}>{n}</a>' for h, n in links)
@@ -125,123 +125,73 @@ def seite(titel, beschreibung, variante, aktiv, main, skript=""):
 
 
 # ------------------------------------------------------------------ Startseite
+def platz(punkt, titel, hinweis, status="offen", klein=False):
+    """Sichtbar markierter Platzhalter für einen noch offenen Punkt aus dem Storyboard."""
+    return (f'<div class="platz platz--{status}{" platz--klein" if klein else ""}"><span class="platz__tag">{punkt} · {STATUS[status]}</span>'
+            f'<b>{titel}</b><p>{hinweis}</p></div>')
+
+
 def startseite():
+    T, D = PERSONEN["tobias"], PERSONEN["daniel"]
+    sprite = """<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="l-tel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="l-pfeil" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+</svg>"""
     duo = "".join(f'<figure><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p["name"]}"></div><figcaption><b>{p["name"]}</b>{p["kurz"]}</figcaption></figure>'
                   for k, p in PERSONEN.items())
-    themen = "".join(f'<button class="thema" type="button" data-thema="{k}"><span class="thema__ico">{icon(k)}</span><b>{n}</b><span class="thema__wenn">{w}</span><span class="thema__mehr">Was wir konkret tun <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></span></button>'
-                     for k, n, w in THEMEN)
-    vorlagen = "".join(f'<template id="t-{k}">{thema_detail(k)}</template>' for k, _, _ in THEMEN)
-    netz = "".join(f"<span>{n}</span>" for n in ["Ihre Fachbereiche"] + NETZWERK)
-    main = f'''
-<!-- 1 Kopf: der Leser und sein Problem -->
-<section class="held"><div class="wrap held__raster">
+    gespraeche = [("Sie schildern das Thema.", "Ideen"), ("Sie legen die Richtung fest.", "Optionen"),
+                  ("Sie entscheiden.", "Entwürfe"), ("Sie geben frei.", "Ergebnis")]
+    treppe = "".join(f'''<li class="lp-stufe"><span class="lp-stufe__ico"><svg class="ico"><use href="#l-tel"/></svg></span>
+        <small>Gespräch {i} · 30 Min.</small><h3>{s}</h3><p><b>Dazwischen liefern wir</b>{x}</p></li>''' for i, (s, x) in enumerate(gespraeche, 1))
+    wege = "".join(f'''<div class="lp-weg"><span class="lp-weg__nr">Weg {i}</span>
+        {platz("Punkt 5", "Was die Führungskraft vorher probiert hat", "z. B. Berater, Workshop, eigene Leute – Ihre Antwort", klein=True)}
+        {platz("Punkt 6", "Warum das nicht gereicht hat", "ein Satz, aus Sicht der Führungskraft", klein=True)}</div>''' for i in (1, 2, 3))
+    kontakte = "".join(f'''<article class="person"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div><div>
+      <h3>{p['name']}</h3><p class="person__kurz">{p['kurz']}</p>
+      <div class="wege"><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="mailto:{p['mail']}">{p['mail']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div></article>''' for k, p in PERSONEN.items())
+    main = f"""{sprite}
+<div class="entwurf-hinweis"><div class="wrap">Entwurf nach dem <a href="/entwicklung/storyboard.html">Storyboard</a>: gestrichelte Felder sind offene Punkte und werden durch Ihre freigegebenen Sätze ersetzt.</div></div>
+
+<!-- Abschnitt 1 · Kopf (F1 + F4) -->
+<section class="held lp-held"><div class="wrap held__raster">
   <div>
-    <p class="kicker">Für Führungskräfte in Versicherungsunternehmen</p>
-    <div class="wahl" data-gruppe="kopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3</button></div>
-    <h1 data-gruppe="kopf" data-variante="1">Zu viele wichtige Themen. Zu wenig Zeit, sie voranzubringen.</h1>
-    <h1 data-gruppe="kopf" data-variante="2" hidden>Geben Sie uns Ihr Thema. Und die Verantwortung dafür.</h1>
-    <h1 data-gruppe="kopf" data-variante="3" hidden>Sie entscheiden. Wir bringen Ihre Themen ins Ziel.</h1>
-    <p class="lead">Wir übernehmen Ihr Thema samt Verantwortung, bringen es auf den Punkt und treiben es voran, bis das Ergebnis steht. Sie entscheiden.</p>
-    <div class="knoepfe"><a class="knopf" href="#kontakt">Thema besprechen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#themen">Für welche Themen?</a></div>
+    <p class="kicker">Für Führungskräfte in Versicherungsunternehmen <span class="platz-marke">Punkte 1–2 offen</span></p>
+    <h1>Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h1>
+    {platz("Punkte 1–2", "Ein Satz darunter: für wen und in welcher Lage", "Rollen und Unternehmen aus Punkt 1 und 2, in einem Satz")}
+    <div class="knoepfe"><a class="knopf" href="#kontakt">Direkt anrufen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Kennen Sie das?</a></div>
   </div>
   <div class="duo">{duo}</div>
 </div></section>
 
-<!-- 2 Wiedererkennen: Schmerz + typische Themen -->
-<section class="sek sek--sand" id="themen"><div class="wrap">
-  <div class="kopfteil">
-    <p class="kicker">Kennen Sie das?</p>
-    <h2 class="h2">„Es ging schon wieder nichts voran.“</h2>
-    <p class="lead">Ein Thema ist komplex, viele sind beteiligt, der Kern ist unklar. Wochen vergehen, und am Ende landet es wieder bei Ihnen. Mit diesen Themen holen Führungskräfte uns dazu:</p>
-  </div>
-  <div class="themen">{themen}</div>
-</div></section>
-
-<!-- 3 Was Sie bekommen: drei Vorteile, je mit Bild -->
-<section class="sek" id="vorteile"><div class="wrap">
-  <div class="kopfteil">
-    <p class="kicker">Was Sie bekommen</p>
-    <h2 class="h2">Sobald wir übernehmen, ändert sich für Sie dreierlei.</h2>
-  </div>
-
-  <div class="vorteil">
-    <div class="vorteil__text"><span class="vorteil__nr">1</span><h3>Sie haben sofort Klarheit.</h3>
-      <p>Sie müssen nichts vorbereiten. Wir fragen gezielt nach und bringen Ihr Thema auf eine Seite: Zielbild, Stand, nächste Entscheidung. Die Verantwortung für diese Klarheit liegt bei uns.</p></div>
-    <div class="board" aria-label="Beispiel: ein Thema auf einer Seite">
-      <div class="board__kopf"><span>Ihr Thema auf einer Seite</span><em>Beispiel</em></div>
-      <div class="board__ziel"><small>Zielbild</small><b>Neue Vertriebssteuerung, beschlussreif zum Führungskreis im November</b></div>
-      <p class="board__label">Wo wir stehen</p>
-      <ol class="fahrplan"><li>Thema geklärt</li><li>Zielbild steht</li><li class="jetzt">Optionen bewertet</li><li class="offen">Beschluss</li><li class="offen">Umsetzung</li></ol>
-      <div class="board__entscheid"><p><b>Ihre nächste Entscheidung:</b> Variante B oder C</p><span>Vorlage liegt bei</span></div>
-    </div>
-  </div>
-
-  <div class="vorteil vorteil--rechts">
-    <div class="vorteil__text"><span class="vorteil__nr">2</span><h3>Sie investieren 30 Minuten statt zwei Workshop-Tage.</h3>
-      <p>Ein Telefonat, wenn es in Ihren Kalender passt, gern auch aus dem Auto. Dazwischen arbeiten wir. Jedes Gespräch setzt eine Stufe höher an, und Sie entscheiden direkt.</p></div>
-    <ol class="takt" aria-label="Ablauf in kurzen Gesprächen">
-      <li><span><svg class="ico" aria-hidden="true"><use href="#i-uhr"/></svg>30 Min.</span><b>Sie schildern das Thema.</b></li>
-      <li><span><svg class="ico" aria-hidden="true"><use href="#i-uhr"/></svg>30 Min.</span><b>Sie legen die Richtung fest.</b></li>
-      <li><span><svg class="ico" aria-hidden="true"><use href="#i-uhr"/></svg>30 Min.</span><b>Sie entscheiden.</b></li>
-      <li><span><svg class="ico" aria-hidden="true"><use href="#i-uhr"/></svg>30 Min.</span><b>Sie geben frei.</b></li>
-    </ol>
-  </div>
-
-  <div class="vorteil">
-    <div class="vorteil__text"><span class="vorteil__nr">3</span><h3>Sie koordinieren niemanden mehr.</h3>
-      <p>Wir steuern das Projekt, sprechen mit Ihren Leuten und schreiben Konzepte und Vorlagen selbst. Wo Spezialwissen fehlt, holen wir es aus unserem Netzwerk. Sie haben einen Ansprechpartner.</p></div>
-    <div class="buendel" aria-label="Sie haben einen Ansprechpartner, wir koordinieren alle Beteiligten">
-      <span class="buendel__sie">Sie</span>
-      <span class="buendel__wir"><span>Müller <i>&amp;</i> Ströbel</span><small>Ihr einziger Ansprechpartner</small></span>
-      <div class="buendel__netz">{netz}</div>
-    </div>
+<!-- Abschnitt 2 · Ihre Lage (F2 + F3) -->
+<section class="sek sek--sand" id="lage"><div class="wrap">
+  <p class="kicker">Ihre Lage</p>
+  <h2 class="h2 lp-gross">„Es ging schon wieder nichts voran.“</h2>
+  <div class="lp-szene">{platz("Punkt 3", "Szene aus dem Alltag", "Der Moment, in dem eine Führungskraft zum Telefon greift und Sie anruft – konkret, mit Ort, Anlass, Frist")}</div>
+  <div class="lp-bahn">
+    <div class="lp-bahn__kopf"><span>Warum es bisher nicht geklappt hat</span><h3>Die üblichen Wege</h3></div>
+    {wege}
   </div>
 </div></section>
 
-<!-- 4 Ergebnis -->
-<section class="sek sek--navy"><div class="wrap ergebnis">
-  <div>
-    <p class="kicker">Ihr Ergebnis</p>
-    <h2 class="h2">Sie verwalten keinen Mangel mehr. Sie entscheiden und steuern.</h2>
-  </div>
-  <ul class="ergebnis__liste">
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Themen kommen entscheidungsreif auf Ihren Tisch.</li>
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Ihre Vorhaben laufen weiter, während Sie im Tagesgeschäft sind.</li>
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Sie sehen Ergebnisse. Und Führung macht wieder Spaß.</li>
-  </ul>
+<!-- Abschnitt 3 · So arbeiten wir (F5 + F6) -->
+<section class="sek" id="arbeitsweise"><div class="wrap">
+  <p class="kicker">So arbeiten wir</p>
+  <h2 class="h2">Eine halbe Stunde am Telefon. Gern aus dem Auto.</h2>
+  <p class="lead">Zwischen den Gesprächen arbeiten wir. Jedes Gespräch setzt eine Stufe höher an. <span class="platz-marke">Punkt 10 teilweise</span></p>
+  <ol class="lp-treppe">{treppe}</ol>
+  <div class="lp-beleg">{platz("Punkt 8", "Der Beleg: ein erzählter Fall", "Die Zusammenarbeit beim HÖV – erzählt in drei, vier Sätzen, ohne Namen", status="teil")}</div>
 </div></section>
 
-{kontakt("Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Rufen Sie einen von uns direkt an. Nach dem ersten Gespräch wissen Sie, wie es weitergeht.")}
-
-<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
-{vorlagen}'''
-    skript = '''<script>
-/* Variantenwahl (nur Entwurf) */
-document.querySelectorAll('.wahl').forEach(function (w) {
-  var g = w.getAttribute('data-gruppe');
-  w.querySelectorAll('button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var v = b.textContent.trim();
-      w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-      document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
-    });
-  });
-});
-/* Zweite Ebene: Einsatzgebiet im Fenster */
-(function () {
-  var f = document.getElementById('fenster'), inh = f.querySelector('.fenster__inhalt');
-  document.querySelectorAll('[data-thema]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      inh.innerHTML = document.getElementById('t-' + b.getAttribute('data-thema')).innerHTML;
-      var h = inh.querySelector('h3'); if (h) h.id = 'fenster-titel';
-      f.showModal();
-    });
-  });
-  f.querySelector('.fenster__zu').addEventListener('click', function () { f.close(); });
-  f.addEventListener('click', function (e) { if (e.target === f) f.close(); });
-})();
-</script>'''
-    return seite("Müller &amp; Ströbel – Business Story 2.0 (Entwurf)", "Entwurf der Startseite: Business Story 2.0", "bs2", "", main, skript)
+<!-- Abschnitt 4 · Ergebnis + Kontakt (F7 + F8) -->
+<section class="sek sek--navy lp-ende" id="kontakt"><div class="wrap">
+  <p class="kicker">Ihr Ergebnis <span class="platz-marke platz-marke--hell">Punkt 11 teilweise</span></p>
+  <h2 class="h2 lp-gross">Sie entscheiden und steuern, statt den Mangel zu verwalten.</h2>
+  <div class="lp-anruf">{platz("Punkt 12", "Was im ersten Anruf passiert", "Was der Anrufer in den ersten 30 Minuten bekommt", klein=True)}</div>
+  <div class="personen">{kontakte}</div>
+</div></section>"""
+    return seite("Müller &amp; Ströbel – Business Story 2.0 (Entwurf)", "Entwurf der Startseite: Business Story 2.0", "bs2", "", main)
 
 
 # ------------------------------------------------------------------ Über uns

@@ -243,3 +243,77 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
   .fenster__inhalt h3 { font-size: 1.6rem; }
   .stationen .v-cv li { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
 }
+
+/* ===== Startseite nach Storyboard (Stand 11.10.2026) ===== */
+.entwurf-hinweis { background: var(--sand-2); font-size: .85rem; color: var(--taupe-d); }
+.entwurf-hinweis .wrap { padding-top: .55rem; padding-bottom: .55rem; }
+.entwurf-hinweis a { color: var(--navy); font-weight: 600; }
+
+/* Platzhalter für offene Punkte */
+.platz { margin-top: 1.6rem; padding: 1.2rem 1.4rem; border-radius: 16px; border: 2px dashed var(--taupe-h); background: repeating-linear-gradient(135deg, rgba(203,188,174,.12) 0 10px, transparent 10px 20px); }
+.platz__tag { display: inline-block; padding: .2rem .65rem; border-radius: 999px; background: var(--weiss); box-shadow: inset 0 0 0 1px var(--taupe-h); font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--taupe-d); }
+.platz--teil .platz__tag { background: var(--sand-2); box-shadow: none; }
+.platz b { display: block; margin-top: .6rem; font-family: var(--head); font-weight: 500; font-size: 1.25rem; line-height: 1.25; color: var(--navy); }
+.platz p { margin-top: .3rem; font-size: .92rem; color: var(--ink-2); }
+.platz--klein { margin-top: 0; padding: .9rem 1rem; }
+.platz--klein b { font-size: 1.05rem; }
+.platz--klein p { font-size: .85rem; }
+.sek--navy .platz { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.04); }
+.sek--navy .platz b { color: var(--weiss); }
+.sek--navy .platz p { color: rgba(255,255,255,.7); }
+.platz-marke { display: inline-block; margin-left: .6rem; padding: .15rem .55rem; border-radius: 999px; border: 1px dashed var(--taupe-h); font-size: .68rem; font-weight: 600; letter-spacing: .04em; text-transform: none; color: var(--taupe-d); vertical-align: middle; }
+.platz-marke--hell { color: var(--taupe-h); border-color: rgba(255,255,255,.35); }
+
+/* Abschnitt 1 */
+.lp-held h1 { max-width: 17ch; font-size: clamp(2.6rem, 5vw, 4.4rem); }
+.lp-held .platz { max-width: 34rem; }
+
+/* Abschnitt 2 */
+.lp-gross { font-size: clamp(2.6rem, 5.4vw, 4.6rem); max-width: 18ch; line-height: 1.04; }
+.lp-szene .platz { max-width: 46rem; margin-top: 2rem; }
+.lp-bahn { display: grid; grid-template-columns: minmax(0, .8fr) repeat(3, minmax(0, 1fr)); overflow: hidden; margin-top: 3rem; border-radius: 22px; background: var(--weiss); box-shadow: 0 24px 50px -36px rgba(8,38,56,.4); }
+.lp-bahn__kopf { padding: 1.8rem 1.6rem; background: var(--navy); color: var(--weiss); }
+.lp-bahn__kopf span { font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe-h); }
+.lp-bahn__kopf h3 { margin-top: .8rem; font-size: 1.8rem; color: var(--weiss); }
+.lp-weg { display: grid; gap: .6rem; align-content: start; padding: 1.4rem 1.2rem; }
+.lp-weg + .lp-weg { border-left: 1px solid var(--linie); }
+.lp-weg__nr { font-family: var(--head); font-size: 1.6rem; line-height: 1; color: var(--taupe-h); }
+
+/* Abschnitt 3: Treppe aus Gesprächen */
+.lp-treppe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; padding-top: 6rem; }
+.lp-stufe { position: relative; padding: 1.7rem 1.5rem 1.6rem; border-radius: 22px; background: var(--sand); }
+.lp-stufe:nth-child(2) { transform: translateY(-2rem); }
+.lp-stufe:nth-child(3) { transform: translateY(-4rem); }
+.lp-stufe:nth-child(4) { transform: translateY(-6rem); background: var(--navy); }
+.lp-stufe__ico { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 14px; background: var(--navy); color: var(--weiss); }
+.lp-stufe__ico .ico { width: 1.6rem; height: 1.6rem; }
+.lp-stufe small { display: block; margin-top: 1.3rem; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
+.lp-stufe h3 { margin-top: .4rem; font-size: 1.4rem; line-height: 1.2; }
+.lp-stufe p { margin-top: 1rem; padding-top: .9rem; border-top: 1px solid var(--linie); font-family: var(--head); font-size: 1.25rem; color: var(--navy); }
+.lp-stufe p b { display: block; font-family: var(--text); font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--taupe-d); }
+.lp-stufe:nth-child(4) .lp-stufe__ico { background: var(--weiss); color: var(--navy); }
+.lp-stufe:nth-child(4) h3, .lp-stufe:nth-child(4) p { color: var(--weiss); }
+.lp-stufe:nth-child(4) small, .lp-stufe:nth-child(4) p b { color: var(--taupe-h); }
+.lp-stufe:nth-child(4) p { border-color: rgba(255,255,255,.15); }
+.lp-beleg .platz { margin-top: 2.5rem; max-width: 46rem; }
+
+/* Abschnitt 4: Ergebnis + Kontakt auf Dunkelblau */
+.lp-ende .lp-gross { color: var(--weiss); }
+.lp-anruf .platz { max-width: 34rem; margin-top: 2rem; }
+.lp-ende .personen { margin-top: 3.5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,.15); }
+.lp-ende .person h3 { color: var(--weiss); }
+.lp-ende .person__kurz { color: var(--taupe-h); }
+.lp-ende .wege a { color: var(--weiss); }
+.lp-ende .kreis { background: linear-gradient(180deg, #e9e1d7, #d8cdbf); }
+
+@media (max-width: 991px) {
+  .lp-bahn { grid-template-columns: minmax(0, 1fr); }
+  .lp-weg + .lp-weg { border-left: 0; border-top: 1px solid var(--linie); }
+  .lp-treppe { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 0; }
+  .lp-stufe:nth-child(n) { transform: none; }
+  .lp-beleg .platz { margin-top: 2rem; }
+}
+@media (max-width: 560px) {
+  .lp-treppe { grid-template-columns: minmax(0, 1fr); }
+  .platz-marke { margin: .4rem 0 0; }
+}
