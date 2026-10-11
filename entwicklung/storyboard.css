@@ -1,0 +1,71 @@
+/* Storyboard Business Story 2.0 – ergänzt business-story-2.css (nur Entwicklung) */
+
+/* Kopfzeile der Zuordnung */
+.sb-kopfzeile { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr) minmax(0, .9fr); gap: 1.4rem; margin-top: .6rem; padding-bottom: .9rem; border-bottom: 2px solid var(--navy); }
+.sb-kopfzeile span { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
+.sb-kopfzeile small { display: block; margin-top: .15rem; font-size: .74rem; font-weight: 500; letter-spacing: .04em; text-transform: none; color: var(--taupe-d); }
+
+/* Gruppe = ein Abschnitt der Landingpage mit seinen zwei Leserfragen */
+.sb-gruppe { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, .9fr); gap: 1.4rem; padding: 1.4rem 0; border-bottom: 1px solid var(--linie); }
+.sb-zeilen { display: grid; gap: .8rem; }
+.sb-zeile { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: 1.4rem; align-items: center; }
+.sb-punkte { display: grid; gap: .45rem; }
+.sb-punkt { position: relative; display: grid; grid-template-columns: 1.9rem minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .65rem .8rem; border-radius: 12px; background: var(--weiss); border: 1px solid var(--linie); }
+.sb-punkt b { display: block; font-weight: 500; font-size: .93rem; line-height: 1.35; color: var(--ink); }
+.sb-punkt q { display: block; margin-top: .15rem; font-size: .82rem; line-height: 1.35; color: var(--ink-2); quotes: "„" "“"; }
+.sb-punkt em, .sb-legende em { font-style: normal; padding: .18rem .55rem; border-radius: 999px; font-size: .68rem; font-weight: 600; letter-spacing: .04em; white-space: nowrap; }
+.sb-punkt--da em, .st-da { background: var(--navy); color: var(--weiss); }
+.sb-punkt--teil em, .st-teil { background: var(--sand-2); color: var(--taupe-d); }
+.sb-punkt--offen em, .st-offen { background: var(--weiss); color: var(--taupe-d); box-shadow: inset 0 0 0 1px var(--taupe-h); }
+.sb-punkt--offen { border-style: dashed; border-color: var(--taupe-h); background: transparent; }
+
+.sb-nr { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--sand-2); font-family: var(--head); font-size: .9rem; color: var(--navy); }
+.sb-nr--frage { width: auto; min-width: 2.3rem; padding: 0 .5rem; border-radius: 999px; background: var(--weiss); box-shadow: inset 0 0 0 1.5px var(--navy); font-family: var(--text); font-size: .78rem; font-weight: 600; }
+.sb-nr--abschnitt { width: 2.3rem; height: 2.3rem; background: var(--navy); color: var(--weiss); font-size: 1.05rem; }
+
+/* Frage des Lesers, mit Pfeil von den Punkten */
+.sb-frage { position: relative; display: flex; align-items: center; gap: .8rem; padding: .9rem 1rem; border-radius: 12px; background: var(--weiss); border: 1.5px solid var(--navy); }
+.sb-frage b { font-family: var(--head); font-weight: 500; font-size: 1.08rem; line-height: 1.25; color: var(--navy); }
+.sb-frage::before { content: ""; position: absolute; left: -1.4rem; top: 50%; width: 1.4rem; border-top: 1.5px solid var(--taupe); }
+.sb-frage::after { content: ""; position: absolute; left: -.45rem; top: calc(50% - .32rem); border: .32rem solid transparent; border-left-color: var(--taupe); border-right: 0; }
+
+/* Abschnitt der Landingpage */
+.sb-abschnitt { position: relative; display: flex; flex-direction: column; justify-content: center; gap: .6rem; padding: 1.4rem; border-radius: 16px; background: var(--navy); color: var(--weiss); }
+.sb-abschnitt .sb-nr--abschnitt { background: var(--weiss); color: var(--navy); }
+.sb-abschnitt b { font-family: var(--head); font-weight: 500; font-size: 1.45rem; }
+.sb-abschnitt p { font-size: .9rem; line-height: 1.5; color: rgba(255,255,255,.75); }
+.sb-abschnitt::before { content: ""; position: absolute; left: -1.4rem; top: 50%; width: 1.4rem; border-top: 1.5px solid var(--taupe); }
+
+.sb-legende { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.6rem; font-size: .85rem; color: var(--ink-2); }
+.sb-legende span { display: inline-flex; align-items: center; gap: .5rem; }
+
+/* Schritt 2 */
+.sb-regeln { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 4rem; align-items: start; }
+.sb-regeln ol { counter-reset: r; }
+.sb-regeln li { counter-increment: r; position: relative; padding: 1.1rem 0 1.1rem 3.2rem; border-top: 1px solid var(--linie); color: var(--ink-2); }
+.sb-regeln li::before { content: counter(r); position: absolute; left: 0; top: 1rem; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--sand-2); font-family: var(--head); color: var(--navy); }
+.sb-regeln li b { display: block; font-family: var(--head); font-weight: 500; font-size: 1.2rem; color: var(--navy); }
+
+/* Schritt 3: Seitenaufbau als Gerüst */
+.sb-seite { display: grid; gap: .8rem; max-width: 52rem; margin-top: 2.6rem; padding: 1.2rem; border-radius: 22px; background: var(--weiss); border: 1px solid var(--linie); }
+.sb-block { padding: 1.1rem 1.2rem; border-radius: 14px; border: 1.5px dashed var(--taupe-h); }
+.sb-block__kopf { display: flex; align-items: center; gap: .8rem; }
+.sb-block__kopf b { font-family: var(--head); font-weight: 500; font-size: 1.3rem; color: var(--navy); }
+.sb-block ul { display: grid; gap: .35rem; margin-top: .9rem; }
+.sb-block li { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem .8rem; border-radius: 10px; background: var(--sand); font-size: .92rem; }
+.sb-block li em { flex: none; font-style: normal; font-size: .78rem; font-weight: 600; color: var(--taupe-d); }
+
+@media (max-width: 991px) {
+  .sb-kopfzeile { display: none; }
+  .sb-gruppe { grid-template-columns: minmax(0, 1fr); }
+  .sb-abschnitt { order: -1; }
+  .sb-abschnitt::before, .sb-frage::before, .sb-frage::after { display: none; }
+  .sb-zeile { grid-template-columns: minmax(0, 1fr); gap: .5rem; padding-left: 1rem; border-left: 2px solid var(--taupe-h); }
+  .sb-frage { order: -1; }
+  .sb-regeln { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+@media (max-width: 560px) {
+  .sb-punkt { grid-template-columns: 1.9rem minmax(0, 1fr); }
+  .sb-punkt em { grid-column: 2; justify-self: start; }
+  .sb-block li { flex-direction: column; gap: .1rem; }
+}

@@ -289,7 +289,106 @@ def ueber_uns():
     return seite("Müller &amp; Ströbel – Über uns (Entwurf Business Story 2.0)", "Entwurf: Über uns zur Business Story 2.0", "bs2-ueber", "Über uns", main)
 
 
+# ------------------------------------------------------------------ Storyboard
+# 12 Punkte (Interview) -> 8 Fragen des Lesers -> 4 Abschnitte der Landingpage. Status: da / teil / offen.
+STORY = [
+    ("Kopf", "Der Leser weiß sofort: Ich bin richtig, und das bekomme ich.", [
+        ("1", "Bin ich hier richtig?", [
+            ("1", "Welche Rollen genau", "offen", ""),
+            ("2", "Welche Unternehmen genau", "offen", "")]),
+        ("4", "Was ist eure Antwort?", [
+            ("7", "Das Versprechen im Wortlaut", "da", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
+    ]),
+    ("Ihre Lage", "Der Leser nickt: Genau so ist es bei mir, und darum hat es bisher nicht geklappt.", [
+        ("2", "Verstehen die mein Problem?", [
+            ("3", "Der Moment, in dem man euch anruft", "offen", ""),
+            ("4", "Das Problem in einem Satz", "teil", "Es ging schon wieder nichts voran.")]),
+        ("3", "Warum hat das bisher keiner gelöst?", [
+            ("5", "Was die Person vorher probiert hat", "offen", ""),
+            ("6", "Warum das nicht gereicht hat", "offen", "")]),
+    ]),
+    ("So arbeiten wir", "Der Leser glaubt es und sieht, wie wenig Aufwand es ihn kostet.", [
+        ("5", "Warum soll ich euch das glauben?", [
+            ("8", "Der eine Beleg, der euch glaubwürdig macht", "teil", "Die Zusammenarbeit beim HÖV")]),
+        ("6", "Wie läuft das ab, und was kostet es mich?", [
+            ("9", "Der Zeitaufwand für den Kunden, konkret", "da", "30 Minuten am Telefon, gern aus dem Auto"),
+            ("10", "Was ihr zwischen den Gesprächen liefert", "teil", "Ideen, Optionen, Entwürfe")]),
+    ]),
+    ("Ergebnis + Kontakt", "Der Leser weiß, was er davon hat, und greift zum Telefon.", [
+        ("7", "Was habe ich am Ende davon?", [
+            ("11", "Was am Ende anders ist, konkret", "teil", "Entscheiden und steuern statt Mangel verwalten")]),
+        ("8", "Was ist der nächste Schritt?", [
+            ("12", "Was im ersten Anruf passiert", "offen", "")]),
+    ]),
+]
+STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen"}
+SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
+    ("1", "Kopf", [("Zeile über der Überschrift", "F1 · Punkte 1–2"), ("Überschrift", "F4 · Punkt 7"),
+                   ("Ein Satz darunter: für wen und welche Lage", "F1 · Punkte 1–2"), ("Knopf „Anrufen“", "F8 · Punkt 12")]),
+    ("2", "Ihre Lage", [("Überschrift", "F2 · Punkt 4"), ("Szene aus dem Alltag", "F2 · Punkt 3"),
+                        ("Gegensatz: übliche Wege und warum sie nicht reichen", "F3 · Punkte 5–6")]),
+    ("3", "So arbeiten wir", [("Überschrift", "F6 · Punkt 9"), ("Bild: kurze Gespräche, dazwischen liefern wir", "F6 · Punkte 9–10"),
+                              ("Beleg: ein erzählter Fall", "F5 · Punkt 8")]),
+    ("4", "Ergebnis + Kontakt", [("Überschrift", "F7 · Punkt 11"), ("Was im ersten Anruf passiert", "F8 · Punkt 12"),
+                                 ("Tobias und Daniel mit Telefon", "F8")]),
+]
+
+
+def storyboard():
+    gruppen = ""
+    for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):
+        zeilen = ""
+        for fnr, frage, punkte in fragen:
+            pk = ""
+            for nr, txt, st, zit in punkte:
+                q = f"<q>{zit}</q>" if zit else ""
+                pk += (f'<li class="sb-punkt sb-punkt--{st}"><span class="sb-nr">{nr}</span>'
+                       f'<div><b>{txt}</b>{q}</div><em>{STATUS[st]}</em></li>')
+            zeilen += (f'<div class="sb-zeile"><ul class="sb-punkte">{pk}</ul>'
+                       f'<div class="sb-frage"><span class="sb-nr sb-nr--frage">F{fnr}</span><b>{frage}</b></div></div>')
+        gruppen += (f'<div class="sb-gruppe"><div class="sb-zeilen">{zeilen}</div>'
+                    f'<div class="sb-abschnitt"><span class="sb-nr sb-nr--abschnitt">{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div></div>\n')
+    slots = ""
+    for n, t, bs in SLOTS:
+        li = "".join(f"<li><span>{a}</span><em>{h}</em></li>" for a, h in bs)
+        slots += (f'<div class="sb-block"><div class="sb-block__kopf"><span class="sb-nr sb-nr--abschnitt">{n}</span>'
+                  f'<b>{t}</b></div><ul>{li}</ul></div>')
+    main = f"""
+<section class="held held--klein"><div class="wrap">
+  <p class="kicker">Storyboard Business Story 2.0</p>
+  <h1>Von Ihren Antworten zur Landingpage</h1>
+  <p class="lead">Drei Schritte: Sie beantworten zwölf enge Punkte. Jeder Punkt beantwortet eine der acht Fragen, die sich der Leser stellt. Je zwei Fragen werden zu einem Abschnitt der Landingpage.</p>
+</div></section>
+
+<section class="sek sek--sand sb"><div class="wrap">
+  <p class="kicker">Zuordnung eins zu eins</p>
+  <div class="sb-kopfzeile"><span>Schritt 1 · Ihre Antworten<small>12 Punkte</small></span><span>Schritt 2 · Fragen des Lesers<small>8 Fragen</small></span><span>Schritt 3 · Landingpage<small>4 Abschnitte</small></span></div>
+  {gruppen}
+  <p class="sb-legende"><span><em class="st-da">vorhanden</em> aus Ihren bisherigen Aussagen</span><span><em class="st-teil">teilweise</em> Material da, Satz fehlt</span><span><em class="st-offen">offen</em> noch zu klären</span></p>
+</div></section>
+
+<section class="sek"><div class="wrap sb-regeln">
+  <div><p class="kicker">Schritt 2</p><h2 class="h2">Aus Punkten werden Aussagen.</h2></div>
+  <ol>
+    <li><b>Eine Aussage je Leserfrage.</b> Acht Fragen, acht Sätze. Mehr kommt nicht auf die erste Ebene.</li>
+    <li><b>Ihr Wortlaut, nicht meiner.</b> Ich kürze und ordne Ihre Antworten. Wo etwas fehlt, frage ich nach.</li>
+    <li><b>Drei Tests je Satz.</b> Könnte ihn eine andere Beratung genauso schreiben? Steht ein Ding aus dem Führungsalltag drin? Gibt es eine echte Situation dahinter?</li>
+    <li><b>Freigabe als Liste.</b> Sie sehen die acht Sätze untereinander, bevor eine Seite entsteht.</li>
+  </ol>
+</div></section>
+
+<section class="sek sek--sand"><div class="wrap">
+  <p class="kicker">Schritt 3</p>
+  <h2 class="h2">Aus Aussagen wird die Seite.</h2>
+  <p class="lead">Jeder Baustein der Seite hat genau eine Herkunft. Was darüber hinausgeht, kommt in die zweite Ebene oder auf „Über uns“.</p>
+  <div class="sb-seite">{slots}</div>
+</div></section>"""
+    html = seite("Müller &amp; Ströbel – Storyboard Business Story 2.0", "Storyboard: von den Antworten zur Landingpage", "bs2-story", "", main)
+    return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
+
+
 if __name__ == "__main__":
     (ZIEL / "business-story-2.html").write_text(startseite(), encoding="utf-8")
     (ZIEL / "business-story-2-ueber-uns.html").write_text(ueber_uns(), encoding="utf-8")
-    print("gebaut: business-story-2.html, business-story-2-ueber-uns.html")
+    (ZIEL / "storyboard.html").write_text(storyboard(), encoding="utf-8")
+    print("gebaut: business-story-2.html, business-story-2-ueber-uns.html, storyboard.html")
