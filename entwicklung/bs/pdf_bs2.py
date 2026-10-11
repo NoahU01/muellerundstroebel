@@ -231,116 +231,82 @@ def seiten():
     <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
   </div>''', "ende"))
 
-    # ===================== One-Pager (Neubau): je Seite eine klare Idee mit einer zentralen Visualisierung =====================
-    def op_kontakt(hell=True):
-        pers = "".join(f'<div class="o2-person">{kreis(k, 34)}<div><b>{p["name"]}</b><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
+    # ===================== One-Pager nach dem Elevator Pitch: sechs Bausteine, Reihenfolge wie gesprochen =====================
+    P = {p[0]: p[4] for p in b.PITCH}
+    UHR = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>'
+    ZIEL = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>'
+    PFEIL = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+
+    def op3_kontakt(dunkel=False):
+        pers = "".join(f'<div class="o3-person">{kreis(k, 40)}<div><b>{p["name"]}</b><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
                        for k, p in b.PERSONEN.items())
-        return (f'<div class="o2-kontakt{"" if hell else " o2-kontakt--dunkel"}"><div><p class="kicker">Kontakt</p>'
-                f'<p class="o2-kontakt__satz">Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p></div>{pers}</div>')
+        return (f'<div class="o3-kontakt{" o3-kontakt--dunkel dunkel" if dunkel else ""}"><div class="o3-kontakt__satz">'
+                f'<p class="kicker">06 · Nächster Schritt</p><p>Liegt gerade so ein Thema auf Ihrem Tisch? Dann lassen Sie uns kurz sprechen.</p></div>{pers}</div>')
 
-    def op_kopf(label):
-        return f'<span class="op-kennung">One-Pager · {label}</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}'
-
-    # --- A: Wer macht was – zwei Bahnen über die Zeit
-    sie = [(110, "Thema schildern"), (215, "Richtung festlegen"), (320, "Entscheiden"), (425, "Freigeben")]
-    wir = [(127, "Strukturieren"), (217, "Optionen erarbeiten"), (307, "Mit Ihren Leuten"), (397, "Umsetzen")]
-    bahn = ['<svg class="o2-bahn" viewBox="0 0 500 236" role="img" aria-label="Ihr Aufwand und unsere Arbeit über die Zeit">',
-            '<text x="0" y="56" class="t-lane">Sie</text><text x="0" y="181" class="t-lane">Wir</text>',
-            '<line x1="82" y1="52" x2="455" y2="52" class="l-sie"/>']
-    for x, t in sie:
-        bahn.append(f'<line x1="{x}" y1="60" x2="{x}" y2="155" class="l-verb"/><circle cx="{x}" cy="52" r="7" class="p-sie"/>'
-                    f'<text x="{x}" y="30" class="t-sie">{t}</text>')
-    bahn.append('<rect x="82" y="157" width="360" height="40" rx="20" class="r-wir"/>')
-    for i, (x, t) in enumerate(wir):
-        if i:
-            bahn.append(f'<line x1="{x-45}" y1="164" x2="{x-45}" y2="190" class="l-trenn"/>')
-        bahn.append(f'<text x="{x}" y="181" class="t-wir">{t}</text>')
-    bahn.append('<path d="M442 177h14" class="l-pfeil"/><circle cx="476" cy="177" r="22" class="p-erg"/><text x="476" y="180" class="t-erg">Ergebnis</text>')
-    bahn.append('<text x="82" y="226" class="t-fuss">Ihr Aufwand: kurze Abstimmungen, oft reicht ein Telefonat. Die Arbeit dazwischen machen wir.</text></svg>')
-    karten_a = "".join(f'<div class="o2-karte"><span>0{i}</span><h3>{h}</h3><p>{t}</p></div>' for i, (h, t) in enumerate([
-        ("Wir verstehen Ihr Thema", "Sie müssen nichts vorbereiten. Wir fragen gezielt und arbeiten den Kern heraus."),
-        ("Wir übernehmen die Arbeit", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
-        ("Sie behalten den Überblick", "Zielbild, Stand und nächste Entscheidung liegen jederzeit auf dem Tisch.")], 1))
-    S.append(("o2 o2a", f'''{op_kopf("Variante A")}
-  <h1>Sie geben uns ein Thema. Wir liefern das Ergebnis.</h1>
-  <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen die Arbeit. Sie entscheiden.</p>
-  <div class="o2-feld">{"".join(bahn)}</div>
-  <div class="o2-karten">{karten_a}</div>
-  <div class="o2-ergebnis"><p class="kicker">Ihr Ergebnis</p><div><h2>Sie haben Ihre Themen im Griff.</h2><p>Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden.</p></div></div>
-  {op_kontakt()}''', "op"))
-
-    # --- B: Bisher / Mit uns – zwei Ablaufbilder
-    def knoten(x, y, w, h, text, art):
-        return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{h/2}" class="k-{art}"/>'
-                f'<text x="{x + w/2}" y="{y + h/2 + 3.2}" class="t-{art}">{text}</text>')
-    bisher = ['<svg viewBox="0 0 240 270" class="o2-fluss"><defs><marker id="pb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0l8 4-8 4z" fill="#998675"/></marker></defs>',
-              knoten(70, 6, 100, 28, "Ihr Thema", "hell"),
-              '<path d="M120 34 L42 95" class="l-b" marker-end="url(#pb)"/><path d="M120 34 L120 95" class="l-b" marker-end="url(#pb)"/><path d="M120 34 L198 95" class="l-b" marker-end="url(#pb)"/>',
-              knoten(4, 98, 72, 28, "Ihr Team", "hell"), knoten(84, 98, 72, 28, "Externe", "hell"), knoten(164, 98, 72, 28, "Workshop", "hell"),
-              '<path d="M40 126 L108 193" class="l-b" marker-end="url(#pb)"/><path d="M120 126 L120 193" class="l-b" marker-end="url(#pb)"/><path d="M200 126 L132 193" class="l-b" marker-end="url(#pb)"/>',
-              knoten(60, 196, 120, 32, "Sie koordinieren", "dunkel"),
-              '<text x="120" y="250" class="t-notiz" text-anchor="middle">… und greifen wieder selbst ein</text></svg>']
-    mit = ['<svg viewBox="0 0 240 270" class="o2-fluss"><defs><marker id="pm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0l8 4-8 4z" fill="#cbbcae"/></marker></defs>',
-           knoten(70, 6, 100, 28, "Ihr Thema", "weiss"),
-           '<path d="M120 34 L120 70" class="l-m" marker-end="url(#pm)"/>',
-           knoten(56, 72, 128, 32, "Müller &amp; Ströbel", "taupe"),
-           '<path d="M120 104 L40 146M120 104 L120 146M120 104 L200 146" class="l-m l-duenn"/>',
-           knoten(4, 148, 72, 26, "Ihre Leute", "rand"), knoten(84, 148, 72, 26, "Wir selbst", "rand"), knoten(164, 148, 72, 26, "Netzwerk", "rand"),
-           '<path d="M40 174 L108 213" class="l-m" marker-end="url(#pm)"/><path d="M120 174 L120 213" class="l-m" marker-end="url(#pm)"/><path d="M200 174 L132 213" class="l-m" marker-end="url(#pm)"/>',
-           knoten(60, 216, 120, 32, "Ihr Ergebnis", "weiss"),
-           '<text x="120" y="266" class="t-notiz t-notiz--hell" text-anchor="middle">Sie: kurzer Austausch, entscheiden</text></svg>']
-    S.append(("o2 o2b", f'''{op_kopf("Variante B")}
-  <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-  <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt. Der Unterschied liegt darin, wer die Arbeit zusammenhält.</p>
-  <div class="o2-vergleich">
-    <div class="o2-panel o2-panel--hell"><p class="kicker">Bisher</p><h2>Alles läuft über Ihren Tisch.</h2>{"".join(bisher)}
-      <p class="o2-panel__satz">Das Ergebnis kommt nicht so zurück, wie Sie es brauchen.</p></div>
-    <div class="o2-panel o2-panel--dunkel dunkel"><p class="kicker">Mit uns</p><h2>Ein Ansprechpartner. Ein Ergebnis.</h2>{"".join(mit)}
-      <p class="o2-panel__satz">Die Koordination liegt bei uns. Sie behalten den Überblick.</p></div>
+    # --- A: Lesefluss
+    S.append(("o3 o3a", f'''<span class="op-kennung">One-Pager · Variante A</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
+  <p class="kicker">01 · Ihre Lage</p>
+  <h1>Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.</h1>
+  <div class="o3a-schmerz">
+    <p class="o3-label">02 · Bisher</p>
+    <div class="o3a-wege">
+      <div class="o3a-weg"><small>Ihr Team</small><b>Liefert, aber nicht so, wie Sie es brauchen.</b></div>
+      <div class="o3a-weg"><small>Externe</small><b>Empfehlungen ja. Umsetzen bleibt bei Ihnen.</b></div>
+      <p class="o3a-folge">Am Ende greifen Sie doch wieder selbst ein.</p>
+    </div>
   </div>
-  <div class="o2-ergebnis"><p class="kicker">Ihr Ergebnis</p><div><h2>Sie haben Ihre Themen im Griff.</h2><p>Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden.</p></div></div>
-  {op_kontakt()}''', "op"))
+  <div class="o3a-antwort dunkel">
+    <p class="kicker">03 · Unsere Antwort</p>
+    <h2>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h2>
+    <ol class="o3a-schritte"><li><b>Strukturieren</b><span>Wir holen das Thema aus Ihrem Kopf und arbeiten den Kern heraus.</span></li>
+      <li><b>Ausarbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</span></li>
+      <li><b>Liefern</b><span>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche.</span></li></ol>
+  </div>
+  <div class="o3a-zwei">
+    <div class="o3a-feld"><span class="o3-ico">{UHR}</span><div><p class="o3-label">04 · Ihr Aufwand</p><b>Meist nur ein kurzes Telefonat zwischendurch.</b></div></div>
+    <div class="o3a-feld o3a-feld--sand"><span class="o3-ico">{ZIEL}</span><div><p class="o3-label">05 · Ihr Gewinn</p><b>Sie haben Ihre Themen im Griff.</b></div></div>
+  </div>
+  {op3_kontakt()}''', "op"))
 
-    # --- C: Sie geben – wir übernehmen – Sie bekommen
-    spalten = [
-        ("hell", "Sie geben", "Ein Thema und die Verantwortung dafür.",
-         ["Die Vorlage für den Aufsichtsrat", "Die Strategie für die Bereiche", "Die Kennzahlen, die steuern sollen", "Das Projekt, das seit Monaten hängt"]),
-        ("dunkel", "Wir übernehmen", "Die Arbeit, bis das Ergebnis steht.",
-         ["Ihr Thema verstehen und strukturieren", "Optionen und Entscheidungsvorlagen erarbeiten", "Mit Ihren Leuten und unserem Netzwerk umsetzen"]),
-        ("sand", "Sie bekommen", "Ihre Themen im Griff.",
-         ["Das Zielbild im Blick", "Klarheit, wohin es geht", "Entscheidungen statt Nachfassen"]),
+    # --- B: sechs Kacheln, hell und dunkel im Wechsel
+    kacheln = [
+        ("weiss", "01 · Ihre Lage", "Sie müssen alles im Blick haben.", "Und am Ende zählt nur das Ergebnis."),
+        ("sand", "02 · Bisher", "Es kommt selten so zurück, wie Sie es brauchen.", "Ob Sie ein Thema Ihrem Team geben oder Externe holen."),
+        ("navy", "03 · Unsere Antwort", "Sie geben uns die Verantwortung für ein Thema.", "Wir strukturieren es, arbeiten es mit Ihren Leuten aus und liefern das Ergebnis."),
+        ("weiss", "04 · Ihr Aufwand", "Ein kurzes Telefonat zwischendurch.", "Die Arbeit dazwischen machen wir."),
+        ("navy", "05 · Ihr Gewinn", "Sie haben Ihre Themen im Griff.", "Das Zielbild im Blick, Klarheit, wohin es geht."),
+        ("sand", "06 · Nächster Schritt", "Lassen Sie uns kurz sprechen.", "Liegt gerade so ein Thema auf Ihrem Tisch?"),
     ]
-    sp = ""
-    for i, (art, k, h, li) in enumerate(spalten):
-        sp += (f'<div class="o2-spalte o2-spalte--{art}{" dunkel" if art == "dunkel" else ""}"><p class="kicker">{k}</p><h2>{h}</h2>'
-               f'<ul>{"".join(f"<li>{x}</li>" for x in li)}</ul></div>')
-        if i < 2:
-            sp += '<div class="o2-pfeil"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>'
-    S.append(("o2 o2c", f'''{op_kopf("Variante C")}
-  <p class="kicker">Ihre Lage</p>
-  <h1>„Es ging schon wieder nichts voran.“</h1>
-  <p class="unter">Ihr Team und Externe liefern nicht so, wie Sie es brauchen, und nach dem großen Workshop steht wieder alles still. So ändern wir das:</p>
-  <div class="o2-spalten">{sp}</div>
-  <div class="o2-aufwand"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
-    <p><b>Ihr Aufwand:</b> ein kurzer, regelmäßiger Austausch. Oft reicht ein Telefonat. Die Arbeit dazwischen machen wir.</p></div>
-  {op_kontakt()}''', "op"))
+    k_html = "".join(f'<div class="o3b-kachel o3b-kachel--{f}{" dunkel" if f == "navy" else ""}"><small>{t}</small><b>{h}</b><p>{x}</p></div>'
+                     for f, t, h, x in kacheln)
+    pers_b = "".join(f'<div class="o3-person">{kreis(k, 40)}<div><b>{p["name"]}</b><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
+                     for k, p in b.PERSONEN.items())
+    S.append(("o3 o3b", f'''<span class="op-kennung">One-Pager · Variante B</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
+  <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
+  <p class="unter">Was wir tun, in sechs Sätzen.</p>
+  <div class="o3b-raster">{k_html}</div>
+  <div class="o3b-fuss">{pers_b}<p class="o3b-web">www.muellerundstroebel.de</p></div>''', "op"))
 
-    # --- D: Plakat oben, Einsatzgebiete unten
-    weiss_ico = {k: b.icon(k).replace('stroke="currentColor"', 'stroke="#082638"') for k, _, _ in b.THEMEN}
-    felder = "".join(f'<div class="o2-feldchen">{weiss_ico[k]}<div><b>{n}</b><span>{w}</span></div></div>' for k, n, w in b.THEMEN)
-    S.append(("o2 o2d", f'''<span class="op-kennung op-kennung--hell">One-Pager · Variante D</span>
-  <div class="o2d__plakat dunkel">
-    {leiste("Für Führungskräfte in der Versicherungsbranche", True).replace('class="leiste"', 'class="leiste leiste--fluss"')}
-    <img class="o2d__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
-    <div class="o2d__text"><h1>Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h1>
-      <p class="unter">Wir strukturieren komplexe Situationen, bereiten Entscheidungen vor und setzen um. Mit Ihren Leuten, selbst und mit unserem Netzwerk. Mit wenig Aufwand für Sie.</p></div>
+    # --- C: Ihre Seite / unsere Seite
+    S.append(("o3 o3c", f'''<span class="op-kennung op-kennung--hell">One-Pager · Variante C</span>
+  <div class="o3c-kopf dunkel">{leiste("Für Führungskräfte in der Versicherungsbranche", True).replace('class="leiste"', 'class="leiste leiste--fluss"')}
+    <h1>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h1></div>
+  <div class="o3c-spalten">
+    <div class="o3c-sie">
+      <p class="o3c-titel">Was Sie davon haben</p>
+      <div class="o3c-zeile"><p class="o3-label">01 · Ihre Lage</p><b>Sie müssen alles im Blick haben. Am Ende zählt nur das Ergebnis.</b></div>
+      <div class="o3c-zeile"><p class="o3-label">02 · Bisher</p><b>Ob Team oder Externe: Es kommt selten so zurück, wie Sie es brauchen.</b></div>
+      <div class="o3c-zeile"><p class="o3-label">04 · Ihr Aufwand</p><b>Meist nur ein kurzes Telefonat zwischendurch.</b></div>
+      <div class="o3c-zeile o3c-zeile--ziel"><p class="o3-label">05 · Ihr Gewinn</p><b>Sie haben Ihre Themen im Griff.</b></div>
+    </div>
+    <div class="o3c-wir dunkel">
+      <p class="o3c-titel">Was wir tun</p>
+      <div class="o3c-zeile"><p class="o3-label">Wir verstehen Ihr Thema</p><b>Sie müssen nichts vorbereiten. Wir fragen gezielt und arbeiten den Kern heraus.</b></div>
+      <div class="o3c-zeile"><p class="o3-label">Wir arbeiten es aus</p><b>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</b></div>
+      <div class="o3c-zeile"><p class="o3-label">Wir liefern</p><b>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche.</b></div>
+    </div>
   </div>
-  <div class="o2d__unten">
-    <p class="kicker">Hier setzen wir an</p>
-    <div class="o2-felder">{felder}</div>
-  </div>
-  <div class="o2-ergebnis"><p class="kicker">Ihr Ergebnis</p><div><h2>Sie haben Ihre Themen im Griff.</h2><p>Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden.</p></div></div>
-  {op_kontakt()}''', "op"))
+  {op3_kontakt()}''', "op"))
     return S
 
 
