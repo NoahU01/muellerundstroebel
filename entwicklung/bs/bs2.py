@@ -191,7 +191,6 @@ def startseite():
       <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p>
     </article>''' for k, p in PERSONEN.items())
     main = f"""
-<div class="entwurf-hinweis"><div class="wrap">Entwurf nach dem <a href="/entwicklung/storyboard.html">Storyboard</a>: Kopf C · Ihre Lage C · So arbeiten wir Visualisierung 2 · Ergebnis C · Kontakt C</div></div>
 
 <!-- 1 Kopf -->
 <section class="held lp-held"><div class="wrap held__raster">
