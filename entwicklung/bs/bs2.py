@@ -188,7 +188,7 @@ def startseite():
 <section class="sek sek--navy lp-ende" id="kontakt"><div class="wrap">
   <p class="kicker">Ihr Ergebnis <span class="platz-marke platz-marke--hell">Punkt 11 teilweise</span></p>
   <h2 class="h2 lp-gross">Sie entscheiden und steuern, statt den Mangel zu verwalten.</h2>
-  <div class="lp-anruf">{platz("Punkt 12", "Was im ersten Anruf passiert", "Was der Anrufer in den ersten 30 Minuten bekommt", klein=True)}</div>
+  <div class="lp-anruf">{platz("Punkt 12", "Das erste Gespräch schafft Klarheit.", "Sie erzählen uns, was ansteht. Wir stellen Fragen, sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen können, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.", status="teil", klein=True)}</div>
   <div class="personen">{kontakte}</div>
 </div></section>"""
     return seite("Müller &amp; Ströbel – Business Story 2.0 (Entwurf)", "Entwurf der Startseite: Business Story 2.0", "bs2", "", main)
