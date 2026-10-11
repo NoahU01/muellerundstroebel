@@ -630,3 +630,26 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .o3c-zeile { padding: 15pt 0; }
 .o3c-zeile b { font-size: 11.6pt; }
 .o3c-zeile--ziel b { font-size: 14pt; }
+
+/* One-Pager „Der Pitch als Text“ */
+.o4 { padding-top: 118pt; }
+.o4-text p { max-width: 420pt; font-family: Lora, serif; font-size: 15.5pt; line-height: 1.5; color: var(--ink); }
+.o4-text p + p { margin-top: 12pt; }
+.o4-auf { font-size: 25pt !important; line-height: 1.2 !important; color: var(--navy) !important; margin-bottom: 18pt; }
+.o4-kern { margin: 26pt calc(-1 * var(--rand)) 26pt; padding: 30pt var(--rand); background: var(--navy); }
+.o4-kern p { max-width: 430pt; font-family: Lora, serif; font-size: 25pt; line-height: 1.2; color: var(--weiss); }
+.o4-einladung { margin-top: 20pt !important; color: var(--navy) !important; font-weight: 500; }
+.o4-kontakt { position: absolute; left: var(--rand); right: var(--rand); bottom: 36pt; display: grid; grid-template-columns: 1fr 1fr; gap: 20pt; padding-top: 18pt; border-top: .6pt solid var(--linie); }
+.o4-person { display: flex; gap: 12pt; align-items: center; }
+.o4-person .kreis { flex: none; border-width: 2.5pt; }
+.o4-person b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 11.5pt; color: var(--navy); }
+.o4-person span { display: block; font-size: 7.8pt; line-height: 1.5; color: var(--ink-2); }
+.o4-person span:nth-of-type(1) { color: var(--taupe-d); }
+.o4 { padding-top: 108pt; }
+.o4-text p { font-size: 14pt; }
+.o4-text p + p { margin-top: 10pt; }
+.o4-auf { font-size: 24pt !important; margin-bottom: 14pt; }
+.o4-kern { margin: 22pt calc(-1 * var(--rand)); padding: 26pt var(--rand); }
+.o4-kern p { font-size: 23pt; }
+.o4-einladung { margin-top: 16pt !important; }
+.o4-kontakt { bottom: 32pt; }

@@ -231,6 +231,25 @@ def seiten():
     <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
   </div>''', "ende"))
 
+    # ===================== One-Pager „Der Pitch als Text“: fortlaufend erzählt, nur der Kernsatz hervorgehoben =====================
+    kontakt_brief = "".join(f'<div class="o4-person">{kreis(k, 52)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span><span>{p["tel"]}</span><span>{p["mail"]}</span></div></div>'
+                            for k, p in b.PERSONEN.items())
+    S.append(("o4", f'''<span class="op-kennung">One-Pager · Der Pitch als Text</span>{leiste("Für Führungskräfte in der Versicherungsbranche")}
+  <div class="o4-text">
+    <p class="o4-auf">Sie müssen alles im Blick haben. Und am Ende zählt nur das Ergebnis.</p>
+    <p>Ob Sie ein Thema Ihrem Team geben oder Externe holen: Es kommt selten so zurück, wie Sie es brauchen. Am Ende greifen Sie doch wieder selbst ein.</p>
+    <p>Da setzen wir an.</p>
+  </div>
+  <div class="o4-kern dunkel">
+    <p>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</p>
+  </div>
+  <div class="o4-text">
+    <p>Etwa die Vorlage für den Aufsichtsrat oder die Strategie für die Bereiche. Wir strukturieren Ihr Thema, arbeiten es mit Ihren Leuten aus und holen Spezialisten dazu, wo es sie braucht.</p>
+    <p>Von Ihnen brauchen wir dafür meist nur ein kurzes Telefonat zwischendurch. So haben Sie Ihre Themen im Griff.</p>
+    <p class="o4-einladung">Liegt gerade so ein Thema auf Ihrem Tisch? Dann lassen Sie uns kurz sprechen.</p>
+  </div>
+  <div class="o4-kontakt">{kontakt_brief}</div>''', "op"))
+
     # ===================== One-Pager nach dem Elevator Pitch: sechs Bausteine, Reihenfolge wie gesprochen =====================
     P = {p[0]: p[4] for p in b.PITCH}
     UHR = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>'
