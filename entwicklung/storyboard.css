@@ -328,3 +328,37 @@
 .ep-gespraech { margin-top: 3rem; }
 .ep-gespraech h3 { font-size: 1.5rem; color: var(--navy); }
 .ep-gespraech > div > p { margin-top: .6rem; color: var(--ink-2); }
+/* Elevator Pitch: So hängt es zusammen – Pitch → Fragen → sein Thema */
+.ep-weg3 { display: grid; grid-template-columns: minmax(0, 1fr) 2.6rem minmax(0, 1fr) 2.6rem minmax(0, 1fr); gap: 1rem; align-items: stretch; margin-top: 3rem; }
+.ep-stufe { padding: 2rem 1.8rem; border-radius: 20px; background: var(--navy-2); }
+.ep-stufe--pitch { background: var(--weiss); color: var(--navy); }
+.ep-stufe h3 { font-size: 1.9rem; color: var(--weiss); }
+.ep-stufe--pitch h3 { color: var(--navy); }
+.ep-stufe > p { margin-top: 1rem; color: rgba(255,255,255,.78); }
+.ep-stufe--pitch > p { color: var(--ink-2); }
+.ep-dauer { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+.ep-dauer span { padding: .35rem .9rem; border-radius: 999px; background: var(--navy); color: var(--weiss); font-size: .85rem; font-weight: 600; }
+.ep-regeln-kurz { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--linie); }
+.ep-regeln-kurz li { position: relative; padding: .25rem 0 .25rem 1.2rem; font-size: .9rem; color: var(--navy); }
+.ep-regeln-kurz li::before { content: ""; position: absolute; left: 0; top: .9rem; width: .6rem; height: 2px; background: var(--taupe); }
+.ep-zitat { margin-top: 1.2rem !important; font-family: var(--head); font-size: 1.35rem !important; line-height: 1.3; color: var(--weiss) !important; }
+.ep-themen { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
+.ep-themen li { padding: .3rem .75rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.28); font-size: .8rem; color: rgba(255,255,255,.7); }
+.ep-themen li.passt { border-color: var(--taupe-h); background: var(--taupe-h); color: var(--navy); font-weight: 600; }
+.ep-pfeil { position: relative; align-self: center; height: 2px; background: var(--taupe-h); }
+.ep-pfeil::after { content: ""; position: absolute; right: -2px; top: -5px; border: 6px solid transparent; border-left-color: var(--taupe-h); border-right: 0; }
+@media (max-width: 991px) {
+  .ep-weg3 { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+  .ep-pfeil { justify-self: center; width: 2px; height: 2.2rem; }
+  .ep-pfeil::after { right: auto; left: -5px; top: auto; bottom: -2px; border: 6px solid transparent; border-top-color: var(--taupe-h); border-bottom: 0; }
+}
+/* Neue Abfolge: Visualisierung knapp, Pitch kompakt und hell, Streifen zur Entstehung */
+.ep-viz .ep-weg3 { margin-top: 1.6rem; }
+.ep-pitch-kompakt { padding: 4rem 0; }
+.ep-zwei { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 3.5rem; margin-top: 1.4rem; }
+.ep-zwei h3 { padding-bottom: .6rem; border-bottom: 2px solid var(--navy); font-size: 1.25rem; color: var(--navy); }
+.ep-text-k p { margin-top: .7rem; font-family: var(--head); font-size: 1.08rem; line-height: 1.55; color: var(--ink); }
+.ep-mass-k { margin-top: 1rem; font-size: .8rem; color: var(--ink-2); }
+.ep-streifen { padding: 3rem 0; }
+.ep-streifen__satz { font-family: var(--head); font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.3; color: var(--weiss); }
+@media (max-width: 991px) { .ep-zwei { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; } }

@@ -55,3 +55,23 @@ p { margin: 0; }
 .notiz { margin: 3mm 0 2mm; font-size: 8pt; color: var(--ink-2); }
 .intro--eng { margin-bottom: 3mm; }
 .tab--fragen td.frage-l { width: 95mm; font: 400 9.5pt/1.45 var(--head); color: var(--navy); }
+/* Zusammenhang Pitch → Fragen → sein Thema */
+.fluss { display: grid; grid-template-columns: 1fr 7mm 1fr 7mm 1fr; gap: 2mm; align-items: stretch; margin: 2mm 0 8mm; }
+.stufe { padding: 4.5mm 4.5mm 5mm; border-radius: 2.5mm; background: var(--navy); color: #fff; }
+.stufe--pitch { background: var(--sand); color: var(--navy); }
+.stufe > b { display: block; font: 500 13pt/1.2 var(--head); }
+.dauer { display: flex; gap: 1.5mm; margin-top: 2.5mm; }
+.dauer span { padding: .8mm 2.4mm; border-radius: 9mm; background: var(--navy); color: #fff; font-size: 7pt; font-weight: 600; }
+.regeln { list-style: none; margin: 3mm 0 0; padding: 2.5mm 0 0; border-top: .3mm solid var(--linie); }
+.regeln li { position: relative; padding: .5mm 0 .5mm 3.5mm; font-size: 7.6pt; }
+.regeln li::before { content: ""; position: absolute; left: 0; top: 2.4mm; width: 2mm; height: .35mm; background: var(--taupe); }
+.zitat { margin-top: 2.5mm; font: 400 10.5pt/1.35 var(--head); }
+.themen { list-style: none; display: flex; flex-wrap: wrap; gap: 1.2mm; margin: 2.5mm 0 0; padding: 0; }
+.themen li { padding: .6mm 2mm; border-radius: 9mm; border: .25mm solid rgba(255,255,255,.35); font-size: 6.6pt; color: rgba(255,255,255,.8); }
+.themen li.passt { background: var(--taupe-h); border-color: var(--taupe-h); color: var(--navy); font-weight: 600; }
+.pfeil { position: relative; align-self: center; height: .4mm; background: var(--taupe); }
+.pfeil::after { content: ""; position: absolute; right: -.5mm; top: -1.2mm; border: 1.4mm solid transparent; border-left-color: var(--taupe); border-right: 0; }
+.zwei { display: grid; grid-template-columns: 1.25fr .75fr; gap: 9mm; }
+.zwei h2 { margin-top: 0; padding-bottom: 2mm; border-bottom: .4mm solid var(--navy); font-size: 11.5pt; }
+.zwei .fliess p { font-size: 10pt; }
+.dauer span { white-space: nowrap; }

@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 33
+VERSION = 34
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -829,6 +829,8 @@ def elevator_pitch():
     woerter = len(pitch_text.split())
     weg = "".join(f"<li><b>{t}</b>{x}</li>" for t, x in WEG)
     lenkung = "".join(f"<li><b>{t}</b>{x}</li>" for t, x in LENKUNG)
+    regeln_kurz = "".join(f"<li>{t}</li>" for t, _ in REGELN)
+    themen_chips = "".join(f'<li{" class=passt" if i == 2 else ""}>{t}</li>' for i, (_, t, *_) in enumerate(THEMEN))
     regeln = "".join(f'<div class="sb-karte"><h3>{t}</h3><p>{x}</p></div>' for t, x in REGELN)
     absaetze = "".join(f"<p>{p[4]}</p>" for p in PITCH)
     main = f"""
@@ -842,9 +844,64 @@ def elevator_pitch():
     <div class="ep-dl__bild" aria-hidden="true"><img class="ep-dl__seite ep-dl__seite--hinten" src="/entwicklung/downloads/elevator-pitch-2.png" alt=""><img class="ep-dl__seite ep-dl__seite--vorn" src="/entwicklung/downloads/elevator-pitch-1.png" alt=""></div>
     <p class="kicker">Download · intern</p>
     <b>Der Pitch und wie er entstanden ist.</b>
-    <span class="ep-dl__meta">PDF · 8 Seiten · 0,3 MB</span>
+    <span class="ep-dl__meta">PDF · 2 Seiten · 0,2 MB</span>
     <span class="knopf knopf--hell">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></span>
   </a>
+</div></section>
+
+<section class="sek sek--navy ep-viz"><div class="wrap">
+  <p class="kicker">So hängt es zusammen</p>
+  <div class="ep-weg3">
+    <div class="ep-stufe ep-stufe--pitch">
+      <h3>Pitch</h3>
+      <div class="ep-dauer"><span>30 Sekunden</span><span>10 Sekunden</span></div>
+      <ul class="ep-regeln-kurz">{regeln_kurz}</ul>
+    </div>
+    <span class="ep-pfeil" aria-hidden="true"></span>
+    <div class="ep-stufe">
+      <h3>Fragen</h3>
+      <p class="ep-zitat">„Wie ist bei Ihnen gerade die Situation?“</p>
+    </div>
+    <span class="ep-pfeil" aria-hidden="true"></span>
+    <div class="ep-stufe">
+      <h3>Sein Thema</h3>
+      <ul class="ep-themen">{themen_chips}</ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="sek sek--sand ep-pitch-kompakt"><div class="wrap">
+  <p class="kicker">Der Pitch</p>
+  <div class="ep-zwei">
+    <div>
+      <h3>30 Sekunden</h3>
+      <div class="ep-text-k">{absaetze}</div>
+      <p class="ep-mass-k">{woerter} Wörter · gesprochen etwa {round(woerter / 2.5 / 5) * 5} Sekunden</p>
+    </div>
+    <div>
+      <h3>10 Sekunden</h3>
+      <div class="ep-text-k"><p>{PITCH_10}</p><p>Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p></div>
+      <p class="ep-mass-k">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sek"><div class="wrap">
+  <p class="kicker">Nach dem Pitch</p>
+  <h2 class="h2">Nächste Schritte und Gesprächsführung.</h2>
+  <p class="lead">Der Pitch öffnet das Gespräch. Danach fragen wir, was für das Gegenüber wichtig ist, und steuern bewusst auf sein Thema zu.</p>
+  <div class="ep-weg ep-gespraech">
+    <div><h3>Lenkungsfragen</h3><p>Damit finden wir heraus, welches Thema ihn gerade beschäftigt.</p></div>
+    <ul>{lenkung}</ul>
+  </div>
+  <div class="ep-weg ep-gespraech">
+    <div><h3>Worauf wir hinsteuern</h3><p>Was wir im Gespräch einbringen, sobald er danach fragt.</p></div>
+    <ul>{weg}</ul>
+  </div>
+</div></section>
+
+<section class="sek sek--navy ep-streifen"><div class="wrap">
+  <p class="ep-streifen__satz">Jetzt kennen Sie den Pitch und seine Anwendung. Wie ist er entstanden?</p>
 </div></section>
 
 <section class="sek sek--sand"><div class="wrap">
@@ -862,38 +919,10 @@ def elevator_pitch():
   <div class="ep-zeilen">{zeilen}</div>
 </div></section>
 
-<section class="sek sek--navy"><div class="wrap ep-pitch">
-  <div>
-    <p class="kicker">Der Pitch · gut eine halbe Minute</p>
-    <div class="ep-text">{absaetze}</div>
-    <p class="ep-mass">{woerter} Wörter · gesprochen etwa {round(woerter / 2.5 / 5) * 5} Sekunden (ruhiges Sprechtempo, 2,5 Wörter je Sekunde)</p>
-  </div>
-  <aside>
-    <p class="kicker">Die Kurzfassung · gut 10 Sekunden</p>
-    <p class="ep-kurz">{PITCH_10}</p>
-    <p class="ep-kurz ep-schluss">Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p>
-    <p class="ep-hinweis">Für die Vorstellungsrunde oder die Frage „Und was machen Sie?“. Danach folgt, wenn Interesse da ist, die lange Fassung.</p>
-  </aside>
-</div></section>
-
-<section class="sek"><div class="wrap">
+<section class="sek sek--sand"><div class="wrap">
   <p class="kicker">Aufbau eines guten kurzen Pitches</p>
   <h2 class="h2">Vier Regeln.</h2>
   <div class="sb-karten ep-regeln">{regeln}</div>
-</div></section>
-
-<section class="sek sek--sand"><div class="wrap">
-  <p class="kicker">Nach dem Pitch</p>
-  <h2 class="h2">Nächste Schritte und Gesprächsführung.</h2>
-  <p class="lead">Der Pitch öffnet das Gespräch. Danach fragen wir, was für das Gegenüber wichtig ist, und steuern bewusst auf sein Thema zu.</p>
-  <div class="ep-weg ep-gespraech">
-    <div><h3>Lenkungsfragen</h3><p>Damit finden wir heraus, welches Thema ihn gerade beschäftigt.</p></div>
-    <ul>{lenkung}</ul>
-  </div>
-  <div class="ep-weg ep-gespraech">
-    <div><h3>Worauf wir hinsteuern</h3><p>Was wir im Gespräch einbringen, sobald er danach fragt.</p></div>
-    <ul>{weg}</ul>
-  </div>
 </div></section>"""
     html = seite("Müller &amp; Ströbel – Elevator Pitch (Business Story 2.0)", "Elevator Pitch: von den Storyboard-Aussagen zum kurzen Pitch", "bs2-pitch", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
