@@ -257,3 +257,13 @@
 .sk-vorschau__innen { width: 60rem; padding: 2.4rem 2.6rem 2.6rem; zoom: .5; }
 .sk-vorschau__quelle { font-size: .7rem; font-weight: 500; color: var(--blau); }
 .sk__vars:has(.sk-vorschau) { grid-auto-columns: 30rem; }
+/* Abschnitt mit zwei Streifen (4.1 Ergebnis, 4.2 Kontakt) */
+.sk__streifen { margin-top: .2rem; font-family: var(--head); font-size: 1.25rem; color: var(--weiss); }
+.sk--weiss .sk__streifen, .sk--sand .sk__streifen { color: var(--navy); }
+.sk-unter { margin-top: 1rem; padding: 1rem 1.1rem 1.1rem; border-radius: 14px; }
+.sk-unter--sand { background: var(--sand); }
+.sk-unter--sand .sk__streifen, .sk-unter--sand .sk-var__kopf { color: var(--navy); }
+.sk-unter--sand .sk-teil { background: var(--weiss); }
+.sk-unter--sand .sk-teil p, .sk-unter--sand .sk-teil--h2 p { color: var(--navy); }
+.sk-unter--sand .sk-teil em, .sk-unter--sand .sk-teil span { color: var(--taupe-d); }
+.sk-unter .sk__vars { margin-top: .6rem; }

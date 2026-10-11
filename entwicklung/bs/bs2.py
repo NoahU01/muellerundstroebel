@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 17
+VERSION = 18
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -403,19 +403,16 @@ SKIZZE = [
     ]),
     ("navy", [
         ("A", [("H2", "Sie verwalten keinen Mangel mehr. Sie entscheiden über fertige Vorlagen.", "Punkt 11"),
-               ("Text", "Themen kommen so aufbereitet auf Ihren Tisch, dass Sie damit arbeiten können.", "Punkt 11"),
-               ("Kasten", "Das erste Gespräch: Sie erzählen, was ansteht. Wir sagen offen, ob und wie wir es umsetzen, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.", "Punkt 12"),
-               ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
+               ("Text", "Themen kommen so aufbereitet auf Ihren Tisch, dass Sie damit arbeiten können.", "Punkt 11")]),
         ("B", [("H2", "„Einmal mit Profis arbeiten.“", "Punkt 11, Aussage 27"),
-               ("Text", "Sie entscheiden über Vorlagen, Zielbild und Fahrplan und sehen, wie es vorangeht.", "Punkt 11 · Zielbild: Grundstory"),
-               ("Kasten", "Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "Punkt 12"),
-               ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
+               ("Text", "Sie entscheiden über Vorlagen, Zielbild und Fahrplan und sehen, wie es vorangeht.", "Punkt 11 · Zielbild: Grundstory")]),
         ("C", [("H2", "Sie haben Ihre Themen im Griff.", "Punkt 11"),
-               ("Text", "Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.", "Punkt 11, Daniel 11.10."),
-               ("Element", "Trennlinie, dann der Kontakt", "Gestaltung"),
-               ("H3", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Punkt 7 · zum Schluss"),
-               ("Kasten", "Das erste Gespräch: Sie erzählen, was ansteht. Wir sagen offen, ob und wie wir es umsetzen, und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.", "Punkt 12"),
-               ("Element", "Tobias und Daniel mit Telefon, Mail, LinkedIn", "Punkt 12")]),
+               ("Text", "Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.", "Punkt 11, Daniel 11.10.")]),
+    ], "4.1 Ergebnis", [
+        ("4.2 Kontakt", "sand", [
+            ("C", [("H2", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Punkt 7 · zum Schluss"),
+                   ("Text", "Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.", "Punkt 12")]),
+        ]),
     ]),
 ]
 STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen", "zuletzt": "zum Schluss"}
@@ -460,16 +457,25 @@ def storyboard():
             zeilen += (f'<div class="sb-t-zeile"><ul class="sb-t-punkte">{pk}</ul>'
                        f'<div class="sb-t-frage"><span class="sb-f">F{fnr}</span><b>{frage}</b>'
                        f'<p class="sb-verdichtung"><small>Verdichtung</small>{VERDICHTUNG[fnr]}</p></div></div>')
-        art, varianten = SKIZZE[i - 1]
-        skizze = ""
-        for v, teile in varianten:
-            zeilen_sk = "".join(
-                (f'<div class="sk-vorschau"><div class="sk-vorschau__innen">{x}</div></div><span class="sk-vorschau__quelle">{q}</span>' if t == "Vorschau"
-                 else f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>') for t, x, q in teile)
-            skizze += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else v}</b>{zeilen_sk}</div>'
+        eintrag = SKIZZE[i - 1]
+        art, varianten = eintrag[0], eintrag[1]
+        streifen_titel = eintrag[2] if len(eintrag) > 2 else ""
+        weitere = eintrag[3] if len(eintrag) > 3 else []
+
+        def vars_html(varianten):
+            out = ""
+            for v, teile in varianten:
+                zeilen_sk = "".join(
+                    (f'<div class="sk-vorschau"><div class="sk-vorschau__innen">{x}</div></div><span class="sk-vorschau__quelle">{q}</span>' if t == "Vorschau"
+                     else f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>') for t, x, q in teile)
+                out += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else v}</b>{zeilen_sk}</div>'
+            return out
+
+        streifen_html = f'<div class="sk__streifen">{streifen_titel}</div>' if streifen_titel else ""
+        weitere_html = "".join(f'<div class="sk-unter sk-unter--{a2}"><div class="sk__streifen">{t2}</div><div class="sk__vars">{vars_html(v2)}</div></div>' for t2, a2, v2 in weitere)
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div>'
-                 f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div><div class="sk__vars">{skizze}</div></div></div>\n')
+                 f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div>{streifen_html}<div class="sk__vars">{vars_html(varianten)}</div>{weitere_html}</div></div>\n')
 
     fragen_alle = sorted((int(f), t) for _, _, fr in STORY for f, t, _ in fr)
     punkte_alle = sorted((int(p[0]), p[1]) for _, _, fr in STORY for _, _, ps in fr for p in ps)
