@@ -244,7 +244,7 @@ def ueber_uns():
 STORY = [
     ("Kopf", "Der Leser weiß sofort: Ich bin richtig, und das bekomme ich.", [
         ("1", "Bin ich hier richtig?", [
-            ("1", "Welche Rollen genau", "offen", ""),
+            ("1", "Welche Rollen genau", "da", "Vorstände und Geschäftsführer, Hauptabteilungs- und Bereichsleiter."),
             ("2", "Welche Unternehmen genau", "offen", "")]),
         ("4", "Was ist eure Antwort?", [
             ("7", "Das Versprechen im Wortlaut", "da", "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.")]),
