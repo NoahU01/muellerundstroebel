@@ -1,0 +1,213 @@
+/* One-Pager A3 hoch (841,89 × 1190,55 pt) – Business Story 2.0, nur Entwicklung.
+   Flächenfolge wie die Startseite: dunkel · weiß · dunkles Band · weiß · sand · dunkel. Keine Schatten (Druck). */
+@font-face { font-family: Poppins; font-weight: 400; src: url("/fonts/Poppins-Regular.ttf") format("truetype"); }
+@font-face { font-family: Poppins; font-weight: 500; src: url("/fonts/Poppins-Medium.ttf") format("truetype"); }
+@font-face { font-family: Poppins; font-weight: 600; src: url("/fonts/Poppins-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: Lora; font-weight: 400 700; src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype"); }
+:root { --navy: #082638; --navy-2: #0f3349; --blau: #185e8a; --taupe: #998675; --taupe-d: #7a6757; --taupe-h: #cbbcae;
+  --sand: #f6f3ef; --sand-2: #ebe4dc; --linie: #e6ded5; --ink: #16222b; --ink-2: #46525c; --weiss: #fff; --rand: 64pt; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: A3; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: Poppins, Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: var(--ink-2); }
+ul, ol { list-style: none; }
+img, svg { display: block; }
+.blatt { position: relative; width: 841.89pt; height: 1190.55pt; overflow: hidden; display: flex; flex-direction: column; background: var(--weiss); }
+section, header { padding: 0 var(--rand); }
+
+/* Typografie */
+.kicker { display: flex; align-items: center; gap: 9pt; margin-bottom: 11pt; font-size: 8.4pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-d); }
+.kicker::before { content: ""; width: 22pt; height: 1.5pt; background: var(--taupe); }
+h1, h2 { font-family: Lora, Georgia, serif; font-weight: 500; letter-spacing: -.012em; color: var(--navy); }
+h1 { font-size: 42pt; line-height: 1.06; }
+h2 { font-size: 26pt; line-height: 1.15; }
+.lead { margin-top: 12pt; max-width: 520pt; font-size: 11.5pt; line-height: 1.6; color: var(--ink-2); }
+
+/* Kopf */
+.a-kopf { position: relative; overflow: hidden; padding-top: 40pt; padding-bottom: 40pt; background: var(--navy); }
+.a-kopf__amp { position: absolute; right: -60pt; top: -10pt; width: 330pt; opacity: .35; }
+.a-kopf__leiste { position: relative; display: flex; justify-content: space-between; align-items: center; }
+.a-kopf__leiste img { height: 36pt; width: auto; }
+.a-kopf__leiste span { font-size: 8.4pt; font-weight: 600; letter-spacing: .1em; color: var(--taupe-h); }
+.a-kopf__raster { position: relative; display: grid; grid-template-columns: 1fr 270pt; gap: 30pt; align-items: end; margin-top: 46pt; }
+.a-kopf .kicker { color: var(--taupe-h); }
+.a-kopf .kicker::before { background: var(--taupe-h); }
+.a-kopf h1 { color: var(--weiss); }
+.a-duo { display: flex; justify-content: flex-end; }
+.a-duo figure + figure { margin-left: -10pt; }
+.a-duo figcaption { margin-top: 8pt; text-align: center; font-family: Lora, serif; font-size: 10.5pt; color: var(--weiss); }
+.kreis { position: relative; flex: none; border-radius: 50%; overflow: hidden; border: 4pt solid var(--weiss); background: linear-gradient(180deg, var(--sand-2), #ddd3c7); }
+.kreis img { position: absolute; left: 50%; bottom: 0; width: 112%; transform: translateX(-50%); }
+
+/* Ihre Lage */
+.a-lage { padding-top: 40pt; padding-bottom: 34pt; }
+.a-lage h2 { max-width: 560pt; }
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14pt; margin-top: 24pt; }
+.post { overflow: hidden; border-radius: 14pt; border: .8pt solid var(--linie); }
+.post__bild { position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 128pt; padding: 15pt; }
+.post__bild--sand { background: var(--sand-2); } .post__bild--navy { background: var(--navy); } .post__bild--hell { background: var(--sand); }
+.post__bild small { font-size: 7.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.post__bild--navy small { color: var(--taupe-h); }
+.post__bild b { max-width: 78%; font-family: Lora, serif; font-weight: 500; font-size: 15pt; line-height: 1.18; color: var(--navy); }
+.post__bild--navy b { color: var(--weiss); }
+.post__bild svg { position: absolute; right: 13pt; bottom: 13pt; width: 30pt; height: 30pt; fill: none; stroke: var(--blau); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.post__bild--navy svg { stroke: var(--taupe-h); }
+.post p { padding: 11pt 14pt 13pt; font-size: 9pt; line-height: 1.5; }
+
+/* Wendepunkt */
+.a-wende { padding-top: 26pt; padding-bottom: 28pt; background: var(--navy); }
+.a-wende .kicker { color: var(--taupe-h); }
+.a-wende .kicker::before { background: var(--taupe-h); }
+.a-wende__satz { max-width: 620pt; font-family: Lora, serif; font-size: 27pt; line-height: 1.18; color: var(--weiss); }
+
+/* So arbeiten wir */
+.a-arbeit { padding-top: 36pt; padding-bottom: 30pt; }
+.ablauf { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24pt; margin-top: 26pt; padding-top: 22pt; }
+.ablauf::before { content: ""; position: absolute; left: 6pt; right: 10pt; top: 5.5pt; height: 1.5pt; background: var(--navy); }
+.ablauf::after { content: ""; position: absolute; right: 2pt; top: 1.5pt; border: 5pt solid transparent; border-left-color: var(--navy); border-right: 0; }
+.ablauf li { position: relative; }
+.ablauf li::before { content: ""; position: absolute; left: 0; top: -22pt; width: 12pt; height: 12pt; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 3pt var(--weiss); }
+.ablauf b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 14pt; color: var(--navy); }
+.ablauf span { display: block; margin-top: 4pt; font-size: 9.4pt; line-height: 1.5; }
+.a-netz { margin-top: 22pt; padding: 12pt 16pt; border-radius: 10pt; background: var(--sand); font-size: 9.6pt; color: var(--ink); }
+.a-netz b { margin-right: 10pt; font-size: 7.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+
+/* Hier setzen wir an */
+.a-gebiete { padding-top: 28pt; padding-bottom: 28pt; background: var(--sand); }
+.gebiete { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16pt 22pt; }
+.gebiet { display: flex; gap: 11pt; align-items: flex-start; }
+.gebiet > span { flex: none; width: 24pt; height: 24pt; color: var(--blau); }
+.gebiet > span svg { width: 100%; height: 100%; }
+.gebiet b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 12pt; line-height: 1.25; color: var(--navy); }
+.gebiet p { margin-top: 3pt; font-size: 8.8pt; line-height: 1.45; }
+
+/* Ergebnis und erstes Gespräch */
+.a-ende { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 32pt; padding-bottom: 34pt; background: var(--navy); color: rgba(255,255,255,.8); }
+.a-ende .kicker { color: var(--taupe-h); }
+.a-ende .kicker::before { background: var(--taupe-h); }
+.a-ende h2 { color: var(--weiss); }
+.a-ende .lead { color: rgba(255,255,255,.78); }
+.a-ende__ergebnis { display: grid; grid-template-columns: 1fr 150pt; gap: 30pt; align-items: center; }
+.szene { width: 150pt; height: auto; }
+.a-ende__gespraech { display: grid; grid-template-columns: 1fr 1.15fr; gap: 30pt; align-items: end; padding-top: 22pt; border-top: .6pt solid rgba(255,255,255,.16); }
+.schritte3 { display: grid; gap: 7pt; counter-reset: s; }
+.schritte3 li { counter-increment: s; position: relative; padding-left: 26pt; font-size: 9.6pt; line-height: 1.45; color: rgba(255,255,255,.8); }
+.schritte3 li::before { content: counter(s); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 17pt; height: 17pt; border-radius: 50%; background: var(--weiss); font-family: Lora, serif; font-size: 9pt; color: var(--navy); }
+.schritte3 b { margin-right: 4pt; font-weight: 600; color: var(--weiss); }
+.personen { display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; }
+.person { display: flex; gap: 11pt; align-items: center; }
+.person b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 12pt; color: var(--weiss); }
+.person span { display: block; font-size: 8.4pt; line-height: 1.5; color: rgba(255,255,255,.8); }
+.person__rolle { color: var(--taupe-h) !important; }
+/* Passung A3 (Sichtprüfung 1) */
+.blatt > * { flex: none; }
+.blatt > .a-ende { flex: 1 1 auto; }
+.a-kopf { padding-top: 34pt; padding-bottom: 32pt; }
+.a-kopf__raster { margin-top: 30pt; }
+h1 { font-size: 38pt; }
+h2 { font-size: 23pt; }
+.lead { margin-top: 9pt; font-size: 10.6pt; }
+.a-lage { padding-top: 30pt; padding-bottom: 26pt; }
+.posts { margin-top: 18pt; }
+.post__bild { height: 104pt; padding: 13pt; }
+.post__bild b { font-size: 13.5pt; }
+.post__bild svg { width: 24pt; height: 24pt; }
+.post p { padding: 9pt 13pt 11pt; font-size: 8.4pt; }
+.a-wende { padding-top: 20pt; padding-bottom: 22pt; }
+.a-wende .kicker { margin-bottom: 8pt; }
+.a-wende__satz { font-size: 23pt; }
+.a-arbeit { padding-top: 26pt; padding-bottom: 22pt; }
+.ablauf { margin-top: 18pt; }
+.ablauf b { font-size: 12.5pt; }
+.ablauf span { font-size: 8.8pt; }
+.a-netz { margin-top: 16pt; padding: 9pt 14pt; font-size: 8.8pt; }
+.a-gebiete { padding-top: 22pt; padding-bottom: 22pt; }
+.a-gebiete .kicker { margin-bottom: 12pt; }
+.gebiete { gap: 12pt 20pt; }
+.gebiet > span { width: 20pt; height: 20pt; }
+.gebiet b { font-size: 11pt; }
+.gebiet p { font-size: 8.2pt; }
+.a-ende { padding-top: 24pt; padding-bottom: 26pt; }
+.szene { width: 118pt; }
+.a-ende__ergebnis { grid-template-columns: 1fr 118pt; }
+.a-ende__gespraech { padding-top: 16pt; }
+/* Passung A3 (Sichtprüfung 2): Porträts nur unten, Kopf einspaltig, ruhiger Schluss */
+.a-kopf__raster { grid-template-columns: 1fr; margin-top: 34pt; }
+.a-kopf h1 { max-width: 640pt; }
+.a-kopf__amp { width: 300pt; top: -20pt; opacity: .3; }
+.post__bild { height: 92pt; }
+.a-arbeit h2 { margin-bottom: 0; }
+.a-ende__ergebnis { grid-template-columns: 1fr; }
+.a-ende__ergebnis .lead { max-width: 640pt; }
+/* Passung A3 (Sichtprüfung 3): Arbeitsweise und Einsatzgebiete nebeneinander */
+.a-kopf { padding-top: 30pt; padding-bottom: 28pt; }
+.a-kopf__raster { margin-top: 24pt; }
+.a-lage { padding-bottom: 24pt; }
+.post { border: 0; }
+.post__bild { height: 96pt; border-radius: 14pt; }
+.post__bild--hell { background: var(--sand); }
+.a-wende { padding-top: 18pt; padding-bottom: 20pt; }
+.a-mitte { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; }
+.a-mitte > div { padding: 26pt 30pt 24pt var(--rand); }
+.a-mitte > .a-gebiete { padding: 26pt var(--rand) 24pt 30pt; background: var(--sand); }
+.a-mitte h2 { font-size: 20pt; }
+.ablauf-v { position: relative; display: grid; gap: 11pt; margin-top: 16pt; padding-left: 22pt; }
+.ablauf-v::before { content: ""; position: absolute; left: 5pt; top: 6pt; bottom: 6pt; width: 1.5pt; background: var(--navy); }
+.ablauf-v li { position: relative; }
+.ablauf-v li::before { content: ""; position: absolute; left: -22pt; top: 3pt; width: 11pt; height: 11pt; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 3pt var(--weiss); }
+.ablauf-v b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 12pt; color: var(--navy); }
+.ablauf-v span { display: block; margin-top: 2pt; font-size: 8.6pt; line-height: 1.45; }
+.a-mitte .a-netz { margin-top: 14pt; font-size: 8.4pt; line-height: 1.5; }
+.a-mitte .a-netz b { display: block; margin-bottom: 2pt; }
+.a-mitte .gebiete { grid-template-columns: 1fr 1fr; gap: 12pt 16pt; }
+.a-ende { padding-top: 22pt; padding-bottom: 24pt; }
+/* Passung A3 (Sichtprüfung 4) */
+.a-kopf h1 { font-size: 34pt; max-width: none; }
+.a-kopf__raster { margin-top: 22pt; }
+.post__bild { height: 86pt; }
+.a-lage { padding-top: 26pt; padding-bottom: 22pt; }
+.a-wende { padding-top: 16pt; padding-bottom: 18pt; }
+.a-mitte .gebiete { grid-template-columns: 1fr; gap: 9pt; }
+.a-mitte .gebiet { align-items: baseline; }
+.a-mitte .gebiet > span { transform: translateY(4pt); }
+.a-mitte .gebiet b { display: inline; font-size: 11pt; }
+.a-mitte .gebiet p { display: inline; margin: 0 0 0 6pt; font-size: 8.4pt; }
+.a-mitte > div { padding-top: 22pt; padding-bottom: 20pt; }
+.a-ende { padding-top: 20pt; padding-bottom: 22pt; justify-content: flex-start; gap: 16pt; }
+.a-ende__gespraech { grid-template-columns: 300pt 1fr; align-items: center; padding-top: 16pt; }
+.schritte3 li { font-size: 9pt; }
+.a-mitte h2 { font-size: 18pt; }
+.ablauf-v { gap: 7pt; margin-top: 12pt; }
+.ablauf-v span { font-size: 8.2pt; }
+.a-mitte .a-netz { margin-top: 10pt; padding: 8pt 12pt; }
+.a-mitte .gebiete { gap: 7pt; }
+.a-mitte .gebiet p { font-size: 8pt; }
+.a-mitte > div { padding-top: 20pt; padding-bottom: 18pt; }
+.a-mitte .kicker { margin-bottom: 9pt; }
+.a-mitte { grid-template-columns: .9fr 1.1fr; }
+.a-mitte > .a-gebiete { padding-left: 26pt; }
+.a-mitte > div:first-child { padding-right: 26pt; }
+.a-kopf { padding-top: 26pt; padding-bottom: 22pt; }
+.a-lage { padding-top: 22pt; }
+.a-wende { padding-top: 14pt; padding-bottom: 16pt; }
+/* Passung A3 (Sichtprüfung 5): nichts breiter als das Blatt */
+.a-ende__gespraech { grid-template-columns: minmax(0, 1fr) 420pt; gap: 24pt; }
+.personen { gap: 14pt; }
+.person { gap: 9pt; min-width: 0; }
+.person > div { min-width: 0; }
+.person b { font-size: 11pt; }
+.person span { font-size: 7.8pt; }
+.post__bild b { font-size: 12.5pt; }
+.post__bild { height: 92pt; }
+/* Fehlerkorrektur: das Blatt (selbst eine section) bekam den Seitenrand mit */
+.blatt { padding: 0 !important; }
+.schritte3 b { margin-right: 0; }
+.a-mitte .gebiete { grid-template-columns: 1fr 1fr; gap: 16pt 20pt; }
+.a-mitte .gebiet { align-items: flex-start; }
+.a-mitte .gebiet > span { transform: none; }
+.a-mitte .gebiet b { display: block; font-size: 11.5pt; }
+.a-mitte .gebiet p { display: block; margin: 3pt 0 0; font-size: 8.4pt; }
+.a-mitte .kicker { margin-bottom: 14pt; }
+.a-mitte h2 { font-size: 20pt; }
+.ablauf-v { gap: 10pt; margin-top: 16pt; }
+.ablauf-v span { font-size: 8.8pt; }
