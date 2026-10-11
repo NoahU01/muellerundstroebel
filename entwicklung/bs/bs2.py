@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 11
+VERSION = 12
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -271,6 +271,49 @@ STORY = [
             ("12", "Was im ersten Anruf passiert", "offen", "")]),
     ]),
 ]
+# Hintergrund je Punkt: Aussagen, die zum Kasten geführt haben (aufklappbar im Storyboard)
+HINTERGRUND = {
+    "1": ["„Die Zielgruppe sind Vorstände, Hauptabteilungsleiter, erfahrene Manager von Versicherungsunternehmen oder Rückversicherungsunternehmen.“ (09.10.)",
+          "Ausarbeitung: Vorstand, Hauptabteilungsleiter, Bereichsleiter – das Problem gilt unabhängig von der Hierarchieebene.",
+          "Euer eigener Fall: Tobias war Geschäftsführer beim HÖV.",
+          "Bewusst nicht aufgenommen: Abteilungsleiter, Aufsichtsrat. Freigegeben am 11.10."],
+    "2": ["„Wir sprechen immer von der Versicherungsbranche, um eben niemanden auszuschließen.“ (11.10.)",
+          "Dazu gehören auch Makler und Rückversicherungsmakler.",
+          "Versicherer und Rückversicherer (09.10.); Spanne vom Konzern bis zum Versicherungsverein: HÖV, Tobias’ Aufsichtsratsmandate, Daniels Zeit im Konzern.",
+          "Festlegung: Auf der Seite steht nur das Wort Versicherungsbranche."],
+    "3": ["Die Führungskraft muss alles im Blick haben. Am Ende zählt nur das Ergebnis. (11.10.)",
+          "Vielzahl unterschiedlicher Themen gleichzeitig auf dem Tisch (Fall HÖV).",
+          "Fachlich unterschiedlich, teilweise komplex, über Personen, Projekte und Organisationseinheiten hinweg.",
+          "Strategische Fragen, Entscheidungen, Projekte und gleichzeitig die operative Arbeit.",
+          "Hauptabteilungsleiter: Vorgaben in konkrete Aktivitäten übersetzen, Abteilungen koordinieren, Ergebnisse sicherstellen."],
+    "4": ["„Es ging schon wieder nichts voran, jetzt muss ich mich drum kümmern, wir haben schon wieder viel Zeit verloren.“ (Chat)",
+          "Grundstory: ein Thema, das schon länger beschäftigt – komplex, viele Beteiligte, keiner weiß, wo der Kern liegt.",
+          "Bisherige Startseite: Themen seit Monaten „in Bearbeitung“.",
+          "Noch zu prüfen: Passt der Satz zu den neuen Schmerzpunkten (Grenze 1 und 2)?"],
+    "5": ["Das eigene Team oder externe Unterstützung – beides wird probiert. (11.10.)",
+          "Strategieberater, Projektmanager, Spezialisten einzeln beauftragt (Ausarbeitung).",
+          "Der große Workshop über ein, zwei Tage."],
+    "6": ["Grenze 1 – Verstehen und Strukturieren: Es fehlt ein Sparringspartner auf Augenhöhe, der das Thema bis in die Tiefe kapiert, die Logiken sieht und Lösungen erkennt.",
+          "Grenze 2 – Abarbeiten: Egal ob eigenes Team oder Externe, das Ergebnis kommt nicht so zurück, wie es gebraucht wird; man muss immer wieder selbst eingreifen.",
+          "Die Koordination und das Zusammenziehen bleiben bei der Führungskraft – auch zwischen Aufsichtsrat, Vorstand und Bereichen.",
+          "Workshop: Danach tut sich ewig nichts, bis wieder Zeit im Kalender ist. Deshalb schiebt man große Themen vor sich her."],
+    "7": ["Wir verstehen das Gegenüber.", "Wir strukturieren das Thema.", "Wir sorgen für die Abarbeitung und liefern das Ergebnis.",
+          "Wir belasten die Führungskraft dabei nur minimal – das ist der Kern.",
+          "Fassungen bisher: „Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.“ / „Sie geben uns ein Thema. Wir sorgen dafür, dass daraus ein Ergebnis wird.“",
+          "Wird als Management Summary zum Schluss festgelegt (Datei: entwicklung/bs/management-summary.md)."],
+    "8": ["Euer Fall beim HÖV: Tobias als Geschäftsführer, Daniel hat ihn begleitet.",
+          "Sinngemäß: Er konnte über jedes Thema sprechen; wo Daniel sich auskannte, dachte er direkt mit, wo nicht, sagte er es offen und wusste trotzdem, wie man das Thema angeht.",
+          "Sinngemäß: Daniel hat das Projektmanagement übernommen, mit den Leuten gesprochen, dafür gesorgt, dass es weiterläuft, und selbst angepackt.",
+          "Auf der Seite ohne Namen: „aus eigener Erfahrung“."],
+    "9": ["„Dafür brauchen wir dich nur kurz.“", "„Oft reicht eine halbe Stunde am Telefon, wenn du sowieso im Auto sitzt.“",
+          "„Keine Workshops, für die du einen ganzen Tag blockst.“", "„Lieber oft und kurz abstimmen als lange nichts und dann einen Workshop.“",
+          "Kern: Wir belasten die Führungskraft nur minimal."],
+    "10": ["„Zwischen diesen Gesprächen arbeiten wir, an mehreren Ebenen gleichzeitig.“", "„Wir entwickeln Ideen, Optionen und Entwürfe, professionell aufbereitet.“",
+           "„Beim nächsten Gespräch steigen wir eine Stufe höher ein, und du kannst entscheiden.“", "„Wir sind Referent, Analyseabteilung und Projektleitung in einem.“",
+           "Netzwerk: ehemalige Vorstände und Aufsichtsräte, IT- und Prozess-Spezialisten, Entwickler, Marketingexperten, Grafiker."],
+    "11": ["„Du verwaltest keinen Mangel mehr.“", "„Du bekommst Themen so aufbereitet, dass du damit arbeiten kannst, du entscheidest und steuerst, und die Ergebnisse kommen.“",
+           "Management macht wieder Spaß: permanent Themen zugeliefert, über die man entscheiden kann.", "„Einmal mit Profis arbeiten.“"],
+}
 STATUS = {"da": "vorhanden", "teil": "teilweise", "offen": "offen", "zuletzt": "zum Schluss"}
 SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
     ("1", "Kopf", [("Zeile über der Überschrift", "F1 · Punkte 1–2"), ("Überschrift", "F4 · Punkt 7"),
@@ -301,7 +344,9 @@ def storyboard():
         art = "Festlegung" if nr in ("1", "2") else "Wortlaut"
         info = ('<button class="sb-info" type="button" aria-label="Hinweis zu Punkt 7">i<span role="tooltip"><b>Management Summary</b>'
                 'Das Versprechen fasst alles zusammen, was die übrigen Punkte ergeben. Deshalb legen wir es als Letztes fest.</span></button>') if nr == "7" else ""
-        return f'<li class="sb-p sb-p--{st}"><div><small>Punkt {nr} · {art}{info}</small><b>{txt}</b>{q}</div></li>'
+        hg = HINTERGRUND.get(nr)
+        mehr = (f'<details class="sb-mehr"><summary>Hintergrund</summary><ul>{"".join(f"<li>{x}</li>" for x in hg)}</ul></details>') if hg else ""
+        return f'<li class="sb-p sb-p--{st}"><div><small>Punkt {nr} · {art}{info}</small><b>{txt}</b>{q}{mehr}</div></li>'
 
     baum = ""
     for i, (abschnitt, wirkung, fragen) in enumerate(STORY, 1):

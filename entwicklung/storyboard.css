@@ -185,3 +185,13 @@
 .sb-p small { letter-spacing: .08em; }
 .sb-p--teil q, .sb-p--zuletzt q { background: transparent; border: 1.5px dashed var(--taupe-h); color: var(--ink-2); }
 .sb-p--da q { background: var(--sand); border: 1.5px solid var(--sand); }
+
+/* Aufklappbarer Hintergrund je Punkt */
+.sb-mehr { margin-top: .5rem; }
+.sb-mehr summary { display: inline-flex; align-items: center; gap: .4rem; cursor: pointer; list-style: none; font-size: .78rem; font-weight: 600; color: var(--blau); }
+.sb-mehr summary::-webkit-details-marker { display: none; }
+.sb-mehr summary::before { content: "+"; display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 1.5px solid currentColor; font-size: .8rem; line-height: 1; transition: transform .2s; }
+.sb-mehr[open] summary::before { transform: rotate(45deg); }
+.sb-mehr ul { display: grid; gap: .35rem; margin-top: .6rem; padding: .8rem .9rem .8rem 1.9rem !important; border-radius: 10px; background: var(--sand); list-style: disc; }
+.sb-mehr li { font-size: .85rem; line-height: 1.45; color: var(--ink-2); }
+.sb-mehr li::marker { color: var(--taupe); }
