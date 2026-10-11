@@ -269,13 +269,13 @@ def startseite():
     <div class="lp-kontakt__personen">{kontakte}</div>
   </div>
   <div class="lp-dl">
-    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/assets/downloads/mueller-stroebel-wer-wir-sind-2.webp" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/assets/downloads/mueller-stroebel-wer-wir-sind-1.webp" alt="" loading="lazy"></div>
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/entwicklung/downloads/business-story-2-2.png" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/entwicklung/downloads/business-story-2-1.png" alt="" loading="lazy"></div>
     <div class="lp-dl__text">
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,7 MB</span></div>
-      <a class="knopf knopf--hell" href="/assets/downloads/mueller-stroebel-wer-wir-sind.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+      <div class="lp-dl__meta"><span>PDF</span><span>15 Seiten</span><span>1,5 MB</span></div>
+      <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
 </div></section>
@@ -340,13 +340,13 @@ def kontakt_neu(titel, text):
     <div class="lp-kontakt__personen">{kontakte}</div>
   </div>
   <div class="lp-dl">
-    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/assets/downloads/mueller-stroebel-wer-wir-sind-2.webp" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/assets/downloads/mueller-stroebel-wer-wir-sind-1.webp" alt="" loading="lazy"></div>
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/entwicklung/downloads/business-story-2-2.png" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/entwicklung/downloads/business-story-2-1.png" alt="" loading="lazy"></div>
     <div class="lp-dl__text">
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,7 MB</span></div>
-      <a class="knopf knopf--hell" href="/assets/downloads/mueller-stroebel-wer-wir-sind.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+      <div class="lp-dl__meta"><span>PDF</span><span>15 Seiten</span><span>1,5 MB</span></div>
+      <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
 </div></section>'''

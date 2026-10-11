@@ -1,0 +1,248 @@
+/* ==========================================================================
+   Müller & Ströbel – PDF „Was wir tun und wofür wir stehen“ (Business Story 2.0)
+   Nur Entwicklung. Gebaut von entwicklung/bs/pdf_bs2.py.
+   Gestaltung nach den Prinzipien der Wagenpaten-Seite: Klarheit, gleichartig
+   formatiert, große Überschriften, Farben mit Funktion, keine Doppelungen.
+   Maße in pt (A4 = 595,28 × 841,89 pt, Rand 48 pt). Feste Abstandsregeln:
+     Kicker → Überschrift 10 pt · Überschrift → Unterzeile 14 pt ·
+     Unterzeile → Inhalt 28 pt · Karten-Titel → Text 6 pt · Blöcke 26 pt
+   ========================================================================== */
+@font-face { font-family: Poppins; font-weight: 400; src: url("/fonts/Poppins-Regular.ttf") format("truetype"); }
+@font-face { font-family: Poppins; font-weight: 500; src: url("/fonts/Poppins-Medium.ttf") format("truetype"); }
+@font-face { font-family: Poppins; font-weight: 600; src: url("/fonts/Poppins-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: Lora; font-weight: 400 700; src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype"); }
+
+:root {
+  --navy: #082638; --navy-2: #0f3349; --blau: #185e8a; --taupe: #998675; --taupe-d: #7a6757; --taupe-h: #cbbcae;
+  --sand: #f6f3ef; --sand-2: #ebe4dc; --linie: #e6ded5; --ink: #16222b; --ink-2: #46525c; --weiss: #fff;
+  --rand: 48pt;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: A4; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: Poppins, Arial, sans-serif; font-size: 9.6pt; line-height: 1.6; color: var(--ink-2); background: #d9d4ce; }
+ul, ol { list-style: none; }
+img, svg { display: block; }
+
+.seite { position: relative; width: 595.28pt; height: 841.89pt; overflow: hidden; padding: 112pt var(--rand) 70pt; background: var(--weiss); page-break-after: always; break-after: page; }
+@media screen { .seite { margin: 0 auto 24px; box-shadow: 0 6px 24px rgba(0,0,0,.18); } }
+.seite--sand { background: var(--sand); }
+.seite--navy { background: var(--navy); color: rgba(255,255,255,.8); }
+
+/* Kopf- und Fußzeile */
+.leiste { position: absolute; left: var(--rand); right: var(--rand); top: 40pt; display: flex; justify-content: space-between; align-items: center; }
+.leiste img { height: 30pt; width: auto; }
+.leiste span { font-size: 7.2pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-d); }
+.seite--navy .leiste span { color: var(--taupe-h); }
+.fuss { position: absolute; left: var(--rand); right: var(--rand); bottom: 30pt; display: flex; justify-content: space-between; padding-top: 10pt; border-top: .6pt solid var(--linie); font-size: 7pt; color: #8a8682; }
+.seite--navy .fuss { border-color: rgba(255,255,255,.16); color: rgba(255,255,255,.55); }
+
+/* Typografie */
+.kicker { display: flex; align-items: center; gap: 8pt; margin-bottom: 10pt; font-size: 7.4pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-d); }
+.kicker::before { content: ""; width: 20pt; height: 1.5pt; background: var(--taupe); }
+.seite--navy .kicker, .dunkel .kicker { color: var(--taupe-h); }
+.seite--navy .kicker::before, .dunkel .kicker::before { background: var(--taupe-h); }
+h1, h2, h3, h4 { font-family: Lora, Georgia, serif; font-weight: 500; color: var(--navy); letter-spacing: -.01em; }
+.seite--navy h1, .seite--navy h2, .seite--navy h3, .dunkel h2, .dunkel h3 { color: var(--weiss); }
+h1 { font-size: 38pt; line-height: 1.06; letter-spacing: -.02em; }
+h2 { font-size: 27pt; line-height: 1.12; }
+h3 { font-size: 13.5pt; line-height: 1.25; }
+.unter { margin-top: 14pt; max-width: 400pt; font-size: 11pt; line-height: 1.6; color: var(--ink-2); }
+.seite--navy .unter, .dunkel .unter { color: rgba(255,255,255,.78); }
+.block { margin-top: 28pt; }
+
+/* Deckblatt */
+.deck { padding-top: 0; }
+.deck__szene { position: absolute; right: 30pt; top: 110pt; width: 300pt; opacity: .95; }
+.deck__text { position: absolute; left: var(--rand); right: var(--rand); bottom: 120pt; }
+.deck h1 { font-size: 40pt; max-width: 430pt; }
+.deck .unter { font-size: 11.2pt; max-width: 420pt; }
+
+/* Ihre Lage: Kästen wie Social Media */
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12pt; }
+.post { overflow: hidden; border-radius: 12pt; border: .8pt solid var(--linie); background: var(--weiss); }
+.post__bild { position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 128pt; padding: 13pt; }
+.post__bild--sand { background: var(--sand-2); }
+.post__bild--navy { background: var(--navy); color: var(--weiss); }
+.post__bild--hell { background: #faf8f5; }
+.post__bild small { font-size: 6.6pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.post__bild--navy small { color: var(--taupe-h); }
+.post__bild b { max-width: 78%; font-family: Lora, serif; font-weight: 500; font-size: 13pt; line-height: 1.15; color: var(--navy); }
+.post__bild--navy b { color: var(--weiss); }
+.post__bild svg { position: absolute; right: 11pt; bottom: 11pt; width: 26pt; height: 26pt; fill: none; stroke: var(--blau); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.post__bild--navy svg { stroke: var(--taupe-h); }
+.post__text { padding: 10pt 12pt 12pt; font-size: 8.3pt; line-height: 1.5; }
+.kern { margin-top: 26pt; padding: 20pt 22pt; border-radius: 14pt; background: var(--navy); color: rgba(255,255,255,.8); }
+.kern .kicker { color: var(--taupe-h); }
+.kern .kicker::before { background: var(--taupe-h); }
+.kern p:not(.kicker) { font-family: Lora, serif; font-size: 14pt; line-height: 1.4; color: var(--weiss); }
+
+/* So arbeiten wir */
+.text p + p { margin-top: 8pt; }
+.text p { font-size: 10.2pt; }
+.text b { font-weight: 500; color: var(--navy); }
+.ablauf { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18pt; padding-top: 20pt; }
+.ablauf::before { content: ""; position: absolute; left: 5pt; right: 8pt; top: 5pt; height: 1.4pt; background: var(--navy); }
+.ablauf::after { content: ""; position: absolute; right: 2pt; top: 2pt; border: 4pt solid transparent; border-left-color: var(--navy); border-right: 0; }
+.ablauf li { position: relative; }
+.ablauf li::before { content: ""; position: absolute; left: 0; top: -20pt; width: 10pt; height: 10pt; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 3pt var(--weiss); }
+.ablauf b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 12.5pt; color: var(--navy); }
+.ablauf span { display: block; margin-top: 4pt; font-size: 8.6pt; line-height: 1.5; }
+.netz { padding: 20pt 22pt 18pt; border-radius: 14pt; background: var(--navy); color: rgba(255,255,255,.78); }
+.netz h3 { color: var(--weiss); }
+.netz > p { margin-top: 6pt; font-size: 9pt; }
+.netz ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 14pt; margin-top: 12pt; }
+.netz li { display: flex; align-items: center; gap: 8pt; padding: 8pt 0; border-top: .6pt solid rgba(255,255,255,.16); font-size: 8.6pt; line-height: 1.3; color: var(--weiss); }
+.netz li svg { flex: none; width: 15pt; height: 15pt; fill: none; stroke: var(--taupe-h); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Ergebnis (dunkel) */
+.ergebnis__szene { position: absolute; right: 40pt; top: 120pt; width: 230pt; }
+.ergebnis__text { position: absolute; left: var(--rand); right: var(--rand); bottom: 120pt; }
+.ergebnis h2 { font-size: 34pt; max-width: 360pt; }
+.haken { display: grid; gap: 0; margin-top: 26pt; max-width: 400pt; }
+.haken li { display: flex; gap: 10pt; padding: 9pt 0; border-top: .6pt solid rgba(255,255,255,.16); font-size: 10pt; color: rgba(255,255,255,.88); }
+.haken li:last-child { border-bottom: .6pt solid rgba(255,255,255,.16); }
+.haken svg { flex: none; width: 12pt; height: 12pt; margin-top: 2pt; fill: none; stroke: var(--taupe-h); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.seite--weiss .haken li { border-color: var(--linie); color: var(--ink); }
+.seite--weiss .haken svg { stroke: var(--blau); }
+
+/* Einsatzgebiete: Überblick (Muster Schritt-Karten) */
+.gebiete { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+.gebiet { position: relative; padding: 16pt 16pt 15pt; border-radius: 12pt; border: .8pt solid var(--linie); background: var(--weiss); }
+.gebiet__ico { display: grid; place-items: center; width: 30pt; height: 30pt; border-radius: 8pt; background: var(--navy); }
+.gebiet__ico svg { width: 16pt; height: 16pt; color: var(--weiss); }
+.gebiet__nr { position: absolute; right: 15pt; top: 14pt; font-family: Lora, serif; font-size: 10pt; color: var(--taupe-h); }
+.gebiet h3 { margin-top: 12pt; }
+.gebiet p { margin-top: 6pt; font-size: 8.8pt; line-height: 1.5; }
+
+/* Einsatzgebiete im Detail */
+.detail { display: grid; grid-template-columns: 150pt 1fr; gap: 24pt; padding: 22pt 0; border-top: .6pt solid var(--linie); }
+.detail:first-of-type { border-top: 0; padding-top: 0; }
+.detail__nr { font-family: Lora, serif; font-size: 11pt; color: var(--taupe-h); }
+.detail h3 { margin-top: 4pt; font-size: 15pt; }
+.detail__wenn { margin-top: 6pt; font-size: 8.8pt; line-height: 1.5; color: var(--taupe-d); }
+.detail__text > p { font-size: 9.3pt; }
+.detail h4 { margin-top: 12pt; font-family: Poppins, sans-serif; font-size: 6.8pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.detail ul { margin-top: 5pt; }
+.detail li { position: relative; padding: 3pt 0 3pt 13pt; font-size: 9pt; line-height: 1.45; color: var(--ink); }
+.detail li::before { content: ""; position: absolute; left: 0; top: 9pt; width: 5pt; height: 5pt; border-radius: 50%; background: var(--taupe); }
+.detail__ergebnis { margin-top: 12pt; padding: 9pt 12pt; border-radius: 8pt; background: var(--navy); font-family: Lora, serif; font-size: 10.5pt; color: var(--weiss); }
+.detail__ergebnis small { display: block; margin-bottom: 2pt; font-family: Poppins, sans-serif; font-size: 6.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-h); }
+
+/* Personen */
+.person { display: grid; grid-template-columns: 112pt 1fr; gap: 26pt; padding: 22pt 0; border-top: .6pt solid var(--linie); }
+.person:first-of-type { border-top: 0; padding-top: 0; }
+.kreis { position: relative; width: 112pt; height: 112pt; border-radius: 50%; overflow: hidden; border: 4.5pt solid var(--weiss); background: linear-gradient(180deg, var(--sand-2), #ddd3c7); box-shadow: 0 12pt 24pt -12pt rgba(8,38,56,.4); }
+.kreis img { position: absolute; left: 50%; bottom: 0; width: 112%; transform: translateX(-50%); }
+.person h3 { font-size: 18pt; }
+.person__rolle { margin-top: 3pt; font-size: 9.4pt; color: var(--taupe-d); }
+.chips { display: flex; flex-wrap: wrap; gap: 5pt; margin-top: 10pt; }
+.chips span { padding: 3pt 9pt; border-radius: 999pt; border: .7pt solid var(--linie); background: var(--weiss); font-size: 7.8pt; color: var(--navy); }
+.person__werdegang { margin-top: 10pt; font-size: 9pt; line-height: 1.55; }
+.person__kontakt { margin-top: 8pt; font-size: 8.8pt; color: var(--ink); }
+.person__kontakt span + span::before { content: "·"; margin: 0 7pt; color: var(--taupe-h); }
+
+/* Geschäftsmodell in seiner Gänze */
+.gaenze { display: grid; grid-template-columns: 1fr 230pt; gap: 24pt; align-items: center; }
+.gaenze > svg { width: 230pt; height: 230pt; }
+
+/* Abschluss (dunkel, klar als Ende erkennbar) */
+.ende { display: flex; flex-direction: column; padding-top: 70pt; }
+.ende__logo { height: 44pt; width: auto; margin: 0 auto; }
+.ende__kern { margin-top: 56pt; text-align: center; }
+.ende__kern .kicker { justify-content: center; }
+.ende h2 { font-size: 30pt; max-width: 430pt; margin: 0 auto; }
+.ende .unter { margin: 14pt auto 0; text-align: center; max-width: 380pt; }
+.ende__personen { display: grid; grid-template-columns: 1fr 1fr; gap: 24pt; margin-top: 40pt; text-align: center; }
+.ende__personen .kreis { margin: 0 auto; width: 96pt; height: 96pt; border-color: var(--weiss); }
+.ende__personen h3 { margin-top: 12pt; font-size: 15pt; color: var(--weiss); }
+.ende__personen p { margin-top: 3pt; font-size: 8.6pt; color: var(--taupe-h); }
+.ende__personen .wege { margin-top: 8pt; font-size: 9pt; line-height: 1.6; color: rgba(255,255,255,.9); }
+.ende__web { margin: 30pt auto 0; padding: 9pt 20pt; border-radius: 999pt; background: var(--weiss); font-weight: 600; font-size: 9.5pt; color: var(--navy); }
+.impressum { position: absolute; left: var(--rand); right: var(--rand); bottom: 54pt; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16pt; padding-top: 14pt; border-top: .6pt solid rgba(255,255,255,.16); font-size: 7.4pt; line-height: 1.6; color: rgba(255,255,255,.7); }
+.impressum b { display: block; margin-bottom: 3pt; font-size: 6.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-h); }
+
+/* One-Pager: Trennblatt-Kennung */
+.op-kennung { position: absolute; right: var(--rand); top: 26pt; font-size: 6.6pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe-h); }
+.op-person { display: flex; align-items: center; gap: 10pt; }
+.op-person .kreis { width: 44pt; height: 44pt; border-width: 2.5pt; box-shadow: none; }
+.op-person b { display: block; font-family: Lora, serif; font-weight: 500; font-size: 10.5pt; color: var(--navy); }
+.op-person span { display: block; font-size: 7.4pt; line-height: 1.45; color: var(--ink-2); }
+.dunkel .op-person b { color: var(--weiss); }
+.dunkel .op-person span { color: rgba(255,255,255,.75); }
+
+/* One-Pager A: hell, klar gegliedert */
+.opa h1 { font-size: 28pt; max-width: 400pt; }
+.opa .unter { font-size: 10pt; }
+.opa .posts .post__bild { height: 96pt; padding: 11pt; }
+.opa .posts .post__bild b { font-size: 11pt; }
+.opa .posts .post__bild svg { width: 20pt; height: 20pt; }
+.opa__band { position: absolute; left: 0; right: 0; bottom: 0; height: 230pt; padding: 26pt var(--rand) 0; background: var(--navy); }
+.opa__band h2 { font-size: 21pt; color: var(--weiss); }
+.opa__band .unter { margin-top: 8pt; font-size: 9.4pt; }
+.opa__kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; margin-top: 18pt; padding-top: 14pt; border-top: .6pt solid rgba(255,255,255,.16); }
+.zwischen { margin-top: 22pt; font-size: 6.8pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.zwischen + * { margin-top: 10pt; }
+
+/* One-Pager B: zweispaltig, linke Spalte dunkel */
+.opb { display: grid; grid-template-columns: 200pt 1fr; padding: 0; }
+.opb__links { position: relative; padding: 40pt 24pt 34pt; background: var(--navy); color: rgba(255,255,255,.78); }
+.opb__links img { height: 28pt; width: auto; }
+.opb__links h1 { margin-top: 70pt; font-size: 24pt; color: var(--weiss); }
+.opb__links .unter { font-size: 9pt; }
+.opb__versprechen { position: absolute; left: 24pt; right: 24pt; bottom: 200pt; padding-top: 14pt; border-top: .6pt solid rgba(255,255,255,.16); font-family: Lora, serif; font-size: 12.5pt; line-height: 1.35; color: var(--weiss); }
+.opb__kontakt { position: absolute; left: 24pt; right: 24pt; bottom: 34pt; display: grid; gap: 14pt; }
+.opb__rechts { padding: 40pt 36pt 34pt 30pt; }
+.opb__abschnitt { padding: 16pt 0; border-top: .6pt solid var(--linie); }
+.opb__abschnitt:first-child { border-top: 0; padding-top: 0; }
+.opb__abschnitt h2 { font-size: 17pt; }
+.opb__abschnitt p { margin-top: 6pt; font-size: 8.8pt; line-height: 1.55; }
+.opb__liste li { display: flex; gap: 8pt; padding: 4pt 0; font-size: 8.6pt; line-height: 1.45; color: var(--ink); }
+.opb__liste b { flex: none; width: 74pt; font-family: Lora, serif; font-weight: 500; font-size: 9.6pt; color: var(--navy); }
+
+/* One-Pager C: Kacheln wie Social Media */
+.opc { padding-top: 96pt; }
+.opc h1 { font-size: 24pt; max-width: 420pt; }
+.kacheln { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10pt; margin-top: 22pt; }
+.kachel { display: flex; flex-direction: column; justify-content: space-between; height: 150pt; padding: 13pt; border-radius: 12pt; border: .8pt solid var(--linie); background: var(--weiss); }
+.kachel--navy { background: var(--navy); border-color: var(--navy); color: rgba(255,255,255,.78); }
+.kachel--sand { background: var(--sand-2); border-color: var(--sand-2); }
+.kachel small { font-size: 6.4pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.kachel--navy small { color: var(--taupe-h); }
+.kachel b { font-family: Lora, serif; font-weight: 500; font-size: 12.5pt; line-height: 1.18; color: var(--navy); }
+.kachel--navy b { color: var(--weiss); }
+.kachel p { font-size: 7.8pt; line-height: 1.45; }
+.opc__kontakt { position: absolute; left: var(--rand); right: var(--rand); bottom: 70pt; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18pt; align-items: center; padding-top: 16pt; border-top: .6pt solid var(--linie); }
+.opc__kontakt p { font-family: Lora, serif; font-size: 12pt; line-height: 1.3; color: var(--navy); }
+
+/* One-Pager D: dunkel, ein großer Satz */
+.opd h1 { margin-top: 30pt; font-size: 36pt; max-width: 440pt; color: var(--weiss); }
+.opd .unter { color: rgba(255,255,255,.78); }
+.opd__drei { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20pt; margin-top: 40pt; }
+.opd__drei div { padding-top: 12pt; border-top: 1.4pt solid var(--taupe-h); }
+.opd__drei small { font-family: Lora, serif; font-size: 10pt; color: var(--taupe-h); }
+.opd__drei h3 { margin-top: 4pt; font-size: 13pt; color: var(--weiss); }
+.opd__drei p { margin-top: 6pt; font-size: 8.6pt; line-height: 1.5; color: rgba(255,255,255,.75); }
+.opd__versprechen { margin-top: 40pt; font-family: Lora, serif; font-size: 17pt; line-height: 1.3; color: var(--weiss); max-width: 420pt; }
+.opd__kontakt { position: absolute; left: var(--rand); right: var(--rand); bottom: 70pt; display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; padding-top: 16pt; border-top: .6pt solid rgba(255,255,255,.16); }
+
+/* Korrekturen nach Sichtprüfung */
+.deck__amp { position: absolute; right: -30pt; top: 96pt; width: 400pt; height: auto; opacity: .9; }
+.kern { position: absolute; left: var(--rand); right: var(--rand); bottom: 84pt; margin-top: 0; }
+.seite .netz.block { position: absolute; left: var(--rand); right: var(--rand); bottom: 84pt; margin-top: 0; }
+.detail { padding: 26pt 0; }
+/* Korrekturen One-Pager und Gänze (Sichtprüfung 2) */
+.op-person .kreis { flex: none; }
+.opb__links .unter { color: rgba(255,255,255,.72); }
+.kachel { height: 200pt; padding: 15pt; }
+.kachel b { font-size: 14pt; }
+.kachel p { font-size: 8.4pt; }
+.kacheln { gap: 12pt; margin-top: 26pt; }
+.opd h1 { font-size: 42pt; margin-top: 60pt; }
+.opd .unter { font-size: 11pt; }
+.opd__drei { margin-top: 56pt; }
+.opd__drei h3 { font-size: 15pt; }
+.opd__drei p { font-size: 9.2pt; }
+.opd__versprechen { position: absolute; left: var(--rand); right: var(--rand); bottom: 190pt; margin-top: 0; font-size: 22pt; }
+.gaenze { grid-template-columns: 1fr 290pt; margin-top: 40pt; }
+.gaenze > svg { width: 290pt; height: 290pt; }
