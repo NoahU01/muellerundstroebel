@@ -191,7 +191,7 @@ def seiten():
     <div><b>Stand</b>Oktober 2026<br>www.muellerundstroebel.de</div>'''
     kontakt_zeilen = "".join(f'<div class="ab-person">{kreis(k, 58)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span>'
                              f'<span>{p["mail"]}</span><span>{p["tel"]}</span></div></div>' for k, p in b.PERSONEN.items())
-    S.append(("ab ab2n", f'''{leiste("Kontakt")}
+    S.append(("ab ab2n", f'''<span class="op-kennung" style="color:var(--taupe-d)">Alternative A</span>{leiste("Kontakt")}
   <img class="ab2n__amp" src="/entwicklung/pdf-bs2/ampersand-blau.svg" alt="">
   <div class="ab2n__unten dunkel">
     <div class="ab2n__text">
@@ -206,27 +206,13 @@ def seiten():
     </div>
   </div>''', "ende"))
     # Rückseite Variante B: komplett dunkelblau, skizziertes & rechts oben, darüber der Pitch in 10 Sekunden
-    S.append(("navy ab ab2n abb", f'''{leiste("Kontakt", True)}
+    S.append(("navy ab ab2n abb", f'''<span class="op-kennung op-kennung--hell">Alternative B</span>{leiste("Kontakt", True)}
   <img class="abb__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
   <div class="ab2n__unten dunkel">
     <div class="ab2n__text abb__text">
       <p class="abb__kurz">{b.PITCH_10}</p>
       <p class="abb__kurz abb__schluss">Kurz gesagt: Wir sind die rechte Hand, die Sie sich für Ihre wichtigsten Themen immer gewünscht haben.</p>
     </div>
-    <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
-    <div class="ab4__impressum">
-      <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
-      <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
-    </div>
-  </div>''', "ende"))
-    # Rückseite Variante C: wie B, aber mit dem 30-Sekunden-Pitch als Text in Abschnitten
-    P = {x[0]: x[4] for x in b.PITCH}
-    abschnitte = [P["1"] + " " + P["2"], P["3"], P["4"] + " " + P["5"]]
-    pitch30 = "".join(f"<p>{a}</p>" for a in abschnitte) + f'<p class="abc__frage">{P["6"]}</p>'
-    S.append(("navy ab ab2n abb abc", f'''{leiste("Kontakt", True)}
-  <img class="abb__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
-  <div class="ab2n__unten dunkel">
-    <div class="ab2n__text abb__text abc__text">{pitch30}</div>
     <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
     <div class="ab4__impressum">
       <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>

@@ -744,10 +744,3 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .abb__text { right: var(--rand) !important; top: 40pt !important; }
 .abb__kurz { font-family: Lora, serif; font-size: 15pt; line-height: 1.45; color: var(--weiss); }
 .abb__schluss { margin-top: 14pt; color: var(--taupe-h); }
-/* Rückseite Variante C: 30-Sekunden-Pitch in Abschnitten */
-.abc .abb__amp { top: 84pt; width: 230pt; right: 0; }
-.abc .ab2n__unten { height: 560pt; }
-.abc__text p { font-family: Lora, serif; font-size: 12.5pt; line-height: 1.5; color: var(--weiss); }
-.abc__text p + p { margin-top: 10pt; }
-.abc__text .abc__frage { color: var(--taupe-h); }
-.abc .abc__text { top: 104pt !important; }
