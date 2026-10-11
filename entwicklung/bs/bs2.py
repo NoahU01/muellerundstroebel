@@ -867,6 +867,19 @@ def elevator_pitch():
 <section class="sek sek--sand"><div class="wrap ep-weg">
   <div><p class="kicker">Bewusst weggelassen</p><h2 class="h2">Was im kurzen Pitch fehlt und wann es kommt.</h2></div>
   <ul>{weg}</ul>
+</div></section>
+
+<section class="sek"><div class="wrap">
+  <div class="lp-dl" style="margin-top:0">
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/entwicklung/downloads/elevator-pitch-2.png" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/entwicklung/downloads/elevator-pitch-1.png" alt="" loading="lazy"></div>
+    <div class="lp-dl__text">
+      <p class="kicker">Download · intern</p>
+      <h3>Der Pitch und wie er entstanden ist.</h3>
+      <p>Seite 1: der Pitch und die Kurzfassung. Danach Satz für Satz die Herkunft aus dem Storyboard, das Ausgangsmaterial, die Regeln und was bewusst fehlt.</p>
+      <div class="lp-dl__meta"><span>PDF</span><span>6 Seiten</span><span>0,3 MB</span><span>Arbeitsdokument</span></div>
+      <a class="knopf knopf--hell" href="/entwicklung/downloads/elevator-pitch.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+    </div>
+  </div>
 </div></section>"""
     html = seite("Müller &amp; Ströbel – Elevator Pitch (Business Story 2.0)", "Elevator Pitch: von den Storyboard-Aussagen zum kurzen Pitch", "bs2-pitch", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
