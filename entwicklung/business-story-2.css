@@ -512,3 +512,46 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
   .lp-ablauf::after { display: none; }
   .lp-ablauf li::before { left: -2.2rem; top: .3rem; }
 }
+
+/* ===== Über uns (Neubau 11.10.) ===== */
+.pp-liste { display: grid; gap: 4.5rem; }
+.pp { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 3.5rem; align-items: start; }
+.pp + .pp { padding-top: 4.5rem; border-top: 1px solid var(--linie); }
+.pp--rechts { grid-template-columns: minmax(0, 1fr) 15rem; }
+.pp--rechts .pp__bild { order: 2; }
+.pp__bild .kreis { width: 15rem; border-width: 6px; }
+.pp__name { font-size: clamp(2rem, 3.2vw, 2.6rem); }
+.pp__rolle { margin-top: .35rem; font-size: 1rem; color: var(--taupe-d); }
+.pp__spalten { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2.6rem; margin-top: 1.8rem; }
+.pp h4 { font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-d); }
+.pp h4 ~ h4 { margin-top: 1.6rem; }
+.pp__spalten p { margin-top: .6rem; font-size: .98rem; line-height: 1.65; color: var(--ink-2); }
+.pp__chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .7rem; }
+.pp__chips span { padding: .4rem .85rem; border-radius: 999px; background: var(--weiss); border: 1px solid var(--linie); font-size: .86rem; color: var(--navy); }
+.pp__fakt { margin-top: 1rem !important; font-weight: 600; color: var(--navy) !important; }
+.pp__mehr { display: inline-flex; align-items: center; gap: .4rem; margin-top: .8rem; padding: 0; border: 0; background: none; font: 600 .9rem var(--text); color: var(--taupe-d); cursor: pointer; }
+.pp__mehr .ico { width: .95rem; height: .95rem; stroke-width: 1.8; }
+.pp__wege { display: grid; gap: .25rem; }
+.pp__wege a { width: max-content; text-decoration: none; color: var(--ink); }
+.pp__wege a:hover { color: var(--blau); }
+.gebiete__titel { margin-top: 4rem; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe-h); }
+.gebiete { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.gebiet { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .3rem 1rem; align-items: start; padding: 1.3rem 1.4rem; border-radius: 16px; border: 1px solid rgba(255,255,255,.14); background: transparent; color: var(--weiss); font: inherit; text-align: left; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.gebiet:hover, .gebiet:focus-visible { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.3); outline: none; }
+.gebiet__ico { grid-row: 1 / 3; width: 2rem; height: 2rem; color: var(--taupe-h); }
+.gebiet__ico svg { width: 100%; height: 100%; }
+.gebiet b { font-family: var(--head); font-weight: 500; font-size: 1.2rem; }
+.gebiet__wenn { font-size: .88rem; line-height: 1.45; color: rgba(255,255,255,.72); }
+.fenster__inhalt > p + .stationen { margin-top: 1rem; }
+@media (max-width: 991px) {
+  .pp, .pp--rechts { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .pp--rechts .pp__bild { order: 0; }
+  .pp__bild .kreis { width: 11rem; }
+  .pp__spalten { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
+  .gebiete { grid-template-columns: minmax(0, 1fr); }
+}
+/* Ablauf mit drei Punkten, Linie läuft als Pfeil weiter */
+.lp-ablauf { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.6rem; }
+.lp-ablauf::before { background: var(--navy); right: 1.2rem; }
+.lp-ablauf::after { right: .4rem; border-left-color: var(--navy); }
+@media (max-width: 760px) { .lp-ablauf { grid-template-columns: minmax(0, 1fr); } .lp-ablauf::before { background: var(--navy); } }

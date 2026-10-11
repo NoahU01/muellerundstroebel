@@ -7,7 +7,7 @@
 <meta name="description" content="Entwurf: Über uns zur Business Story 2.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=29">
+<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=31">
 </head>
 <body data-variante="bs2-ueber">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -101,41 +101,56 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
 </div></header>
 <main>
 
-<section class="held held--klein"><div class="wrap">
-  <p class="kicker">Über uns</p>
-  <h1>Tobias Müller <i>&amp;</i> Daniel Ströbel</h1>
-  <p class="lead">Wir kennen das Geschäftsmodell Versicherung von innen und haben schon viele Projekte gemeinsam umgesetzt. Jeder von uns bringt klare Schwerpunkte mit. Im Projekt arbeiten wir beide selbst mit.</p>
+<section class="held lp-held"><div class="wrap held__raster">
+  <div>
+    <p class="kicker">Über uns</p>
+    <div class="wahl" data-gruppe="ukopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
+    <h1 data-gruppe="ukopf" data-variante="1">Unser Team. Unser Netzwerk.</h1>
+    <h1 data-gruppe="ukopf" data-variante="2" hidden>Wir kennen die Branche von innen.</h1>
+    <p class="lead">Zwei Partner mit eigener Führungserfahrung in der Versicherungswirtschaft, dazu ein Netzwerk erfahrener Spezialisten. Sie haben einen Ansprechpartner, wir bringen die passenden Leute zusammen. Im Projekt arbeiten wir beide selbst mit.</p>
+  </div>
+  <div class="duo duo--gleich"><figure><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div><figcaption><b>Tobias Müller</b></figcaption></figure><figure><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div><figcaption><b>Daniel Ströbel</b></figcaption></figure></div>
 </div></section>
 
-<section class="sek sek--sand profile"><div class="wrap"><article class="profil">
-    <div class="profil__bild"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div></div>
-    <div class="profil__text">
-      <p class="kicker">Partner</p><h2 class="h2">Tobias Müller</h2><p class="profil__rolle">Governance, Gremien &amp; Risiko</p>
-      <p class="lead">Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung.</p>
-      <div class="profil__punkte"><span>Governance &amp; Gremienlogik</span><span>Aufsichtsrats- &amp; Vorstandssicht</span><span>Risiko &amp; Rechnungslegung</span></div>
-      <details class="mehr"><summary><i aria-hidden="true">+</i>Stationen im Lebenslauf</summary><div class="stationen"><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2021</span><div><b>Mitglied des Aufsichtsrats</b><span>Gartenbau-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2020 – 2024</span><div><b>Geschäftsführer</b><span>Haftpflichtverband öffentlicher Verkehrsbetriebe (HÖV)</span><em>Deckungs- und Schadenmanagement für kommunale Verkehrsunternehmen</em></div></li><li><span class="v-cv-year">seit 2020</span><div><b>Mitglied des Aufsichtsrats</b><span>Grundeigentümer-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2018 – 2019</span><div><b>Stellv. Vorsitzender des Aufsichtsrats</b><span>SHB Allgemeine Versicherung VVaG</span></div></li><li><span class="v-cv-year">2013 – 2025</span><div><b>Geschäftsführer</b><span>Müller Unternehmensberatung GmbH</span><em>Outsourcing und Beratung für Versicherer und Rückversicherer in Deutschland und Europa</em></div></li><li><span class="v-cv-year">2009 – 2013</span><div><b>Underwriter</b><span>Hannover Re</span><em>Treaty Underwriting, u. a. US-Casualty und strukturierte Rückversicherung</em></div></li><li><span class="v-cv-year">2008 – 2009</span><div><b>Research Assistant</b><span>Maastricht University</span></div></li><li><span class="v-cv-year">2002 – 2005</span><div><b>Trainee</b><span>SCOR (ehem. Converium)</span></div></li><li><span class="v-cv-year">2001 – 2003</span><div><b>Praktika in der Rückversicherung</b><span>Aon Benfield (London, Hamburg), Milli Re (Istanbul)</span></div></li></ol></div></details>
+<section class="sek sek--sand"><div class="wrap pp-liste"><article class="pp">
+    <div class="pp__bild"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div></div>
+    <div class="pp__inhalt">
+      <p class="kicker">Partner</p><h2 class="pp__name">Tobias Müller</h2><p class="pp__rolle">Governance, Gremien &amp; Risiko</p>
+      <div class="pp__spalten">
+        <div><h4>Schwerpunkte</h4><div class="pp__chips"><span>Governance &amp; Gremienlogik</span><span>Aufsichtsrats- &amp; Vorstandssicht</span><span>Risiko &amp; Rechnungslegung</span></div><p class="pp__fakt">Mitglied in zwei Aufsichtsräten</p></div>
+        <div><h4>Werdegang</h4><p>Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung.</p>
+          <button class="pp__mehr" type="button" data-thema="cv-tobias">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
+          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:tobias@muellerundstroebel.de">tobias@muellerundstroebel.de</a><a href="tel:+4917621529798">+49 176 2152 9798</a><a href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener">LinkedIn</a></p></div>
+      </div>
     </div>
-  </article><article class="profil profil--rechts">
-    <div class="profil__bild"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div></div>
-    <div class="profil__text">
-      <p class="kicker">Partner</p><h2 class="h2">Daniel Ströbel</h2><p class="profil__rolle">Strategie, Führung &amp; Vertrieb</p>
-      <p class="lead">Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden. Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche.</p>
-      <div class="profil__punkte"><span>Strategie &amp; Geschäftsmodell</span><span>Struktur &amp; Führung</span><span>Vertrieb &amp; Stakeholderfokus</span></div>
-      <details class="mehr"><summary><i aria-hidden="true">+</i>Stationen im Lebenslauf</summary><div class="stationen"><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2012</span><div><b>Geschäftsführer</b><span>empiria GmbH</span><em>Strategie, Struktur und Kommunikation in der Versicherungsbranche – über 300 Projekte</em></div></li><li><span class="v-cv-year">2010 – 2011</span><div><b>Leiter der Abteilung Leben Grundsatz / Geschäftsprozesse / Technik</b><span>SV SparkassenVersicherung</span><em>Führung von rund 40 Mitarbeitenden an zwei Standorten</em></div></li><li><span class="v-cv-year">2009 – 2011</span><div><b>Leiter Inhouse-Consulting Leben</b><span>SV SparkassenVersicherung</span><em>Neuausrichtung des Geschäftsmodells Leben im Ressort des Vorstands</em></div></li><li><span class="v-cv-year">2006 – 2008</span><div><b>Konzernstrategie, Konzernsteuerung und Risikomanagement</b><span>SV SparkassenVersicherung</span><em>Vorstandsklausuren, Strategieentwicklung und Risikomanagement nach Solvency II</em></div></li><li><span class="v-cv-year">2000 – 2001</span><div><b>Praktikum Reinsurance, Insurance, Accounting</b><span>Great Lakes Reinsurance (UK) PLC, Munich Re Group, London</span></div></li></ol></div></details>
+  </article><article class="pp pp--rechts">
+    <div class="pp__bild"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div></div>
+    <div class="pp__inhalt">
+      <p class="kicker">Partner</p><h2 class="pp__name">Daniel Ströbel</h2><p class="pp__rolle">Strategie, Führung &amp; Vertrieb</p>
+      <div class="pp__spalten">
+        <div><h4>Schwerpunkte</h4><div class="pp__chips"><span>Strategie &amp; Geschäftsmodell</span><span>Struktur &amp; Führung</span><span>Vertrieb &amp; Stakeholderfokus</span></div></div>
+        <div><h4>Werdegang</h4><p>Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden. Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche.</p>
+          <button class="pp__mehr" type="button" data-thema="cv-daniel">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
+          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:daniel@muellerundstroebel.de">daniel@muellerundstroebel.de</a><a href="tel:+4917631347217">+49 176 3134 7217</a><a href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">LinkedIn</a></p></div>
+      </div>
     </div>
   </article></div></section>
 
-<section class="sek sek--navy"><div class="wrap ergebnis">
-  <div>
-    <p class="kicker">Was uns verbindet</p>
-    <h2 class="h2">Das Geschäftsmodell Versicherung. In seiner Gänze.</h2>
-    <p class="lead">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
+<section class="sek sek--navy" id="gebiete"><div class="wrap">
+  <div class="ergebnis">
+    <div>
+      <p class="kicker">Was uns verbindet</p>
+      <h2 class="h2">Das Geschäftsmodell Versicherung. In seiner Gänze.</h2>
+      <p class="lead">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
+    </div>
+    <ul class="ergebnis__liste">
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir wissen, wie Erfolg im Unternehmen entsteht.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir kennen Entscheidungswege und wer eingebunden werden muss.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich.</li>
+    </ul>
   </div>
-  <ul class="ergebnis__liste">
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir wissen, wie Erfolg im Unternehmen entsteht.</li>
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir kennen Entscheidungswege und wer eingebunden werden muss.</li>
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich.</li>
-  </ul>
+  <p class="gebiete__titel">Hier setzen wir an: unsere Einsatzgebiete</p>
+  <div class="gebiete"><button class="gebiet" type="button" data-thema="strategie"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span><b>Strategie &amp; Geschäftsmodell</b><span class="gebiet__wenn">Wenn die Richtung klar sein muss und im Alltag ankommen soll.</span></button><button class="gebiet" type="button" data-thema="kennzahlen"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M6 16l4.5-4.5 3 3L19 8"/><path d="M15 8h4v4"/></svg></span><b>Kennzahlen &amp; Steuerung</b><span class="gebiet__wenn">Wenn Zahlen da sind, aber nicht steuern.</span></button><button class="gebiet" type="button" data-thema="gremien"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/></svg></span><b>Entscheidungen &amp; Gremien</b><span class="gebiet__wenn">Wenn Themen seit Monaten „in Bearbeitung“ sind.</span></button><button class="gebiet" type="button" data-thema="vertrieb"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.4.1 4 1.6 4.5 4.4"/></svg></span><b>Vertrieb &amp; Wachstum</b><span class="gebiet__wenn">Wenn Potenziale im Markt liegen bleiben.</span></button><button class="gebiet" type="button" data-thema="ki"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 12h6M12 9v6"/><path d="M9 2.5v2.5M15 2.5v2.5M9 19v2.5M15 19v2.5M2.5 9H5M2.5 15H5M19 9h2.5M19 15h2.5"/></svg></span><b>KI-Transformation</b><span class="gebiet__wenn">Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</span></button><button class="gebiet" type="button" data-thema="resilienz"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.1 7.5 9.5 4.4-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span><b>Resilienz</b><span class="gebiet__wenn">Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</span></button></div>
 </div></section>
 
 <section class="sek"><div class="wrap netzwerk">
@@ -143,29 +158,65 @@ d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEv
   <div class="netzwerk__liste"><span>Ehemalige Vorstände</span><span>Aufsichtsräte</span><span>IT-Spezialisten</span><span>Prozess-Spezialisten</span><span>Entwickler</span><span>Marketingexperten</span><span>Grafiker</span></div>
 </div></section>
 
-<section class="sek sek--sand kontakt" id="kontakt"><div class="wrap">
-  <h2>Welches Thema geben Sie uns?</h2>
-  <p class="lead">Rufen Sie einen von uns direkt an. Nach dem ersten Gespräch wissen Sie, wie es weitergeht.</p>
-  <div class="personen"><article class="person"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div><div>
-      <h3>Tobias Müller</h3><p class="person__kurz">Partner · Mitglied in zwei Aufsichtsräten</p>
-      <div class="wege">
-        <a href="tel:+4917621529798">+49 176 2152 9798</a>
-        <a href="mailto:tobias@muellerundstroebel.de">tobias@muellerundstroebel.de</a>
-        <a href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener">LinkedIn</a>
-      </div></div></article><article class="person"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div><div>
-      <h3>Daniel Ströbel</h3><p class="person__kurz">Partner · Geschäftsführer der empiria GmbH</p>
-      <div class="wege">
-        <a href="tel:+4917631347217">+49 176 3134 7217</a>
-        <a href="mailto:daniel@muellerundstroebel.de">daniel@muellerundstroebel.de</a>
-        <a href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">LinkedIn</a>
-      </div></div></article></div>
-  <div class="knoepfe"><a class="knopf" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen">Thema per E-Mail schicken <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
+<section class="sek lp-kontakt" id="kontakt"><div class="wrap">
+  <div class="lp-kontakt__raster">
+    <div>
+      <p class="kicker">Kontakt</p>
+      <h2 class="h2">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h2>
+      <p class="lead">Erzählen Sie uns, was ansteht. Wir sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen, und geben direkt unsere Meinung. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
+      <div class="knoepfe"><a class="knopf" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
+    </div>
+    <div class="lp-kontakt__personen"><article class="kp"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div>
+      <h3>Tobias Müller</h3><p class="kp__themen">Governance, Gremien &amp; Risiko</p>
+      <p class="kp__wege"><a href="mailto:tobias@muellerundstroebel.de">tobias@muellerundstroebel.de</a><a href="tel:+4917621529798">+49 176 2152 9798</a><a href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener">LinkedIn</a></p>
+    </article><article class="kp"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div>
+      <h3>Daniel Ströbel</h3><p class="kp__themen">Strategie, Führung &amp; Vertrieb</p>
+      <p class="kp__wege"><a href="mailto:daniel@muellerundstroebel.de">daniel@muellerundstroebel.de</a><a href="tel:+4917631347217">+49 176 3134 7217</a><a href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">LinkedIn</a></p>
+    </article></div>
+  </div>
+  <div class="lp-dl">
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/assets/downloads/mueller-stroebel-wer-wir-sind-2.webp" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/assets/downloads/mueller-stroebel-wer-wir-sind-1.webp" alt="" loading="lazy"></div>
+    <div class="lp-dl__text">
+      <p class="kicker">Download</p>
+      <h3>Was wir tun und wofür wir stehen.</h3>
+      <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
+      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,7 MB</span></div>
+      <a class="knopf knopf--hell" href="/assets/downloads/mueller-stroebel-wer-wir-sind.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+    </div>
+  </div>
 </div></section>
+
+<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
+<template id="t-cv-tobias"><h3>Tobias Müller</h3><p>Stationen im Lebenslauf</p><div class="stationen"><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2021</span><div><b>Mitglied des Aufsichtsrats</b><span>Gartenbau-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2020 – 2024</span><div><b>Geschäftsführer</b><span>Haftpflichtverband öffentlicher Verkehrsbetriebe (HÖV)</span><em>Deckungs- und Schadenmanagement für kommunale Verkehrsunternehmen</em></div></li><li><span class="v-cv-year">seit 2020</span><div><b>Mitglied des Aufsichtsrats</b><span>Grundeigentümer-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2018 – 2019</span><div><b>Stellv. Vorsitzender des Aufsichtsrats</b><span>SHB Allgemeine Versicherung VVaG</span></div></li><li><span class="v-cv-year">2013 – 2025</span><div><b>Geschäftsführer</b><span>Müller Unternehmensberatung GmbH</span><em>Outsourcing und Beratung für Versicherer und Rückversicherer in Deutschland und Europa</em></div></li><li><span class="v-cv-year">2009 – 2013</span><div><b>Underwriter</b><span>Hannover Re</span><em>Treaty Underwriting, u. a. US-Casualty und strukturierte Rückversicherung</em></div></li><li><span class="v-cv-year">2008 – 2009</span><div><b>Research Assistant</b><span>Maastricht University</span></div></li><li><span class="v-cv-year">2002 – 2005</span><div><b>Trainee</b><span>SCOR (ehem. Converium)</span></div></li><li><span class="v-cv-year">2001 – 2003</span><div><b>Praktika in der Rückversicherung</b><span>Aon Benfield (London, Hamburg), Milli Re (Istanbul)</span></div></li></ol></div></template><template id="t-cv-daniel"><h3>Daniel Ströbel</h3><p>Stationen im Lebenslauf</p><div class="stationen"><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2012</span><div><b>Geschäftsführer</b><span>empiria GmbH</span><em>Strategie, Struktur und Kommunikation in der Versicherungsbranche – über 300 Projekte</em></div></li><li><span class="v-cv-year">2010 – 2011</span><div><b>Leiter der Abteilung Leben Grundsatz / Geschäftsprozesse / Technik</b><span>SV SparkassenVersicherung</span><em>Führung von rund 40 Mitarbeitenden an zwei Standorten</em></div></li><li><span class="v-cv-year">2009 – 2011</span><div><b>Leiter Inhouse-Consulting Leben</b><span>SV SparkassenVersicherung</span><em>Neuausrichtung des Geschäftsmodells Leben im Ressort des Vorstands</em></div></li><li><span class="v-cv-year">2006 – 2008</span><div><b>Konzernstrategie, Konzernsteuerung und Risikomanagement</b><span>SV SparkassenVersicherung</span><em>Vorstandsklausuren, Strategieentwicklung und Risikomanagement nach Solvency II</em></div></li><li><span class="v-cv-year">2000 – 2001</span><div><b>Praktikum Reinsurance, Insurance, Accounting</b><span>Great Lakes Reinsurance (UK) PLC, Munich Re Group, London</span></div></li></ol></div></template><template id="t-strategie"><h3>Strategie &amp; Geschäftsmodell</h3><p>Eine Strategie ist erst dann etwas wert, wenn sie im Unternehmen wirkt. Wir schärfen Zielbild und Geschäftsmodell und übersetzen beides in konkrete Maßnahmen, Zuständigkeiten und Meilensteine.</p><h4>Was wir konkret tun</h4><ul><li>Zielbild und Prioritäten gemeinsam mit dem Vorstand schärfen</li><li>Strategie in Maßnahmen, Rollen und Roadmap übersetzen</li><li>Umsetzung steuern und nachhalten</li></ul><h4>Ihr Ergebnis</h4><p>Eine Strategie, die im Unternehmen verstanden und umgesetzt wird.</p></template><template id="t-kennzahlen"><h3>Kennzahlen &amp; Steuerung</h3><p>Wir kennen die Kennzahlenlogik des Versicherungsgeschäfts – von der Rechnungslegung bis zur Vertriebssteuerung – und verbinden sie mit den Zielen, die tatsächlich erreicht werden sollen.</p><h4>Was wir konkret tun</h4><ul><li>Relevante Steuerungsgrößen definieren</li><li>Wirkung von Maßnahmen an Kennzahlen festmachen</li><li>Reporting für Vorstand und Gremien aufsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Sie sehen, ob die Umsetzung wirkt – und können gegensteuern.</p></template><template id="t-gremien"><h3>Entscheidungen &amp; Gremien</h3><p>Wir wissen, wie Entscheidungswege in Versicherungsunternehmen laufen und wer eingebunden werden muss. Wir bereiten Entscheidungen so vor, dass Vorstand und Aufsichtsrat entscheiden können.</p><h4>Was wir konkret tun</h4><ul><li>Stakeholder und Entscheidungswege klären</li><li>Entscheidungsvorlagen erarbeiten</li><li>Abstimmungen moderieren und Beschlüsse in die Umsetzung bringen</li></ul><h4>Ihr Ergebnis</h4><p>Eine Entscheidung – und ein Plan, wie sie umgesetzt wird.</p></template><template id="t-vertrieb"><h3>Vertrieb &amp; Wachstum</h3><p>Wachstum entsteht selten allein durch mehr Vertrieb. Wir schärfen Leistungsversprechen, Zielgruppen und Vertriebslogik – und setzen die Maßnahmen mit Ihren Teams um.</p><h4>Was wir konkret tun</h4><ul><li>Positionierung und Leistungsversprechen schärfen</li><li>Vertriebs- und Kommunikationslogik entwickeln</li><li>Maßnahmen gemeinsam mit Vertrieb und Marketing umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Messbar mehr Wirkung im Markt.</p></template><template id="t-ki"><h3>KI-Transformation</h3><p>Wir klären, welche Rolle KI im eigenen Geschäftsmodell spielen soll, und bringen die Prioritäten in die Fachbereiche – vom Zielbild bis zu den ersten umgesetzten Vorhaben.</p><h4>Was wir konkret tun</h4><ul><li>Ausgangslage und Reifegrad bestimmen</li><li>Zielbild und Prioritäten auf Vorstandsebene entwickeln</li><li>Erste Vorhaben in den Fachbereichen umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Eine KI-Strategie, die im Unternehmen konkret wird.</p></template><template id="t-resilienz"><h3>Resilienz</h3><p>Resilienz beschreibt die Fähigkeit, unter veränderten Bedingungen handlungsfähig zu bleiben. Wir verbinden Geschäftsmodellverständnis mit Risiko- und Governance-Perspektive.</p><h4>Was wir konkret tun</h4><ul><li>Strategische Risiken einordnen und priorisieren</li><li>Resilienz-Check und Szenarioanalysen durchführen</li><li>Handlungsfelder ableiten und umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Klare Verantwortlichkeiten und robustere Strukturen.</p></template>
 </main>
 <footer class="fuss"><div class="wrap">
   <img src="/pdf/bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel">
   <nav><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
 </div></footer>
-
+<script>
+document.querySelectorAll('.wahl').forEach(function (w) {
+  var g = w.getAttribute('data-gruppe');
+  w.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.textContent.trim();
+      w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
+    });
+  });
+});
+(function () {
+  var f = document.getElementById('fenster'); if (!f) return;
+  var inh = f.querySelector('.fenster__inhalt');
+  document.querySelectorAll('[data-thema]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      inh.innerHTML = document.getElementById('t-' + b.getAttribute('data-thema')).innerHTML;
+      var h = inh.querySelector('h3'); if (h) h.id = 'fenster-titel';
+      f.showModal();
+    });
+  });
+  f.querySelector('.fenster__zu').addEventListener('click', function () { f.close(); });
+  f.addEventListener('click', function (e) { if (e.target === f) f.close(); });
+})();
+</script>
 </body>
 </html>

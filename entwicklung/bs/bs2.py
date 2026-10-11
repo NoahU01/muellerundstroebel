@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 29
+VERSION = 31
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -225,11 +225,11 @@ def startseite():
       <div class="lp-arbeit__text" data-gruppe="arbeit-text" data-variante="lang">
         <p>Wir bleiben im regelmäßigen, kurzen Austausch. Meist reicht ein Telefonat zwischen zwei Terminen oder auf der Fahrt. Wenn es ein Thema braucht, nehmen wir uns eine längere Videokonferenz, und wenn es sinnvoll ist, einen Workshop.</p>
         <p>Dazwischen arbeiten wir: Wir sprechen mit Ihren Leuten, erarbeiten selbst und holen Spezialisten dazu, wo es sie braucht. Beim nächsten Austausch steigen wir eine Stufe höher ein.</p>
-        <p><b>So bleibt Ihr Thema präsent, ohne dass Sie Ihren Kalender blockieren müssen.</b></p>
+        <p><b>So bleibt Ihr Thema präsent, auch wenn Sie gerade im Tagesgeschäft stecken.</b></p>
       </div>
       <div class="lp-arbeit__text" data-gruppe="arbeit-text" data-variante="kurz" hidden>
-        <p>Sie geben den Takt vor, wir halten Ihr Thema in Bewegung. Der Ablauf ist einfach und wiederholt sich, bis das Ergebnis steht.</p>
-        <p><b>So bleibt Ihr Thema präsent, ohne dass Sie Ihren Kalender blockieren müssen.</b></p>
+        <p>Sie müssen nichts vorbereiten und keinen ganzen Tag blocken. Wir stimmen uns kurz ab, die Arbeit dazwischen machen wir.</p>
+        <p><b>So bleibt Ihr Thema präsent, auch wenn Sie gerade im Tagesgeschäft stecken.</b></p>
       </div>
     </div>
     <aside class="lp-netz">
@@ -241,10 +241,9 @@ def startseite():
   </div>
   <ol class="lp-schritte" data-gruppe="arbeit" data-variante="2" hidden>{schritte}</ol>
   <ol class="lp-ablauf" data-gruppe="arbeit" data-variante="3" hidden>
-    <li><b>Kurzer Austausch</b><span>Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist</span></li>
-    <li><b>Wir arbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten</span></li>
-    <li><b>Eine Stufe höher</b><span>Beim nächsten Austausch steigen wir weiter oben ein</span></li>
-    <li class="lp-ablauf__ende"><b>Bis das Ergebnis steht</b><span>Im regelmäßigen Takt</span></li>
+    <li><b>Kurzer Austausch</b><span>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</span></li>
+    <li><b>Wir arbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</span></li>
+    <li><b>Nächster Austausch</b><span>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</span></li>
   </ol>
 </div></section>
 
@@ -324,48 +323,130 @@ document.querySelectorAll('.wahl').forEach(function (w) {
 
 
 # ------------------------------------------------------------------ Über uns
+def kontakt_neu(titel, text):
+    """Kontakt wie auf der Startseite: Personen frei nebeneinander, darunter der Download."""
+    kontakte = "".join(f'''<article class="kp"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div>
+      <h3>{p['name']}</h3><p class="kp__themen">{p['rolle']}</p>
+      <p class="kp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p>
+    </article>''' for k, p in PERSONEN.items())
+    return f'''<section class="sek lp-kontakt" id="kontakt"><div class="wrap">
+  <div class="lp-kontakt__raster">
+    <div>
+      <p class="kicker">Kontakt</p>
+      <h2 class="h2">{titel}</h2>
+      <p class="lead">{text}</p>
+      <div class="knoepfe"><a class="knopf" href="{MAIL_BEIDE}">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
+    </div>
+    <div class="lp-kontakt__personen">{kontakte}</div>
+  </div>
+  <div class="lp-dl">
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/assets/downloads/mueller-stroebel-wer-wir-sind-2.webp" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/assets/downloads/mueller-stroebel-wer-wir-sind-1.webp" alt="" loading="lazy"></div>
+    <div class="lp-dl__text">
+      <p class="kicker">Download</p>
+      <h3>Was wir tun und wofür wir stehen.</h3>
+      <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
+      <div class="lp-dl__meta"><span>PDF</span><span>13 Seiten</span><span>1,7 MB</span></div>
+      <a class="knopf knopf--hell" href="/assets/downloads/mueller-stroebel-wer-wir-sind.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+    </div>
+  </div>
+</div></section>'''
+
+
+SKRIPT_WAHL_FENSTER = """<script>
+document.querySelectorAll('.wahl').forEach(function (w) {
+  var g = w.getAttribute('data-gruppe');
+  w.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.textContent.trim();
+      w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
+    });
+  });
+});
+(function () {
+  var f = document.getElementById('fenster'); if (!f) return;
+  var inh = f.querySelector('.fenster__inhalt');
+  document.querySelectorAll('[data-thema]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      inh.innerHTML = document.getElementById('t-' + b.getAttribute('data-thema')).innerHTML;
+      var h = inh.querySelector('h3'); if (h) h.id = 'fenster-titel';
+      f.showModal();
+    });
+  });
+  f.querySelector('.fenster__zu').addEventListener('click', function () { f.close(); });
+  f.addEventListener('click', function (e) { if (e.target === f) f.close(); });
+})();
+</script>"""
+
+FENSTER = '<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>'
+
+
 def ueber_uns():
-    bloecke = ""
+    duo = "".join(f'<figure><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p["name"]}"></div><figcaption><b>{p["name"]}</b></figcaption></figure>'
+                  for k, p in PERSONEN.items())
+    zusatz = {"tobias": '<p class="pp__fakt">Mitglied in zwei Aufsichtsräten</p>', "daniel": ""}
+    personen = ""
     for i, (k, p) in enumerate(PERSONEN.items()):
-        punkte = "".join(f"<span>{s}</span>" for s in p["schwerpunkte"])
-        bloecke += f'''<article class="profil{" profil--rechts" if i else ""}">
-    <div class="profil__bild"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div></div>
-    <div class="profil__text">
-      <p class="kicker">Partner</p><h2 class="h2">{p['name']}</h2><p class="profil__rolle">{p['rolle']}</p>
-      <p class="lead">{p['werdegang']}</p>
-      <div class="profil__punkte">{punkte}</div>
-      <details class="mehr"><summary><i aria-hidden="true">+</i>Stationen im Lebenslauf</summary><div class="stationen">{stationen(k)}</div></details>
+        chips = "".join(f"<span>{x}</span>" for x in p["schwerpunkte"])
+        personen += f'''<article class="pp{" pp--rechts" if i else ""}">
+    <div class="pp__bild"><div class="kreis"><img src="/assets/{k}-portrait.webp" alt="{p['name']}"></div></div>
+    <div class="pp__inhalt">
+      <p class="kicker">Partner</p><h2 class="pp__name">{p['name']}</h2><p class="pp__rolle">{p['rolle']}</p>
+      <div class="pp__spalten">
+        <div><h4>Schwerpunkte</h4><div class="pp__chips">{chips}</div>{zusatz[k]}</div>
+        <div><h4>Werdegang</h4><p>{p['werdegang']}</p>
+          <button class="pp__mehr" type="button" data-thema="cv-{k}">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
+          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></p></div>
+      </div>
     </div>
   </article>'''
-    main = f'''
-<section class="held held--klein"><div class="wrap">
-  <p class="kicker">Über uns</p>
-  <h1>Tobias Müller <i>&amp;</i> Daniel Ströbel</h1>
-  <p class="lead">Wir kennen das Geschäftsmodell Versicherung von innen und haben schon viele Projekte gemeinsam umgesetzt. Jeder von uns bringt klare Schwerpunkte mit. Im Projekt arbeiten wir beide selbst mit.</p>
+    cv_vorlagen = "".join(f'<template id="t-cv-{k}"><h3>{p["name"]}</h3><p>Stationen im Lebenslauf</p><div class="stationen">{stationen(k)}</div></template>'
+                          for k, p in PERSONEN.items())
+    gebiete = "".join(f'<button class="gebiet" type="button" data-thema="{k}"><span class="gebiet__ico">{icon(k)}</span><b>{n}</b><span class="gebiet__wenn">{w}</span></button>'
+                      for k, n, w in THEMEN)
+    gebiet_vorlagen = "".join(f'<template id="t-{k}">{thema_detail(k)}</template>' for k, _, _ in THEMEN)
+    netz = "".join(f"<span>{n}</span>" for n in NETZWERK)
+    main = f"""
+<section class="held lp-held"><div class="wrap held__raster">
+  <div>
+    <p class="kicker">Über uns</p>
+    <div class="wahl" data-gruppe="ukopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
+    <h1 data-gruppe="ukopf" data-variante="1">Unser Team. Unser Netzwerk.</h1>
+    <h1 data-gruppe="ukopf" data-variante="2" hidden>Wir kennen die Branche von innen.</h1>
+    <p class="lead">Zwei Partner mit eigener Führungserfahrung in der Versicherungswirtschaft, dazu ein Netzwerk erfahrener Spezialisten. Sie haben einen Ansprechpartner, wir bringen die passenden Leute zusammen. Im Projekt arbeiten wir beide selbst mit.</p>
+  </div>
+  <div class="duo duo--gleich">{duo}</div>
 </div></section>
 
-<section class="sek sek--sand profile"><div class="wrap">{bloecke}</div></section>
+<section class="sek sek--sand"><div class="wrap pp-liste">{personen}</div></section>
 
-<section class="sek sek--navy"><div class="wrap ergebnis">
-  <div>
-    <p class="kicker">Was uns verbindet</p>
-    <h2 class="h2">Das Geschäftsmodell Versicherung. In seiner Gänze.</h2>
-    <p class="lead">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
+<section class="sek sek--navy" id="gebiete"><div class="wrap">
+  <div class="ergebnis">
+    <div>
+      <p class="kicker">Was uns verbindet</p>
+      <h2 class="h2">Das Geschäftsmodell Versicherung. In seiner Gänze.</h2>
+      <p class="lead">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
+    </div>
+    <ul class="ergebnis__liste">
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir wissen, wie Erfolg im Unternehmen entsteht.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir kennen Entscheidungswege und wer eingebunden werden muss.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich.</li>
+    </ul>
   </div>
-  <ul class="ergebnis__liste">
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir wissen, wie Erfolg im Unternehmen entsteht.</li>
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir kennen Entscheidungswege und wer eingebunden werden muss.</li>
-    <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich.</li>
-  </ul>
+  <p class="gebiete__titel">Hier setzen wir an: unsere Einsatzgebiete</p>
+  <div class="gebiete">{gebiete}</div>
 </div></section>
 
 <section class="sek"><div class="wrap netzwerk">
   <div><p class="kicker">Unser Netzwerk</p><h2 class="h2">Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</h2></div>
-  <div class="netzwerk__liste">{"".join(f"<span>{n}</span>" for n in NETZWERK)}</div>
+  <div class="netzwerk__liste">{netz}</div>
 </div></section>
 
-{kontakt("Welches Thema geben Sie uns?", "Rufen Sie einen von uns direkt an. Nach dem ersten Gespräch wissen Sie, wie es weitergeht.")}'''
-    return seite("Müller &amp; Ströbel – Über uns (Entwurf Business Story 2.0)", "Entwurf: Über uns zur Business Story 2.0", "bs2-ueber", "Über uns", main)
+{kontakt_neu("Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Erzählen Sie uns, was ansteht. Wir sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen, und geben direkt unsere Meinung. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.")}
+
+{FENSTER}
+{cv_vorlagen}{gebiet_vorlagen}"""
+    return seite("Müller &amp; Ströbel – Über uns (Entwurf Business Story 2.0)", "Entwurf: Über uns zur Business Story 2.0", "bs2-ueber", "Über uns", main, SKRIPT_WAHL_FENSTER)
 
 
 # ------------------------------------------------------------------ Storyboard
