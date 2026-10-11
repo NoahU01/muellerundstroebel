@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 27
+VERSION = 28
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -201,11 +201,6 @@ def startseite():
     <h1 data-gruppe="kopf" data-variante="1">Komplexe Situationen <span class="wort" aria-hidden="true"><span class="ist">strukturieren.</span><span>entscheiden.</span><span>umsetzen.</span></span><span class="nur-lesen">strukturieren, entscheiden, umsetzen.</span></h1>
     <div data-gruppe="kopf" data-variante="2" hidden><p class="lp-vorzeile">Komplexe Situationen</p><h1>Strukturieren. Entscheiden. Umsetzen.</h1></div>
     <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
-    <ol class="lp-drei">
-      <li class="ist"><small>01</small><b>Strukturieren</b><span>Den Kern herausarbeiten</span></li>
-      <li><small>02</small><b>Entscheiden</b><span>Konzept, Analyse, Entscheidungsvorlage</span></li>
-      <li><small>03</small><b>Umsetzen</b><span>Mit Ihren Leuten und unserem Netzwerk</span></li>
-    </ol>
     <div class="knoepfe"><a class="knopf" href="#kontakt">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Ihre Lage</a></div>
   </div>
   <div class="duo duo--gleich">{duo}</div>
