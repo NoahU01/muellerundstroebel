@@ -33,8 +33,6 @@ VARIANTEN = [
      {"bg": "#f6f3ef", "fg": "#082638", "hl": "#998675", "kicker": "#7a6757"}, "/entwicklung/pdf-bs2/ampersand-konstruktion-hell.svg"),
     ("navy", "Navy mit Anschnitt", "Wie das Deckblatt des PDFs: Navy-Fläche, weiße Schrift, das skizzierte & im Anschnitt.",
      {"bg": "#082638", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#cbbcae"}, "/pdf/bausteine/ampersand-konstruktion.svg"),
-    ("dreiklang", "Der Weg auf Blau", "Unser Vorgehen als Linie mit drei Stationen – Strukturieren, Entscheiden, Umsetzen. Auf dem Blau aus dem Corporate Design, ohne &.",
-     {"bg": "#185e8a", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#d9e6ef"}, ""),
 ]
 KICKER = "Für Führungskräfte in der Versicherungsbranche"
 CLAIM = "Komplexe Situationen<br>strukturieren, entscheiden, <i>umsetzen.</i>"
@@ -44,11 +42,6 @@ def banner(fmt, var):
     w, h, links, _ = FORMATE[fmt]
     key, _, _, f, amp = var
     hoch = h / w * 100
-    if key == "dreiklang":
-        gr = (1.05, 3.3) if fmt == "person" else (.95, 3.0)
-        return (f'<div class="lb" style="aspect-ratio:{w}/{h};--bg:{f["bg"]};--fg:{f["fg"]};--hl:{f["hl"]};--ki:{f["kicker"]}">'
-                f'<div class="lb__text" style="left:{links}cqw;right:5cqw"><p class="lb__kicker" style="font-size:{gr[0]}cqw">{KICKER}</p>'
-                f'<ol class="lb__weg" style="font-size:{gr[1]}cqw"><li>Strukturieren</li><li>Entscheiden</li><li class="lb__ziel">Umsetzen.</li></ol></div></div>')
     if fmt == "person":
         txt = f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:1.05cqw">{KICKER}</p><h2 style="font-size:2.9cqw">{CLAIM}</h2></div>'
         amp_stil = {"weiss": "left:80cqw;top:-1.5cqw;width:26cqw", "sand": "left:80cqw;top:-1.5cqw;width:26cqw", "navy": "left:80cqw;top:-1.5cqw;width:26cqw"}.get(key, "")
@@ -82,7 +75,7 @@ def schutzzonen():
 
 def geschaeftsausstattung():
     zeilen = ""
-    nummern = {"weiss": "1", "sand": "1b", "navy": "2", "dreiklang": "3"}
+    nummern = {"weiss": "1", "sand": "2", "navy": "3"}
     for var in VARIANTEN:
         key, titel, text, _, _ = var
         i = nummern.get(key, "")
@@ -99,7 +92,7 @@ def geschaeftsausstattung():
 
 <section class="sek sek--sand" id="linkedin"><div class="wrap">
   <p class="kicker">LinkedIn-Banner</p>
-  <h2 class="h2">Drei Varianten, Nr. 1 zusätzlich auf Sand – je für das Profil und die Unternehmensseite.</h2>
+  <h2 class="h2">Drei Varianten, je für das Profil und die Unternehmensseite.</h2>
   <p class="lead">Gezeigt in der Ansicht von LinkedIn. Tobias und Daniel nutzen dasselbe Banner.</p>
   <div class="ga-block"><h3>Wo Foto und Logo liegen</h3><p>LinkedIn legt Profilfoto bzw. Firmenlogo links unten über das Banner. Dort steht deshalb nichts Wichtiges.</p>{schutzzonen()}</div>
   {zeilen}

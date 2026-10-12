@@ -34,12 +34,3 @@
 .lz-text { position: absolute; bottom: 12%; font-size: .75rem; font-weight: 600; color: var(--taupe-d); }
 @media (max-width: 991px) { .ga-zwei { grid-template-columns: minmax(0, 1fr); } }
 .li-banner { border-bottom: 1px solid var(--linie); }
-/* Variante „Der Weg“: drei Stationen auf einer Linie */
-.lb__weg { position: relative; display: flex; justify-content: space-between; margin: 0; padding: 1.15em 0 0; list-style: none; font-family: var(--head); font-weight: 500; line-height: 1; letter-spacing: -.01em; color: var(--fg); }
-.lb__weg::before { content: ""; position: absolute; left: .17em; right: 2.2em; top: .26em; height: .045em; background: rgba(255,255,255,.55); }
-.lb__weg li { position: relative; }
-.lb__weg li::before { content: ""; position: absolute; left: 0; top: -1.06em; width: .34em; height: .34em; box-sizing: border-box; border-radius: 50%; border: .06em solid var(--fg); background: var(--bg); }
-.lb__weg .lb__ziel { color: var(--hl); }
-.lb__weg .lb__ziel::before { background: var(--hl); border-color: var(--hl); }
-.lb__text .lb__kicker + .lb__weg { margin-top: 1.1em; }
-.lb__weg::before { right: 4.62em; }
