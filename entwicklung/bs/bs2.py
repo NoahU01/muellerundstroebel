@@ -938,10 +938,32 @@ def elevator_pitch():
     html = seite("Müller &amp; Ströbel – Elevator Pitch (Business Story 2.0)", "Elevator Pitch: von den Storyboard-Aussagen zum kurzen Pitch", "bs2-pitch", "", main)
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
 
+# ------------------------------------------------------------------ Marketing › Business Story (Übersicht)
+def bs_uebersicht():
+    karten = [
+        ("/entwicklung/storyboard.html", "Storyboard", "Von den Antworten über die Leserfragen zur Landingpage.", ""),
+        ("/entwicklung/elevator-pitch.html", "Elevator Pitch", "Unsere Story in 30/10 Sekunden und wie wir danach das Gespräch führen.", ""),
+        ("/entwicklung/downloads/elevator-pitch.pdf", "PDF zum Elevator Pitch", "Pitch und Gesprächsführung auf zwei Seiten.", ' target="_blank" rel="noopener"'),
+    ]
+    kacheln = "".join(f'<a class="bsu-karte" href="{h}"{z}><h3>{t}</h3><p>{x}</p><span class="bsu-pfeil" aria-hidden="true">&rarr;</span></a>' for h, t, x, z in karten)
+    main = f"""
+<section class="held held--klein"><div class="wrap">
+  <p class="kicker">Marketing</p>
+  <h1>Business Story</h1>
+  <p class="lead">Wie wir unsere Story erarbeitet haben und wie wir sie im Gespräch einsetzen.</p>
+</div></section>
+
+<section class="sek sek--sand"><div class="wrap">
+  <div class="bsu-karten">{kacheln}</div>
+</div></section>"""
+    html = seite("Müller &amp; Ströbel – Business Story (Marketing)", "Business Story: Storyboard, Elevator Pitch und PDF", "bs-marketing", "", main)
+    return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
+
 
 if __name__ == "__main__":
     (ZIEL / "business-story-2.html").write_text(startseite(), encoding="utf-8")
     (ZIEL / "business-story-2-ueber-uns.html").write_text(ueber_uns(), encoding="utf-8")
     (ZIEL / "storyboard.html").write_text(storyboard(), encoding="utf-8")
     (ZIEL / "elevator-pitch.html").write_text(elevator_pitch(), encoding="utf-8")
+    (ZIEL / "business-story.html").write_text(bs_uebersicht(), encoding="utf-8")
     print("gebaut: business-story-2.html, business-story-2-ueber-uns.html, storyboard.html")

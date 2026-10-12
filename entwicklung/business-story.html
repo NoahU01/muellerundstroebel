@@ -3,138 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8870d24b-eae6-4dd4-8406-28c7c01e48b1" data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
-<script data-cookieconsent="ignore">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    functionality_storage: 'denied',
-    personalization_storage: 'denied',
-    security_storage: 'granted',
-    wait_for_update: 500
-  });
-  gtag('set', 'ads_data_redaction', true);
-  gtag('set', 'url_passthrough', true);
-
-  /* Interner Traffic wird am GERÄT markiert, nicht an der IP: wer aus
-     wechselnden Netzen arbeitet, müsste sonst jedes Netz nachtragen. Einmal
-     ?internal=1 aufrufen, und dieser Browser zählt dauerhaft als intern;
-     ?internal=0 hebt es auf. Der GA4-Datenfilter "Internal Traffic" schließt
-     Ereignisse mit traffic_type=internal aus, er muss auf AKTIV stehen. */
-  var msSchalter = null;
-  try {
-    var msWert = new URLSearchParams(location.search).get('internal');
-    if (msWert === '1') { localStorage.setItem('ms_internal', '1'); msSchalter = 'an'; }
-    if (msWert === '0') { localStorage.removeItem('ms_internal'); msSchalter = 'aus'; }
-  } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
-  var msIntern = false;
-  try { msIntern = localStorage.getItem('ms_internal') === '1'; } catch (e) {}
-  if (msIntern) gtag('set', { traffic_type: 'internal' });
-
-  gtag('js', new Date());
-
-  /* GA4 nur auf der Produktionsdomain. Ohne diese Sperre schicken die
-     Vercel-Previews (*.vercel.app) und lokale Tests ihre Aufrufe in dieselbe
-     Property und verfälschen die Zahlen dauerhaft. */
-  if (/^(www\.)?muellerundstroebel\.de$/.test(location.hostname)) {
-    gtag('config', 'G-KSWHNGZS3P');
-  }
-
-  if (msSchalter) {
-    var msZeigen = function () {
-      var el = document.createElement('div');
-      el.textContent = msSchalter === 'an'
-        ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
-        : 'Markierung entfernt, dieses Gerät zählt wieder mit';
-      el.setAttribute('role', 'status');
-      el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;'
-        + 'background:#185e8a;color:#fff;border-radius:.75rem;padding:12px 20px;'
-        + 'font:14px/1.4 Poppins,system-ui,sans-serif;max-width:90vw;text-align:center;'
-        + 'box-shadow:0 8px 28px rgba(6,55,85,.35)';
-      document.body.appendChild(el);
-      setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
-      setTimeout(function () { el.remove(); }, 4600);
-    };
-    if (document.body) msZeigen(); else document.addEventListener('DOMContentLoaded', msZeigen);
-  }
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHNGZS3P" data-cookieconsent="ignore"></script>
-<title>Müller & Ströbel – Business Story (Entwurf)</title>
-<meta name="description" content="Entwurf der Startseite auf Basis der Business Story">
-<link rel="canonical" href="https://www.muellerundstroebel.de/ueber-uns">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="M&uuml;ller &amp; Str&ouml;bel">
-<meta property="og:locale" content="de_DE">
-<meta property="og:url" content="https://www.muellerundstroebel.de/ueber-uns">
-<meta property="og:title" content="&Uuml;ber uns: Tobias M&uuml;ller &amp; Daniel Str&ouml;bel | M&uuml;ller &amp; Str&ouml;bel">
-<meta property="og:description" content="Tobias M&uuml;ller und Daniel Str&ouml;bel: zwei Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung &ndash; mit Erfahrung aus R&uuml;ckversicherung, Aufsichtsr&auml;ten, Konzernstrategie und &uuml;ber 300 Projekten.">
-<meta property="og:image" content="https://www.muellerundstroebel.de/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="&Uuml;ber uns: Tobias M&uuml;ller &amp; Daniel Str&ouml;bel | M&uuml;ller &amp; Str&ouml;bel">
-<meta name="twitter:description" content="Tobias M&uuml;ller und Daniel Str&ouml;bel: zwei Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung &ndash; mit Erfahrung aus R&uuml;ckversicherung, Aufsichtsr&auml;ten, Konzernstrategie und &uuml;ber 300 Projekten.">
-<meta name="twitter:image" content="https://www.muellerundstroebel.de/assets/og-image.png">
+<title>Müller &amp; Ströbel – Business Story (Marketing)</title>
+<meta name="description" content="Business Story: Storyboard, Elevator Pitch und PDF">
+<meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="/assets/favicon.png">
-<link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/startseite.css">
-<style id="ms-cta-flach">/* Knöpfe wie die übrigen der Seite: Rechteck mit runden Ecken, flacher */
-.v-btn.ms-cta{border-radius:.75rem;padding:.8rem 1.35rem;font-size:.95rem}
-/* Kopf wie auf der Startseite: Unterzeile und Überschrift beginnen auf derselben Höhe; Grafik oben/unten um je drei Punktreihen gekürzt (viewBox) */
-@media (min-width:992px){.v-about-hero{padding-top:calc(12.5rem - 6px)}.v-about-hero .v-split{align-items:start}}
-@media (max-width:991px){.v-about-hero{padding-top:calc(9.5rem - 6px)}}</style>
-<link rel="stylesheet" href="/entwicklung/business-story-neu.css">
+<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=35">
+<link rel="stylesheet" href="/entwicklung/storyboard.css?v=35">
 </head>
-<body class="body v-page ms-home ms-sub">
-
-<div class="main-wrapper">
-<div class="page-wrapper">
-
-<div class="navigation-background" id="navigation-background"></div>
-<div class="nav-wrapper" id="nav-wrapper">
-<header class="nav-bar padding-global">
-<div class="navigation-line" id="navigation-line"></div>
-<div class="container-large navigation">
-<a href="/" class="brand" aria-label="M&uuml;ller &amp; Str&ouml;bel &ndash; Startseite"><img src="/assets/logo.svg" alt="M&uuml;ller &amp; Str&ouml;bel" class="logo"></a>
-<nav class="navigation-wrapper" id="mobile-menu">
-<a href="/#loesungen" class="menu-text">L&ouml;sungen</a>
-<div class="ms-dd"><button class="menu-text ms-dd-toggle" type="button" aria-expanded="false">Leistungen<svg class="ms-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-<div class="ms-dd-panel"><a href="/strategie-verankern" class="ms-dd-link"><b>Strategie im Alltag verankern</b><small>Die Strategie ist beschlossen. Jetzt muss sie in den Bereichen ankommen und wirken.</small></a><a href="/komplexe-themen" class="ms-dd-link"><b>Komplexe Themen strukturieren und entscheiden</b><small>Viele Beteiligte, unklare Risiken, kein Fortschritt. Wir moderieren, strukturieren und treiben das Thema voran.</small></a><a href="/geschaeftsmodell" class="ms-dd-link"><b>Gesch&auml;ftsmodell neu denken</b><small>Wachstum, KI oder ver&auml;nderte Risiken verlangen eine neue Richtung.</small></a><a href="/aufsichtsrat" class="ms-dd-link ms-dd-link--ar"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Aufsichtsrat &ndash; f&uuml;r neue Mitglieder und das Gesamtgremium.</small></a></div></div>
-<a href="/ueber-uns" class="menu-text">&Uuml;ber uns</a>
+<body data-variante="bs-marketing">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-weiter" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-extern" viewBox="0 0 16 16"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></symbol>
+  <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-haken" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 20 20"><path d="M5 10h10"/></symbol>
+  <symbol id="i-zu" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+<header class="kopf"><div class="wrap">
+  <a class="marke" href="/entwicklung/business-story-2.html" aria-label="Müller &amp; Ströbel – Startseite"><img src="/assets/logo.svg" alt="Müller &amp; Ströbel"></a>
+  <nav class="nav" aria-label="Hauptmenü"><a class="nav__anker" href="/entwicklung/business-story-2.html#lage">Ihre Lage</a><a class="nav__anker" href="/entwicklung/business-story-2.html#arbeitsweise">So arbeiten wir</a><a class="nav__anker" href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a>
 <!-- ENTWICKLUNG:START (nur Sandbox – wird von vorschau.py github entfernt) -->
 <div class="dev-dd" id="dev-dd">
 <button class="menu-text dev-dd-toggle" type="button" aria-expanded="false" aria-controls="dev-dd-panel">/ Entwicklung /<svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="dev-dd-panel" id="dev-dd-panel">
-<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<div class="menu-seiten"><a href="/entwicklung/business-story-2.html#lage">Ihre Lage</a><a href="/entwicklung/business-story-2.html#arbeitsweise">So arbeiten wir</a><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/entwicklung/business-story-2.html#kontakt">Thema besprechen</a></div><p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
 <p class="dev-dd-group">Varianten Startseite</p>
-<div class="dev-dd-fly"><a href="/entwicklung/business-story-2.html" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Startseite aus Sicht des Lesers &ndash; Entwurf 11.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/downloads/business-story-2.pdf" class="dev-dd-link" data-v="bs2-pdf" target="_blank" rel="noopener"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zur Business Story 2.0</b><small>Was wir tun und wofür wir stehen</small></span></a><a href="/entwicklung/storyboard.html" class="dev-dd-link" data-v="bs2-story"><span class="dev-dd-tag dev-dd-tag--new">SB</span><span class="dev-dd-txt"><b>Storyboard</b><small>Antworten &rarr; Leserfragen &rarr; Landingpage</small></span></a><a href="/entwicklung/elevator-pitch.html" class="dev-dd-link" data-v="bs2-pitch"><span class="dev-dd-tag dev-dd-tag--new">EP</span><span class="dev-dd-txt"><b>Elevator Pitch</b><small>Von der Story zu 30 Sekunden</small></span></a><a href="/entwicklung/business-story-2-ueber-uns.html" class="dev-dd-link" data-v="bs2-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns</b><small>Tobias &amp; Daniel, Werdegang, Netzwerk</small></span></a></div></div>
-<div class="dev-dd-fly"><a href="/entwicklung/business-story.html" class="dev-dd-link" data-v="business-story"><span class="dev-dd-tag dev-dd-tag--new">BS</span><span class="dev-dd-txt"><b>Business Story</b><small>Mitdenken. Organisieren. Selber machen. &ndash; Entwurf 09.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/bs-ueber-uns.html" class="dev-dd-link" data-v="bs-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns &amp; Themen</b><small>Team, Netzwerk, Themenfelder, Haltung</small></span></a><a href="/entwicklung/bs-steckbrief-tobias.html" class="dev-dd-link" data-v="bs-tobias"><span class="dev-dd-tag dev-dd-tag--new">TM</span><span class="dev-dd-txt"><b>Steckbrief Tobias Müller</b><small>Beraterprofil &amp; digitale Visitenkarte</small></span></a><a href="/entwicklung/bs-steckbrief-daniel.html" class="dev-dd-link" data-v="bs-daniel"><span class="dev-dd-tag dev-dd-tag--new">DS</span><span class="dev-dd-txt"><b>Steckbrief Daniel Ströbel</b><small>Beraterprofil &amp; digitale Visitenkarte</small></span></a></div></div>
-<div class="dev-dd-fly"><a href="/entwicklung/startseite-und-blau.html" class="dev-dd-link" data-v="und-blau"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Bisherige Startseite</b><small>Mit dem blauen Und-Zeichen &ndash; Stand 08.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Marketing</p> <a href="/entwicklung/medienkonzept.html" class="dev-dd-link" data-v="medienkonzept"><span class="dev-dd-tag dev-dd-tag--new">MK</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>Beiträge, Kontakt, Fahrplan &ndash; Grundlage</small></span></a> <p class="dev-dd-group">Leistungsseiten</p><a href="/strategie-verankern.html" class="dev-dd-link" data-v="strategie-verankern"><span class="dev-dd-tag dev-dd-tag--new">1</span><span class="dev-dd-txt"><b>Strategie im Alltag verankern</b><small>Beschlossene Strategie in den Bereichen wirksam machen</small></span></a><a href="/komplexe-themen.html" class="dev-dd-link" data-v="komplexe-themen"><span class="dev-dd-tag dev-dd-tag--new">2</span><span class="dev-dd-txt"><b>Komplexe Themen strukturieren und entscheiden</b><small>Moderieren, strukturieren, vorantreiben</small></span></a><a href="/geschaeftsmodell.html" class="dev-dd-link" data-v="geschaeftsmodell"><span class="dev-dd-tag dev-dd-tag--new">3</span><span class="dev-dd-txt"><b>Geschäftsmodell neu denken</b><small>Wachstum, KI, veränderte Risiken</small></span></a><a href="/aufsichtsrat.html" class="dev-dd-link" data-v="aufsichtsrat"><span class="dev-dd-tag dev-dd-tag--new">4</span><span class="dev-dd-txt"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Gremium</small></span></a></div></div>
-<a href="/entwicklung/variante-b.html" class="dev-dd-link" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a>
+<div class="dev-dd-fly"><a href="/entwicklung/business-story-2.html" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Startseite aus Sicht des Lesers &ndash; Entwurf 11.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/downloads/business-story-2.pdf" class="dev-dd-link" data-v="bs2-pdf" target="_blank" rel="noopener"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zur Business Story 2.0</b><small>Was wir tun und wofür wir stehen</small></span></a><a href="/entwicklung/business-story-2-ueber-uns.html" class="dev-dd-link" data-v="bs2-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns</b><small>Tobias &amp; Daniel, Werdegang, Netzwerk</small></span></a></div></div>
+
+
 <a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; jetzt Startseite</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
-<a href="/entwicklung/variante-b3.html" class="dev-dd-link" data-v="b3"><span class="dev-dd-tag dev-dd-tag--new">B3</span><span class="dev-dd-txt"><b>Dunkel mit Personen</b><small>Wie B2, aber dunkler Kopf</small></span></a>
-<a href="/entwicklung/variante-e2.html" class="dev-dd-link" data-v="e2"><span class="dev-dd-tag dev-dd-tag--new">E2</span><span class="dev-dd-txt"><b>Auswahl</b><small>Gebiete links, Fall rechts &ndash; ohne Sprung</small></span></a>
+
+
 <p class="dev-dd-group dev-dd-group--sub">Unterseiten</p>
 <a href="/entwicklung/ueber-uns.html" class="dev-dd-link" data-v="ueber"><span class="dev-dd-tag">&amp;</span><span class="dev-dd-txt"><b>Über uns (Entwurf)</b><small>Tobias &amp; Daniel, Schwerpunkte, Gemeinsames</small></span></a>
-<p class="dev-dd-group dev-dd-group--sub">Archiv</p>
-<a href="/archiv/startseite-umfassend-2026-09-17.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv-0917"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite umfassend – 17.09.2026</b><small>Stand vor der Optimierung</small></span></a>
-<a href="/archiv/startseite-live-2026-09.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – Live-Stand Sept. 2026</b><small>So ist die Seite heute online</small></span></a>
+<p class="dev-dd-group dev-dd-group--sub">Marketing</p> <a href="/entwicklung/medienkonzept.html" class="dev-dd-link" data-v="medienkonzept"><span class="dev-dd-tag dev-dd-tag--new">MK</span><span class="dev-dd-txt"><b>Medienkonzept</b><small>Beiträge, Kontakt, Fahrplan &ndash; Grundlage</small></span></a> <div class="dev-dd-fly"><a href="/entwicklung/business-story.html" class="dev-dd-link" data-v="bs-marketing"><span class="dev-dd-tag dev-dd-tag--new">BS</span><span class="dev-dd-txt"><b>Business Story</b><small>Storyboard und Elevator Pitch</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/storyboard.html" class="dev-dd-link" data-v="bs2-story"><span class="dev-dd-tag dev-dd-tag--new">SB</span><span class="dev-dd-txt"><b>Storyboard</b><small>Antworten &rarr; Leserfragen &rarr; Landingpage</small></span></a><a href="/entwicklung/elevator-pitch.html" class="dev-dd-link" data-v="bs2-pitch"><span class="dev-dd-tag dev-dd-tag--new">EP</span><span class="dev-dd-txt"><b>Elevator Pitch</b><small>Von der Story zu 30 Sekunden</small></span></a><a href="/entwicklung/downloads/elevator-pitch.pdf" class="dev-dd-link" data-v="bs-pitch-pdf" target="_blank" rel="noopener" style="margin-left:1.5rem"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zum Elevator Pitch</b><small>Pitch und Gesprächsführung &ndash; 2 Seiten</small></span></a></div></div> <p class="dev-dd-group dev-dd-group--sub">Archiv</p> <div class="dev-dd-fly"><a href="/entwicklung/startseite-und-blau.html" class="dev-dd-link dev-dd-link--muted" data-v="und-blau"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – 08.10.2026</b><small>Mit dem blauen Und-Zeichen</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/strategie-verankern.html" class="dev-dd-link" data-v="strategie-verankern"><span class="dev-dd-tag dev-dd-tag--new">1</span><span class="dev-dd-txt"><b>Strategie im Alltag verankern</b><small>Beschlossene Strategie in den Bereichen wirksam machen</small></span></a><a href="/komplexe-themen.html" class="dev-dd-link" data-v="komplexe-themen"><span class="dev-dd-tag dev-dd-tag--new">2</span><span class="dev-dd-txt"><b>Komplexe Themen strukturieren und entscheiden</b><small>Moderieren, strukturieren, vorantreiben</small></span></a><a href="/geschaeftsmodell.html" class="dev-dd-link" data-v="geschaeftsmodell"><span class="dev-dd-tag dev-dd-tag--new">3</span><span class="dev-dd-txt"><b>Geschäftsmodell neu denken</b><small>Wachstum, KI, veränderte Risiken</small></span></a><a href="/aufsichtsrat.html" class="dev-dd-link" data-v="aufsichtsrat"><span class="dev-dd-tag dev-dd-tag--new">4</span><span class="dev-dd-txt"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Gremium</small></span></a><a href="/entwicklung/variante-b.html" class="dev-dd-link dev-dd-link--muted" data-v="b"><span class="dev-dd-tag">B</span><span class="dev-dd-txt"><b>Kraftvoll &amp; dunkel</b><small>Navy-Hero, Landkarte, Vorgehen</small></span></a></div></div>
+<a href="/archiv/startseite-umfassend-2026-09-17.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv-0917"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite umfassend – 17.09.2026</b><small>Stand vor der Optimierung</small></span></a> <a href="/archiv/startseite-live-2026-09.html" class="dev-dd-link dev-dd-link--muted" data-v="archiv"><span class="dev-dd-tag">&#8962;</span><span class="dev-dd-txt"><b>Startseite – Live-Stand Sept. 2026</b><small>So ist die Seite heute online</small></span></a>
 </div>
 </div>
 <style>
-/* „Was uns verbindet“: verlinkte Kästen – alle drei gleich aufgebaut */
-.u2-verbindet .v-usp3-item { display: flex; flex-direction: column; }
-.u2-verbindet a.u2-link { display: flex; flex-direction: column; color: inherit; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
-.u2-verbindet a.u2-link:hover { transform: translateY(-3px); box-shadow: 0 1rem 2.4rem rgba(6,55,85,.14); }
-.u2-verbindet a.u2-link .v-link { margin-top: auto; padding-top: 1.1rem; }
-.u2-verbindet .v-usp3-item--stark .v-link { color: #cbbcae; }
-
 .dev-dd-fly{position:relative}
 .dev-dd-pfeil{margin-left:auto;padding-left:.5rem;color:#998675;font-size:18px;line-height:1}
 .dev-dd-sub{position:absolute;left:calc(100% + 1.5rem);top:-.6rem;min-width:300px;padding:.6rem;background:#fff;border:1px solid #e5ddd4;border-radius:.75rem;box-shadow:0 18px 40px rgba(6,55,85,.12);opacity:0;visibility:hidden;transform:translateX(-4px);transition:opacity .15s,transform .15s,visibility .15s}
@@ -189,122 +95,28 @@ function ruecken(){if(innerWidth<992){d.style.removeProperty("--dev-dd-ruck");re
 d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEventListener("click",ruecken);addEventListener("resize",ruecken);})();
 </script>
 <!-- ENTWICKLUNG:END -->
-<a href="/#kontakt" class="primary-button navigation"><p class="button-text">Kontakt aufnehmen</p><div class="button-gradient"></div></a>
-</nav>
-<button class="menu-button" id="menu-button" type="button" aria-label="Men&uuml;" aria-expanded="false" aria-controls="mobile-menu">
-<svg class="burger-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect class="burger-line burger-line-1" x="5.4" y="6.9" width="13.2" height="1.2"></rect><rect class="burger-line burger-line-2" x="5.4" y="11.4" width="13.2" height="1.2"></rect><rect class="burger-line burger-line-3" x="5.4" y="15.9" width="13.2" height="1.2"></rect></svg>
-</button>
-</div>
-</header>
-</div>
+    <a class="knopf" href="#kontakt">Thema besprechen</a>
+  </nav>
+</div></header>
+<main>
 
-<main class="nb">
-<div class="nb-dev"><div><span>Entwurf Business Story</span><nav><a href="/entwicklung/business-story.html" aria-current="page">Startseite</a><a href="/entwicklung/bs-ueber-uns.html">Über uns &amp; Themen</a><a href="/entwicklung/bs-steckbrief-tobias.html">Steckbrief Tobias</a><a href="/entwicklung/bs-steckbrief-daniel.html">Steckbrief Daniel</a></nav></div></div><section class="nb-held"><div class="nb-wrap nb-held__raster">
-  <div class="nb-held__text">
-    <p class="nb-kicker">Für Führungskräfte in Versicherungsunternehmen</p>
-    <h1>Sie geben uns ein Thema. Wir sorgen dafür, dass daraus ein Ergebnis wird.</h1>
-    <p class="nb-lead">Wir denken auf Augenhöhe mit, organisieren die Bearbeitung und packen selbst mit an. Sie müssen nichts koordinieren.</p>
-    <div class="nb-knoepfe"><a class="nb-knopf" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen">Thema besprechen <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="nb-knopf nb-knopf--leise" href="#so">So arbeiten wir</a></div>
-  </div>
-  <div class="nb-paar" aria-label="Tobias Müller und Daniel Ströbel">
-    <figure><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"><figcaption><b>Tobias Müller</b>Governance, Gremien &amp; Risiko</figcaption></figure>
-    <span class="nb-paar__und" aria-hidden="true">&amp;</span>
-    <figure><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"><figcaption><b>Daniel Ströbel</b>Strategie, Führung &amp; Vertrieb</figcaption></figure>
-  </div>
+<section class="held held--klein"><div class="wrap">
+  <p class="kicker">Marketing</p>
+  <h1>Business Story</h1>
+  <p class="lead">Wie wir unsere Story erarbeitet haben und wie wir sie im Gespräch einsetzen.</p>
 </div></section>
-<section class="nb-sek nb-sand"><div class="nb-wrap nb-zwei">
-  <div>
-    <p class="nb-kicker">Kennen Sie das?</p>
-    <h2>Viele wichtige Themen. Und alle liegen bei Ihnen.</h2>
-    <p class="nb-text">Sie wissen meist genau, was wichtig ist. Aber Strategie, Entscheidungen, Projekte und Tagesgeschäft laufen gleichzeitig. Für vieles fehlt schlicht die Zeit, die Kapazität oder die passende Kompetenz.</p>
-  </div>
-  <div class="nb-tisch" aria-label="Typische Themen auf dem Tisch einer Führungskraft">
-    <p class="nb-tisch__kopf"><span>Auf Ihrem Tisch</span><b>8 offen</b></p>
-    <ul><li><i></i>Aufsichtsratssitzung vorbereiten</li><li><i></i>Strategie in die Bereiche bringen</li><li><i></i>Projekt-Review mit dem Vorstand</li><li><i></i>Kennzahlen für das Reporting</li><li><i></i>Kooperation prüfen</li><li><i></i>Vertriebsziele umsetzen</li><li><i></i>Reorganisation abstimmen</li><li><i></i>KI-Vorhaben priorisieren</li></ul>
-  </div>
-</div>
-<div class="nb-wrap"><div class="nb-ebenen">
-  <blockquote><p>„Ich muss den Aufsichtsrat vorbereiten, Entscheidungen treffen und meine Bereiche koordinieren.“</p><cite>Vorstand</cite></blockquote>
-  <blockquote><p>„Ich soll Vorgaben umsetzen, Abteilungen abstimmen und Ergebnisse liefern.“</p><cite>Hauptabteilungsleitung</cite></blockquote>
-  <blockquote><p>„Ich stimme mich mit dem Vorstand ab, führe meine Teams und treibe zig Themen voran.“</p><cite>Bereichsleitung</cite></blockquote>
-</div><p class="nb-schluss">Unterschiedliche Ebene, gleiches Problem.</p></div></section>
-<section class="nb-sek"><div class="nb-wrap">
-  <div class="nb-kopf"><p class="nb-kicker">Warum Beratung allein nicht reicht</p>
-    <h2>Ein Berater gibt Ihnen Empfehlungen. Die Arbeit bleibt bei Ihnen.</h2>
-    <p class="nb-text">Sie können einen Strategieberater holen, einen Projektmanager und Spezialisten. Dann müssen Sie trotzdem alles zusammenbringen, die Beteiligten koordinieren und dranbleiben, bis ein Ergebnis da ist. Genau diese Last nehmen wir Ihnen ab.</p></div>
-  <div class="nb-vergleich" role="table">
-    <div class="nb-vergleich__kopf" role="row"><span role="columnheader"></span><span role="columnheader">Strategie&shy;berater</span><span role="columnheader">Projekt&shy;manager</span><span role="columnheader">Spezialist</span><span role="columnheader" class="nb-wir">Müller <i>&amp;</i> Ströbel</span></div>
-    <div class="nb-vergleich__zeile" role="row"><span role="rowheader">Denkt auf Ihrer Ebene mit</span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class="nb-wir"><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span></div><div class="nb-vergleich__zeile" role="row"><span role="rowheader">Organisiert die Bearbeitung</span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class="nb-wir"><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span></div><div class="nb-vergleich__zeile" role="row"><span role="rowheader">Arbeitet selbst mit</span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span><span role="cell" class="nb-wir"><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span></div><div class="nb-vergleich__zeile" role="row"><span role="rowheader">Hält alles zusammen</span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class=""><svg viewBox="0 0 20 20" aria-label="nein"><circle cx="10" cy="10" r="9"/><path d="M7 7l6 6M13 7l-6 6"/></svg></span><span role="cell" class="nb-wir"><svg viewBox="0 0 20 20" aria-label="ja"><circle cx="10" cy="10" r="9"/><path d="M6 10.4l2.6 2.6L14 7.6"/></svg></span></div>
-  </div>
-</div></section>
-<section class="nb-sek nb-navy" id="so"><div class="nb-wrap">
-  <div class="nb-kopf"><p class="nb-kicker nb-kicker--hell">So lösen wir es</p><h2>Mitdenken. Organisieren. Selber machen.</h2>
-    <p class="nb-text nb-text--hell">Das Besondere ist nicht eine dieser Leistungen, sondern dass Sie alle drei aus einer Hand bekommen.</p></div>
-  <ol class="nb-drei">
-    <li><span>01</span><h3>Mitdenken</h3><p>Wir verstehen, wie Versicherungsunternehmen funktionieren, und denken auf Ihrer Ebene mit. Wir ordnen Ihr Thema ein, entwickeln Optionen und bereiten Entscheidungen vor. Und wir sagen offen, wo wir selbst nicht tief genug drin sind.</p></li>
-    <li><span>02</span><h3>Organisieren</h3><p>Nach dem Gespräch lassen wir Sie nicht mit einer Liste allein. Wir sprechen mit den Beteiligten, setzen Prioritäten, halten Projekte am Laufen und legen Ihnen vor, was Sie entscheiden müssen.</p></li>
-    <li><span>03</span><h3>Selber machen</h3><p>Wo wir die Fachkompetenz haben, arbeiten wir selbst mit: Konzepte, Analysen, Lösungen. Wo es mehr braucht, holen wir passende Spezialisten aus unserem Netzwerk dazu.</p></li>
-  </ol>
-</div></section>
-<section class="nb-sek"><div class="nb-wrap">
-  <div class="nb-kopf"><p class="nb-kicker">So gehen wir vor</p><h2>Vom ersten Gespräch bis zum Ergebnis.</h2></div>
-  <ol class="nb-weg">
-    <li><b>Zuhören</b><p>Wir klären mit Ihnen, worum es wirklich geht – auch wenn das am Anfang noch offen ist.</p></li>
-    <li><b>Vorgehen</b><p>Wir entwickeln gemeinsam, wie wir das Thema angehen.</p></li>
-    <li><b>Bearbeiten</b><p>Wir übernehmen die Bearbeitung und halten Sie auf dem Laufenden.</p></li>
-    <li><b>Ergebnis</b><p>Sie bekommen ein Ergebnis, mit dem Sie weiterarbeiten können.</p></li>
-  </ol>
-  <div class="nb-alltag"><p class="nb-kicker">So fühlt sich das an</p><p>Sie haben jemanden, mit dem Sie über jedes Thema sprechen können. Sie geben ein Thema ab. Es kommt zu Ihnen zurück, wenn etwas zu entscheiden ist oder wenn es fertig ist. <b>Dazwischen müssen Sie sich um nichts kümmern.</b></p></div>
-</div></section>
-<section class="nb-sek nb-sand"><div class="nb-wrap nb-zitat">
-  <p class="nb-kicker">So war es beim HÖV</p>
-  <blockquote><p>„Ich konnte mit dir über jedes Thema sprechen. Du hast verstanden, worum es geht. Wenn du dich fachlich auskanntest, konntest du direkt mitdenken. Wenn du dich nicht auskanntest, hast du das offen gesagt und wusstest trotzdem, wie man das Thema angehen kann.“</p>
-  <p>„Du hast das Projektmanagement übernommen. Du hast mit den Leuten gesprochen, die Projekte im Blick behalten und dafür gesorgt, dass die Dinge weiterlaufen. Und dort, wo du die fachliche Kompetenz hattest, hast du selbst mit angepackt.“</p></blockquote>
-  <p class="nb-zitat__wer"><img src="/assets/tobias-kreis.webp" alt=""><span><b>Tobias Müller</b>damals Geschäftsführer des HÖV, über die Zusammenarbeit mit Daniel Ströbel</span></p>
-</div></section>
-<section class="nb-sek"><div class="nb-wrap nb-zwei">
-  <div><p class="nb-kicker">Unser Netzwerk</p><h2>Wenn ein Thema mehr braucht.</h2>
-    <p class="nb-text">Dann holen wir gezielt die richtigen Leute dazu. Wir steuern sie – und Sie haben weiter einen Ansprechpartner.</p></div>
-  <ul class="nb-netz"><li>IT- und Prozess-Spezialisten</li><li>Ehemalige Vorstände</li><li>Aufsichtsratsmitglieder</li><li>Marketingexperten</li><li>Programmierer</li><li>Grafiker</li></ul>
-</div></section>
-<section class="nb-sek nb-sand"><div class="nb-wrap">
-  <div class="nb-kopf"><p class="nb-kicker">Wer wir sind</p><h2>Zwei Partner, die selbst mitarbeiten.</h2></div>
-  <div class="nb-partner"><article><div class="nb-partner__bild"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div><div><h3>Tobias Müller</h3><p class="nb-rolle">Governance, Gremien &amp; Risiko</p><p class="nb-text">Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung.</p><a class="nb-link" href="/entwicklung/bs-steckbrief-tobias.html">Zum Steckbrief <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article><div class="nb-partner__bild"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div><div><h3>Daniel Ströbel</h3><p class="nb-rolle">Strategie, Führung &amp; Vertrieb</p><p class="nb-text">Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden. Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche.</p><a class="nb-link" href="/entwicklung/bs-steckbrief-daniel.html">Zum Steckbrief <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article></div>
-</div></section>
-<section class="nb-sek nb-ende"><div class="nb-wrap nb-zwei">
-  <div><p class="nb-kicker">Ihr Thema</p><h2>Welches Thema liegt gerade auf Ihrem Tisch?</h2>
-    <p class="nb-text">Rufen Sie an oder schreiben Sie uns. Wir sagen Ihnen offen, ob und wie wir es übernehmen.</p></div>
-  <div class="nb-ruf"><div><b>Tobias Müller</b><a href="tel:+4917621529798">+49 176 2152 9798</a><a href="mailto:tobias@muellerundstroebel.de">tobias@muellerundstroebel.de</a></div><div><b>Daniel Ströbel</b><a href="tel:+4917631347217">+49 176 3134 7217</a><a href="mailto:daniel@muellerundstroebel.de">daniel@muellerundstroebel.de</a></div></div>
+
+<section class="sek sek--sand"><div class="wrap">
+  <div class="bsu-karten"><a class="bsu-karte" href="/entwicklung/storyboard.html"><h3>Storyboard</h3><p>Von den Antworten über die Leserfragen zur Landingpage.</p><span class="bsu-pfeil" aria-hidden="true">&rarr;</span></a><a class="bsu-karte" href="/entwicklung/elevator-pitch.html"><h3>Elevator Pitch</h3><p>Unsere Story in 30/10 Sekunden und wie wir danach das Gespräch führen.</p><span class="bsu-pfeil" aria-hidden="true">&rarr;</span></a><a class="bsu-karte" href="/entwicklung/downloads/elevator-pitch.pdf" target="_blank" rel="noopener"><h3>PDF zum Elevator Pitch</h3><p>Pitch und Gesprächsführung auf zwei Seiten.</p><span class="bsu-pfeil" aria-hidden="true">&rarr;</span></a></div>
 </div></section>
 </main>
+<footer class="fuss"><div class="wrap">
+  <img src="/pdf/bausteine/logo-weiss.svg" alt="Müller &amp; Ströbel">
+  <nav><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
+</div></footer>
 
-<!-- ============ Footer ============ -->
-    <footer class="footer">
-      <div class="padding-global">
-        <div class="padding-section-medium">
-          <div class="container-large">
-            <div class="footer-content">
-              <div class="footer-name">&copy; M&uuml;ller&amp;Str&ouml;bel. 2026</div>
-              <div class="footer-links">
-                <a href="/impressum" class="footer-link">Impressum</a>
-                <a href="/datenschutz" class="footer-link">Datenschutz</a>
-              <button type="button" id="cookie-settings" class="footer-link">Cookie-Einstellungen</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-line-wrapper"><div class="footer-line"></div></div>
-    </footer>
-
-</div>
-</div>
-
-<template id="m-cv-tobias"><p class="v-kicker">Stationen</p><h3>Tobias Müller</h3><p>Governance, Gremien &amp; Risiko</p><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2021</span><div><b>Mitglied des Aufsichtsrats</b><span>Gartenbau-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2020 – 2024</span><div><b>Geschäftsführer</b><span>Haftpflichtverband öffentlicher Verkehrsbetriebe (HÖV)</span><em>Deckungs- und Schadenmanagement für kommunale Verkehrsunternehmen</em></div></li><li><span class="v-cv-year">seit 2020</span><div><b>Mitglied des Aufsichtsrats</b><span>Grundeigentümer-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2018 – 2019</span><div><b>Stellv. Vorsitzender des Aufsichtsrats</b><span>SHB Allgemeine Versicherung VVaG</span></div></li><li><span class="v-cv-year">2013 – 2025</span><div><b>Geschäftsführer</b><span>Müller Unternehmensberatung GmbH</span><em>Outsourcing und Beratung für Versicherer und Rückversicherer in Deutschland und Europa</em></div></li><li><span class="v-cv-year">2009 – 2013</span><div><b>Underwriter</b><span>Hannover Re</span><em>Treaty Underwriting, u. a. US-Casualty und strukturierte Rückversicherung</em></div></li><li><span class="v-cv-year">2008 – 2009</span><div><b>Research Assistant</b><span>Maastricht University</span></div></li><li><span class="v-cv-year">2002 – 2005</span><div><b>Trainee</b><span>SCOR (ehem. Converium)</span></div></li><li><span class="v-cv-year">2001 – 2003</span><div><b>Praktika in der Rückversicherung</b><span>Aon Benfield (London, Hamburg), Milli Re (Istanbul)</span></div></li></ol></template>
-<template id="m-cv-daniel"><p class="v-kicker">Stationen</p><h3>Daniel Ströbel</h3><p>Strategie, Führung &amp; Vertrieb</p><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2012</span><div><b>Geschäftsführer</b><span>empiria GmbH</span><em>Strategie, Struktur und Kommunikation in der Versicherungsbranche – über 300 Projekte</em></div></li><li><span class="v-cv-year">2010 – 2011</span><div><b>Leiter der Abteilung Leben Grundsatz / Geschäftsprozesse / Technik</b><span>SV SparkassenVersicherung</span><em>Führung von rund 40 Mitarbeitenden an zwei Standorten</em></div></li><li><span class="v-cv-year">2009 – 2011</span><div><b>Leiter Inhouse-Consulting Leben</b><span>SV SparkassenVersicherung</span><em>Neuausrichtung des Geschäftsmodells Leben im Ressort des Vorstands</em></div></li><li><span class="v-cv-year">2006 – 2008</span><div><b>Konzernstrategie, Konzernsteuerung und Risikomanagement</b><span>SV SparkassenVersicherung</span><em>Vorstandsklausuren, Strategieentwicklung und Risikomanagement nach Solvency II</em></div></li><li><span class="v-cv-year">2000 – 2001</span><div><b>Praktikum Reinsurance, Insurance, Accounting</b><span>Great Lakes Reinsurance (UK) PLC, Munich Re Group, London</span></div></li></ol></template>
-
-<script src="/script.js" data-cookieconsent="ignore"></script>
-<script src="/startseite.js" data-cookieconsent="ignore"></script>
-<script src="/tracking.js" data-cookieconsent="ignore"></script>
+<script>/* Menü schließt nach Klick auf einen Eintrag (Tablet/Handy) */
+document.querySelectorAll('#dev-dd .dev-dd-panel a').forEach(function (a) { a.addEventListener('click', function () { var d = document.getElementById('dev-dd'); d.classList.remove('is-open'); d.querySelector('.dev-dd-toggle').setAttribute('aria-expanded', 'false'); }); });
+</script>
 </body>
 </html>
