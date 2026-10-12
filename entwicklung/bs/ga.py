@@ -21,6 +21,7 @@ import bauen as druck
 WURZEL = Path(__file__).resolve().parents[2]
 ZIEL = WURZEL / "entwicklung"
 PNG = ZIEL / "ga" / "linkedin"
+FAKTOR = 2  # doppelte Auflösung (z. B. 3168 × 792): scharf auf Retina; LinkedIn skaliert selbst herunter
 
 FORMATE = {  # Breite, Höhe, Text links ab (cqw), Schutzzone
     "person": (1584, 396, 29.7, "Profilfoto"),
@@ -80,7 +81,7 @@ def geschaeftsausstattung():
         key, titel, text, _, _ = var
         i = nummern.get(key, "")
         figs = "".join(
-            f'<figure>{ansicht(fmt, var)}<figcaption>{"Personenprofil · 1584 × 396 px" if fmt == "person" else "Unternehmensseite · 1128 × 191 px"}'
+            f'<figure>{ansicht(fmt, var)}<figcaption>{"Personenprofil · 1584 × 396 px, PNG in doppelter Auflösung" if fmt == "person" else "Unternehmensseite · 1128 × 191 px, PNG in doppelter Auflösung"}'
             f' · <a href="/entwicklung/ga/linkedin/linkedin-{fmt}-{key}.png" download>PNG laden</a></figcaption></figure>' for fmt in ("person", "firma"))
         zeilen += f'<div class="ga-var"><h3>{i} · {titel}</h3><p>{text}</p><div class="ga-zwei">{figs}</div></div>'
     main = f"""
@@ -128,7 +129,7 @@ def png_export():
                 quelle.write_text(f'''<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="/entwicklung/business-story-2.css?v={b.VERSION}"><link rel="stylesheet" href="/entwicklung/ga.css?v={b.VERSION}">
 <style>html,body{{margin:0;padding:0;background:#fff;overflow:hidden}}.export{{width:{w}px}}</style></head><body><div class="export">{banner(fmt, var)}</div></body></html>''', encoding="utf-8")
                 ziel = PNG / f"linkedin-{fmt}-{var[0]}.png"
-                subprocess.run([browser, "--headless=new", "--disable-gpu", "--hide-scrollbars", f"--window-size={w},{h}",
+                subprocess.run([browser, "--headless=new", "--disable-gpu", "--hide-scrollbars", f"--window-size={w},{h}", f"--force-device-scale-factor={FAKTOR}",
                                 "--virtual-time-budget=4000", f"--screenshot={ziel}", f"http://127.0.0.1:{druck.PORT}/entwicklung/ga/_banner.html"],
                                capture_output=True)
                 print("  PNG", ziel.relative_to(WURZEL))
