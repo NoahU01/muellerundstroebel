@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 36
+VERSION = 37
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -638,6 +638,18 @@ SLOTS = [  # Abschnitt der Seite -> Bausteine mit Herkunft
 ]
 
 
+AUSSAGEN = [  # rechte Spalte im Storyboard: Headlines und Kernsätze der Startseite (Business Story 2.0), gekürzt
+    '<small>Für Führungskräfte in der Versicherungsbranche</small><b>Komplexe Situationen strukturieren, entscheiden, umsetzen.</b>'
+    '<p>Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt.</p>',
+    '<b>„Es ging schon wieder nichts voran.“</b><p>Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>'
+    '<ul><li>Ihr Team: Liefert, aber nicht so, wie Sie es brauchen.</li><li>Externe: Empfehlungen ja. Umsetzen bleibt bei Ihnen.</li><li>Nur Workshops: Zwei Tage im Kalender. Dann wochenlang Stillstand.</li></ul>',
+    '<b>Die Zusammenarbeit passt in Ihren Kalender.</b><p>Meist reicht ein kurzer Austausch. Die Arbeit dazwischen machen wir.</p>'
+    '<ul><li>Kurzer Austausch → Wir arbeiten → Nächster Austausch</li><li>Netzwerk: Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</li></ul>',
+    '<b>Sie haben Ihre Themen im Griff.</b><p>Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>'
+    '<b class="sb-bau3__zweite">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</b><p>Gespräch vereinbaren · Tobias Müller und Daniel Ströbel</p>',
+]
+
+
 def storyboard():
     sprite = """<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="s-antwort" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
@@ -678,17 +690,17 @@ def storyboard():
                 zeilen_sk = "".join(
                     (f'<div class="sk-vorschau"><div class="sk-vorschau__innen">{x}</div></div><span class="sk-vorschau__quelle">{q}</span>' if t == "Vorschau"
                      else f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>') for t, x, q in teile)
-                out += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else ("Aus A und B gestaltet" if v == "Skizze" else v)}</b>{zeilen_sk}</div>'
+                out += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else ("Finale Fassung" if v == "Final" else v)}</b>{zeilen_sk}</div>'
             return out
 
-        # Schritt 4 = Entwürfe (Fassung A und B), Schritt 5 = Skizze (aus A und B gestaltet: Fassung C bzw. Visualisierungen).
+        # Schritt 4 = Skizze (Fassung A und B), Schritt 5 = final (die finale Fassung bzw. Visualisierungen).
         # Je Abschnitt ein Paar nebeneinander – bei gleichrangigen Sektionen (4.1, 4.2) ein Paar je Sektion.
         def paar(titel, a2, v2):
             entwuerfe = [(v, t) for v, t in v2 if v in ("A", "B")]
-            skizze = [("Skizze" if v == "C" else v, t) for v, t in v2 if v not in ("A", "B")]
-            links = (f'<div class="sk sk--{a2}"><div class="sk__kopf">Abschnitt {titel} · Entwürfe</div><div class="sk__vars">{vars_html(entwuerfe)}</div></div>'
-                     if entwuerfe else f'<div class="sk sk--leer"><div class="sk__kopf">Abschnitt {titel}</div><p>Keine Entwürfe – direkt als Skizze gestaltet.</p></div>')
-            rechts = f'<div class="sk sk--{a2} sk--skizze"><div class="sk__kopf">Abschnitt {titel} · Skizze</div><div class="sk__vars">{vars_html(skizze)}</div></div>'
+            final = [("Final" if v == "C" else v, t) for v, t in v2 if v not in ("A", "B")]
+            links = (f'<div class="sk sk--{a2}"><div class="sk__kopf">Abschnitt {titel} · Skizze</div><div class="sk__vars">{vars_html(entwuerfe)}</div></div>'
+                     if entwuerfe else f'<div class="sk sk--leer"><div class="sk__kopf">Abschnitt {titel}</div><p>Keine Skizze – direkt final gestaltet.</p></div>')
+            rechts = f'<div class="sk sk--{a2} sk--skizze"><div class="sk__kopf">Abschnitt {titel} · Final</div><div class="sk__vars">{vars_html(final)}</div></div>'
             return f'<div class="sk-paar">{links}{rechts}</div>'
         kaesten = ([(streifen_titel, art, varianten)] + list(weitere)) if weitere else [(f"{i} · {abschnitt}", art, varianten)]
         skizze_html = '<div class="sk-paare">' + "".join(paar(*k) for k in kaesten) + '</div>'
@@ -708,8 +720,17 @@ def storyboard():
     karten = "".join(f'<div class="sb-karte"><span class="sb-karte__ico"><svg class="ico"><use href="#{ic}"/></svg></span><h3>{t}</h3><p>{x}</p></div>'
                      for ic, t, x in regeln)
 
-    legende = "".join(f'<li><span class="sb-nr">{n}</span><div><b>{t}</b><p>{" · ".join(f"{a} <em>{h}</em>" for a, h in bs)}</p></div></li>'
-                      for n, t, bs in SLOTS)
+    mock = [  # mittlere Spalte: Skizze je Abschnitt
+        '<div class="sb-mock__leiste"><i></i><i></i><i></i></div><div class="sb-mock__a sb-mock__a--1"><span class="sb-tag">F1 · Für wen</span><b class="sb-bar sb-bar--h1"></b><span class="sb-tag sb-tag--n">F4 · Versprechen</span><b class="sb-bar"></b><span class="sb-knopf">F8 · Anrufen</span><em class="sb-kreise"><i></i><i></i></em></div>',
+        '<div class="sb-mock__a sb-mock__a--2"><span class="sb-tag">F2 · Ihre Lage</span><b class="sb-bar sb-bar--h2"></b><div class="sb-zwei"><span>Szene aus dem Alltag</span><span>F3 · Übliche Wege vs. wir</span></div></div>',
+        '<div class="sb-mock__a sb-mock__a--3"><span class="sb-tag sb-tag--h">F6 · Ablauf</span><b class="sb-bar sb-bar--h2"></b><div class="sb-drei"><i></i><i></i><i></i></div><span class="sb-tag sb-tag--h">F5 · Beleg</span></div>',
+        '<div class="sb-mock__a sb-mock__a--4"><span class="sb-tag">F7 · Ergebnis</span><b class="sb-bar sb-bar--h2"></b><em class="sb-kreise sb-kreise--klein"><i></i><i></i></em><span class="sb-knopf">F8 · Anrufen</span></div>',
+    ]
+    bau_zeilen = "".join(
+        f'<div class="sb-bau3__links"><span class="sb-nr">{n}</span><div><b>{t}</b><ul>{"".join(f"<li>{a} <em>{h}</em></li>" for a, h in bs)}</ul></div></div>'
+        f'<div class="sb-bau3__mitte sb-bau3__mitte--{i}">{mock[i]}</div>'
+        f'<div class="sb-bau3__rechts">{AUSSAGEN[i]}</div>'
+        for i, (n, t, bs) in enumerate(SLOTS))
 
     main = f"""{sprite}
 <section class="held sb-held"><div class="wrap">
@@ -736,10 +757,10 @@ def storyboard():
 
 <section class="sek sek--sand"><div class="wrap">
   <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div></div>
-  <p class="sb-schieben">Arbeitsfläche: mit dem Trackpad nach rechts schieben – über die Entwürfe A und B bis zur Skizze der Landingpage →</p>
+  <p class="sb-schieben">Arbeitsfläche: mit dem Trackpad nach rechts schieben – über die Skizze (Fassung A und B) bis zur finalen Landingpage →</p>
 </div>
 <div class="sb-flaeche"><div class="sb-flaeche__innen">
-  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten</span><span><i>2</i>Fragen des Lesers</span><span><i>3</i>Abschnitt</span><span><i>4</i>Landingpage-Entwürfe</span><span><i>5</i>Landingpage-Skizze</span></div>
+  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten</span><span><i>2</i>Fragen des Lesers</span><span><i>3</i>Abschnitt</span><span><i>4</i>Landingpage-Skizze</span><span><i>5</i>Landingpage final</span></div>
   <div class="sb-t">{baum}</div>
 </div></div>
 <div class="wrap">
@@ -751,18 +772,12 @@ def storyboard():
   <div class="sb-karten">{karten}</div>
 </div></section>
 
-<section class="sek sek--navy"><div class="wrap sb-bau">
-  <div>
-    <p class="kicker">Aus Aussagen wird die Seite</p>
-    <h2 class="h2">Jeder Baustein hat genau eine Herkunft.</h2>
-    <ol class="sb-bau__liste">{legende}</ol>
-  </div>
-  <div class="sb-mock" aria-label="Aufbau der Landingpage">
-    <div class="sb-mock__leiste"><i></i><i></i><i></i></div>
-    <div class="sb-mock__a sb-mock__a--1"><span class="sb-tag">F1 · Für wen</span><b class="sb-bar sb-bar--h1"></b><span class="sb-tag sb-tag--n">F4 · Versprechen</span><b class="sb-bar"></b><span class="sb-knopf">F8 · Anrufen</span><em class="sb-kreise"><i></i><i></i></em></div>
-    <div class="sb-mock__a sb-mock__a--2"><span class="sb-tag">F2 · Ihre Lage</span><b class="sb-bar sb-bar--h2"></b><div class="sb-zwei"><span>Szene aus dem Alltag</span><span>F3 · Übliche Wege vs. wir</span></div></div>
-    <div class="sb-mock__a sb-mock__a--3"><span class="sb-tag sb-tag--h">F6 · Ablauf</span><b class="sb-bar sb-bar--h2"></b><div class="sb-drei"><i></i><i></i><i></i></div><span class="sb-tag sb-tag--h">F5 · Beleg</span></div>
-    <div class="sb-mock__a sb-mock__a--4"><span class="sb-tag">F7 · Ergebnis</span><b class="sb-bar sb-bar--h2"></b><em class="sb-kreise sb-kreise--klein"><i></i><i></i></em><span class="sb-knopf">F8 · Anrufen</span></div>
+<section class="sek sek--navy"><div class="wrap">
+  <p class="kicker">Aus Aussagen wird die Seite</p>
+  <h2 class="h2">Jeder Baustein hat genau eine Herkunft.</h2>
+  <div class="sb-bau3">
+    <div class="sb-bau3__kopf"><span>Abschnitt und Herkunft</span><span>Aufbau der Seite</span><span>Aussagen auf der Startseite</span></div>
+    {bau_zeilen}
   </div>
 </div></section>"""
     html = seite("Müller &amp; Ströbel – Storyboard Business Story 2.0", "Storyboard: von den Antworten zur Landingpage", "bs2-story", "", main)
