@@ -1,0 +1,36 @@
+/* Marketing › Corporate Design › Geschäftsausstattung (LinkedIn-Banner). Banner in cqw, damit Vorschau und PNG gleich sind. */
+.lb { position: relative; width: 100%; overflow: hidden; container-type: inline-size; background: var(--bg); color: var(--fg); }
+.lb__text { position: absolute; top: 50%; transform: translateY(-50%); }
+.lb__kicker { display: flex; align-items: center; gap: .8em; margin: 0 0 .9em; font-family: var(--text); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ki); }
+.lb__kicker::before { content: ""; width: 2.2em; height: .16em; background: currentColor; }
+.lb h2 { margin: 0; font-family: var(--head); font-weight: 500; line-height: 1.12; letter-spacing: -.015em; color: var(--fg); }
+.lb h2 i { font-style: normal; color: var(--hl); }
+.lb__amp { position: absolute; height: auto; max-width: none; }
+/* Ansicht wie auf LinkedIn */
+.li { overflow: hidden; border-radius: 12px; background: var(--weiss); box-shadow: 0 0 0 1px var(--linie); }
+.li-banner { position: relative; }
+.li-foto { position: absolute; left: 2.97%; top: 44.19%; width: 18.94%; aspect-ratio: 1; border-radius: 50%; border: 4px solid var(--weiss); background: var(--sand-2) center/cover no-repeat; }
+.li-logo { position: absolute; left: 2.66%; top: 57.59%; width: 12.06%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 8px; border: 3px solid var(--weiss); background: var(--weiss); box-shadow: 0 0 0 1px var(--linie); }
+.li-logo img { width: 78%; height: auto; }
+.li-info { padding: 3.2rem 1.4rem 1.2rem; }
+.li--person .li-info { padding-top: 13%; }
+.li--firma .li-info { padding-top: 7%; }
+.li-name { font-weight: 600; font-size: 1.05rem; color: var(--ink); }
+.li-rolle { margin-top: .15rem; font-size: .85rem; color: var(--ink-2); }
+.li-knoepfe { display: flex; gap: .5rem; margin-top: .8rem; }
+.li-knoepfe span { padding: .3rem .9rem; border-radius: 999px; border: 1px solid #0a66c2; font-size: .78rem; font-weight: 600; color: #0a66c2; }
+.li-knoepfe span:first-child { background: #0a66c2; color: #fff; }
+/* Seite */
+.ga-block, .ga-var { margin-top: 3.2rem; }
+.ga-block h3, .ga-var h3 { font-size: 1.45rem; color: var(--navy); }
+.ga-block > p, .ga-var > p { margin-top: .4rem; max-width: 46rem; color: var(--ink-2); }
+.ga-zwei { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.6rem; align-items: start; margin-top: 1.4rem; }
+.ga-zwei figure { margin: 0; }
+.ga-zwei figcaption { margin-top: .6rem; font-size: .8rem; color: var(--ink-2); }
+.ga-zwei figcaption a { color: var(--blau); font-weight: 600; }
+.lz { position: relative; overflow: hidden; border-radius: 6px; background: var(--weiss); box-shadow: 0 0 0 1px var(--linie); }
+.lz-foto { position: absolute; aspect-ratio: 1; border-radius: 50%; background: repeating-linear-gradient(45deg, var(--sand-2) 0 6px, var(--sand) 6px 12px); box-shadow: 0 0 0 2px var(--taupe-h); }
+.lz-foto--eckig { border-radius: 10%; }
+.lz-text { position: absolute; bottom: 12%; font-size: .75rem; font-weight: 600; color: var(--taupe-d); }
+@media (max-width: 991px) { .ga-zwei { grid-template-columns: minmax(0, 1fr); } }
+.li-banner { border-bottom: 1px solid var(--linie); }
