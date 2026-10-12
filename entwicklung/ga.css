@@ -34,3 +34,5 @@
 .lz-text { position: absolute; bottom: 12%; font-size: .75rem; font-weight: 600; color: var(--taupe-d); }
 @media (max-width: 991px) { .ga-zwei { grid-template-columns: minmax(0, 1fr); } }
 .li-banner { border-bottom: 1px solid var(--linie); }
+.lb__flaeche { position: absolute; top: 0; right: 0; bottom: 0; display: grid; place-items: center; background: var(--sand); }
+.lb__flaeche img { height: auto; max-width: none; }

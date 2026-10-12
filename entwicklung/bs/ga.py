@@ -31,23 +31,30 @@ VARIANTEN = [
      {"bg": "#ffffff", "fg": "#082638", "hl": "#998675", "kicker": "#7a6757"}, "/entwicklung/pdf-bs2/ampersand-konstruktion-hell.svg"),
     ("navy", "Navy mit Anschnitt", "Wie das Deckblatt des PDFs: Navy-Fläche, weiße Schrift, das skizzierte & im Anschnitt.",
      {"bg": "#082638", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#cbbcae"}, "/pdf/bausteine/ampersand-konstruktion.svg"),
-    ("sand", "Sand mit vollem &", "Warm und ruhig: Sandfläche, Navy-Schrift, das ausgefüllte & als Zeichen.",
-     {"bg": "#f6f3ef", "fg": "#082638", "hl": "#998675", "kicker": "#7a6757"}, "/entwicklung/pdf-bs2/ampersand-blau.svg"),
+    ("versprechen", "Versprechen mit Farbfläche", "Navy-Fläche mit unserem Versprechen, rechts eine Sandfläche mit dem vollen & – Flächenwechsel wie auf der Startseite.",
+     {"bg": "#082638", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#cbbcae"}, "/entwicklung/pdf-bs2/ampersand-blau.svg"),
 ]
 KICKER = "Für Führungskräfte in der Versicherungsbranche"
 CLAIM = "Komplexe Situationen<br>strukturieren, entscheiden, <i>umsetzen.</i>"
+VERSPRECHEN = "Sie geben uns die Verantwortung.<br><i>Wir liefern das Ergebnis.</i>"
 
 
 def banner(fmt, var):
     w, h, links, _ = FORMATE[fmt]
     key, _, _, f, amp = var
     hoch = h / w * 100
+    if key == "versprechen":
+        gr = (1.05, 2.6, 76.5, 12) if fmt == "person" else (.95, 2.55, 76, 9.5)
+        return (f'<div class="lb" style="aspect-ratio:{w}/{h};--bg:{f["bg"]};--fg:{f["fg"]};--hl:{f["hl"]};--ki:{f["kicker"]}">'
+                f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:{gr[0]}cqw">Müller &amp; Ströbel</p>'
+                f'<h2 style="font-size:{gr[1]}cqw">{VERSPRECHEN}</h2></div>'
+                f'<div class="lb__flaeche" style="left:{gr[2]}cqw"><img src="{amp}" alt="" style="width:{gr[3]}cqw"></div></div>')
     if fmt == "person":
         txt = f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:1.05cqw">{KICKER}</p><h2 style="font-size:2.9cqw">{CLAIM}</h2></div>'
-        amp_stil = {"weiss": "left:80cqw;top:-1.5cqw;width:26cqw", "navy": "left:80cqw;top:-1.5cqw;width:26cqw", "sand": "left:83cqw;top:3.2cqw;width:14cqw"}[key]
+        amp_stil = {"weiss": "left:80cqw;top:-1.5cqw;width:26cqw", "navy": "left:80cqw;top:-1.5cqw;width:26cqw"}.get(key, "")
     else:
         txt = f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:.95cqw">{KICKER}</p><h2 style="font-size:2.55cqw">{CLAIM}</h2></div>'
-        amp_stil = {"weiss": "left:82cqw;top:-1cqw;width:18cqw", "navy": "left:82cqw;top:-1cqw;width:18cqw", "sand": "left:85.5cqw;top:2.6cqw;width:9.5cqw"}[key]
+        amp_stil = {"weiss": "left:82cqw;top:-1cqw;width:18cqw", "navy": "left:82cqw;top:-1cqw;width:18cqw"}.get(key, "")
     return (f'<div class="lb" style="aspect-ratio:{w}/{h};--bg:{f["bg"]};--fg:{f["fg"]};--hl:{f["hl"]};--ki:{f["kicker"]}">'
             f'{txt}<img class="lb__amp" src="{amp}" alt="" style="{amp_stil}"></div>')
 
