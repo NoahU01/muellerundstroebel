@@ -29,32 +29,32 @@ FORMATE = {  # Breite, Höhe, Text links ab (cqw), Schutzzone
 VARIANTEN = [
     ("weiss", "Weiß", "Ruhig wie die Startseite: weiße Fläche, Navy-Schrift, „umsetzen.“ in Taupe, rechts das skizzierte &.",
      {"bg": "#ffffff", "fg": "#082638", "hl": "#998675", "kicker": "#7a6757"}, "/entwicklung/pdf-bs2/ampersand-konstruktion-hell.svg"),
+    ("sand", "Weiß auf Sand", "Wie Nr. 1, nur auf der Sandfläche der Startseite: wärmer, gleiche Schrift, gleiches skizziertes &.",
+     {"bg": "#f6f3ef", "fg": "#082638", "hl": "#998675", "kicker": "#7a6757"}, "/entwicklung/pdf-bs2/ampersand-konstruktion-hell.svg"),
     ("navy", "Navy mit Anschnitt", "Wie das Deckblatt des PDFs: Navy-Fläche, weiße Schrift, das skizzierte & im Anschnitt.",
      {"bg": "#082638", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#cbbcae"}, "/pdf/bausteine/ampersand-konstruktion.svg"),
-    ("versprechen", "Versprechen mit Farbfläche", "Navy-Fläche mit unserem Versprechen, rechts eine Sandfläche mit dem vollen & – Flächenwechsel wie auf der Startseite.",
-     {"bg": "#082638", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#cbbcae"}, "/entwicklung/pdf-bs2/ampersand-blau.svg"),
+    ("dreiklang", "Der Weg auf Blau", "Unser Vorgehen als Linie mit drei Stationen – Strukturieren, Entscheiden, Umsetzen. Auf dem Blau aus dem Corporate Design, ohne &.",
+     {"bg": "#185e8a", "fg": "#ffffff", "hl": "#cbbcae", "kicker": "#d9e6ef"}, ""),
 ]
 KICKER = "Für Führungskräfte in der Versicherungsbranche"
 CLAIM = "Komplexe Situationen<br>strukturieren, entscheiden, <i>umsetzen.</i>"
-VERSPRECHEN = "Sie geben uns die Verantwortung.<br><i>Wir liefern das Ergebnis.</i>"
 
 
 def banner(fmt, var):
     w, h, links, _ = FORMATE[fmt]
     key, _, _, f, amp = var
     hoch = h / w * 100
-    if key == "versprechen":
-        gr = (1.05, 2.6, 76.5, 12) if fmt == "person" else (.95, 2.55, 76, 9.5)
+    if key == "dreiklang":
+        gr = (1.05, 3.3) if fmt == "person" else (.95, 3.0)
         return (f'<div class="lb" style="aspect-ratio:{w}/{h};--bg:{f["bg"]};--fg:{f["fg"]};--hl:{f["hl"]};--ki:{f["kicker"]}">'
-                f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:{gr[0]}cqw">Müller &amp; Ströbel</p>'
-                f'<h2 style="font-size:{gr[1]}cqw">{VERSPRECHEN}</h2></div>'
-                f'<div class="lb__flaeche" style="left:{gr[2]}cqw"><img src="{amp}" alt="" style="width:{gr[3]}cqw"></div></div>')
+                f'<div class="lb__text" style="left:{links}cqw;right:5cqw"><p class="lb__kicker" style="font-size:{gr[0]}cqw">{KICKER}</p>'
+                f'<ol class="lb__weg" style="font-size:{gr[1]}cqw"><li>Strukturieren</li><li>Entscheiden</li><li class="lb__ziel">Umsetzen.</li></ol></div></div>')
     if fmt == "person":
         txt = f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:1.05cqw">{KICKER}</p><h2 style="font-size:2.9cqw">{CLAIM}</h2></div>'
-        amp_stil = {"weiss": "left:80cqw;top:-1.5cqw;width:26cqw", "navy": "left:80cqw;top:-1.5cqw;width:26cqw"}.get(key, "")
+        amp_stil = {"weiss": "left:80cqw;top:-1.5cqw;width:26cqw", "sand": "left:80cqw;top:-1.5cqw;width:26cqw", "navy": "left:80cqw;top:-1.5cqw;width:26cqw"}.get(key, "")
     else:
         txt = f'<div class="lb__text" style="left:{links}cqw"><p class="lb__kicker" style="font-size:.95cqw">{KICKER}</p><h2 style="font-size:2.55cqw">{CLAIM}</h2></div>'
-        amp_stil = {"weiss": "left:82cqw;top:-1cqw;width:18cqw", "navy": "left:82cqw;top:-1cqw;width:18cqw"}.get(key, "")
+        amp_stil = {"weiss": "left:82cqw;top:-1cqw;width:18cqw", "sand": "left:82cqw;top:-1cqw;width:18cqw", "navy": "left:82cqw;top:-1cqw;width:18cqw"}.get(key, "")
     return (f'<div class="lb" style="aspect-ratio:{w}/{h};--bg:{f["bg"]};--fg:{f["fg"]};--hl:{f["hl"]};--ki:{f["kicker"]}">'
             f'{txt}<img class="lb__amp" src="{amp}" alt="" style="{amp_stil}"></div>')
 
@@ -82,8 +82,10 @@ def schutzzonen():
 
 def geschaeftsausstattung():
     zeilen = ""
-    for i, var in enumerate(VARIANTEN, 1):
+    nummern = {"weiss": "1", "sand": "1b", "navy": "2", "dreiklang": "3"}
+    for var in VARIANTEN:
         key, titel, text, _, _ = var
+        i = nummern.get(key, "")
         figs = "".join(
             f'<figure>{ansicht(fmt, var)}<figcaption>{"Personenprofil · 1584 × 396 px" if fmt == "person" else "Unternehmensseite · 1128 × 191 px"}'
             f' · <a href="/entwicklung/ga/linkedin/linkedin-{fmt}-{key}.png" download>PNG laden</a></figcaption></figure>' for fmt in ("person", "firma"))
@@ -97,7 +99,7 @@ def geschaeftsausstattung():
 
 <section class="sek sek--sand" id="linkedin"><div class="wrap">
   <p class="kicker">LinkedIn-Banner</p>
-  <h2 class="h2">Drei Varianten, je für das Profil und die Unternehmensseite.</h2>
+  <h2 class="h2">Drei Varianten, Nr. 1 zusätzlich auf Sand – je für das Profil und die Unternehmensseite.</h2>
   <p class="lead">Gezeigt in der Ansicht von LinkedIn. Tobias und Daniel nutzen dasselbe Banner.</p>
   <div class="ga-block"><h3>Wo Foto und Logo liegen</h3><p>LinkedIn legt Profilfoto bzw. Firmenlogo links unten über das Banner. Dort steht deshalb nichts Wichtiges.</p>{schutzzonen()}</div>
   {zeilen}
