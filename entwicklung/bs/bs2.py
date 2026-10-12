@@ -16,7 +16,7 @@ ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 35
+VERSION = 36
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -678,16 +678,20 @@ def storyboard():
                 zeilen_sk = "".join(
                     (f'<div class="sk-vorschau"><div class="sk-vorschau__innen">{x}</div></div><span class="sk-vorschau__quelle">{q}</span>' if t == "Vorschau"
                      else f'<div class="sk-teil sk-teil--{t.lower()}"><em>{t}</em><p>{x}</p><span>{q}</span></div>') for t, x, q in teile)
-                out += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else v}</b>{zeilen_sk}</div>'
+                out += f'<div class="sk-var"><b class="sk-var__kopf">{"Fassung " + v if len(v) == 1 else ("Aus A und B gestaltet" if v == "Skizze" else v)}</b>{zeilen_sk}</div>'
             return out
 
-        if weitere:  # gleichrangige Sektionen (z. B. 4.1 Ergebnis, 4.2 Kontakt): je ein eigener Kasten
-            kaesten = [(streifen_titel, art, varianten)] + list(weitere)
-            skizze_html = '<div class="sk-stapel">' + "".join(
-                f'<div class="sk sk--{a2}"><div class="sk__kopf">Abschnitt {t2}</div><div class="sk__vars">{vars_html(v2)}</div></div>'
-                for t2, a2, v2 in kaesten) + '</div>'
-        else:
-            skizze_html = f'<div class="sk sk--{art}"><div class="sk__kopf">Abschnitt {i} · {abschnitt}</div><div class="sk__vars">{vars_html(varianten)}</div></div>'
+        # Schritt 4 = Entwürfe (Fassung A und B), Schritt 5 = Skizze (aus A und B gestaltet: Fassung C bzw. Visualisierungen).
+        # Je Abschnitt ein Paar nebeneinander – bei gleichrangigen Sektionen (4.1, 4.2) ein Paar je Sektion.
+        def paar(titel, a2, v2):
+            entwuerfe = [(v, t) for v, t in v2 if v in ("A", "B")]
+            skizze = [("Skizze" if v == "C" else v, t) for v, t in v2 if v not in ("A", "B")]
+            links = (f'<div class="sk sk--{a2}"><div class="sk__kopf">Abschnitt {titel} · Entwürfe</div><div class="sk__vars">{vars_html(entwuerfe)}</div></div>'
+                     if entwuerfe else f'<div class="sk sk--leer"><div class="sk__kopf">Abschnitt {titel}</div><p>Keine Entwürfe – direkt als Skizze gestaltet.</p></div>')
+            rechts = f'<div class="sk sk--{a2} sk--skizze"><div class="sk__kopf">Abschnitt {titel} · Skizze</div><div class="sk__vars">{vars_html(skizze)}</div></div>'
+            return f'<div class="sk-paar">{links}{rechts}</div>'
+        kaesten = ([(streifen_titel, art, varianten)] + list(weitere)) if weitere else [(f"{i} · {abschnitt}", art, varianten)]
+        skizze_html = '<div class="sk-paare">' + "".join(paar(*k) for k in kaesten) + '</div>'
         baum += (f'<div class="sb-t-gruppe"><div class="sb-t-zeilen">{zeilen}</div>'
                  f'<div class="sb-t-abschnitt"><span>0{i}</span><b>{abschnitt}</b><p>{wirkung}</p></div>'
                  f'{skizze_html}</div>\n')
@@ -732,10 +736,10 @@ def storyboard():
 
 <section class="sek sek--sand"><div class="wrap">
   <div class="sb-titel"><div><p class="kicker">Zuordnung</p><h2 class="h2">Jeder Punkt hat genau einen Platz.</h2></div></div>
-  <p class="sb-schieben">Arbeitsfläche: mit dem Trackpad nach rechts schieben bis zur Skizze der Landingpage →</p>
+  <p class="sb-schieben">Arbeitsfläche: mit dem Trackpad nach rechts schieben – über die Entwürfe A und B bis zur Skizze der Landingpage →</p>
 </div>
 <div class="sb-flaeche"><div class="sb-flaeche__innen">
-  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten<small>12 Punkte</small></span><span><i>2</i>Fragen des Lesers<small>8 Fragen · Verdichtung</small></span><span><i>3</i>Abschnitt<small>4</small></span><span><i>4</i>Landingpage-Skizze<small>Headline · Text · Elemente</small></span></div>
+  <div class="sb-t-kopf"><span><i>1</i>Ihre Antworten</span><span><i>2</i>Fragen des Lesers</span><span><i>3</i>Abschnitt</span><span><i>4</i>Landingpage-Entwürfe</span><span><i>5</i>Landingpage-Skizze</span></div>
   <div class="sb-t">{baum}</div>
 </div></div>
 <div class="wrap">
