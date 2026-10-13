@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8870d24b-eae6-4dd4-8406-28c7c01e48b1" data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+
+  /* Interner Traffic wird am GERÄT markiert, nicht an der IP: wer aus
+     wechselnden Netzen arbeitet, müsste sonst jedes Netz nachtragen. Einmal
+     ?internal=1 aufrufen, und dieser Browser zählt dauerhaft als intern;
+     ?internal=0 hebt es auf. Der GA4-Datenfilter "Internal Traffic" schließt
+     Ereignisse mit traffic_type=internal aus, er muss auf AKTIV stehen. */
+  var msSchalter = null;
+  try {
+    var msWert = new URLSearchParams(location.search).get('internal');
+    if (msWert === '1') { localStorage.setItem('ms_internal', '1'); msSchalter = 'an'; }
+    if (msWert === '0') { localStorage.removeItem('ms_internal'); msSchalter = 'aus'; }
+  } catch (e) { /* Speicher gesperrt: dann ohne Markierung */ }
+  var msIntern = false;
+  try { msIntern = localStorage.getItem('ms_internal') === '1'; } catch (e) {}
+  if (msIntern) gtag('set', { traffic_type: 'internal' });
+
+  gtag('js', new Date());
+
+  /* GA4 nur auf der Produktionsdomain. Ohne diese Sperre schicken die
+     Vercel-Previews (*.vercel.app) und lokale Tests ihre Aufrufe in dieselbe
+     Property und verfälschen die Zahlen dauerhaft. */
+  if (/^(www\.)?muellerundstroebel\.de$/.test(location.hostname)) {
+    gtag('config', 'G-KSWHNGZS3P');
+  }
+
+  if (msSchalter) {
+    var msZeigen = function () {
+      var el = document.createElement('div');
+      el.textContent = msSchalter === 'an'
+        ? 'Dieses Gerät zählt ab jetzt als interner Traffic'
+        : 'Markierung entfernt, dieses Gerät zählt wieder mit';
+      el.setAttribute('role', 'status');
+      el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;'
+        + 'background:#185e8a;color:#fff;border-radius:.75rem;padding:12px 20px;'
+        + 'font:14px/1.4 Poppins,system-ui,sans-serif;max-width:90vw;text-align:center;'
+        + 'box-shadow:0 8px 28px rgba(6,55,85,.35)';
+      document.body.appendChild(el);
+      setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+      setTimeout(function () { el.remove(); }, 4600);
+    };
+    if (document.body) msZeigen(); else document.addEventListener('DOMContentLoaded', msZeigen);
+  }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHNGZS3P" data-cookieconsent="ignore"></script>
+<title>M&uuml;ller &amp; Str&ouml;bel: Strategie und Umsetzung f&uuml;r Versicherungsunternehmen</title>
+<meta name="description" content="Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung: Wir setzen Strategie gemeinsam mit Vorst&auml;nden und F&uuml;hrungskr&auml;ften um &ndash; von der Entscheidung bis zum Ergebnis.">
+<link rel="canonical" href="https://www.muellerundstroebel.de/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="M&uuml;ller &amp; Str&ouml;bel">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://www.muellerundstroebel.de/">
+<meta property="og:title" content="M&uuml;ller &amp; Str&ouml;bel: Strategie und Umsetzung f&uuml;r Versicherungsunternehmen">
+<meta property="og:description" content="Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung: Wir setzen Strategie gemeinsam mit Vorst&auml;nden und F&uuml;hrungskr&auml;ften um &ndash; von der Entscheidung bis zum Ergebnis.">
+<meta property="og:image" content="https://www.muellerundstroebel.de/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="M&uuml;ller &amp; Str&ouml;bel: Strategie und Umsetzung f&uuml;r Versicherungsunternehmen">
+<meta name="twitter:description" content="Profis f&uuml;r das Gesch&auml;ftsmodell Versicherung: Wir setzen Strategie gemeinsam mit Vorst&auml;nden und F&uuml;hrungskr&auml;ften um &ndash; von der Entscheidung bis zum Ergebnis.">
+<meta name="twitter:image" content="https://www.muellerundstroebel.de/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.muellerundstroebel.de/#organization",
+  "name": "M\u00fcller & Str\u00f6bel",
+  "legalName": "empiria GmbH",
+  "url": "https://www.muellerundstroebel.de/",
+  "logo": "https://www.muellerundstroebel.de/assets/logo.svg",
+  "image": "https://www.muellerundstroebel.de/assets/og-image.png",
+  "description": "Strategie und Umsetzung f\u00fcr Versicherungsunternehmen: vom Beschluss bis zum Ergebnis.",
+  "email": "daniel@muellerundstroebel.de",
+  "telephone": "+49 176 3134 7217",
+  "vatID": "DE281217286",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kapellengasse 6",
+    "postalCode": "74564",
+    "addressLocality": "Crailsheim",
+    "addressCountry": "DE"
+  },
+  "areaServed": { "@type": "Country", "name": "Deutschland" },
+  "knowsAbout": [
+    "Strategieberatung Versicherung", "Governance", "Risikomanagement",
+    "KI-Transformation", "Organisationsentwicklung", "Gesch\u00e4ftsmodell Versicherung"
+  ],
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Tobias M\u00fcller",
+      "email": "tobias@muellerundstroebel.de",
+      "telephone": "+49 176 2152 9798",
+      "knowsAbout": ["Governance & Gremienlogik", "Aufsichtsrats- & Vorstandssicht", "Risiko & Rechnungslegung"],
+      "sameAs": ["https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/"]
+    },
+    {
+      "@type": "Person",
+      "name": "Daniel Str\u00f6bel",
+      "email": "daniel@muellerundstroebel.de",
+      "telephone": "+49 176 3134 7217",
+      "knowsAbout": ["Strategie & Gesch\u00e4ftsmodell", "Struktur & F\u00fchrung", "Vertrieb & Stakeholderfokus"],
+      "sameAs": ["https://www.linkedin.com/in/daniel-stroebel/"]
+    }
+  ]
+}
+</script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">

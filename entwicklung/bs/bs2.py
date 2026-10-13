@@ -13,7 +13,8 @@ from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parents[2]
 ZIEL = WURZEL / "entwicklung"
-INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")
+INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")  # nur noch für das Entwicklungsmenü
+B2 = (WURZEL / "entwicklung" / "variante-b2.html").read_text(encoding="utf-8")  # Einsatzgebiete (Icons, Details) – Quelle seit 13.10.2026
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
 VERSION = 37
@@ -52,12 +53,12 @@ ICONS = """<svg width="0" height="0" style="position:absolute" aria-hidden="true
 
 
 def icon(key):
-    return re.search(rf'data-modal="{key}".*?<span class="v-ico">(<svg.*?</svg>)', INDEX, re.S).group(1)
+    return re.search(rf'data-modal="{key}".*?<span class="v-ico">(<svg.*?</svg>)', B2, re.S).group(1)
 
 
 def thema_detail(key):
     """Inhalt der Live-Einsatzgebiet-Vorlage (Was wir konkret tun, Ihr Ergebnis) ohne Kicker."""
-    t = re.search(rf'<template id="m-{key}">(.*?)</template>', INDEX, re.S).group(1)
+    t = re.search(rf'<template id="m-{key}">(.*?)</template>', B2, re.S).group(1)
     return re.sub(r'<p class="v-kicker">.*?</p>', "", t, 1)
 
 
@@ -979,8 +980,21 @@ def bs_uebersicht():
     return html.replace("</head>", f'<link rel="stylesheet" href="/entwicklung/storyboard.css?v={VERSION}">\n</head>', 1)
 
 
+# ------------------------------------------------------------------ Startseite (index.html) seit 13.10.2026
+def startseite_live():
+    """Business Story 2.0 als Startseite: Kopf der bisherigen Startseite (Cookiebot, GA4, Meta, Firmendaten) bleibt,
+    darunter der Inhalt der Business Story 2.0. Kein noindex. Anker zeigen auf die Startseite selbst."""
+    html = startseite()
+    kopf = (WURZEL / "entwicklung" / "bs" / "startseite-kopf.html").read_text(encoding="utf-8")
+    body = html[html.index("</head>"):]
+    body = body.replace('href="/entwicklung/business-story-2.html#', 'href="#').replace('href="/entwicklung/business-story-2.html"', 'href="/"')
+    body = body.replace("</body>", '<script src="/tracking.js"></script>\n</body>', 1)
+    return kopf + f'<link rel="stylesheet" href="/entwicklung/business-story-2.css?v={VERSION}">\n' + body
+
+
 if __name__ == "__main__":
     (ZIEL / "business-story-2.html").write_text(startseite(), encoding="utf-8")
+    (WURZEL / "index.html").write_text(startseite_live(), encoding="utf-8")
     (ZIEL / "business-story-2-ueber-uns.html").write_text(ueber_uns(), encoding="utf-8")
     (ZIEL / "storyboard.html").write_text(storyboard(), encoding="utf-8")
     (ZIEL / "elevator-pitch.html").write_text(elevator_pitch(), encoding="utf-8")
