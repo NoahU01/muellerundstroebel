@@ -159,7 +159,7 @@ def startseite():
              "<h4>Typisch bei</h4><ul><li>der Vorlage für den Aufsichtsrat</li><li>der Analyse, die eine Entscheidung tragen soll</li><li>dem Konzept, das in den Bereichen umgesetzt werden muss</li></ul>"),
             ("navy", "Externe", "Empfehlungen ja. Umsetzen bleibt bei Ihnen.", "extern",
              "<h3>Externe</h3><p>Strategieberater, Projektmanager, Spezialisten: jeweils einzeln beauftragt. Die Verbindung, die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.</p>"),
-            ("weiss", "Nur Workshops", "Zwei Tage im Kalender. Dann wochenlang Stillstand.", "workshop",
+            ("weiss", "Nur Workshops", "Zwei Tage im Kalender. Dann Stillstand.", "workshop",
              "<h3>Nur Workshops</h3><p>Große Themen werden zur Hürde: erst ein Termin für den großen Workshop, danach tut sich wenig, bis wieder Zeit im Kalender ist.</p>")]
     ico = {
         "team": '<svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.4.1 4 1.6 4.5 4.4"/></svg>',
@@ -631,7 +631,7 @@ AUSSAGEN = [  # rechte Spalte im Storyboard: Headlines und Kernsätze der Starts
     '<small>Für Führungskräfte in der Versicherungsbranche</small><b>Komplexe Situationen strukturieren, entscheiden, umsetzen.</b>'
     '<p>Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt.</p>',
     '<b>„Es ging schon wieder nichts voran.“</b><p>Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>'
-    '<ul><li>Ihr Team: Liefert, aber nicht so, wie Sie es brauchen.</li><li>Externe: Empfehlungen ja. Umsetzen bleibt bei Ihnen.</li><li>Nur Workshops: Zwei Tage im Kalender. Dann wochenlang Stillstand.</li></ul>',
+    '<ul><li>Ihr Team: Liefert, aber nicht so, wie Sie es brauchen.</li><li>Externe: Empfehlungen ja. Umsetzen bleibt bei Ihnen.</li><li>Nur Workshops: Zwei Tage im Kalender. Dann Stillstand.</li></ul>',
     '<b>Die Zusammenarbeit passt in Ihren Kalender.</b><p>Meist reicht ein kurzer Austausch. Die Arbeit dazwischen machen wir.</p>'
     '<ul><li>Kurzer Austausch → Wir arbeiten → Nächster Austausch</li><li>Netzwerk: Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</li></ul>',
     '<b>Sie haben Ihre Themen im Griff.</b><p>Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>'
