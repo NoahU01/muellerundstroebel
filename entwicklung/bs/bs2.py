@@ -173,9 +173,9 @@ def startseite():
     farben = {"team": "sand", "extern": "navy", "workshop": "hell"}
     ergaenzung = {"team": "Typisch bei der Vorlage für den Aufsichtsrat oder dem Konzept für die Bereiche. Am Ende greifen Sie wieder selbst ein.",
                   "extern": "Strategieberater, Projektmanager, Spezialisten: Die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.",
-                  "workshop": "Große Themen werden zur Hürde. Es geht erst weiter, wenn wieder Zeit im Kalender ist."}
+                  "workshop": "Große Themen werden zur Hürde: erst ein Termin für den großen Workshop, danach tut sich wenig, bis wieder Zeit im Kalender ist."}
     karten2 = "".join(f'<article class="pk"><div class="pk__bild pk__bild--{farben[k]}"><small>{t}</small><b>{x}</b>{ico[k]}</div>'
-                      f'<div class="pk__text"><p>{ergaenzung[k]}</p><button class="pk__mehr" type="button" data-thema="{k}">Mehr</button></div></article>'
+                      f'<div class="pk__text"><p>{ergaenzung[k]}</p></div></article>'
                       for f, t, x, k, _ in wege)
     karten = f'<div class="pks">{karten2}</div>'
     vorlagen = "".join(f'<template id="t-{k}">{d}</template>' for _, _, _, k, d in wege)
@@ -203,7 +203,7 @@ def startseite():
   <div>
     <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
     <p class="lp-vorzeile">Komplexe Situationen</p><h1>Strukturieren. Entscheiden. Umsetzen.</h1>
-    <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
+    <p class="lead">Die Strategie für die Digitalisierung, Kennzahlen, die steuern sollen, das neue Zielkundenkonzept: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
     <div class="knoepfe"><a class="knopf" href="#kontakt">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Ihre Lage</a></div>
   </div>
   <div class="duo duo--gleich">{duo}</div>
@@ -222,17 +222,11 @@ def startseite():
 <!-- 3 So arbeiten wir -->
 <section class="sek" id="arbeitsweise"><div class="wrap">
   <p class="kicker">So arbeiten wir</p>
-  <div class="wahl" data-gruppe="arbeit"><span>Darstellung</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3</button></div>
   <div class="lp-arbeit">
     <div>
       <h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>
-      <div class="lp-arbeit__text" data-gruppe="arbeit-text" data-variante="lang">
-        <p>Wir bleiben im regelmäßigen, kurzen Austausch. Meist reicht ein Telefonat zwischen zwei Terminen oder auf der Fahrt. Wenn es ein Thema braucht, nehmen wir uns eine längere Videokonferenz, und wenn es sinnvoll ist, einen Workshop.</p>
-        <p>Dazwischen arbeiten wir: Wir sprechen mit Ihren Leuten, erarbeiten selbst und holen Spezialisten dazu, wo es sie braucht. Beim nächsten Austausch steigen wir eine Stufe höher ein.</p>
-        <p><b>So bleibt Ihr Thema präsent, auch wenn Sie gerade im Tagesgeschäft stecken.</b></p>
-      </div>
-      <div class="lp-arbeit__text" data-gruppe="arbeit-text" data-variante="kurz" hidden>
-        <p>Sie müssen nichts vorbereiten und keinen ganzen Tag blocken. Wir stimmen uns kurz ab, die Arbeit dazwischen machen wir.</p>
+      <div class="lp-arbeit__text">
+        <p>Sie müssen nichts vorbereiten und keinen ganzen Tag blocken. Sie stimmen sich mit uns kurz ab, die Arbeit dazwischen machen wir.</p>
         <p><b>So bleibt Ihr Thema präsent, auch wenn Sie gerade im Tagesgeschäft stecken.</b></p>
       </div>
     </div>
@@ -243,8 +237,7 @@ def startseite():
       <ul>{netz}</ul>
     </aside>
   </div>
-  <ol class="lp-schritte" data-gruppe="arbeit" data-variante="2" hidden>{schritte}</ol>
-  <ol class="lp-ablauf" data-gruppe="arbeit" data-variante="3" hidden>
+  <ol class="lp-ablauf">
     <li><b>Kurzer Austausch</b><span>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</span></li>
     <li><b>Wir arbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</span></li>
     <li><b>Nächster Austausch</b><span>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</span></li>
@@ -255,8 +248,8 @@ def startseite():
 <section class="sek sek--navy lp-ergebnis"><div class="wrap lp-ergebnis__raster">
   <div>
     <p class="kicker">Ihr Ergebnis</p>
-    <h2 class="h2 lp-gross">Sie haben Ihre Themen im Griff.</h2>
-    <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+    <h2 class="h2 lp-gross">Sie entscheiden und konzentrieren sich auf Ihre Kernthemen.</h2>
+    <p class="lead">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht.</p>
   </div>
   {trio_szene("compass", "circle-check", "target")}
 </div></section>
@@ -284,8 +277,7 @@ def startseite():
   </div>
 </div></section>
 
-<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
-{vorlagen}"""
+<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>"""
     skript = """<script>
 /* Variantenwahl (nur Entwurf) */
 document.querySelectorAll('.wahl').forEach(function (w) {
