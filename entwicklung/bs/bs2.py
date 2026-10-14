@@ -202,9 +202,7 @@ def startseite():
 <section class="held lp-held"><div class="wrap held__raster">
   <div>
     <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-    <div class="wahl" data-gruppe="kopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
-    <h1 data-gruppe="kopf" data-variante="1">Komplexe Situationen <span class="wort" aria-hidden="true"><span class="ist">strukturieren.</span><span>entscheiden.</span><span>umsetzen.</span></span><span class="nur-lesen">strukturieren, entscheiden, umsetzen.</span></h1>
-    <div data-gruppe="kopf" data-variante="2" hidden><p class="lp-vorzeile">Komplexe Situationen</p><h1>Strukturieren. Entscheiden. Umsetzen.</h1></div>
+    <p class="lp-vorzeile">Komplexe Situationen</p><h1>Strukturieren. Entscheiden. Umsetzen.</h1>
     <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
     <div class="knoepfe"><a class="knopf" href="#kontakt">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a><a class="knopf knopf--rand" href="#lage">Ihre Lage</a></div>
   </div>
