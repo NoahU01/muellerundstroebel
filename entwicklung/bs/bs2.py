@@ -17,6 +17,8 @@ INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")  # nur noch für das
 B2 = (WURZEL / "entwicklung" / "variante-b2.html").read_text(encoding="utf-8")  # Einsatzgebiete (Icons, Details) – Quelle seit 13.10.2026
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
+# Seitenlinks fürs Handy-Menü werden in kopfzeile() eingesetzt – vorhandene (aus der generierten Startseite) vorher entfernen
+DEV = re.sub(r'<div class="menu-seiten">.*?</div>', "", DEV, flags=re.S)
 VERSION = 39
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
@@ -72,13 +74,13 @@ def kopfzeile(aktiv):
              ("/entwicklung/business-story-2-ueber-uns.html", "Über uns")]
     akt = ' aria-current="page"'
     nav = "".join(f'<a class="nav__anker" href="{h}"{akt if n == aktiv else ""}>{n}</a>' for h, n in links)
-    seiten = "".join(f'<a href="{h}">{n}</a>' for h, n in links) + '<a href="/entwicklung/business-story-2.html#kontakt">Thema besprechen</a>'
+    seiten = "".join(f'<a href="{h}">{n}</a>' for h, n in links) + '<a href="/entwicklung/business-story-2.html#kontakt">Gespräch vereinbaren</a>'
     dev = DEV.replace('<p class="dev-dd-note">', f'<div class="menu-seiten">{seiten}</div><p class="dev-dd-note">', 1)
     return f'''<header class="kopf"><div class="wrap">
   <a class="marke" href="{start}" aria-label="Müller &amp; Ströbel – Startseite"><img src="/assets/logo.svg" alt="Müller &amp; Ströbel"></a>
   <nav class="nav" aria-label="Hauptmenü">{nav}
 {dev}
-    <a class="knopf" href="#kontakt">Thema besprechen</a>
+    <a class="knopf" href="#kontakt">Gespräch vereinbaren</a>
   </nav>
 </div></header>'''
 
@@ -180,8 +182,8 @@ def startseite():
     karten = f'<div class="pks">{karten2}</div>'
     vorlagen = "".join(f'<template id="t-{k}">{d}</template>' for _, _, _, k, d in wege)
     schritte = "".join(f'<li class="lp-schritt"><span class="lp-schritt__ico">{ic}</span><h3>{t}</h3><p>{x}</p></li>' for ic, t, x in [
-        (ICO_GESPRAECH, "Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
-        (ICO_ARBEIT, "Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
+        (ICO_GESPRAECH, "Kurzer Austausch", "Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist. Meist reicht ein Telefonat."),
+        (ICO_ARBEIT, "Wir arbeiten", "Mit Ihrem Team, selbst und mit Spezialisten aus unserem Netzwerk."),
         (ICO_KREIS, "Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")])
     netz_ico = [
         ("Ehemalige Vorstände", '<path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/>'),
@@ -238,8 +240,8 @@ def startseite():
     </aside>
   </div>
   <ol class="lp-ablauf">
-    <li><b>Kurzer Austausch</b><span>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</span></li>
-    <li><b>Wir arbeiten</b><span>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</span></li>
+    <li><b>Kurzer Austausch</b><span>Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist. Meist reicht ein Telefonat.</span></li>
+    <li><b>Wir arbeiten</b><span>Mit Ihrem Team, selbst und mit Spezialisten aus unserem Netzwerk.</span></li>
     <li><b>Nächster Austausch</b><span>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</span></li>
   </ol>
 </div></section>
@@ -537,8 +539,8 @@ ICO_ARBEIT = '<svg class="ico" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 
 ICO_ENTSCHEID = '<svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 12.3l2.6 2.6 5-5.4"/></svg>'
 ICO_KREIS = '<svg class="ico" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></svg>'
 SCHRITTE_HTML = ('<ol class="lp-schritte">'
-    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_GESPRAECH}</span><h3>Kurzer Austausch</h3><p>Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch.</p></li>'
-    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_ARBEIT}</span><h3>Wir arbeiten</h3><p>Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk.</p></li>'
+    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_GESPRAECH}</span><h3>Kurzer Austausch</h3><p>Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist. Meist reicht ein Telefonat.</p></li>'
+    f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_ARBEIT}</span><h3>Wir arbeiten</h3><p>Mit Ihrem Team, selbst und mit Spezialisten aus unserem Netzwerk.</p></li>'
     f'<li class="lp-schritt"><span class="lp-schritt__ico">{ICO_KREIS}</span><h3>Nächster Austausch</h3><p>Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.</p></li></ol>')
 VORSCHAU_3_1 = ('<p class="kicker">So arbeiten wir</p><h2 class="h2">Die Zusammenarbeit passt in Ihren Kalender.</h2>'
     '<p class="lead">Wir bleiben im regelmäßigen, kurzen Austausch, oft reicht ein Telefonat. Die Arbeit dazwischen machen wir.</p>'

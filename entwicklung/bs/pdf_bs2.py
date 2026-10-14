@@ -48,8 +48,8 @@ WEGE = [  # Ihre Lage: (Farbe, Bezeichnung, Aussage, Icon, Ergänzung) – wie L
     ("hell", "Nur Workshops", "Zwei Tage im Kalender. Dann Stillstand.", "workshop",
      "Große Themen werden zur Hürde. Es geht erst weiter, wenn wieder Zeit im Kalender ist."),
 ]
-ABLAUF = [("Kurzer Austausch", "Telefonat, Videokonferenz, Workshop, wenn er sinnvoll ist. Oft reicht ein kurzer Austausch."),
-          ("Wir arbeiten", "Mit Ihren Leuten, selbst und mit Spezialisten aus unserem Netzwerk."),
+ABLAUF = [("Kurzer Austausch", "Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist. Meist reicht ein Telefonat."),
+          ("Wir arbeiten", "Mit Ihrem Team, selbst und mit Spezialisten aus unserem Netzwerk."),
           ("Nächster Austausch", "Wir kommen mit einem klaren Bild zurück und setzen eine Stufe höher an.")]
 
 
