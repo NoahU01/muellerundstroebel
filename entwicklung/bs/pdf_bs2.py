@@ -42,11 +42,11 @@ NETZ = [  # (Name, Pfad) – wie auf der Landingpage
 ]
 WEGE = [  # Ihre Lage: (Farbe, Bezeichnung, Aussage, Icon, Ergänzung) – wie Landingpage Variante 2
     ("sand", "Ihr Team", "Liefert, aber nicht so, wie Sie es brauchen.", "team",
-     "Typisch bei der Vorlage für den Aufsichtsrat oder dem Konzept für die Bereiche. Am Ende greifen Sie wieder selbst ein."),
+     "Typisch bei der Vorlage für den Aufsichtsrat oder der Überführung der Strategie in den Alltag. Am Ende greifen Sie selbst ein."),
     ("navy", "Externe", "Empfehlungen ja. Umsetzen bleibt bei Ihnen.", "extern",
      "Strategieberater, Projektmanager, Spezialisten: Die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen."),
     ("hell", "Nur Workshops", "Zwei Tage im Kalender. Dann Stillstand.", "workshop",
-     "Große Themen werden zur Hürde. Es geht erst weiter, wenn wieder Zeit im Kalender ist."),
+     "Große Themen werden zur Hürde. Nach dem großen Workshop tut sich oft wochenlang wenig, bis wieder Zeit im Kalender ist."),
 ]
 ABLAUF = [("Kurzer Austausch", "Telefonat, Videokonferenz oder Workshop, wenn er sinnvoll ist. Meist reicht ein Telefonat."),
           ("Wir arbeiten", "Mit Ihrem Team, selbst und mit Spezialisten aus unserem Netzwerk."),
@@ -101,14 +101,15 @@ def seiten():
   <img class="deck__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
   <div class="deck__text">
     <p class="kicker">Für Führungskräfte in der Versicherungsbranche</p>
-    <h1>Komplexe Situationen strukturieren, entscheiden, umsetzen.</h1>
-    <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, die Kennzahlen, die steuern sollen: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
+    <p class="deck__vorzeile">Komplexe Situationen</p>
+    <h1>Strukturieren. Entscheiden. Umsetzen.</h1>
+    <p class="unter">Die Strategie für die Digitalisierung, Kennzahlen, die steuern sollen, das neue Zielkundenkonzept: Wir übernehmen Ihr Thema und sorgen dafür, dass es vorankommt. Mit wenig Aufwand für Sie.</p>
   </div>''', "haupt"))
     # 2 Ihre Lage
     S.append(("sand", f'''{leiste("Ihre Lage")}
   <p class="kicker">Ihre Lage</p>
   <h2>„Es ging schon wieder nichts voran.“</h2>
-  <p class="unter">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
+  <p class="unter">Die Vorlage für den Aufsichtsrat, die Überführung der Strategie in den Alltag, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
   <div class="block">{posts()}</div>
   <div class="kern"><p class="kicker">Was Sie brauchen</p><p>Jemanden, der Ihr Thema versteht, es strukturiert, die Bearbeitung übernimmt und das Ergebnis liefert. Mit wenig Aufwand für Sie.</p></div>''', "haupt"))
     # 3 So arbeiten wir
@@ -117,7 +118,7 @@ def seiten():
   <p class="kicker">So arbeiten wir</p>
   <h2>Die Zusammenarbeit passt in Ihren Kalender.</h2>
   <div class="text unter">
-    <p>Wir bleiben im regelmäßigen, kurzen Austausch. Meist reicht ein Telefonat zwischen zwei Terminen oder auf der Fahrt. Wenn es ein Thema braucht, nehmen wir uns eine längere Videokonferenz, und wenn es sinnvoll ist, einen Workshop.</p>
+    <p>Sie müssen nichts vorbereiten und keinen ganzen Tag blocken. Sie stimmen sich mit uns kurz ab, die Arbeit dazwischen machen wir.</p>
     <p><b>So bleibt Ihr Thema präsent, auch wenn Sie gerade im Tagesgeschäft stecken.</b></p>
   </div>
   <div class="block">{ablauf()}</div>
@@ -128,8 +129,8 @@ def seiten():
   <div class="ergebnis__szene">{b.trio_szene("compass", "circle-check", "target")}</div>
   <div class="ergebnis__text">
     <p class="kicker">Ihr Ergebnis</p>
-    <h2>Sie haben Ihre Themen im Griff.</h2>
-    <p class="unter">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht. Sie entscheiden und konzentrieren sich auf die richtigen Dinge.</p>
+    <h2>Sie entscheiden und konzentrieren sich auf Ihre Kernthemen.</h2>
+    <p class="unter">Im Gespräch behalten wir das Zielbild im Blick und schaffen Klarheit, wohin es geht.</p>
     <ul class="haken">
       <li>{HAKEN}Sie wissen jederzeit, wo Ihr Thema steht und wie das Zielbild aussieht.</li>
       <li>{HAKEN}Ihre Vorhaben laufen weiter, während Sie im Tagesgeschäft sind.</li>
