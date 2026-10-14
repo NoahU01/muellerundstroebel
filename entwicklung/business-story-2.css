@@ -639,3 +639,20 @@ html, body { overflow-x: clip; }
 .stationen .v-cv li::before { content: none; display: none; }
 /* Werdegang: Vergangenheit und heute als zwei Absätze */
 .pp h4 + p + p { margin-top: .9em; }
+
+/* Handy-Menü der Live-Seite (auf daniel übernimmt das Entwicklungsmenü diese Rolle) */
+.mnav { display: none; position: relative; }
+.nav:has(#dev-dd) .mnav { display: none !important; }
+.mnav summary { list-style: none; display: grid; gap: 5px; place-content: center; width: 44px; height: 44px; border-radius: 999px; cursor: pointer; }
+.mnav summary::-webkit-details-marker { display: none; }
+.mnav summary span { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--navy); transition: transform .2s, opacity .2s; }
+.mnav[open] summary span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.mnav[open] summary span:nth-child(2) { opacity: 0; }
+.mnav[open] summary span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mnav__panel { position: absolute; right: 0; top: calc(100% + .6rem); display: grid; min-width: 15rem; padding: .6rem; border-radius: 16px; background: var(--weiss); border: 1px solid var(--linie); box-shadow: 0 20px 40px -20px rgba(8,38,56,.35); }
+.mnav__panel a { padding: .7rem .9rem; border-radius: 10px; text-decoration: none; font-weight: 500; color: var(--ink); }
+.mnav__panel a:hover { background: var(--sand); }
+.mnav__panel a:last-child { margin-top: .3rem; background: var(--navy); color: var(--weiss); text-align: center; }
+@media (max-width: 1100px) { .mnav { display: block; } }
+.mnav__panel a { white-space: nowrap; }
+@media (min-width: 761px) { .mnav__panel a:last-child { display: none; } }

@@ -7,7 +7,7 @@
 <meta name="description" content="Entwurf: Über uns zur Business Story 2.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=39">
+<link rel="stylesheet" href="/entwicklung/business-story-2.css?v=40">
 </head>
 <body data-variante="bs2-ueber">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -27,7 +27,7 @@
 <div class="dev-dd-panel" id="dev-dd-panel">
 <div class="menu-seiten"><a href="/entwicklung/business-story-2.html#lage">Ihre Lage</a><a href="/entwicklung/business-story-2.html#arbeitsweise">So arbeiten wir</a><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/entwicklung/business-story-2.html#kontakt">Gespräch vereinbaren</a></div><p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
 <p class="dev-dd-group">Varianten Startseite</p>
-<div class="dev-dd-fly"><a href="/" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Jetzt Startseite &ndash; seit 13.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/downloads/business-story-2.pdf" class="dev-dd-link" data-v="bs2-pdf" target="_blank" rel="noopener"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zur Business Story 2.0</b><small>Was wir tun und wofür wir stehen</small></span></a><a href="/entwicklung/business-story-2-ueber-uns.html" class="dev-dd-link" data-v="bs2-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns</b><small>Tobias &amp; Daniel, Werdegang, Netzwerk</small></span></a></div></div>
+<div class="dev-dd-fly"><a href="/" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Jetzt Startseite &ndash; seit 13.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/assets/downloads/mueller-stroebel.pdf" class="dev-dd-link" data-v="bs2-pdf" target="_blank" rel="noopener"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zur Business Story 2.0</b><small>Was wir tun und wofür wir stehen</small></span></a><a href="/ueber-uns" class="dev-dd-link" data-v="bs2-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns</b><small>Tobias &amp; Daniel, Werdegang, Netzwerk</small></span></a></div></div>
 
 
 <a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; Startseite bis 13.10.2026</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
@@ -94,6 +94,7 @@ function ruecken(){if(innerWidth<992){d.style.removeProperty("--dev-dd-ruck");re
 d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEventListener("click",ruecken);addEventListener("resize",ruecken);})();
 </script>
 <!-- ENTWICKLUNG:END -->
+    <details class="mnav"><summary aria-label="Menü öffnen"><span></span><span></span><span></span></summary><div class="mnav__panel"><a href="/entwicklung/business-story-2.html#lage">Ihre Lage</a><a href="/entwicklung/business-story-2.html#arbeitsweise">So arbeiten wir</a><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/entwicklung/business-story-2.html#kontakt">Gespräch vereinbaren</a></div></details>
     <a class="knopf" href="#kontakt">Gespräch vereinbaren</a>
   </nav>
 </div></header>
@@ -214,6 +215,7 @@ document.querySelectorAll('.wahl').forEach(function (w) {
   f.addEventListener('click', function (e) { if (e.target === f) f.close(); });
 })();
 </script>
+<script>/* Live-Handy-Menü schließt nach Klick */ document.querySelectorAll('.mnav a').forEach(function (a) { a.addEventListener('click', function () { a.closest('details').removeAttribute('open'); }); });</script>
 <script>/* Menü schließt nach Klick auf einen Eintrag (Tablet/Handy) */
 document.querySelectorAll('#dev-dd .dev-dd-panel a').forEach(function (a) { a.addEventListener('click', function () { var d = document.getElementById('dev-dd'); d.classList.remove('is-open'); d.querySelector('.dev-dd-toggle').setAttribute('aria-expanded', 'false'); }); });
 </script>

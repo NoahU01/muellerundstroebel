@@ -9,17 +9,18 @@ Das Entwicklungsmenü wird aus index.html übernommen.
     python3 entwicklung/bs/bs2.py
 """
 import re
+import sys
 from pathlib import Path
 
 WURZEL = Path(__file__).resolve().parents[2]
 ZIEL = WURZEL / "entwicklung"
 INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")  # nur noch für das Entwicklungsmenü
 B2 = (WURZEL / "entwicklung" / "variante-b2.html").read_text(encoding="utf-8")  # Einsatzgebiete (Icons, Details) – Quelle seit 13.10.2026
-UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
+UEBER = (WURZEL / "entwicklung" / "bs" / "quelle-ueber-uns-2026-09.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
 # Seitenlinks fürs Handy-Menü werden in kopfzeile() eingesetzt – vorhandene (aus der generierten Startseite) vorher entfernen
 DEV = re.sub(r'<div class="menu-seiten">.*?</div>', "", DEV, flags=re.S)
-VERSION = 39
+VERSION = 40
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -80,6 +81,7 @@ def kopfzeile(aktiv):
   <a class="marke" href="{start}" aria-label="Müller &amp; Ströbel – Startseite"><img src="/assets/logo.svg" alt="Müller &amp; Ströbel"></a>
   <nav class="nav" aria-label="Hauptmenü">{nav}
 {dev}
+    <details class="mnav"><summary aria-label="Menü öffnen"><span></span><span></span><span></span></summary><div class="mnav__panel">{seiten}</div></details>
     <a class="knopf" href="#kontakt">Gespräch vereinbaren</a>
   </nav>
 </div></header>'''
@@ -124,6 +126,7 @@ def seite(titel, beschreibung, variante, aktiv, main, skript=""):
   <nav><a href="/entwicklung/business-story-2-ueber-uns.html">Über uns</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
 </div></footer>
 {skript}
+<script>/* Live-Handy-Menü schließt nach Klick */ document.querySelectorAll('.mnav a').forEach(function (a) {{ a.addEventListener('click', function () {{ a.closest('details').removeAttribute('open'); }}); }});</script>
 <script>/* Menü schließt nach Klick auf einen Eintrag (Tablet/Handy) */
 document.querySelectorAll('#dev-dd .dev-dd-panel a').forEach(function (a) {{ a.addEventListener('click', function () {{ var d = document.getElementById('dev-dd'); d.classList.remove('is-open'); d.querySelector('.dev-dd-toggle').setAttribute('aria-expanded', 'false'); }}); }});
 </script>
@@ -971,20 +974,63 @@ def bs_uebersicht():
 
 
 # ------------------------------------------------------------------ Startseite (index.html) seit 13.10.2026
-def startseite_live():
-    """Business Story 2.0 als Startseite: Kopf der bisherigen Startseite (Cookiebot, GA4, Meta, Firmendaten) bleibt,
-    darunter der Inhalt der Business Story 2.0. Kein noindex. Anker zeigen auf die Startseite selbst."""
-    html = startseite()
-    kopf = (WURZEL / "entwicklung" / "bs" / "startseite-kopf.html").read_text(encoding="utf-8")
+LIVE_PFADE = [  # Entwicklungspfad -> fester Live-Ort (diese Dateien gehen mit auf main)
+    ("/entwicklung/business-story-2.css", "/assets/seite.css"),
+    ("/entwicklung/downloads/business-story-2.pdf", "/assets/downloads/mueller-stroebel.pdf"),
+    ("/entwicklung/downloads/business-story-2-1.png", "/assets/downloads/mueller-stroebel-1.png"),
+    ("/entwicklung/downloads/business-story-2-2.png", "/assets/downloads/mueller-stroebel-2.png"),
+    ("/pdf/bausteine/logo-weiss.svg", "/assets/logo-weiss.svg"),
+    ("/entwicklung/business-story-2-ueber-uns.html", "/ueber-uns"),
+    ('href="/entwicklung/business-story-2.html#', 'href="/#'),
+    ('href="/entwicklung/business-story-2.html"', 'href="/"'),
+]
+LIVE_DATEIEN = [  # Quelle -> Ziel
+    ("entwicklung/business-story-2.css", "assets/seite.css"),
+    ("entwicklung/downloads/business-story-2.pdf", "assets/downloads/mueller-stroebel.pdf"),
+    ("entwicklung/downloads/business-story-2-1.png", "assets/downloads/mueller-stroebel-1.png"),
+    ("entwicklung/downloads/business-story-2-2.png", "assets/downloads/mueller-stroebel-2.png"),
+    ("pdf/bausteine/logo-weiss.svg", "assets/logo-weiss.svg"),
+]
+
+
+def live(html, kopf_datei):
+    """Live-Fassung: Kopf der Live-Seite (Cookiebot, GA4, Meta) + Inhalt, Pfade auf Live-Orte, kein noindex.
+    Der Entwicklungsblock bleibt auf daniel drin; für main entfernt ihn main_fassung()."""
+    kopf = (WURZEL / "entwicklung" / "bs" / kopf_datei).read_text(encoding="utf-8")
     body = html[html.index("</head>"):]
-    body = body.replace('href="/entwicklung/business-story-2.html#', 'href="#').replace('href="/entwicklung/business-story-2.html"', 'href="/"')
+    for a, b in LIVE_PFADE:
+        body = body.replace(a, b)
     body = body.replace("</body>", '<script src="/tracking.js"></script>\n</body>', 1)
-    return kopf + f'<link rel="stylesheet" href="/entwicklung/business-story-2.css?v={VERSION}">\n' + body
+    return kopf + f'<link rel="stylesheet" href="/assets/seite.css?v={VERSION}">\n' + body
+
+
+def main_fassung(html):
+    """Fassung für main: Entwicklungsmenü und das zugehörige Skript entfernen."""
+    html = re.sub(r"\s*<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", "", html, flags=re.S)
+    html = re.sub(r"<script>/\* Menü schließt nach Klick.*?</script>\n?", "", html, flags=re.S)
+    return html
+
+
+def startseite_live():
+    return live(startseite(), "startseite-kopf.html")
+
+
+def ueber_uns_live():
+    return live(ueber_uns(), "ueberuns-kopf.html")
 
 
 if __name__ == "__main__":
     (ZIEL / "business-story-2.html").write_text(startseite(), encoding="utf-8")
     (WURZEL / "index.html").write_text(startseite_live(), encoding="utf-8")
+    (WURZEL / "ueber-uns.html").write_text(ueber_uns_live(), encoding="utf-8")
+    import shutil
+    for q, z in LIVE_DATEIEN:
+        (WURZEL / z).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(WURZEL / q, WURZEL / z)
+    if "--main" in sys.argv:  # Fassungen für main in einen Ordner außerhalb des Repos schreiben
+        aus = Path(sys.argv[sys.argv.index("--main") + 1])
+        for n in ("index.html", "ueber-uns.html"):
+            (aus / n).write_text(main_fassung((WURZEL / n).read_text(encoding="utf-8")), encoding="utf-8")
     (ZIEL / "business-story-2-ueber-uns.html").write_text(ueber_uns(), encoding="utf-8")
     (ZIEL / "storyboard.html").write_text(storyboard(), encoding="utf-8")
     (ZIEL / "elevator-pitch.html").write_text(elevator_pitch(), encoding="utf-8")

@@ -82,37 +82,27 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/favicon.png">
-<link rel="stylesheet" href="/styles.css">
-<link rel="stylesheet" href="/startseite.css">
-<style id="ms-cta-flach">/* Knöpfe wie die übrigen der Seite: Rechteck mit runden Ecken, flacher */
-.v-btn.ms-cta{border-radius:.75rem;padding:.8rem 1.35rem;font-size:.95rem}
-/* Kopf wie auf der Startseite: Unterzeile und Überschrift beginnen auf derselben Höhe; Grafik oben/unten um je drei Punktreihen gekürzt (viewBox) */
-@media (min-width:992px){.v-about-hero{padding-top:calc(12.5rem - 6px)}.v-about-hero .v-split{align-items:start}}
-@media (max-width:991px){.v-about-hero{padding-top:calc(9.5rem - 6px)}}</style>
+<link rel="stylesheet" href="/assets/seite.css?v=40">
 </head>
-<body class="body v-page ms-home ms-sub">
-
-<div class="main-wrapper">
-<div class="page-wrapper">
-
-<div class="navigation-background" id="navigation-background"></div>
-<div class="nav-wrapper" id="nav-wrapper">
-<header class="nav-bar padding-global">
-<div class="navigation-line" id="navigation-line"></div>
-<div class="container-large navigation">
-<a href="/" class="brand" aria-label="M&uuml;ller &amp; Str&ouml;bel &ndash; Startseite"><img src="/assets/logo.svg" alt="M&uuml;ller &amp; Str&ouml;bel" class="logo"></a>
-<nav class="navigation-wrapper" id="mobile-menu">
-<a href="/#loesungen" class="menu-text">L&ouml;sungen</a>
-<div class="ms-dd"><button class="menu-text ms-dd-toggle" type="button" aria-expanded="false">Leistungen<svg class="ms-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-<div class="ms-dd-panel"><a href="/strategie-verankern" class="ms-dd-link"><b>Strategie im Alltag verankern</b><small>Die Strategie ist beschlossen. Jetzt muss sie in den Bereichen ankommen und wirken.</small></a><a href="/komplexe-themen" class="ms-dd-link"><b>Komplexe Themen strukturieren und entscheiden</b><small>Viele Beteiligte, unklare Risiken, kein Fortschritt. Wir moderieren, strukturieren und treiben das Thema voran.</small></a><a href="/geschaeftsmodell" class="ms-dd-link"><b>Gesch&auml;ftsmodell neu denken</b><small>Wachstum, KI oder ver&auml;nderte Risiken verlangen eine neue Richtung.</small></a><a href="/aufsichtsrat" class="ms-dd-link ms-dd-link--ar"><b>Aufsichtsratsschulungen</b><small>Fit &amp; Proper und Strategie im Aufsichtsrat &ndash; f&uuml;r neue Mitglieder und das Gesamtgremium.</small></a></div></div>
-<a href="/ueber-uns" class="menu-text">&Uuml;ber uns</a>
+<body data-variante="bs2-ueber">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-weiter" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-extern" viewBox="0 0 16 16"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></symbol>
+  <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-haken" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 20 20"><path d="M5 10h10"/></symbol>
+  <symbol id="i-zu" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+<header class="kopf"><div class="wrap">
+  <a class="marke" href="/" aria-label="Müller &amp; Ströbel – Startseite"><img src="/assets/logo.svg" alt="Müller &amp; Ströbel"></a>
+  <nav class="nav" aria-label="Hauptmenü"><a class="nav__anker" href="/#lage">Ihre Lage</a><a class="nav__anker" href="/#arbeitsweise">So arbeiten wir</a><a class="nav__anker" href="/ueber-uns" aria-current="page">Über uns</a>
 <!-- ENTWICKLUNG:START (nur Sandbox – wird von vorschau.py github entfernt) -->
 <div class="dev-dd" id="dev-dd">
 <button class="menu-text dev-dd-toggle" type="button" aria-expanded="false" aria-controls="dev-dd-panel">/ Entwicklung /<svg class="dev-dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <div class="dev-dd-panel" id="dev-dd-panel">
-<p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
+<div class="menu-seiten"><a href="/#lage">Ihre Lage</a><a href="/#arbeitsweise">So arbeiten wir</a><a href="/ueber-uns">Über uns</a><a href="/#kontakt">Gespräch vereinbaren</a></div><p class="dev-dd-note"><b>Nur in der Entwicklungsumgebung sichtbar</b>Dieser Menüpunkt ist in der Live-Version nicht enthalten.</p>
 <p class="dev-dd-group">Varianten Startseite</p>
-<div class="dev-dd-fly"><a href="/entwicklung/business-story-2.html" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Jetzt Startseite &ndash; seit 13.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/entwicklung/downloads/business-story-2.pdf" class="dev-dd-link" data-v="bs2-pdf" target="_blank" rel="noopener"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zur Business Story 2.0</b><small>Was wir tun und wofür wir stehen</small></span></a><a href="/entwicklung/business-story-2-ueber-uns.html" class="dev-dd-link" data-v="bs2-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns</b><small>Tobias &amp; Daniel, Werdegang, Netzwerk</small></span></a></div></div>
+<div class="dev-dd-fly"><a href="/" class="dev-dd-link" data-v="bs2"><span class="dev-dd-tag dev-dd-tag--new">2.0</span><span class="dev-dd-txt"><b>Business Story 2.0</b><small>Jetzt Startseite &ndash; seit 13.10.2026</small></span><span class="dev-dd-pfeil" aria-hidden="true">&rsaquo;</span></a><div class="dev-dd-sub"><p class="dev-dd-group">Unterseiten</p><a href="/assets/downloads/mueller-stroebel.pdf" class="dev-dd-link" data-v="bs2-pdf" target="_blank" rel="noopener"><span class="dev-dd-tag dev-dd-tag--new">PDF</span><span class="dev-dd-txt"><b>PDF zur Business Story 2.0</b><small>Was wir tun und wofür wir stehen</small></span></a><a href="/ueber-uns" class="dev-dd-link" data-v="bs2-ueber"><span class="dev-dd-tag dev-dd-tag--new">&amp;</span><span class="dev-dd-txt"><b>Über uns</b><small>Tobias &amp; Daniel, Werdegang, Netzwerk</small></span></a></div></div>
 
 
 <a href="/entwicklung/variante-b2.html" class="dev-dd-link" data-v="b2"><span class="dev-dd-tag dev-dd-tag--new">B2</span><span class="dev-dd-txt"><b>Hell mit Personen &ndash; Startseite bis 13.10.2026</b><small>Entwurfsstand mit Kopf-Auswahl 1&ndash;3</small></span></a>
@@ -125,13 +115,6 @@
 </div>
 </div>
 <style>
-/* „Was uns verbindet“: verlinkte Kästen – alle drei gleich aufgebaut */
-.u2-verbindet .v-usp3-item { display: flex; flex-direction: column; }
-.u2-verbindet a.u2-link { display: flex; flex-direction: column; color: inherit; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
-.u2-verbindet a.u2-link:hover { transform: translateY(-3px); box-shadow: 0 1rem 2.4rem rgba(6,55,85,.14); }
-.u2-verbindet a.u2-link .v-link { margin-top: auto; padding-top: 1.1rem; }
-.u2-verbindet .v-usp3-item--stark .v-link { color: #cbbcae; }
-
 .dev-dd-fly{position:relative}
 .dev-dd-pfeil{margin-left:auto;padding-left:.5rem;color:#998675;font-size:18px;line-height:1}
 .dev-dd-sub{position:absolute;left:calc(100% + 1.5rem);top:-.6rem;min-width:300px;padding:.6rem;background:#fff;border:1px solid #e5ddd4;border-radius:.75rem;box-shadow:0 18px 40px rgba(6,55,85,.12);opacity:0;visibility:hidden;transform:translateX(-4px);transition:opacity .15s,transform .15s,visibility .15s}
@@ -186,137 +169,131 @@ function ruecken(){if(innerWidth<992){d.style.removeProperty("--dev-dd-ruck");re
 d.addEventListener("mouseenter",ruecken);d.querySelector(".dev-dd-toggle").addEventListener("click",ruecken);addEventListener("resize",ruecken);})();
 </script>
 <!-- ENTWICKLUNG:END -->
-<a href="/#kontakt" class="primary-button navigation"><p class="button-text">Kontakt aufnehmen</p><div class="button-gradient"></div></a>
-</nav>
-<button class="menu-button" id="menu-button" type="button" aria-label="Men&uuml;" aria-expanded="false" aria-controls="mobile-menu">
-<svg class="burger-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect class="burger-line burger-line-1" x="5.4" y="6.9" width="13.2" height="1.2"></rect><rect class="burger-line burger-line-2" x="5.4" y="11.4" width="13.2" height="1.2"></rect><rect class="burger-line burger-line-3" x="5.4" y="15.9" width="13.2" height="1.2"></rect></svg>
-</button>
-</div>
-</header>
-</div>
-
+    <details class="mnav"><summary aria-label="Menü öffnen"><span></span><span></span><span></span></summary><div class="mnav__panel"><a href="/#lage">Ihre Lage</a><a href="/#arbeitsweise">So arbeiten wir</a><a href="/ueber-uns">Über uns</a><a href="/#kontakt">Gespräch vereinbaren</a></div></details>
+    <a class="knopf" href="#kontakt">Gespräch vereinbaren</a>
+  </nav>
+</div></header>
 <main>
-<section class="v-hero v-about-hero " id="hero">
-<div class="v-wrap v-split">
-<div class="v-rv"><p class="v-kicker">Über uns</p>
-<h1 class="v-h1 v-h1--about">Tobias Müller<br><span class="v-dot">&amp;</span> Daniel Ströbel</h1>
-<p class="v-lead" style="margin-top:1.5rem">Wir kennen das Geschäftsmodell Versicherung von innen und haben schon viele Projekte gemeinsam umgesetzt. Jeder von uns bringt klare Schwerpunkte mit – im Projekt arbeiten wir beide selbst mit.</p></div>
-<div class="v-rv u1-viz"><svg class="v-svg" viewBox="0 70 640 420" role="img" aria-label="Zwei Linien laufen zu einer zusammen">
-<defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.3" fill="#e3dbd2"/></pattern>
-<linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".15" stop-color="#fff" stop-opacity="1"/><stop offset=".85" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-<mask id="dm"><rect width="640" height="560" fill="url(#fadeR)"/></mask></defs>
-<rect width="640" height="560" fill="url(#dots)" mask="url(#dm)"/>
-<path d="M40 113 C 230 113, 250 272.5, 380 276.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
-<path d="M40 393 C 230 393, 250 272.5, 380 276.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
-<path d="M40 122 C 230 122, 250 275.0, 380 277.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
-<path d="M40 402 C 230 402, 250 275.0, 380 277.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
-<path d="M40 131 C 230 131, 250 277.5, 380 278.8" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
-<path d="M40 411 C 230 411, 250 277.5, 380 278.8" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
-<path d="M40 140 C 230 140, 250 280.0, 380 280.0" fill="none" stroke="#082638" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
-<path d="M40 420 C 230 420, 250 280.0, 380 280.0" fill="none" stroke="#998675" stroke-width="3" opacity="1.00" stroke-linecap="round"/>
-<path d="M40 149 C 230 149, 250 282.5, 380 281.2" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
-<path d="M40 429 C 230 429, 250 282.5, 380 281.2" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.37" stroke-linecap="round"/>
-<path d="M40 158 C 230 158, 250 285.0, 380 282.4" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
-<path d="M40 438 C 230 438, 250 285.0, 380 282.4" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.24" stroke-linecap="round"/>
-<path d="M40 167 C 230 167, 250 287.5, 380 283.6" fill="none" stroke="#082638" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
-<path d="M40 447 C 230 447, 250 287.5, 380 283.6" fill="none" stroke="#998675" stroke-width="1.2" opacity="0.12" stroke-linecap="round"/>
-<line x1="380" y1="280" x2="560" y2="280" stroke="#185e8a" stroke-width="9" stroke-linecap="round"/>
-<line x1="380" y1="266" x2="540" y2="266" stroke="#185e8a" stroke-width="1" opacity=".3"/>
-<line x1="380" y1="294" x2="540" y2="294" stroke="#185e8a" stroke-width="1" opacity=".3"/>
-<circle cx="40" cy="140" r="7" fill="#fff" stroke="#082638" stroke-width="2.5"/><circle cx="40" cy="420" r="7" fill="#fff" stroke="#998675" stroke-width="2.5"/>
-<g font-family="Poppins, sans-serif" font-size="10" letter-spacing="1.1" font-weight="600"><text x="40" y="110" fill="#082638">GOVERNANCE · GREMIEN · RISIKO</text><text x="40" y="460" fill="#7a6757">STRATEGIE · FÜHRUNG · VERTRIEB</text></g>
-<circle cx="380" cy="280" r="34" fill="#fff" stroke="#e5ddd4" stroke-width="1.5"/>
-<circle cx="380" cy="280" r="46" fill="none" stroke="#e5ddd4" stroke-width="1" stroke-dasharray="3 5"/>
-<text x="380" y="295" text-anchor="middle" font-family="Lora, serif" font-size="42" font-weight="600" fill="#998675">&amp;</text>
-<circle cx="578" cy="280" r="18" fill="#185e8a"/><path d="M570 280 h14 M578 273 l7 7 -7 7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="578" y="330" text-anchor="middle" font-family="Lora, serif" font-size="17" font-weight="600" fill="#082638">Ergebnis</text>
-</svg></div>
+
+<section class="held lp-held"><div class="wrap held__raster">
+  <div>
+    <p class="kicker">Über uns</p>
+    <h1>Unser Team. Unser Netzwerk.</h1>
+    <p class="lead">Zwei Partner mit eigener Führungserfahrung in der Versicherungswirtschaft, dazu ein Netzwerk erfahrener Spezialisten. Sie haben einen Ansprechpartner, wir bringen die passenden Leute zusammen. Im Projekt arbeiten wir beide selbst mit.</p>
+  </div>
+  <div class="duo duo--gleich"><figure><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div><figcaption><b>Tobias Müller</b></figcaption></figure><figure><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div><figcaption><b>Daniel Ströbel</b></figcaption></figure></div>
 </div></section>
 
-<section class="v-sec" id="personen">
-<div class="v-wrap"><article class="u2b-row  v-rv">
-<div class="u2b-media"><div class="v-circle v-circle--xxl"><img src="/assets/tobias-kreis.webp" alt="Tobias Müller"></div></div>
-<div class="u2b-body"><p class="v-kicker">Partner</p><h2 class="v-h2">Tobias Müller</h2><p class="v-krole u2b-role">Governance, Gremien &amp; Risiko</p>
-<div class="u2b-cols"><div><h4 class="u2b-h4">Schwerpunkte</h4><div class="v-pills-row v-pills-row--sm "><span>Governance &amp; Gremienlogik</span><span>Aufsichtsrats- &amp; Vorstandssicht</span><span>Risiko &amp; Rechnungslegung</span></div><p class="v-about-note">Mitglied in zwei Aufsichtsräten</p></div>
-<div><h4 class="u2b-h4">Werdegang</h4><p class="v-bio">Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung.</p><a href="#" class="v-link v-cv-link" data-modal="cv-tobias">Stationen im Lebenslauf <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><h4 class="u2b-h4" style="margin-top:1.4rem">Kontakt</h4><div class="v-clines">
-<a href="mailto:tobias@muellerundstroebel.de"><svg viewBox="0 0 14 12"><path fill="currentColor" d="M13.37 0C13.72.04 14 .36 14 .75v10.5c0 .41-.31.75-.7.75H.7c-.39 0-.7-.34-.7-.75V.75C.04.3.34 0 .7 0h12.6l.07 0ZM7.37 6.64a.7.7 0 0 1-.73.05L1.4 3.21v7.29h11.2V3.21L7.37 6.64ZM7 5.12l5.53-3.62H1.47L7 5.12Z"/></svg><span>tobias@muellerundstroebel.de</span></a>
-<a href="tel:+4917621529798"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M12.93 9.62 11.5 8.19a1.63 1.63 0 0 0-2.33 0l-.29.29a36 36 0 0 1-3.97-3.97l.29-.29a1.65 1.65 0 0 0 0-2.33L3.79.47a1.66 1.66 0 0 0-2.33 0l-.79.78a2.3 2.3 0 0 0-.29 2.92 32.5 32.5 0 0 0 8.85 8.85 2.3 2.3 0 0 0 2.92-.29l.78-.78a1.64 1.64 0 0 0 0-2.33Z"/></svg><span>+49 176 2152 9798</span></a>
-<a href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M.33 4.67H3c.33 0 .33.33.33.33v8.67c0 .33-.33.33-.33.33H.33C0 14 0 13.67 0 13.67V5c0-.33.33-.33.33-.33ZM1.65 3.33a1.67 1.67 0 1 0 0-3.33 1.67 1.67 0 0 0 0 3.33ZM13.67 14h-2.67c-.33 0-.33-.33-.33-.33V9c0-1-.34-1.67-1.34-1.67-.66 0-1 .34-1.33 1v5.34c0 .33-.33.33-.33.33H5c-.33 0-.33-.33-.33-.33V5c0-.33.33-.33.33-.33h2.67C8 4.67 8 5 8 5v.67a3 3 0 0 1 2.67-1.34C12.67 4.33 14 5.67 14 8.33v5.34c0 .33-.33.33-.33.33Z"/></svg><span>LinkedIn</span></a></div></div></div></div></article><article class="u2b-row is-flip v-rv">
-<div class="u2b-media"><div class="v-circle v-circle--xxl"><img src="/assets/daniel-kreis.webp" alt="Daniel Ströbel"></div></div>
-<div class="u2b-body"><p class="v-kicker">Partner</p><h2 class="v-h2">Daniel Ströbel</h2><p class="v-krole u2b-role">Strategie, Führung &amp; Vertrieb</p>
-<div class="u2b-cols"><div><h4 class="u2b-h4">Schwerpunkte</h4><div class="v-pills-row v-pills-row--sm "><span>Strategie &amp; Geschäftsmodell</span><span>Struktur &amp; Führung</span><span>Vertrieb &amp; Stakeholderfokus</span></div></div>
-<div><h4 class="u2b-h4">Werdegang</h4><p class="v-bio">Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden. Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche.</p><a href="#" class="v-link v-cv-link" data-modal="cv-daniel">Stationen im Lebenslauf <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><h4 class="u2b-h4" style="margin-top:1.4rem">Kontakt</h4><div class="v-clines">
-<a href="mailto:daniel@muellerundstroebel.de"><svg viewBox="0 0 14 12"><path fill="currentColor" d="M13.37 0C13.72.04 14 .36 14 .75v10.5c0 .41-.31.75-.7.75H.7c-.39 0-.7-.34-.7-.75V.75C.04.3.34 0 .7 0h12.6l.07 0ZM7.37 6.64a.7.7 0 0 1-.73.05L1.4 3.21v7.29h11.2V3.21L7.37 6.64ZM7 5.12l5.53-3.62H1.47L7 5.12Z"/></svg><span>daniel@muellerundstroebel.de</span></a>
-<a href="tel:+4917631347217"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M12.93 9.62 11.5 8.19a1.63 1.63 0 0 0-2.33 0l-.29.29a36 36 0 0 1-3.97-3.97l.29-.29a1.65 1.65 0 0 0 0-2.33L3.79.47a1.66 1.66 0 0 0-2.33 0l-.79.78a2.3 2.3 0 0 0-.29 2.92 32.5 32.5 0 0 0 8.85 8.85 2.3 2.3 0 0 0 2.92-.29l.78-.78a1.64 1.64 0 0 0 0-2.33Z"/></svg><span>+49 176 3134 7217</span></a>
-<a href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener"><svg viewBox="0 0 14 14"><path fill="currentColor" d="M.33 4.67H3c.33 0 .33.33.33.33v8.67c0 .33-.33.33-.33.33H.33C0 14 0 13.67 0 13.67V5c0-.33.33-.33.33-.33ZM1.65 3.33a1.67 1.67 0 1 0 0-3.33 1.67 1.67 0 0 0 0 3.33ZM13.67 14h-2.67c-.33 0-.33-.33-.33-.33V9c0-1-.34-1.67-1.34-1.67-.66 0-1 .34-1.33 1v5.34c0 .33-.33.33-.33.33H5c-.33 0-.33-.33-.33-.33V5c0-.33.33-.33.33-.33h2.67C8 4.67 8 5 8 5v.67a3 3 0 0 1 2.67-1.34C12.67 4.33 14 5.67 14 8.33v5.34c0 .33-.33.33-.33.33Z"/></svg><span>LinkedIn</span></a></div></div></div></div></article></div></section>
-
-<section class="v-sec v-sand" id="gemeinsam">
-<div class="v-wrap">
-<div class="v-split u2-kopf">
-<div class="v-rv"><p class="v-kicker">Was uns verbindet</p>
-<h2 class="v-h2">Das Gesch&auml;ftsmodell Versicherung. In seiner G&auml;nze<span class="v-dot">.</span></h2>
-<p class="v-lead" style="margin-top:1.3rem">Wir verstehen, wie die Teile zusammenh&auml;ngen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt. Genau dort treffen sich unsere beiden Schwerpunkte.</p>
-<ul class="v-checks"><li>Wir wissen, wie Erfolg im Unternehmen generiert wird</li><li>Wir kennen Entscheidungswege und wer eingebunden werden muss</li><li>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich</li></ul></div>
-<div class="v-rv"><svg class="v-svg" viewBox="0 0 520 520" role="img" aria-label="Geschäftsmodell Versicherung – sechs Kompetenzfelder">
-<defs><radialGradient id="mg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#185e8a" stop-opacity=".14"/><stop offset="1" stop-color="#185e8a" stop-opacity="0"/></radialGradient></defs>
-<circle cx="260" cy="260" r="250" fill="url(#mg)"/>
-<circle cx="260" cy="260" r="185" fill="none" stroke="#d6cec3" stroke-width="1.5" stroke-dasharray="3 7"/>
-<circle cx="260" cy="260" r="130" fill="none" stroke="#e5ddd4" stroke-width="1"/>
-<g stroke="#998675" stroke-width="1.2" opacity=".5">
-<line x1="260" y1="260" x2="260" y2="75"/><line x1="260" y1="260" x2="420" y2="167"/><line x1="260" y1="260" x2="420" y2="353"/>
-<line x1="260" y1="260" x2="260" y2="445"/><line x1="260" y1="260" x2="100" y2="353"/><line x1="260" y1="260" x2="100" y2="167"/></g>
-<path d="M260 75 A185 185 0 0 1 420 167" fill="none" stroke="#185e8a" stroke-width="4" stroke-linecap="round"/>
-<path d="M420 353 A185 185 0 0 1 260 445" fill="none" stroke="#185e8a" stroke-width="4" stroke-linecap="round"/>
-<path d="M100 353 A185 185 0 0 1 100 167" fill="none" stroke="#998675" stroke-width="4" stroke-linecap="round"/>
-<circle cx="260" cy="260" r="96" fill="#082638"/>
-<text x="260" y="250" text-anchor="middle" font-family="Lora, serif" font-weight="600" font-size="17" fill="#fff">Geschäftsmodell</text>
-<text x="260" y="274" text-anchor="middle" font-family="Lora, serif" font-weight="600" font-size="17" fill="#fff">Versicherung</text>
-<text x="260" y="296" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10" fill="#cbbcae" letter-spacing="1">IN SEINER GÄNZE</text>
-<g font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#1d1d1b" text-anchor="middle">
-<circle cx="260" cy="75" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="260" y="80" font-size="11" fill="#185e8a">01</text><text x="260" y="28">Strategie</text>
-<circle cx="420" cy="167" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="420" y="172" font-size="11" fill="#185e8a">02</text><text x="470" y="128">Kennzahlen</text>
-<circle cx="420" cy="353" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="420" y="358" font-size="11" fill="#185e8a">03</text><text x="468" y="408">Gremien</text>
-<circle cx="260" cy="445" r="30" fill="#fff" stroke="#185e8a" stroke-width="2"/><text x="260" y="450" font-size="11" fill="#185e8a">04</text><text x="260" y="500">Umsetzung</text>
-<circle cx="100" cy="353" r="30" fill="#fff" stroke="#998675" stroke-width="2"/><text x="100" y="358" font-size="11" fill="#7a6757">05</text><text x="56" y="408">Vertrieb</text>
-<circle cx="100" cy="167" r="30" fill="#fff" stroke="#998675" stroke-width="2"/><text x="100" y="172" font-size="11" fill="#7a6757">06</text><text x="62" y="128">Kommunikation</text>
-</g></svg></div>
-</div>
-<div class="v-usp3 u2-verbindet">
-<a class="v-usp3-item v-rv u2-link" href="/#leistung"><span class="v-usp3-no">01</span><h3>Unsere Einsatzgebiete</h3><p>Hier setzen wir an.</p><span class="v-link">Zu den Einsatzgebieten <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-<div class="v-usp3-item v-rv"><span class="v-usp3-no">02</span><h3>Unsere Methoden</h3><p>Wie wir vorgehen und was Sie davon haben.</p></div>
-<a class="v-usp3-item v-usp3-item--stark v-rv u2-link" href="#personen"><span class="v-usp3-no">03</span><h3>Unsere Vita</h3><p>Warum wir Ihre Themen lösen können.</p><span class="v-link">Zur Vita <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-</div>
-<div class="v-btns v-rv" style="margin-top:3rem"><a class="v-btn v-btn--pill ms-cta" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de">Gespr&auml;ch anfragen <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="v-btn v-btn--ghost v-btn--pill ms-cta" href="/#loesungen">Unsere L&ouml;sungen</a></div>
-</div></section>
-</main>
-
-<!-- ============ Footer ============ -->
-    <footer class="footer">
-      <div class="padding-global">
-        <div class="padding-section-medium">
-          <div class="container-large">
-            <div class="footer-content">
-              <div class="footer-name">&copy; M&uuml;ller&amp;Str&ouml;bel. 2026</div>
-              <div class="footer-links">
-                <a href="/impressum" class="footer-link">Impressum</a>
-                <a href="/datenschutz" class="footer-link">Datenschutz</a>
-              <button type="button" id="cookie-settings" class="footer-link">Cookie-Einstellungen</button>
-              </div>
-            </div>
-          </div>
-        </div>
+<section class="sek sek--sand"><div class="wrap pp-liste"><article class="pp">
+    <div class="pp__bild"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div></div>
+    <div class="pp__inhalt">
+      <p class="kicker">Partner</p><h2 class="pp__name">Tobias Müller</h2><p class="pp__rolle">Governance, Gremien &amp; Risiko</p>
+      <div class="pp__spalten">
+        <div><h4>Schwerpunkte</h4><div class="pp__chips"><span>Governance &amp; Gremienlogik</span><span>Aufsichtsrats- &amp; Vorstandssicht</span><span>Risiko &amp; Rechnungslegung</span></div><p class="pp__fakt">Mitglied in zwei Aufsichtsräten</p></div>
+        <div><h4>Werdegang</h4><p>Tobias Müller kommt aus der Rückversicherung. Nach Stationen bei Converium und bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung. Beim Haftpflichtverband öffentlicher Verkehrsbetriebe übernahm er Verantwortung als Geschäftsführer.</p><p>Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung.</p>
+          <button class="pp__mehr" type="button" data-thema="cv-tobias">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
+          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:tobias@muellerundstroebel.de">tobias@muellerundstroebel.de</a><a href="tel:+4917621529798">+49 176 2152 9798</a><a class="kp__li" href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p></div>
       </div>
-      <div class="footer-line-wrapper"><div class="footer-line"></div></div>
-    </footer>
+    </div>
+  </article><article class="pp pp--rechts">
+    <div class="pp__bild"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div></div>
+    <div class="pp__inhalt">
+      <p class="kicker">Partner</p><h2 class="pp__name">Daniel Ströbel</h2><p class="pp__rolle">Strategie, Führung &amp; Vertrieb</p>
+      <div class="pp__spalten">
+        <div><h4>Schwerpunkte</h4><div class="pp__chips"><span>Strategie &amp; Geschäftsmodell</span><span>Struktur &amp; Führung</span><span>Vertrieb &amp; Stakeholderfokus</span></div></div>
+        <div><h4>Werdegang</h4><p>Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden.</p><p>Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche.</p>
+          <button class="pp__mehr" type="button" data-thema="cv-daniel">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
+          <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:daniel@muellerundstroebel.de">daniel@muellerundstroebel.de</a><a href="tel:+4917631347217">+49 176 3134 7217</a><a class="kp__li" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p></div>
+      </div>
+    </div>
+  </article></div></section>
 
-</div>
-</div>
+<section class="sek sek--navy" id="gebiete"><div class="wrap">
+  <div class="ergebnis">
+    <div>
+      <p class="kicker">Was uns verbindet</p>
+      <h2 class="h2">Wir kennen das Geschäftsmodell Versicherung.</h2>
+      <p class="lead">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
+    </div>
+    <ul class="ergebnis__liste">
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir wissen, wie Erfolg im Unternehmen entsteht.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir kennen Entscheidungswege und wer eingebunden werden muss.</li>
+      <li><svg aria-hidden="true"><use href="#i-haken"/></svg>Wir sprechen die Sprache von Vorstand, Aufsichtsrat und Fachbereich.</li>
+    </ul>
+  </div>
+  <p class="gebiete__titel">Hier setzen wir an: unsere Einsatzgebiete</p>
+  <div class="gebiete"><button class="gebiet" type="button" data-thema="strategie"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span><b>Strategie &amp; Geschäftsmodell</b><span class="gebiet__wenn">Wenn die Richtung klar sein muss und im Alltag ankommen soll.</span></button><button class="gebiet" type="button" data-thema="kennzahlen"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M6 16l4.5-4.5 3 3L19 8"/><path d="M15 8h4v4"/></svg></span><b>Kennzahlen &amp; Steuerung</b><span class="gebiet__wenn">Wenn Zahlen da sind, aber nicht steuern.</span></button><button class="gebiet" type="button" data-thema="gremien"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20.5h18"/></svg></span><b>Entscheidungen &amp; Gremien</b><span class="gebiet__wenn">Wenn Themen seit Monaten „in Bearbeitung“ sind.</span></button><button class="gebiet" type="button" data-thema="vertrieb"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.7-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.4.1 4 1.6 4.5 4.4"/></svg></span><b>Vertrieb &amp; Wachstum</b><span class="gebiet__wenn">Wenn Potenziale im Markt liegen bleiben.</span></button><button class="gebiet" type="button" data-thema="ki"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 12h6M12 9v6"/><path d="M9 2.5v2.5M15 2.5v2.5M9 19v2.5M15 19v2.5M2.5 9H5M2.5 15H5M19 9h2.5M19 15h2.5"/></svg></span><b>KI-Transformation</b><span class="gebiet__wenn">Wenn KI das Geschäftsmodell verändern soll, nicht nur Prozesse.</span></button><button class="gebiet" type="button" data-thema="resilienz"><span class="gebiet__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.1 7.5 9.5 4.4-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span><b>Resilienz</b><span class="gebiet__wenn">Wenn Unsicherheit zur dauerhaften Managementaufgabe wird.</span></button></div>
+</div></section>
 
-<template id="m-cv-tobias"><p class="v-kicker">Stationen</p><h3>Tobias Müller</h3><p>Governance, Gremien &amp; Risiko</p><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2021</span><div><b>Mitglied des Aufsichtsrats</b><span>Gartenbau-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2020 – 2024</span><div><b>Geschäftsführer</b><span>Haftpflichtverband öffentlicher Verkehrsbetriebe (HÖV)</span><em>Deckungs- und Schadenmanagement für kommunale Verkehrsunternehmen</em></div></li><li><span class="v-cv-year">seit 2020</span><div><b>Mitglied des Aufsichtsrats</b><span>Grundeigentümer-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2018 – 2019</span><div><b>Stellv. Vorsitzender des Aufsichtsrats</b><span>SHB Allgemeine Versicherung VVaG</span></div></li><li><span class="v-cv-year">2013 – 2025</span><div><b>Geschäftsführer</b><span>Müller Unternehmensberatung GmbH</span><em>Outsourcing und Beratung für Versicherer und Rückversicherer in Deutschland und Europa</em></div></li><li><span class="v-cv-year">2009 – 2013</span><div><b>Underwriter</b><span>Hannover Re</span><em>Treaty Underwriting, u. a. US-Casualty und strukturierte Rückversicherung</em></div></li><li><span class="v-cv-year">2008 – 2009</span><div><b>Research Assistant</b><span>Maastricht University</span></div></li><li><span class="v-cv-year">2002 – 2005</span><div><b>Trainee</b><span>SCOR (ehem. Converium)</span></div></li><li><span class="v-cv-year">2001 – 2003</span><div><b>Praktika in der Rückversicherung</b><span>Aon Benfield (London, Hamburg), Milli Re (Istanbul)</span></div></li></ol></template>
-<template id="m-cv-daniel"><p class="v-kicker">Stationen</p><h3>Daniel Ströbel</h3><p>Strategie, Führung &amp; Vertrieb</p><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2012</span><div><b>Geschäftsführer</b><span>empiria GmbH</span><em>Strategie, Struktur und Kommunikation in der Versicherungsbranche – über 300 Projekte</em></div></li><li><span class="v-cv-year">2010 – 2011</span><div><b>Leiter der Abteilung Leben Grundsatz / Geschäftsprozesse / Technik</b><span>SV SparkassenVersicherung</span><em>Führung von rund 40 Mitarbeitenden an zwei Standorten</em></div></li><li><span class="v-cv-year">2009 – 2011</span><div><b>Leiter Inhouse-Consulting Leben</b><span>SV SparkassenVersicherung</span><em>Neuausrichtung des Geschäftsmodells Leben im Ressort des Vorstands</em></div></li><li><span class="v-cv-year">2006 – 2008</span><div><b>Konzernstrategie, Konzernsteuerung und Risikomanagement</b><span>SV SparkassenVersicherung</span><em>Vorstandsklausuren, Strategieentwicklung und Risikomanagement nach Solvency II</em></div></li><li><span class="v-cv-year">2000 – 2001</span><div><b>Praktikum Reinsurance, Insurance, Accounting</b><span>Great Lakes Reinsurance (UK) PLC, Munich Re Group, London</span></div></li></ol></template>
+<section class="sek"><div class="wrap netzwerk">
+  <div><p class="kicker">Unser Netzwerk</p><h2 class="h2">Wenn ein Thema mehr braucht, holen wir die passenden Leute dazu.</h2></div>
+  <div class="netzwerk__liste"><span>Ehemalige Vorstände</span><span>Aufsichtsräte</span><span>IT-Spezialisten</span><span>Prozess-Spezialisten</span><span>Entwickler</span><span>Marketingexperten</span><span>Grafiker</span></div>
+</div></section>
 
-<script src="/script.js" data-cookieconsent="ignore"></script>
-<script src="/startseite.js" data-cookieconsent="ignore"></script>
-<script src="/tracking.js" data-cookieconsent="ignore"></script>
+<section class="sek lp-kontakt" id="kontakt"><div class="wrap">
+  <div class="lp-kontakt__raster">
+    <div>
+      <p class="kicker">Kontakt</p>
+      <h2 class="h2">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h2>
+      <p class="lead">Erzählen Sie uns, was ansteht. Gemeinsam schauen wir, ob wir für Ihr Thema die richtigen Partner sind – und wenn nicht, sagen wir es Ihnen. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
+      <div class="knoepfe"><a class="knopf" href="mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
+    </div>
+    <div class="lp-kontakt__personen"><article class="kp"><div class="kreis"><img src="/assets/tobias-portrait.webp" alt="Tobias Müller"></div>
+      <h3>Tobias Müller</h3><p class="kp__themen">Governance, Gremien &amp; Risiko</p>
+      <p class="kp__wege"><a href="mailto:tobias@muellerundstroebel.de">tobias@muellerundstroebel.de</a><a href="tel:+4917621529798">+49 176 2152 9798</a><a class="kp__li" href="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p>
+    </article><article class="kp"><div class="kreis"><img src="/assets/daniel-portrait.webp" alt="Daniel Ströbel"></div>
+      <h3>Daniel Ströbel</h3><p class="kp__themen">Strategie, Führung &amp; Vertrieb</p>
+      <p class="kp__wege"><a href="mailto:daniel@muellerundstroebel.de">daniel@muellerundstroebel.de</a><a href="tel:+4917631347217">+49 176 3134 7217</a><a class="kp__li" href="https://www.linkedin.com/in/daniel-stroebel/" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p>
+    </article></div>
+  </div>
+  <div class="lp-dl">
+    <div class="lp-dl__bild" aria-hidden="true"><img class="lp-dl__seite lp-dl__seite--hinten" src="/assets/downloads/mueller-stroebel-2.png" alt="" loading="lazy"><img class="lp-dl__seite lp-dl__seite--vorn" src="/assets/downloads/mueller-stroebel-1.png" alt="" loading="lazy"></div>
+    <div class="lp-dl__text">
+      <p class="kicker">Download</p>
+      <h3>Was wir tun und wofür wir stehen.</h3>
+      <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
+      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,1 MB</span></div>
+      <a class="knopf knopf--hell" href="/assets/downloads/mueller-stroebel.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
+    </div>
+  </div>
+</div></section>
+
+<dialog class="fenster" id="fenster" aria-labelledby="fenster-titel"><div class="fenster__inhalt"></div><button class="fenster__zu" type="button" aria-label="Schließen"><svg class="ico" aria-hidden="true"><use href="#i-zu"/></svg></button></dialog>
+<template id="t-cv-tobias"><h3>Tobias Müller</h3><p>Stationen im Lebenslauf</p><div class="stationen"><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2021</span><div><b>Mitglied des Aufsichtsrats</b><span>Gartenbau-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2020 – 2024</span><div><b>Geschäftsführer</b><span>Haftpflichtverband öffentlicher Verkehrsbetriebe (HÖV)</span><em>Deckungs- und Schadenmanagement für kommunale Verkehrsunternehmen</em></div></li><li><span class="v-cv-year">seit 2020</span><div><b>Mitglied des Aufsichtsrats</b><span>Grundeigentümer-Versicherung VVaG</span></div></li><li><span class="v-cv-year">2018 – 2019</span><div><b>Stellv. Vorsitzender des Aufsichtsrats</b><span>SHB Allgemeine Versicherung VVaG</span></div></li><li><span class="v-cv-year">2013 – 2025</span><div><b>Geschäftsführer</b><span>Müller Unternehmensberatung GmbH</span><em>Outsourcing und Beratung für Versicherer und Rückversicherer in Deutschland und Europa</em></div></li><li><span class="v-cv-year">2009 – 2013</span><div><b>Underwriter</b><span>Hannover Re</span><em>Treaty Underwriting, u. a. US-Casualty und strukturierte Rückversicherung</em></div></li><li><span class="v-cv-year">2008 – 2009</span><div><b>Research Assistant</b><span>Maastricht University</span></div></li><li><span class="v-cv-year">2002 – 2005</span><div><b>Trainee</b><span>SCOR (ehem. Converium)</span></div></li><li><span class="v-cv-year">2001 – 2003</span><div><b>Praktika in der Rückversicherung</b><span>Aon Benfield (London, Hamburg), Milli Re (Istanbul)</span></div></li></ol></div></template><template id="t-cv-daniel"><h3>Daniel Ströbel</h3><p>Stationen im Lebenslauf</p><div class="stationen"><ol class="v-cv"><li><span class="v-cv-year">seit 2026</span><div><b>Partner</b><span>Müller &amp; Ströbel</span><em>Strategieberatung für Versicherungsunternehmen</em></div></li><li><span class="v-cv-year">seit 2012</span><div><b>Geschäftsführer</b><span>empiria GmbH</span><em>Strategie, Struktur und Kommunikation in der Versicherungsbranche – über 300 Projekte</em></div></li><li><span class="v-cv-year">2010 – 2011</span><div><b>Leiter der Abteilung Leben Grundsatz / Geschäftsprozesse / Technik</b><span>SV SparkassenVersicherung</span><em>Führung von rund 40 Mitarbeitenden an zwei Standorten</em></div></li><li><span class="v-cv-year">2009 – 2011</span><div><b>Leiter Inhouse-Consulting Leben</b><span>SV SparkassenVersicherung</span><em>Neuausrichtung des Geschäftsmodells Leben im Ressort des Vorstands</em></div></li><li><span class="v-cv-year">2006 – 2008</span><div><b>Konzernstrategie, Konzernsteuerung und Risikomanagement</b><span>SV SparkassenVersicherung</span><em>Vorstandsklausuren, Strategieentwicklung und Risikomanagement nach Solvency II</em></div></li><li><span class="v-cv-year">2000 – 2001</span><div><b>Praktikum Reinsurance, Insurance, Accounting</b><span>Great Lakes Reinsurance (UK) PLC, Munich Re Group, London</span></div></li></ol></div></template><template id="t-strategie"><h3>Strategie &amp; Geschäftsmodell</h3><p>Eine Strategie ist erst dann etwas wert, wenn sie im Unternehmen wirkt. Wir schärfen Zielbild und Geschäftsmodell und übersetzen beides in konkrete Maßnahmen, Zuständigkeiten und Meilensteine.</p><h4>Was wir konkret tun</h4><ul><li>Zielbild und Prioritäten gemeinsam mit dem Vorstand schärfen</li><li>Strategie in Maßnahmen, Rollen und Roadmap übersetzen</li><li>Umsetzung steuern und nachhalten</li></ul><h4>Ihr Ergebnis</h4><p>Eine Strategie, die im Unternehmen verstanden und umgesetzt wird.</p></template><template id="t-kennzahlen"><h3>Kennzahlen &amp; Steuerung</h3><p>Wir kennen die Kennzahlenlogik des Versicherungsgeschäfts – von der Rechnungslegung bis zur Vertriebssteuerung – und verbinden sie mit den Zielen, die tatsächlich erreicht werden sollen.</p><h4>Was wir konkret tun</h4><ul><li>Relevante Steuerungsgrößen definieren</li><li>Wirkung von Maßnahmen an Kennzahlen festmachen</li><li>Reporting für Vorstand und Gremien aufsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Sie sehen, ob die Umsetzung wirkt – und können gegensteuern.</p></template><template id="t-gremien"><h3>Entscheidungen &amp; Gremien</h3><p>Wir wissen, wie Entscheidungswege in Versicherungsunternehmen laufen und wer eingebunden werden muss. Wir bereiten Entscheidungen so vor, dass Vorstand und Aufsichtsrat entscheiden können.</p><h4>Was wir konkret tun</h4><ul><li>Stakeholder und Entscheidungswege klären</li><li>Entscheidungsvorlagen erarbeiten</li><li>Abstimmungen moderieren und Beschlüsse in die Umsetzung bringen</li></ul><h4>Ihr Ergebnis</h4><p>Eine Entscheidung – und ein Plan, wie sie umgesetzt wird.</p></template><template id="t-vertrieb"><h3>Vertrieb &amp; Wachstum</h3><p>Wachstum entsteht selten allein durch mehr Vertrieb. Wir schärfen Leistungsversprechen, Zielgruppen und Vertriebslogik – und setzen die Maßnahmen mit Ihren Teams um.</p><h4>Was wir konkret tun</h4><ul><li>Positionierung und Leistungsversprechen schärfen</li><li>Vertriebs- und Kommunikationslogik entwickeln</li><li>Maßnahmen gemeinsam mit Vertrieb und Marketing umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Messbar mehr Wirkung im Markt.</p></template><template id="t-ki"><h3>KI-Transformation</h3><p>Wir klären, welche Rolle KI im eigenen Geschäftsmodell spielen soll, und bringen die Prioritäten in die Fachbereiche – vom Zielbild bis zu den ersten umgesetzten Vorhaben.</p><h4>Was wir konkret tun</h4><ul><li>Ausgangslage und Reifegrad bestimmen</li><li>Zielbild und Prioritäten auf Vorstandsebene entwickeln</li><li>Erste Vorhaben in den Fachbereichen umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Eine KI-Strategie, die im Unternehmen konkret wird.</p></template><template id="t-resilienz"><h3>Resilienz</h3><p>Resilienz beschreibt die Fähigkeit, unter veränderten Bedingungen handlungsfähig zu bleiben. Wir verbinden Geschäftsmodellverständnis mit Risiko- und Governance-Perspektive.</p><h4>Was wir konkret tun</h4><ul><li>Strategische Risiken einordnen und priorisieren</li><li>Resilienz-Check und Szenarioanalysen durchführen</li><li>Handlungsfelder ableiten und umsetzen</li></ul><h4>Ihr Ergebnis</h4><p>Klare Verantwortlichkeiten und robustere Strukturen.</p></template>
+</main>
+<footer class="fuss"><div class="wrap">
+  <img src="/assets/logo-weiss.svg" alt="Müller &amp; Ströbel">
+  <nav><a href="/ueber-uns">Über uns</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
+</div></footer>
+<script>
+document.querySelectorAll('.wahl').forEach(function (w) {
+  var g = w.getAttribute('data-gruppe');
+  w.querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.textContent.trim();
+      w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('[data-gruppe="' + g + '"][data-variante]').forEach(function (el) { el.hidden = el.getAttribute('data-variante') !== v; });
+    });
+  });
+});
+(function () {
+  var f = document.getElementById('fenster'); if (!f) return;
+  var inh = f.querySelector('.fenster__inhalt');
+  document.querySelectorAll('[data-thema]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      inh.innerHTML = document.getElementById('t-' + b.getAttribute('data-thema')).innerHTML;
+      var h = inh.querySelector('h3'); if (h) h.id = 'fenster-titel';
+      f.showModal();
+    });
+  });
+  f.querySelector('.fenster__zu').addEventListener('click', function () { f.close(); });
+  f.addEventListener('click', function (e) { if (e.target === f) f.close(); });
+})();
+</script>
+<script>/* Live-Handy-Menü schließt nach Klick */ document.querySelectorAll('.mnav a').forEach(function (a) { a.addEventListener('click', function () { a.closest('details').removeAttribute('open'); }); });</script>
+<script>/* Menü schließt nach Klick auf einen Eintrag (Tablet/Handy) */
+document.querySelectorAll('#dev-dd .dev-dd-panel a').forEach(function (a) { a.addEventListener('click', function () { var d = document.getElementById('dev-dd'); d.classList.remove('is-open'); d.querySelector('.dev-dd-toggle').setAttribute('aria-expanded', 'false'); }); });
+</script>
+<script src="/tracking.js"></script>
 </body>
 </html>
