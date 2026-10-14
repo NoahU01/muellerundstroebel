@@ -173,7 +173,7 @@ def startseite():
             "workshop": "Zwei Tage im Kalender. Danach tut sich wochenlang nichts."}
     # Variante 2: Aufbau wie die Social-Media-Kästen: weißer Rahmen, farbiges Quadrat mit Aussage und Icon, Text darunter
     farben = {"team": "sand", "extern": "navy", "workshop": "hell"}
-    ergaenzung = {"team": "Typisch bei der Vorlage für den Aufsichtsrat oder dem Konzept für die Bereiche. Am Ende greifen Sie wieder selbst ein.",
+    ergaenzung = {"team": "Typisch bei der Vorlage für den Aufsichtsrat oder der Überführung der Strategie in den Alltag. Am Ende greifen Sie selbst ein.",
                   "extern": "Strategieberater, Projektmanager, Spezialisten: Die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.",
                   "workshop": "Große Themen werden zur Hürde. Nach dem großen Workshop tut sich oft wochenlang wenig, bis wieder Zeit im Kalender ist."}
     karten2 = "".join(f'<article class="pk"><div class="pk__bild pk__bild--{farben[k]}"><small>{t}</small><b>{x}</b>{ico[k]}</div>'
@@ -216,7 +216,7 @@ def startseite():
   <div class="kopfteil">
     <p class="kicker">Ihre Lage</p>
     <h2 class="h2">„Es ging schon wieder nichts voran.“</h2>
-    <p class="lead">Die Vorlage für den Aufsichtsrat, die Strategie für die Bereiche, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
+    <p class="lead">Die Vorlage für den Aufsichtsrat, die Überführung der Strategie in den Alltag, das Projekt, das seit Monaten hängt: Alles läuft über Ihren Tisch. Und die üblichen Wege helfen nur halb.</p>
   </div>
   {karten}
 </div></section>
