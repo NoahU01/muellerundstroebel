@@ -271,7 +271,7 @@ def startseite():
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>12 Seiten</span><span>1,3 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,1 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>
@@ -341,7 +341,7 @@ def kontakt_neu(titel, text):
       <p class="kicker">Download</p>
       <h3>Was wir tun und wofür wir stehen.</h3>
       <p>Unsere Einsatzgebiete, unser Vorgehen und wer wir sind. Zum Nachlesen und Weitergeben im Vorstand oder im Team.</p>
-      <div class="lp-dl__meta"><span>PDF</span><span>12 Seiten</span><span>1,3 MB</span></div>
+      <div class="lp-dl__meta"><span>PDF</span><span>11 Seiten</span><span>1,1 MB</span></div>
       <a class="knopf knopf--hell" href="/entwicklung/downloads/business-story-2.pdf" target="_blank" rel="noopener">PDF herunterladen <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a>
     </div>
   </div>

@@ -192,22 +192,8 @@ def seiten():
     <div><b>Stand</b>Oktober 2026<br>www.muellerundstroebel.de</div>'''
     kontakt_zeilen = "".join(f'<div class="ab-person">{kreis(k, 58)}<div><b>{p["name"]}</b><span>{p["rolle"]}</span>'
                              f'<span>{p["mail"]}</span><span>{p["tel"]}</span></div></div>' for k, p in b.PERSONEN.items())
-    S.append(("ab ab2n", f'''<span class="op-kennung" style="color:var(--taupe-d)">Alternative A</span>{leiste("Kontakt")}
-  <img class="ab2n__amp" src="/entwicklung/pdf-bs2/ampersand-blau.svg" alt="">
-  <div class="ab2n__unten dunkel">
-    <div class="ab2n__text">
-      <p class="kicker">Kontakt</p>
-      <h2>Sie geben uns die Verantwortung für ein Thema. Wir liefern das Ergebnis.</h2>
-      <p class="unter">{KONTAKT_TEXT}</p>
-    </div>
-    <div class="ab-personen ab-personen--ohne ab-personen--hell">{kontakt_zeilen}</div>
-    <div class="ab4__impressum">
-      <p><b>Müller &amp; Ströbel</b> · empiria GmbH · Kapellengasse 6 · 74564 Crailsheim · www.muellerundstroebel.de</p>
-      <p>Vertreten durch Daniel Ströbel · Amtsgericht Ulm HRB 750146 · USt-IdNr. DE 281217286 · Stand Oktober 2026</p>
-    </div>
-  </div>''', "ende"))
-    # Rückseite Variante B: komplett dunkelblau, skizziertes & rechts oben, darüber der Pitch in 10 Sekunden
-    S.append(("navy ab ab2n abb", f'''<span class="op-kennung op-kennung--hell">Alternative B</span>{leiste("Kontakt", True)}
+    # Rückseite (seit 14.10.2026 die einzige, frühere Alternative B): komplett dunkelblau, skizziertes & rechts oben, darüber der Pitch in 10 Sekunden
+    S.append(("navy ab ab2n abb", f'''{leiste("Kontakt", True)}
   <img class="abb__amp" src="/pdf/bausteine/ampersand-konstruktion.svg" alt="">
   <div class="ab2n__unten dunkel">
     <div class="ab2n__text abb__text">
