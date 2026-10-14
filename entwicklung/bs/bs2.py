@@ -20,7 +20,7 @@ UEBER = (WURZEL / "entwicklung" / "bs" / "quelle-ueber-uns-2026-09.html").read_t
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
 # Seitenlinks fürs Handy-Menü werden in kopfzeile() eingesetzt – vorhandene (aus der generierten Startseite) vorher entfernen
 DEV = re.sub(r'<div class="menu-seiten">.*?</div>', "", DEV, flags=re.S)
-VERSION = 40
+VERSION = 41
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {

@@ -595,12 +595,14 @@ h1 i, h2 i { font-style: normal; color: var(--taupe); }
 html, body { overflow-x: clip; }
 /* Tablet (iPad mini hoch, 700–991 px): Kästen dreispaltig, Szene rechts neben dem Ergebnis */
 @media (min-width: 700px) and (max-width: 991px) {
-  .pks { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; gap: .9rem; }
-  .pk__bild { min-height: 11.5rem; padding: 1.2rem; }
-  .pk__bild b { font-size: 1.15rem; max-width: 100%; padding-right: 2.4rem; }
-  .pk__bild .ico { width: 2.4rem; height: 2.4rem; right: 1rem; bottom: 1rem; }
-  .pk__text { padding: .9rem 1rem 1rem; }
-  .pk__text p { font-size: .86rem; }
+  /* Kästen quer untereinander: Farbfeld links, Text rechts (statt drei enger Spalten) */
+  .pks { grid-template-columns: minmax(0, 1fr); max-width: none; gap: 1rem; }
+  .pk { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+  .pk__bild { min-height: 0; aspect-ratio: auto; padding: 1.4rem 1.5rem; }
+  .pk__bild b { font-size: 1.35rem; max-width: 100%; padding-right: 3rem; }
+  .pk__bild .ico { width: 2.4rem; height: 2.4rem; right: 1.2rem; bottom: 1.2rem; }
+  .pk__text { display: flex; align-items: center; padding: 1.4rem 1.6rem; }
+  .pk__text p { font-size: .98rem; }
   .lp-ergebnis__raster { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); }
   .szene { justify-self: end; max-width: 12rem; }
 }
@@ -656,3 +658,8 @@ html, body { overflow-x: clip; }
 @media (max-width: 1100px) { .mnav { display: block; } }
 .mnav__panel a { white-space: nowrap; }
 @media (min-width: 761px) { .mnav__panel a:last-child { display: none; } }
+
+/* Mobile-Prüfung 14.10.: Kontaktpersonen erst ab 600 px nebeneinander (sonst wird die E-Mail-Adresse abgeschnitten);
+   größere Tippfläche für „Stationen im Lebenslauf“ */
+@media (max-width: 599px) { .lp-kontakt__personen { grid-template-columns: minmax(0, 1fr); gap: 2.4rem; } }
+.pp__mehr { padding: .7rem 0; margin-top: .2rem; }
