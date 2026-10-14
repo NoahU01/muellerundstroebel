@@ -420,7 +420,7 @@ def ueber_uns():
   <div class="ergebnis">
     <div>
       <p class="kicker">Was uns verbindet</p>
-      <h2 class="h2">Das Geschäftsmodell Versicherung. In seiner Gänze.</h2>
+      <h2 class="h2">Wir kennen das Geschäftsmodell Versicherung.</h2>
       <p class="lead">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
     </div>
     <ul class="ergebnis__liste">

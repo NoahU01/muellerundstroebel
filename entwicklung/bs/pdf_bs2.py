@@ -175,7 +175,7 @@ def seiten():
     # 9 Das Geschäftsmodell in seiner Gänze
     S.append(("weiss", f'''{leiste("Was uns verbindet")}
   <p class="kicker">Was uns verbindet</p>
-  <h2>Das Geschäftsmodell Versicherung. In seiner Gänze.</h2>
+  <h2>Wir kennen das Geschäftsmodell Versicherung.</h2>
   <p class="unter">Wir verstehen, wie die Teile zusammenhängen: wie Strategie in Kennzahlen sichtbar wird, wie Gremien entscheiden und was davon im Vertrieb ankommt.</p>
   <div class="block gaenze">
     <ul class="haken" style="margin-top:0">
