@@ -23,8 +23,8 @@ QUELLE = WURZEL / "entwicklung" / "pdf-bs2" / "business-story-2.html"
 ZIEL = WURZEL / "entwicklung" / "downloads" / "business-story-2.pdf"
 LOGO, LOGO_WEISS = "/assets/logo.svg", "/pdf/bausteine/logo-weiss.svg"
 DOKUMENT = "Was wir tun und wofür wir stehen"
-KONTAKT_TEXT = ("Erzählen Sie uns, was ansteht. Wir sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen, "
-                "und geben direkt unsere Meinung. Kein Pitch, keine Rechnung.")
+KONTAKT_TEXT = ("Erzählen Sie uns, was ansteht. Gemeinsam schauen wir, ob wir für Ihr Thema die richtigen Partner sind – "
+                "und wenn nicht, sagen wir es Ihnen. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.")
 VERSPRECHEN = "Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis."
 HAKEN = '<svg viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>'
 ICO = {  # dünne Strich-Icons wie auf der Landingpage
@@ -162,9 +162,10 @@ def seiten():
     zusatz = {"tobias": "Mitglied in zwei Aufsichtsräten", "daniel": "Geschäftsführer der empiria GmbH"}
     personen = ""
     for k, p in b.PERSONEN.items():
+        werdegang = "".join(f'<p class="person__werdegang">{x}</p>' for x in p["werdegang"].split(chr(10) + chr(10)))
         personen += (f'<div class="person">{kreis(k)}<div><p class="kicker">Partner · {zusatz[k]}</p><h3>{p["name"]}</h3>'
                      f'<p class="person__rolle">{p["rolle"]}</p><div class="chips">{"".join(f"<span>{x}</span>" for x in p["schwerpunkte"])}</div>'
-                     f'<p class="person__werdegang">{p["werdegang"]}</p>'
+                     f'{werdegang}'
                      f'<p class="person__kontakt"><span>{p["mail"]}</span><span>{p["tel"]}</span></p></div></div>')
     S.append(("sand", f'''{leiste("Wer wir sind")}
   <p class="kicker">Wer wir sind</p>

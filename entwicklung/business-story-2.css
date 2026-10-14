@@ -635,3 +635,7 @@ html, body { overflow-x: clip; }
 .kp__wege .kp__li svg, .pp__wege .kp__li svg { width: .8rem; height: .8rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .kp__wege .kp__li:hover, .pp__wege .kp__li:hover { text-decoration-color: currentColor; }
 .pp__wege a.kp__li, .pp__wege .kp__li { margin: .2rem 0 0; }
+/* Stationen im Lebenslauf (Pop-up): keine Aufzählungspunkte vor den Jahreszahlen */
+.stationen .v-cv li::before { content: none; display: none; }
+/* Werdegang: Vergangenheit und heute als zwei Absätze */
+.pp h4 + p + p { margin-top: .9em; }

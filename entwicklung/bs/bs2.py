@@ -17,7 +17,7 @@ INDEX = (WURZEL / "index.html").read_text(encoding="utf-8")  # nur noch für das
 B2 = (WURZEL / "entwicklung" / "variante-b2.html").read_text(encoding="utf-8")  # Einsatzgebiete (Icons, Details) – Quelle seit 13.10.2026
 UEBER = (WURZEL / "ueber-uns.html").read_text(encoding="utf-8")
 DEV = re.search(r"<!-- ENTWICKLUNG:START.*?<!-- ENTWICKLUNG:END -->", INDEX, re.S).group(0)
-VERSION = 37
+VERSION = 39
 
 MAIL_BEIDE = "mailto:daniel@muellerundstroebel.de,tobias@muellerundstroebel.de?subject=Thema%20besprechen"
 PERSONEN = {
@@ -25,12 +25,12 @@ PERSONEN = {
                    tel="+49 176 2152 9798", tel_roh="+4917621529798", mail="tobias@muellerundstroebel.de",
                    linkedin="https://www.linkedin.com/in/tobias-m%C3%BCller-b5606b24/",
                    schwerpunkte=["Governance &amp; Gremienlogik", "Aufsichtsrats- &amp; Vorstandssicht", "Risiko &amp; Rechnungslegung"],
-                   werdegang="Tobias Müller kommt aus der Rückversicherung: Nach Stationen bei SCOR und als Underwriter bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung für Versicherer und Rückversicherer. Heute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung."),
+                   werdegang="Tobias Müller kommt aus der Rückversicherung. Nach Stationen bei Converium und bei Hannover Re führte er über zwölf Jahre die Müller Unternehmensberatung. Beim Haftpflichtverband öffentlicher Verkehrsbetriebe übernahm er Verantwortung als Geschäftsführer.\n\nHeute ist er Mitglied der Aufsichtsräte von Gartenbau-Versicherung und Grundeigentümer-Versicherung."),
     "daniel": dict(name="Daniel Ströbel", rolle="Strategie, Führung &amp; Vertrieb", kurz="Partner · Geschäftsführer der empiria GmbH",
                    tel="+49 176 3134 7217", tel_roh="+4917631347217", mail="daniel@muellerundstroebel.de",
                    linkedin="https://www.linkedin.com/in/daniel-stroebel/",
                    schwerpunkte=["Strategie &amp; Geschäftsmodell", "Struktur &amp; Führung", "Vertrieb &amp; Stakeholderfokus"],
-                   werdegang="Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden. Seit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche."),
+                   werdegang="Daniel Ströbel verantwortete bei der SV SparkassenVersicherung Konzernstrategie und Risikomanagement, baute das Inhouse-Consulting Leben auf und leitete eine Abteilung mit rund 40 Mitarbeitenden.\n\nSeit 2012 führt er die empiria GmbH – mit über 300 Projekten für die Versicherungsbranche."),
 }
 THEMEN = [  # Schlüssel der Live-Einsatzgebiete, Titel, „Wenn …“-Satz
     ("strategie", "Strategie &amp; Geschäftsmodell", "Wenn die Richtung klar sein muss und im Alltag ankommen soll."),
@@ -173,7 +173,7 @@ def startseite():
     farben = {"team": "sand", "extern": "navy", "workshop": "hell"}
     ergaenzung = {"team": "Typisch bei der Vorlage für den Aufsichtsrat oder dem Konzept für die Bereiche. Am Ende greifen Sie wieder selbst ein.",
                   "extern": "Strategieberater, Projektmanager, Spezialisten: Die Koordination und die Verantwortung für das Ergebnis bleiben bei Ihnen.",
-                  "workshop": "Große Themen werden zur Hürde: erst ein Termin für den großen Workshop, danach tut sich wenig, bis wieder Zeit im Kalender ist."}
+                  "workshop": "Große Themen werden zur Hürde. Nach dem großen Workshop tut sich oft wochenlang wenig, bis wieder Zeit im Kalender ist."}
     karten2 = "".join(f'<article class="pk"><div class="pk__bild pk__bild--{farben[k]}"><small>{t}</small><b>{x}</b>{ico[k]}</div>'
                       f'<div class="pk__text"><p>{ergaenzung[k]}</p></div></article>'
                       for f, t, x, k, _ in wege)
@@ -260,7 +260,7 @@ def startseite():
     <div>
       <p class="kicker">Kontakt</p>
       <h2 class="h2">Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.</h2>
-      <p class="lead">Erzählen Sie uns, was ansteht. Wir sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen, und geben direkt unsere Meinung. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
+      <p class="lead">Erzählen Sie uns, was ansteht. Gemeinsam schauen wir, ob wir für Ihr Thema die richtigen Partner sind – und wenn nicht, sagen wir es Ihnen. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.</p>
       <div class="knoepfe"><a class="knopf" href="{MAIL_BEIDE}">Gespräch vereinbaren <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></a></div>
     </div>
     <div class="lp-kontakt__personen">{kontakte}</div>
@@ -390,7 +390,7 @@ def ueber_uns():
       <p class="kicker">Partner</p><h2 class="pp__name">{p['name']}</h2><p class="pp__rolle">{p['rolle']}</p>
       <div class="pp__spalten">
         <div><h4>Schwerpunkte</h4><div class="pp__chips">{chips}</div>{zusatz[k]}</div>
-        <div><h4>Werdegang</h4><p>{p['werdegang']}</p>
+        <div><h4>Werdegang</h4>{"".join(f"<p>{x}</p>" for x in p['werdegang'].split(chr(10)+chr(10)))}
           <button class="pp__mehr" type="button" data-thema="cv-{k}">Stationen im Lebenslauf <svg class="ico" aria-hidden="true"><use href="#i-weiter"/></svg></button>
           <h4>Kontakt</h4><p class="pp__wege"><a href="mailto:{p['mail']}">{p['mail']}</a><a href="tel:{p['tel_roh']}">{p['tel']}</a><a class="kp__li" href="{p['linkedin']}" target="_blank" rel="noopener">LinkedIn-Profil <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5H3.5v9h9V10M9 3h4v4M13 3 7.5 8.5"/></svg></a></p></div>
       </div>
@@ -406,9 +406,7 @@ def ueber_uns():
 <section class="held lp-held"><div class="wrap held__raster">
   <div>
     <p class="kicker">Über uns</p>
-    <div class="wahl" data-gruppe="ukopf"><span>Überschrift</span><button type="button" aria-pressed="true">1</button><button type="button" aria-pressed="false">2</button></div>
-    <h1 data-gruppe="ukopf" data-variante="1">Unser Team. Unser Netzwerk.</h1>
-    <h1 data-gruppe="ukopf" data-variante="2" hidden>Wir kennen die Branche von innen.</h1>
+    <h1>Unser Team. Unser Netzwerk.</h1>
     <p class="lead">Zwei Partner mit eigener Führungserfahrung in der Versicherungswirtschaft, dazu ein Netzwerk erfahrener Spezialisten. Sie haben einen Ansprechpartner, wir bringen die passenden Leute zusammen. Im Projekt arbeiten wir beide selbst mit.</p>
   </div>
   <div class="duo duo--gleich">{duo}</div>
@@ -438,7 +436,7 @@ def ueber_uns():
   <div class="netzwerk__liste">{netz}</div>
 </div></section>
 
-{kontakt_neu("Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Erzählen Sie uns, was ansteht. Wir sagen offen, ob und wie wir es gemeinsam mit Ihnen umsetzen, und geben direkt unsere Meinung. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.")}
+{kontakt_neu("Sie geben uns ein Thema und die Verantwortung dafür. Wir liefern das Ergebnis.", "Erzählen Sie uns, was ansteht. Gemeinsam schauen wir, ob wir für Ihr Thema die richtigen Partner sind – und wenn nicht, sagen wir es Ihnen. Das erste Gespräch schafft Klarheit. Kein Pitch, keine Rechnung.")}
 
 {FENSTER}
 {cv_vorlagen}{gebiet_vorlagen}"""
@@ -804,7 +802,7 @@ WEG = [  # nach dem Pitch: worauf wir im Gespräch bewusst hinsteuern
     ("Unser Netzwerk", "Fragt er „Und wenn ihr etwas nicht könnt?“, erzählen wir, welche Spezialisten wir dazuholen."),
     ("Die Formate", "Wird es konkret, zeigen wir die Bandbreite: Telefonat, Videokonferenz, Workshop, wo er sinnvoll ist."),
     ("Wer wir sind", "Name und Rolle in der Vorstellung. Werdegang und Fakten stehen auf Über uns und im PDF."),
-    ("Der nächste Schritt", "Ein Gespräch zu seinem Thema vereinbaren. Das erste Gespräch kostet nichts: Wir sagen offen, ob und wie wir es umsetzen können."),
+    ("Der nächste Schritt", "Ein Gespräch zu seinem Thema vereinbaren. Das erste Gespräch kostet nichts: Gemeinsam schauen wir, ob wir für sein Thema die richtigen Partner sind."),
 ]
 LENKUNG = [  # Lenkungsfragen: herausfinden, was für das Gegenüber wichtig ist
     ("„Was liegt bei Ihnen gerade auf dem Tisch, das nicht so vorankommt, wie Sie es brauchen?“", "Zeigt das konkrete Thema."),

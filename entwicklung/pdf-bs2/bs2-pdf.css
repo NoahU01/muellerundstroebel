@@ -744,3 +744,4 @@ h3 { font-size: 13.5pt; line-height: 1.25; }
 .abb__text { right: var(--rand) !important; top: 40pt !important; }
 .abb__kurz { font-family: Lora, serif; font-size: 15pt; line-height: 1.45; color: var(--weiss); }
 .abb__schluss { margin-top: 14pt; color: var(--taupe-h); }
+.person__werdegang + .person__werdegang { margin-top: 6pt; }
